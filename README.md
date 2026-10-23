@@ -35,6 +35,8 @@ and 2. Both finish with 3 points.
 in a draw. Optimal play means preferring a win to a draw, and a draw to a loss.
 The statement also includes the trivial empty game, `N = 0`.
 
+[A precise Lean statement in FormalConjectures](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
+
 ## Find your way
 
 | Section | What you will find |
