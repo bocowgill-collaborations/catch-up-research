@@ -119,7 +119,7 @@ If this repository helps your research, please cite it:
 ```bibtex
 @misc{cowgill2026catchup,
   author       = {Cowgill, Bo},
-  title        = {{Catch-Up Research}},
+  title        = {{Catch-Up Research Repository}},
   year         = {2026},
   howpublished = {GitHub repository},
   url          = {https://github.com/bocowgill-collaborations/catch-up-research}

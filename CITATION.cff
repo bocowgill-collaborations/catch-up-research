@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If this repository helps your research, please cite it using the metadata below."
+title: "Catch-Up Research Repository"
+authors:
+  - family-names: "Cowgill"
+    given-names: "Bo"
+url: "https://github.com/bocowgill-collaborations/catch-up-research"
+preferred-citation:
+  type: generic
+  authors:
+    - family-names: "Cowgill"
+      given-names: "Bo"
+  title: "Catch-Up Research Repository"
+  year: 2026
+  medium: "GitHub repository"
+  url: "https://github.com/bocowgill-collaborations/catch-up-research"
