@@ -17,6 +17,8 @@ lake build
 python3 scripts/check_axioms.py
 python3 scripts/verify_export.py
 python3 computation/check_semantics.py
+python3 scripts/check_collection.py
+lake env lean --run computation/CheckEarlier.lean
 cd cryptid
 lake exe cache get
 lake build
@@ -38,3 +40,7 @@ The source snapshots and full manifests are included; no private repository is a
 - The GitHub workflow builds each package separately and retains its own receipts. A local successful run does not imply the hosted workflow has already completed.
 
 An initial public release omits private campaign logs, account usage information, local paths, cache files and unfinished prototype code. It includes the verified mathematics, the complete verified machine, and the checked dependency closure of the smaller candidate’s local component contracts. The candidate’s missing global proof is documented explicitly. Further verified results can be added with matching provenance and checks.
+
+## Collection expansion
+
+The [collection audit](collection.json) records recovery of 26 earlier modules into the mathematics build, bringing the catalog to 96 modules. The original 70 sources are unchanged. [earlier-sources.json](earlier-sources.json) and original input files document the mechanical port; `check_collection.py` reconstructs those transformations and checks the full module catalog. The [historical archive](../archive/) is explicitly outside the verified build. Its source-only entries and native/generated metadata are not being presented as kernel-certified results.

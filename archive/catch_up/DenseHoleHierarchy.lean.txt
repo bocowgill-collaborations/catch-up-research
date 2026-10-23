@@ -1,0 +1,169 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseHoleReduction
+
+/-!
+# A strong-induction reduction for dense Catch-Up positions
+
+This module reduces the conjectural dense-hole non-loss hierarchy to two boundary families:
+positions whose hole density is saturated, and positions with no available counter below the
+current deficit.
+-/
+
+namespace CatchUp
+
+/-- The number of counters missing from the anchored interval `Icc 1 N`. -/
+def denseHoleCount (N : ℕ) (position : Position) : ℕ :=
+  ((Finset.Icc 1 N) \ position.remaining).card
+
+/-- The hypotheses of the conjectural dense-hole hierarchy at a fixed ambient endpoint. -/
+def DenseHoleQualifies (N : ℕ) (position : Position) : Prop :=
+  position.remaining ⊆ Finset.Icc 1 N ∧
+    3 * denseHoleCount N position ≤ N ∧
+      position.deficit ≤ N ∧
+        ¬ position.remaining.sum (fun x => x) < position.deficit ∧
+          Even (position.deficit + position.remaining.sum (fun x => x))
+
+/-- If no remaining counter is below the deficit, the entire anchored lower prefix consists of
+holes. -/
+@[category API, AMS 91]
+theorem lower_prefix_subset_holes_of_no_continuing_move
+    (N : ℕ) (position : Position)
+    (hdN : position.deficit ≤ N)
+    (hno : ∀ x ∈ position.remaining, ¬ x < position.deficit) :
+    Finset.Icc 1 (position.deficit - 1) ⊆
+      (Finset.Icc 1 N) \ position.remaining := by
+  intro x hx
+  have hxBounds := Finset.mem_Icc.mp hx
+  apply Finset.mem_sdiff.mpr
+  constructor
+  · exact Finset.mem_Icc.mpr ⟨hxBounds.1, by omega⟩
+  · intro hxRemaining
+    exact hno x hxRemaining (by omega)
+
+/-- In an anchored interval, a prefix-blocked position has deficit at most one more than its
+number of holes. -/
+@[category API, AMS 91]
+theorem deficit_sub_one_le_dense_hole_count_of_no_continuing_move
+    (N : ℕ) (position : Position)
+    (hdN : position.deficit ≤ N)
+    (hno : ∀ x ∈ position.remaining, ¬ x < position.deficit) :
+    position.deficit - 1 ≤ denseHoleCount N position := by
+  have hcard := Finset.card_le_card
+    (lower_prefix_subset_holes_of_no_continuing_move N position hdN hno)
+  simpa [denseHoleCount] using hcard
+
+private theorem Position.move_outcome_eq_loss_of_value_eq_loss
+    (position : Position)
+    (hremaining : position.remaining ≠ ∅)
+    (hcatch : ¬ position.remaining.sum (fun x => x) < position.deficit)
+    (x : ℕ) (hx : x ∈ position.remaining)
+    (hloss : position.value = .loss) :
+    position.moveOutcome x = .loss := by
+  by_contra hmove
+  have hbestNe :
+      Outcome.best
+          (position.remaining.attach.toList.map fun move =>
+            position.moveOutcome move.1) ≠ .loss := by
+    rw [Outcome.best_ne_loss_iff]
+    refine ⟨position.moveOutcome x, ?_, hmove⟩
+    apply List.mem_map.mpr
+    exact ⟨⟨x, hx⟩, by simp, rfl⟩
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch] at hloss
+  exact hbestNe hloss
+
+/-- If all saturated or prefix-blocked qualifying states are nonlosing, then every qualifying
+state is nonlosing. -/
+@[category API, AMS 91]
+theorem dense_hole_nonloss_of_saturated_or_prefix_blocked
+    (N : ℕ)
+    (hboundary : ∀ position : Position,
+      DenseHoleQualifies N position →
+      (N < 3 * (denseHoleCount N position + 1) ∨
+        ∀ x ∈ position.remaining, ¬ x < position.deficit) →
+      position.value ≠ .loss) :
+    ∀ position : Position, DenseHoleQualifies N position → position.value ≠ .loss := by
+  rintro ⟨remaining, deficit⟩
+  induction remaining using Finset.strongInduction generalizing deficit with
+  | H remaining ih =>
+      intro hqual hloss
+      let position : Position := ⟨remaining, deficit⟩
+      by_cases hsaturated : N < 3 * (denseHoleCount N position + 1)
+      · exact (hboundary position hqual (Or.inl hsaturated)) hloss
+      · have hroom : 3 * (denseHoleCount N position + 1) ≤ N := by omega
+        apply (hboundary position hqual (Or.inr ?_)) hloss
+        intro x hx hxlt
+        have hxRemaining : x ∈ remaining := by simpa [position] using hx
+        have hsub : remaining ⊆ Finset.Icc 1 N := hqual.1
+        have hdN : deficit ≤ N := hqual.2.2.1
+        have hcatch : ¬ remaining.sum (fun y => y) < deficit := hqual.2.2.2.1
+        have heven : Even (deficit + remaining.sum (fun y => y)) := hqual.2.2.2.2
+        let child : Position := ⟨remaining.erase x, deficit - x⟩
+        have hafter : position.afterPick x = child := by
+          simp [position, child, Position.afterPick, hxlt]
+        have hmoveLoss : position.moveOutcome x = .loss := by
+          apply Position.move_outcome_eq_loss_of_value_eq_loss position
+          · exact Finset.nonempty_iff_ne_empty.mp ⟨x, hx⟩
+          · exact hcatch
+          · exact hx
+          · exact hloss
+        have hchildLoss : child.value = .loss := by
+          simpa [Position.moveOutcome, hxlt, hafter] using hmoveLoss
+        have hholesSet :
+            (Finset.Icc 1 N) \ (remaining.erase x) =
+              insert x ((Finset.Icc 1 N) \ remaining) := by
+          ext y
+          by_cases hyx : y = x
+          · subst y
+            simp [hsub hxRemaining]
+          · simp [hyx]
+        have hxNotHole : x ∉ (Finset.Icc 1 N) \ remaining := by
+          intro hxHole
+          exact (Finset.mem_sdiff.mp hxHole).2 hxRemaining
+        have hholes :
+            ((Finset.Icc 1 N) \ (remaining.erase x)).card =
+              ((Finset.Icc 1 N) \ remaining).card + 1 := by
+          rw [hholesSet]
+          simp [hxNotHole]
+        have hsumErase :
+            (remaining.erase x).sum (fun y => y) + x = remaining.sum (fun y => y) := by
+          simpa using Finset.sum_erase_add remaining (fun y => y) hxRemaining
+        have hchildEven :
+            Even (child.deficit + child.remaining.sum (fun y => y)) := by
+          rw [Nat.even_iff] at heven ⊢
+          have hmod := Position.mod_eq_two_deficit_add_sum_after_pick position hx
+          rw [hafter] at hmod
+          change (child.deficit + child.remaining.sum (fun y => y)) % 2 =
+            (deficit + remaining.sum (fun y => y)) % 2 at hmod
+          exact hmod.trans heven
+        have hchildQual : DenseHoleQualifies N child := by
+          refine ⟨?_, ?_, ?_, ?_, hchildEven⟩
+          · intro y hy
+            exact hsub (Finset.mem_of_mem_erase hy)
+          · change 3 * ((Finset.Icc 1 N) \ (remaining.erase x)).card ≤ N
+            rw [hholes]
+            simpa [denseHoleCount, position] using hroom
+          · change deficit - x ≤ N
+            omega
+          · change ¬ (remaining.erase x).sum (fun y => y) < deficit - x
+            omega
+        have hchildNonloss : child.value ≠ .loss := by
+          exact ih (remaining.erase x) (Finset.erase_ssubset hxRemaining)
+            (deficit - x) hchildQual
+        exact hchildNonloss hchildLoss
+
+end CatchUp

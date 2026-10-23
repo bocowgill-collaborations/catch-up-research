@@ -1,0 +1,413 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseAddTopWindow
+
+/-!
+# Small-gap turn endpoints
+
+This module reduces the four-hole, deficit-at-most-four nonwin invariant to nonloss on the three
+exact families of endpoints of one completed turn.
+-/
+
+namespace CatchUp
+
+/-- The three exact endpoint strata reached by a completed turn from a four-hole position whose
+deficit is at most four. -/
+def SmallGapTurnEndpointShape (M : ℕ) (position : Position) : Prop :=
+  let missing := Finset.Icc 1 M \ position.remaining
+  (missing.card ≤ 5 ∧
+      ∃ y ∈ missing,
+        position.deficit ≤ y ∧ y ≤ position.deficit + 4) ∨
+    (missing.card ≤ 6 ∧
+      ∃ y ∈ missing,
+        position.deficit < y ∧ y ≤ position.deficit + 4) ∨
+    (missing.card ≤ 7 ∧
+      1 ∈ missing ∧ 2 ∈ missing ∧ position.deficit + 1 ∈ missing)
+
+/-- Every catchable even endpoint in one of the three exact small-gap turn strata is non-losing. -/
+def SmallGapTurnEndpointNonloss (M : ℕ) : Prop :=
+  ∀ position : Position,
+    position.remaining ⊆ Finset.Icc 1 M →
+    position.deficit ≤ M →
+    ¬ position.remaining.sum (fun x => x) < position.deficit →
+    Even (position.deficit + position.remaining.sum (fun x => x)) →
+    SmallGapTurnEndpointShape M position →
+    position.value ≠ .loss
+
+private theorem TurnSet.preparation_card_le_two_of_small_gap
+    {M : ℕ} {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (hsub : position.remaining ⊆ Finset.Icc 1 M)
+    (hdeficit : position.deficit ≤ 4) :
+    (chosen.erase final).card ≤ 2 := by
+  rcases turn.preparation_below with hsingleton | hbelow
+  · subst chosen
+    simp
+  · have hpreparationSub : chosen.erase final ⊆ Finset.Icc 1 3 := by
+      change (chosen.erase final).sum (fun x => x) < position.deficit at hbelow
+      intro x hx
+      have hxRemaining := turn.chosen_subset (Finset.mem_of_mem_erase hx)
+      have hxBounds := Finset.mem_Icc.mp (hsub hxRemaining)
+      have hxLeSum : x ≤ (chosen.erase final).sum (fun y => y) :=
+        Finset.single_le_sum (fun y _ => Nat.zero_le y) hx
+      exact Finset.mem_Icc.mpr ⟨hxBounds.1, by omega⟩
+    change (chosen.erase final).sum (fun x => x) < position.deficit at hbelow
+    have htargetCard : (Finset.Icc 1 3).card = 3 := by decide
+    by_contra hcard
+    have hthree : 3 ≤ (chosen.erase final).card := by omega
+    have heq : chosen.erase final = Finset.Icc 1 3 := by
+      apply Finset.eq_of_subset_of_card_le hpreparationSub
+      simpa [htargetCard] using hthree
+    rw [heq] at hbelow
+    have htargetSum : (Finset.Icc 1 3).sum (fun x => x) = 6 := by decide
+    rw [htargetSum] at hbelow
+    omega
+
+private theorem small_gap_turn_endpoint_support
+    {M : ℕ} {position : Position} {chosen : Finset ℕ}
+    (hsub : position.remaining ⊆ Finset.Icc 1 M) :
+    (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining ⊆
+      Finset.Icc 1 M := by
+  intro x hx
+  change x ∈ position.remaining \ chosen at hx
+  exact hsub (Finset.mem_sdiff.mp hx).1
+
+/-- A completed turn adds exactly its chosen counters to the anchored hole set. -/
+@[category API, AMS 91]
+theorem TurnSet.endpoint_holes_eq
+    {M : ℕ} {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (hsub : position.remaining ⊆ Finset.Icc 1 M) :
+    Finset.Icc 1 M \
+        (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining =
+      (Finset.Icc 1 M \ position.remaining) ∪ chosen := by
+  ext x
+  simp only [completedTurnEndpoint, Finset.mem_sdiff, Finset.mem_union]
+  constructor
+  · rintro ⟨hxIcc, hxNotEndpoint⟩
+    by_cases hxRemaining : x ∈ position.remaining
+    · exact Or.inr (by
+        by_contra hxChosen
+        exact hxNotEndpoint ⟨hxRemaining, hxChosen⟩)
+    · exact Or.inl ⟨hxIcc, hxRemaining⟩
+  · rintro (⟨hxIcc, hxNotRemaining⟩ | hxChosen)
+    · exact ⟨hxIcc, fun hxEndpoint => hxNotRemaining hxEndpoint.1⟩
+    · have hxRemaining := turn.chosen_subset hxChosen
+      exact ⟨hsub hxRemaining, fun hxEndpoint => hxEndpoint.2 hxChosen⟩
+
+private theorem small_gap_turn_endpoint_holes_le
+    {M k : ℕ} {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (hholes : ((Finset.Icc 1 M) \ position.remaining).card ≤ 4)
+    (hpreparationCard : (chosen.erase final).card ≤ k) :
+    ((Finset.Icc 1 M) \
+      (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining).card ≤ 5 + k := by
+  have hholeSub :
+      Finset.Icc 1 M \ (position.remaining \ chosen) ⊆
+        (Finset.Icc 1 M \ position.remaining) ∪ chosen := by
+    intro x hx
+    simp only [Finset.mem_sdiff, Finset.mem_union] at hx ⊢
+    rcases hx with ⟨hxIcc, hxNotEndpoint⟩
+    by_cases hxRemaining : x ∈ position.remaining
+    · right
+      by_contra hxChosen
+      exact hxNotEndpoint ⟨hxRemaining, hxChosen⟩
+    · exact Or.inl ⟨hxIcc, hxRemaining⟩
+  have hchosenCard : chosen.card ≤ (chosen.erase final).card + 1 := by
+    calc
+      chosen.card = (insert final (chosen.erase final)).card := by
+        rw [Finset.insert_erase turn.final_mem]
+      _ ≤ (chosen.erase final).card + 1 := Finset.card_insert_le _ _
+  calc
+    ((Finset.Icc 1 M \
+        (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining).card)
+        ≤ ((Finset.Icc 1 M \ position.remaining) ∪ chosen).card :=
+          Finset.card_le_card hholeSub
+    _ ≤ (Finset.Icc 1 M \ position.remaining).card + chosen.card :=
+      Finset.card_union_le _ _
+    _ ≤ 4 + (k + 1) := by omega
+    _ = 5 + k := by omega
+
+private theorem TurnSet.endpoint_final_bounds_of_small_gap
+    {M : ℕ} {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (hsub : position.remaining ⊆ Finset.Icc 1 M)
+    (hdeficit : position.deficit ≤ 4) :
+    let endpoint := (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition
+    endpoint.deficit ≤ final ∧ final ≤ endpoint.deficit + 4 ∧ endpoint.deficit ≤ M ∧
+      final ∈ Finset.Icc 1 M \ endpoint.remaining := by
+  dsimp
+  have hfinalRemaining := turn.chosen_subset turn.final_mem
+  have hfinalBounds := Finset.mem_Icc.mp (hsub hfinalRemaining)
+  have hsumErase :
+      (chosen.erase final).sum (fun x => x) + final = chosen.sum (fun x => x) := by
+    simpa using Finset.sum_erase_add chosen (fun x => x) turn.final_mem
+  have hcatches : position.deficit ≤ chosen.sum (fun x => x) := by
+    simpa using turn.catches
+  have hendpointLeFinal :
+      chosen.sum (fun x => x) - position.deficit ≤ final := by
+    rcases turn.preparation_below with hsingleton | hbelow
+    · subst chosen
+      simp
+    · change (chosen.erase final).sum (fun x => x) < position.deficit at hbelow
+      omega
+  refine ⟨hendpointLeFinal, ?_, hendpointLeFinal.trans hfinalBounds.2, ?_⟩
+  · change final ≤ chosen.sum (fun x => x) - position.deficit + 4
+    omega
+  · change final ∈ Finset.Icc 1 M \ (position.remaining \ chosen)
+    apply Finset.mem_sdiff.mpr
+    exact ⟨Finset.mem_Icc.mpr hfinalBounds, by simp [turn.final_mem]⟩
+
+private theorem TurnSet.endpoint_even_of_even
+    {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (heven : Even (position.deficit + position.remaining.sum (fun x => x))) :
+    Even ((completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.deficit +
+      (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining.sum (fun x => x)) := by
+  rcases heven with ⟨half, hhalf⟩
+  have hchosenSumLe :
+      chosen.sum (fun x => x) ≤ position.remaining.sum (fun x => x) :=
+    Finset.sum_le_sum_of_subset turn.chosen_subset
+  have hdeficitLeSum : position.deficit ≤ position.remaining.sum (fun x => x) :=
+    turn.catches.trans hchosenSumLe
+  have hendpointTotal := turn.endpoint_remaining_sum_add_deficit
+  refine ⟨half - position.deficit, ?_⟩
+  calc
+    (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.deficit +
+          (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining.sum (fun x => x) =
+        (completedTurnEndpoint ⟨position, .p1⟩ chosen).remaining.sum (fun x => x) +
+          (completedTurnEndpoint ⟨position, .p1⟩ chosen).deficit := by omega
+    _ = position.remaining.sum (fun x => x) - position.deficit := hendpointTotal
+    _ = (half - position.deficit) + (half - position.deficit) := by omega
+
+private theorem seven_hole_supported_position_catchable
+    (M : ℕ) (hM : 16 ≤ M) (position : Position)
+    (hholes : ((Finset.Icc 1 M) \ position.remaining).card ≤ 7)
+    (hdeficit : position.deficit ≤ M) :
+    ¬ position.remaining.sum (fun x => x) < position.deficit := by
+  let band := Finset.Icc (M - 8) M
+  let present := band ∩ position.remaining
+  have hbandSub : band ⊆ Finset.Icc 1 M := by
+    intro x hx
+    have hxBounds := Finset.mem_Icc.mp hx
+    exact Finset.mem_Icc.mpr ⟨by omega, hxBounds.2⟩
+  have hmissingBandSub :
+      band \ position.remaining ⊆ Finset.Icc 1 M \ position.remaining := by
+    intro x hx
+    have hxParts := Finset.mem_sdiff.mp hx
+    exact Finset.mem_sdiff.mpr ⟨hbandSub hxParts.1, hxParts.2⟩
+  have hmissingBandCard : (band \ position.remaining).card ≤ 7 :=
+    (Finset.card_le_card hmissingBandSub).trans hholes
+  have hbandCard : band.card = 9 := by
+    change (Finset.Icc (M - 8) M).card = 9
+    rw [Nat.card_Icc]
+    omega
+  have hpartition := Finset.card_sdiff_add_card_inter band position.remaining
+  have hpresentCard : 2 ≤ present.card := by
+    dsimp [present]
+    rw [hbandCard] at hpartition
+    omega
+  have hpresentLower : present.card * (M - 8) ≤ present.sum (fun x => x) := by
+    have hbound := Finset.card_nsmul_le_sum present (fun x => x) (M - 8) (by
+      intro x hx
+      exact (Finset.mem_Icc.mp (Finset.mem_of_mem_inter_left hx)).1)
+    simpa [nsmul_eq_mul] using hbound
+  have hpresentSumLe :
+      present.sum (fun x => x) ≤ position.remaining.sum (fun x => x) :=
+    Finset.sum_le_sum_of_subset Finset.inter_subset_right
+  have htwoLower : 2 * (M - 8) ≤ present.card * (M - 8) :=
+    Nat.mul_le_mul_right (M - 8) hpresentCard
+  omega
+
+private theorem small_gap_turn_endpoint_shape
+    (M : ℕ) {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (hM : 16 ≤ M)
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (hsub : position.remaining ⊆ Finset.Icc 1 M)
+    (hholes : ((Finset.Icc 1 M) \ position.remaining).card ≤ 4)
+    (hdeficit : position.deficit ≤ 4) :
+    SmallGapTurnEndpointShape M
+      (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition := by
+  let endpoint := (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition
+  let preparation := chosen.erase final
+  have hpreparationCard : preparation.card ≤ 2 :=
+    turn.preparation_card_le_two_of_small_gap hsub hdeficit
+  have hfinalData := turn.endpoint_final_bounds_of_small_gap hsub hdeficit
+  have hsumErase :
+      preparation.sum (fun x => x) + final = chosen.sum (fun x => x) := by
+    simpa [preparation] using Finset.sum_erase_add chosen (fun x => x) turn.final_mem
+  have hcatches : position.deficit ≤ chosen.sum (fun x => x) := by
+    simpa using turn.catches
+  change
+    ((Finset.Icc 1 M \ endpoint.remaining).card ≤ 5 ∧
+        ∃ y ∈ Finset.Icc 1 M \ endpoint.remaining,
+          endpoint.deficit ≤ y ∧ y ≤ endpoint.deficit + 4) ∨
+      ((Finset.Icc 1 M \ endpoint.remaining).card ≤ 6 ∧
+        ∃ y ∈ Finset.Icc 1 M \ endpoint.remaining,
+          endpoint.deficit < y ∧ y ≤ endpoint.deficit + 4) ∨
+      ((Finset.Icc 1 M \ endpoint.remaining).card ≤ 7 ∧
+        1 ∈ Finset.Icc 1 M \ endpoint.remaining ∧
+        2 ∈ Finset.Icc 1 M \ endpoint.remaining ∧
+        endpoint.deficit + 1 ∈ Finset.Icc 1 M \ endpoint.remaining)
+  have hcardCases :
+      preparation.card = 0 ∨ preparation.card = 1 ∨ preparation.card = 2 := by
+    omega
+  rcases hcardCases with hcardZero | hcardOne | hcardTwo
+  · left
+    have hholesEndpoint := small_gap_turn_endpoint_holes_le turn hholes
+      (show (chosen.erase final).card ≤ 0 by simpa [preparation] using hcardZero.le)
+    refine ⟨by simpa [endpoint] using hholesEndpoint, final, ?_, ?_, ?_⟩
+    · simpa [endpoint] using hfinalData.2.2.2
+    · simpa [endpoint] using hfinalData.1
+    · simpa [endpoint] using hfinalData.2.1
+  · right
+    left
+    have hholesEndpoint := small_gap_turn_endpoint_holes_le turn hholes
+      (show (chosen.erase final).card ≤ 1 by simpa [preparation] using hcardOne.le)
+    have hbelow : preparation.sum (fun x => x) < position.deficit := by
+      rcases turn.preparation_below with hsingleton | hbelow
+      · subst chosen
+        simp [preparation] at hcardOne
+      · simpa [preparation] using hbelow
+    have hstrict : endpoint.deficit < final := by
+      change chosen.sum (fun x => x) - position.deficit < final
+      omega
+    refine ⟨by simpa [endpoint] using hholesEndpoint, final, ?_, hstrict, ?_⟩
+    · simpa [endpoint] using hfinalData.2.2.2
+    · simpa [endpoint] using hfinalData.2.1
+  · right
+    right
+    have hholesEndpoint := small_gap_turn_endpoint_holes_le turn hholes
+      (show (chosen.erase final).card ≤ 2 by simpa [preparation] using hcardTwo.le)
+    have hbelow : preparation.sum (fun x => x) < position.deficit := by
+      rcases turn.preparation_below with hsingleton | hbelow
+      · subst chosen
+        simp [preparation] at hcardTwo
+      · simpa [preparation] using hbelow
+    obtain ⟨a, b, hab, hpreparation⟩ := Finset.card_eq_two.mp hcardTwo
+    have haPreparation : a ∈ preparation := by simp [hpreparation]
+    have hbPreparation : b ∈ preparation := by simp [hpreparation]
+    have haRemaining := turn.chosen_subset
+      (Finset.mem_of_mem_erase (by simpa [preparation] using haPreparation))
+    have hbRemaining := turn.chosen_subset
+      (Finset.mem_of_mem_erase (by simpa [preparation] using hbPreparation))
+    have haOne : 1 ≤ a := (Finset.mem_Icc.mp (hsub haRemaining)).1
+    have hbOne : 1 ≤ b := (Finset.mem_Icc.mp (hsub hbRemaining)).1
+    have hpreparationSum : preparation.sum (fun x => x) = a + b := by
+      simp [hpreparation, hab]
+    have hpair : (a = 1 ∧ b = 2) ∨ (a = 2 ∧ b = 1) := by
+      rcases Nat.lt_or_gt_of_ne hab with habLt | hbaLt
+      · exact Or.inl ⟨by omega, by omega⟩
+      · exact Or.inr ⟨by omega, by omega⟩
+    have hpreparationExact : preparation = {1, 2} := by
+      rcases hpair with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩
+      · exact hpreparation
+      · simpa [Finset.pair_comm] using hpreparation
+    have hpreparationSumThree : preparation.sum (fun x => x) = 3 := by
+      simp [hpreparationExact]
+    have hsourceDeficit : position.deficit = 4 := by omega
+    have hfinalEq : endpoint.deficit + 1 = final := by
+      change chosen.sum (fun x => x) - position.deficit + 1 = final
+      omega
+    have hOneChosen : 1 ∈ chosen := by
+      apply Finset.mem_of_mem_erase
+      simpa [preparation] using (show 1 ∈ preparation by simp [hpreparationExact])
+    have hTwoChosen : 2 ∈ chosen := by
+      apply Finset.mem_of_mem_erase
+      simpa [preparation] using (show 2 ∈ preparation by simp [hpreparationExact])
+    have hOneMissing : 1 ∈ Finset.Icc 1 M \ endpoint.remaining := by
+      apply Finset.mem_sdiff.mpr
+      refine ⟨Finset.mem_Icc.mpr ⟨by omega, by omega⟩, ?_⟩
+      change 1 ∉ position.remaining \ chosen
+      simp [hOneChosen]
+    have hTwoMissing : 2 ∈ Finset.Icc 1 M \ endpoint.remaining := by
+      apply Finset.mem_sdiff.mpr
+      refine ⟨Finset.mem_Icc.mpr ⟨by omega, by omega⟩, ?_⟩
+      change 2 ∉ position.remaining \ chosen
+      simp [hTwoChosen]
+    refine ⟨by simpa [endpoint] using hholesEndpoint, hOneMissing, hTwoMissing, ?_⟩
+    rw [hfinalEq]
+    simpa [endpoint] using hfinalData.2.2.2
+
+/-- Every completed turn from a qualifying four-hole small-gap position reaches a supported,
+catchable, even endpoint in one of the three turn strata. -/
+@[category API, AMS 91]
+theorem small_gap_turn_endpoint_data
+    (M : ℕ) (hM : 16 ≤ M) {position : Position} {chosen : Finset ℕ} {final : ℕ}
+    (turn : TurnSet ⟨position, .p1⟩ chosen final)
+    (hsub : position.remaining ⊆ Finset.Icc 1 M)
+    (hholes : ((Finset.Icc 1 M) \ position.remaining).card ≤ 4)
+    (hdeficit : position.deficit ≤ 4)
+    (heven : Even (position.deficit + position.remaining.sum (fun x => x))) :
+    let endpoint := (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition
+    chosen.card ≤ 3 ∧
+      endpoint.remaining ⊆ Finset.Icc 1 M ∧
+      ((Finset.Icc 1 M \ endpoint.remaining).card ≤ 7) ∧
+      endpoint.deficit ≤ final ∧
+      final ≤ endpoint.deficit + 4 ∧
+      endpoint.deficit ≤ M ∧
+      final ∈ Finset.Icc 1 M \ endpoint.remaining ∧
+      ¬ endpoint.remaining.sum (fun x => x) < endpoint.deficit ∧
+      Even (endpoint.deficit + endpoint.remaining.sum (fun x => x)) ∧
+      SmallGapTurnEndpointShape M endpoint := by
+  dsimp only
+  have hsupport := small_gap_turn_endpoint_support (chosen := chosen) hsub
+  have hfinalData := turn.endpoint_final_bounds_of_small_gap hsub hdeficit
+  have hpreparationCard := turn.preparation_card_le_two_of_small_gap hsub hdeficit
+  have hholesEndpoint := small_gap_turn_endpoint_holes_le turn hholes hpreparationCard
+  have hholesSeven :
+      (Finset.Icc 1 M \
+        (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition.remaining).card ≤ 7 := by
+    simpa using hholesEndpoint
+  have hchosenCard : chosen.card ≤ 3 := by
+    calc
+      chosen.card = (insert final (chosen.erase final)).card := by
+        rw [Finset.insert_erase turn.final_mem]
+      _ ≤ (chosen.erase final).card + 1 := Finset.card_insert_le _ _
+      _ ≤ 3 := by omega
+  refine ⟨hchosenCard, hsupport, hholesSeven, hfinalData.1, hfinalData.2.1,
+    hfinalData.2.2.1, hfinalData.2.2.2, ?_, turn.endpoint_even_of_even heven, ?_⟩
+  · exact seven_hole_supported_position_catchable M hM
+      (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition
+      hholesSeven hfinalData.2.2.1
+  · exact small_gap_turn_endpoint_shape M hM turn hsub hholes hdeficit
+
+/-- The exact three-stratum completed-turn endpoint invariant implies the four-hole, small-gap
+nonwin invariant. -/
+@[category API, AMS 91]
+theorem small_gap_four_hole_nonwin_of_turn_endpoint_nonloss
+    (M : ℕ) (hM : 16 ≤ M)
+    (hendpoint : SmallGapTurnEndpointNonloss M) :
+    SmallGapFourHoleNonwin M := by
+  intro position hsub hholes hdeficit heven
+  by_cases hremaining : position.remaining = ∅
+  · rw [Position.value.eq_def]
+    simp only [hremaining, if_true]
+    split <;> simp
+  by_cases hcatch : position.remaining.sum (fun x => x) < position.deficit
+  · rw [Position.value.eq_def]
+    simp [hremaining, hcatch]
+  apply (position.value_ne_win_iff_forall_turn_sets hremaining hcatch).mpr
+  intro chosen final turn
+  have hdata := small_gap_turn_endpoint_data M hM turn hsub hholes hdeficit heven
+  rcases hdata with
+    ⟨_, hsupport, _, _, _, hendpointDeficit, _, hendpointCatch, hendpointEven,
+      hendpointShape⟩
+  exact hendpoint (completedTurnEndpoint ⟨position, .p1⟩ chosen).toPosition
+    hsupport hendpointDeficit hendpointCatch hendpointEven hendpointShape
+
+end CatchUp

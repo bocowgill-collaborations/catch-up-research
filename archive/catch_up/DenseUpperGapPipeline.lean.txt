@@ -1,0 +1,396 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PrefixBlockedDenseEndpoints
+
+/-!
+# Dense upper-residual gap pipeline
+
+This module turns an upper residual witness from a dense three-hole parent into a losing six-hole
+child, constructs the child's greatest remaining counter below its deficit, and applies the sharp
+gap-counting reduction.
+-/
+
+namespace CatchUp
+
+/-- An exact block whose maximum is the greatest remaining counter below a missing deficit
+forces the next residual winner strictly above that deficit. -/
+@[category API, AMS 91]
+theorem strict_upper_winner_of_exact_block_at_greatest_lower
+    (N d p : ℕ) (remaining block : Finset ℕ)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hdMissing : d ∉ remaining)
+    (hpGreatest : ∀ x ∈ remaining, x < d → x ≤ p)
+    (hblock : block.Nonempty)
+    (hpositive : ∀ x ∈ block, 1 ≤ x)
+    (hblockSub : block ⊆ remaining)
+    (hsum : block.sum (fun x => x) = d)
+    (hmax : block.max' hblock = p)
+    (hloss : (⟨remaining, d⟩ : Position).value = .loss) :
+    ∃ w ∈ remaining \ block,
+      (afterOpening (remaining \ block) w).value = .loss ∧ d < w ∧ w ≤ N := by
+  obtain ⟨w, hw, hwin, hgt⟩ :=
+    Position.exists_winning_opening_gt_max_of_loss_of_exact_sum
+      remaining block d hblock hpositive hblockSub hsum hloss
+  have hwp : p < w := by simpa [hmax] using hgt
+  have hwRemaining : w ∈ remaining := (Finset.mem_sdiff.mp hw).1
+  have hwd : d < w := by
+    rcases lt_trichotomy w d with hlt | heq | hgt'
+    · exact (not_lt_of_ge (hpGreatest w hwRemaining hlt) hwp).elim
+    · exact (hdMissing (heq ▸ hwRemaining)).elim
+    · exact hgt'
+  exact ⟨w, hw, hwin, hwd, (Finset.mem_Icc.mp (hsub hwRemaining)).2⟩
+
+/-- A convenient two-counter instance of the greatest-lower transfer. -/
+private theorem strict_upper_winner_of_available_gap_mirror
+    (N d p : ℕ) (remaining : Finset ℕ)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hdMissing : d ∉ remaining)
+    (hp : p ∈ remaining) (hpd : p < d)
+    (hpGreatest : ∀ x ∈ remaining, x < d → x ≤ p)
+    (hgapPos : 0 < d - p) (hgapLt : d - p < p)
+    (hgap : d - p ∈ remaining)
+    (hloss : (⟨remaining, d⟩ : Position).value = .loss) :
+    ∃ w ∈ remaining \ ({d - p, p} : Finset ℕ),
+      (afterOpening (remaining \ {d - p, p}) w).value = .loss ∧ d < w ∧ w ≤ N := by
+  let block : Finset ℕ := {d - p, p}
+  have hne : d - p ≠ p := by omega
+  have hblock : block.Nonempty := by simp [block]
+  have hpositive : ∀ x ∈ block, 1 ≤ x := by
+    intro x hx
+    simp only [block, Finset.mem_insert, Finset.mem_singleton] at hx
+    rcases hx with rfl | rfl <;> omega
+  have hblockSub : block ⊆ remaining := by
+    intro x hx
+    simp only [block, Finset.mem_insert, Finset.mem_singleton] at hx
+    rcases hx with rfl | rfl
+    · exact hgap
+    · exact hp
+  have hsum : block.sum (fun x => x) = d := by
+    rw [show block = {d - p, p} by rfl, Finset.sum_pair hne]
+    omega
+  have hmax : block.max' hblock = p := by
+    simp [block]
+    omega
+  simpa [block] using strict_upper_winner_of_exact_block_at_greatest_lower
+    N d p remaining block hsub hdMissing hpGreatest hblock hpositive
+      hblockSub hsum hmax hloss
+
+/-- If a greatest-lower gap has length at least five and both the singleton mirror and the
+first complementary pair are blocked, then the ambient interval has at least seven holes. -/
+private theorem seven_holes_of_long_blocked_greatest_lower_gap
+    (N d p : ℕ) (remaining : Finset ℕ)
+    (hdN : d ≤ N) (hpd : p < d)
+    (hdMissing : d ∉ remaining)
+    (hpGreatest : ∀ x ∈ remaining, x < d → x ≤ p)
+    (hgapFive : 5 ≤ d - p) (hgapLt : d - p < p)
+    (hmirrorMissing : d - p ∉ remaining)
+    (hfirstPairBlocked : 1 ∉ remaining ∨ d - p - 1 ∉ remaining) :
+    7 ≤ ((Finset.Icc 1 N) \ remaining).card := by
+  let r := d - p
+  let holes := (Finset.Icc 1 N) \ remaining
+  have hdr : d = p + r := by
+    simp only [r]
+    omega
+  have htop : ∀ k ≤ 4, d - k ∈ holes := by
+    intro k hk
+    apply Finset.mem_sdiff.mpr
+    constructor
+    · apply Finset.mem_Icc.mpr
+      constructor <;> omega
+    · intro hmem
+      by_cases hkZero : k = 0
+      · subst k
+        simp only [Nat.sub_zero] at hmem
+        exact hdMissing hmem
+      · have hlt : d - k < d := by omega
+        have hle := hpGreatest (d - k) hmem hlt
+        omega
+  have hrHole : r ∈ holes := by
+    apply Finset.mem_sdiff.mpr
+    constructor
+    · apply Finset.mem_Icc.mpr
+      constructor <;> simp only [r] <;> omega
+    · simpa [r] using hmirrorMissing
+  rcases hfirstPairBlocked with hOneMissing | hPredMissing
+  · let seven : Finset ℕ := {d, d - 1, d - 2, d - 3, d - 4, r, 1}
+    have hseven : seven ⊆ holes := by
+      intro x hx
+      simp only [seven, Finset.mem_insert, Finset.mem_singleton] at hx
+      rcases hx with rfl | rfl | rfl | rfl | rfl | rfl | rfl
+      · exact htop 0 (by omega)
+      · exact htop 1 (by omega)
+      · exact htop 2 (by omega)
+      · exact htop 3 (by omega)
+      · exact htop 4 (by omega)
+      · exact hrHole
+      · exact Finset.mem_sdiff.mpr ⟨by simp; omega, hOneMissing⟩
+    have hcard : seven.card = 7 := by
+      simp only [seven]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      simp
+    have hle := Finset.card_le_card hseven
+    simpa [holes, hcard] using hle
+  · let a := r - 1
+    have haHole : a ∈ holes := by
+      apply Finset.mem_sdiff.mpr
+      constructor
+      · apply Finset.mem_Icc.mpr
+        constructor <;> simp only [a, r] <;> omega
+      · simpa [a, r] using hPredMissing
+    let seven : Finset ℕ := {d, d - 1, d - 2, d - 3, d - 4, r, a}
+    have hseven : seven ⊆ holes := by
+      intro x hx
+      simp only [seven, Finset.mem_insert, Finset.mem_singleton] at hx
+      rcases hx with rfl | rfl | rfl | rfl | rfl | rfl | rfl
+      · exact htop 0 (by omega)
+      · exact htop 1 (by omega)
+      · exact htop 2 (by omega)
+      · exact htop 3 (by omega)
+      · exact htop 4 (by omega)
+      · exact hrHole
+      · exact haHole
+    have hcard : seven.card = 7 := by
+      simp only [seven]
+      rw [Finset.card_insert_of_notMem (by simp [a]; omega)]
+      rw [Finset.card_insert_of_notMem (by simp [a]; omega)]
+      rw [Finset.card_insert_of_notMem (by simp [a]; omega)]
+      rw [Finset.card_insert_of_notMem (by simp [a]; omega)]
+      rw [Finset.card_insert_of_notMem (by simp [a]; omega)]
+      rw [Finset.card_insert_of_notMem (by simp [a]; omega)]
+      simp
+    have hle := Finset.card_le_card hseven
+    simpa [holes, hcard] using hle
+
+/-- With at most six holes, a missing deficit whose greatest lower counter has a smaller mirror
+gap either has gap at most four or admits an exact block forcing a strictly larger winner. -/
+private theorem small_gap_or_strict_upper_winner_of_six_holes
+    (N d p : ℕ) (remaining : Finset ℕ)
+    (hdN : d ≤ N) (hpd : p < d)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hdMissing : d ∉ remaining)
+    (hp : p ∈ remaining)
+    (hpGreatest : ∀ x ∈ remaining, x < d → x ≤ p)
+    (hgapLt : d - p < p)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 6)
+    (hloss : (⟨remaining, d⟩ : Position).value = .loss) :
+    d - p ≤ 4 ∨
+      ∃ block, block.Nonempty ∧ block ⊆ remaining ∧
+        block.sum (fun x => x) = d ∧
+          ∃ w ∈ remaining \ block,
+            (afterOpening (remaining \ block) w).value = .loss ∧ d < w ∧ w ≤ N := by
+  by_cases hsmall : d - p ≤ 4
+  · exact Or.inl hsmall
+  right
+  have hgapFive : 5 ≤ d - p := by omega
+  have hgapPos : 0 < d - p := by omega
+  by_cases hmirror : d - p ∈ remaining
+  · let block : Finset ℕ := {d - p, p}
+    have hblock : block.Nonempty := by simp [block]
+    obtain ⟨w, hw, hwin, hwd, hwN⟩ :=
+      strict_upper_winner_of_available_gap_mirror N d p remaining hsub hdMissing hp hpd
+        hpGreatest hgapPos hgapLt hmirror hloss
+    refine ⟨block, hblock, ?_, ?_, w, ?_, ?_, hwd, hwN⟩
+    · intro x hx
+      simp only [block, Finset.mem_insert, Finset.mem_singleton] at hx
+      rcases hx with rfl | rfl
+      · exact hmirror
+      · exact hp
+    · have hne : d - p ≠ p := by omega
+      rw [show block = {d - p, p} by rfl, Finset.sum_pair hne]
+      omega
+    · simpa [block] using hw
+    · simpa [block] using hwin
+  · by_cases hOne : 1 ∈ remaining
+    · by_cases hPred : d - p - 1 ∈ remaining
+      · let block : Finset ℕ := {1, d - p - 1, p}
+        have hblock : block.Nonempty := by simp [block]
+        have hpositive : ∀ x ∈ block, 1 ≤ x := by
+          intro x hx
+          simp only [block, Finset.mem_insert, Finset.mem_singleton] at hx
+          rcases hx with rfl | rfl | rfl <;> omega
+        have hblockSub : block ⊆ remaining := by
+          intro x hx
+          simp only [block, Finset.mem_insert, Finset.mem_singleton] at hx
+          rcases hx with rfl | rfl | rfl
+          · exact hOne
+          · exact hPred
+          · exact hp
+        have hsum : block.sum (fun x => x) = d := by
+          rw [show block = {1, d - p - 1, p} by rfl]
+          rw [Finset.sum_insert (by simp; omega), Finset.sum_pair (by omega)]
+          omega
+        have hmax : block.max' hblock = p := by
+          simp [block]
+          omega
+        obtain ⟨w, hw, hwin, hwd, hwN⟩ :=
+          strict_upper_winner_of_exact_block_at_greatest_lower N d p remaining block hsub
+            hdMissing hpGreatest hblock hpositive hblockSub hsum hmax hloss
+        exact ⟨block, hblock, hblockSub, hsum, w, hw, hwin, hwd, hwN⟩
+      · have hseven := seven_holes_of_long_blocked_greatest_lower_gap
+          N d p remaining hdN hpd hdMissing hpGreatest hgapFive hgapLt hmirror
+            (Or.inr hPred)
+        omega
+    · have hseven := seven_holes_of_long_blocked_greatest_lower_gap
+        N d p remaining hdN hpd hdMissing hpGreatest hgapFive hgapLt hmirror
+          (Or.inl hOne)
+      omega
+
+/-- The only boundary not covered by the disjoint low-mirror count is itself bounded: if the
+gap reaches its greatest lower counter, six holes force the missing deficit to be at most twelve. -/
+private theorem deficit_le_twelve_of_greatest_lower_gap_not_smaller
+    (N d p : ℕ) (remaining : Finset ℕ)
+    (hdN : d ≤ N) (hpd : p < d)
+    (hdMissing : d ∉ remaining)
+    (hpGreatest : ∀ x ∈ remaining, x < d → x ≤ p)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 6)
+    (hgapNotLt : ¬ d - p < p) :
+    d ≤ 12 := by
+  let suffix := Finset.Icc (p + 1) d
+  have hsuffix : suffix ⊆ (Finset.Icc 1 N) \ remaining := by
+    intro x hx
+    have hxI := Finset.mem_Icc.mp hx
+    apply Finset.mem_sdiff.mpr
+    constructor
+    · exact Finset.mem_Icc.mpr ⟨by omega, by omega⟩
+    · intro hmem
+      by_cases hxd : x = d
+      · exact hdMissing (hxd ▸ hmem)
+      · have hxlt : x < d := by omega
+        have hxle := hpGreatest x hmem hxlt
+        omega
+  have hcard : suffix.card = d - p := by
+    simp [suffix]
+  have hle := Finset.card_le_card hsuffix
+  rw [hcard] at hle
+  have hgapSix : d - p ≤ 6 := hle.trans hholes
+  omega
+
+/-- An actual two-counter upper witness from a three-hole parent yields a losing child with at most
+six holes and a greatest remaining counter below its deficit. At that greatest-lower counter, the
+next strict upper step exists unless the gap is at most four or the new deficit is at most twelve.
+
+The next exact block may have three counters, so the strict-step alternative is intentionally not
+packaged as a recursive `DenseUpperResidualWitness`, whose block-cardinality cap is two.
+-/
+@[category API, AMS 91]
+theorem dense_upper_residual_witness_to_greatest_lower_trichotomy
+    (N d : ℕ) (remaining : Finset ℕ)
+    (hd : 7 ≤ d)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 3)
+    (hupper : DenseUpperResidualWitness N d remaining) :
+    ∃ block, ∃ hblock : block.Nonempty, ∃ w,
+      block.card ≤ 2 ∧ block ⊆ remaining ∧ block.sum (fun x => x) = d ∧
+        w ∈ remaining \ block ∧
+        (afterOpening (remaining \ block) w).value = .loss ∧
+        block.max' hblock < w ∧ d < w ∧ w ≤ N ∧
+        let child := (remaining \ block).erase w
+        child ⊆ Finset.Icc 1 N ∧ w ∉ child ∧
+          ((Finset.Icc 1 N) \ child).card ≤ 6 ∧
+          (⟨child, w⟩ : Position).value = .loss ∧
+          ∃ p, p ∈ child ∧ p < w ∧
+            (∀ x ∈ child, x < w → x ≤ p) ∧
+            ((∃ nextBlock, nextBlock.Nonempty ∧ nextBlock ⊆ child ∧
+                nextBlock.sum (fun x => x) = w ∧
+                ∃ nextWinner ∈ child \ nextBlock,
+                  (afterOpening (child \ nextBlock) nextWinner).value = .loss ∧
+                    w < nextWinner ∧ nextWinner ≤ N) ∨
+              w - p ≤ 4 ∨ w ≤ 12) := by
+  rcases hupper with
+    ⟨block, hblock, w, hblockCard, hblockSub, hsum, hw, hchildLoss,
+      hmax, hwd, hwN⟩
+  refine ⟨block, hblock, w, hblockCard, hblockSub, hsum, hw, hchildLoss,
+    hmax, hwd, hwN, ?_⟩
+  dsimp only
+  have hchildSub : (remaining \ block).erase w ⊆ Finset.Icc 1 N := by
+    intro x hx
+    exact hsub (Finset.mem_sdiff.mp (Finset.mem_of_mem_erase hx)).1
+  have hwMissing : w ∉ (remaining \ block).erase w := by simp
+  have hchildHoles :
+      ((Finset.Icc 1 N) \ ((remaining \ block).erase w)).card ≤ 6 := by
+    let cover := (((Finset.Icc 1 N) \ remaining) ∪ block) ∪ {w}
+    have hcover :
+        (Finset.Icc 1 N) \ ((remaining \ block).erase w) ⊆ cover := by
+      intro x hx
+      have hxI := (Finset.mem_sdiff.mp hx).1
+      have hxNotChild := (Finset.mem_sdiff.mp hx).2
+      by_cases hxRemaining : x ∈ remaining
+      · by_cases hxBlock : x ∈ block
+        · simp [cover, hxBlock]
+        · have hxSdiff : x ∈ remaining \ block :=
+            Finset.mem_sdiff.mpr ⟨hxRemaining, hxBlock⟩
+          have hxEq : x = w := by
+            by_contra hxNe
+            exact hxNotChild (Finset.mem_erase.mpr ⟨hxNe, hxSdiff⟩)
+          simp [cover, hxEq]
+      · simp [cover, hxI, hxRemaining]
+    have hchildCover := Finset.card_le_card hcover
+    have houter := Finset.card_union_le
+      (((Finset.Icc 1 N) \ remaining) ∪ block) ({w} : Finset ℕ)
+    have hinner := Finset.card_union_le ((Finset.Icc 1 N) \ remaining) block
+    simp only [Finset.card_singleton] at houter
+    dsimp only [cover] at hchildCover
+    omega
+  have hchildPositionLoss :
+      (⟨(remaining \ block).erase w, w⟩ : Position).value = .loss := by
+    simpa only [afterOpening] using hchildLoss
+  refine ⟨hchildSub, hwMissing, hchildHoles, hchildPositionLoss, ?_⟩
+  let child := (remaining \ block).erase w
+  let lower := child.filter (fun x => x < w)
+  have hlower : lower.Nonempty := by
+    by_contra hlowerNot
+    have hlowerEmpty : lower = ∅ := Finset.not_nonempty_iff_eq_empty.mp hlowerNot
+    have hsevenSubset : Finset.Icc 1 7 ⊆ (Finset.Icc 1 N) \ child := by
+      intro x hx
+      have hxI := Finset.mem_Icc.mp hx
+      apply Finset.mem_sdiff.mpr
+      constructor
+      · exact Finset.mem_Icc.mpr ⟨hxI.1, by omega⟩
+      · intro hxChild
+        have hxLower : x ∈ lower := Finset.mem_filter.mpr ⟨hxChild, by omega⟩
+        rw [hlowerEmpty] at hxLower
+        simp at hxLower
+    have hsevenCard : (Finset.Icc 1 7).card = 7 := by simp
+    have hsevenLe := Finset.card_le_card hsevenSubset
+    change ((Finset.Icc 1 N) \ child).card ≤ 6 at hchildHoles
+    rw [hsevenCard] at hsevenLe
+    omega
+  let p := lower.max' hlower
+  have hpLower : p ∈ lower := by
+    exact Finset.max'_mem lower hlower
+  have hpChild : p ∈ child := (Finset.mem_filter.mp hpLower).1
+  have hpw : p < w := (Finset.mem_filter.mp hpLower).2
+  have hpGreatest : ∀ x ∈ child, x < w → x ≤ p := by
+    intro x hxChild hxw
+    exact Finset.le_max' lower x (Finset.mem_filter.mpr ⟨hxChild, hxw⟩)
+  refine ⟨p, hpChild, hpw, hpGreatest, ?_⟩
+  by_cases hgapLt : w - p < p
+  · rcases small_gap_or_strict_upper_winner_of_six_holes
+      N w p child hwN hpw hchildSub hwMissing hpChild hpGreatest hgapLt
+        hchildHoles hchildPositionLoss with hsmall | hnext
+    · exact Or.inr (Or.inl hsmall)
+    · exact Or.inl hnext
+  · have hbounded := deficit_le_twelve_of_greatest_lower_gap_not_smaller
+      N w p child hwN hpw hwMissing hpGreatest hchildHoles hgapLt
+    exact Or.inr (Or.inr hbounded)
+
+end CatchUp

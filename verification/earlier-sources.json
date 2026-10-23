@@ -1,0 +1,411 @@
+{
+  "source_commit": "bb10b8246c8f7b99de084865826150459e5627f1",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "scope": "Selected earlier structural/checker/proof-size work, imported without the unfinished conjecture or native-only range certificates.",
+  "sources": [
+    {
+      "path": "CatchUp/Earlier/Parity.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.Parity",
+      "sha256": "7ab0baf7e31f8418b43ab0eedd9b36f3a071a48a9ffadadfa172bc7493c578a6",
+      "bytes": 7973,
+      "original_path": "scripts/catch_up/Parity.lean",
+      "original_source_sha256": "965345af84a49b838fea9a64bb3264f664c5e2ced3209c5843e7d008945d9d52",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/Parity.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/ThreeCounterSafety.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.ThreeCounterSafety",
+      "sha256": "5f99f2f8b1984fbbd8387590dc57834a0611a14ce3f9165bcc9275986c5878f4",
+      "bytes": 12876,
+      "original_path": "scripts/catch_up/ThreeCounterSafety.lean",
+      "original_source_sha256": "5d8ab1f4b5b814a96fc5c52b8aed19b45cb52fd3bf6debe18813b1aa10bf2beb",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/ThreeCounterSafety.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CompletedTurnReflection.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CompletedTurnReflection",
+      "sha256": "dac0bd34b7e91342d88eaea3489423856bfdf7f66649c250f95a13cf6f607bf5",
+      "bytes": 6461,
+      "original_path": "scripts/catch_up/CompletedTurnReflection.lean",
+      "original_source_sha256": "83c6985f3738d0bdd0706ad74119065894b48d28e64481bac20f70d0e1ecea33",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CompletedTurnReflection.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateTests.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateTests",
+      "sha256": "0b21fda4a92a5db3963e0ee94c5168b45d543a112e4bf800ced84bf23132b978",
+      "bytes": 6272,
+      "original_path": "scripts/catch_up/CertificateTests.lean",
+      "original_source_sha256": "6d10a2d71abdf4dd5502c2df7a4bf08c53fdd9a7079afdd3746ff248d2f76707",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateTests.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateSoundness.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateSoundness",
+      "sha256": "ec9673258a8283130543d1ba0786bbab3ae026e29dece5ca42321f8f8df1dbc4",
+      "bytes": 4734,
+      "original_path": "scripts/catch_up/CertificateSoundness.lean",
+      "original_source_sha256": "62647d1e53e2c8baedde44a8270339bce36f103a90737a433176722baf71523b",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateSoundness.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateChecker.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateChecker",
+      "sha256": "bb4c1ccd7e22a8a266a639c61b94ae63f2a6f729891b6b8867c4250d0dd2a670",
+      "bytes": 5885,
+      "original_path": "scripts/catch_up/CertificateChecker.lean",
+      "original_source_sha256": "ec3dbb55049b2c0fe89a2a0af22e16b96525a4e34912eb154ebac90472e720d6",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateChecker.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/StrategyContract.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.StrategyContract",
+      "sha256": "fbe8d3b19d4c5e125db538c54c779576183baa34e14ee97a362b117a0243ead7",
+      "bytes": 5056,
+      "original_path": "scripts/catch_up/StrategyContract.lean",
+      "original_source_sha256": "506278685156bc3000480b247745a72cd0dd01213936ed05dcf74d4338801958",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/StrategyContract.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/StrategyExtraction.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.StrategyExtraction",
+      "sha256": "63b0b2bf9d65d7c5c1cfb9b18550b48daf6f91d2677920a9aeb9f7a205ea1cc4",
+      "bytes": 7513,
+      "original_path": "scripts/catch_up/StrategyExtraction.lean",
+      "original_source_sha256": "8d420f8fe160449ea7091f04a1c62326e48e400bf67035f53362c5b779970c39",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/StrategyExtraction.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/ExactSolver.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.ExactSolver",
+      "sha256": "396752be819ed29c294fa2f3f4a7c9d0d8b325b9dda42583db6e4529d4182edb",
+      "bytes": 11248,
+      "original_path": "scripts/catch_up/ExactSolver.lean",
+      "original_source_sha256": "0c5e37f3af1564627be214cdbf897cda840eb85706e6ecb8b038bfcdf19befb5",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/ExactSolver.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateComplexityHighCounters.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateComplexityHighCounters",
+      "sha256": "96c4e18e461276a64b31c1bed7c6a7b40def574cb0461c272b9a0062a07f3962",
+      "bytes": 14300,
+      "original_path": "scripts/catch_up/CertificateComplexityHighCounters.lean",
+      "original_source_sha256": "12c43854952ce7140447fe66bf0963b4ddee62070c8f5c3a5d00c894248f60b9",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateComplexityHighCounters.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateComplexityGame.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateComplexityGame",
+      "sha256": "9163adc01f65c89b939f4a646f5d3c363044ee67449158ce5cfe89150b89e2e7",
+      "bytes": 17641,
+      "original_path": "scripts/catch_up/CertificateComplexityGame.lean",
+      "original_source_sha256": "d80417ccdca7409f004b37b4e9fae8768b9308fb4b60ff37c06e160f57a5af45",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateComplexityGame.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateComplexity.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateComplexity",
+      "sha256": "e97f5a3acf4773bd5ad589941aedc9e168653f1b3e0f586f38369b5bdad71222",
+      "bytes": 8010,
+      "original_path": "scripts/catch_up/CertificateComplexity.lean",
+      "original_source_sha256": "6fba3fde548885bce7de1541c53af8cd5293c65c686e7e7b989c9689a69523c1",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateComplexity.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateComplexityCompression.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateComplexityCompression",
+      "sha256": "68eda97528df693c5664bd4635a000d1f09f4280d7967878fdbf046747800e0f",
+      "bytes": 2939,
+      "original_path": "scripts/catch_up/CertificateComplexityCompression.lean",
+      "original_source_sha256": "f691cd2e6aae145bb1312d6de881be4edcb217048cf1c1ade96d1bdd88e3ef1a",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateComplexityCompression.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/DeficitWinningBound.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.DeficitWinningBound",
+      "sha256": "444924ebbf926c1d68ca903550ea179528a5691ddfae05dc404cafd03f9847ac",
+      "bytes": 11944,
+      "original_path": "scripts/catch_up/DeficitWinningBound.lean",
+      "original_source_sha256": "3d3e984a29e1ca7502ca703a9a090a203bef3b933642654db3bc0f3a6217dc6e",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/DeficitWinningBound.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/LowerRaySuccessor.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.LowerRaySuccessor",
+      "sha256": "7447e29c26b888b5eda94b3c7b3b7b18f8ea3c57734a95f88aa46468e9c14cd1",
+      "bytes": 13411,
+      "original_path": "scripts/catch_up/LowerRaySuccessor.lean",
+      "original_source_sha256": "5d1dbe9a16d3644d61c9a8b0c3483de8162872a305f733a64d598dc9e8dfb1ef",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/LowerRaySuccessor.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/PartialCertificateSoundness.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.PartialCertificateSoundness",
+      "sha256": "8f9ff701f5f4bbb63a6c1d4efe3860a1dc7b4bef349da40cb7c5682a0dfe0a52",
+      "bytes": 5328,
+      "original_path": "scripts/catch_up/PartialCertificateSoundness.lean",
+      "original_source_sha256": "0993d012852f2c4b523b63b90ef09d819568abf0c55cea968cdeea9c886e942d",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/PartialCertificateSoundness.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/PartialCertificateChecker.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.PartialCertificateChecker",
+      "sha256": "b17e22264ebcd6a5f53aa0f7fb58784d954ca1d1d9fff1e05891eb8d0568d56d",
+      "bytes": 2623,
+      "original_path": "scripts/catch_up/PartialCertificateChecker.lean",
+      "original_source_sha256": "44f0167123b313bc1bc8df71e5056cc8d310d6744ae61f7045f560af010782aa",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/PartialCertificateChecker.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CertificateComplexityFixtures.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CertificateComplexityFixtures",
+      "sha256": "03ca094f82206387d682a60a63de7b30aa7e5812fa4846cb35fd9922aa5119b1",
+      "bytes": 20601,
+      "original_path": "scripts/catch_up/CertificateComplexityFixtures.lean",
+      "original_source_sha256": "05fd3f8e91de9e3d1b71f34666ac059c02366bb34d29e1f1f76e1d50974ff6c7",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CertificateComplexityFixtures.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/UniformExactSumDescentObstruction.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.UniformExactSumDescentObstruction",
+      "sha256": "26248358a19fbf9955bfa6633148c140cda033841428d6d910e7835f59e90be4",
+      "bytes": 8030,
+      "original_path": "scripts/catch_up/UniformExactSumDescentObstruction.lean",
+      "original_source_sha256": "046641bb3e351d7fdbc7844680f40ec3c4f0fc87f60fd74a76a6dfb956f00d7b",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/UniformExactSumDescentObstruction.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/AdditiveTripleReduction.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.AdditiveTripleReduction",
+      "sha256": "f7d95c66ade7df70ca02ef3f83daf73976d5515c4af05121ec2fabf7384f55d4",
+      "bytes": 9169,
+      "original_path": "scripts/catch_up/AdditiveTripleReduction.lean",
+      "original_source_sha256": "15a0069b128f1ab2cd6bf6852641146dc0b33172d1c41cdf28d29c6d504c3928",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/AdditiveTripleReduction.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/LowerRayExactDeficit.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.LowerRayExactDeficit",
+      "sha256": "5e051655c311c1d4f0d5dbbc1016772ba11f21cbb785c357c4e7facd8c2f6e62",
+      "bytes": 8583,
+      "original_path": "scripts/catch_up/LowerRayExactDeficit.lean",
+      "original_source_sha256": "da62f72a80b19438b0f27e7c6d3d3b605e320fed44c7124598450d3363c28d36",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/LowerRayExactDeficit.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/ReplyDigraphReduction.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.ReplyDigraphReduction",
+      "sha256": "caf00df6a9bab44fd28657e3660d37a589e7c2d4f8f35c858b31cf09c840f3fd",
+      "bytes": 19310,
+      "original_path": "scripts/catch_up/ReplyDigraphReduction.lean",
+      "original_source_sha256": "1373186c38130dd500e36b6c69287329836064182c43079cb232f116db4f53a2",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/ReplyDigraphReduction.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/TopFourClassification.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.TopFourClassification",
+      "sha256": "423ac53e5ec1df14e55255ecbbe0d4b33fe554a3e9abcce3b2678d0e136f81b1",
+      "bytes": 40304,
+      "original_path": "scripts/catch_up/TopFourClassification.lean",
+      "original_source_sha256": "3faf7438e4db823c61e729dc30409e23f828147e307957966d2eca5f8448c874",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained.",
+        "Imported the current pair classification for existing public pair-theorem references.",
+        "The duplicated value_pair_exact theorem and its local references renamed earlier_value_pair_exact; statement and proof unchanged."
+      ],
+      "original_input": "archive/ported-inputs/TopFourClassification.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/ScoreDebtTerminalRepair.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.ScoreDebtTerminalRepair",
+      "sha256": "371fbd4522abb13605e48f4e1dcdc30f04fe8aae30fde59b0b4224294d1317b7",
+      "bytes": 13436,
+      "original_path": "scripts/catch_up/ScoreDebtTerminalRepair.lean",
+      "original_source_sha256": "9e53b17f6e28abc07dd10d02e666463e8ba0a12803d828c578145feae82b1d26",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/ScoreDebtTerminalRepair.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/CompletedMargin.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.CompletedMargin",
+      "sha256": "ef5f306e895f13765ac665b8d55845f2ef77e5a33ed99df3d72e516e3bcef421",
+      "bytes": 7177,
+      "original_path": "scripts/catch_up/CompletedMargin.lean",
+      "original_source_sha256": "008d698913557aaa6409bfcea1b677a1fa89dcebc0815301082ef39b5cca1572",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/CompletedMargin.lean.txt"
+    },
+    {
+      "path": "CatchUp/Earlier/SimulationSoundness.lean",
+      "origin": "Earlier Catch-Up research, commit bb10b8246c8f7b99de084865826150459e5627f1",
+      "module": "CatchUp.Earlier.SimulationSoundness",
+      "sha256": "cf8f4489dc993edf049f250af98d12ba832ff94ec2c58bacd7e6c76a10e2840e",
+      "bytes": 9070,
+      "original_path": "scripts/catch_up/SimulationSoundness.lean",
+      "original_source_sha256": "3da1bda151339cd2478960d9f782ef28ba082a4bb9ddb6dd9b4460e949e7411f",
+      "transformations": [
+        "Removed repository-specific category/AMS indexing attributes; retained ordinary Lean attributes.",
+        "Module references rewritten to reuse the current reference/shared proofs; mathematical declarations and proof bodies otherwise retained."
+      ],
+      "original_input": "archive/ported-inputs/SimulationSoundness.lean.txt"
+    }
+  ],
+  "module_reference_map": {
+    "FormalConjectures.Paper.CatchUpConjecture": "CatchUp.Reference",
+    "catch_up.ExactSumLossObstruction": "CatchUp.ExactSumLossObstruction",
+    "catch_up.AdditiveTripleReduction": "CatchUp.Earlier.AdditiveTripleReduction",
+    "catch_up.CanAvoidLossClassifier": "CatchUp.Classifier",
+    "catch_up.CertificateChecker": "CatchUp.Earlier.CertificateChecker",
+    "catch_up.Parity": "CatchUp.Earlier.Parity",
+    "catch_up.ScoreDebtTerminalRepair": "CatchUp.Earlier.ScoreDebtTerminalRepair",
+    "catch_up.CompletedMargin": "CatchUp.Earlier.CompletedMargin",
+    "catch_up.AdjacentPairGeometryRepair": "CatchUp.AdjacentPairGeometryRepair",
+    "catch_up.CertificateTests": "CatchUp.Earlier.CertificateTests",
+    "catch_up.CertificateComplexityHighCounters": "CatchUp.Earlier.CertificateComplexityHighCounters",
+    "catch_up.CompletedTurn": "CatchUp.CompletedTurn",
+    "catch_up.ThreeCounterSafety": "CatchUp.Earlier.ThreeCounterSafety",
+    "catch_up.WinningOpening": "CatchUp.WinningOpening",
+    "catch_up.TopFourClassification": "CatchUp.Earlier.TopFourClassification",
+    "catch_up.StrategyContract": "CatchUp.Earlier.StrategyContract",
+    "catch_up.DrawOpening": "CatchUp.DrawOpening",
+    "catch_up.SimulationSoundness": "CatchUp.Earlier.SimulationSoundness",
+    "catch_up.PartialCertificateChecker": "CatchUp.Earlier.PartialCertificateChecker",
+    "catch_up.CertificateComplexity": "CatchUp.Earlier.CertificateComplexity",
+    "catch_up.PairDeletionReduction": "CatchUp.PairDeletion",
+    "catch_up.CertificateSoundness": "CatchUp.Earlier.CertificateSoundness",
+    "catch_up.CertificateComplexityGame": "CatchUp.Earlier.CertificateComplexityGame",
+    "catch_up.ReplyDigraphReduction": "CatchUp.Earlier.ReplyDigraphReduction",
+    "catch_up.CertificateComplexityCompression": "CatchUp.Earlier.CertificateComplexityCompression",
+    "catch_up.UniformExactSumDescentObstruction": "CatchUp.Earlier.UniformExactSumDescentObstruction",
+    "catch_up.StrategyExtraction": "CatchUp.Earlier.StrategyExtraction",
+    "catch_up.PartialCertificateSoundness": "CatchUp.Earlier.PartialCertificateSoundness",
+    "catch_up.LowerRaySuccessor": "CatchUp.Earlier.LowerRaySuccessor",
+    "catch_up.DeficitWinningBound": "CatchUp.Earlier.DeficitWinningBound",
+    "catch_up.ExactSolver": "CatchUp.Earlier.ExactSolver",
+    "catch_up.ReachableBounds": "CatchUp.ReachableBounds",
+    "catch_up.CertificateComplexityFixtures": "CatchUp.Earlier.CertificateComplexityFixtures",
+    "catch_up.LowerRayExactDeficit": "CatchUp.Earlier.LowerRayExactDeficit",
+    "catch_up.CompletedTurnReflection": "CatchUp.Earlier.CompletedTurnReflection"
+  }
+}

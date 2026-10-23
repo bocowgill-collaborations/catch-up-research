@@ -1,0 +1,184 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseThreeHoleCertificateChecker
+
+/-!
+# Duplicate-tolerant Catch-Up partial certificates
+
+This module removes only the global state-uniqueness obligation from partial strategy
+certificates. Every listed node retains all existing local obligations, including child coverage
+and strict remaining-cardinality progress.
+-/
+
+namespace CatchUpSearch.CertificateChecker
+
+open CatchUp
+
+/-- A locally valid partial DAG may list the same encoded state more than once. -/
+def LocalPartialDAGValid (target : TargetPredicate) (dag : StrategyDAG) : Prop :=
+  ContainsState dag dag.root ∧
+    dag.nodes.Forall fun node => PartialNodeValid target dag node
+
+instance (target : TargetPredicate) (dag : StrategyDAG) :
+    Decidable (LocalPartialDAGValid target dag) := by
+  unfold LocalPartialDAGValid
+  infer_instance
+
+/-- Executably check root containment and every duplicate-tolerant local obligation. -/
+def checkLocalPartialCertificate (target : TargetPredicate) (dag : StrategyDAG) : Bool :=
+  decide (LocalPartialDAGValid target dag)
+
+/-- Every occurrence of a listed node satisfies its local partial obligation. -/
+@[category API, AMS 91]
+theorem local_partial_node_valid_of_local_partial_dag_valid
+    {target : TargetPredicate} {dag : StrategyDAG}
+    (hvalid : LocalPartialDAGValid target dag)
+    {node : StrategyNode} (hnode : node ∈ dag.nodes) :
+    PartialNodeValid target dag node := by
+  unfold LocalPartialDAGValid at hvalid
+  rw [List.forall_iff_forall_mem] at hvalid
+  exact hvalid.2 node hnode
+
+/-- Every represented formal position is safe when all node occurrences are locally valid and the
+target predicate is sound. No uniqueness of encoded states is needed. -/
+@[category API, AMS 91]
+theorem can_avoid_loss_of_contains_position_local_partial
+    (target : TargetPredicate) (dag : StrategyDAG)
+    (htarget : TargetSound target dag)
+    (hvalid : LocalPartialDAGValid target dag)
+    (position : GamePosition) (hcontains : ContainsPosition dag position) :
+    CanAvoidLoss dag.player position := by
+  rw [ContainsPosition] at hcontains
+  rcases List.mem_map.mp hcontains with ⟨node, hnode, hposition⟩
+  have hnodeValid := local_partial_node_valid_of_local_partial_dag_valid hvalid hnode
+  subst position
+  rcases hnodeValid with ⟨hstateValid, htargetNode | hordinaryNode⟩
+  · exact htarget node.state hstateValid htargetNode.1
+  · cases hbranch : node.branch with
+    | terminal =>
+        simp only [NodeValid, hbranch] at hordinaryNode
+        rcases hordinaryNode with ⟨_, hterminal, hsafe⟩
+        apply (can_avoid_loss_iff_terminal_outcome_ne_loss dag.player
+          (toGamePosition dag.gameSize node.state) hterminal).2
+        exact hsafe
+    | owner counter =>
+        simp only [NodeValid, hbranch] at hordinaryNode
+        rcases hordinaryNode with ⟨_, hterminal, htoMove, hlegal, hcovered⟩
+        apply (can_avoid_loss_iff_exists_safe_move dag.player
+          (toGamePosition dag.gameSize node.state) hterminal htoMove).2
+        refine ⟨counter, hlegal, ?_⟩
+        rcases hcovered with ⟨hchild, hprogress⟩
+        exact can_avoid_loss_of_contains_position_local_partial
+          target dag htarget hvalid _ hchild
+    | opponent counters =>
+        simp only [NodeValid, hbranch] at hordinaryNode
+        rcases hordinaryNode with ⟨_, hterminal, htoMove, hcounters, hforall⟩
+        apply (can_avoid_loss_iff_forall_safe_moves dag.player
+          (toGamePosition dag.gameSize node.state) hterminal htoMove).2
+        intro counter hlegal
+        have hcounterAvailable : counter ∈ availableCounters dag.gameSize node.state :=
+          (mem_available_counters_iff_legal_move dag.gameSize node.state counter).2 hlegal
+        have hcounter : counter ∈ counters := by
+          simpa [hcounters] using hcounterAvailable
+        have hmove := (List.forall_iff_forall_mem.mp hforall) counter hcounter
+        rcases hmove.2 with ⟨hchild, hprogress⟩
+        exact can_avoid_loss_of_contains_position_local_partial
+          target dag htarget hvalid _ hchild
+termination_by position.remaining.card
+decreasing_by
+  all_goals simpa only [← hposition] using hprogress
+
+/-- Every contained encoded state is safe in a sound locally valid partial certificate. -/
+@[category API, AMS 91]
+theorem can_avoid_loss_of_contains_state_local_partial
+    (target : TargetPredicate) (dag : StrategyDAG)
+    (htarget : TargetSound target dag)
+    (hvalid : LocalPartialDAGValid target dag)
+    (state : State) (hcontains : ContainsState dag state) :
+    CanAvoidLoss dag.player (toGamePosition dag.gameSize state) := by
+  apply can_avoid_loss_of_contains_position_local_partial target dag htarget hvalid
+  exact contains_position_of_contains_state dag state hcontains
+
+/-- A duplicate-tolerant partial certificate accepted by the executable checker is sound at its
+decoded root. -/
+@[category API, AMS 91]
+theorem check_local_partial_certificate_sound
+    (target : TargetPredicate) (dag : StrategyDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkLocalPartialCertificate target dag = true) :
+    CanAvoidLoss dag.player (toGamePosition dag.gameSize dag.root) := by
+  have hvalid : LocalPartialDAGValid target dag :=
+    of_decide_eq_true (by simpa [checkLocalPartialCertificate] using hcheck)
+  exact can_avoid_loss_of_contains_state_local_partial
+    target dag htarget hvalid dag.root hvalid.1
+
+end CatchUpSearch.CertificateChecker
+
+namespace CatchUpSearch.DenseThreeHoleDuplicateTolerantCertificateChecker
+
+open CatchUp
+open CertificateChecker
+
+/-- Check metadata, duplicate-tolerant local obligations, and dense-three-hole root coverage. -/
+def checkCertificate (N : ℕ) (target : TargetPredicate) (dag : StrategyDAG) : Bool :=
+  decide (dag.gameSize = N ∧ dag.player = .p1) &&
+    (checkLocalPartialCertificate target dag &&
+      DenseThreeHoleCertificateChecker.coverageCheck N dag)
+
+/-- A duplicate-tolerant locally checked strategy with full dense-three-hole coverage proves the
+dense nonloss invariant. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_of_check_certificate
+    (N : ℕ) (target : TargetPredicate) (dag : StrategyDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkCertificate N target dag = true) :
+    DenseThreeHoleNonloss N := by
+  have hparts :
+      decide (dag.gameSize = N ∧ dag.player = .p1) = true ∧
+        (checkLocalPartialCertificate target dag = true ∧
+          DenseThreeHoleCertificateChecker.coverageCheck N dag = true) := by
+    simpa [checkCertificate, Bool.and_eq_true] using hcheck
+  have hmeta : dag.gameSize = N ∧ dag.player = .p1 := of_decide_eq_true hparts.1
+  have hvalid : LocalPartialDAGValid target dag :=
+    of_decide_eq_true (by simpa [checkLocalPartialCertificate] using hparts.2.1)
+  intro position hsub hholes hdN hcatch heven
+  have hremaining : position.remaining ∈ (Finset.Icc 1 N).powerset := by
+    simpa only [Finset.mem_powerset] using hsub
+  have hdeficit : position.deficit ∈ Finset.range (N + 1) := by
+    simp only [Finset.mem_range]
+    omega
+  have hcoverage := hparts.2.2
+  rw [DenseThreeHoleCertificateChecker.coverageCheck, Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at hcoverage
+  simp only [true_and, Finset.mem_attach] at hcoverage
+  have houter := hcoverage ⟨position.remaining, hremaining⟩ True.intro
+  rw [Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at houter
+  simp only [true_and, Finset.mem_attach] at houter
+  have hinner := houter ⟨position.deficit, hdeficit⟩ True.intro
+  have hqualifies :
+      DenseThreeHoleFiniteChecker.qualifies N position.remaining position.deficit = true := by
+    simp only [DenseThreeHoleFiniteChecker.qualifies, decide_eq_true_eq]
+    exact ⟨hholes, hcatch, heven⟩
+  have hcontains : ContainsPosition dag (⟨position, .p1⟩ : GamePosition) := by
+    simpa [hqualifies] using hinner
+  have hsafe := can_avoid_loss_of_contains_position_local_partial
+    target dag htarget hvalid (⟨position, .p1⟩ : GamePosition) hcontains
+  rw [can_avoid_loss_iff_value] at hsafe
+  simpa [hmeta.2] using hsafe
+
+end CatchUpSearch.DenseThreeHoleDuplicateTolerantCertificateChecker

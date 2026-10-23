@@ -1,0 +1,109 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CertificateChecker
+import catch_up.StrategyExtraction
+
+/-!
+# Catch-Up four-counter endgame search
+
+This research module evaluates normalized endgames whose remaining counters are exactly the four
+consecutive counters immediately above `N`. It uses the independent list recurrence so that the
+search remains separate from the optimized bitmask solver and strategy extractor.
+
+The output is discovery evidence for narrowing a possible `N ↦ N + 4` reduction. It is not a
+proof that any observed outcome holds parametrically.
+
+The primary candidate tested here is that the tied top-four endgame has value `Outcome.draw` for
+every `N`. This is the endgame obtained by adding four counters to an empty tied smaller position.
+-/
+
+namespace CatchUpSearch.FourCounterEndgame
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+
+/-- The four consecutive counters added when passing from size `N` to size `N + 4`. -/
+def topFour (N : ℕ) : List ℕ :=
+  [N + 1, N + 2, N + 3, N + 4]
+
+/-- Evaluate the isolated top-four endgame from the current mover's perspective. -/
+def outcome (N deficit : ℕ) : Outcome :=
+  referenceValue (topFour N) deficit
+
+/-- Find every tested `N` for which the tied top-four endgame is not a draw. -/
+def tiedFailuresThrough (bound : ℕ) : List ℕ :=
+  (List.range (bound + 1)).filter fun N => decide (outcome N 0 ≠ .draw)
+
+/-- Evaluate every deficit from zero through `bound` for one top-four block. -/
+def deficitProfile (N bound : ℕ) : List Outcome :=
+  (List.range (bound + 1)).map (outcome N)
+
+/-- The normalized isolated top-four state, with an arbitrary fixed player moving from a tie. -/
+def topFourState (N : ℕ) : State :=
+  { remainingMask := Nat.shiftLeft 15 N
+    deficit := 0
+    toMove := .p1 }
+
+/-- Solve the complete graph below the isolated tied top-four state. -/
+def solveTopFour (N : ℕ) : Except String SolverOutput :=
+  match solveState (N + 4) (topFourState N) with
+  | .error message => .error message
+  | .ok (_, cache) =>
+      .ok
+        { gameSize := N + 4
+          openingRoots := []
+          nodes := sortedNodes cache }
+
+/-- Check a non-loss certificate for each player at one solver-claimed tied top-four state. -/
+def checkedDraw (N : ℕ) : Except String Bool := do
+  let output ← solveTopFour N
+  let root := topFourState N
+  let rootNode ← match findNode? output root with
+    | none => throw s!"top-four solver output is missing its root at N={N}"
+    | some node => pure node
+  if rootNode.outcome ≠ .draw then
+    return false
+  let p1Strategy ← StrategyExtraction.extract output .p1 root
+  let p2Strategy ← StrategyExtraction.extract output .p2 root
+  return CertificateChecker.checkCertificate p1Strategy &&
+    CertificateChecker.checkCertificate p2Strategy
+
+/-- Find every tested `N` lacking independently checked non-loss strategies for both players. -/
+def checkedDrawFailuresThrough (bound : ℕ) : Except String (List ℕ) := do
+  let mut failures := []
+  for N in List.range (bound + 1) do
+    let checked ← checkedDraw N
+    if !checked then
+      failures := N :: failures
+  return failures.reverse
+
+/-- Whether an empty tied state occurs below legal opening `1` in the complete solved graph. -/
+def tiedEmptyReachableAfterOpeningOne (N : ℕ) : Except String Bool :=
+  if N = 0 then
+    .ok false
+  else
+    let root : State :=
+      { remainingMask := eraseMove (fullMask N) 0
+        deficit := 1
+        toMove := .p2 }
+    match solveState N root with
+    | .error message => .error message
+    | .ok (_, cache) =>
+        .ok <| cache.toList.any fun entry =>
+          decide (entry.2.state.remainingMask = 0 ∧ entry.2.state.deficit = 0)
+
+end CatchUpSearch.FourCounterEndgame

@@ -1,0 +1,192 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DeficitWinningBound
+
+/-!
+# Shifted upper-tail catch rank reduction
+
+A winning positive-deficit catch tail either opens near its lower boundary, opens above a missing
+shifted predecessor, or forces an even tied winning residual with a unique larger winning opening.
+-/
+
+namespace CatchUp
+
+private theorem Outcome.best_eq_win_iff (outcomes : List Outcome) :
+    Outcome.best outcomes = .win ↔ ∃ outcome ∈ outcomes, outcome = .win := by
+  rw [← not_iff_not]
+  simp
+  constructor
+  · intro hall hmem
+    exact hall .win hmem rfl
+  · intro hnot outcome hmem heq
+    subst outcome
+    exact hnot hmem
+
+private theorem Position.exists_move_outcome_eq_win_of_value_eq_win
+    (position : Position)
+    (hremaining : position.remaining ≠ ∅)
+    (hcatch : ¬ position.remaining.sum (fun x => x) < position.deficit)
+    (hwin : position.value = .win) :
+    ∃ x ∈ position.remaining, position.moveOutcome x = .win := by
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch] at hwin
+  rw [Outcome.best_eq_win_iff] at hwin
+  obtain ⟨outcome, houtcome, houtcomeWin⟩ := hwin
+  obtain ⟨⟨x, hx⟩, _, rfl⟩ := List.mem_map.mp houtcome
+  exact ⟨x, hx, houtcomeWin⟩
+
+/-- A winning catch position either has zero deficit or admits a winning move that lacks the
+exact child deficit or forces an even tied winning residual with a unique larger opening. -/
+@[category API, AMS 91]
+theorem catch_win_forces_zero_or_missing_exact_or_even_tied_win
+    (remaining : Finset ℕ) (deficit m : ℕ)
+    (hremaining : remaining ≠ ∅)
+    (hcatch : ¬ remaining.sum (fun x => x) < deficit)
+    (hlower : ∀ x ∈ remaining, m < x)
+    (hdeficit : deficit ≤ m)
+    (heven : Even (deficit + remaining.sum (fun x => x)))
+    (hwin : (⟨remaining, deficit⟩ : Position).value = .win) :
+    deficit = 0 ∨
+      ∃ x ∈ remaining,
+        (⟨remaining, deficit⟩ : Position).moveOutcome x = .win ∧
+          (x - deficit ∉ remaining ∨
+            (value ((remaining.erase x).erase (x - deficit)) = .win ∧
+              Even (((remaining.erase x).erase (x - deficit)).sum (fun y => y)) ∧
+                ∃ y, y ∈ (remaining.erase x).erase (x - deficit) ∧
+                  (afterOpening ((remaining.erase x).erase (x - deficit)) y).value = .loss ∧
+                    x - deficit < y ∧
+                      ∀ z, z ∈ (remaining.erase x).erase (x - deficit) →
+                        (afterOpening ((remaining.erase x).erase (x - deficit)) z).value = .loss →
+                          z = y)) := by
+  by_cases hdeficitZero : deficit = 0
+  · exact Or.inl hdeficitZero
+  · right
+    obtain ⟨x, hx, hxWin⟩ :=
+      Position.exists_move_outcome_eq_win_of_value_eq_win
+        ⟨remaining, deficit⟩ hremaining hcatch hwin
+    have hxLower : m < x := hlower x hx
+    have hxNotContinue : ¬ x < deficit := by omega
+    have hchildLoss :
+        (Position.value ⟨remaining.erase x, x - deficit⟩) = .loss := by
+      rw [Position.moveOutcome] at hxWin
+      simp only [hxNotContinue, if_false] at hxWin
+      simp only [Position.afterPick, hxNotContinue, if_false] at hxWin
+      cases hvalue : Position.value ⟨remaining.erase x, x - deficit⟩
+      all_goals simp [hvalue, Outcome.neg] at hxWin ⊢
+    refine ⟨x, hx, hxWin, ?_⟩
+    by_cases hdMem : x - deficit ∈ remaining
+    · right
+      have hdNe : x - deficit ≠ x := by omega
+      have hdChild : x - deficit ∈ remaining.erase x :=
+        Finset.mem_erase.mpr ⟨hdNe, hdMem⟩
+      obtain ⟨htiedWin, y, hy, hyLoss, hdy, hyUnique⟩ :=
+        loss_with_available_deficit_forces_large_unique_winning_opening
+          (remaining.erase x) (x - deficit) hdChild hchildLoss
+      have hsumX :
+          (remaining.erase x).sum (fun z => z) + x = remaining.sum (fun z => z) :=
+        Finset.sum_erase_add remaining (fun z => z) hx
+      have hsumD :
+          ((remaining.erase x).erase (x - deficit)).sum (fun z => z) +
+              (x - deficit) = (remaining.erase x).sum (fun z => z) :=
+        Finset.sum_erase_add (remaining.erase x) (fun z => z) hdChild
+      have htiedEven :
+          Even (((remaining.erase x).erase (x - deficit)).sum (fun z => z)) := by
+        rw [Nat.even_iff] at heven ⊢
+        omega
+      exact ⟨htiedWin, htiedEven, y, hy, hyLoss, hdy, hyUnique⟩
+    · exact Or.inl hdMem
+
+/-- In an upper tail, a winning position has zero deficit or admits a winning move whose missing
+exact child deficit is near the boundary or in a tail hole, or which forces the tied residual. -/
+@[category API, AMS 91]
+theorem shifted_upper_tail_catch_win_forces_boundary_hole_or_even_tied_win
+    (M m : ℕ) (remaining : Finset ℕ) (deficit : ℕ)
+    (hremaining : remaining ≠ ∅)
+    (hcatch : ¬ remaining.sum (fun x => x) < deficit)
+    (hsub : remaining ⊆ Finset.Icc (m + 1) M)
+    (hdeficit : deficit ≤ m)
+    (heven : Even (deficit + remaining.sum (fun x => x)))
+    (hwin : (⟨remaining, deficit⟩ : Position).value = .win) :
+    deficit = 0 ∨
+      ∃ x ∈ remaining,
+        (⟨remaining, deficit⟩ : Position).moveOutcome x = .win ∧
+          ((x ≤ m + deficit ∨
+              x - deficit ∈ (Finset.Icc (m + 1) M) \ remaining) ∨
+            (value ((remaining.erase x).erase (x - deficit)) = .win ∧
+              Even (((remaining.erase x).erase (x - deficit)).sum (fun y => y)) ∧
+                ∃ y, y ∈ (remaining.erase x).erase (x - deficit) ∧
+                  (afterOpening ((remaining.erase x).erase (x - deficit)) y).value = .loss ∧
+                    x - deficit < y ∧
+                      ∀ z, z ∈ (remaining.erase x).erase (x - deficit) →
+                        (afterOpening ((remaining.erase x).erase (x - deficit)) z).value = .loss →
+                          z = y)) := by
+  have hlower : ∀ x ∈ remaining, m < x := by
+    intro x hx
+    have hxBounds := Finset.mem_Icc.mp (hsub hx)
+    omega
+  obtain hzero | ⟨x, hx, hxWin, hxMissing | htied⟩ :=
+    catch_win_forces_zero_or_missing_exact_or_even_tied_win remaining deficit m
+      hremaining hcatch hlower hdeficit heven hwin
+  · exact Or.inl hzero
+  · refine Or.inr ⟨x, hx, hxWin, Or.inl ?_⟩
+    by_cases hxBoundary : x ≤ m + deficit
+    · exact Or.inl hxBoundary
+    · right
+      apply Finset.mem_sdiff.mpr
+      constructor
+      · apply Finset.mem_Icc.mpr
+        have hxBounds := Finset.mem_Icc.mp (hsub hx)
+        omega
+      · exact hxMissing
+  · exact Or.inr ⟨x, hx, hxWin, Or.inr htied⟩
+
+/-- In the sharp seven-hole gate, a winning position has zero deficit or admits a winning move
+which is at most sixteen, points to a predecessor hole, or forces the tied residual. -/
+@[category API, AMS 91]
+theorem shifted_upper_tail_catch_seven_win_forces_small_hole_or_even_tied_win
+    (M m : ℕ) (remaining : Finset ℕ) (deficit : ℕ)
+    (hremaining : remaining ≠ ∅)
+    (hcatch : ¬ remaining.sum (fun x => x) < deficit)
+    (hsub : remaining ⊆ Finset.Icc (m + 1) M)
+    (hholes : ((Finset.Icc (m + 1) M) \ remaining).card + (m - 1) ≤ 7)
+    (hdeficit : deficit ≤ m)
+    (heven : Even (deficit + remaining.sum (fun x => x)))
+    (hwin : (⟨remaining, deficit⟩ : Position).value = .win) :
+    deficit = 0 ∨
+      ∃ x ∈ remaining,
+        (⟨remaining, deficit⟩ : Position).moveOutcome x = .win ∧
+          ((x ≤ 16 ∨ x - deficit ∈ (Finset.Icc (m + 1) M) \ remaining) ∨
+            (value ((remaining.erase x).erase (x - deficit)) = .win ∧
+              Even (((remaining.erase x).erase (x - deficit)).sum (fun y => y)) ∧
+                ∃ y, y ∈ (remaining.erase x).erase (x - deficit) ∧
+                  (afterOpening ((remaining.erase x).erase (x - deficit)) y).value = .loss ∧
+                    x - deficit < y ∧
+                      ∀ z, z ∈ (remaining.erase x).erase (x - deficit) →
+                        (afterOpening ((remaining.erase x).erase (x - deficit)) z).value = .loss →
+                          z = y)) := by
+  have hmEight : m ≤ 8 := by omega
+  obtain hzero | ⟨x, hx, hxWin, hxBoundary | htied⟩ :=
+    shifted_upper_tail_catch_win_forces_boundary_hole_or_even_tied_win
+      M m remaining deficit hremaining hcatch hsub hdeficit heven hwin
+  · exact Or.inl hzero
+  · refine Or.inr ⟨x, hx, hxWin, Or.inl ?_⟩
+    rcases hxBoundary with hxSmall | hxHole
+    · left
+      omega
+    · exact Or.inr hxHole
+  · exact Or.inr ⟨x, hx, hxWin, Or.inr htied⟩
+
+end CatchUp

@@ -1,0 +1,98 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.ReplyDigraphReduction
+import catch_up.SimulationLedger
+
+/-!
+# Symmetric every-opening four-lift transfer
+
+This module packages every-opening draw as safety for both fixed players and proves the symmetric
+old/new opening transfer from size `N` to size `N + 4`.
+-/
+
+namespace CatchUp
+
+/-- A normalized post-opening position is drawn exactly when both absolute players can avoid
+losing from the corresponding absolute post-opening position. -/
+@[category API, AMS 91]
+theorem after_opening_value_eq_draw_iff_both_can_avoid_loss
+    (S : Finset ℕ) (x : ℕ) :
+    (afterOpening S x).value = .draw ↔
+      CanAvoidLoss .p1 (GamePosition.afterOpening S x) ∧
+        CanAvoidLoss .p2 (GamePosition.afterOpening S x) := by
+  rw [can_avoid_loss_iff_value, can_avoid_loss_iff_value]
+  simp only [GamePosition.to_move_after_opening, GamePosition.to_position_after_opening]
+  simp only [reduceCtorEq, if_false, if_true]
+  rw [Outcome.eq_draw_iff]
+  exact and_comm
+
+/-- If every opening draws at size `N` and both players' safety transfers across every old and new
+opening, then every opening draws at size `N + 4`. -/
+@[category API, AMS 91]
+theorem every_opening_draw_Icc_add_four_of_opening_transfers
+    (N : ℕ) (hN : 4 ≤ N)
+    (hdraw : EveryOpeningDraw (Finset.Icc 1 N))
+    (playerOneOld : FourLiftOldOpeningTransfer N .p1)
+    (playerTwoOld : FourLiftOldOpeningTransfer N .p2)
+    (playerOneNew : FourLiftNewOpeningTransfer N .p1)
+    (playerTwoNew : FourLiftNewOpeningTransfer N .p2) :
+    EveryOpeningDraw (Finset.Icc 1 (N + 4)) := by
+  have playerOneSmall : ∀ opening ∈ Finset.Icc 1 N,
+      CanAvoidLoss .p1 (GamePosition.afterOpening (Finset.Icc 1 N) opening) := by
+    intro opening hopening
+    exact ((after_opening_value_eq_draw_iff_both_can_avoid_loss
+      (Finset.Icc 1 N) opening).mp (hdraw opening hopening)).1
+  have playerTwoSmall : ∀ opening ∈ Finset.Icc 1 N,
+      CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 N) opening) := by
+    intro opening hopening
+    exact ((after_opening_value_eq_draw_iff_both_can_avoid_loss
+      (Finset.Icc 1 N) opening).mp (hdraw opening hopening)).2
+  intro x hx
+  apply (after_opening_value_eq_draw_iff_both_can_avoid_loss
+    (Finset.Icc 1 (N + 4)) x).mpr
+  constructor
+  · by_cases hxOld : x ≤ N
+    · have hxSmall : x ∈ Finset.Icc 1 N :=
+        Finset.mem_Icc.mpr ⟨(Finset.mem_Icc.mp hx).1, hxOld⟩
+      exact playerOneOld x hxSmall (playerOneSmall x hxSmall)
+    · have hxNew : x ∈ Finset.Icc (N + 1) (N + 4) :=
+        Finset.mem_Icc.mpr ⟨by omega, (Finset.mem_Icc.mp hx).2⟩
+      exact playerOneNew.can_avoid_loss_of_mem_new_interval hN playerOneSmall hxNew
+  · by_cases hxOld : x ≤ N
+    · have hxSmall : x ∈ Finset.Icc 1 N :=
+        Finset.mem_Icc.mpr ⟨(Finset.mem_Icc.mp hx).1, hxOld⟩
+      exact playerTwoOld x hxSmall (playerTwoSmall x hxSmall)
+    · have hxNew : x ∈ Finset.Icc (N + 1) (N + 4) :=
+        Finset.mem_Icc.mpr ⟨by omega, (Finset.mem_Icc.mp hx).2⟩
+      exact playerTwoNew.can_avoid_loss_of_mem_new_interval hN playerTwoSmall hxNew
+
+/-- Explicit old- and new-opening basin families for both players imply the symmetric
+every-opening draw transfer. -/
+@[category API, AMS 91]
+theorem every_opening_draw_Icc_add_four_of_opening_basins
+    (N : ℕ) (hN : 4 ≤ N)
+    (hdraw : EveryOpeningDraw (Finset.Icc 1 N))
+    (playerOneOld : ExplicitFourLiftOldOpeningBasins N .p1)
+    (playerTwoOld : ExplicitFourLiftOldOpeningBasins N .p2)
+    (playerOneNew : ExplicitFourLiftNewOpeningBasins N .p1)
+    (playerTwoNew : ExplicitFourLiftNewOpeningBasins N .p2) :
+    EveryOpeningDraw (Finset.Icc 1 (N + 4)) := by
+  exact every_opening_draw_Icc_add_four_of_opening_transfers N hN hdraw
+    playerOneOld.to_old_opening_transfer playerTwoOld.to_old_opening_transfer
+    playerOneNew.to_new_opening_transfer playerTwoNew.to_new_opening_transfer
+
+end CatchUp

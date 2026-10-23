@@ -1,0 +1,91 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseAddTopWindow
+import catch_up.PartialCertificateSoundness
+
+/-!
+# Shared certificates for the small-gap four-hole invariant
+
+This module checks coverage of every anchored support with at most four holes and every deficit at
+most four. A checked player-two partial strategy then proves that none of those normalized
+player-one positions is winning.
+-/
+
+namespace CatchUpSearch.SmallGapFourHoleCertificateChecker
+
+open CatchUp
+open CertificateChecker
+
+/-- The hypotheses not already enforced by powerset and deficit-range enumeration. -/
+def qualifies (M : ℕ) (remaining : Finset ℕ) (deficit : ℕ) : Bool :=
+  decide (((Finset.Icc 1 M) \ remaining).card ≤ 4 ∧
+    Even (deficit + remaining.sum (fun x => x)))
+
+/-- Check that every support and small deficit satisfying the invariant is in the strategy DAG. -/
+def coverageCheck (M : ℕ) (dag : StrategyDAG) : Bool :=
+  (Finset.Icc 1 M).powerset.attach.fold (· && ·) true fun
+      remaining : {s // s ∈ (Finset.Icc 1 M).powerset} =>
+    (Finset.range 5).attach.fold (· && ·) true fun
+        deficit : {d // d ∈ Finset.range 5} =>
+      !qualifies M remaining.1 deficit.1 ||
+        decide (ContainsPosition dag ⟨⟨remaining.1, deficit.1⟩, .p1⟩)
+
+/-- Independently check metadata, every partial-strategy obligation, and full root coverage. -/
+def checkCertificate (M : ℕ) (target : TargetPredicate) (dag : StrategyDAG) : Bool :=
+  decide (dag.gameSize = M ∧ dag.player = .p2) &&
+    (checkPartialCertificate target dag && coverageCheck M dag)
+
+/-- A checked shared player-two strategy proves the small-gap four-hole nonwin invariant. -/
+@[category API, AMS 91]
+theorem small_gap_four_hole_nonwin_of_check_certificate
+    (M : ℕ) (target : TargetPredicate) (dag : StrategyDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkCertificate M target dag = true) :
+    SmallGapFourHoleNonwin M := by
+  have hparts :
+      decide (dag.gameSize = M ∧ dag.player = .p2) = true ∧
+        (checkPartialCertificate target dag = true ∧ coverageCheck M dag = true) := by
+    simpa [checkCertificate, Bool.and_eq_true] using hcheck
+  have hmeta : dag.gameSize = M ∧ dag.player = .p2 := of_decide_eq_true hparts.1
+  have hvalid : PartialDAGValid target dag :=
+    of_decide_eq_true (by simpa [checkPartialCertificate] using hparts.2.1)
+  intro position hsub hholes hdeficit heven
+  have hremaining : position.remaining ∈ (Finset.Icc 1 M).powerset := by
+    simpa only [Finset.mem_powerset] using hsub
+  have hdeficitRange : position.deficit ∈ Finset.range 5 := by
+    simp only [Finset.mem_range]
+    omega
+  have hcoverage := hparts.2.2
+  rw [coverageCheck, Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at hcoverage
+  simp only [true_and, Finset.mem_attach] at hcoverage
+  have houter := hcoverage ⟨position.remaining, hremaining⟩ True.intro
+  rw [Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at houter
+  simp only [true_and, Finset.mem_attach] at houter
+  have hinner := houter ⟨position.deficit, hdeficitRange⟩ True.intro
+  have hqualifies : qualifies M position.remaining position.deficit = true := by
+    simp only [qualifies, decide_eq_true_eq]
+    exact ⟨hholes, heven⟩
+  have hcontains : ContainsPosition dag (⟨position, .p1⟩ : GamePosition) := by
+    simpa [hqualifies] using hinner
+  have hsafe := can_avoid_loss_of_contains_position_partial target dag htarget hvalid
+    (⟨position, .p1⟩ : GamePosition) hcontains
+  rw [can_avoid_loss_iff_value] at hsafe
+  simpa [hmeta.2] using hsafe
+
+end CatchUpSearch.SmallGapFourHoleCertificateChecker

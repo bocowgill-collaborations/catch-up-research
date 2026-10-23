@@ -1,0 +1,772 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CertificateChecker
+import catch_up.StrategyExtraction
+
+/-!
+# Catch-Up paired normalized strategy traces
+
+This research module compares checked one-sided strategy DAGs for interval games of sizes `N` and
+`N + 4`. It pairs nodes only when the large node has exactly the small node's remaining old
+counters. The four new counters, score deficits, players to move, and policy moves remain explicit.
+
+Traversal starts at the two post-opening roots and follows the large checked policy. A top-counter
+move stutters the small game, a represented old-counter move advances both games, and an
+unrepresented old-counter move is recorded before that provisional alignment stops.
+
+The resulting rows are discovery data, not a definition of a four-counter simulation. In
+particular, an `unmatchedOld` row records evidence that the current candidate alignment cannot
+directly match one large-game move.
+
+The unmatched-row classifier consults every non-losing owner move annotated by the exact solver.
+The selected strategy DAGs are independently checked, but these alternate moves are not separately
+certified; their classifications remain discovery evidence rather than proof objects.
+
+Phase-complexity reports count both finite control shapes and exact deficit offsets. They are meant
+to test whether a genuinely small relation is visible, not to promote every observed signature to
+a constructor of a proposed reduction relation.
+-/
+
+namespace CatchUpSearch.PairedTrace
+
+open CatchUp
+
+/-- How a move in the large strategy relates to the current small strategy branch. -/
+inductive MoveDisposition
+  | advance
+  | stutter
+  | unmatchedOld
+  | terminal
+deriving DecidableEq, Repr
+
+/-- One candidate phase signature, before any claim that it defines a simulation phase. -/
+structure PhaseSignature where
+  topMask : ℕ
+  smallToMove : Player
+  largeToMove : Player
+  deficitOffset : ℤ
+deriving DecidableEq, BEq, Repr
+
+/-- The finite control part of a candidate phase, forgetting its numeric deficit offset. -/
+structure PhaseShape where
+  topMask : ℕ
+  smallToMove : Player
+  largeToMove : Player
+deriving DecidableEq, Repr
+
+/-- Hash a candidate phase signature without adding an orphan `Hashable Player` instance. -/
+protected def PhaseSignature.hash (phase : PhaseSignature) : UInt64 :=
+  let smallPlayerHash := match phase.smallToMove with
+    | .p1 => 0
+    | .p2 => 1
+  let largePlayerHash := match phase.largeToMove with
+    | .p1 => 0
+    | .p2 => 1
+  mixHash (hash phase.topMask) <| mixHash smallPlayerHash <|
+    mixHash largePlayerHash (hash phase.deficitOffset)
+
+instance : Hashable PhaseSignature := ⟨PhaseSignature.hash⟩
+
+/-- One transition-level observation from a candidate alignment of two strategy nodes. -/
+structure TraceRow where
+  smallState : State
+  largeState : State
+  topMask : ℕ
+  deficitOffset : ℤ
+  smallMoves : List ℕ
+  largeMove : Option ℕ
+  disposition : MoveDisposition
+  smallAfter : Option State
+  largeAfter : Option State
+deriving DecidableEq, Repr
+
+/-- The modulus separating the old `N` mask bits from the four new bits. -/
+def oldModulus (N : ℕ) : ℕ :=
+  Nat.shiftLeft 1 N
+
+/-- Project a large-game mask to its low `N` old-counter bits. -/
+def oldMask (N : ℕ) (state : State) : ℕ :=
+  state.remainingMask % oldModulus N
+
+/-- Project a large-game mask to a local four-bit top-counter mask. -/
+def topMask (N : ℕ) (state : State) : ℕ :=
+  state.remainingMask / oldModulus N
+
+/-- The policy moves represented by one strategy branch. -/
+def branchMoves : StrategyBranch → List ℕ
+  | .terminal => []
+  | .owner counter => [counter]
+  | .opponent counters => counters
+
+/-- The signed large deficit minus the small deficit. -/
+def deficitOffset (small large : State) : ℤ :=
+  (large.deficit : ℤ) - small.deficit
+
+/-- Recompute the normalized child reached by a checked branch counter. -/
+def afterCounter (state : State) (counter : ℕ) : State :=
+  ExactSolver.nextState state (counter - 1) counter
+
+/-- Build one nonterminal trace row from a candidate node alignment and a large policy move. -/
+def rowForMove (N : ℕ) (small large : StrategyNode) (counter : ℕ) : TraceRow :=
+  let smallMoves := branchMoves small.branch
+  let largeAfter := afterCounter large.state counter
+  if counter ≤ N then
+    if smallMoves.contains counter then
+      { smallState := small.state
+        largeState := large.state
+        topMask := topMask N large.state
+        deficitOffset := deficitOffset small.state large.state
+        smallMoves
+        largeMove := some counter
+        disposition := .advance
+        smallAfter := some (afterCounter small.state counter)
+        largeAfter := some largeAfter }
+    else
+      { smallState := small.state
+        largeState := large.state
+        topMask := topMask N large.state
+        deficitOffset := deficitOffset small.state large.state
+        smallMoves
+        largeMove := some counter
+        disposition := .unmatchedOld
+        smallAfter := none
+        largeAfter := some largeAfter }
+  else
+    { smallState := small.state
+      largeState := large.state
+      topMask := topMask N large.state
+      deficitOffset := deficitOffset small.state large.state
+      smallMoves
+      largeMove := some counter
+      disposition := .stutter
+      smallAfter := some small.state
+      largeAfter := some largeAfter }
+
+/-- Build trace rows for one small/large node alignment with identical remaining old counters. -/
+def rowsForPair (N : ℕ) (small large : StrategyNode) : List TraceRow :=
+  match branchMoves large.branch with
+  | [] =>
+      [{ smallState := small.state
+         largeState := large.state
+         topMask := topMask N large.state
+         deficitOffset := deficitOffset small.state large.state
+         smallMoves := branchMoves small.branch
+         largeMove := none
+         disposition := .terminal
+         smallAfter := none
+         largeAfter := none }]
+  | counters => counters.map (rowForMove N small large)
+
+/-- A paired normalized-state key used to avoid revisiting shared strategy subgraphs. -/
+structure PairKey where
+  small : CacheKey
+  large : CacheKey
+deriving BEq
+
+protected def PairKey.hash (key : PairKey) : UInt64 :=
+  mixHash key.small.hash key.large.hash
+
+instance : Hashable PairKey := ⟨PairKey.hash⟩
+
+/-- Strategy nodes indexed by their complete normalized states. -/
+abbrev StrategyIndex := Std.HashMap CacheKey StrategyNode
+
+def indexStrategyNodes (dag : StrategyDAG) : StrategyIndex :=
+  dag.nodes.foldl (fun nodes node => nodes.insert node.state.cacheKey node) {}
+
+/-- Every solver-annotated non-losing move at positions owned by the protected player. -/
+abbrev OwnerMoveIndex := Std.HashMap CacheKey (List ℕ)
+
+/-- List all non-losing counters at one solved node owned by the protected player. -/
+def nonlosingOwnerMoves (player : Player) (node : SolvedNode) : List ℕ :=
+  if node.state.toMove = player then
+    node.moves.filterMap fun move =>
+      if move.outcome = .loss then none else some move.counter
+  else
+    []
+
+/-- Index all solver-annotated non-losing owner moves by normalized state. -/
+def indexOwnerMoves (output : SolverOutput) (player : Player) : OwnerMoveIndex :=
+  output.nodes.foldl (fun moves node =>
+    if node.state.toMove = player then
+      moves.insert node.state.cacheKey (nonlosingOwnerMoves player node)
+    else
+      moves) {}
+
+/-- Visited paired states and rows accumulated by synchronized traversal. -/
+structure TraceAccumulator where
+  visited : Std.HashMap PairKey Unit
+  rows : Array TraceRow
+
+def emptyAccumulator : TraceAccumulator :=
+  ⟨{}, #[]⟩
+
+abbrev TraceM := StateT TraceAccumulator (Except String)
+
+/-- Append one deterministic observation to the synchronized trace. -/
+def appendRow (row : TraceRow) : TraceM Unit :=
+  modify fun accumulator => { accumulator with rows := accumulator.rows.push row }
+
+/-- Traverse the provisional direct-matching protocol from one paired state. -/
+def traceAux (N : ℕ) (smallIndex largeIndex : StrategyIndex) :
+    ℕ → State → State → TraceM Unit
+  | 0, smallState, largeState =>
+      throw s!"paired trace fuel exhausted at {repr smallState} / {repr largeState}"
+  | fuel + 1, smallState, largeState => do
+      let key : PairKey := ⟨smallState.cacheKey, largeState.cacheKey⟩
+      if (← get).visited[key]?.isSome then
+        return ()
+      modify fun accumulator =>
+        { accumulator with visited := accumulator.visited.insert key () }
+      let smallNode ← match smallIndex[smallState.cacheKey]? with
+        | none => throw s!"small strategy is missing state {repr smallState}"
+        | some node => pure node
+      let largeNode ← match largeIndex[largeState.cacheKey]? with
+        | none => throw s!"large strategy is missing state {repr largeState}"
+        | some node => pure node
+      for row in rowsForPair N smallNode largeNode do
+        appendRow row
+        match row.disposition, row.smallAfter, row.largeAfter with
+        | .advance, some smallAfter, some largeAfter =>
+            traceAux N smallIndex largeIndex fuel smallAfter largeAfter
+        | .stutter, some smallAfter, some largeAfter =>
+            traceAux N smallIndex largeIndex fuel smallAfter largeAfter
+        | .unmatchedOld, _, _ => pure ()
+        | .terminal, _, _ => pure ()
+        | _, _, _ => throw "internally inconsistent paired trace row"
+
+/-- Trace the provisional direct-matching protocol from both strategy roots. -/
+def synchronizedRows (N : ℕ) (small large : StrategyDAG) : Except String (List TraceRow) :=
+  let smallIndex := indexStrategyNodes small
+  let largeIndex := indexStrategyNodes large
+  match (traceAux N smallIndex largeIndex (large.gameSize + 1) small.root large.root).run
+      emptyAccumulator with
+  | .error message => .error message
+  | .ok (_, accumulator) => .ok accumulator.rows.toList
+
+/-- The two independently checked one-sided strategies being compared. -/
+structure PairedStrategies where
+  smallN : ℕ
+  opening : ℕ
+  player : Player
+  small : StrategyDAG
+  large : StrategyDAG
+  smallOwnerMoves : OwnerMoveIndex
+  largeOwnerMoves : OwnerMoveIndex
+deriving Repr
+
+/-- Extract and independently check one post-opening strategy from a solved graph. -/
+def checkedOpeningStrategy (output : SolverOutput) (player : Player) (opening : ℕ) :
+    Except String StrategyDAG := do
+  let dag ← StrategyExtraction.extractOpening output player opening
+  if !StrategyExtraction.agreesWithSolvedGraph output dag then
+    throw s!"extracted strategy disagrees with solved graph at N={output.gameSize}"
+  if !CertificateChecker.checkCertificate dag then
+    throw s!"independent certificate check failed at N={output.gameSize}"
+  pure dag
+
+/-- Solve only the reachable normalized graph below one legal opening. -/
+def solveOpeningGraph (gameSize opening : ℕ) : Except String SolverOutput :=
+  let initialMask := ExactSolver.fullMask gameSize
+  match (ExactSolver.availableMoves gameSize initialMask).find? fun move =>
+      decide (move.2 = opening) with
+  | none => .error s!"opening {opening} is not legal at N={gameSize}"
+  | some move =>
+      let root : State :=
+        { remainingMask := ExactSolver.eraseMove initialMask move.1
+          deficit := opening
+          toMove := .p2 }
+      match ExactSolver.solveState gameSize root with
+      | .error message => .error message
+      | .ok (_, cache) =>
+          .ok ⟨gameSize, [(opening, root)], ExactSolver.sortedNodes cache⟩
+
+/-- Solve, extract, and check the paired strategies for sizes `N` and `N + 4`. -/
+def buildStrategies (N opening : ℕ) (player : Player) : Except String PairedStrategies := do
+  let smallOutput ← solveOpeningGraph N opening
+  let largeOutput ← solveOpeningGraph (N + 4) opening
+  let small ← checkedOpeningStrategy smallOutput player opening
+  let large ← checkedOpeningStrategy largeOutput player opening
+  pure
+    { smallN := N
+      opening
+      player
+      small
+      large
+      smallOwnerMoves := indexOwnerMoves smallOutput player
+      largeOwnerMoves := indexOwnerMoves largeOutput player }
+
+/-- Produce synchronized trace rows from a checked pair of strategies. -/
+def PairedStrategies.rows (strategies : PairedStrategies) : Except String (List TraceRow) :=
+  synchronizedRows strategies.smallN strategies.small strategies.large
+
+/- ## Unmatched-row classification -/
+
+/-- Why the provisional direct-matching protocol failed at one unmatched old move. -/
+inductive UnmatchedClass
+  | sharedNonlosingOwnerMove
+  | disjointNonlosingOwnerMoves
+  | smallOwnerLargeOpponent
+  | smallOpponentLargeOwner
+  | smallTerminal
+  | unexpected
+deriving DecidableEq, Repr
+
+/-- One unmatched row together with the solver-annotated owner moves used to classify it. -/
+structure ClassifiedUnmatched where
+  row : TraceRow
+  classification : UnmatchedClass
+  smallNonlosing : List ℕ
+  largeOldNonlosing : List ℕ
+  commonNonlosing : List ℕ
+deriving Repr
+
+/-- Retrieve the solver-annotated non-losing owner moves at one normalized state. -/
+def ownerMovesAt (moves : OwnerMoveIndex) (state : State) : List ℕ :=
+  moves[state.cacheKey]?.getD []
+
+/-- Classify an unmatched row, returning `none` for every other disposition. -/
+def PairedStrategies.classifyUnmatched? (strategies : PairedStrategies) (row : TraceRow) :
+    Option ClassifiedUnmatched :=
+  if row.disposition ≠ .unmatchedOld then
+    none
+  else
+    let smallNonlosing := ownerMovesAt strategies.smallOwnerMoves row.smallState
+    let largeOldNonlosing :=
+      (ownerMovesAt strategies.largeOwnerMoves row.largeState).filter fun counter =>
+        decide (counter ≤ strategies.smallN)
+    let commonNonlosing := smallNonlosing.filter largeOldNonlosing.contains
+    let classification :=
+      if row.smallMoves.isEmpty then
+        UnmatchedClass.smallTerminal
+      else if row.smallState.toMove = strategies.player then
+        if row.largeState.toMove = strategies.player then
+          if commonNonlosing.isEmpty then
+            UnmatchedClass.disjointNonlosingOwnerMoves
+          else
+            UnmatchedClass.sharedNonlosingOwnerMove
+        else
+          UnmatchedClass.smallOwnerLargeOpponent
+      else if row.largeState.toMove = strategies.player then
+        UnmatchedClass.smallOpponentLargeOwner
+      else
+        UnmatchedClass.unexpected
+    some { row, classification, smallNonlosing, largeOldNonlosing, commonNonlosing }
+
+/-- Classify every unmatched row in one synchronized trace. -/
+def PairedStrategies.classifiedUnmatched (strategies : PairedStrategies) (rows : List TraceRow) :
+    List ClassifiedUnmatched :=
+  rows.filterMap strategies.classifyUnmatched?
+
+/-- Extract the candidate phase signature represented by one trace row. -/
+def TraceRow.phaseSignature (row : TraceRow) : PhaseSignature :=
+  ⟨row.topMask, row.smallState.toMove, row.largeState.toMove, row.deficitOffset⟩
+
+/-- Forget the deficit offset while retaining the finite control shape of one trace row. -/
+def TraceRow.phaseShape (row : TraceRow) : PhaseShape :=
+  ⟨row.topMask, row.smallState.toMove, row.largeState.toMove⟩
+
+/-- One candidate phase signature together with its number of trace rows. -/
+structure PhaseCount where
+  signature : PhaseSignature
+  count : ℕ
+deriving Repr
+
+/-- One exact candidate phase count within one unmatched-row classification. -/
+structure ClassifiedPhaseCount where
+  classification : UnmatchedClass
+  signature : PhaseSignature
+  count : ℕ
+deriving Repr
+
+/-- Complexity diagnostics for one unmatched-row classification. -/
+structure UnmatchedPhaseComplexity where
+  classification : UnmatchedClass
+  rows : ℕ
+  shapes : ℕ
+  offsets : ℕ
+  exactPhases : ℕ
+deriving Repr
+
+/-- Count trace rows by their exact candidate phase signature. -/
+def phaseCounts (rows : List TraceRow) : List PhaseCount :=
+  let counts := rows.foldl (fun counts row =>
+    let signature := row.phaseSignature
+    counts.insert signature (counts[signature]?.getD 0 + 1)) ({} : Std.HashMap PhaseSignature ℕ)
+  counts.toList.map fun entry => ⟨entry.1, entry.2⟩
+
+/-- Count rows having one move disposition. -/
+def countDisposition (rows : List TraceRow) (disposition : MoveDisposition) : ℕ :=
+  (rows.filter fun row => decide (row.disposition = disposition)).length
+
+/-- Count classified unmatched rows having one explanation. -/
+def countUnmatchedClass (rows : List ClassifiedUnmatched) (classification : UnmatchedClass) : ℕ :=
+  (rows.filter fun row => decide (row.classification = classification)).length
+
+/-- Fixed reporting order for the mutually exclusive unmatched-row classifications. -/
+def unmatchedClasses : List UnmatchedClass :=
+  [.sharedNonlosingOwnerMove, .disjointNonlosingOwnerMoves, .smallOwnerLargeOpponent,
+    .smallOpponentLargeOwner, .smallTerminal, .unexpected]
+
+/-- Aggregate diagnostics explaining failures of the provisional direct-matching protocol. -/
+structure UnmatchedSummary where
+  total : ℕ
+  sharedNonlosingOwnerMove : ℕ
+  disjointNonlosingOwnerMoves : ℕ
+  smallOwnerLargeOpponent : ℕ
+  smallOpponentLargeOwner : ℕ
+  smallTerminal : ℕ
+  unexpected : ℕ
+deriving Repr
+
+/-- Count every unmatched-row classification. -/
+def unmatchedSummary (rows : List ClassifiedUnmatched) : UnmatchedSummary :=
+  { total := rows.length
+    sharedNonlosingOwnerMove := countUnmatchedClass rows .sharedNonlosingOwnerMove
+    disjointNonlosingOwnerMoves := countUnmatchedClass rows .disjointNonlosingOwnerMoves
+    smallOwnerLargeOpponent := countUnmatchedClass rows .smallOwnerLargeOpponent
+    smallOpponentLargeOwner := countUnmatchedClass rows .smallOpponentLargeOwner
+    smallTerminal := countUnmatchedClass rows .smallTerminal
+    unexpected := countUnmatchedClass rows .unexpected }
+
+/-- Aggregate diagnostics for one checked pair of strategy DAGs. -/
+structure TraceSummary where
+  smallN : ℕ
+  opening : ℕ
+  player : Player
+  smallNodes : ℕ
+  largeNodes : ℕ
+  rows : ℕ
+  phases : ℕ
+  advances : ℕ
+  stutters : ℕ
+  unmatchedOld : ℕ
+  terminals : ℕ
+deriving Repr
+
+/-- Summarize precomputed rows without asserting that their candidate phases form a simulation. -/
+def PairedStrategies.summaryFromRows (strategies : PairedStrategies) (rows : List TraceRow) :
+    TraceSummary :=
+  { smallN := strategies.smallN
+    opening := strategies.opening
+    player := strategies.player
+    smallNodes := strategies.small.nodes.length
+    largeNodes := strategies.large.nodes.length
+    rows := rows.length
+    phases := (phaseCounts rows).length
+    advances := countDisposition rows .advance
+    stutters := countDisposition rows .stutter
+    unmatchedOld := countDisposition rows .unmatchedOld
+    terminals := countDisposition rows .terminal }
+
+/-- Compute and summarize all rows from one checked pair of strategies. -/
+def PairedStrategies.summary (strategies : PairedStrategies) : Except String TraceSummary := do
+  let rows ← strategies.rows
+  pure (strategies.summaryFromRows rows)
+
+/- ## Deterministic serialization -/
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def dispositionName : MoveDisposition → String
+  | .advance => "advance"
+  | .stutter => "stutter"
+  | .unmatchedOld => "unmatchedOld"
+  | .terminal => "terminal"
+
+def unmatchedClassName : UnmatchedClass → String
+  | .sharedNonlosingOwnerMove => "sharedNonlosingOwnerMove"
+  | .disjointNonlosingOwnerMoves => "disjointNonlosingOwnerMoves"
+  | .smallOwnerLargeOpponent => "smallOwnerLargeOpponent"
+  | .smallOpponentLargeOwner => "smallOpponentLargeOwner"
+  | .smallTerminal => "smallTerminal"
+  | .unexpected => "unexpected"
+
+/-- Lexicographic order for deterministic candidate-phase reports. -/
+def phaseLE (left right : PhaseSignature) : Bool :=
+  if left.topMask < right.topMask then true
+  else if right.topMask < left.topMask then false
+  else if ExactSolver.playerRank left.smallToMove < ExactSolver.playerRank right.smallToMove then true
+  else if ExactSolver.playerRank right.smallToMove < ExactSolver.playerRank left.smallToMove then false
+  else if ExactSolver.playerRank left.largeToMove < ExactSolver.playerRank right.largeToMove then true
+  else if ExactSolver.playerRank right.largeToMove < ExactSolver.playerRank left.largeToMove then false
+  else decide (left.deficitOffset ≤ right.deficitOffset)
+
+/-- Sort phase counts independently of hash-map iteration order. -/
+def sortedPhaseCounts (rows : List TraceRow) : List PhaseCount :=
+  (phaseCounts rows).mergeSort fun left right => phaseLE left.signature right.signature
+
+/-- Retain classified unmatched rows having one specified explanation. -/
+def unmatchedOfClass (rows : List ClassifiedUnmatched) (classification : UnmatchedClass) :
+    List ClassifiedUnmatched :=
+  rows.filter fun row => decide (row.classification = classification)
+
+/-- Measure phase-set complexity separately for every unmatched-row explanation. -/
+def unmatchedPhaseComplexities (rows : List ClassifiedUnmatched) :
+    List UnmatchedPhaseComplexity :=
+  unmatchedClasses.map fun classification =>
+    let classRows := unmatchedOfClass rows classification
+    let traceRows := classRows.map ClassifiedUnmatched.row
+    { classification
+      rows := classRows.length
+      shapes := (traceRows.map TraceRow.phaseShape).eraseDups.length
+      offsets := (traceRows.map TraceRow.deficitOffset).eraseDups.length
+      exactPhases := (phaseCounts traceRows).length }
+
+/-- Count every exact candidate phase within every unmatched-row explanation. -/
+def classifiedPhaseCounts (rows : List ClassifiedUnmatched) : List ClassifiedPhaseCount :=
+  unmatchedClasses.flatMap fun classification =>
+    let traceRows := (unmatchedOfClass rows classification).map ClassifiedUnmatched.row
+    (sortedPhaseCounts traceRows).map fun phase =>
+      ⟨classification, phase.signature, phase.count⟩
+
+/-- Check that exact phase groups cover every classified unmatched row exactly once. -/
+def classifiedPhaseCountsCover (rows : List ClassifiedUnmatched) : Bool :=
+  decide ((classifiedPhaseCounts rows).foldl (fun total phase => total + phase.count) 0 = rows.length)
+
+def PhaseCount.format (phase : PhaseCount) : String :=
+  let signature := phase.signature
+  s!"top={signature.topMask}; movers={playerName signature.smallToMove}/" ++
+    s!"{playerName signature.largeToMove}; offset={signature.deficitOffset}; rows={phase.count}"
+
+def TraceSummary.format (summary : TraceSummary) : String :=
+  s!"N={summary.smallN} → {summary.smallN + 4}; opening={summary.opening}; " ++
+    s!"player={playerName summary.player}\n" ++
+    s!"strategy nodes: {summary.smallNodes} → {summary.largeNodes}\n" ++
+    s!"trace rows={summary.rows}; candidate phases={summary.phases}\n" ++
+    s!"advance={summary.advances}; stutter={summary.stutters}; " ++
+    s!"unmatched-old={summary.unmatchedOld}; terminal={summary.terminals}"
+
+def UnmatchedSummary.format (summary : UnmatchedSummary) : String :=
+  s!"unmatched classification total={summary.total}\n" ++
+    s!"shared-safe-owner-move={summary.sharedNonlosingOwnerMove}; " ++
+    s!"disjoint-safe-owner-moves={summary.disjointNonlosingOwnerMoves}\n" ++
+    s!"small-owner/large-opponent={summary.smallOwnerLargeOpponent}; " ++
+    s!"small-opponent/large-owner={summary.smallOpponentLargeOwner}\n" ++
+    s!"small-terminal={summary.smallTerminal}; unexpected={summary.unexpected}"
+
+def UnmatchedPhaseComplexity.format (complexity : UnmatchedPhaseComplexity) : String :=
+  s!"{unmatchedClassName complexity.classification}: rows={complexity.rows}; " ++
+    s!"shapes={complexity.shapes}; offsets={complexity.offsets}; " ++
+    s!"exact phases={complexity.exactPhases}"
+
+def formatMoves (moves : List ℕ) : String :=
+  String.intercalate "," <| moves.map toString
+
+def formatOptionalNat : Option ℕ → String
+  | none => ""
+  | some value => toString value
+
+/-- Three TSV fields encoding an optional normalized state. -/
+def optionalStateFields : Option State → List String
+  | none => ["", "", ""]
+  | some state => [toString state.remainingMask, toString state.deficit, playerName state.toMove]
+
+/-- Column names for the machine-readable trace format. -/
+def tsvHeader : String :=
+  String.intercalate "\t"
+    ["smallN", "opening", "player", "oldMask", "topMask", "smallDeficit", "largeDeficit",
+      "smallToMove", "largeToMove", "deficitOffset", "smallMoves", "largeMove", "disposition",
+      "smallAfterMask", "smallAfterDeficit", "smallAfterToMove", "largeAfterMask",
+      "largeAfterDeficit", "largeAfterToMove"]
+
+/-- Serialize one trace row without losing any state needed for later phase discovery. -/
+def TraceRow.formatTsv (smallN opening : ℕ) (player : Player) (row : TraceRow) : String :=
+  let fields :=
+    [toString smallN, toString opening, playerName player, toString row.smallState.remainingMask,
+      toString row.topMask, toString row.smallState.deficit, toString row.largeState.deficit,
+      playerName row.smallState.toMove, playerName row.largeState.toMove,
+      toString row.deficitOffset, formatMoves row.smallMoves, formatOptionalNat row.largeMove,
+      dispositionName row.disposition] ++
+      optionalStateFields row.smallAfter ++ optionalStateFields row.largeAfter
+  String.intercalate "\t" fields
+
+/-- Compact human-readable description of one diagnostically important trace row. -/
+def TraceRow.formatBrief (row : TraceRow) : String :=
+  s!"old={row.smallState.remainingMask}; top={row.topMask}; " ++
+    s!"deficits={row.smallState.deficit}/{row.largeState.deficit}; " ++
+    s!"movers={playerName row.smallState.toMove}/{playerName row.largeState.toMove}; " ++
+    s!"small moves=[{formatMoves row.smallMoves}]; large move={formatOptionalNat row.largeMove}; " ++
+    s!"action={dispositionName row.disposition}"
+
+/-- Compact classified description including the alternate owner moves behind the diagnosis. -/
+def ClassifiedUnmatched.formatBrief (classified : ClassifiedUnmatched) : String :=
+  s!"{classified.row.formatBrief}; class={unmatchedClassName classified.classification}; " ++
+    s!"small safe=[{formatMoves classified.smallNonlosing}]; " ++
+    s!"large old safe=[{formatMoves classified.largeOldNonlosing}]; " ++
+    s!"common=[{formatMoves classified.commonNonlosing}]"
+
+/-- Column names for the machine-readable classified-unmatched format. -/
+def unmatchedTsvHeader : String :=
+  tsvHeader ++ "\tclassification\tsmallNonlosing\tlargeOldNonlosing\tcommonNonlosing"
+
+/-- Serialize one classified unmatched row for independent analysis. -/
+def ClassifiedUnmatched.formatTsv (smallN opening : ℕ) (player : Player)
+    (classified : ClassifiedUnmatched) : String :=
+  classified.row.formatTsv smallN opening player ++
+    s!"\t{unmatchedClassName classified.classification}" ++
+    s!"\t{formatMoves classified.smallNonlosing}" ++
+    s!"\t{formatMoves classified.largeOldNonlosing}" ++
+    s!"\t{formatMoves classified.commonNonlosing}"
+
+/-- Column names for exact unmatched-phase counts. -/
+def unmatchedPhaseTsvHeader : String :=
+  String.intercalate "\t"
+    ["smallN", "opening", "player", "classification", "topMask", "smallToMove",
+      "largeToMove", "deficitOffset", "rows"]
+
+/-- Serialize one exact classified phase count for cross-size comparison. -/
+def ClassifiedPhaseCount.formatTsv (smallN opening : ℕ) (player : Player)
+    (phase : ClassifiedPhaseCount) : String :=
+  let signature := phase.signature
+  String.intercalate "\t"
+    [toString smallN, toString opening, playerName player,
+      unmatchedClassName phase.classification, toString signature.topMask,
+      playerName signature.smallToMove, playerName signature.largeToMove,
+      toString signature.deficitOffset, toString phase.count]
+
+/-- Check that one row faithfully represents its stated direct-matching disposition. -/
+def TraceRow.valid (N : ℕ) (row : TraceRow) : Bool :=
+  decide (oldMask N row.largeState = row.smallState.remainingMask) &&
+    decide (row.topMask = CatchUpSearch.PairedTrace.topMask N row.largeState) &&
+    decide (row.deficitOffset =
+      CatchUpSearch.PairedTrace.deficitOffset row.smallState row.largeState) &&
+    match row.disposition, row.largeMove, row.smallAfter, row.largeAfter with
+    | .advance, some counter, some smallAfter, some largeAfter =>
+        decide (0 < counter ∧ counter ≤ N) && row.smallMoves.contains counter &&
+          decide (smallAfter = afterCounter row.smallState counter) &&
+          decide (largeAfter = afterCounter row.largeState counter)
+    | .stutter, some counter, some smallAfter, some largeAfter =>
+        decide (N < counter) && decide (smallAfter = row.smallState) &&
+          decide (largeAfter = afterCounter row.largeState counter)
+    | .unmatchedOld, some counter, none, some largeAfter =>
+        decide (0 < counter ∧ counter ≤ N) && !row.smallMoves.contains counter &&
+          decide (largeAfter = afterCounter row.largeState counter)
+    | .terminal, none, none, none => true
+    | _, _, _, _ => false
+
+/-- Check every exported row before reporting or serialization. -/
+def rowsValid (N : ℕ) (rows : List TraceRow) : Bool :=
+  rows.all (TraceRow.valid N)
+
+/- ## Executable reports -/
+
+/-- Print compact diagnostics for one fixed-opening, fixed-player strategy pair. -/
+def printSummary (N : ℕ) : IO Unit := do
+  let strategies ←
+    match buildStrategies N 1 .p1 with
+    | .error message => throw <| IO.userError message
+    | .ok strategies => pure strategies
+  let rows ←
+    match strategies.rows with
+    | .error message => throw <| IO.userError message
+    | .ok rows => pure rows
+  if !rowsValid N rows then
+    throw <| IO.userError s!"paired trace row consistency check failed at N={N}"
+  let classified := strategies.classifiedUnmatched rows
+  let unmatchedCount := countDisposition rows .unmatchedOld
+  if classified.length ≠ unmatchedCount then
+    throw <| IO.userError s!"unmatched classification omitted rows at N={N}"
+  if !classifiedPhaseCountsCover classified then
+    throw <| IO.userError s!"unmatched phase counts omitted rows at N={N}"
+  let phases := sortedPhaseCounts rows
+  IO.println (strategies.summaryFromRows rows).format
+  IO.println (unmatchedSummary classified).format
+  IO.println "unmatched phase complexity:"
+  for complexity in unmatchedPhaseComplexities classified do
+    if 0 < complexity.rows then
+      IO.println s!"  {complexity.format}"
+  IO.println "candidate phase signatures (first 40):"
+  for phase in phases.take 40 do
+    IO.println s!"  {phase.format}"
+  if 40 < phases.length then
+    IO.println s!"  ... {phases.length - 40} additional signatures omitted; use TSV export."
+  if !classified.isEmpty then
+    IO.println "representative classified unmatched old moves:"
+    for classification in unmatchedClasses do
+      let examples := classified.filter fun row => decide (row.classification = classification)
+      if !examples.isEmpty then
+        IO.println s!"  {unmatchedClassName classification} (first 3):"
+        for sample in examples.take 3 do
+          IO.println s!"    {sample.formatBrief}"
+
+/-- Print compact diagnostics for several discovery pairs. -/
+def runSummaries (sizes : List ℕ) : IO Unit := do
+  for N in sizes do
+    printSummary N
+
+/-- Print every candidate alignment row as tab-separated discovery data. -/
+def runTsv (N : ℕ) : IO Unit := do
+  let strategies ←
+    match buildStrategies N 1 .p1 with
+    | .error message => throw <| IO.userError message
+    | .ok strategies => pure strategies
+  let rows ←
+    match strategies.rows with
+    | .error message => throw <| IO.userError message
+    | .ok rows => pure rows
+  if !rowsValid N rows then
+    throw <| IO.userError s!"paired trace row consistency check failed at N={N}"
+  IO.println tsvHeader
+  for row in rows do
+    IO.println (row.formatTsv N 1 .p1)
+
+/-- Print every unmatched row with its classification as tab-separated discovery data. -/
+def runUnmatchedTsv (N : ℕ) : IO Unit := do
+  let strategies ←
+    match buildStrategies N 1 .p1 with
+    | .error message => throw <| IO.userError message
+    | .ok strategies => pure strategies
+  let rows ←
+    match strategies.rows with
+    | .error message => throw <| IO.userError message
+    | .ok rows => pure rows
+  if !rowsValid N rows then
+    throw <| IO.userError s!"paired trace row consistency check failed at N={N}"
+  let classified := strategies.classifiedUnmatched rows
+  let unmatchedCount := countDisposition rows .unmatchedOld
+  if classified.length ≠ unmatchedCount then
+    throw <| IO.userError s!"unmatched classification omitted rows at N={N}"
+  IO.println unmatchedTsvHeader
+  for classifiedRow in classified do
+    IO.println (classifiedRow.formatTsv N 1 .p1)
+
+/-- Print exact classified unmatched-phase counts as tab-separated discovery data. -/
+def runUnmatchedPhasesTsv (N : ℕ) : IO Unit := do
+  let strategies ←
+    match buildStrategies N 1 .p1 with
+    | .error message => throw <| IO.userError message
+    | .ok strategies => pure strategies
+  let rows ←
+    match strategies.rows with
+    | .error message => throw <| IO.userError message
+    | .ok rows => pure rows
+  if !rowsValid N rows then
+    throw <| IO.userError s!"paired trace row consistency check failed at N={N}"
+  let classified := strategies.classifiedUnmatched rows
+  let unmatchedCount := countDisposition rows .unmatchedOld
+  if classified.length ≠ unmatchedCount then
+    throw <| IO.userError s!"unmatched classification omitted rows at N={N}"
+  if !classifiedPhaseCountsCover classified then
+    throw <| IO.userError s!"unmatched phase counts omitted rows at N={N}"
+  IO.println unmatchedPhaseTsvHeader
+  for phase in classifiedPhaseCounts classified do
+    IO.println (phase.formatTsv N 1 .p1)
+
+end CatchUpSearch.PairedTrace

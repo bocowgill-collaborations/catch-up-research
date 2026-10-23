@@ -1,0 +1,1588 @@
+{
+  "scope": "Collected local mathematics, not an exhaustive literature catalog. Summaries are explanatory; formal statements retain their full hypotheses.",
+  "modules": [
+    {
+      "module": "CatchUp.Reference",
+      "path": "CatchUp/Reference.lean",
+      "group": "Rules, evaluation and search",
+      "summary": "Absolute-score rules, normalized positions, fixed-player safety semantics, and the correspondence between them. The unfinished upstream conjecture is omitted.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "Player.other_eq_iff_ne",
+        "Outcome.neg_ne_loss_iff",
+        "Outcome.neg_ne_win_iff",
+        "Outcome.best_ne_loss_iff",
+        "Outcome.best_ne_win_iff",
+        "Outcome.eq_draw_iff",
+        "GamePosition.to_position_after_pick",
+        "GamePosition.remaining_after_pick",
+        "GamePosition.to_move_after_pick_of_lt",
+        "GamePosition.to_move_after_pick_of_le",
+        "GamePosition.remaining_card_after_pick_lt",
+        "GamePosition.step_after_pick",
+        "GamePosition.is_terminal_of_remaining_eq_empty",
+        "GamePosition.is_terminal_of_sum_lt_deficit",
+        "GamePosition.not_is_terminal_iff",
+        "GamePosition.terminal_outcome_for_eq_draw",
+        "GamePosition.terminal_outcome_for_to_move_eq_loss",
+        "GamePosition.terminal_outcome_for_eq_win",
+        "can_avoid_loss_iff_terminal_outcome_ne_loss",
+        "can_avoid_loss_iff_exists_safe_move",
+        "can_avoid_loss_iff_forall_safe_moves",
+        "Position.value_eq_value_aux",
+        "Position.value_eq_best_move_outcome",
+        "can_avoid_loss_iff_value",
+        "GamePosition.to_position_after_opening",
+        "GamePosition.to_move_after_opening",
+        "GamePosition.remaining_after_opening",
+        "GamePosition.deficit_after_opening",
+        "reachable_from_opening_root",
+        "ReachableFromOpening.step",
+        "ReachableFromOpening.after_pick",
+        "Position.add_four_counters_after_opening",
+        "Position.mem_add_four_counters_iff_of_le",
+        "Position.after_pick_add_four_counters",
+        "Position.move_outcome_add_four_counters_of_value_eq",
+        "position_value_empty_test",
+        "position_value_cannot_catch_up_test",
+        "position_value_singleton_test",
+        "value_eq_best_after_opening",
+        "value_eq_draw_iff_can_avoid_loss_after_opening",
+        "value_Icc_eq_best_after_opening",
+        "value_Icc_one_post_opening_test",
+        "value_Icc_four_post_opening_test"
+      ]
+    },
+    {
+      "module": "CatchUp.Classifier",
+      "path": "CatchUp/Classifier.lean",
+      "group": "Rules, evaluation and search",
+      "summary": "Executable fixed-player nonloss classifier, proved sound and complete against CanAvoidLoss.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "check_eq_true_iff"
+      ]
+    },
+    {
+      "module": "CatchUp.Executable",
+      "path": "CatchUp/Executable.lean",
+      "group": "Rules, evaluation and search",
+      "summary": "Exact ternary evaluation, common-score translation, initial-root correspondence and the empty game.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "Position.eval_eq_value",
+        "Position.eval_eq_value_aux",
+        "value_aux_add_scores",
+        "initial_position_value_eq",
+        "eval_initial_eq_value",
+        "value_Icc_zero"
+      ]
+    },
+    {
+      "module": "CatchUp.ReachableBounds",
+      "path": "CatchUp/ReachableBounds.lean",
+      "group": "Rules, evaluation and search",
+      "summary": "A reachable interval state keeps a subset of the original counters and deficit at most N.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "Position.deficit_after_pick_le",
+        "ReachableFromOpening.remaining_subset_Icc",
+        "ReachableFromOpening.deficit_le",
+        "ReachableFromOpening.remaining_card_le"
+      ]
+    },
+    {
+      "module": "CatchUp.ZeroDeficit",
+      "path": "CatchUp/ZeroDeficit.lean",
+      "group": "Rules, evaluation and search",
+      "summary": "Connects normalized tied-score positions to the initial game value.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "position_value_zero_deficit_eq_value"
+      ]
+    },
+    {
+      "module": "CatchUp.Search",
+      "path": "CatchUp/Search.lean",
+      "group": "Rules, evaluation and search",
+      "summary": "A counterexample search halts if and only if the universal conjecture is false; no claim that the search actually halts.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "is_counterexample_iff",
+        "tick_iterate_none",
+        "run_for_eq_iterate",
+        "run_for_shape",
+        "run_for_eq_none_iff",
+        "reaches_or_earlier_counterexample",
+        "halts_iff_exists_counterexample",
+        "halts_iff_not_conjecture",
+        "iterate_halts_iff_not_conjecture"
+      ]
+    },
+    {
+      "module": "CatchUp.WinningOpening",
+      "path": "CatchUp/WinningOpening.lean",
+      "group": "Opening structure and reductions",
+      "summary": "At most one opening can force a win on any finite support. This mathematical fact was reported by von Stengel in 2019; this file supplies the formal proof.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "winning_opening_unique",
+        "value_eq_win_iff_exists_winning_opening",
+        "value_eq_win_iff_exists_unique_winning_opening",
+        "value_Icc_eq_win_iff_exists_unique_winning_opening"
+      ]
+    },
+    {
+      "module": "CatchUp.DrawOpening",
+      "path": "CatchUp/DrawOpening.lean",
+      "group": "Opening structure and reductions",
+      "summary": "A nonempty root draws exactly when some opening leaves a drawn child; includes the two-opening exchange identity.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "move_outcome_after_opening_comm",
+        "Position.move_outcome_eq_loss_of_sum_lt_deficit",
+        "value_eq_draw_iff_exists_draw_after_opening"
+      ]
+    },
+    {
+      "module": "CatchUp.PairDeletion",
+      "path": "CatchUp/PairDeletion.lean",
+      "group": "Opening structure and reductions",
+      "summary": "A sufficient lower-pair-deletion safety family implies the interval draw claim. Establishing that family remains a separate obligation.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "value_Icc_eq_draw_of_lower_pair_deletion_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.Increasing",
+      "path": "CatchUp/Increasing.lean",
+      "group": "Opening structure and reductions",
+      "summary": "Restricts the protected player to increasing safe picks while retaining every opponent choice; proves exact first-pair reductions and turn-length bounds.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "nonterminal_after_continue",
+        "after_pick_commute",
+        "safe_after_reordered_pick",
+        "safe_next_gt",
+        "exists_least_safe",
+        "check_sound",
+        "check_complete",
+        "check_iff",
+        "first_pair_eq",
+        "first_pair_check_iff",
+        "first_pair_reachable",
+        "first_pair_draw_iff",
+        "interval_draw_of_checks",
+        "LeastSafeTurn.completed",
+        "LeastSafeTurn.head_least",
+        "exists_least_safe_turn",
+        "LeastSafeTurn.pairwise",
+        "increasing_sum_bound",
+        "LeastSafeTurn.preparation_length_bound",
+        "LeastSafeTurn.reachable_preparation_length_bound"
+      ]
+    },
+    {
+      "module": "CatchUp.PairClassification",
+      "path": "CatchUp/PairClassification.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Exact two-counter classification used in the top-four endgame analysis.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "value_pair_exact"
+      ]
+    },
+    {
+      "module": "CatchUp.DeficitTwo",
+      "path": "CatchUp/DeficitTwo.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Separated four-pair positions of minimum at least four are nonwinning at deficit two; reduces the first-pair safety problem to interval nonwinning.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "two_pairs_four_nonwin",
+        "three_pairs_three_nonwin",
+        "three_pairs_three_win_iff",
+        "four_pairs_two_nonwin",
+        "interval_eight_nonwin",
+        "interval_eleven_nonwin",
+        "first_pair_nonloss_of_interval_nonwin",
+        "interval_reachable"
+      ]
+    },
+    {
+      "module": "CatchUp.ThreePairClose",
+      "path": "CatchUp/ThreePairClose.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Symbolic three-pair endgames at close deficits, with unbounded natural parameters.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "three_close_nonloss_iff",
+        "three_close_nonwin_iff",
+        "three_pairs_close_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.AdjacentPairGeometryRepair",
+      "path": "CatchUp/AdjacentPairGeometryRepair.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Two adjacent pairs draw at a tied root; three-pair results require the stated separation and minimum hypotheses. Classifies both orphan-deficit signs.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "orphan_plus_draw",
+        "orphan_minus_draw",
+        "two_pairs_tied_draw",
+        "two_pairs_deficit_two_nonwin",
+        "three_pairs_nonloss_of_separation",
+        "three_pairs_nonwin",
+        "three_pairs_draw_of_separation",
+        "three_pairs_anchor_three_draw",
+        "orphan_minus_win_of_close",
+        "orphan_minus_draw_iff"
+      ]
+    },
+    {
+      "module": "CatchUp.TiedFour",
+      "path": "CatchUp/TiedFour.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Tied four-pair and deficit-one five-pair nonwinning results under explicit separation assumptions.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "three_pairs_wide_nonloss",
+        "three_pairs_one_draw",
+        "four_pairs_tied_nonwin",
+        "five_pairs_one_nonwin"
+      ]
+    },
+    {
+      "module": "CatchUp.CanonicalSmall",
+      "path": "CatchUp/CanonicalSmall.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Canonical two- and three-pair endgames used by larger defenses; every parameter restriction is stated in the source.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "two_six_nonwin",
+        "three_five_nonwin",
+        "two_six_win_iff",
+        "three_five_win_iff"
+      ]
+    },
+    {
+      "module": "CatchUp.CanonicalFour",
+      "path": "CatchUp/CanonicalFour.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Classifies canonical four-pair deficit-four positions, including the exceptional winning geometry (6,10,20,40).",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "four_four_nonwin",
+        "four_four_win_iff"
+      ]
+    },
+    {
+      "module": "CatchUp.FivePairLeaves",
+      "path": "CatchUp/FivePairLeaves.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Shared kernel-replayed leaves and legality lemmas for one-pair deletions from [4,15].",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "mate_legal",
+        "mem_range",
+        "picked_pair_index",
+        "erase_mates_eq",
+        "mate_deficit",
+        "four_reserve_comm",
+        "reserve_nonempty",
+        "nonwin_iff_check"
+      ]
+    },
+    {
+      "module": "CatchUp.FivePair",
+      "path": "CatchUp/FivePair.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "All one-pair reserves from [4,15] are defended at deficits one and three, yielding [4,15] nonwinning at deficit two and [3,15] nonloss at deficit one.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "four_zero_draw",
+        "four_two_nonwin",
+        "four_four_nonwin",
+        "mate_safety",
+        "repair_twelve",
+        "repair_six",
+        "reserve_nonwin",
+        "pool_erase_mates",
+        "interval_fifteen_nonwin",
+        "first_pair_fifteen_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.FiveThree",
+      "path": "CatchUp/FiveThree.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Refutes an unrestricted five-pair deficit-three principle, while proving safe upper-move reductions.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "sparse_child_loss",
+        "sparse_five_pairs_win",
+        "sparse_every_reply_loses",
+        "not_uniform_five_three",
+        "sparse_reference_win",
+        "upper_move_nonwin",
+        "five_three_win_iff_lower_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.CanonicalFiveLeaves",
+      "path": "CatchUp/CanonicalFiveLeaves.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Shared finite leaves supporting the canonical five-pair restrictions.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "sparse_bounded_leaf",
+        "sparse_eight_repair",
+        "anchor_four_repair"
+      ]
+    },
+    {
+      "module": "CatchUp.CanonicalFive",
+      "path": "CatchUp/CanonicalFive.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Necessary anchor conditions for a winning canonical five-pair deficit-three position; does not assert every such position is nonwinning.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "sparse_repair",
+        "five_three_nonwin_min_six",
+        "lowest_lower_child_nonloss",
+        "win_requires_anchor_four"
+      ]
+    },
+    {
+      "module": "CatchUp.AnchorFourEndgames",
+      "path": "CatchUp/AnchorFourEndgames.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Small endgames needed by defenses retaining the pair {4,5}.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "five_pair_ten_nonwin",
+        "five_pair_eight_nonwin",
+        "five_seven_two_pairs_two",
+        "five_two_pairs_nine",
+        "five_two_pairs_seven",
+        "five_three_pairs_eight"
+      ]
+    },
+    {
+      "module": "CatchUp.AnchorFour",
+      "path": "CatchUp/AnchorFour.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Four-pair and orphan defenses with the anchor {4,5}, subject to the stated excluded counters/geometries.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "four_four_nonwin_no_eight"
+      ]
+    },
+    {
+      "module": "CatchUp.AnchorFive",
+      "path": "CatchUp/AnchorFive.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Five-pair restrictions and lower-orphan defenses when eight is absent; not an arbitrary-pair induction.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "lower_orphan_no_eight",
+        "anchored_five_three_nonwin_no_eight",
+        "five_three_nonwin_no_eight",
+        "lower_eight_child_nonloss",
+        "win_requires_four_and_eight"
+      ]
+    },
+    {
+      "module": "CatchUp.ReserveTriangle",
+      "path": "CatchUp/ReserveTriangle.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "A multi-turn defense beginning with pick five, covering all nine replies at the diagnosed obstruction and symbolic related families.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "orphan_two_equal",
+        "orphan_one_three",
+        "orphan_two_plus",
+        "orphan_three_draw",
+        "triangle_nonwin",
+        "triangle_one_nonwin",
+        "triangle_one_draw",
+        "triangle_two_nonwin",
+        "triangle_three_nonwin",
+        "uniform_pick_five",
+        "after_five_nonwin",
+        "after_five_safe",
+        "all_nine_replies_safe",
+        "pick_five_safe",
+        "pick_five_move_nonloss",
+        "after_five_reference_nonwin",
+        "uniform_repaired_branch"
+      ]
+    },
+    {
+      "module": "CatchUp.FourOrphan",
+      "path": "CatchUp/FourOrphan.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "A certified failure of a proposed four-pair orphan invariant, plus a proved large-parameter defensive repair.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "critical_loss",
+        "critical_win",
+        "critical_support",
+        "not_uniform_four_equal",
+        "critical_reference_win",
+        "critical_defender_loses",
+        "adding_two_pairs_breaks_equal",
+        "start_support",
+        "uniform_counterplay_legal",
+        "uniform_mate_loses",
+        "uniform_far_turn",
+        "uniform_far_repair"
+      ]
+    },
+    {
+      "module": "CatchUp.NearRepair",
+      "path": "CatchUp/NearRepair.lean",
+      "group": "Paired positions and adaptive defenses",
+      "summary": "Adaptive repairs in the remaining finite parameter range, composed with the large-parameter theorem to retain all opponent turns.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "low_endpoint_draw",
+        "middle_endpoint_nonwin",
+        "low_turn",
+        "middle_turn",
+        "boundary_turn",
+        "adaptive_turn",
+        "adaptive_endpoint_nonwin",
+        "adaptive_endpoint_safe",
+        "adaptive_repair",
+        "every_opponent_turn_safe",
+        "uniform_reached_nonloss",
+        "uniform_reference_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.CompletedTurn",
+      "path": "CatchUp/CompletedTurn.lean",
+      "group": "Whole turns and proof-depth barriers",
+      "summary": "Legal completed-turn predicates and endpoint semantics; a chosen subset must meet the first-catch condition.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "GamePosition.after_picks_nil",
+        "GamePosition.after_picks_cons",
+        "CompletedTurn.picks_nonempty",
+        "CompletedTurn.after_eq_after_picks",
+        "CompletedTurn.picks_subset_remaining",
+        "CompletedTurn.picks_nodup",
+        "CompletedTurn.total_catches",
+        "CompletedTurn.after_remaining",
+        "CompletedTurn.after_deficit",
+        "CompletedTurn.after_to_move",
+        "CompletedTurn.after_eq_endpoint",
+        "CompletedTurn.before_not_terminal",
+        "CompletedTurn.first_step",
+        "CompletedTurn.pick_trace",
+        "completed_turn_cons_iff",
+        "CompletedTurn.preparation_sum_lt_or_empty",
+        "completed_turn_of_preparation",
+        "TurnSet.completed_turn_of_preparation",
+        "CompletedTurn.turn_set",
+        "exists_completed_turn_iff_turn_set",
+        "exists_turn_set_iff_sum_lt_deficit_add_max",
+        "exists_completed_turn_iff_sum_lt_deficit_add_max",
+        "TurnSet.endpoint_remaining_sum_add_deficit",
+        "TurnSet.endpoint_remaining_sum_sub_deficit",
+        "GamePosition.after_pick_not_terminal_of_lt",
+        "CompletedTurn.can_avoid_loss_of_safe_endpoint",
+        "CompletedTurn.safe_endpoint_of_can_avoid_loss",
+        "can_avoid_loss_iff_exists_safe_completed_turn_trace",
+        "can_avoid_loss_iff_forall_safe_completed_turn_trace",
+        "can_avoid_loss_iff_exists_safe_turn_set",
+        "can_avoid_loss_iff_forall_safe_turn_sets",
+        "Position.value_ne_loss_iff_exists_turn_set",
+        "Position.value_ne_win_iff_forall_turn_sets",
+        "Position.value_ne_loss_iff_exists_completed_turn_subset",
+        "Position.value_ne_win_iff_forall_completed_turn_subsets",
+        "Position.value_eq_draw_iff_turn_sets"
+      ]
+    },
+    {
+      "module": "CatchUp.WholeTurn",
+      "path": "CatchUp/WholeTurn.lean",
+      "group": "Whole turns and proof-depth barriers",
+      "summary": "Score-sum draw leaves, balanced-turn defenses and certified failures of proposed one-turn repairs.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "sum_draw",
+        "balanced_endpoint",
+        "balanced_turn_safe",
+        "paired_eq_union",
+        "sum_preparation",
+        "sum_pairs",
+        "orphan_balance",
+        "far_lower_safe",
+        "far_lower_nonloss",
+        "balanced_turn_total_bound",
+        "critical_not_balanced",
+        "win_of_all_turn",
+        "nine_uncorrected_endpoint_win",
+        "nine_corrected",
+        "nine_uncorrected_turn",
+        "no_balance_after_opening",
+        "interval_no_one_turn_balance"
+      ]
+    },
+    {
+      "module": "CatchUp.TurnDepth",
+      "path": "CatchUp/TurnDepth.lean",
+      "group": "Whole turns and proof-depth barriers",
+      "summary": "Conservation and lower bounds on reaching terminal or score-sum leaves through completed turns. These are not formal proof-size lower bounds.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "overshoot_le_final",
+        "turn_mass",
+        "TurnChain.conservation",
+        "TurnChain.rise_le_finals_sum",
+        "TurnChain.finals_subset_remaining",
+        "TurnChain.finals_nodup",
+        "TurnChain.finals_sum_le",
+        "TurnChain.opening_conservation",
+        "TurnChain.closure_barrier",
+        "TurnChain.cons_completed",
+        "interval_sum_twice",
+        "interval_closure_depth",
+        "TurnChain.opening_finals_nodup",
+        "TurnChain.opening_finals_subset",
+        "interval_subset_sum_core",
+        "interval_subset_sum_bound",
+        "interval_closure_depth_sharp",
+        "terminal_sum_le_deficit",
+        "interval_terminal_depth"
+      ]
+    },
+    {
+      "module": "CatchUp.IntervalReserveDepth",
+      "path": "CatchUp/IntervalReserveDepth.lean",
+      "group": "Whole turns and proof-depth barriers",
+      "summary": "Depth barriers at the actual interval reserve endpoints; rules out a one-turn balanced repair in the stated range, not all strategies.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "start_mass",
+        "no_one_turn_balance",
+        "chain_mass_barrier",
+        "chain_depth_barrier",
+        "chain_depth_sharp",
+        "eleven_balanced_turn"
+      ]
+    },
+    {
+      "module": "CatchUp.ExactSumLossObstruction",
+      "path": "CatchUp/ExactSumLossObstruction.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "An exact-deficit block in a hypothetical losing position forces a winning residual opening above the block maximum.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "Position.exists_winning_opening_gt_max_of_loss_of_exact_sum",
+        "Position.value_ne_loss_of_exact_sum_block_dominates"
+      ]
+    },
+    {
+      "module": "CatchUp.IncompleteSubsumMass",
+      "path": "CatchUp/IncompleteSubsumMass.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "For r distinct positive counters with an unattainable target within their total, proves r(r+1)+2r <= 2*sum+2. Pure arithmetic, not a game-value theorem.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "missing_target_mass",
+        "missing_target_card_bound"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseBlockMass",
+      "path": "CatchUp/DenseBlockMass.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Bounds exact-block size and the ambient interval when the residual is small; no strategic preservation is claimed.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "exact_block_card_bound",
+        "residual_partition",
+        "holes_le_block_add_residual",
+        "block_residual_mass_bound",
+        "small_residual_bound",
+        "small_residual_cutoffs"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseGapMass",
+      "path": "CatchUp/DenseGapMass.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "A uniform exact-block bound for the small residual configurations handled here.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "three_small_subsum_complete",
+        "small_gap_block_bound"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseGapMassGeneral",
+      "path": "CatchUp/DenseGapMassGeneral.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Extends the true subset-sum-gap mass bound to arbitrary residual sizes.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "block_card_bound"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseLossGeneral",
+      "path": "CatchUp/DenseLossGeneral.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Dense-loss dichotomy and exact-deficit nonloss boundary cases; the density and deficit hypotheses remain explicit.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "exists_small_complement_pair",
+        "loss_dichotomy",
+        "exact_deficit_nonloss_of_low_subsums",
+        "exact_deficit_nonloss",
+        "after_max_opening_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseLossSubsumGap",
+      "path": "CatchUp/DenseLossSubsumGap.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Maximal exact blocks expose an upper branch or a genuine subset-sum-gap lower branch; preservation is not automatic.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "exists_large_exact_block_member",
+        "loss_dichotomy",
+        "upper_loss_of_low_subsum_coverage"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseTerminalReduction",
+      "path": "CatchUp/DenseTerminalReduction.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "A specific terminal subset-sum-gap branch forces N <= 9; does not close all dense cases.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "interval_subset_sum_lower",
+        "small_even_sum_bound",
+        "terminal_branch_bound",
+        "cutoff_nine_witness"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseTerminalNonloss",
+      "path": "CatchUp/DenseTerminalNonloss.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Closes the bounded terminal gap branch using eight kernel-checked small successors.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "bounded_classification",
+        "successor_values",
+        "successors_nonloss",
+        "terminal_gap_successor_nonloss",
+        "terminal_gap_parent_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseTwoResidual",
+      "path": "CatchUp/DenseTwoResidual.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Excludes the specified nonterminal lower branch with at most two residual counters.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "deficit_lt_each_of_pair_loss",
+        "tail_classification",
+        "bounded_configuration_impossible",
+        "nonterminal_two_residual_impossible",
+        "sum_lt_of_loss_card_le_one",
+        "small_residual_successor_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseThreeResidual",
+      "path": "CatchUp/DenseThreeResidual.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Closes the specified lower branch with three residual counters by classification and safe exact-block entry.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "tail_classification",
+        "bounded_classification",
+        "residual_filter",
+        "live_safe_entries",
+        "three_residual_safe_block_entry",
+        "small_residual_successor_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseLossFrontier",
+      "path": "CatchUp/DenseLossFrontier.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Packages a necessary frontier for a hypothetical dense loss: an upper branch or a nonterminal lower obstruction with at least four residual counters.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "loss_frontier"
+      ]
+    },
+    {
+      "module": "CatchUp.TwoHoleTopBoundary",
+      "path": "CatchUp/TwoHoleTopBoundary.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Conditional reduction for a two-hole top boundary to an exceptional support and a smaller winning interval opening.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "support_eq_of_missing_endpoints",
+        "loss_forces_exceptional_opening",
+        "loss_forces_smaller_win",
+        "nonloss_of_smaller_nonwin",
+        "triangular_even_of_top_boundary",
+        "loss_forces_smaller_even_win"
+      ]
+    },
+    {
+      "module": "CatchUp.ThreeHoleTopBoundary",
+      "path": "CatchUp/ThreeHoleTopBoundary.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Analogous conditional three-hole reduction with counter one retained; no general closure theorem.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "support_eq_of_three_missing",
+        "loss_forces_exceptional_opening",
+        "loss_forces_smaller_win",
+        "nonloss_of_smaller_nonwin",
+        "triangular_even_of_top_boundary",
+        "loss_forces_smaller_even_win"
+      ]
+    },
+    {
+      "module": "CatchUp.PairEntranceShadow",
+      "path": "CatchUp/PairEntranceShadow.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Matches all completed opponent turns avoiding a reserve. Equality is an exceptional case, explicitly accounted for.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "loss_after_subsum",
+        "turn_endpoint_win_of_loss",
+        "reserve_reply_outcome",
+        "reserve_endpoint_eq",
+        "reserve_reply_at_endpoint",
+        "endpoint_win_of_total_ne",
+        "reserve_reply_after_completed_turn"
+      ]
+    },
+    {
+      "module": "CatchUp.DeficitCrossing",
+      "path": "CatchUp/DeficitCrossing.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Crossing and legal midpoint-turn lemmas relating different deficits on the same support.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "nonloss_of_loss_and_midpoint_turn",
+        "seven_to_three"
+      ]
+    },
+    {
+      "module": "CatchUp.DeficitCrossingEntry",
+      "path": "CatchUp/DeficitCrossingEntry.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Specialized entry/crossing implications used by the actual upper interval branches.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "first_move_eq_loss",
+        "nonloss_iff_entry",
+        "eight_to_two_first_move",
+        "eight_to_two_nonloss_iff"
+      ]
+    },
+    {
+      "module": "CatchUp.RootUpperReentry",
+      "path": "CatchUp/RootUpperReentry.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Excludes a losing seven-shadow in the actual parent-loss branch, retaining the reserve-taking reply.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "reserve_five_nonwin_of_seven_loss",
+        "seven_shadow_nonloss_of_parent_loss",
+        "interval_seven_shadow_nonloss",
+        "interval_upper_opening_ge_eight"
+      ]
+    },
+    {
+      "module": "CatchUp.RootUpperEightFrontier",
+      "path": "CatchUp/RootUpperEightFrontier.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "The actual eight-opening route forces a two-anchor double-loss obstruction; does not exclude that obstruction.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "core_one_loss_of_low_two_loss",
+        "core_double_loss_of_low_loss",
+        "low_loss_of_reserve_win",
+        "core_double_loss_of_parent_loss",
+        "interval_eight_shadow_forces_double_loss",
+        "interval_parent_loss_frontier"
+      ]
+    },
+    {
+      "module": "CatchUp.RootUpperEightCriterion",
+      "path": "CatchUp/RootUpperEightCriterion.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "An exact conditional equivalence between the reserve endpoint and the deficit-one two-anchor core, retaining the original losing shadow.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "low_two_loss_iff_core_one_loss",
+        "reserve_five_win_iff_core_one_loss",
+        "reserve_five_nonwin_iff_core_nonloss",
+        "interval_reserve_nonwin_iff_core_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.ConsecutiveGuardDescent",
+      "path": "CatchUp/ConsecutiveGuardDescent.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "On {3,4} union [9,N] at deficit one, a winning q >= 14 needs q+4 <= N. The residual witness cannot simply be reused on the old support.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "small_gap_reserve_nonwin",
+        "reentry_gap",
+        "losing_child_reentry",
+        "winning_pick_bound",
+        "top_four_pick_nonwin"
+      ]
+    },
+    {
+      "module": "CatchUp.ConsecutiveGuardBoundary",
+      "path": "CatchUp/ConsecutiveGuardBoundary.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Strengthens that exclusion to q+6 <= N: the top six large picks are nonwinning.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "winning_pick_bound",
+        "top_six_pick_nonwin"
+      ]
+    },
+    {
+      "module": "CatchUp.NearMaximumDefense",
+      "path": "CatchUp/NearMaximumDefense.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "A complementary-pair defense rules out loss at deficit b under a near-maximum bound and explicit minimum/pair hypotheses.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "midpoint_pair_nonloss",
+        "reserve_nonwin_of_midpoint",
+        "winning_opening_gt_bound",
+        "exists_winning_opening_gt_bound",
+        "value_ne_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.ComplementaryPairDefense",
+      "path": "CatchUp/ComplementaryPairDefense.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Generalizes the complementary pair to {p,b-p}; the lower bound need not itself be present.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "reserve_nonwin_of_midpoint",
+        "winning_opening_gt_bound",
+        "exists_winning_opening_gt_bound",
+        "value_ne_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.AlternativeSumDefense",
+      "path": "CatchUp/AlternativeSumDefense.lean",
+      "group": "Interval cores and near-maximum defenses",
+      "summary": "Generalizes the complementary pair to any separate exact-sum block B of total b. Bounded-range nonloss and a residual-opening bound are proved.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "midpoint_block_nonloss",
+        "reserve_nonwin_of_block",
+        "winning_opening_gt_bound",
+        "exists_winning_opening_gt_bound",
+        "value_ne_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.AdviceFeatureCollision",
+      "path": "CatchUp/AdviceFeatureCollision.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "Same pair count, total, extrema, deficit, parity and selector interval can conceal opposite outcomes. Static arithmetic summaries do not determine value.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "same_summary",
+        "same_selector_interval",
+        "selector_sums",
+        "left_win",
+        "right_loss",
+        "every_right_pick_loses",
+        "opposite_outcomes_with_same_summary"
+      ]
+    },
+    {
+      "module": "CatchUp.AlternatingTailObstruction",
+      "path": "CatchUp/AlternatingTailObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "A certified sparse obstruction to a proposed alternating-tail principle; not an initial-interval counterexample.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "tail_geometry",
+        "arithmetic_premises",
+        "core_one_loss",
+        "every_pick_loses",
+        "balanced_allocation",
+        "not_uniform_alternating_tail_nonloss",
+        "six_gap_geometry",
+        "adjacent_pair_deletion_geometry"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseBlockEntryObstruction",
+      "path": "CatchUp/DenseBlockEntryObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "A dense drawn continuing state has no safe first pick inside its maximal exact block; its unique safe pick lies elsewhere.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "arithmetic_premises",
+        "exact_block_unique",
+        "global_exact_block_bound",
+        "original_subsum_gap",
+        "residual_loss",
+        "residual_nonterminal",
+        "full_branch_configuration",
+        "low_draw",
+        "first_pick_values",
+        "unique_safe_first_pick",
+        "block_entries_lose",
+        "no_safe_block_entry",
+        "after_eight_draw",
+        "safe_after_eight",
+        "every_opponent_turn_safe_after_eight",
+        "parent_nonloss",
+        "selector_totals",
+        "balanced_selector",
+        "every_low_turn_singleton",
+        "no_quota_completed_turn"
+      ]
+    },
+    {
+      "module": "CatchUp.EqualityReserveObstruction",
+      "path": "CatchUp/EqualityReserveObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "Every first repair turn containing the reserve loses under the equality hypotheses. Nonloss is characterized by a reserve-avoiding turn instead.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "reserve_is_final",
+        "equality_endpoint_eq",
+        "repair_endpoint_win",
+        "repair_turn_loses",
+        "nonloss_iff_avoiding_reserve"
+      ]
+    },
+    {
+      "module": "CatchUp.FullGapDensityFamily",
+      "path": "CatchUp/FullGapDensityFamily.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "An unbounded sparse family refutes density-free gap preservation; does not refute the version retaining density.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "pair_win_of_deficit_lt_gap",
+        "close_pair_loss",
+        "low_pair_win",
+        "child_low_loss",
+        "child_second_loss",
+        "child_third_loss",
+        "child_top_loss",
+        "ancestor_loss",
+        "residual_loss",
+        "successor_eq",
+        "winning_residual_opening",
+        "exact_block_unique",
+        "gap_unrepresentable",
+        "block_arithmetic",
+        "support_subset",
+        "support_card",
+        "effective_sum",
+        "effective_even_iff_odd",
+        "hole_count",
+        "density_fails",
+        "every_residual_pick_loses",
+        "every_ancestor_pick_loses",
+        "odd_family_obstruction"
+      ]
+    },
+    {
+      "module": "CatchUp.FullGapDensityObstruction",
+      "path": "CatchUp/FullGapDensityObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "A concrete failure of removing density from a strategic gap-closing implication.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "ancestor_arithmetic",
+        "exact_blocks",
+        "exact_block_unique",
+        "maximal_block",
+        "exact_block_bounded",
+        "no_gap_subsum",
+        "gap_unrepresentable",
+        "residual_opening_eq",
+        "winning_residual_opening",
+        "successor_eq",
+        "residual_loss",
+        "every_residual_pick_loses",
+        "ancestor_loss",
+        "every_ancestor_pick_loses",
+        "full_gap_counterexample_without_density"
+      ]
+    },
+    {
+      "module": "CatchUp.GapSuccessorObstruction",
+      "path": "CatchUp/GapSuccessorObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "A dense even ancestor can have a losing proposed gap successor while the ancestor itself wins; refutes that preservation implication.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "ancestor_arithmetic",
+        "exact_blocks",
+        "exact_block_cases",
+        "exact_block_bounded",
+        "attained_block_bound",
+        "no_gap_subsum",
+        "gap_unrepresentable",
+        "successor_eq",
+        "residual_loss",
+        "every_residual_pick_loses",
+        "continuing_pick_loses",
+        "ancestor_win",
+        "dense_even_maximal_gap_counterexample"
+      ]
+    },
+    {
+      "module": "CatchUp.IntervalSuccessorReplyObstruction",
+      "path": "CatchUp/IntervalSuccessorReplyObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "At an actual drawn interval endpoint, the immediate-successor reply can lose; all first choices at the endpoint are certified.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "child_values",
+        "first_pick_values",
+        "endpoint_draw",
+        "endpoint_support_identity",
+        "after_twelve_identity",
+        "after_twelve_win",
+        "successor_reply_loses",
+        "core_context",
+        "core_context_steps"
+      ]
+    },
+    {
+      "module": "CatchUp.NearDeficitGuardObstruction",
+      "path": "CatchUp/NearDeficitGuardObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "A counter one below the deficit need not protect against loss; inserting two can reverse value and invalidate a copied winning move.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "parent_loss",
+        "inserted_after_thirteen",
+        "core_guard_win",
+        "inserted_move_thirteen",
+        "inserted_win",
+        "arithmetic_premises",
+        "source_geometry",
+        "every_pick_loses",
+        "winningSource_after_fifteen",
+        "guardedSource_after_fifteen",
+        "winningSource_move_fifteen",
+        "guardedSource_move_fifteen",
+        "winningSource_win",
+        "not_near_deficit_nonloss",
+        "not_insert_two_nonwin",
+        "not_copy_winning_move"
+      ]
+    },
+    {
+      "module": "CatchUp.OddPairRootObstruction",
+      "path": "CatchUp/OddPairRootObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "An even-total root made of six odd-start adjacent pairs is winning. This support is not an initial interval.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "root_win",
+        "five_pairs_one_loss",
+        "after_four_loss",
+        "pair_geometry",
+        "reference_win",
+        "not_even_odd_pairs_nonwin"
+      ]
+    },
+    {
+      "module": "CatchUp.SevenPairTest",
+      "path": "CatchUp/SevenPairTest.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "Adding two pairs breaks a previously successful recursive defense; includes exact counterplay and a symbolic bad-mate family.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "lifted_nine_win",
+        "adding_two_pairs_breaks_nine",
+        "not_uniform_nine",
+        "lifted_nine_reference_win",
+        "start_support",
+        "candidate_counterplay_legal",
+        "critical_defender_cannot_avoid_loss",
+        "ordinary_mate_loses",
+        "uniform_bad_mate"
+      ]
+    },
+    {
+      "module": "CatchUp.TwoAnchorDoubleLossObstruction",
+      "path": "CatchUp/TwoAnchorDoubleLossObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "Sparse supports can lose at both small deficits despite two anchors. The required losing high-shadow hypothesis is absent in this example.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "arithmetic_premises",
+        "core_one_loss",
+        "core_three_loss",
+        "shadow_eight_win",
+        "every_pick_loses_at_one",
+        "every_pick_loses_at_three",
+        "not_uniform_two_anchor_separation",
+        "shadow_eight_not_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.UnitGuardObstruction",
+      "path": "CatchUp/UnitGuardObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "A twelve-counter support of minimum two loses at deficit one; all twelve first picks are covered.",
+      "evidence": "Lean proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "guard_loss",
+        "arithmetic_premises",
+        "every_pick_loses",
+        "reference_loss",
+        "not_unit_guard_nonloss"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.Parity",
+      "path": "CatchUp/Earlier/Parity.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Odd effective total rules out a draw at normalized positions and initial roots, with the invariant transferred through picks.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "Position.mod_eq_two_deficit_add_sum_after_pick",
+        "Position.value_ne_draw_of_odd",
+        "deficit_add_sum_after_opening",
+        "ReachableFromOpening.mod_eq_two_deficit_add_sum",
+        "after_opening_value_ne_draw_of_odd_sum",
+        "value_ne_draw_of_odd_sum",
+        "value_eq_win_of_odd_sum_and_can_avoid_loss_after_opening"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.ThreeCounterSafety",
+      "path": "CatchUp/Earlier/ThreeCounterSafety.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "An unbounded parametric three-counter nonloss theorem, under explicit order and deficit-region hypotheses.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "can_avoid_loss_three_counters"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CompletedTurnReflection",
+      "path": "CatchUp/Earlier/CompletedTurnReflection.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Characterizes when a chosen completed turn is legal at the deficit reflected through its total; handles the zero/singleton boundary.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "exists_turn_set_deficit_zero_iff_singleton",
+        "exists_turn_set_at_positive_excess_iff_deficit_lt_max",
+        "completed_turn_deficit_reflection_involutive",
+        "chosen_max_lt_deficit_of_no_positive_excess_reflection",
+        "exists_turn_set_at_excess_iff_deficit_lt_max_of_missing"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateTests",
+      "path": "CatchUp/Earlier/CertificateTests.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Transparent kernel-checked terminal, owner and opponent certificates, plus executable malformed-certificate and extraction regressions.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "terminal_certificate_checks",
+        "terminal_certificate_sound",
+        "owner_certificate_checks",
+        "owner_certificate_sound",
+        "owner_certificate_value_ne_loss",
+        "opponent_certificate_checks",
+        "opponent_certificate_sound",
+        "opponent_certificate_value_ne_win"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateSoundness",
+      "path": "CatchUp/Earlier/CertificateSoundness.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Accepted full strategy DAGs imply fixed-player CanAvoidLoss under the reference semantics.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "contains_position_of_contains_state",
+        "node_valid_of_dag_valid",
+        "mem_available_counters_iff_legal_move",
+        "can_avoid_loss_of_contains_position",
+        "check_certificate_sound"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateChecker",
+      "path": "CatchUp/Earlier/CertificateChecker.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Independent local/global checker for exact state labels, legal transitions, terminal safety, all opponent moves and strict progress. Soundness is proved in CertificateSoundness.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": []
+    },
+    {
+      "module": "CatchUp.Earlier.StrategyContract",
+      "path": "CatchUp/Earlier/StrategyContract.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Data format for solved graphs and fixed-player strategy DAGs, with the strategy owner and player to act explicit.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": []
+    },
+    {
+      "module": "CatchUp.Earlier.StrategyExtraction",
+      "path": "CatchUp/Earlier/StrategyExtraction.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Untrusted extraction keeps one owner witness and every opponent reply; its output must pass the independent checker.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed. Executable outputs are untrusted until checked.",
+      "public_theorem_names": []
+    },
+    {
+      "module": "CatchUp.Earlier.ExactSolver",
+      "path": "CatchUp/Earlier/ExactSolver.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Earlier memoized Lean solver and reference-comparison code. Compiling this executable does not certify its exported outcomes.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed. Executable outputs are untrusted until checked.",
+      "public_theorem_names": []
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateComplexityHighCounters",
+      "path": "CatchUp/Earlier/CertificateComplexityHighCounters.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Every valid full initial certificate at N>=16 has at least 2^floor((N-2)/12) listed nodes. Applies to this terminal-leaf certificate language, not all proof systems.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "large_counter_twice_gt",
+        "nonterminal_of_two_large",
+        "completed_turn_large_card_le_two",
+        "completed_turn_large_count",
+        "large_count_after_pick",
+        "largeRemaining_mono",
+        "large_adversary_macro",
+        "force_large_target_deletion",
+        "large_opponent_node_lower_bound",
+        "initial_large_card",
+        "initial_certificate_exponential",
+        "initial_certificate_exponential_floor",
+        "minimumNodes_exponential"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateComplexityGame",
+      "path": "CatchUp/Earlier/CertificateComplexityGame.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Game-aware deletion/covering lemmas for full certificates, with actual turn identities and bounded deletion cost.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "card_mul_succ_le_twice_sum",
+        "bounded_after_pick",
+        "bounded_after_trace",
+        "nonterminal_of_half_remaining",
+        "completed_turn_length_le",
+        "completed_turn_card",
+        "owner_step",
+        "opponent_step",
+        "owner_completed_turn",
+        "adversary_macro",
+        "force_target_deletion",
+        "deletionFamily_card_le",
+        "mem_deletionFamily",
+        "opponent_node_lower_bound",
+        "initial_certificate_node_lower_bound"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateComplexity",
+      "path": "CatchUp/Earlier/CertificateComplexity.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Defines full-certificate existence, attained minimum node count, deletion-closure counting and target-cover bounds.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "minimumNodes_realized",
+        "minimumNodes_le",
+        "initial_after_pick",
+        "sdiff_mem_of_deletionClosed",
+        "powerset_subset_of_deletionClosed",
+        "exponential_of_deletionClosed",
+        "powerset_deletionClosed",
+        "target_cover_count",
+        "two_pow_mul_choose_le",
+        "target_cover_exponential"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateComplexityCompression",
+      "path": "CatchUp/Earlier/CertificateComplexityCompression.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "A proved maximum-equals-deficit target enables sound partial certificates. Structural leaves change the certificate language.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "maximum_deficit_target_sound",
+        "compressed_certificate_sound"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.DeficitWinningBound",
+      "path": "CatchUp/Earlier/DeficitWinningBound.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "An available exact deficit forces a residual winning-opening restriction; an available maximum equal to the deficit guarantees nonloss.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "loss_with_available_deficit_forces_large_unique_winning_opening",
+        "Position.value_ne_loss_of_deficit_is_max",
+        "pair_deletion_position_top_value_ne_loss",
+        "pair_deletion_position_value_ne_loss_of_upper_residuals",
+        "after_opening_loss_forces_neighbor_value_jump",
+        "lower_ray_successor_child_loss_forces_large_unique_winning_opening"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.LowerRaySuccessor",
+      "path": "CatchUp/Earlier/LowerRaySuccessor.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Successor-child relations for the lower pair-deletion ray; isolates the remaining nonwinning obligations.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "succ_mem_pair_deletion_position",
+        "pair_deletion_position_after_pick_succ",
+        "pair_deletion_position_move_outcome_succ",
+        "pair_deletion_position_value_ne_loss_of_successor_value_ne_win",
+        "lower_pair_deletion_nonloss_of_successor_draws",
+        "lower_pair_deletion_nonloss_of_interior_successor_nonwin",
+        "value_Icc_eq_draw_of_successor_draws",
+        "value_Icc_eq_draw_of_interior_successor_nonwin",
+        "lower_ray_successor_move_outcome",
+        "lower_ray_successor_move_two",
+        "lower_ray_successor_value_ne_loss_iff",
+        "lower_ray_successor_value_ne_loss_of_tied_residual_ne_win",
+        "lower_ray_successor_value_ne_win_iff",
+        "lower_ray_successor_value_eq_draw_iff"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.PartialCertificateSoundness",
+      "path": "CatchUp/Earlier/PartialCertificateSoundness.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Accepted partial strategy DAGs imply nonloss when the recognized target leaves have an independently proved safety theorem.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "partial_node_valid_of_partial_dag_valid",
+        "can_avoid_loss_of_contains_position_partial",
+        "can_avoid_loss_of_contains_state_partial",
+        "check_partial_certificate_sound"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.PartialCertificateChecker",
+      "path": "CatchUp/Earlier/PartialCertificateChecker.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Extends the full checker with explicit target leaves. It does not assume that an arbitrary target is safe.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": []
+    },
+    {
+      "module": "CatchUp.Earlier.CertificateComplexityFixtures",
+      "path": "CatchUp/Earlier/CertificateComplexityFixtures.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Literal full and compressed certificates for both players at N=3,4,7, with kernel-checked node counts. No certificate-size minimality is asserted.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "full3p1_initial",
+        "compressed3p1_checked",
+        "compressed3p1_safe",
+        "full3p2_initial",
+        "compressed3p2_checked",
+        "compressed3p2_safe",
+        "full4p1_initial",
+        "compressed4p1_checked",
+        "compressed4p1_safe",
+        "full4p2_initial",
+        "compressed4p2_checked",
+        "compressed4p2_safe",
+        "full7p1_initial",
+        "compressed7p1_checked",
+        "compressed7p1_safe",
+        "full7p2_initial",
+        "compressed7p2_checked",
+        "compressed7p2_safe",
+        "witness_node_counts"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.UniformExactSumDescentObstruction",
+      "path": "CatchUp/Earlier/UniformExactSumDescentObstruction.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "An explicit obstruction to two successive upper-only exact-block descent steps; rejects that uniform route, not C.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "first_block_forced",
+        "no_second_upper_only_block",
+        "forced_branch_available",
+        "no_two_upper_only_steps"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.AdditiveTripleReduction",
+      "path": "CatchUp/Earlier/AdditiveTripleReduction.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Reduces pair-deletion safety to additive-triple residual obligations, with the doubling case handled separately.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "pair_deletion_position_after_pick_difference",
+        "pair_deletion_position_move_outcome_difference",
+        "pair_deletion_position_value_ne_loss_of_additive_residual_ne_win",
+        "difference_mem_pair_deletion_position",
+        "pair_deletion_position_value_ne_loss_of_additive_residual_ne_win_of_not_double",
+        "doubling_pair_deletion_position_after_pick_succ",
+        "doubling_pair_deletion_position_move_outcome_succ",
+        "succ_mem_doubling_pair_deletion_position",
+        "doubling_pair_deletion_position_value_ne_loss_of_residual_ne_win",
+        "all_pair_deletion_nonloss_of_additive_residuals",
+        "value_Icc_eq_draw_of_additive_residuals"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.LowerRayExactDeficit",
+      "path": "CatchUp/Earlier/LowerRayExactDeficit.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Exact-deficit endpoint identities and draw-opening reductions for the lower ray.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "position_value_zero_deficit_eq_value",
+        "pred_mem_pair_deletion_position",
+        "pair_deletion_position_after_pick_pred",
+        "pair_deletion_position_move_outcome_pred",
+        "pair_deletion_position_value_ne_loss_of_exact_deficit_residual_ne_win",
+        "lower_ray_exact_deficit_residual_after_opening_two",
+        "lower_ray_exact_deficit_residual_three_after_opening_four",
+        "lower_pair_deletion_nonloss_of_exact_deficit_residuals",
+        "value_Icc_eq_draw_of_exact_deficit_residual_draws",
+        "value_Icc_eq_draw_of_exact_deficit_residual_draw_openings",
+        "value_Icc_eq_draw_of_exact_deficit_canonical_openings"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.ReplyDigraphReduction",
+      "path": "CatchUp/Earlier/ReplyDigraphReduction.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Represents first-two-pick outcomes as a ranked reply graph and proves conditional draw reductions. A ranking still needs to be supplied.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "reply_edge_iff_reverse_loss",
+        "neutral_pair_comm",
+        "pair_deletion_move_outcome_cross",
+        "reply_edge_or_neutral_pair_or_reverse",
+        "after_opening_value_eq_win_iff_exists_reply_edge",
+        "after_opening_value_eq_loss_iff_all_reverse_reply_edges",
+        "after_opening_value_eq_draw_iff_no_reply_edge_and_neutral",
+        "every_opening_draw_iff_every_pair_neutral",
+        "value_eq_draw_of_ranked_reply_graph",
+        "value_eq_draw_of_reply_edges_decrease_number",
+        "opening_catchable_Icc",
+        "every_opening_draw_Icc_iff_every_pair_neutral",
+        "reply_edge_lt_of_all_pair_deletion_nonloss",
+        "value_Icc_eq_draw_of_reply_edges_decrease_number",
+        "value_Icc_eq_draw_of_reply_edges_decrease_number_at_one",
+        "value_Icc_eq_draw_of_all_pair_deletion_nonloss_and_neutral_at_one",
+        "top_four_middle_pair_residual_value_eq_win",
+        "top_four_middle_reply_edge",
+        "top_four_middle_not_neutral"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.TopFourClassification",
+      "path": "CatchUp/Earlier/TopFourClassification.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Symbolic classification for subsets of the four added counters within the stated start/deficit bounds, reusing the current pair API and retaining an import-compatible renamed duplicate lemma.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "earlier_value_pair_exact",
+        "value_triple_without_first",
+        "value_triple_without_second",
+        "value_triple_without_third",
+        "value_triple_without_fourth",
+        "value_top_four",
+        "value_top_four_deficit_four",
+        "top_subset_value?_sound"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.ScoreDebtTerminalRepair",
+      "path": "CatchUp/Earlier/ScoreDebtTerminalRepair.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "A causal terminal repayment gadget for an unbounded three-counter family; explicit hypotheses retain actual versus shadow roles.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "phase_closed",
+        "phase_terminal_margin",
+        "phase_after_trace",
+        "greedy_terminal_margin",
+        "shadow_first",
+        "shadow_second",
+        "shadow_trace",
+        "shadow_forced_reply",
+        "repaired_margin_bound",
+        "greedy_legal_exists",
+        "phase_can_avoid_loss",
+        "actual_can_avoid_loss",
+        "two_buffer_of_card_le",
+        "actual_after_pick_card",
+        "buffer_after_first_pick"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.CompletedMargin",
+      "path": "CatchUp/Earlier/CompletedMargin.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Tracks signed completed margins and effective parity along legal traces, preserving the winner when the terminal trailing player receives leftovers.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "GamePosition.completion_sign",
+        "GamePosition.completed_margin_even",
+        "GamePosition.completed_win_margin_ge_two",
+        "completed_margin_transfer",
+        "erase_two_pairs_even",
+        "signed_picks_balance",
+        "completed_margin_ledger",
+        "PickTrace.effective_parity",
+        "PickTrace.remaining_card_le"
+      ]
+    },
+    {
+      "module": "CatchUp.Earlier.SimulationSoundness",
+      "path": "CatchUp/Earlier/SimulationSoundness.lean",
+      "group": "Recovered earlier certificates and structural results",
+      "summary": "Solver-independent transfer theorems for exact and ghost strategy simulations. A relation must satisfy the stated adversarial simulation obligations.",
+      "evidence": "Recovered Lean theorem/definition source; fresh pinned build and transitive axiom audit passed.",
+      "public_theorem_names": [
+        "GamePosition.p1_score_balance_after_pick",
+        "GamePosition.AlignedSafeGhostStep.can_avoid_loss",
+        "StrategySimulation.can_avoid_loss",
+        "GhostStrategySimulation.can_avoid_loss"
+      ]
+    }
+  ]
+}

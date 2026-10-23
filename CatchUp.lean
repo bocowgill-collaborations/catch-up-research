@@ -68,3 +68,16 @@ import CatchUp.UnitGuardObstruction
 import CatchUp.WholeTurn
 import CatchUp.WinningOpening
 import CatchUp.ZeroDeficit
+
+import CatchUp.Earlier.Parity
+import CatchUp.Earlier.ThreeCounterSafety
+import CatchUp.Earlier.CompletedTurnReflection
+import CatchUp.Earlier.CertificateTests
+import CatchUp.Earlier.CertificateComplexityHighCounters
+import CatchUp.Earlier.CertificateComplexityCompression
+import CatchUp.Earlier.CertificateComplexityFixtures
+import CatchUp.Earlier.UniformExactSumDescentObstruction
+import CatchUp.Earlier.AdditiveTripleReduction
+import CatchUp.Earlier.ScoreDebtTerminalRepair
+
+

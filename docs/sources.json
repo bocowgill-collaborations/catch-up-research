@@ -1,0 +1,114 @@
+{
+  "checked_date": "2026-10-23",
+  "scope": "Curated primary/source links, not exhaustive bibliographic coverage. UTC commit timestamps and event/result dates are distinct.",
+  "sources": [
+    {
+      "id": "original-paper",
+      "title": "Catch-Up: A Game in Which the Lead Alternates",
+      "authors": [
+        "Aaron Isaksen",
+        "Mehmet Ismail",
+        "Steven J. Brams",
+        "Andy Nealen"
+      ],
+      "year": 2015,
+      "url": "https://www.nealen.net/papers/catch-up-a-game-in-which-the-lead-alternates-2015.pdf",
+      "kind": "original paper",
+      "evidence": "Primary paper inspected; not all its claims have been formalized here."
+    },
+    {
+      "id": "original-code",
+      "title": "Authors\u2019 original game code and notebooks",
+      "year": 2016,
+      "url": "https://github.com/aisaksen/catch-up/tree/41407faa7e60ebeb6be07d32141f24343cd9b9ee",
+      "commit": "41407faa7e60ebeb6be07d32141f24343cd9b9ee",
+      "commit_date_utc": "2016-02-16T15:47:53Z",
+      "kind": "source code",
+      "evidence": "Historical code collection; linked rather than independently audited or vendored."
+    },
+    {
+      "id": "stengel-2019",
+      "title": "Computational progress on the Catch-Up game",
+      "authors": [
+        "Bernhard von Stengel"
+      ],
+      "event_date": "2019-02-22",
+      "url": "https://www.lse.ac.uk/Mathematics/assets/documents/Events-Archive/CGO-PhD/PhD-Seminar-on-Combinatorics-2019-update.pdf#page=5",
+      "kind": "seminar abstract",
+      "claims": [
+        "Optimal-play computations through N=34 consistent with the even-total draw conjecture",
+        "Uniqueness of a winning first move, if one exists",
+        "Observed odd-total pattern from N=21: P1 wins with an opening at most three"
+      ],
+      "evidence": "Primary institutional abstract inspected; no independent replay or source/certificate archive located in this audit."
+    },
+    {
+      "id": "stengel-workshop",
+      "title": "Fair Play in Economics and Politics workshop program",
+      "event_date": "2019-03-25",
+      "url": "https://www.kcl.ac.uk/events/fair-play-in-economics-and-politics",
+      "kind": "event program",
+      "evidence": "Confirms a von Stengel talk with the same title; not an additional computational certificate."
+    },
+    {
+      "id": "formal-target",
+      "title": "FormalConjectures Catch-Up statement",
+      "url": "https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182",
+      "commit": "6fbb54f24ccc2e64dcfaffc28c58950e377110d2",
+      "blob": "b7b75fcd7892889c85924b8fb12ce31d2124a12d",
+      "commit_date_utc": "2026-09-18T14:37:39Z",
+      "kind": "formal statement",
+      "evidence": "The conjecture proof remains unfinished. This source is not a proved theorem used in this collection."
+    },
+    {
+      "id": "formal-issue",
+      "title": "The Catch-Up Game Conjecture, issue 1324",
+      "url": "https://github.com/google-deepmind/formal-conjectures/issues/1324",
+      "state_when_checked": "closed",
+      "kind": "discussion",
+      "evidence": "Historical addition of the conjecture; issue closure is not settlement of the conjecture."
+    },
+    {
+      "id": "api-issue",
+      "title": "Proposal: normalized post-opening API, issue 4834",
+      "url": "https://github.com/google-deepmind/formal-conjectures/issues/4834",
+      "state_when_checked": "open",
+      "kind": "discussion",
+      "evidence": "Scope and integration discussion; not itself a proof artifact."
+    },
+    {
+      "id": "catchup-exact",
+      "title": "catchup-exact",
+      "url": "https://github.com/t1merickson/catchup-exact/tree/6785c5e0d81a66002544d81af5307a97faf4e8dd",
+      "commit": "6785c5e0d81a66002544d81af5307a97faf4e8dd",
+      "commit_date_utc": "2026-07-25T00:23:10Z",
+      "readme_blob": "fa78a2ab4533fc7368f3facbb4b5bcc691458fb4",
+      "kind": "solver implementation",
+      "claims": [
+        "Exact draws at N=23,24,27,28"
+      ],
+      "evidence": "README/source report inspected; full runs not independently replayed or Lean-certified here. Novelty claims are not adopted."
+    },
+    {
+      "id": "c5-k4",
+      "title": "c5-k4 Catch-Up parity-packed development report",
+      "url": "https://github.com/Kuberwastaken/c5-k4/blob/e2cee93231eefb91c41e35450f7eeb19fd9c8c75/results/expansion/live-search-2026-08-14/catchup-n24-parity-packed-development/result.md",
+      "commit": "e2cee93231eefb91c41e35450f7eeb19fd9c8c75",
+      "repository_snapshot_date_utc": "2026-10-18T12:25:35Z",
+      "result_date_utc": "2026-08-14",
+      "report_blob": "5a11f38a78bc5875026620a364ee585382445971",
+      "kind": "solver report",
+      "claims": [
+        "Exact N=23 and N=24 draws; later N=24 report supersedes a timeout bracket"
+      ],
+      "evidence": "Report inspected; large calculations not independently replayed or Lean-certified here."
+    },
+    {
+      "id": "cryptids",
+      "title": "Google DeepMind Cryptids",
+      "url": "https://github.com/google-deepmind/cryptids",
+      "kind": "machine/proof infrastructure",
+      "evidence": "This collection vendors a pinned dependency closure; precise baseline/compiler pins are in verification/pins.json."
+    }
+  ]
+}

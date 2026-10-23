@@ -10,7 +10,7 @@ number-theoretic properties of Catch-Up, including the main
 It contains proofs, computations, failed approaches, and the
 [Catch-Up cryptid](cryptid/).
 
-**Status, 22 October 2026:** the conjecture remains open. Verified work currently
+**Status, 23 October 2026:** the conjecture remains open. Verified work currently
 covers intermediate results and the machine construction.
 
 ## The game and the conjecture
@@ -39,17 +39,21 @@ The statement also includes the trivial empty game, `N = 0`.
 
 | Section | What you will find |
 | --- | --- |
+| [Start here](docs/) | Worked play, a glossary, and the number theory behind the question. |
+| [Reading and related work](docs/sources.md) | The original paper, earlier results, public solvers, and discussions. |
 | [results/](results/) | Readable results and informal arguments, with review status. |
 | [CatchUp/](CatchUp/) | Lean definitions, intermediate theorems, and checked certificates. |
 | [computation/](computation/) | Solvers, finite results, and reproduction instructions. |
 | [cryptid/](cryptid/) | The machine, its equivalence proof, and documentation. |
-| [Open questions](#open-questions-and-contributions) | Research goals and ways to contribute. |
+| [Open questions](results/open-questions.md) | Research goals and ways to contribute. |
 
 ## Proofs and intermediate results
 
 The existing proofs, checked by the Lean proof assistant, establish:
 
 - **Correct evaluation:** an executable evaluator agrees with the reference rules.
+- **Certificate checking and size:** sound strategy checkers, a size bound for
+  explicit full certificates, and examples of structural compression.
 - **Structural defenses:** a player can avoid losing in certain families of
   partially played positions. Other results rule out specific winning choices.
 - **Failed strategy principles:** certified counterexamples refute several
@@ -61,12 +65,17 @@ instructions; informal arguments and heuristic observations are identified separ
 
 ## Computational evidence
 
-[catchup-exact](https://github.com/t1merickson/catchup-exact) reports exact draws for
-`N = 23, 24, 27, 28`.
-[c5-k4](https://github.com/Kuberwastaken/c5-k4/blob/main/README.md) also reports
-Catch-Up computations for `N = 23, 24`. These reports await independent audit here.
-Entries distinguish reported, reproduced, and Lean-certified results. Finite cases
-do not settle the universal conjecture.
+A [2019 LSE report](https://www.lse.ac.uk/Mathematics/assets/documents/Events-Archive/CGO-PhD/PhD-Seminar-on-Combinatorics-2019-update.pdf#page=5) describes computations through **N = 34**, consistent with the conjecture.
+Later public implementations include [catchup-exact](https://github.com/t1merickson/catchup-exact)
+and [c5-k4](https://github.com/Kuberwastaken/c5-k4). Their large runs await independent
+audit here. See [the evidence table](computation/) for sources, dates and assurance.
+Finite cases do not settle the universal conjecture.
+
+Try a small exact position without installing Lean:
+
+```sh
+python3 computation/explore.py --initial 4
+```
 
 ## The Catch-Up cryptid
 
@@ -89,6 +98,9 @@ separately.
 - Can the local defenses be extended to cover every opponent response for all
   relevant initial games?
 - Can proofs and certificates be compact and practical to check?
+
+The [full problem guide](results/open-questions.md) also covers odd-total games,
+nonconsecutive supports, number-theoretic structure, complexity, and variants.
 
 Contributions can include proofs, computations, failed approaches, or explanations.
 State the claim, identify the rules and evidence, explain how to check it, and

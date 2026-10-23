@@ -1,0 +1,251 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseHoleSuccessor
+
+/-!
+# Dense add-top transfer through a four-hole small-gap invariant
+
+This module isolates a local catching-window condition and shows how a four-hole, small-deficit
+nonwin invariant supplies it.
+-/
+
+namespace CatchUp
+
+/-- Every qualifying dense lower root acquires a safe catching move no more than four above its
+deficit after the fresh top counter is inserted. -/
+def DenseAddTopWindowSafe (N : ℕ) : Prop :=
+  ∀ (remaining : Finset ℕ) (deficit : ℕ),
+    remaining ⊆ Finset.Icc 1 N →
+    ((Finset.Icc 1 N) \ remaining).card ≤ 3 →
+    deficit ≤ N →
+    ¬ remaining.sum (fun x => x) < deficit →
+    Even (deficit + remaining.sum (fun x => x)) →
+    ∃ x ∈ insert (N + 1) remaining,
+      deficit ≤ x ∧ x ≤ deficit + 4 ∧
+        ((⟨insert (N + 1) remaining, deficit⟩ : Position).afterPick x).value ≠ .win
+
+/-- Every even effective-total position with at most four holes and deficit at most four is
+non-winning. Catchability is deliberately not required. -/
+def SmallGapFourHoleNonwin (M : ℕ) : Prop :=
+  ∀ position : Position,
+    position.remaining ⊆ Finset.Icc 1 M →
+    ((Finset.Icc 1 M) \ position.remaining).card ≤ 4 →
+    position.deficit ≤ 4 →
+    Even (position.deficit + position.remaining.sum (fun x => x)) →
+    position.value ≠ .win
+
+/-- A catching-window witness creates a child with at most four holes and deficit at most four. -/
+@[category API, AMS 91]
+theorem dense_add_top_window_child_data
+    (N deficit x : ℕ) (remaining : Finset ℕ)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 3)
+    (hx : x ∈ insert (N + 1) remaining)
+    (hcatch : deficit ≤ x) (hwindow : x ≤ deficit + 4) :
+    let child := (⟨insert (N + 1) remaining, deficit⟩ : Position).afterPick x
+    child.remaining ⊆ Finset.Icc 1 (N + 1) ∧
+      ((Finset.Icc 1 (N + 1) \ child.remaining).card ≤ 4) ∧
+      child.deficit ≤ 4 := by
+  dsimp
+  simp only [Position.afterPick, if_neg (not_lt_of_ge hcatch)]
+  have henlargedSub : insert (N + 1) remaining ⊆ Finset.Icc 1 (N + 1) := by
+    intro y hy
+    simp only [Finset.mem_insert] at hy
+    rcases hy with rfl | hy
+    · simp
+    · have hyOld := hsub hy
+      simp only [Finset.mem_Icc] at hyOld ⊢
+      omega
+  have hbaseHolesEq :
+      Finset.Icc 1 (N + 1) \ insert (N + 1) remaining =
+        Finset.Icc 1 N \ remaining := by
+    ext y
+    simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert]
+    constructor
+    · rintro ⟨⟨hyOne, hyUpper⟩, hyMissing⟩
+      simp only [not_or] at hyMissing
+      refine ⟨⟨hyOne, ?_⟩, hyMissing.2⟩
+      omega
+    · rintro ⟨⟨hyOne, hyUpper⟩, hyMissing⟩
+      refine ⟨⟨hyOne, by omega⟩, ?_⟩
+      simp only [not_or]
+      exact ⟨by omega, hyMissing⟩
+  have hchildHolesEq :
+      Finset.Icc 1 (N + 1) \ (insert (N + 1) remaining).erase x =
+        insert x (Finset.Icc 1 (N + 1) \ insert (N + 1) remaining) := by
+    ext y
+    simp only [Finset.mem_sdiff, Finset.mem_erase, Finset.mem_insert]
+    constructor
+    · rintro ⟨hyI, hyMissing⟩
+      by_cases hyx : y = x
+      · exact Or.inl hyx
+      · exact Or.inr ⟨hyI, fun hyRemaining => hyMissing ⟨hyx, hyRemaining⟩⟩
+    · rintro (rfl | ⟨hyI, hyMissing⟩)
+      · exact ⟨henlargedSub hx, by simp⟩
+      · exact ⟨hyI, by simp [hyMissing]⟩
+  constructor
+  · exact (Finset.erase_subset x (insert (N + 1) remaining)).trans henlargedSub
+  · constructor
+    · rw [hchildHolesEq]
+      have hcard := Finset.card_insert_le x
+        (Finset.Icc 1 (N + 1) \ insert (N + 1) remaining)
+      rw [hbaseHolesEq] at hcard
+      rw [hbaseHolesEq]
+      omega
+    · omega
+
+/-- A three-hole lower support together with its fresh top always meets the five-counter catching
+window. For deficit zero, the four positive counters `1, ..., 4` provide the counting set. -/
+@[category API, AMS 91]
+theorem exists_dense_add_top_window_counter
+    (N deficit : ℕ) (remaining : Finset ℕ)
+    (hN : 4 ≤ N)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 3)
+    (hdeficit : deficit ≤ N) :
+    ∃ x ∈ insert (N + 1) remaining, deficit ≤ x ∧ x ≤ deficit + 4 := by
+  by_cases htopWindow : N + 1 ≤ deficit + 4
+  · exact ⟨N + 1, by simp, by omega, htopWindow⟩
+  · let window := Finset.Icc (max 1 deficit) (deficit + 4)
+    have hwindowSub : window ⊆ Finset.Icc 1 N := by
+      intro x hx
+      simp only [window, Finset.mem_Icc] at hx ⊢
+      by_cases hdeficitZero : deficit = 0
+      · subst deficit
+        exact ⟨hx.1, hx.2.trans hN⟩
+      · have hOne : 1 ≤ max 1 deficit := le_max_left 1 deficit
+        omega
+    have hwindowCard : 4 ≤ window.card := by
+      simp only [window, Nat.card_Icc]
+      by_cases hdeficitZero : deficit = 0
+      · subst deficit
+        norm_num
+      · have hdeficitPositive : 1 ≤ deficit := by omega
+        rw [max_eq_right hdeficitPositive]
+        omega
+    have hmeets : ∃ x ∈ window, x ∈ remaining := by
+      by_contra hdisjoint
+      have hwindowMissing : window ⊆ Finset.Icc 1 N \ remaining := by
+        intro x hx
+        refine Finset.mem_sdiff.mpr ⟨hwindowSub hx, ?_⟩
+        intro hxRemaining
+        exact hdisjoint ⟨x, hx, hxRemaining⟩
+      have hcard := Finset.card_le_card hwindowMissing
+      omega
+    obtain ⟨x, hxWindow, hxRemaining⟩ := hmeets
+    have hxBounds := Finset.mem_Icc.mp hxWindow
+    refine ⟨x, by simp [hxRemaining], ?_, hxBounds.2⟩
+    exact (le_max_right 1 deficit).trans hxBounds.1
+
+/-- The four-hole, small-deficit nonwin invariant supplies the local catching-window property.
+Evenness of the adjoined top is required to transfer the lower effective parity to the child. -/
+@[category API, AMS 91]
+theorem dense_add_top_window_safe_of_small_gap_four_hole_nonwin
+    (N : ℕ) (hN : 4 ≤ N) (htopEven : Even (N + 1))
+    (hsmall : SmallGapFourHoleNonwin (N + 1)) :
+    DenseAddTopWindowSafe N := by
+  intro remaining deficit hsub hholes hdeficit _hcatch heven
+  obtain ⟨x, hx, hdx, hxd⟩ :=
+    exists_dense_add_top_window_counter N deficit remaining hN hholes hdeficit
+  let parent : Position := ⟨insert (N + 1) remaining, deficit⟩
+  let child := parent.afterPick x
+  have hxParent : x ∈ parent.remaining := by
+    simpa [parent] using hx
+  have hchildData :
+      child.remaining ⊆ Finset.Icc 1 (N + 1) ∧
+        ((Finset.Icc 1 (N + 1) \ child.remaining).card ≤ 4) ∧
+        child.deficit ≤ 4 := by
+    simpa [child, parent] using
+      dense_add_top_window_child_data N deficit x remaining hsub hholes hx hdx hxd
+  have htopNotMem : N + 1 ∉ remaining := by
+    intro htop
+    have htopUpper := (Finset.mem_Icc.mp (hsub htop)).2
+    omega
+  have hparentEven :
+      Even (parent.deficit + parent.remaining.sum (fun y => y)) := by
+    rcases heven with ⟨lowerHalf, hlowerHalf⟩
+    rcases htopEven with ⟨topHalf, htopHalf⟩
+    refine ⟨lowerHalf + topHalf, ?_⟩
+    simp only [parent]
+    rw [Finset.sum_insert htopNotMem]
+    omega
+  have hchildEven :
+      Even (child.deficit + child.remaining.sum (fun y => y)) := by
+    rw [Nat.even_iff] at hparentEven ⊢
+    have hmod := Position.mod_eq_two_deficit_add_sum_after_pick parent hxParent
+    change (child.deficit + child.remaining.sum (fun y => y)) % 2 =
+      (parent.deficit + parent.remaining.sum (fun y => y)) % 2 at hmod
+    exact hmod.trans hparentEven
+  have hchildNonwin : child.value ≠ .win :=
+    hsmall child hchildData.1 hchildData.2.1 hchildData.2.2 hchildEven
+  exact ⟨x, hx, hdx, hxd, by simpa [child, parent] using hchildNonwin⟩
+
+/-- The local catching-window property is sufficient for dense add-top nonloss preservation.
+The premise that the lower position is already nonlosing is intentionally unused. -/
+@[category API, AMS 91]
+theorem add_top_preserves_dense_three_hole_nonloss_of_window_safe
+    (N : ℕ) (hwindow : DenseAddTopWindowSafe N) :
+    AddTopPreservesDenseThreeHoleNonloss N := by
+  intro remaining deficit hsub hholes hdeficit hcatch heven _hlowerNonloss
+  obtain ⟨x, hx, hdx, _hxd, hchild⟩ :=
+    hwindow remaining deficit hsub hholes hdeficit hcatch heven
+  let position : Position := ⟨insert (N + 1) remaining, deficit⟩
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨x, hx⟩
+  have hxPosition : x ∈ position.remaining := by
+    simpa [position] using hx
+  have hxLeSum : x ≤ position.remaining.sum (fun y => y) :=
+    Finset.single_le_sum (fun y _ => Nat.zero_le y) hxPosition
+  have hpositionCatch :
+      ¬ position.remaining.sum (fun y => y) < position.deficit := by
+    simp only [position]
+    simp only [position] at hxLeSum
+    omega
+  change position.value ≠ .loss
+  rw [Position.value_eq_best_move_outcome position hremaining hpositionCatch]
+  rw [Outcome.best_ne_loss_iff]
+  refine ⟨position.moveOutcome x, ?_, ?_⟩
+  · apply List.mem_map.mpr
+    exact ⟨⟨x, hxPosition⟩, by simp, rfl⟩
+  · rw [Position.moveOutcome]
+    have hnotContinue : ¬ x < position.deficit := by
+      simpa [position] using (not_lt_of_ge hdx)
+    rw [if_neg hnotContinue, Outcome.neg_ne_loss_iff]
+    simpa [position] using hchild
+
+/-- The four-hole, small-deficit nonwin invariant implies dense add-top nonloss preservation when
+the adjoined top is even. -/
+@[category API, AMS 91]
+theorem add_top_preserves_dense_three_hole_nonloss_of_small_gap_four_hole_nonwin
+    (N : ℕ) (hN : 4 ≤ N) (htopEven : Even (N + 1))
+    (hsmall : SmallGapFourHoleNonwin (N + 1)) :
+    AddTopPreservesDenseThreeHoleNonloss N :=
+  add_top_preserves_dense_three_hole_nonloss_of_window_safe N
+    (dense_add_top_window_safe_of_small_gap_four_hole_nonwin N hN htopEven hsmall)
+
+/-- The dense three-hole invariant advances across an even top once the successor endpoint has the
+four-hole, small-deficit nonwin invariant. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_succ_of_small_gap_four_hole_nonwin
+    (N : ℕ) (hN : 4 ≤ N) (htopEven : Even (N + 1))
+    (hdense : DenseThreeHoleNonloss N)
+    (hsmall : SmallGapFourHoleNonwin (N + 1)) :
+    DenseThreeHoleNonloss (N + 1) :=
+  dense_three_hole_nonloss_succ_of_add_top_preserves N hN htopEven hdense
+    (add_top_preserves_dense_three_hole_nonloss_of_small_gap_four_hole_nonwin
+      N hN htopEven hsmall)
+
+end CatchUp

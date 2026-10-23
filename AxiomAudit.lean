@@ -151,3 +151,9 @@ import CatchUp
 #print axioms CatchUp.OddPairRootObstruction.pair_geometry
 #print axioms CatchUp.OddPairRootObstruction.reference_win
 #print axioms CatchUp.OddPairRootObstruction.not_even_odd_pairs_nonwin
+
+#print axioms CatchUpSearch.CertificateChecker.check_certificate_sound
+#print axioms CatchUpSearch.CertificateChecker.check_partial_certificate_sound
+#print axioms CatchUpSearch.CertificateComplexity.initial_certificate_exponential_floor
+#print axioms CatchUpSearch.CertificateComplexity.minimumNodes_exponential
+#print axioms CatchUpSearch.CertificateComplexityCompression.compressed_certificate_sound

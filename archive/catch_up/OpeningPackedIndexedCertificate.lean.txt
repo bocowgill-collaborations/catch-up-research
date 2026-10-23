@@ -1,0 +1,173 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DrawOpening
+import catch_up.PackedLinearIndexedCertificate
+
+/-!
+# Opening-specific packed Catch-Up certificates
+
+This checker proves the value of one interval game without requiring dense-family coverage. Two
+certificates protect the two players from the same exact post-opening root. Their conjunction proves
+that post-opening position is a draw; opening-exchange symmetry then proves the root game is a draw.
+
+Both certificates retain every local indexed strategy obligation of
+`LinearIndexedCertificateChecker`. They advertise exactly one root index, so malformed metadata,
+wrong openings, out-of-bounds roots, and extra advertised roots all fail closed.
+-/
+
+namespace CatchUpSearch.OpeningPackedIndexedCertificate
+
+open CatchUp
+open CertificateChecker
+open LinearIndexedCertificateChecker
+open PackedLinearIndexedCertificate
+
+/-- The node at `index` decodes to the exact position after `opening` in the `N`-counter game. -/
+def IsOpeningRoot (N opening : ℕ) (dag : IndexedDAG) (index : ℕ) : Prop :=
+  ∃ node, dag.nodes[index]? = some node ∧
+    toGamePosition dag.gameSize node.state =
+      GamePosition.afterOpening (Finset.Icc 1 N) opening
+
+instance (N opening : ℕ) (dag : IndexedDAG) (index : ℕ) :
+    Decidable (IsOpeningRoot N opening dag index) := by
+  unfold IsOpeningRoot
+  infer_instance
+
+/-- Require one legal opening and exactly one corresponding advertised root index. -/
+def openingCoverageCheck (N opening : ℕ) (dag : IndexedDAG) : Bool :=
+  decide (opening ∈ Finset.Icc 1 N) &&
+    match dag.rootIndices with
+    | [index] => decide (IsOpeningRoot N opening dag index)
+    | _ => false
+
+/-- Check owner metadata, every local strategy obligation, and the exact opening root. -/
+def checkOpeningCertificate
+    (N opening : ℕ) (owner : Player) (target : TargetPredicate) (dag : IndexedDAG) : Bool :=
+  decide (dag.gameSize = N ∧ dag.player = owner) &&
+    (checkLocalCertificate target dag && openingCoverageCheck N opening dag)
+
+/-- Decode and check one packed opening certificate, rejecting malformed data. -/
+def checkPackedOpeningCertificate
+    (N opening : ℕ) (owner : Player) (target : TargetPredicate) (payload : String) : Bool :=
+  match decode payload with
+  | none => false
+  | some dag => checkOpeningCertificate N opening owner target dag
+
+/-- Check the two protected-player certificates for the same chosen opening. -/
+def checkPackedRootDraw
+    (N opening : ℕ)
+    (playerOneTarget playerTwoTarget : TargetPredicate)
+    (playerOnePayload playerTwoPayload : String) : Bool :=
+  checkPackedOpeningCertificate N opening .p1 playerOneTarget playerOnePayload &&
+    checkPackedOpeningCertificate N opening .p2 playerTwoTarget playerTwoPayload
+
+/-- Successful coverage exposes the exact advertised array node. -/
+@[category API, AMS 91]
+theorem exists_opening_root_of_coverage
+    (N opening : ℕ) (dag : IndexedDAG)
+    (hcoverage : openingCoverageCheck N opening dag = true) :
+    opening ∈ Finset.Icc 1 N ∧
+      ∃ index node, dag.rootIndices = [index] ∧ dag.nodes[index]? = some node ∧
+        toGamePosition dag.gameSize node.state =
+          GamePosition.afterOpening (Finset.Icc 1 N) opening := by
+  have hparts :
+      decide (opening ∈ Finset.Icc 1 N) = true ∧
+        (match dag.rootIndices with
+        | [index] => decide (IsOpeningRoot N opening dag index)
+        | _ => false) = true := by
+    simpa only [openingCoverageCheck, Bool.and_eq_true] using hcoverage
+  refine ⟨of_decide_eq_true hparts.1, ?_⟩
+  cases hroots : dag.rootIndices with
+  | nil => simp [hroots] at hparts
+  | cons index tail =>
+      cases tail with
+      | nil =>
+          have hisRoot : IsOpeningRoot N opening dag index := by
+            apply of_decide_eq_true
+            simpa [hroots] using hparts.2
+          rcases hisRoot with ⟨node, hget, hposition⟩
+          exact ⟨index, node, rfl, hget, hposition⟩
+      | cons next rest => simp [hroots] at hparts
+
+/-- An accepted decoded certificate proves its owner safe after the chosen opening. -/
+@[category API, AMS 91]
+theorem can_avoid_loss_of_check_opening_certificate
+    (N opening : ℕ) (owner : Player) (target : TargetPredicate) (dag : IndexedDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkOpeningCertificate N opening owner target dag = true) :
+    opening ∈ Finset.Icc 1 N ∧
+      CanAvoidLoss owner (GamePosition.afterOpening (Finset.Icc 1 N) opening) := by
+  have hparts :
+      decide (dag.gameSize = N ∧ dag.player = owner) = true ∧
+        (checkLocalCertificate target dag = true ∧
+          openingCoverageCheck N opening dag = true) := by
+    simpa only [checkOpeningCertificate, Bool.and_eq_true] using hcheck
+  have hmeta : dag.gameSize = N ∧ dag.player = owner := of_decide_eq_true hparts.1
+  rcases exists_opening_root_of_coverage N opening dag hparts.2.2 with
+    ⟨hopening, index, node, hroots, hget, hposition⟩
+  have hsafe := can_avoid_loss_of_index target dag htarget hparts.2.1 index node hget
+  exact ⟨hopening, by simpa only [hmeta.2, hposition] using hsafe⟩
+
+/-- The fail-closed packed checker has the same one-opening safety consequence. -/
+@[category API, AMS 91]
+theorem can_avoid_loss_of_check_packed_opening_certificate
+    (N opening : ℕ) (owner : Player) (target : TargetPredicate) (payload : String)
+    (htarget : ∀ dag, decode payload = some dag → TargetSound target dag)
+    (hcheck : checkPackedOpeningCertificate N opening owner target payload = true) :
+    opening ∈ Finset.Icc 1 N ∧
+      CanAvoidLoss owner (GamePosition.afterOpening (Finset.Icc 1 N) opening) := by
+  unfold checkPackedOpeningCertificate at hcheck
+  split at hcheck
+  · simp at hcheck
+  · rename_i dag hdecode
+    exact can_avoid_loss_of_check_opening_certificate N opening owner target dag
+      (htarget dag hdecode) hcheck
+
+/-- If both players can avoid losing after one opening, that post-opening position is a draw. -/
+@[category API, AMS 91]
+theorem opening_value_eq_draw_of_both_can_avoid_loss
+    (N opening : ℕ)
+    (hplayerOne : CanAvoidLoss .p1 (GamePosition.afterOpening (Finset.Icc 1 N) opening))
+    (hplayerTwo : CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 N) opening)) :
+    (afterOpening (Finset.Icc 1 N) opening).value = .draw := by
+  rw [can_avoid_loss_iff_value] at hplayerOne hplayerTwo
+  simp at hplayerOne hplayerTwo
+  cases hvalue : (afterOpening (Finset.Icc 1 N) opening).value <;> simp_all
+
+/-- The fail-closed packed pair proves that the interval game is a draw. -/
+@[category API, AMS 91]
+theorem value_Icc_eq_draw_of_check_packed_root_draw
+    (N opening : ℕ)
+    (playerOneTarget playerTwoTarget : TargetPredicate)
+    (playerOnePayload playerTwoPayload : String)
+    (hplayerOneTarget : ∀ dag, decode playerOnePayload = some dag →
+      TargetSound playerOneTarget dag)
+    (hplayerTwoTarget : ∀ dag, decode playerTwoPayload = some dag →
+      TargetSound playerTwoTarget dag)
+    (hcheck : checkPackedRootDraw N opening playerOneTarget playerTwoTarget
+      playerOnePayload playerTwoPayload = true) :
+    value (Finset.Icc 1 N) = .draw := by
+  simp only [checkPackedRootDraw, Bool.and_eq_true] at hcheck
+  have hp1 := can_avoid_loss_of_check_packed_opening_certificate N opening .p1
+    playerOneTarget playerOnePayload hplayerOneTarget hcheck.1
+  have hp2 := can_avoid_loss_of_check_packed_opening_certificate N opening .p2
+    playerTwoTarget playerTwoPayload hplayerTwoTarget hcheck.2
+  apply (value_eq_draw_iff_exists_draw_after_opening (Finset.Icc 1 N)
+    ⟨opening, hp1.1⟩).2
+  exact ⟨opening, hp1.1, opening_value_eq_draw_of_both_can_avoid_loss N opening hp1.2 hp2.2⟩
+
+end CatchUpSearch.OpeningPackedIndexedCertificate

@@ -1,0 +1,50 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CanAvoidLossClassifier
+import catch_up.PartialCertificateSoundness
+
+/-!
+# Proof-backed targets for Catch-Up partial certificates
+
+This module defines executable target predicates together with Lean proofs that every recognized
+valid state satisfies `CatchUp.CanAvoidLoss` for the certificate owner.
+-/
+
+namespace CatchUpSearch.PartialCertificateTargets
+
+open CatchUp
+open CertificateChecker
+
+/--
+Recognize owner-safe states below a remaining-counter limit using the exact proof-level Boolean
+classifier. The limit controls extraction cost; it is not used to justify safety.
+-/
+def smallSafeTarget (limit gameSize : ℕ) (owner : Player) : TargetPredicate := fun state =>
+  decide ((availableCounters gameSize state).length ≤ limit) &&
+    CanAvoidLossClassifier.check owner (toGamePosition gameSize state)
+
+/-- Every state recognized by `smallSafeTarget` is safe for the partial-certificate owner. -/
+theorem small_safe_target_sound (limit : ℕ) (dag : StrategyDAG) :
+    TargetSound (smallSafeTarget limit dag.gameSize dag.player) dag := by
+  intro state _ hstate
+  have hparts :
+      decide ((availableCounters dag.gameSize state).length ≤ limit) = true ∧
+        CanAvoidLossClassifier.check dag.player (toGamePosition dag.gameSize state) = true := by
+    simpa [smallSafeTarget] using hstate
+  exact (CanAvoidLossClassifier.check_eq_true_iff dag.player _).1 hparts.2
+
+end CatchUpSearch.PartialCertificateTargets

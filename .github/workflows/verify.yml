@@ -6,6 +6,13 @@ on:
 permissions:
   contents: read
 jobs:
+  collection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check guides, catalog and small exact examples
+        run: python3 scripts/check_collection.py
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -32,6 +39,7 @@ jobs:
             python3 scripts/check_axioms.py
             python3 scripts/verify_export.py
             python3 computation/check_semantics.py
+            lake env lean --run computation/CheckEarlier.lean
           fi
       - name: Retain verification receipts
         if: always()

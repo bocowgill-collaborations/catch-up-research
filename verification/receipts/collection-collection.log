@@ -1,0 +1,3 @@
+SOURCES_PASS: exact reference declarations, pinned blobs, mutation control, clean target
+Export verified: 360 preserved sources/data; documentation links and reference fidelity passed
+Collection checks passed: 96 indexed modules, 893 noninitial comparisons, 13 roots, every listed reply and limit/sign controls (1.94s)

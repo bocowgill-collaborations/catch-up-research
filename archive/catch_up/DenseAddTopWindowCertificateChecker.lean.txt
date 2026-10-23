@@ -1,0 +1,107 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseAddTopWindow
+import catch_up.DenseThreeHoleCertificateChecker
+
+/-!
+# Shared strategy certificates for the dense add-top catching window
+
+This module extends the independent partial-strategy checker with a finite coverage condition for
+a safe catching counter among the five offsets `0, ..., 4` at every qualifying dense lower root.
+The certificate generator and exact solver are deliberately not imported here.
+-/
+
+namespace CatchUpSearch.DenseAddTopWindowCertificateChecker
+
+open CatchUp
+open CertificateChecker
+
+/-- Check whether one of the five counters starting at `deficit` is available in the enlarged
+support and its post-pick position occurs in the strategy DAG. -/
+def witnessCheck (N : ℕ) (dag : StrategyDAG) (remaining : Finset ℕ) (deficit : ℕ) : Bool :=
+  (List.range 5).any fun j => decide (
+    let x := deficit + j
+    x ∈ insert (N + 1) remaining ∧
+      ContainsPosition dag
+        ((⟨⟨insert (N + 1) remaining, deficit⟩, .p1⟩ : GamePosition).afterPick x))
+
+/-- Check that every bounded lower support and deficit satisfying the dense hypotheses has a
+certified witness in the five-counter catching window after the fresh top counter is inserted. -/
+def coverageCheck (N : ℕ) (dag : StrategyDAG) : Bool :=
+  (Finset.Icc 1 N).powerset.attach.fold (· && ·) true fun
+      remaining : {s // s ∈ (Finset.Icc 1 N).powerset} =>
+    (Finset.range (N + 1)).attach.fold (· && ·) true fun
+        deficit : {d // d ∈ Finset.range (N + 1)} =>
+      !DenseThreeHoleFiniteChecker.qualifies N remaining.1 deficit.1 ||
+        witnessCheck N dag remaining.1 deficit.1
+
+/-- Independently check the enlarged-game metadata, every partial-strategy obligation, and every
+dense lower root's five-counter catching-window coverage. -/
+def checkCertificate (N : ℕ) (target : TargetPredicate) (dag : StrategyDAG) : Bool :=
+  decide (dag.gameSize = N + 1 ∧ dag.player = .p1) &&
+    (checkPartialCertificate target dag && coverageCheck N dag)
+
+/-- A checked shared strategy DAG with a sound target predicate proves that every qualifying dense
+lower root has a safe catching move within four of its deficit after adding the fresh top. -/
+@[category API, AMS 91]
+theorem dense_add_top_window_safe_of_check_certificate
+    (N : ℕ) (target : TargetPredicate) (dag : StrategyDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkCertificate N target dag = true) :
+    DenseAddTopWindowSafe N := by
+  have hparts :
+      decide (dag.gameSize = N + 1 ∧ dag.player = .p1) = true ∧
+        (checkPartialCertificate target dag = true ∧ coverageCheck N dag = true) := by
+    simpa [checkCertificate, Bool.and_eq_true] using hcheck
+  have hmeta : dag.gameSize = N + 1 ∧ dag.player = .p1 := of_decide_eq_true hparts.1
+  have hvalid : PartialDAGValid target dag :=
+    of_decide_eq_true (by simpa [checkPartialCertificate] using hparts.2.1)
+  intro remaining deficit hsub hholes hdeficit hcatch heven
+  have hremaining : remaining ∈ (Finset.Icc 1 N).powerset := by
+    simpa only [Finset.mem_powerset] using hsub
+  have hdeficitMem : deficit ∈ Finset.range (N + 1) := by
+    simp only [Finset.mem_range]
+    omega
+  have hcoverage := hparts.2.2
+  rw [coverageCheck, Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at hcoverage
+  simp only [true_and, Finset.mem_attach] at hcoverage
+  have houter := hcoverage ⟨remaining, hremaining⟩ True.intro
+  rw [Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at houter
+  simp only [true_and, Finset.mem_attach] at houter
+  have hinner := houter ⟨deficit, hdeficitMem⟩ True.intro
+  have hqualifies :
+      DenseThreeHoleFiniteChecker.qualifies N remaining deficit = true := by
+    simp only [DenseThreeHoleFiniteChecker.qualifies, decide_eq_true_eq]
+    exact ⟨hholes, hcatch, heven⟩
+  have hwitness : witnessCheck N dag remaining deficit = true := by
+    simpa [hqualifies] using hinner
+  rw [witnessCheck, List.any_iff_exists_prop] at hwitness
+  obtain ⟨j, hj, hx, hcontains⟩ := hwitness
+  have hsafe := can_avoid_loss_of_contains_position_partial target dag htarget hvalid _ hcontains
+  rw [can_avoid_loss_iff_value] at hsafe
+  have hdx : deficit ≤ deficit + j := by omega
+  have hchild :
+      ((⟨insert (N + 1) remaining, deficit⟩ : Position).afterPick
+        (deficit + j)).value ≠ .win := by
+    simpa [hmeta.2, GamePosition.afterPick, not_lt_of_ge hdx, Player.other] using hsafe
+  have hjlt : j < 5 := by simpa using hj
+  refine ⟨deficit + j, hx, hdx, ?_, hchild⟩
+  omega
+
+end CatchUpSearch.DenseAddTopWindowCertificateChecker

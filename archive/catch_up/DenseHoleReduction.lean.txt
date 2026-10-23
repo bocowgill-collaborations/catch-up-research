@@ -1,0 +1,374 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PairDeletionReduction
+import catch_up.Parity
+
+/-!
+# A dense-position reduction for Catch-Up
+
+This module isolates a sufficient invariant for the interval draw conjecture.  It is enough to
+prove that every catchable even-parity position obtained from an interval by deleting at most
+three counters is a non-loss.  The third missing counter is needed to control every reply from the
+neutral pair obtained by deleting counters `1` and `2`.
+-/
+
+namespace CatchUp
+
+/-- Every catchable, even-parity position with at most three holes in `Icc 1 N` is a non-loss. -/
+def DenseThreeHoleNonloss (N : ℕ) : Prop :=
+  ∀ position : Position,
+    position.remaining ⊆ Finset.Icc 1 N →
+    ((Finset.Icc 1 N) \ position.remaining).card ≤ 3 →
+    position.deficit ≤ N →
+    ¬ position.remaining.sum (fun x => x) < position.deficit →
+    Even (position.deficit + position.remaining.sum (fun x => x)) →
+    position.value ≠ .loss
+
+/-- The stronger candidate that the minimum available counter is itself a nonlosing move in every
+qualifying dense three-hole position. -/
+def DenseThreeHoleMinimumMoveSafe (N : ℕ) : Prop :=
+  ∀ position : Position,
+    position.remaining ⊆ Finset.Icc 1 N →
+    ((Finset.Icc 1 N) \ position.remaining).card ≤ 3 →
+    position.deficit ≤ N →
+    ¬ position.remaining.sum (fun x => x) < position.deficit →
+    Even (position.deficit + position.remaining.sum (fun x => x)) →
+    ∀ m ∈ position.remaining,
+      (∀ x ∈ position.remaining, m ≤ x) →
+      position.moveOutcome m ≠ .loss
+
+/-- Safety of the minimum available counter implies the dense three-hole non-loss invariant. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_of_minimum_move_safe
+    (N : ℕ) (hN : 4 ≤ N)
+    (hminimum : DenseThreeHoleMinimumMoveSafe N) :
+    DenseThreeHoleNonloss N := by
+  intro position hsub hholes hdN hcatch heven
+  have hremaining : position.remaining.Nonempty := by
+    by_contra hempty
+    have hmissing : ({1, 2, 3, 4} : Finset ℕ) ⊆
+        (Finset.Icc 1 N) \ position.remaining := by
+      intro x hx
+      have hxCases : x = 1 ∨ x = 2 ∨ x = 3 ∨ x = 4 := by simpa using hx
+      apply Finset.mem_sdiff.mpr
+      constructor
+      · rcases hxCases with rfl | rfl | rfl | rfl <;> simp <;> omega
+      · simp [Finset.not_nonempty_iff_eq_empty.mp hempty]
+    have hfour : 4 ≤ ((Finset.Icc 1 N) \ position.remaining).card := by
+      have := Finset.card_le_card hmissing
+      simpa using this
+    omega
+  let m := position.remaining.min' hremaining
+  have hm : m ∈ position.remaining := Finset.min'_mem _ _
+  have hmLeast : ∀ x ∈ position.remaining, m ≤ x := by
+    intro x hx
+    exact Finset.min'_le _ x hx
+  have hmove : position.moveOutcome m ≠ .loss :=
+    hminimum position hsub hholes hdN hcatch heven m hm hmLeast
+  rw [Position.value_eq_best_move_outcome position
+    (Finset.nonempty_iff_ne_empty.mp hremaining) hcatch]
+  rw [Outcome.best_ne_loss_iff]
+  refine ⟨position.moveOutcome m, ?_, hmove⟩
+  apply List.mem_map.mpr
+  exact ⟨⟨m, hm⟩, by simp, rfl⟩
+
+private theorem Position.value_ne_win_of_all_moves
+    (position : Position)
+    (hremaining : position.remaining ≠ ∅)
+    (hcatch : ¬ position.remaining.sum (fun y => y) < position.deficit)
+    (hmoves : ∀ x ∈ position.remaining, position.moveOutcome x ≠ .win) :
+    position.value ≠ .win := by
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch]
+  rw [Outcome.best_ne_win_iff]
+  intro outcome houtcome
+  obtain ⟨⟨x, hx⟩, _, rfl⟩ := List.mem_map.mp houtcome
+  exact hmoves x hx
+
+private theorem lower_pair_remaining_subset (N b : ℕ) :
+    (pairDeletionPosition N 1 b).remaining ⊆ Finset.Icc 1 N := by
+  intro x hx
+  exact Finset.mem_of_mem_erase (Finset.mem_of_mem_erase hx)
+
+private theorem lower_pair_holes_card_le_two (N b : ℕ) :
+    ((Finset.Icc 1 N) \ (pairDeletionPosition N 1 b).remaining).card ≤ 2 := by
+  have hsubset :
+      (Finset.Icc 1 N) \ (pairDeletionPosition N 1 b).remaining ⊆
+        ({1, b} : Finset ℕ) := by
+    intro x hx
+    have hxInterval := (Finset.mem_sdiff.mp hx).1
+    have hxMissing := (Finset.mem_sdiff.mp hx).2
+    by_cases hxOne : x = 1
+    · simp [hxOne]
+    by_cases hxB : x = b
+    · simp [hxB]
+    exfalso
+    apply hxMissing
+    simpa only [pairDeletionPosition, Finset.mem_erase] using
+      (show x ≠ b ∧ x ≠ 1 ∧ x ∈ Finset.Icc 1 N from ⟨hxB, hxOne, hxInterval⟩)
+  calc
+    ((Finset.Icc 1 N) \ (pairDeletionPosition N 1 b).remaining).card ≤
+        ({1, b} : Finset ℕ).card := Finset.card_le_card hsubset
+    _ ≤ 2 := by
+      exact (Finset.card_insert_le 1 {b}).trans (by simp)
+
+private theorem lower_pair_catchable
+    (N b : ℕ) (hN : 4 ≤ N) (hb : b ∈ Finset.Icc 1 N) (hbOne : 1 < b) :
+    ¬ (pairDeletionPosition N 1 b).remaining.sum (fun x => x) <
+      (pairDeletionPosition N 1 b).deficit := by
+  change ¬ (((Finset.Icc 1 N).erase 1).erase b).sum (fun x => x) < b - 1
+  by_cases hbTop : b = N
+  · have hcounter : N - 1 ∈ ((Finset.Icc 1 N).erase 1).erase b := by
+      simp [hbTop]
+      omega
+    have hle : N - 1 ≤
+        (((Finset.Icc 1 N).erase 1).erase b).sum (fun x => x) :=
+      Finset.single_le_sum (fun x _ => Nat.zero_le x) hcounter
+    omega
+  · have hcounter : N ∈ ((Finset.Icc 1 N).erase 1).erase b := by
+      simp only [Finset.mem_erase, Finset.mem_Icc]
+      exact ⟨Ne.symm hbTop, by omega, by omega, le_rfl⟩
+    have hle : N ≤ (((Finset.Icc 1 N).erase 1).erase b).sum (fun x => x) :=
+      Finset.single_le_sum (fun x _ => Nat.zero_le x) hcounter
+    have hbUpper := (Finset.mem_Icc.mp hb).2
+    omega
+
+private theorem lower_pair_effective_even
+    (N b : ℕ) (hb : b ∈ Finset.Icc 1 N) (hbOne : 1 < b)
+    (heven : Even ((Finset.Icc 1 N).sum (fun x => x))) :
+    Even ((pairDeletionPosition N 1 b).deficit +
+      (pairDeletionPosition N 1 b).remaining.sum (fun x => x)) := by
+  let interval := Finset.Icc 1 N
+  have hbLower : 1 ≤ b := (Finset.mem_Icc.mp hb).1
+  have hbUpper : b ≤ N := (Finset.mem_Icc.mp hb).2
+  have hone : 1 ∈ interval := by
+    simp [interval]
+    omega
+  have hbErase : b ∈ interval.erase 1 := by
+    simp [interval]
+    omega
+  have hsumB : ((interval.erase 1).erase b).sum (fun x => x) + b =
+      (interval.erase 1).sum (fun x => x) := by
+    simpa using Finset.sum_erase_add (interval.erase 1) (fun x => x) hbErase
+  have hsumOne : (interval.erase 1).sum (fun x => x) + 1 =
+      interval.sum (fun x => x) := by
+    simpa using Finset.sum_erase_add interval (fun x => x) hone
+  rcases heven with ⟨t, ht⟩
+  change interval.sum (fun x => x) = t + t at ht
+  have htotal :
+      b - 1 + ((interval.erase 1).erase b).sum (fun x => x) + 2 =
+        interval.sum (fun x => x) := by
+    omega
+  have htPos : 1 ≤ t := by omega
+  refine ⟨t - 1, ?_⟩
+  simp only [pairDeletionPosition]
+  change b - 1 + ((interval.erase 1).erase b).sum (fun x => x) =
+    (t - 1) + (t - 1)
+  omega
+
+private theorem lower_pair_value_ne_loss_of_dense
+    (N b : ℕ) (hN : 4 ≤ N) (hb : b ∈ Finset.Icc 1 N) (hbOne : 1 < b)
+    (heven : Even ((Finset.Icc 1 N).sum (fun x => x)))
+    (hdense : DenseThreeHoleNonloss N) :
+    (pairDeletionPosition N 1 b).value ≠ .loss := by
+  apply hdense
+  · exact lower_pair_remaining_subset N b
+  · exact (lower_pair_holes_card_le_two N b).trans (by omega)
+  · have hbUpper := (Finset.mem_Icc.mp hb).2
+    simp [pairDeletionPosition]
+    omega
+  · exact lower_pair_catchable N b hN hb hbOne
+  · exact lower_pair_effective_even N b hb hbOne heven
+
+private theorem first_pair_child_catchable
+    (N x : ℕ) (hN : 4 ≤ N)
+    (hx : x ∈ (pairDeletionPosition N 1 2).remaining) :
+    ¬ ((pairDeletionPosition N 1 2).afterPick x).remaining.sum (fun y => y) <
+      ((pairDeletionPosition N 1 2).afterPick x).deficit := by
+  have hxData : x ≠ 2 ∧ 1 < x ∧ x ≤ N := by
+    simpa [pairDeletionPosition] using hx
+  have hxLower : 3 ≤ x := by omega
+  have hxUpper : x ≤ N := by
+    have hxIcc : x ∈ Finset.Icc 1 N :=
+      lower_pair_remaining_subset N 2 hx
+    exact (Finset.mem_Icc.mp hxIcc).2
+  have hcatchMove : ¬ x < (pairDeletionPosition N 1 2).deficit := by
+    change ¬x < 1
+    omega
+  have hafter :
+      (pairDeletionPosition N 1 2).afterPick x =
+        ⟨(((Finset.Icc 1 N).erase 1).erase 2).erase x, x - 1⟩ := by
+    simp [Position.afterPick, pairDeletionPosition, show ¬x < 2 - 1 by omega]
+  rw [hafter]
+  change ¬ ((((Finset.Icc 1 N).erase 1).erase 2).erase x).sum (fun y => y) < x - 1
+  by_cases hxTop : x = N
+  · have hcounter : N - 1 ∈
+        (((Finset.Icc 1 N).erase 1).erase 2).erase x := by
+      simp only [Finset.mem_erase, Finset.mem_Icc]
+      refine ⟨by omega, by omega, by omega, by omega, ?_⟩
+      omega
+    have hle : N - 1 ≤
+        ((((Finset.Icc 1 N).erase 1).erase 2).erase x).sum (fun y => y) :=
+      Finset.single_le_sum (fun y _ => Nat.zero_le y) hcounter
+    omega
+  · have hcounter : N ∈ (((Finset.Icc 1 N).erase 1).erase 2).erase x := by
+      simp only [Finset.mem_erase, Finset.mem_Icc]
+      exact ⟨Ne.symm hxTop, by omega, by omega, by omega, le_rfl⟩
+    have hle : N ≤
+        ((((Finset.Icc 1 N).erase 1).erase 2).erase x).sum (fun y => y) :=
+      Finset.single_le_sum (fun y _ => Nat.zero_le y) hcounter
+    omega
+
+private theorem first_pair_child_holes_card_le_three
+    (N x : ℕ) (hx : x ∈ (pairDeletionPosition N 1 2).remaining) :
+    ((Finset.Icc 1 N) \ ((pairDeletionPosition N 1 2).afterPick x).remaining).card ≤ 3 := by
+  have hxData : x ≠ 2 ∧ 1 < x ∧ x ≤ N := by
+    simpa [pairDeletionPosition] using hx
+  have hcontinue : ¬ x < (pairDeletionPosition N 1 2).deficit := by
+    change ¬x < 1
+    omega
+  have hsubset :
+      (Finset.Icc 1 N) \ ((pairDeletionPosition N 1 2).afterPick x).remaining ⊆
+        ({1, 2, x} : Finset ℕ) := by
+    intro y hy
+    have hyInterval := (Finset.mem_sdiff.mp hy).1
+    have hyMissing := (Finset.mem_sdiff.mp hy).2
+    by_cases hyOne : y = 1
+    · simp [hyOne]
+    by_cases hyTwo : y = 2
+    · simp [hyTwo]
+    by_cases hyX : y = x
+    · simp [hyX]
+    exfalso
+    apply hyMissing
+    have hyLower : 1 < y := by
+      have := (Finset.mem_Icc.mp hyInterval).1
+      omega
+    have hyUpper : y ≤ N := (Finset.mem_Icc.mp hyInterval).2
+    simpa [Position.afterPick, pairDeletionPosition, show ¬x < 2 - 1 by omega] using
+      (show y ≠ x ∧ y ≠ 2 ∧ 1 < y ∧ y ≤ N from
+        ⟨hyX, hyTwo, hyLower, hyUpper⟩)
+  calc
+    ((Finset.Icc 1 N) \ ((pairDeletionPosition N 1 2).afterPick x).remaining).card ≤
+        ({1, 2, x} : Finset ℕ).card := Finset.card_le_card hsubset
+    _ ≤ 3 := by
+      calc
+        ({1, 2, x} : Finset ℕ).card ≤ ({2, x} : Finset ℕ).card + 1 :=
+          Finset.card_insert_le 1 {2, x}
+        _ ≤ ({x} : Finset ℕ).card + 2 := by
+          have h := Finset.card_insert_le 2 ({x} : Finset ℕ)
+          omega
+        _ = 3 := by simp
+
+private theorem first_pair_value_eq_draw_of_dense
+    (N : ℕ) (hN : 4 ≤ N)
+    (heven : Even ((Finset.Icc 1 N).sum (fun x => x)))
+    (hdense : DenseThreeHoleNonloss N) :
+    (pairDeletionPosition N 1 2).value = .draw := by
+  let position := pairDeletionPosition N 1 2
+  have htwo : 2 ∈ Finset.Icc 1 N := by simp; omega
+  have hneLoss : position.value ≠ .loss := by
+    exact lower_pair_value_ne_loss_of_dense N 2 hN htwo (by omega) heven hdense
+  have hthree : 3 ∈ position.remaining := by
+    simp [position, pairDeletionPosition]
+    omega
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨3, hthree⟩
+  have hcatch : ¬ position.remaining.sum (fun x => x) < position.deficit := by
+    have hle : 3 ≤ position.remaining.sum (fun x => x) :=
+      Finset.single_le_sum (fun x _ => Nat.zero_le x) hthree
+    change ¬position.remaining.sum (fun x => x) < 1
+    omega
+  have hpositionEven : Even (position.deficit + position.remaining.sum (fun x => x)) :=
+    lower_pair_effective_even N 2 htwo (by omega) heven
+  have hneWin : position.value ≠ .win := by
+    apply Position.value_ne_win_of_all_moves position hremaining hcatch
+    intro x hx
+    have hxData : x ≠ 2 ∧ 1 < x ∧ x ≤ N := by
+      simpa [position, pairDeletionPosition] using hx
+    have hxLower : 3 ≤ x := by omega
+    have hxUpper : x ≤ N := by
+      have hxIcc : x ∈ Finset.Icc 1 N := lower_pair_remaining_subset N 2 hx
+      exact (Finset.mem_Icc.mp hxIcc).2
+    have hchildEven : Even ((position.afterPick x).deficit +
+        (position.afterPick x).remaining.sum (fun y => y)) := by
+      rw [Nat.even_iff] at hpositionEven ⊢
+      have hmod := Position.mod_eq_two_deficit_add_sum_after_pick position hx
+      change ((position.afterPick x).deficit +
+        (position.afterPick x).remaining.sum (fun y => y)) % 2 =
+          (position.deficit + position.remaining.sum (fun y => y)) % 2 at hmod
+      exact hmod.trans hpositionEven
+    have hchildLoss : (position.afterPick x).value ≠ .loss := by
+      apply hdense
+      · intro y hy
+        exact lower_pair_remaining_subset N 2 (Finset.mem_of_mem_erase hy)
+      · simpa only [position] using first_pair_child_holes_card_le_three N x hx
+      · have hnotContinue : ¬ x < position.deficit := by
+          change ¬x < 1
+          omega
+        simp only [Position.afterPick, hnotContinue, if_false]
+        change x - 1 ≤ N
+        omega
+      · simpa only [position] using first_pair_child_catchable N x hN hx
+      · exact hchildEven
+    rw [Position.moveOutcome]
+    have hnotContinue : ¬ x < position.deficit := by
+      simp [position, pairDeletionPosition]
+      omega
+    simp only [hnotContinue, if_false]
+    intro hwin
+    cases hvalue : (position.afterPick x).value <;>
+      simp [hvalue, Outcome.neg] at hwin hchildLoss
+  exact (Outcome.eq_draw_iff position.value).2 ⟨hneLoss, hneWin⟩
+
+/-- The dense three-hole non-loss invariant implies the even-total interval draw theorem. -/
+@[category API, AMS 91]
+theorem value_Icc_eq_draw_of_dense_three_hole_nonloss
+    (N : ℕ) (hN : 4 ≤ N)
+    (heven : Even ((Finset.Icc 1 N).sum (fun x => x)))
+    (hdense : DenseThreeHoleNonloss N) :
+    value (Finset.Icc 1 N) = .draw := by
+  apply value_Icc_eq_draw_of_lower_pair_deletion_nonloss N (by omega)
+  · intro b hb hbOne
+    exact lower_pair_value_ne_loss_of_dense N b hN hb hbOne heven hdense
+  · exact first_pair_value_eq_draw_of_dense N hN heven hdense
+
+private theorem sum_Icc_one_eq_triangular (N : ℕ) :
+    (Finset.Icc 1 N).sum (fun x => x) = N * (N + 1) / 2 := by
+  have hset : Finset.Icc 1 N = (Finset.range (N + 1)).erase 0 := by
+    ext x
+    simp
+    omega
+  rw [hset]
+  have hzero : 0 ∈ Finset.range (N + 1) := by simp
+  have hsum : ((Finset.range (N + 1)).erase 0).sum (fun x => x) =
+      (Finset.range (N + 1)).sum (fun x => x) := by
+    simpa using Finset.sum_erase_add (Finset.range (N + 1)) (fun x => x) hzero
+  rw [hsum, Finset.sum_range_id]
+  simp only [Nat.add_sub_cancel]
+  rw [Nat.mul_comm]
+
+/-- The dense invariant implies the interval draw, stated with the usual triangular total. -/
+@[category API, AMS 91]
+theorem value_Icc_eq_draw_of_dense_three_hole_nonloss_of_even_triangular
+    (N : ℕ) (hN : 4 ≤ N) (heven : Even (N * (N + 1) / 2))
+    (hdense : DenseThreeHoleNonloss N) :
+    value (Finset.Icc 1 N) = .draw := by
+  apply value_Icc_eq_draw_of_dense_three_hole_nonloss N hN
+  · rwa [sum_Icc_one_eq_triangular]
+  · exact hdense
+
+end CatchUp

@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-23",
+  "status": "PASS: local collection/recovered-proof checks",
+  "base_commit": "8792d10fda8900327d229f9d2ee1682fca2222a3",
+  "cataloged_mathematics_modules": 96,
+  "original_proof_modules_preserved": 70,
+  "recovered_modules": 26,
+  "historical_branches_inspected": 14,
+  "historical_module_paths": 144,
+  "archived_unbuilt_sources": 56,
+  "original_port_inputs_retained": 26,
+  "preserved_original_source_data_hashes": 308,
+  "current_manifest_sha256": "136e142a2e535cbfe2b3b5855c3701ff86e29ea29b2aa8fa190b37308b7b5383",
+  "build": {
+    "command": [
+      "lake",
+      "--wfail",
+      "build"
+    ],
+    "exit_code": 0,
+    "source_scope": "26 recovered modules compiled during this audit; original 70 verified module sources and pinned dependencies reused. The final successful build reuses outputs from earlier port attempts after compatibility fixes. No compiler or Mathlib upgrade.",
+    "log": "verification/receipts/collection-build.log"
+  },
+  "axioms": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 156,
+        "all_public_catchup_theorems": 4180,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 85.810175417,
+        "audit_source_sha256": "8733928cec868b1631af577c9c49f99bea1c0745d2c8f797eca7bac4ec6299d7",
+        "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+      }
+    ],
+    "seconds": 85.81029666699999,
+    "peak_child_rss_bytes": 5513527296,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "log": "verification/receipts/collection-collection.log",
+      "output_sha256": "1f4eae18b2b702b9a1087a5e059794b3b89363d9a318ac1c4b3f43bdb5ed31e3"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "log": "verification/receipts/collection-recovered-regressions.log",
+      "output_sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc"
+    }
+  ],
+  "proof_size_scope": {
+    "recovered_source_bytes": 279894,
+    "current_mathematics_source_bytes": 1181306,
+    "full_certificate_lower_bound": "For N>=16, every valid InitialCertificate N player dag has at least 2^((N-2)/12) listed nodes, with natural division. This is not a lower bound on arbitrary Lean proofs.",
+    "supporting_mathematics": "Certificate format, checker soundness, covering lemmas, game-aware deletion lemmas and the high-counter argument are included in the recovered dependency closure.",
+    "generation_search_cost": "Historical research cost not measured; this audit replays existing proofs rather than claiming discovery or a new proof-size lower bound."
+  },
+  "hardware": {
+    "cpu": "Apple M4 Max",
+    "logical_cpus": 16,
+    "ram_bytes": 137438953472,
+    "platform": "macOS-26.6.2-arm64-arm-64bit"
+  },
+  "hosted_verification": {
+    "initial_snapshot": "https://github.com/bocowgill-collaborations/catch-up-research/actions/runs/39984904177",
+    "initial_snapshot_status": "success",
+    "this_update": "Runs independently after push; not yet a hosted result at receipt creation."
+  },
+  "limits": "Collection/source checks have bounded subprocess deadlines; the explorer defaults to 10 seconds, 200000 states and <=20 counters, and reports incomplete without an outcome on resource exhaustion.",
+  "mathematical_status": "C remains open. The 26 recovered modules are existing work, now replayed in the collection. Raw archive sources and old native-only outcome claims are not current verified results. The cryptid definition/equivalence source files are unchanged."
+}

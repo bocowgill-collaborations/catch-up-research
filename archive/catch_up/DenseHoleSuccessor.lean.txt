@@ -1,0 +1,356 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CompletedTurn
+import catch_up.DeficitWinningBound
+import catch_up.DenseHoleReduction
+
+/-!
+# Dense three-hole successor transfer
+
+This module reduces the new-top-missing boundary to the preceding dense invariant and isolates the
+single top-adjoining preservation premise sufficient to advance that invariant by one endpoint.
+-/
+
+namespace CatchUp
+
+private theorem Position.value_ne_loss_of_legal_move
+    (position : Position) (x : ℕ)
+    (hx : x ∈ position.remaining)
+    (hcatch : ¬ position.remaining.sum (fun y ↦ y) < position.deficit)
+    (hmove : position.moveOutcome x ≠ .loss) :
+    position.value ≠ .loss := by
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨x, hx⟩
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch,
+    Outcome.best_ne_loss_iff]
+  refine ⟨position.moveOutcome x, ?_, hmove⟩
+  apply List.mem_map.mpr
+  exact ⟨⟨x, hx⟩, by simp, rfl⟩
+
+private theorem top_absent_value_ne_loss_of_available_near_top
+    (N p : ℕ) (remaining : Finset ℕ)
+    (hN : 4 ≤ N)
+    (hdense : DenseThreeHoleNonloss N)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 2)
+    (hp : p ∈ remaining)
+    (hpNear : N - 2 ≤ p)
+    (hcatch : ¬ remaining.sum (fun x ↦ x) < N + 1)
+    (heven : Even (N + 1 + remaining.sum (fun x ↦ x))) :
+    (⟨remaining, N + 1⟩ : Position).value ≠ .loss := by
+  let position : Position := ⟨remaining, N + 1⟩
+  let child := position.afterPick p
+  have hpUpper : p ≤ N := (Finset.mem_Icc.mp (hsub hp)).2
+  have hpContinue : p < position.deficit := by
+    simp only [position]
+    omega
+  have hchildRemaining : child.remaining = remaining.erase p := by
+    simp [child, position, Position.afterPick]
+  have hchildDeficit : child.deficit = N + 1 - p := by
+    simp [child, position, Position.afterPick, hpContinue]
+  have hchildSub : child.remaining ⊆ Finset.Icc 1 N := by
+    rw [hchildRemaining]
+    exact (Finset.erase_subset p remaining).trans hsub
+  have hpIcc : p ∈ Finset.Icc 1 N := hsub hp
+  have hholesEq :
+      (Finset.Icc 1 N) \ child.remaining =
+        insert p ((Finset.Icc 1 N) \ remaining) := by
+    rw [hchildRemaining]
+    ext x
+    simp only [Finset.mem_sdiff, Finset.mem_erase, Finset.mem_insert]
+    constructor
+    · rintro ⟨hxI, hx⟩
+      by_cases hxp : x = p
+      · exact Or.inl hxp
+      · exact Or.inr ⟨hxI, fun hxR ↦ hx ⟨hxp, hxR⟩⟩
+    · rintro (rfl | ⟨hxI, hxR⟩)
+      · exact ⟨hpIcc, by simp⟩
+      · exact ⟨hxI, by simp [hxR]⟩
+  have hchildHoles :
+      ((Finset.Icc 1 N) \ child.remaining).card ≤ 3 := by
+    rw [hholesEq]
+    exact (Finset.card_insert_le p _).trans (by omega)
+  have hchildDeficitLe : child.deficit ≤ N := by
+    rw [hchildDeficit]
+    omega
+  have hsumErase :
+      (remaining.erase p).sum (fun x ↦ x) + p = remaining.sum (fun x ↦ x) := by
+    simpa using Finset.sum_erase_add remaining (fun x ↦ x) hp
+  have hchildCatch :
+      ¬ child.remaining.sum (fun x ↦ x) < child.deficit := by
+    rw [hchildRemaining, hchildDeficit]
+    omega
+  have hchildEven :
+      Even (child.deficit + child.remaining.sum (fun x ↦ x)) := by
+    rcases heven with ⟨k, hk⟩
+    refine ⟨k - p, ?_⟩
+    rw [hchildRemaining, hchildDeficit]
+    omega
+  have hchildNonloss : child.value ≠ .loss :=
+    hdense child hchildSub hchildHoles hchildDeficitLe hchildCatch hchildEven
+  apply Position.value_ne_loss_of_legal_move position p hp hcatch
+  simpa [Position.moveOutcome, hpContinue, child] using hchildNonloss
+
+/-- Assuming the dense three-hole invariant through `N`, the missing-new-top boundary at
+`N + 1` is nonlosing already when the lower interval has at most two holes. -/
+@[category API, AMS 91]
+theorem top_absent_dense_two_hole_value_ne_loss
+    (N : ℕ) (hN : 4 ≤ N) (remaining : Finset ℕ)
+    (hdense : DenseThreeHoleNonloss N)
+    (hsub : remaining ⊆ Finset.Icc 1 N)
+    (hholes : ((Finset.Icc 1 N) \ remaining).card ≤ 2)
+    (hcatch : ¬ remaining.sum (fun x ↦ x) < N + 1)
+    (heven : Even (N + 1 + remaining.sum (fun x ↦ x))) :
+    (⟨remaining, N + 1⟩ : Position).value ≠ .loss := by
+  by_cases htop : N ∈ remaining
+  · exact top_absent_value_ne_loss_of_available_near_top
+      N N remaining hN hdense hsub hholes htop (by omega) hcatch heven
+  by_cases hpred : N - 1 ∈ remaining
+  · exact top_absent_value_ne_loss_of_available_near_top
+      N (N - 1) remaining hN hdense hsub hholes hpred (by omega) hcatch heven
+  have hpredPred : N - 2 ∈ remaining := by
+    by_contra hmissing
+    have hthree : ({N, N - 1, N - 2} : Finset ℕ) ⊆
+        (Finset.Icc 1 N) \ remaining := by
+      intro x hx
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+      rcases hx with rfl | rfl | rfl
+      · exact Finset.mem_sdiff.mpr ⟨by simp; omega, htop⟩
+      · exact Finset.mem_sdiff.mpr ⟨by simp; omega, hpred⟩
+      · exact Finset.mem_sdiff.mpr ⟨by simp; omega, hmissing⟩
+    have hcard := Finset.card_le_card hthree
+    have hcardThree : ({N, N - 1, N - 2} : Finset ℕ).card = 3 := by
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      rw [Finset.card_insert_of_notMem (by simp; omega)]
+      simp
+    rw [hcardThree] at hcard
+    omega
+  exact top_absent_value_ne_loss_of_available_near_top
+    N (N - 2) remaining hN hdense hsub hholes hpredPred (by omega) hcatch heven
+
+/-- Adjoining `N + 1` preserves nonloss on every catchable, even, three-hole lower position. -/
+@[category API, AMS 91]
+def AddTopPreservesDenseThreeHoleNonloss (N : ℕ) : Prop :=
+  ∀ (remaining : Finset ℕ) (deficit : ℕ),
+    remaining ⊆ Finset.Icc 1 N →
+    ((Finset.Icc 1 N) \ remaining).card ≤ 3 →
+    deficit ≤ N →
+    ¬ remaining.sum (fun x ↦ x) < deficit →
+    Even (deficit + remaining.sum (fun x ↦ x)) →
+    (⟨remaining, deficit⟩ : Position).value ≠ .loss →
+    (⟨insert (N + 1) remaining, deficit⟩ : Position).value ≠ .loss
+
+private theorem Position.value_ne_loss_of_all_counters_turn
+    (position : Position) (maximum : ℕ)
+    (hdeficit : 0 < position.deficit)
+    (hcatch : ¬ position.remaining.sum (fun x ↦ x) < position.deficit)
+    (hmaximum : maximum ∈ position.remaining)
+    (hmax : ∀ x ∈ position.remaining, x ≤ maximum)
+    (hlower : (position.remaining.erase maximum).sum (fun x ↦ x) < position.deficit) :
+    position.value ≠ .loss := by
+  apply (Position.value_ne_loss_iff_exists_completed_turn_subset
+    position hdeficit hcatch).mpr
+  let chosen := position.remaining
+  let hchosen : chosen.Nonempty := ⟨maximum, hmaximum⟩
+  have hmaximumValue : chosen.max' hchosen = maximum := by
+    apply Nat.le_antisymm
+    · apply Finset.max'_le
+      intro x hx
+      exact hmax x hx
+    · exact chosen.le_max' maximum hmaximum
+  have hsumErase :
+      (position.remaining.erase maximum).sum (fun x ↦ x) + maximum =
+        position.remaining.sum (fun x ↦ x) := by
+    simpa using Finset.sum_erase_add position.remaining (fun x ↦ x) hmaximum
+  refine ⟨chosen, hchosen, Finset.Subset.rfl, ?_, ?_, ?_⟩
+  · change position.deficit ≤ position.remaining.sum (fun x ↦ x)
+    omega
+  · rw [hmaximumValue]
+    change position.remaining.sum (fun x ↦ x) < position.deficit + maximum
+    omega
+  · rw [Position.value.eq_def]
+    simp [chosen, completedTurnEndpoint]
+    split <;> simp
+
+/-- If the new even top preserves nonloss on qualifying lower positions, then the dense
+three-hole invariant advances from `N` to `N + 1`. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_succ_of_add_top_preserves
+    (N : ℕ) (hN : 4 ≤ N)
+    (htopEven : Even (N + 1))
+    (hdense : DenseThreeHoleNonloss N)
+    (hadd : AddTopPreservesDenseThreeHoleNonloss N) :
+    DenseThreeHoleNonloss (N + 1) := by
+  rintro ⟨remaining, deficit⟩ hsub hholes hdeficitLe hcatch heven
+  change remaining ⊆ Finset.Icc 1 (N + 1) at hsub
+  change ((Finset.Icc 1 (N + 1)) \ remaining).card ≤ 3 at hholes
+  change deficit ≤ N + 1 at hdeficitLe
+  change ¬ remaining.sum (fun x ↦ x) < deficit at hcatch
+  change Even (deficit + remaining.sum (fun x ↦ x)) at heven
+  by_cases htop : N + 1 ∈ remaining
+  · let lower := remaining.erase (N + 1)
+    have hlowerSub : lower ⊆ Finset.Icc 1 N := by
+      intro x hx
+      have hxData := Finset.mem_erase.mp hx
+      have hxIcc := Finset.mem_Icc.mp (hsub hxData.2)
+      exact Finset.mem_Icc.mpr ⟨hxIcc.1, by omega⟩
+    have hholesEq :
+        (Finset.Icc 1 N) \ lower = (Finset.Icc 1 (N + 1)) \ remaining := by
+      ext x
+      simp only [lower, Finset.mem_sdiff, Finset.mem_erase, Finset.mem_Icc]
+      constructor
+      · rintro ⟨⟨hxOne, hxN⟩, hxLower⟩
+        refine ⟨⟨hxOne, by omega⟩, ?_⟩
+        intro hxRemaining
+        exact hxLower ⟨by omega, hxRemaining⟩
+      · rintro ⟨⟨hxOne, hxTop⟩, hxRemaining⟩
+        have hxNeTop : x ≠ N + 1 := by
+          intro hxEq
+          subst x
+          exact hxRemaining htop
+        exact ⟨⟨hxOne, by omega⟩, by simp [hxRemaining]⟩
+    have hlowerHoles : ((Finset.Icc 1 N) \ lower).card ≤ 3 := by
+      rw [hholesEq]
+      exact hholes
+    have hsumLower :
+        lower.sum (fun x ↦ x) + (N + 1) = remaining.sum (fun x ↦ x) := by
+      simpa [lower] using
+        Finset.sum_erase_add remaining (fun x ↦ x) htop
+    have hlowerEven : Even (deficit + lower.sum (fun x ↦ x)) := by
+      rcases heven with ⟨wholeHalf, hwholeHalf⟩
+      rcases htopEven with ⟨topHalf, htopHalf⟩
+      refine ⟨wholeHalf - topHalf, ?_⟩
+      omega
+    have htopMax : ∀ x ∈ remaining, x ≤ N + 1 := by
+      intro x hx
+      exact (Finset.mem_Icc.mp (hsub hx)).2
+    by_cases hdeficitTop : deficit = N + 1
+    · subst deficit
+      exact Position.value_ne_loss_of_deficit_is_max
+        remaining (N + 1) htop htopMax
+    · have hdeficitLower : deficit ≤ N := by omega
+      by_cases hlowerCatch : ¬ lower.sum (fun x ↦ x) < deficit
+      · have hlowerNonloss : (⟨lower, deficit⟩ : Position).value ≠ .loss :=
+          hdense ⟨lower, deficit⟩ hlowerSub hlowerHoles hdeficitLower
+            hlowerCatch hlowerEven
+        have hadded := hadd lower deficit hlowerSub hlowerHoles hdeficitLower
+          hlowerCatch hlowerEven hlowerNonloss
+        simpa [lower, Finset.insert_erase htop] using hadded
+      · have hlowerLt : lower.sum (fun x ↦ x) < deficit := by omega
+        have hdeficitPos : 0 < deficit := by omega
+        apply Position.value_ne_loss_of_all_counters_turn
+          (⟨remaining, deficit⟩ : Position) (N + 1)
+          hdeficitPos hcatch htop htopMax
+        simpa [lower] using hlowerLt
+  · have hlowerSub : remaining ⊆ Finset.Icc 1 N := by
+      intro x hx
+      have hxIcc := Finset.mem_Icc.mp (hsub hx)
+      have hxNeTop : x ≠ N + 1 := by
+        intro hxEq
+        subst x
+        exact htop hx
+      exact Finset.mem_Icc.mpr ⟨hxIcc.1, by omega⟩
+    have hholesEq :
+        (Finset.Icc 1 (N + 1)) \ remaining =
+          insert (N + 1) ((Finset.Icc 1 N) \ remaining) := by
+      ext x
+      simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert]
+      constructor
+      · rintro ⟨⟨hxOne, hxTop⟩, hxRemaining⟩
+        by_cases hxEq : x = N + 1
+        · exact Or.inl hxEq
+        · exact Or.inr ⟨⟨hxOne, by omega⟩, hxRemaining⟩
+      · rintro (rfl | ⟨⟨hxOne, hxN⟩, hxRemaining⟩)
+        · exact ⟨⟨by omega, by omega⟩, htop⟩
+        · exact ⟨⟨hxOne, by omega⟩, hxRemaining⟩
+    have htopNotLowerHoles :
+        N + 1 ∉ (Finset.Icc 1 N) \ remaining := by
+      simp
+    have hlowerHoles : ((Finset.Icc 1 N) \ remaining).card ≤ 2 := by
+      have hholes' := hholes
+      rw [hholesEq, Finset.card_insert_of_notMem htopNotLowerHoles] at hholes'
+      omega
+    by_cases hdeficitTop : deficit = N + 1
+    · subst deficit
+      exact top_absent_dense_two_hole_value_ne_loss
+        N hN remaining hdense hlowerSub hlowerHoles hcatch heven
+    · have hdeficitLower : deficit ≤ N := by omega
+      exact hdense ⟨remaining, deficit⟩ hlowerSub
+        (hlowerHoles.trans (by omega)) hdeficitLower hcatch heven
+
+/-- The full successor invariant implies preservation under adjoining its even top. The lower
+nonloss premise is not needed in this direction. -/
+@[category API, AMS 91]
+theorem add_top_preserves_dense_three_hole_nonloss_of_succ
+    (N : ℕ) (htopEven : Even (N + 1))
+    (hsucc : DenseThreeHoleNonloss (N + 1)) :
+    AddTopPreservesDenseThreeHoleNonloss N := by
+  intro remaining deficit hsub hholes hdeficit hcatch heven _
+  have htopNot : N + 1 ∉ remaining := by
+    intro htop
+    exact (not_le_of_gt (by omega)) (Finset.mem_Icc.mp (hsub htop)).2
+  have hsum :
+      (insert (N + 1) remaining).sum (fun x ↦ x) =
+        N + 1 + remaining.sum (fun x ↦ x) := by
+    simp [htopNot]
+  apply hsucc ⟨insert (N + 1) remaining, deficit⟩
+  · intro x hx
+    simp only [Finset.mem_insert] at hx
+    rcases hx with rfl | hx
+    · simp
+    · have hxIcc := Finset.mem_Icc.mp (hsub hx)
+      exact Finset.mem_Icc.mpr ⟨hxIcc.1, by omega⟩
+  · have hholesEq :
+        (Finset.Icc 1 (N + 1)) \ insert (N + 1) remaining =
+          (Finset.Icc 1 N) \ remaining := by
+      ext x
+      simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert]
+      constructor
+      · rintro ⟨⟨hxOne, hxTop⟩, hxNot⟩
+        have hxNeTop : x ≠ N + 1 := fun hx ↦ hxNot (Or.inl hx)
+        exact ⟨⟨hxOne, by omega⟩, fun hx ↦ hxNot (Or.inr hx)⟩
+      · rintro ⟨⟨hxOne, hxN⟩, hxNot⟩
+        refine ⟨⟨hxOne, by omega⟩, ?_⟩
+        rintro (rfl | hx)
+        · omega
+        · exact hxNot hx
+    rw [hholesEq]
+    exact hholes
+  · change deficit ≤ N + 1
+    omega
+  · change ¬ (insert (N + 1) remaining).sum (fun x ↦ x) < deficit
+    rw [hsum]
+    omega
+  · change Even (deficit + (insert (N + 1) remaining).sum (fun x ↦ x))
+    rcases heven with ⟨lowerHalf, hlowerHalf⟩
+    rcases htopEven with ⟨topHalf, htopHalf⟩
+    refine ⟨lowerHalf + topHalf, ?_⟩
+    rw [hsum]
+    omega
+
+/-- Once the preceding dense invariant is known, the even-top successor invariant is equivalent
+to preservation under adjoining that top. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_succ_iff_add_top_preserves
+    (N : ℕ) (hN : 4 ≤ N) (htopEven : Even (N + 1))
+    (hdense : DenseThreeHoleNonloss N) :
+    DenseThreeHoleNonloss (N + 1) ↔ AddTopPreservesDenseThreeHoleNonloss N := by
+  constructor
+  · exact add_top_preserves_dense_three_hole_nonloss_of_succ N htopEven
+  · exact dense_three_hole_nonloss_succ_of_add_top_preserves N hN htopEven hdense
+
+end CatchUp

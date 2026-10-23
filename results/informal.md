@@ -23,3 +23,13 @@ A strategy fitting one favorable line can fail against a different reply. The ce
 ## How does the cryptid help?
 
 Every fixed game is finite and exactly evaluable. Searching eligible `N` in increasing order therefore gives a partial computation that halts exactly when it finds a counterexample. [Search](../CatchUp/Search.lean) proves that equivalence; [the binary machine](../cryptid/) carries it through initialization and compilation. This gives another exact representation of the open problem. A small machine by itself supplies neither a short nonhalting proof nor a solution to the game.
+
+## Why can there be at most one winning opening?
+
+This fact was already reported in [von Stengel's 2019 abstract](../docs/sources.md); [WinningOpening](../CatchUp/WinningOpening.lean) contains the formal proof.
+
+Suppose two openings `a<b` both let P1 force a win. After opening a, P2's legal pick b catches and swaps the players. The common residual position is `S \ {a,b}`, at deficit `b-a`, and must be winning for its acting player: P2 is losing, so that option must lose from P2's perspective.
+
+After opening b, P2 can take a while still trailing, reaching exactly the same normalized residual position while continuing to act. Since this second opening also leaves P2 losing, that residual position would have to be losing. If catching was already impossible after opening b, subtracting a leaves the residual total below `b-a`, again making the common position a loss. Either way, the same position cannot be both winning and losing.
+
+This rules out two winning openings. It does not guarantee that any opening wins, identify the winner for every N, or solve C.

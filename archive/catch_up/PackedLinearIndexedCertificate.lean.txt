@@ -1,0 +1,142 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.LinearIndexedCertificate
+
+/-!
+# Packed linear indexed Catch-Up certificates
+
+The wire format is a comma-separated sequence of decimal natural numbers:
+
+`gameSize,player,rootCount,nodeCount,roots...,nodes...`
+
+Each node is `mask,deficit,player,tag,...`, where tags are `0 = target`, `1 = terminal`,
+`2 = owner(counter,childIndex)`, and `3 = opponent(moveCount,(counter,childIndex)...)`.
+Every count and tag is checked, malformed bytes are rejected, and trailing fields are rejected.
+-/
+
+namespace CatchUpSearch.PackedLinearIndexedCertificate
+
+open CatchUp
+open CertificateChecker
+open LinearIndexedCertificateChecker
+
+/-- Parse ASCII decimal fields without constructing one Lean string per field. -/
+def parseDecimalCSV (payload : String) : Option (Array ℕ) := Id.run do
+  let bytes := payload.toUTF8
+  if bytes.isEmpty then
+    return none
+  let mut fields : Array ℕ := #[]
+  let mut value := 0
+  let mut sawDigit := false
+  for byte in bytes do
+    if 48 ≤ byte.toNat && byte.toNat ≤ 57 then
+      value := 10 * value + (byte.toNat - 48)
+      sawDigit := true
+    else if byte.toNat = 44 && sawDigit then
+      fields := fields.push value
+      value := 0
+      sawDigit := false
+    else
+      return none
+  if !sawDigit then
+    return none
+  return some (fields.push value)
+
+/-- A cursor over already parsed natural-number fields. -/
+structure Cursor where
+  fields : Array ℕ
+  offset : ℕ
+
+/-- The fail-closed state-and-option parser used for packed fields. -/
+abbrev ParseM := StateT Cursor Option
+
+/-- Consume one natural-number field. -/
+def takeNat : ParseM ℕ := do
+  let cursor ← get
+  let some value := cursor.fields[cursor.offset]?
+    | failure
+  set { cursor with offset := cursor.offset + 1 }
+  return value
+
+/-- Decode the stable numeric player tag. -/
+def takePlayer : ParseM Player := do
+  match ← takeNat with
+  | 0 => return .p1
+  | 1 => return .p2
+  | _ => failure
+
+/-- Decode one explicit branch, rejecting unknown tags and truncated move lists. -/
+def takeBranch : ParseM IndexedBranch := do
+  match ← takeNat with
+  | 0 => return .target
+  | 1 => return .terminal
+  | 2 => return .owner (← takeNat) (← takeNat)
+  | 3 =>
+      let moveCount ← takeNat
+      let mut moves : Array (ℕ × ℕ) := #[]
+      for _ in [0:moveCount] do
+        moves := moves.push (← takeNat, ← takeNat)
+      return .opponent moves.toList
+  | _ => failure
+
+/-- Decode one indexed node. -/
+def takeNode : ParseM IndexedNode := do
+  let remainingMask ← takeNat
+  let deficit ← takeNat
+  let toMove ← takePlayer
+  let branch ← takeBranch
+  return ⟨⟨remainingMask, deficit, toMove⟩, branch⟩
+
+/-- Decode a complete packed certificate and reject every trailing field. -/
+def decode (payload : String) : Option IndexedDAG := do
+  let fields ← parseDecimalCSV payload
+  let parser : ParseM IndexedDAG := do
+    let gameSize ← takeNat
+    let player ← takePlayer
+    let rootCount ← takeNat
+    let nodeCount ← takeNat
+    let mut roots : Array ℕ := #[]
+    for _ in [0:rootCount] do
+      roots := roots.push (← takeNat)
+    let mut nodes : Array IndexedNode := #[]
+    for _ in [0:nodeCount] do
+      nodes := nodes.push (← takeNode)
+    return ⟨gameSize, player, roots.toList, nodes⟩
+  let (dag, cursor) ← parser.run ⟨fields, 0⟩
+  if cursor.offset = fields.size then some dag else none
+
+/-- A malformed packed certificate is rejected before the mathematical checker is invoked. -/
+def checkPackedCertificate (N : ℕ) (target : TargetPredicate) (payload : String) : Bool :=
+  match decode payload with
+  | none => false
+  | some dag => checkCertificate N target dag
+
+/-- Soundness of the fail-closed packed-checking pipeline. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_of_check_packed_certificate
+    (N : ℕ) (target : TargetPredicate) (payload : String)
+    (htarget : ∀ dag, decode payload = some dag → TargetSound target dag)
+    (hcheck : checkPackedCertificate N target payload = true) :
+    DenseThreeHoleNonloss N := by
+  unfold checkPackedCertificate at hcheck
+  split at hcheck
+  · contradiction
+  · rename_i dag hdecode
+    exact dense_three_hole_nonloss_of_check_certificate
+      N target dag (htarget dag hdecode) hcheck
+
+end CatchUpSearch.PackedLinearIndexedCertificate

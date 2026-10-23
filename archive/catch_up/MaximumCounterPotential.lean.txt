@@ -1,0 +1,444 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjectures.Paper.CatchUpConjecture
+
+/-!
+# Maximum-counter potential for Catch-Up
+
+Exact signed-potential identities and the zero-potential boundary classification.
+-/
+
+namespace CatchUp.MaximumCounterPotential
+
+open CatchUp
+
+private theorem value_eq_draw_of_sum_eq_deficit
+    (remaining : Finset ℕ) (deficit : ℕ)
+    (hsum : remaining.sum (fun x => x) = deficit) :
+    Position.value ⟨remaining, deficit⟩ = .draw := by
+  induction remaining using Finset.strongInduction generalizing deficit with
+  | H remaining ih =>
+      by_cases hempty : remaining = ∅
+      · subst remaining
+        simp only [Finset.sum_empty] at hsum
+        subst deficit
+        rw [Position.value.eq_def]
+        simp
+      · have hcatch : ¬remaining.sum (fun x => x) < deficit := by omega
+        have hmoveDraw : ∀ x ∈ remaining,
+            (⟨remaining, deficit⟩ : Position).moveOutcome x = .draw := by
+          intro x hx
+          have hsumErase :
+              (remaining.erase x).sum (fun y => y) + x = deficit := by
+            rw [Finset.sum_erase_add remaining (fun y => y) hx, hsum]
+          have hxle : x ≤ deficit := by omega
+          by_cases hxd : x < deficit
+          · have hchildSum :
+                (remaining.erase x).sum (fun y => y) = deficit - x := by omega
+            have hchildDraw := ih (remaining.erase x) (Finset.erase_ssubset hx)
+              (deficit - x) hchildSum
+            simpa [Position.moveOutcome, Position.afterPick, hxd] using hchildDraw
+          · have hxeq : x = deficit := by omega
+            have hchildSum : (remaining.erase x).sum (fun y => y) = 0 := by omega
+            have hchildDraw := ih (remaining.erase x) (Finset.erase_ssubset hx) 0 hchildSum
+            have hdiff : x - deficit = 0 := by omega
+            simp [Position.moveOutcome, Position.afterPick, hxd, hdiff, hchildDraw, Outcome.neg]
+        rw [Position.value_eq_best_move_outcome ⟨remaining, deficit⟩ hempty hcatch]
+        apply (Outcome.eq_draw_iff _).2
+        constructor
+        · rw [Outcome.best_ne_loss_iff]
+          obtain ⟨x, hx⟩ := Finset.nonempty_iff_ne_empty.mpr hempty
+          refine ⟨(⟨remaining, deficit⟩ : Position).moveOutcome x, ?_, ?_⟩
+          · apply List.mem_map.mpr
+            exact ⟨⟨x, hx⟩, by simp, rfl⟩
+          · simp [hmoveDraw x hx]
+        · rw [Outcome.best_ne_win_iff]
+          intro outcome houtcome
+          obtain ⟨⟨x, hx⟩, _, rfl⟩ := List.mem_map.mp houtcome
+          simp [hmoveDraw x hx]
+
+private theorem maximum_move_outcome_eq_win_of_negative_potential
+    (remaining : Finset ℕ) (deficit maximum : ℕ)
+    (hdeficit : deficit ≤ maximum)
+    (hnegative : (remaining.erase maximum).sum (fun x => x) + deficit < maximum) :
+    (⟨remaining, deficit⟩ : Position).moveOutcome maximum = .win := by
+  have hchildGap :
+      (remaining.erase maximum).sum (fun x => x) < maximum - deficit := by omega
+  have hchildLoss :
+      (⟨remaining.erase maximum, maximum - deficit⟩ : Position).value = .loss := by
+    rw [Position.value.eq_def]
+    by_cases hempty : remaining.erase maximum = ∅
+    · have hgap : maximum - deficit ≠ 0 := by omega
+      simp [hempty, hgap]
+    · simp [hempty, hchildGap]
+  have hnotContinue : ¬maximum < deficit := not_lt_of_ge hdeficit
+  simp [Position.moveOutcome, Position.afterPick, hnotContinue, hchildLoss, Outcome.neg]
+
+private theorem maximum_move_outcome_eq_draw_of_zero_potential
+    (remaining : Finset ℕ) (deficit maximum : ℕ)
+    (hdeficit : deficit ≤ maximum)
+    (hzero : (remaining.erase maximum).sum (fun x => x) + deficit = maximum) :
+    (⟨remaining, deficit⟩ : Position).moveOutcome maximum = .draw := by
+  have hchildSum :
+      (remaining.erase maximum).sum (fun x => x) = maximum - deficit := by omega
+  have hchildDraw := value_eq_draw_of_sum_eq_deficit
+    (remaining.erase maximum) (maximum - deficit) hchildSum
+  have hnotContinue : ¬maximum < deficit := not_lt_of_ge hdeficit
+  simp [Position.moveOutcome, Position.afterPick, hnotContinue, hchildDraw, Outcome.neg]
+
+private theorem Position.value_ne_loss_of_move
+    (position : Position) (x : ℕ)
+    (hx : x ∈ position.remaining)
+    (hcatch : ¬position.remaining.sum (fun y => y) < position.deficit)
+    (hmove : position.moveOutcome x ≠ .loss) :
+    position.value ≠ .loss := by
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨x, hx⟩
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch,
+    Outcome.best_ne_loss_iff]
+  refine ⟨position.moveOutcome x, ?_, hmove⟩
+  apply List.mem_map.mpr
+  exact ⟨⟨x, hx⟩, by simp, rfl⟩
+
+private theorem Position.value_ne_win_of_all_moves
+    (position : Position)
+    (hremaining : position.remaining ≠ ∅)
+    (hcatch : ¬position.remaining.sum (fun y => y) < position.deficit)
+    (hmoves : ∀ x ∈ position.remaining, position.moveOutcome x ≠ .win) :
+    position.value ≠ .win := by
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch,
+    Outcome.best_ne_win_iff]
+  intro outcome houtcome
+  obtain ⟨⟨x, hx⟩, _, rfl⟩ := List.mem_map.mp houtcome
+  exact hmoves x hx
+
+private theorem Outcome.best_eq_win_iff (outcomes : List Outcome) :
+    Outcome.best outcomes = .win ↔ ∃ outcome ∈ outcomes, outcome = .win := by
+  rw [← not_iff_not]
+  simp
+  constructor
+  · intro hall hmem
+    exact hall .win hmem rfl
+  · intro hnot outcome hmem heq
+    subst outcome
+    exact hnot hmem
+
+private theorem Position.value_eq_win_of_move
+    (position : Position) (x : ℕ)
+    (hx : x ∈ position.remaining)
+    (hcatch : ¬position.remaining.sum (fun y => y) < position.deficit)
+    (hmove : position.moveOutcome x = .win) :
+    position.value = .win := by
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨x, hx⟩
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch,
+    Outcome.best_eq_win_iff]
+  refine ⟨position.moveOutcome x, ?_, hmove⟩
+  apply List.mem_map.mpr
+  exact ⟨⟨x, hx⟩, by simp, rfl⟩
+
+/-- Before the maximum is removed, a continuing lower pick subtracts twice that pick from the
+signed potential. This subtraction-free identity is the exact natural-number version. -/
+@[category API, AMS 91]
+theorem potential_after_continuing_lower_pick
+    (remaining : Finset ℕ) (deficit maximum x : ℕ)
+    (hx : x ∈ remaining) (hxMaximum : x ≠ maximum) (hcontinue : x < deficit) :
+    ((((⟨remaining, deficit⟩ : Position).afterPick x).remaining.erase maximum).sum
+          (fun y => y) +
+        ((⟨remaining, deficit⟩ : Position).afterPick x).deficit) + 2 * x =
+      (remaining.erase maximum).sum (fun y => y) + deficit := by
+  have hxLower : x ∈ remaining.erase maximum :=
+    Finset.mem_erase.mpr ⟨hxMaximum, hx⟩
+  have hsumErase :
+      ((remaining.erase maximum).erase x).sum (fun y => y) + x =
+        (remaining.erase maximum).sum (fun y => y) :=
+    Finset.sum_erase_add (remaining.erase maximum) (fun y => y) hxLower
+  have hsets :
+      (remaining.erase x).erase maximum = (remaining.erase maximum).erase x := by
+    exact Finset.erase_right_comm
+  simp only [Position.afterPick, hcontinue, if_true]
+  rw [hsets]
+  omega
+
+/-- Before the maximum is removed, a catching lower pick subtracts twice the old deficit from the
+signed potential, independently of which catching counter was chosen. -/
+@[category API, AMS 91]
+theorem potential_after_catching_lower_pick
+    (remaining : Finset ℕ) (deficit maximum x : ℕ)
+    (hx : x ∈ remaining) (hxMaximum : x ≠ maximum) (hcatch : deficit ≤ x) :
+    ((((⟨remaining, deficit⟩ : Position).afterPick x).remaining.erase maximum).sum
+          (fun y => y) +
+        ((⟨remaining, deficit⟩ : Position).afterPick x).deficit) + 2 * deficit =
+      (remaining.erase maximum).sum (fun y => y) + deficit := by
+  have hxLower : x ∈ remaining.erase maximum :=
+    Finset.mem_erase.mpr ⟨hxMaximum, hx⟩
+  have hsumErase :
+      ((remaining.erase maximum).erase x).sum (fun y => y) + x =
+        (remaining.erase maximum).sum (fun y => y) :=
+    Finset.sum_erase_add (remaining.erase maximum) (fun y => y) hxLower
+  have hsets :
+      (remaining.erase x).erase maximum = (remaining.erase maximum).erase x := by
+    exact Finset.erase_right_comm
+  have hnotContinue : ¬x < deficit := not_lt_of_ge hcatch
+  simp only [Position.afterPick, hnotContinue, if_false]
+  rw [hsets]
+  omega
+
+/-- The normalized endpoint handed to the opponent after a lower block and then the retained
+maximum complete the current turn. The legality hypotheses are stated separately in applications. -/
+def maximumTurnEndpoint
+    (remaining block : Finset ℕ) (deficit maximum : ℕ) : Position :=
+  ⟨(remaining.erase maximum) \ block,
+    maximum + block.sum (fun x => x) - deficit⟩
+
+/-- For a block drawn from below the retained maximum, the endpoint is pruned exactly when twice
+the block sum exceeds the signed-potential numerator. -/
+@[category API, AMS 91]
+theorem maximum_turn_endpoint_sum_lt_deficit_iff
+    (remaining block : Finset ℕ) (deficit maximum : ℕ)
+    (hblock : block ⊆ remaining.erase maximum)
+    (hdeficit : deficit ≤ maximum) :
+    (maximumTurnEndpoint remaining block deficit maximum).remaining.sum (fun x => x) <
+        (maximumTurnEndpoint remaining block deficit maximum).deficit ↔
+      (remaining.erase maximum).sum (fun x => x) + deficit <
+        maximum + 2 * block.sum (fun x => x) := by
+  let residualSum := ((remaining.erase maximum) \ block).sum (fun x => x)
+  let blockSum := block.sum (fun x => x)
+  let lowerSum := (remaining.erase maximum).sum (fun x => x)
+  have hsum : residualSum + blockSum = lowerSum := by
+    simpa [residualSum, blockSum, lowerSum] using
+      (Finset.sum_sdiff (f := fun x : ℕ => x) hblock)
+  have hsub : (maximum + blockSum - deficit) + deficit = maximum + blockSum := by
+    exact Nat.sub_add_cancel (by omega)
+  change residualSum < maximum + blockSum - deficit ↔
+    lowerSum + deficit < maximum + 2 * blockSum
+  omega
+
+/-- Equality in the same calculation is exactly the forced-draw endpoint. -/
+@[category API, AMS 91]
+theorem maximum_turn_endpoint_sum_eq_deficit_iff
+    (remaining block : Finset ℕ) (deficit maximum : ℕ)
+    (hblock : block ⊆ remaining.erase maximum)
+    (hdeficit : deficit ≤ maximum) :
+    (maximumTurnEndpoint remaining block deficit maximum).remaining.sum (fun x => x) =
+        (maximumTurnEndpoint remaining block deficit maximum).deficit ↔
+      (remaining.erase maximum).sum (fun x => x) + deficit =
+        maximum + 2 * block.sum (fun x => x) := by
+  let residualSum := ((remaining.erase maximum) \ block).sum (fun x => x)
+  let blockSum := block.sum (fun x => x)
+  let lowerSum := (remaining.erase maximum).sum (fun x => x)
+  have hsum : residualSum + blockSum = lowerSum := by
+    simpa [residualSum, blockSum, lowerSum] using
+      (Finset.sum_sdiff (f := fun x : ℕ => x) hblock)
+  have hsub : (maximum + blockSum - deficit) + deficit = maximum + blockSum := by
+    exact Nat.sub_add_cancel (by omega)
+  change residualSum = maximum + blockSum - deficit ↔
+    lowerSum + deficit = maximum + 2 * blockSum
+  omega
+
+/-- At equality, the completed maximum turn hands over a drawn normalized endpoint. -/
+@[category API, AMS 91]
+theorem maximum_turn_endpoint_value_eq_draw
+    (remaining block : Finset ℕ) (deficit maximum : ℕ)
+    (hblock : block ⊆ remaining.erase maximum)
+    (hdeficit : deficit ≤ maximum)
+    (hbalance : (remaining.erase maximum).sum (fun x => x) + deficit =
+      maximum + 2 * block.sum (fun x => x)) :
+    (maximumTurnEndpoint remaining block deficit maximum).value = .draw := by
+  apply value_eq_draw_of_sum_eq_deficit
+  exact (maximum_turn_endpoint_sum_eq_deficit_iff
+    remaining block deficit maximum hblock hdeficit).2 hbalance
+
+/-- Above the equality threshold, the completed maximum turn hands over a pruned loss. -/
+@[category API, AMS 91]
+theorem maximum_turn_endpoint_value_eq_loss
+    (remaining block : Finset ℕ) (deficit maximum : ℕ)
+    (hblock : block ⊆ remaining.erase maximum)
+    (hdeficit : deficit ≤ maximum)
+    (hstrict : (remaining.erase maximum).sum (fun x => x) + deficit <
+      maximum + 2 * block.sum (fun x => x)) :
+    (maximumTurnEndpoint remaining block deficit maximum).value = .loss := by
+  let endpoint := maximumTurnEndpoint remaining block deficit maximum
+  have hsum : endpoint.remaining.sum (fun x => x) < endpoint.deficit := by
+    exact (maximum_turn_endpoint_sum_lt_deficit_iff
+      remaining block deficit maximum hblock hdeficit).2 hstrict
+  rw [Position.value.eq_def]
+  by_cases hempty : endpoint.remaining = ∅
+  · have hdeficitPositive : endpoint.deficit ≠ 0 := by omega
+    simp [endpoint, hempty, hdeficitPositive]
+  · simp [endpoint, hempty, hsum]
+
+/-- At zero potential, a positive lower counter that does not catch is a winning first step: after
+it, the retained maximum is an immediate winning move. -/
+@[category API, AMS 91]
+theorem value_eq_win_of_zero_maximum_potential_of_positive_lower_continuation
+    (remaining : Finset ℕ) (deficit maximum x : ℕ)
+    (hmaximum : maximum ∈ remaining)
+    (hdeficit : deficit ≤ maximum)
+    (hzero : (remaining.erase maximum).sum (fun y => y) + deficit = maximum)
+    (hx : x ∈ remaining) (hxMaximum : x ≠ maximum)
+    (hxPositive : 0 < x) (hcontinue : x < deficit) :
+    (⟨remaining, deficit⟩ : Position).value = .win := by
+  let position : Position := ⟨remaining, deficit⟩
+  let child : Position := ⟨remaining.erase x, deficit - x⟩
+  have hafter : position.afterPick x = child := by
+    simp [position, child, Position.afterPick, hcontinue]
+  have hmaximumChild : maximum ∈ child.remaining := by
+    simp [child, hmaximum, Ne.symm hxMaximum]
+  have hxLower : x ∈ remaining.erase maximum :=
+    Finset.mem_erase.mpr ⟨hxMaximum, hx⟩
+  have hsumEraseX :
+      ((remaining.erase maximum).erase x).sum (fun y => y) + x =
+        (remaining.erase maximum).sum (fun y => y) :=
+    Finset.sum_erase_add (remaining.erase maximum) (fun y => y) hxLower
+  have hchildLowerSet :
+      child.remaining.erase maximum = (remaining.erase maximum).erase x := by
+    simp [child, Finset.erase_right_comm]
+  have hchildDeficit : child.deficit ≤ maximum := by
+    simp [child]
+    omega
+  have hchildNegative :
+      (child.remaining.erase maximum).sum (fun y => y) + child.deficit < maximum := by
+    rw [hchildLowerSet]
+    simp [child]
+    omega
+  have hchildMaximumMove : child.moveOutcome maximum = .win :=
+    maximum_move_outcome_eq_win_of_negative_potential
+      child.remaining child.deficit maximum hchildDeficit hchildNegative
+  have hmaximumChildLeSum : maximum ≤ child.remaining.sum (fun y => y) :=
+    Finset.single_le_sum (fun y _ => Nat.zero_le y) hmaximumChild
+  have hchildCatch : ¬child.remaining.sum (fun y => y) < child.deficit := by omega
+  have hchildWin : child.value = .win :=
+    Position.value_eq_win_of_move child maximum hmaximumChild hchildCatch hchildMaximumMove
+  have hpositionCatch : ¬position.remaining.sum (fun y => y) < position.deficit := by
+    have hmaximumLeSum : maximum ≤ position.remaining.sum (fun y => y) := by
+      exact Finset.single_le_sum (fun y _ => Nat.zero_le y) hmaximum
+    simp [position] at hmaximumLeSum ⊢
+    omega
+  apply Position.value_eq_win_of_move position x hx hpositionCatch
+  have hcontinuePosition : x < position.deficit := by simpa [position] using hcontinue
+  rw [Position.moveOutcome, if_pos hcontinuePosition, hafter, hchildWin]
+
+/-- At signed potential zero, if every lower counter catches immediately, the position is drawn. -/
+@[category API, AMS 91]
+theorem value_eq_draw_of_zero_maximum_potential_of_all_lower_catch
+    (remaining : Finset ℕ) (deficit maximum : ℕ)
+    (hmaximum : maximum ∈ remaining)
+    (hisMaximum : ∀ x ∈ remaining, x ≤ maximum)
+    (hdeficit : deficit ≤ maximum)
+    (hzero : (remaining.erase maximum).sum (fun x => x) + deficit = maximum)
+    (hallCatch : ∀ x ∈ remaining, x ≠ maximum → deficit ≤ x) :
+    (⟨remaining, deficit⟩ : Position).value = .draw := by
+  let position : Position := ⟨remaining, deficit⟩
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨maximum, hmaximum⟩
+  have hmaximumLeSum : maximum ≤ remaining.sum (fun x => x) :=
+    Finset.single_le_sum (fun x _ => Nat.zero_le x) hmaximum
+  have hcatch : ¬position.remaining.sum (fun x => x) < position.deficit := by
+    simpa [position] using (show ¬remaining.sum (fun x => x) < deficit by omega)
+  have hmaximumMove : position.moveOutcome maximum = .draw := by
+    simpa [position] using maximum_move_outcome_eq_draw_of_zero_potential
+      remaining deficit maximum hdeficit hzero
+  have hneLoss : position.value ≠ .loss := by
+    apply Position.value_ne_loss_of_move position maximum
+    · exact hmaximum
+    · exact hcatch
+    · simp [hmaximumMove]
+  have hneWin : position.value ≠ .win := by
+    apply Position.value_ne_win_of_all_moves position hremaining hcatch
+    intro x hx
+    by_cases hxMaximum : x = maximum
+    · subst x
+      simp [hmaximumMove]
+    · have hdx : deficit ≤ x := hallCatch x hx hxMaximum
+      let child : Position := ⟨remaining.erase x, x - deficit⟩
+      have hafter : position.afterPick x = child := by
+        simp [position, child, Position.afterPick, not_lt_of_ge hdx]
+      have hmaximumChild : maximum ∈ child.remaining := by
+        simp [child, hmaximum, Ne.symm hxMaximum]
+      have hxLeMaximum : x ≤ maximum := hisMaximum x hx
+      have hchildDeficit : child.deficit ≤ maximum := by
+        simp [child]
+        omega
+      have hxLower : x ∈ remaining.erase maximum := by
+        exact Finset.mem_erase.mpr ⟨hxMaximum, hx⟩
+      have hsumEraseX :
+          ((remaining.erase maximum).erase x).sum (fun y => y) + x =
+            (remaining.erase maximum).sum (fun y => y) := by
+        exact Finset.sum_erase_add (remaining.erase maximum) (fun y => y) hxLower
+      have hchildLowerSet :
+          child.remaining.erase maximum = (remaining.erase maximum).erase x := by
+        simp [child, Finset.erase_right_comm]
+      have hmaximumChildLeSum : maximum ≤ child.remaining.sum (fun y => y) :=
+        Finset.single_le_sum (fun y _ => Nat.zero_le y) hmaximumChild
+      have hchildCatch :
+          ¬child.remaining.sum (fun y => y) < child.deficit := by omega
+      have hchildMaximumMoveNeLoss : child.moveOutcome maximum ≠ .loss := by
+        by_cases hdeficitZero : deficit = 0
+        · have hchildZero :
+              (child.remaining.erase maximum).sum (fun y => y) + child.deficit =
+                maximum := by
+            rw [hchildLowerSet]
+            simp [child]
+            omega
+          have hmove := maximum_move_outcome_eq_draw_of_zero_potential
+            child.remaining child.deficit maximum hchildDeficit hchildZero
+          simpa [child] using (show child.moveOutcome maximum ≠ .loss by simp [hmove])
+        · have hchildNegative :
+              (child.remaining.erase maximum).sum (fun y => y) + child.deficit <
+                maximum := by
+            rw [hchildLowerSet]
+            simp [child]
+            omega
+          have hmove := maximum_move_outcome_eq_win_of_negative_potential
+            child.remaining child.deficit maximum hchildDeficit hchildNegative
+          simpa [child] using (show child.moveOutcome maximum ≠ .loss by simp [hmove])
+      have hchildNeLoss : child.value ≠ .loss :=
+        Position.value_ne_loss_of_move child maximum hmaximumChild hchildCatch
+          hchildMaximumMoveNeLoss
+      rw [Position.moveOutcome, if_neg (not_lt_of_ge hdx), hafter]
+      exact (Outcome.neg_ne_win_iff child.value).2 hchildNeLoss
+  exact (Outcome.eq_draw_iff position.value).2 ⟨hneLoss, hneWin⟩
+
+/-- For positive counter sets, zero potential is drawn exactly at the all-lower-catch boundary;
+otherwise a positive continuing lower counter followed by the maximum wins. -/
+@[category API, AMS 91]
+theorem value_eq_draw_iff_all_lower_catch_of_zero_maximum_potential
+    (remaining : Finset ℕ) (deficit maximum : ℕ)
+    (hmaximum : maximum ∈ remaining)
+    (hisMaximum : ∀ x ∈ remaining, x ≤ maximum)
+    (hpositive : ∀ x ∈ remaining, 0 < x)
+    (hdeficit : deficit ≤ maximum)
+    (hzero : (remaining.erase maximum).sum (fun x => x) + deficit = maximum) :
+    (⟨remaining, deficit⟩ : Position).value = .draw ↔
+      ∀ x ∈ remaining, x ≠ maximum → deficit ≤ x := by
+  constructor
+  · intro hdraw x hx hxMaximum
+    by_contra hnotCatch
+    have hcontinue : x < deficit := by omega
+    have hwin :=
+      value_eq_win_of_zero_maximum_potential_of_positive_lower_continuation
+        remaining deficit maximum x hmaximum hdeficit hzero hx hxMaximum
+          (hpositive x hx) hcontinue
+    rw [hdraw] at hwin
+    cases hwin
+  · intro hallCatch
+    exact value_eq_draw_of_zero_maximum_potential_of_all_lower_catch
+      remaining deficit maximum hmaximum hisMaximum hdeficit hzero hallCatch
+
+end CatchUp.MaximumCounterPotential
+

@@ -1,0 +1,316 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseThreeHoleFiniteChecker
+import catch_up.CertificateSoundness
+
+/-!
+# Linear indexed Catch-Up certificates
+
+Nodes are stored in an array, and every strategy edge carries its child's array index. The checker
+therefore validates each node and edge once without searching the node collection.
+-/
+
+namespace CatchUpSearch.LinearIndexedCertificateChecker
+
+open CatchUp
+open CertificateChecker
+
+/-- A branch with explicit child array indices. -/
+inductive IndexedBranch
+  | target
+  | terminal
+  | owner (counter childIndex : ℕ)
+  | opponent (moves : List (ℕ × ℕ))
+deriving DecidableEq, Repr
+
+/-- One encoded state and its explicitly indexed branch. -/
+structure IndexedNode where
+  state : State
+  branch : IndexedBranch
+deriving DecidableEq, Repr
+
+/-- A linear-time-checkable strategy certificate. -/
+structure IndexedDAG where
+  gameSize : ℕ
+  player : Player
+  rootIndices : List ℕ
+  nodes : Array IndexedNode
+deriving DecidableEq, Repr
+
+/-- A target predicate for explicit indexed leaves. -/
+abbrev TargetPredicate := State → Bool
+
+/-- Every recognized valid target state is genuinely safe for the protected player. -/
+def TargetSound (target : TargetPredicate) (dag : IndexedDAG) : Prop :=
+  ∀ state, ValidState dag.gameSize state → target state = true →
+    CanAvoidLoss dag.player (toGamePosition dag.gameSize state)
+
+/-- An indexed edge points to the exact formal child and strictly decreases remaining cardinality. -/
+def ChildLink (dag : IndexedDAG) (position : GamePosition)
+    (counter childIndex : ℕ) : Prop :=
+  match dag.nodes[childIndex]? with
+  | none => False
+  | some child =>
+      toGamePosition dag.gameSize child.state = position.afterPick counter ∧
+        (position.afterPick counter).remaining.card < position.remaining.card
+
+instance (dag : IndexedDAG) (position : GamePosition) (counter childIndex : ℕ) :
+    Decidable (ChildLink dag position counter childIndex) := by
+  unfold ChildLink
+  split <;> infer_instance
+
+/-- Every local target, terminal, owner, and opponent obligation, with no trusted edge data. -/
+def NodeValid (target : TargetPredicate) (dag : IndexedDAG) (node : IndexedNode) : Prop :=
+  ValidState dag.gameSize node.state ∧
+    let position := toGamePosition dag.gameSize node.state
+    match node.branch with
+    | .target => target node.state = true
+    | .terminal =>
+        IsTerminalState dag.gameSize node.state ∧
+          TerminalSafeFor dag.gameSize dag.player node.state
+    | .owner counter childIndex =>
+        ¬IsTerminalState dag.gameSize node.state ∧
+          position.toMove = dag.player ∧
+          LegalMove position counter ∧
+          ChildLink dag position counter childIndex
+    | .opponent moves =>
+        ¬IsTerminalState dag.gameSize node.state ∧
+          position.toMove ≠ dag.player ∧
+          moves.map Prod.fst = availableCounters dag.gameSize node.state ∧
+          moves.Forall fun move =>
+            LegalMove position move.1 ∧ ChildLink dag position move.1 move.2
+
+instance (target : TargetPredicate) (dag : IndexedDAG) (node : IndexedNode) :
+    Decidable (NodeValid target dag node) := by
+  unfold NodeValid
+  cases node.branch <;> dsimp <;> infer_instance
+
+/-- Check every array node in one pass. -/
+def checkLocalCertificate (target : TargetPredicate) (dag : IndexedDAG) : Bool :=
+  dag.nodes.all fun node => decide (NodeValid target dag node)
+
+/-- Successful array lookup plus the global pass yields the full local validity proposition. -/
+@[category API, AMS 91]
+theorem node_valid_of_check_local
+    (target : TargetPredicate) (dag : IndexedDAG)
+    (hcheck : checkLocalCertificate target dag = true)
+    (index : ℕ) (node : IndexedNode) (hget : dag.nodes[index]? = some node) :
+    NodeValid target dag node := by
+  have hmem : node ∈ dag.nodes := Array.mem_iff_getElem?.2 ⟨index, hget⟩
+  have hall := (Array.all_eq_true_iff_forall_mem.mp hcheck) node hmem
+  exact of_decide_eq_true hall
+
+/-- Every array node in an accepted certificate is safe. -/
+@[category API, AMS 91]
+theorem can_avoid_loss_of_index
+    (target : TargetPredicate) (dag : IndexedDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkLocalCertificate target dag = true)
+    (index : ℕ) (node : IndexedNode) (hget : dag.nodes[index]? = some node) :
+    CanAvoidLoss dag.player (toGamePosition dag.gameSize node.state) := by
+  have hvalid := node_valid_of_check_local target dag hcheck index node hget
+  rcases hvalid with ⟨hstateValid, hbranchValid⟩
+  cases hbranch : node.branch with
+  | target =>
+      simp only [hbranch] at hbranchValid
+      exact htarget node.state hstateValid hbranchValid
+  | terminal =>
+      simp only [hbranch] at hbranchValid
+      rcases hbranchValid with ⟨hterminal, hsafe⟩
+      apply (can_avoid_loss_iff_terminal_outcome_ne_loss dag.player
+        (toGamePosition dag.gameSize node.state) hterminal).2
+      exact hsafe
+  | owner counter childIndex =>
+      simp only [hbranch] at hbranchValid
+      rcases hbranchValid with ⟨hterminal, htoMove, hlegal, hlink⟩
+      apply (can_avoid_loss_iff_exists_safe_move dag.player
+        (toGamePosition dag.gameSize node.state) hterminal htoMove).2
+      refine ⟨counter, hlegal, ?_⟩
+      unfold ChildLink at hlink
+      split at hlink
+      · contradiction
+      · rename_i child hchild
+        rcases hlink with ⟨hchildPosition, hprogress⟩
+        have hsafe := can_avoid_loss_of_index target dag htarget hcheck
+          childIndex child hchild
+        simpa only [hchildPosition] using hsafe
+  | opponent moves =>
+      simp only [hbranch] at hbranchValid
+      rcases hbranchValid with ⟨hterminal, htoMove, hmoves, hforall⟩
+      apply (can_avoid_loss_iff_forall_safe_moves dag.player
+        (toGamePosition dag.gameSize node.state) hterminal htoMove).2
+      intro counter hlegal
+      have hcounterAvailable : counter ∈ availableCounters dag.gameSize node.state :=
+        (mem_available_counters_iff_legal_move dag.gameSize node.state counter).2 hlegal
+      have hcounter : counter ∈ moves.map Prod.fst := by
+        simpa only [hmoves] using hcounterAvailable
+      rcases List.mem_map.mp hcounter with ⟨move, hmove, hmoveCounter⟩
+      rcases move with ⟨moveCounter, childIndex⟩
+      simp only at hmoveCounter
+      subst moveCounter
+      have hlink := ((List.forall_iff_forall_mem.mp hforall)
+        (counter, childIndex) hmove).2
+      unfold ChildLink at hlink
+      split at hlink
+      · contradiction
+      · rename_i child hchild
+        rcases hlink with ⟨hchildPosition, hprogress⟩
+        have hsafe := can_avoid_loss_of_index target dag htarget hcheck
+          childIndex child hchild
+        simpa only [hchildPosition] using hsafe
+termination_by (toGamePosition dag.gameSize node.state).remaining.card
+decreasing_by
+  all_goals simpa only [hchildPosition] using hprogress
+
+/-- A proof-level position key used only for the derived dense-root lookup table. -/
+structure RootPositionKey where
+  position : GamePosition
+deriving DecidableEq
+
+/-- An injective binary support code used to distribute root positions across hash buckets. -/
+def rootSupportCode (remaining : Finset ℕ) : ℕ :=
+  remaining.sum fun counter => Nat.shiftLeft 1 counter
+
+protected def RootPositionKey.hash (key : RootPositionKey) : UInt64 :=
+  let playerHash := match key.position.toMove with
+    | .p1 => 0
+    | .p2 => 1
+  mixHash (hash (rootSupportCode key.position.remaining)) <|
+    mixHash (hash key.position.deficit) playerHash
+
+instance : Hashable RootPositionKey := ⟨RootPositionKey.hash⟩
+
+/-- Advertised dense roots indexed by their independently decoded formal positions. -/
+abbrev RootIndexMap := Std.HashMap RootPositionKey ℕ
+
+/-- Derive the dense-root map from advertised array indices; out-of-bounds data is ignored and
+will therefore fail coverage. -/
+def buildRootIndex (dag : IndexedDAG) : RootIndexMap :=
+  dag.rootIndices.foldl (fun roots index =>
+    match dag.nodes[index]? with
+    | none => roots
+    | some node => roots.insert ⟨toGamePosition dag.gameSize node.state⟩ index) {}
+
+/-- Constant-expected-time dense-root lookup followed by an exact array and decoding check. -/
+def RootContainsIn (roots : RootIndexMap) (dag : IndexedDAG)
+    (position : GamePosition) : Prop :=
+  match roots[(⟨position⟩ : RootPositionKey)]? with
+  | none => False
+  | some index =>
+      match dag.nodes[index]? with
+      | none => False
+      | some node => toGamePosition dag.gameSize node.state = position
+
+instance (roots : RootIndexMap) (dag : IndexedDAG) (position : GamePosition) :
+    Decidable (RootContainsIn roots dag position) := by
+  unfold RootContainsIn
+  split <;> try infer_instance
+  split <;> infer_instance
+
+/-- A successful fast root lookup exposes the exact array node used by the safety proof. -/
+@[category API, AMS 91]
+theorem exists_index_of_root_contains_in
+    (roots : RootIndexMap) (dag : IndexedDAG) (position : GamePosition)
+    (hcontains : RootContainsIn roots dag position) :
+    ∃ (index : ℕ) (node : IndexedNode), dag.nodes[index]? = some node ∧
+      toGamePosition dag.gameSize node.state = position := by
+  unfold RootContainsIn at hcontains
+  split at hcontains
+  · contradiction
+  · rename_i index hroot
+    split at hcontains
+    · contradiction
+    · rename_i node hget
+      exact ⟨index, node, hget, hcontains⟩
+
+/-- Require every qualifying dense-three-hole root by enumerating its at-most-three omitted
+counters. This is extensionally equivalent to filtering the full powerset, but avoids traversing
+all `2 ^ N` supports. -/
+def coverageCheck (N : ℕ) (dag : IndexedDAG) : Bool :=
+  let topSet := Finset.Icc 1 N
+  let roots := buildRootIndex dag
+  (Finset.range 4).attach.fold (· && ·) true fun
+      k : {k // k ∈ Finset.range 4} =>
+    (topSet.powersetCard k.1).attach.fold (· && ·) true fun
+        holes : {s // s ∈ topSet.powersetCard k.1} =>
+      (Finset.range (N + 1)).attach.fold (· && ·) true fun
+          deficit : {d // d ∈ Finset.range (N + 1)} =>
+        !DenseThreeHoleFiniteChecker.qualifies N (topSet \ holes.1) deficit.1 ||
+          decide (RootContainsIn roots dag ⟨⟨topSet \ holes.1, deficit.1⟩, .p1⟩)
+
+/-- Check metadata, every local indexed edge, and the original exhaustive dense-root family. -/
+def checkCertificate (N : ℕ) (target : TargetPredicate) (dag : IndexedDAG) : Bool :=
+  decide (dag.gameSize = N ∧ dag.player = .p1) &&
+    (checkLocalCertificate target dag && coverageCheck N dag)
+
+/-- The linear indexed checker proves the same dense-three-hole nonloss statement. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_of_check_certificate
+    (N : ℕ) (target : TargetPredicate) (dag : IndexedDAG)
+    (htarget : TargetSound target dag)
+    (hcheck : checkCertificate N target dag = true) :
+    DenseThreeHoleNonloss N := by
+  have hparts :
+      decide (dag.gameSize = N ∧ dag.player = .p1) = true ∧
+        (checkLocalCertificate target dag = true ∧ coverageCheck N dag = true) := by
+    simpa [checkCertificate, Bool.and_eq_true] using hcheck
+  have hmeta : dag.gameSize = N ∧ dag.player = .p1 := of_decide_eq_true hparts.1
+  intro position hsub hholes hdN hcatch heven
+  let topSet := Finset.Icc 1 N
+  let missing := topSet \ position.remaining
+  have hmissingSubset : missing ⊆ topSet := Finset.sdiff_subset
+  have hmissingCard : missing.card ≤ 3 := by
+    simpa only [missing, topSet] using hholes
+  have hk : missing.card ∈ Finset.range 4 := by
+    simp only [Finset.mem_range]
+    omega
+  have hmissing : missing ∈ topSet.powersetCard missing.card := by
+    simp only [Finset.mem_powersetCard]
+    exact ⟨hmissingSubset, True.intro⟩
+  have hdeficit : position.deficit ∈ Finset.range (N + 1) := by
+    simp only [Finset.mem_range]
+    omega
+  have hremaining : topSet \ missing = position.remaining := by
+    exact Finset.sdiff_sdiff_eq_self hsub
+  have hcoverage := hparts.2.2
+  rw [coverageCheck, Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at hcoverage
+  simp only [true_and, Finset.mem_attach] at hcoverage
+  have houter := hcoverage ⟨missing.card, hk⟩ True.intro
+  rw [Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at houter
+  simp only [true_and, Finset.mem_attach] at houter
+  have hmiddle := houter ⟨missing, hmissing⟩ True.intro
+  rw [Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at hmiddle
+  simp only [true_and, Finset.mem_attach] at hmiddle
+  have hinner := hmiddle ⟨position.deficit, hdeficit⟩ True.intro
+  have hqualifies :
+      DenseThreeHoleFiniteChecker.qualifies N position.remaining position.deficit = true := by
+    simp only [DenseThreeHoleFiniteChecker.qualifies, decide_eq_true_eq]
+    exact ⟨hholes, hcatch, heven⟩
+  have hcontains : RootContainsIn (buildRootIndex dag) dag
+      (⟨position, .p1⟩ : GamePosition) := by
+    simpa [topSet, hremaining, hqualifies] using hinner
+  rcases exists_index_of_root_contains_in (buildRootIndex dag) dag
+      (⟨position, .p1⟩ : GamePosition) hcontains with
+    ⟨index, node, hget, hnodePosition⟩
+  have hsafe := can_avoid_loss_of_index target dag htarget hparts.2.1 index node hget
+  rw [hnodePosition, can_avoid_loss_iff_value] at hsafe
+  simpa [hmeta.2] using hsafe
+
+end CatchUpSearch.LinearIndexedCertificateChecker

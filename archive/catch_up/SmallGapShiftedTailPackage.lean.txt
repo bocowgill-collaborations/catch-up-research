@@ -1,0 +1,249 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.SmallGapTurnEndpoint
+
+/-!
+# Shifted upper-tail reduction for small-gap endpoints
+
+This module isolates three shifted-tail assertions whose conjunction implies nonloss for every
+exact A5/B6/C7 small-gap turn endpoint.
+-/
+
+namespace CatchUp
+
+/-- A shifted upper tail with global hole budget `H` and minimum parameter at least `q` is
+non-losing in the continuation range. -/
+def ShiftedUpperTailContinuationNonloss (M H q : ℕ) : Prop :=
+  ∀ (m : ℕ) (remaining : Finset ℕ) (deficit : ℕ),
+    q ≤ m →
+    m ≤ M →
+    remaining ⊆ Finset.Icc (m + 1) M →
+    ((Finset.Icc (m + 1) M) \ remaining).card + (m - 1) ≤ H →
+    1 ≤ deficit →
+    deficit ≤ M - m →
+    ¬ remaining.sum (fun x => x) < deficit →
+    Even (deficit + remaining.sum (fun x => x)) →
+    (⟨remaining, deficit⟩ : Position).value ≠ .loss
+
+/-- A shifted upper tail with global hole budget `H` and minimum parameter at least `q` is
+non-winning when its deficit is at most the deleted minimum. No catchability premise is needed:
+a pruned position is automatically non-winning. -/
+def ShiftedUpperTailCatchNonwin (M H q : ℕ) : Prop :=
+  ∀ (m : ℕ) (remaining : Finset ℕ) (deficit : ℕ),
+    q ≤ m →
+    m ≤ M →
+    remaining ⊆ Finset.Icc (m + 1) M →
+    ((Finset.Icc (m + 1) M) \ remaining).card + (m - 1) ≤ H →
+    deficit ≤ m →
+    Even (deficit + remaining.sum (fun x => x)) →
+    (⟨remaining, deficit⟩ : Position).value ≠ .win
+
+/-- The sharp shifted-tail package suggested by the exact A5/B6/C7 endpoint data. -/
+def SmallGapShiftedTailPackage (M : ℕ) : Prop :=
+  ShiftedUpperTailContinuationNonloss M 7 1 ∧
+    ShiftedUpperTailCatchNonwin M 6 1 ∧
+      ShiftedUpperTailCatchNonwin M 7 3
+
+/-- Erasing a least counter turns a globally `H`-hole position into a shifted tail. -/
+@[category API, AMS 91]
+theorem erase_least_is_shifted_upper_tail
+    (M H : ℕ) (remaining : Finset ℕ) (m : ℕ)
+    (hsub : remaining ⊆ Finset.Icc 1 M)
+    (hholes : ((Finset.Icc 1 M) \ remaining).card ≤ H)
+    (hm : m ∈ remaining)
+    (hleast : ∀ x ∈ remaining, m ≤ x) :
+    1 ≤ m ∧
+      m ≤ M ∧
+        remaining.erase m ⊆ Finset.Icc (m + 1) M ∧
+          ((Finset.Icc (m + 1) M) \ (remaining.erase m)).card + (m - 1) ≤ H := by
+  have hmBounds := Finset.mem_Icc.mp (hsub hm)
+  refine ⟨hmBounds.1, hmBounds.2, ?_, ?_⟩
+  · intro x hx
+    have hxRemaining := Finset.mem_of_mem_erase hx
+    have hxBounds := Finset.mem_Icc.mp (hsub hxRemaining)
+    have hxm : x ≠ m := (Finset.mem_erase.mp hx).1
+    have hmx : m < x := lt_of_le_of_ne (hleast x hxRemaining) (Ne.symm hxm)
+    exact Finset.mem_Icc.mpr ⟨by omega, hxBounds.2⟩
+  · let lower := Finset.Icc 1 (m - 1)
+    let upper := (Finset.Icc (m + 1) M) \ (remaining.erase m)
+    have hlowerUpper : Disjoint lower upper := by
+      rw [Finset.disjoint_left]
+      intro x hxLower hxUpper
+      have hxLowerBounds := Finset.mem_Icc.mp hxLower
+      have hxUpperBounds := Finset.mem_Icc.mp (Finset.mem_sdiff.mp hxUpper).1
+      omega
+    have hunion : lower ∪ upper ⊆ (Finset.Icc 1 M) \ remaining := by
+      intro x hx
+      rcases Finset.mem_union.mp hx with hxLower | hxUpper
+      · have hxBounds := Finset.mem_Icc.mp hxLower
+        apply Finset.mem_sdiff.mpr
+        constructor
+        · exact Finset.mem_Icc.mpr ⟨hxBounds.1, by omega⟩
+        · intro hxRemaining
+          have hmx := hleast x hxRemaining
+          omega
+      · have hxTail := (Finset.mem_sdiff.mp hxUpper).1
+        have hxNotErase := (Finset.mem_sdiff.mp hxUpper).2
+        have hxBounds := Finset.mem_Icc.mp hxTail
+        apply Finset.mem_sdiff.mpr
+        constructor
+        · exact Finset.mem_Icc.mpr ⟨by omega, hxBounds.2⟩
+        · intro hxRemaining
+          apply hxNotErase
+          exact Finset.mem_erase.mpr ⟨by omega, hxRemaining⟩
+    have hcard := Finset.card_le_card hunion
+    have hlowerCard : lower.card = m - 1 := by
+      simp [lower, Nat.card_Icc]
+    rw [Finset.card_union_of_disjoint hlowerUpper, hlowerCard] at hcard
+    simpa only [upper, Nat.add_comm] using hcard.trans hholes
+
+/-- The shifted-tail package makes the least available counter safe in every nonempty exact
+small-gap endpoint. -/
+@[category API, AMS 91]
+theorem minimum_move_safe_of_small_gap_shifted_tail_package
+    (M : ℕ) (hpackage : SmallGapShiftedTailPackage M)
+    (position : Position)
+    (hsub : position.remaining ⊆ Finset.Icc 1 M)
+    (hdeficit : position.deficit ≤ M)
+    (hcanCatch : ¬ position.remaining.sum (fun x => x) < position.deficit)
+    (heven : Even (position.deficit + position.remaining.sum (fun x => x)))
+    (hshape : SmallGapTurnEndpointShape M position)
+    (m : ℕ) (hm : m ∈ position.remaining)
+    (hleast : ∀ x ∈ position.remaining, m ≤ x) :
+    position.moveOutcome m ≠ .loss := by
+  rcases hpackage with ⟨hcontinue, hcatchSix, hcatchSeven⟩
+  have hholesSeven : ((Finset.Icc 1 M) \ position.remaining).card ≤ 7 := by
+    dsimp [SmallGapTurnEndpointShape] at hshape
+    rcases hshape with hfive | hsix | hseven
+    · omega
+    · omega
+    · omega
+  obtain ⟨hmPos, hmM, hchildSub, hchildHolesSeven⟩ :=
+    erase_least_is_shifted_upper_tail M 7 position.remaining m hsub hholesSeven hm hleast
+  let child := position.afterPick m
+  have hchildEven :
+      Even (child.deficit + child.remaining.sum (fun x => x)) := by
+    rw [Nat.even_iff] at heven ⊢
+    have hmod := Position.mod_eq_two_deficit_add_sum_after_pick position hm
+    change (child.deficit + child.remaining.sum (fun x => x)) % 2 =
+      (position.deficit + position.remaining.sum (fun x => x)) % 2 at hmod
+    exact hmod.trans heven
+  have hsumErase :
+      (position.remaining.erase m).sum (fun x => x) + m =
+        position.remaining.sum (fun x => x) := by
+    simpa using Finset.sum_erase_add position.remaining (fun x => x) hm
+  by_cases hlt : m < position.deficit
+  · have hchild : child = ⟨position.remaining.erase m, position.deficit - m⟩ := by
+      simp [child, Position.afterPick, hlt]
+    have hchildDeficit : position.deficit - m ≤ M - m := by omega
+    have hchildDeficitPos : 1 ≤ position.deficit - m := by omega
+    have hchildCatchable :
+        ¬ (position.remaining.erase m).sum (fun x => x) < position.deficit - m := by
+      omega
+    have hchildValue :
+        (⟨position.remaining.erase m, position.deficit - m⟩ : Position).value ≠ .loss :=
+      hcontinue m (position.remaining.erase m) (position.deficit - m)
+        hmPos hmM hchildSub hchildHolesSeven hchildDeficitPos hchildDeficit hchildCatchable
+          (by simpa [hchild] using hchildEven)
+    rw [Position.moveOutcome]
+    simp only [hlt, if_true]
+    change child.value ≠ .loss
+    simpa [hchild] using hchildValue
+  · have hchildDeficit : m - position.deficit ≤ m := by omega
+    have hchildValue :
+        (⟨position.remaining.erase m, m - position.deficit⟩ : Position).value ≠ .win := by
+      dsimp [SmallGapTurnEndpointShape] at hshape
+      rcases hshape with hfive | hsix | hseven
+      · have hholesSix : ((Finset.Icc 1 M) \ position.remaining).card ≤ 6 := by
+          omega
+        have hchildHolesSix :=
+          (erase_least_is_shifted_upper_tail M 6 position.remaining m hsub hholesSix hm
+            hleast).2.2.2
+        exact hcatchSix m (position.remaining.erase m) (m - position.deficit)
+          hmPos hmM hchildSub hchildHolesSix hchildDeficit
+            (by simpa [child, Position.afterPick, hlt] using hchildEven)
+      · have hchildHolesSix :=
+          (erase_least_is_shifted_upper_tail M 6 position.remaining m hsub hsix.1 hm
+            hleast).2.2.2
+        exact hcatchSix m (position.remaining.erase m) (m - position.deficit)
+          hmPos hmM hchildSub hchildHolesSix hchildDeficit
+            (by simpa [child, Position.afterPick, hlt] using hchildEven)
+      · have hmNeOne : m ≠ 1 := by
+          intro hmOne
+          exact (Finset.mem_sdiff.mp hseven.2.1).2 (hmOne ▸ hm)
+        have hmNeTwo : m ≠ 2 := by
+          intro hmTwo
+          exact (Finset.mem_sdiff.mp hseven.2.2.1).2 (hmTwo ▸ hm)
+        have hmThree : 3 ≤ m := by omega
+        exact hcatchSeven m (position.remaining.erase m) (m - position.deficit)
+          hmThree hmM hchildSub hchildHolesSeven hchildDeficit
+            (by simpa [child, Position.afterPick, hlt] using hchildEven)
+    rw [Position.moveOutcome]
+    simp only [hlt, if_false]
+    rw [Outcome.neg_ne_loss_iff]
+    simpa [child, Position.afterPick, hlt] using hchildValue
+
+/-- The sharp conditional shifted-tail package implies the exact small-gap endpoint nonloss
+assertion. -/
+@[category API, AMS 91]
+theorem small_gap_turn_endpoint_nonloss_of_shifted_tail_package
+    (M : ℕ) (hpackage : SmallGapShiftedTailPackage M) :
+    SmallGapTurnEndpointNonloss M := by
+  intro position hsub hdeficit hcanCatch heven hshape
+  by_cases hempty : position.remaining = ∅
+  · have hdeficitZero : position.deficit = 0 := by
+      rw [hempty, Finset.sum_empty] at hcanCatch
+      omega
+    rw [Position.value.eq_def]
+    simp [hempty, hdeficitZero]
+  · have hremaining : position.remaining.Nonempty :=
+      Finset.nonempty_iff_ne_empty.mpr hempty
+    let m := position.remaining.min' hremaining
+    have hm : m ∈ position.remaining := Finset.min'_mem _ _
+    have hleast : ∀ x ∈ position.remaining, m ≤ x := by
+      intro x hx
+      exact Finset.min'_le _ x hx
+    have hmove : position.moveOutcome m ≠ .loss :=
+      minimum_move_safe_of_small_gap_shifted_tail_package M hpackage position hsub hdeficit
+        hcanCatch heven hshape m hm hleast
+    rw [Position.value_eq_best_move_outcome position hempty hcanCatch,
+      Outcome.best_ne_loss_iff]
+    refine ⟨position.moveOutcome m, ?_, hmove⟩
+    apply List.mem_map.mpr
+    exact ⟨⟨m, hm⟩, by simp, rfl⟩
+
+/-- From ambient size sixteen onward, the shifted-tail package implies the four-hole,
+small-deficit nonwin invariant. -/
+@[category API, AMS 91]
+theorem small_gap_four_hole_nonwin_of_shifted_tail_package
+    (M : ℕ) (hM : 16 ≤ M) (hpackage : SmallGapShiftedTailPackage M) :
+    SmallGapFourHoleNonwin M :=
+  small_gap_four_hole_nonwin_of_turn_endpoint_nonloss M hM
+    (small_gap_turn_endpoint_nonloss_of_shifted_tail_package M hpackage)
+
+/-- At an even adjoined top, the shifted-tail package advances the dense three-hole nonloss
+invariant by one ambient size. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_succ_of_shifted_tail_package
+    (N : ℕ) (hN : 15 ≤ N) (htopEven : Even (N + 1))
+    (hdense : DenseThreeHoleNonloss N)
+    (hpackage : SmallGapShiftedTailPackage (N + 1)) :
+    DenseThreeHoleNonloss (N + 1) :=
+  dense_three_hole_nonloss_succ_of_small_gap_four_hole_nonwin N (by omega) htopEven hdense
+    (small_gap_four_hole_nonwin_of_shifted_tail_package (N + 1) (by omega) hpackage)
+
+end CatchUp

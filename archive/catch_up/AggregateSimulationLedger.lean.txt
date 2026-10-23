@@ -1,0 +1,570 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.SimulationLedger
+
+/-!
+# Aggregate history ledgers for four-counter Catch-Up simulations
+
+The original four-counter ledger stores at most one old counter that has disappeared from both
+simulated games with different ownership. This module gives a conservative generalization: signs
+remain pointwise while an old counter is visible, while all irreversibly resolved contributions
+are accumulated in one integer. The history relation determines that accumulator from the parent
+ledger and the actual paired transition; it is not reconstructed from the child score gap.
+
+Bounds on the pending width or aggregate value belong to a chosen strategic relation. The generic
+soundness layer therefore parameterizes the pending-width bound and imposes no magnitude bound on
+the aggregate value.
+-/
+
+namespace CatchUp
+
+open scoped BigOperators
+
+/--
+A four-counter ledger that aggregates the values of all old counters absent from both games.
+-/
+structure AggregateFourLiftLedger where
+  topPositive : Finset ℕ
+  pendingPositive : Finset ℕ
+  resolvedValue : ℤ
+deriving DecidableEq
+
+/-- The empty aggregate ledger at an aligned old-opening root. -/
+def AggregateFourLiftLedger.empty : AggregateFourLiftLedger :=
+  ⟨∅, ∅, 0⟩
+
+/-- Initial aggregate ledger comparing small opening `k` with large opening `N + k`. -/
+def AggregateFourLiftLedger.newOpening (N k : ℕ) : AggregateFourLiftLedger :=
+  ⟨{N + k}, ∅, 0⟩
+
+/-- Numerical score-gap contribution represented by an aggregate ledger. -/
+def AggregateFourLiftLedger.value (N : ℕ) (small large : GamePosition)
+    (ledger : AggregateFourLiftLedger) : ℤ :=
+  signedCounterSum (fourLiftConsumedTopCounters N large) ledger.topPositive +
+    signedCounterSum (fourLiftPendingCounters N small large) ledger.pendingPositive +
+    ledger.resolvedValue
+
+/--
+Finite-support conditions for an aggregate ledger. The width bound is supplied by the strategic
+relation, while evenness records that every resolved ownership mismatch contributes `±2x`.
+-/
+def AggregateFourLiftLedger.Supports (pendingWidth N : ℕ)
+    (small large : GamePosition) (ledger : AggregateFourLiftLedger) : Prop :=
+  small.remaining ⊆ fourLiftOldCounters N ∧
+    large.remaining ⊆ Finset.Icc 1 (N + 4) ∧
+    ledger.topPositive ⊆ fourLiftConsumedTopCounters N large ∧
+    ledger.pendingPositive ⊆ fourLiftPendingCounters N small large ∧
+    (fourLiftPendingCounters N small large).card ≤ pendingWidth ∧
+    Even ledger.resolvedValue
+
+instance (pendingWidth N : ℕ) (small large : GamePosition)
+    (ledger : AggregateFourLiftLedger) :
+    Decidable (ledger.Supports pendingWidth N small large) := by
+  unfold AggregateFourLiftLedger.Supports
+  infer_instance
+
+/-- Static score-gap consistency of an aggregate ledger. -/
+def AggregateFourLiftLedger.Consistent (pendingWidth N : ℕ)
+    (small large : GamePosition) (ledger : AggregateFourLiftLedger) : Prop :=
+  ledger.Supports pendingWidth N small large ∧
+    large.p1ScoreBalance - small.p1ScoreBalance = ledger.value N small large
+
+/-- The resolved value forced by the score gap and the two visible signed supports. -/
+def AggregateFourLiftLedger.canonicalResolvedValue (N : ℕ) (small large : GamePosition)
+    (topPositive pendingPositive : Finset ℕ) : ℤ :=
+  large.p1ScoreBalance - small.p1ScoreBalance -
+    signedCounterSum (fourLiftConsumedTopCounters N large) topPositive -
+    signedCounterSum (fourLiftPendingCounters N small large) pendingPositive
+
+/-- The canonical aggregate ledger associated with two visible sign supports. -/
+def AggregateFourLiftLedger.canonical (N : ℕ) (small large : GamePosition)
+    (topPositive pendingPositive : Finset ℕ) : AggregateFourLiftLedger :=
+  ⟨topPositive, pendingPositive,
+    AggregateFourLiftLedger.canonicalResolvedValue N small large topPositive pendingPositive⟩
+
+/-- Consistency uniquely determines the aggregate resolved value. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.resolved_value_eq_of_consistent
+    (pendingWidth N : ℕ) (small large : GamePosition)
+    (ledger : AggregateFourLiftLedger)
+    (hconsistent : ledger.Consistent pendingWidth N small large) :
+    ledger.resolvedValue = AggregateFourLiftLedger.canonicalResolvedValue N small large
+      ledger.topPositive ledger.pendingPositive := by
+  rw [AggregateFourLiftLedger.Consistent] at hconsistent
+  rw [AggregateFourLiftLedger.canonicalResolvedValue,
+    AggregateFourLiftLedger.value] at *
+  linarith
+
+/-- A canonical aggregate ledger represents the exact score gap. -/
+@[simp, category API, AMS 91]
+theorem AggregateFourLiftLedger.value_canonical
+    (N : ℕ) (small large : GamePosition)
+    (topPositive pendingPositive : Finset ℕ) :
+    (AggregateFourLiftLedger.canonical N small large topPositive pendingPositive).value
+        N small large =
+      large.p1ScoreBalance - small.p1ScoreBalance := by
+  simp [AggregateFourLiftLedger.canonical,
+    AggregateFourLiftLedger.canonicalResolvedValue, AggregateFourLiftLedger.value]
+
+/-- Signed ownership coefficient of one consumed top counter. -/
+def AggregateFourLiftLedger.topCoefficient (N : ℕ) (large : GamePosition)
+    (ledger : AggregateFourLiftLedger) (counter : ℕ) : ℤ :=
+  if counter ∈ fourLiftConsumedTopCounters N large then
+    if counter ∈ ledger.topPositive then 1 else -1
+  else
+    0
+
+/-- Signed ownership coefficient of one still-visible pending old counter. -/
+def AggregateFourLiftLedger.pendingCoefficient (N : ℕ)
+    (small large : GamePosition) (ledger : AggregateFourLiftLedger) (counter : ℕ) : ℤ :=
+  if counter ∈ fourLiftPendingCounters N small large then
+    if counter ∈ ledger.pendingPositive then 1 else -1
+  else
+    0
+
+/-- The old-score coefficient introduced by one paired transition at one counter. -/
+def aggregateOldStepDelta (small large smallAfter : GamePosition) (x counter : ℕ) : ℤ :=
+  (if x = counter then large.toMove.scoreCoefficient else 0) -
+    (if small.counterRemovedBy smallAfter counter then small.toMove.scoreCoefficient else 0)
+
+/-- Old counters still visible in at least one child position. -/
+def aggregateChildActiveOldCounters
+    (N : ℕ) (smallAfter largeAfter : GamePosition) : Finset ℕ :=
+  smallAfter.fourLiftOldRemaining N ∪ largeAfter.fourLiftOldRemaining N
+
+/--
+Persistent history for an aggregate ledger.
+
+Visible old coefficients and top coefficients update pointwise. Every old coefficient that is no
+longer visible is transferred, with its counter value, into `resolvedValue`. This permits multiple
+resolutions while preventing a child ledger from choosing a fresh explanation of the score gap.
+-/
+def AggregateFourLiftLedger.HistoryStep (N : ℕ)
+    (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger) : Prop :=
+  (∀ counter ∈ aggregateChildActiveOldCounters N smallAfter (large.afterPick x),
+    after.pendingCoefficient N smallAfter (large.afterPick x) counter =
+      before.pendingCoefficient N small large counter +
+        aggregateOldStepDelta small large smallAfter x counter) ∧
+  (∀ counter ∈ fourLiftTopCounters N,
+    after.topCoefficient N (large.afterPick x) counter =
+      before.topCoefficient N large counter +
+        if x = counter then large.toMove.scoreCoefficient else 0) ∧
+  after.resolvedValue = before.resolvedValue +
+    ∑ counter ∈ fourLiftOldCounters N,
+      (before.pendingCoefficient N small large counter +
+          aggregateOldStepDelta small large smallAfter x counter -
+          after.pendingCoefficient N smallAfter (large.afterPick x) counter) * counter
+
+/-- Executable finite check of aggregate-ledger history persistence. -/
+def AggregateFourLiftLedger.historyStepCheck (N : ℕ)
+    (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger) : Bool :=
+  (List.range (N + 1)).all (fun counter =>
+      decide (counter ∈ aggregateChildActiveOldCounters N smallAfter (large.afterPick x) →
+        after.pendingCoefficient N smallAfter (large.afterPick x) counter =
+          before.pendingCoefficient N small large counter +
+            aggregateOldStepDelta small large smallAfter x counter)) &&
+    (List.range (N + 5)).all (fun counter =>
+      decide (counter ∈ fourLiftTopCounters N →
+        after.topCoefficient N (large.afterPick x) counter =
+          before.topCoefficient N large counter +
+            if x = counter then large.toMove.scoreCoefficient else 0)) &&
+    decide (after.resolvedValue = before.resolvedValue +
+      ∑ counter ∈ fourLiftOldCounters N,
+        (before.pendingCoefficient N small large counter +
+            aggregateOldStepDelta small large smallAfter x counter -
+            after.pendingCoefficient N smallAfter (large.afterPick x) counter) * counter)
+
+/-- The finite aggregate-history check is equivalent to semantic history persistence. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.history_step_check_eq_true
+    (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger) :
+    before.historyStepCheck N small large smallAfter x after = true ↔
+      before.HistoryStep N small large smallAfter x after := by
+  simp only [AggregateFourLiftLedger.historyStepCheck, Bool.and_eq_true, List.all_eq_true,
+    decide_eq_true_eq, AggregateFourLiftLedger.HistoryStep]
+  constructor
+  · rintro ⟨⟨hold, htop⟩, hresolved⟩
+    refine ⟨?_, ?_, hresolved⟩
+    · intro counter hcounter
+      apply hold counter
+      · simp only [List.mem_range]
+        have hcounterUpper : counter ≤ N := by
+          rcases Finset.mem_union.mp hcounter with hsmall | hlarge
+          · exact (Finset.mem_Icc.mp (Finset.mem_inter.mp hsmall).2).2
+          · exact (Finset.mem_Icc.mp (Finset.mem_inter.mp hlarge).2).2
+        omega
+      · exact hcounter
+    · intro counter hcounter
+      apply htop counter
+      · simp only [List.mem_range]
+        have hcounterUpper := (Finset.mem_Icc.mp hcounter).2
+        omega
+      · exact hcounter
+  · rintro ⟨hold, htop, hresolved⟩
+    exact ⟨⟨fun counter _ hcounter => hold counter hcounter,
+      fun counter _ hcounter => htop counter hcounter⟩, hresolved⟩
+
+/-- Numerical update required across one large pick and an optional ghost advance. -/
+def AggregateFourLiftLedger.ValueStep (N : ℕ)
+    (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger) : Prop :=
+  after.value N smallAfter (large.afterPick x) =
+  before.value N small large + large.toMove.scoreCoefficient * (x : ℤ) -
+      (smallAfter.p1ScoreBalance - small.p1ScoreBalance)
+
+/-- Canonical ledgers satisfy the numerical value step for every paired state change. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.value_step_canonical
+    (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (topPositiveBefore pendingPositiveBefore topPositiveAfter pendingPositiveAfter : Finset ℕ) :
+    (AggregateFourLiftLedger.canonical N small large
+        topPositiveBefore pendingPositiveBefore).ValueStep
+      N small large smallAfter x
+      (AggregateFourLiftLedger.canonical N smallAfter (large.afterPick x)
+        topPositiveAfter pendingPositiveAfter) := by
+  rw [AggregateFourLiftLedger.ValueStep, AggregateFourLiftLedger.value_canonical,
+    AggregateFourLiftLedger.value_canonical, GamePosition.p1_score_balance_after_pick]
+  ring
+
+instance (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger) :
+    Decidable (before.ValueStep N small large smallAfter x after) := by
+  unfold AggregateFourLiftLedger.ValueStep
+  infer_instance
+
+/-- A supported aggregate value step preserves score-gap consistency. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.consistent_after_pick
+    (pendingWidth N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger)
+    (hbefore : before.Consistent pendingWidth N small large)
+    (hsupport : after.Supports pendingWidth N smallAfter (large.afterPick x))
+    (hvalue : before.ValueStep N small large smallAfter x after) :
+    after.Consistent pendingWidth N smallAfter (large.afterPick x) := by
+  refine ⟨hsupport, ?_⟩
+  rw [hvalue, GamePosition.p1_score_balance_after_pick, ← hbefore.2]
+  ring
+
+/-- A safe guide position augmented by an aggregate history ledger. -/
+structure AggregateFourLiftGhost where
+  position : GamePosition
+  ledger : AggregateFourLiftLedger
+
+/-- The protected player can avoid loss in the aggregate ghost position. -/
+def AggregateFourLiftGhost.Safe (player : Player) (ghost : AggregateFourLiftGhost) : Prop :=
+  CanAvoidLoss player ghost.position
+
+/-- The aggregate ledger consistently relates a ghost position to the large position. -/
+def AggregateFourLiftGhost.Related (pendingWidth N : ℕ)
+    (ghost : AggregateFourLiftGhost) (large : GamePosition) : Prop :=
+  ghost.ledger.Consistent pendingWidth N ghost.position large
+
+/-- One aligned, history-preserving transition of an aggregate-ledger simulation. -/
+def AggregateFourLiftGhost.Advances (player : Player) (pendingWidth N : ℕ)
+    (before : AggregateFourLiftGhost) (large : GamePosition) (x : ℕ)
+    (after : AggregateFourLiftGhost) : Prop :=
+  before.position.AlignedSafeGhostStep player large.toMove after.position ∧
+    before.ledger.HistoryStep N before.position large after.position x after.ledger ∧
+    after.ledger.Supports pendingWidth N after.position (large.afterPick x) ∧
+    before.ledger.ValueStep N before.position large after.position x after.ledger
+
+/-- Check the ghost action and aggregate-ledger obligations carried by one explicit edge. -/
+def AggregateFourLiftGhost.advanceCheck (player : Player) (pendingWidth N : ℕ)
+    (before : AggregateFourLiftGhost) (large : GamePosition) (x : ℕ)
+    (after : AggregateFourLiftGhost) (smallCounter : Option ℕ) : Bool :=
+  before.position.alignedSafeGhostStepCheck player large.toMove after.position smallCounter &&
+    before.ledger.historyStepCheck N before.position large after.position x after.ledger &&
+    decide (after.ledger.Supports pendingWidth N after.position (large.afterPick x)) &&
+    decide (before.ledger.ValueStep N before.position large after.position x after.ledger)
+
+/-- Every accepted aggregate-ledger edge is a semantic simulation advance. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftGhost.advances_of_advance_check_eq_true
+    (player : Player) (pendingWidth N : ℕ) (before : AggregateFourLiftGhost)
+    (large : GamePosition) (x : ℕ) (after : AggregateFourLiftGhost)
+    (smallCounter : Option ℕ)
+    (hcheck : before.advanceCheck player pendingWidth N large x after smallCounter = true) :
+    before.Advances player pendingWidth N large x after := by
+  simp only [AggregateFourLiftGhost.advanceCheck, Bool.and_eq_true, decide_eq_true_eq] at hcheck
+  rcases hcheck with ⟨⟨⟨haligned, hhistory⟩, hsupport⟩, hvalue⟩
+  exact ⟨GamePosition.aligned_safe_ghost_step_of_check_eq_true _ _ _ _ _ haligned,
+    (AggregateFourLiftLedger.history_step_check_eq_true _ _ _ _ _ _ _).1 hhistory,
+    hsupport, hvalue⟩
+
+/-- A semantic aggregate-ledger edge has an accepted optional-counter encoding, and conversely. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftGhost.exists_advance_check_eq_true_iff
+    (player : Player) (pendingWidth N : ℕ) (before : AggregateFourLiftGhost)
+    (large : GamePosition) (x : ℕ) (after : AggregateFourLiftGhost) :
+    (∃ smallCounter,
+      before.advanceCheck player pendingWidth N large x after smallCounter = true) ↔
+      before.Advances player pendingWidth N large x after := by
+  constructor
+  · rintro ⟨smallCounter, hcheck⟩
+    exact AggregateFourLiftGhost.advances_of_advance_check_eq_true
+      player pendingWidth N before large x after smallCounter hcheck
+  · intro hadvance
+    rcases GamePosition.exists_aligned_safe_ghost_step_check_eq_true
+      player large.toMove before.position after.position hadvance.1 with ⟨smallCounter, haligned⟩
+    refine ⟨smallCounter, ?_⟩
+    simp only [AggregateFourLiftGhost.advanceCheck, Bool.and_eq_true, decide_eq_true_eq]
+    exact ⟨⟨⟨haligned,
+      (AggregateFourLiftLedger.history_step_check_eq_true _ _ _ _ _ _ _).2 hadvance.2.1⟩,
+      hadvance.2.2.1⟩, hadvance.2.2.2⟩
+
+/-- An aggregate-ledger simulation advance preserves ghost safety. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftGhost.safe_after_advance
+    {player : Player} {pendingWidth N : ℕ} {before after : AggregateFourLiftGhost}
+    {large : GamePosition} {x : ℕ}
+    (hadvance : before.Advances player pendingWidth N large x after)
+    (hbefore : before.Safe player) : after.Safe player := by
+  exact hadvance.1.can_avoid_loss hbefore
+
+/-- An aggregate-ledger simulation advance preserves the semantic relation. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftGhost.related_after_advance
+    {player : Player} {pendingWidth N : ℕ} {before after : AggregateFourLiftGhost}
+    {large : GamePosition} {x : ℕ}
+    (hrelated : before.Related pendingWidth N large)
+    (hadvance : before.Advances player pendingWidth N large x after) :
+    after.Related pendingWidth N (large.afterPick x) := by
+  exact AggregateFourLiftLedger.consistent_after_pick pendingWidth N before.position large
+    after.position x before.ledger after.ledger hrelated hadvance.2.2.1 hadvance.2.2.2
+
+/--
+A selected aggregate-ledger relation is locally closed when every member is a target, a safe
+terminal, or has the required owner/opponent advances to further members.
+-/
+def AggregateFourLiftLocallyClosed (pendingWidth N : ℕ) (player : Player)
+    (target : GamePosition → Prop)
+    (R : AggregateFourLiftGhost → GamePosition → Prop) : Prop :=
+  ∀ ghost large, R ghost large →
+    ghost.Related pendingWidth N large ∧
+      (target large ∨
+        (large.IsTerminal ∧ large.terminalOutcomeFor player ≠ .loss) ∨
+        (¬large.IsTerminal ∧
+          ((large.toMove = player ∧
+              ∃ x, large.LegalMove x ∧ ∃ ghost',
+                ghost.Advances player pendingWidth N large x ghost' ∧
+                  R ghost' (large.afterPick x)) ∨
+            (large.toMove ≠ player ∧
+              ∀ x, large.LegalMove x → ∃ ghost',
+                ghost.Advances player pendingWidth N large x ghost' ∧
+                  R ghost' (large.afterPick x)))))
+
+/-- Every safe member of a locally closed aggregate-ledger relation is safe in the large game. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLocallyClosed.can_avoid_loss
+    {pendingWidth N : ℕ} {player : Player} {target : GamePosition → Prop}
+    {R : AggregateFourLiftGhost → GamePosition → Prop}
+    (htargetSafe : ∀ large, target large → CanAvoidLoss player large)
+    (hclosed : AggregateFourLiftLocallyClosed pendingWidth N player target R)
+    {ghost : AggregateFourLiftGhost} {large : GamePosition}
+    (hmember : R ghost large) (hsafe : ghost.Safe player) :
+    CanAvoidLoss player large := by
+  induction large using
+      (measure fun position : GamePosition => position.remaining.card).wf.induction
+      generalizing ghost with
+  | h large ih =>
+      rcases hclosed ghost large hmember with ⟨_, hcases⟩
+      by_cases htarget : target large
+      · exact htargetSafe large htarget
+      · rcases hcases with htarget' | hterminal | hplay
+        · exact (htarget htarget').elim
+        · rw [can_avoid_loss_iff_terminal_outcome_ne_loss player large hterminal.1]
+          exact hterminal.2
+        · rcases hplay with ⟨hnterminal, howner | hopponent⟩
+          · rcases howner with ⟨htoMove, x, hx, ghost', hadvance, hchild⟩
+            rw [can_avoid_loss_iff_exists_safe_move player large hnterminal htoMove]
+            refine ⟨x, hx, ?_⟩
+            exact ih (large.afterPick x) (large.remaining_card_after_pick_lt x hx)
+              hchild (AggregateFourLiftGhost.safe_after_advance hadvance hsafe)
+          · rcases hopponent with ⟨htoMove, hresponses⟩
+            rw [can_avoid_loss_iff_forall_safe_moves player large hnterminal htoMove]
+            intro x hx
+            obtain ⟨ghost', hadvance, hchild⟩ := hresponses x hx
+            exact ih (large.afterPick x) (large.remaining_card_after_pick_lt x hx)
+              hchild (AggregateFourLiftGhost.safe_after_advance hadvance hsafe)
+
+/-- Lossless embedding of the old one-residual ledger into the aggregate representation. -/
+def AggregateFourLiftLedger.ofFourLiftLedger
+    (ledger : FourLiftLedger) : AggregateFourLiftLedger :=
+  { topPositive := ledger.topPositive
+    pendingPositive := ledger.pendingPositive
+    resolvedValue := (ledger.residual.map FourLiftResidual.value).getD 0 }
+
+/-- The old empty ledger embeds as the aggregate empty ledger. -/
+@[simp, category API, AMS 91]
+theorem AggregateFourLiftLedger.of_four_lift_ledger_empty :
+    AggregateFourLiftLedger.ofFourLiftLedger FourLiftLedger.empty =
+      AggregateFourLiftLedger.empty := by
+  rfl
+
+/-- The old new-opening ledger embeds as the aggregate new-opening ledger. -/
+@[simp, category API, AMS 91]
+theorem AggregateFourLiftLedger.of_four_lift_ledger_new_opening (N k : ℕ) :
+    AggregateFourLiftLedger.ofFourLiftLedger (FourLiftLedger.newOpening N k) =
+      AggregateFourLiftLedger.newOpening N k := by
+  rfl
+
+/-- Embedding the one-residual ledger preserves its numerical value. -/
+@[simp, category API, AMS 91]
+theorem AggregateFourLiftLedger.value_of_four_lift_ledger
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) :
+    (AggregateFourLiftLedger.ofFourLiftLedger ledger).value N small large =
+      ledger.value N small large := by
+  rfl
+
+/-- Every supported one-residual ledger is a width-three supported aggregate ledger. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.supports_of_four_lift_ledger
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger)
+    (hsupport : ledger.Supports N small large) :
+    (AggregateFourLiftLedger.ofFourLiftLedger ledger).Supports 3 N small large := by
+  rcases hsupport with ⟨hsmall, hlarge, htop, hpending, hwidth, hresidual⟩
+  refine ⟨hsmall, hlarge, htop, hpending, hwidth, ?_⟩
+  cases hledger : ledger.residual with
+  | none =>
+      simp [AggregateFourLiftLedger.ofFourLiftLedger, hledger]
+  | some residual =>
+      rw [hledger] at hresidual
+      simp only [AggregateFourLiftLedger.ofFourLiftLedger, hledger, Option.map_some,
+        Option.getD_some, FourLiftResidual.value]
+      by_cases hpositive : residual.positive
+      · rw [if_pos hpositive]
+        exact even_two_mul (residual.counter : ℤ)
+      · rw [if_neg hpositive]
+        exact Even.neg (even_two_mul (residual.counter : ℤ))
+
+/-- Every consistent one-residual ledger embeds as a consistent aggregate ledger. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.consistent_of_four_lift_ledger
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger)
+    (hconsistent : ledger.Consistent N small large) :
+    (AggregateFourLiftLedger.ofFourLiftLedger ledger).Consistent 3 N small large := by
+  exact ⟨AggregateFourLiftLedger.supports_of_four_lift_ledger N small large ledger
+      hconsistent.1,
+    hconsistent.2.trans
+      (AggregateFourLiftLedger.value_of_four_lift_ledger N small large ledger).symm⟩
+
+/-- The paired new-opening roots have a consistent width-three aggregate ledger. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.consistent_new_opening
+    (N k : ℕ) (hkLower : 1 ≤ k) (hkUpper : k ≤ 4) (hkN : k ≤ N) :
+    (AggregateFourLiftLedger.newOpening N k).Consistent 3 N
+      (GamePosition.afterOpening (Finset.Icc 1 N) k)
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)) := by
+  simpa using AggregateFourLiftLedger.consistent_of_four_lift_ledger N
+    (GamePosition.afterOpening (Finset.Icc 1 N) k)
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k))
+    (FourLiftLedger.newOpening N k)
+    (FourLiftLedger.consistent_new_opening N k hkLower hkUpper hkN)
+
+/-- The unchanged old-opening roots have a consistent width-three aggregate ledger. -/
+@[simp, category API, AMS 91]
+theorem AggregateFourLiftLedger.consistent_old_opening
+    (N opening : ℕ) (hopening : opening ∈ Finset.Icc 1 N) :
+    AggregateFourLiftLedger.empty.Consistent 3 N
+      (GamePosition.afterOpening (Finset.Icc 1 N) opening)
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening) := by
+  simpa using AggregateFourLiftLedger.consistent_of_four_lift_ledger N
+    (GamePosition.afterOpening (Finset.Icc 1 N) opening)
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening)
+    FourLiftLedger.empty (FourLiftLedger.consistent_old_opening N opening hopening)
+
+/-- A mirrored common old pick leaves the aggregate ledger and its accumulator unchanged. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.history_step_common_old_pick
+    (N : ℕ) (small large : GamePosition) (ledger : AggregateFourLiftLedger) (x : ℕ)
+    (hmovers : small.toMove = large.toMove)
+    (hsmallLegal : small.LegalMove x)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    ledger.HistoryStep N small large (small.afterPick x) x ledger := by
+  have hpending :
+      fourLiftPendingCounters N (small.afterPick x) (large.afterPick x) =
+        fourLiftPendingCounters N small large := by
+    rw [four_lift_pending_counters_after_picks]
+    ext counter
+    by_cases hcounter : counter = x
+    · subst counter
+      simp [fourLiftPendingCounters, Finset.mem_symmDiff, hsmall, hlarge]
+    · simp [fourLiftPendingCounters, Finset.mem_symmDiff, hcounter]
+  have hpendingCoefficient (counter : ℕ) :
+      ledger.pendingCoefficient N (small.afterPick x) (large.afterPick x) counter =
+        ledger.pendingCoefficient N small large counter := by
+    simp only [AggregateFourLiftLedger.pendingCoefficient, hpending]
+  have hxOld : x ∈ fourLiftOldCounters N := (Finset.mem_inter.mp hsmall).2
+  have hxNotTop : x ∉ fourLiftTopCounters N := by
+    have hxBounds := Finset.mem_Icc.mp hxOld
+    simp [fourLiftTopCounters]
+    omega
+  have hremoved (counter : ℕ) :
+      small.counterRemovedBy (small.afterPick x) counter = decide (counter = x) := by
+    change x ∈ small.remaining at hsmallLegal
+    by_cases hcounter : counter = x
+    · subst counter
+      simp [GamePosition.counterRemovedBy, GamePosition.afterPick, Position.afterPick, hsmallLegal]
+    · simp [GamePosition.counterRemovedBy, GamePosition.afterPick, Position.afterPick, hcounter]
+  have hdelta (counter : ℕ) :
+      aggregateOldStepDelta small large (small.afterPick x) x counter = 0 := by
+    rw [aggregateOldStepDelta, hremoved]
+    by_cases hcounter : counter = x
+    · subst counter
+      simp [hmovers]
+    · have hxCounter : x ≠ counter := Ne.symm hcounter
+      simp [hcounter, hxCounter]
+  refine ⟨?_, ?_, ?_⟩
+  · intro counter _
+    rw [hpendingCoefficient, hdelta]
+    ring
+  · intro counter hcounter
+    have hne : x ≠ counter := by
+      have hxBounds := Finset.mem_Icc.mp hxOld
+      have hcounterBounds := Finset.mem_Icc.mp hcounter
+      omega
+    simp [AggregateFourLiftLedger.topCoefficient, hxNotTop, hne]
+  · have hsum :
+        (∑ counter ∈ fourLiftOldCounters N,
+          (ledger.pendingCoefficient N small large counter +
+              aggregateOldStepDelta small large (small.afterPick x) x counter -
+              ledger.pendingCoefficient N (small.afterPick x) (large.afterPick x) counter) *
+            counter) = 0 := by
+      apply Finset.sum_eq_zero
+      intro counter _
+      rw [hpendingCoefficient, hdelta]
+      ring
+    simp [hsum]
+
+/-- Aggregate history determines the child resolved value uniquely. -/
+@[category API, AMS 91]
+theorem AggregateFourLiftLedger.resolved_value_eq_of_history_step
+    (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : AggregateFourLiftLedger)
+    (hstep : before.HistoryStep N small large smallAfter x after) :
+    after.resolvedValue = before.resolvedValue +
+      ∑ counter ∈ fourLiftOldCounters N,
+        (before.pendingCoefficient N small large counter +
+            aggregateOldStepDelta small large smallAfter x counter -
+            after.pendingCoefficient N smallAfter (large.afterPick x) counter) * counter :=
+  hstep.2.2
+
+end CatchUp

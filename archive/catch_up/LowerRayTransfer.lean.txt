@@ -1,0 +1,389 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PairDeletionReduction
+
+/-!
+# Conditional Lower-Ray Transfer for Catch-Up
+
+This research module verifies the canonical consecutive catch-up turn used in the lower
+pair-deletion reduction. It packages an exact conditional N-to-N-plus-four theorem whose
+remaining premises are safety transfers for the pair-two state, the old canonical tails, and
+four shifted boundary tails. The module does not prove those strategic transfer premises.
+-/
+
+namespace CatchUp
+
+/-- The triangular total of the counters from zero through `k`. -/
+def lowerRayTriangular (k : ℕ) : ℕ :=
+  ∑ i ∈ Finset.range (k + 1), i
+
+/-- `k` is the first canonical prefix endpoint whose triangular total reaches `b`. -/
+def IsLowerRayCeiling (k b : ℕ) : Prop :=
+  2 ≤ k ∧ k < b ∧ lowerRayTriangular (k - 1) < b ∧ b ≤ lowerRayTriangular k
+
+/-- The lower pair-deletion position after taking the canonical prefix through `j`. -/
+def lowerRayBeforeCatch (N b j : ℕ) : Position :=
+  ⟨(Finset.Icc (j + 1) N).erase b, b - lowerRayTriangular j⟩
+
+/-- The canonical tail reached when prefix counter `k` catches the deficit. -/
+def lowerRayTail (N k b : ℕ) : Position :=
+  ⟨(Finset.Icc (k + 1) N).erase b, lowerRayTriangular k - b⟩
+
+@[category API, AMS 91]
+theorem lower_ray_triangular_succ (j : ℕ) :
+    lowerRayTriangular (j + 1) = lowerRayTriangular j + (j + 1) := by
+  simp [lowerRayTriangular, Finset.sum_range_succ]
+
+@[category API, AMS 91]
+theorem lower_ray_triangular_mono {j k : ℕ} (hjk : j ≤ k) :
+    lowerRayTriangular j ≤ lowerRayTriangular k := by
+  apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.range_mono (by omega))
+  omega
+
+private theorem Position.value_ne_loss_of_legal_move
+    (position : Position) (x : ℕ)
+    (hremaining : position.remaining ≠ ∅)
+    (hcatch : ¬ position.remaining.sum (fun y ↦ y) < position.deficit)
+    (hx : x ∈ position.remaining)
+    (hmove : position.moveOutcome x ≠ .loss) :
+    position.value ≠ .loss := by
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch]
+  rw [Outcome.best_ne_loss_iff]
+  exact ⟨position.moveOutcome x, by
+    apply List.mem_map.mpr
+    exact ⟨⟨x, hx⟩, by simp, rfl⟩, hmove⟩
+
+private theorem lower_ray_before_catch_not_pruned
+    (N b j k : ℕ) (hjk : j < k) (hkN : k ≤ N) (hkb : k < b)
+    (hbelow : lowerRayTriangular j < b) (hceiling : b ≤ lowerRayTriangular k) :
+    ¬(lowerRayBeforeCatch N b j).remaining.sum (fun x ↦ x) <
+      (lowerRayBeforeCatch N b j).deficit := by
+  have hsubset : Finset.Ico (j + 1) (k + 1) ⊆
+      (lowerRayBeforeCatch N b j).remaining := by
+    intro x hx
+    simp only [Finset.mem_Ico] at hx
+    simp only [lowerRayBeforeCatch, Finset.mem_erase, Finset.mem_Icc]
+    omega
+  have hsumle : (Finset.Ico (j + 1) (k + 1)).sum (fun x ↦ x) ≤
+      (lowerRayBeforeCatch N b j).remaining.sum (fun x ↦ x) := by
+    exact Finset.sum_le_sum_of_subset_of_nonneg hsubset (by omega)
+  have hsum := Finset.sum_range_add_sum_Ico (fun x : ℕ ↦ x)
+    (show j + 1 ≤ k + 1 by omega)
+  change ¬_ < b - lowerRayTriangular j
+  simp only [lowerRayTriangular] at hbelow hceiling hsum ⊢
+  omega
+
+private theorem lower_ray_before_catch_next_mem
+    (N b j k : ℕ) (hjk : j < k) (hkN : k ≤ N) (hkb : k < b) :
+    j + 1 ∈ (lowerRayBeforeCatch N b j).remaining := by
+  simp [lowerRayBeforeCatch]
+  omega
+
+private theorem lower_ray_before_catch_after_pick_next
+    (N b j k : ℕ) (hjk : j + 1 < k) (hkb : k < b)
+    (hbelow : lowerRayTriangular (j + 1) < b) :
+    (lowerRayBeforeCatch N b j).afterPick (j + 1) =
+      lowerRayBeforeCatch N b (j + 1) := by
+  have htri := lower_ray_triangular_succ j
+  have hpicklt : j + 1 < b - lowerRayTriangular j := by omega
+  simp only [Position.afterPick, lowerRayBeforeCatch, hpicklt, if_true]
+  congr 1
+  · ext x
+    simp
+    omega
+  · omega
+
+private theorem lower_ray_before_catch_after_pick_ceiling
+    (N b k : ℕ) (hk : 1 ≤ k) (hkb : k < b)
+    (hbelow : lowerRayTriangular (k - 1) < b)
+    (hceiling : b ≤ lowerRayTriangular k) :
+    (lowerRayBeforeCatch N b (k - 1)).afterPick k = lowerRayTail N k b := by
+  have htri : lowerRayTriangular k = lowerRayTriangular (k - 1) + k := by
+    simpa [Nat.sub_add_cancel hk] using lower_ray_triangular_succ (k - 1)
+  have hcatch : ¬k < b - lowerRayTriangular (k - 1) := by omega
+  simp only [Position.afterPick, lowerRayBeforeCatch, lowerRayTail, hcatch, if_false]
+  congr 1
+  · ext x
+    simp
+    omega
+  · omega
+
+private theorem lower_ray_before_catch_value_ne_loss
+    (N b k j : ℕ) (hceiling : IsLowerRayCeiling k b) (hkN : k ≤ N)
+    (hjk : j < k)
+    (htail : (lowerRayTail N k b).value ≠ .win) :
+    (lowerRayBeforeCatch N b j).value ≠ .loss := by
+  rcases hceiling with ⟨hkTwo, hkb, hbelowCeiling, hceiling⟩
+  have hjTop : j ≤ k - 1 := by omega
+  have hbase : (lowerRayBeforeCatch N b (k - 1)).value ≠ .loss := by
+    have hkPos : 1 ≤ k := by omega
+    have hkmem := lower_ray_before_catch_next_mem N b (k - 1) k (by omega) hkN hkb
+    have hkmem' : k ∈ (lowerRayBeforeCatch N b (k - 1)).remaining := by
+      simpa [Nat.sub_add_cancel hkPos] using hkmem
+    have hremaining : (lowerRayBeforeCatch N b (k - 1)).remaining ≠ ∅ :=
+      Finset.nonempty_iff_ne_empty.mp ⟨k, hkmem'⟩
+    have hnotPruned := lower_ray_before_catch_not_pruned N b (k - 1) k
+      (by omega) hkN hkb hbelowCeiling hceiling
+    apply Position.value_ne_loss_of_legal_move
+      (lowerRayBeforeCatch N b (k - 1)) k hremaining hnotPruned hkmem'
+    simp only [Position.moveOutcome]
+    have hcatch : ¬k < (lowerRayBeforeCatch N b (k - 1)).deficit := by
+      change ¬k < b - lowerRayTriangular (k - 1)
+      have htri : lowerRayTriangular k = lowerRayTriangular (k - 1) + k := by
+        simpa [Nat.sub_add_cancel hkPos] using lower_ray_triangular_succ (k - 1)
+      omega
+    simp only [hcatch, if_false]
+    rw [lower_ray_before_catch_after_pick_ceiling N b k hkPos hkb hbelowCeiling hceiling]
+    simpa using (Outcome.neg_ne_loss_iff (lowerRayTail N k b).value).2 htail
+  apply Nat.decreasingInduction'
+    (P := fun t ↦ (lowerRayBeforeCatch N b t).value ≠ .loss)
+    (m := j) (n := k - 1) ?_ hjTop hbase
+  intro i hi hik hnext
+  have hiLtK : i < k := by omega
+  have hiNextLtK : i + 1 < k := by omega
+  have hiNextLeTop : i + 1 ≤ k - 1 := by omega
+  have hiBelow : lowerRayTriangular i < b :=
+    lt_of_le_of_lt (lower_ray_triangular_mono (show i ≤ k - 1 by omega)) hbelowCeiling
+  have hiNextBelow : lowerRayTriangular (i + 1) < b :=
+    lt_of_le_of_lt (lower_ray_triangular_mono hiNextLeTop) hbelowCeiling
+  have himem := lower_ray_before_catch_next_mem N b i k hiLtK hkN hkb
+  have hremaining : (lowerRayBeforeCatch N b i).remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨i + 1, himem⟩
+  have hnotPruned := lower_ray_before_catch_not_pruned N b i k hiLtK hkN hkb
+    hiBelow hceiling
+  apply Position.value_ne_loss_of_legal_move
+    (lowerRayBeforeCatch N b i) (i + 1) hremaining hnotPruned himem
+  simp only [Position.moveOutcome]
+  have hpicklt : i + 1 < (lowerRayBeforeCatch N b i).deficit := by
+    change i + 1 < b - lowerRayTriangular i
+    have htri := lower_ray_triangular_succ i
+    omega
+  simp only [hpicklt, if_true]
+  rw [lower_ray_before_catch_after_pick_next N b i k hiNextLtK hkb hiNextBelow]
+  exact hnext
+
+@[category API, AMS 91]
+theorem pair_deletion_position_one_eq_lower_ray_before_catch_one
+    (N b : ℕ) :
+    pairDeletionPosition N 1 b = lowerRayBeforeCatch N b 1 := by
+  simp only [pairDeletionPosition, lowerRayBeforeCatch]
+  congr 1
+  ext x
+  simp
+  omega
+
+/-- The exact draw witness at `b = 2`, kept separate from the canonical tails. -/
+def LowerRayPairTwoDraw (N : ℕ) : Prop :=
+  (pairDeletionPosition N 1 2).value = .draw
+
+/-- For every `b ≥ 3`, the canonical catch-up tail is not a win for its next player. -/
+def CanonicalLowerRayNonwin (N : ℕ) : Prop :=
+  ∀ b ∈ Finset.Icc 3 N, ∃ k, IsLowerRayCeiling k b ∧
+    (lowerRayTail N k b).value ≠ .win
+
+/-- The invariant sufficient for the lower pair-deletion reduction. -/
+def LowerRayInductionInvariant (N : ℕ) : Prop :=
+  LowerRayPairTwoDraw N ∧ CanonicalLowerRayNonwin N
+
+/-- The canonical tail as an absolute state; player two is moving after player one catches up. -/
+def lowerRayTailGame (N k b : ℕ) : GamePosition :=
+  ⟨lowerRayTail N k b, .p2⟩
+
+/-- The `b = 2` pair-deletion state; player one is moving. -/
+def lowerRayPairTwoGame (N : ℕ) : GamePosition :=
+  ⟨pairDeletionPosition N 1 2, .p1⟩
+
+@[category API, AMS 91]
+theorem can_avoid_loss_p1_lower_ray_tail_game_iff (N k b : ℕ) :
+    CanAvoidLoss .p1 (lowerRayTailGame N k b) ↔
+      (lowerRayTail N k b).value ≠ .win := by
+  rw [can_avoid_loss_iff_value]
+  simp [lowerRayTailGame]
+
+@[category API, AMS 91]
+theorem can_avoid_loss_p1_lower_ray_pair_two_game_iff (N : ℕ) :
+    CanAvoidLoss .p1 (lowerRayPairTwoGame N) ↔
+      (pairDeletionPosition N 1 2).value ≠ .loss := by
+  rw [can_avoid_loss_iff_value]
+  simp [lowerRayPairTwoGame]
+
+@[category API, AMS 91]
+theorem can_avoid_loss_p2_lower_ray_pair_two_game_iff (N : ℕ) :
+    CanAvoidLoss .p2 (lowerRayPairTwoGame N) ↔
+      (pairDeletionPosition N 1 2).value ≠ .win := by
+  rw [can_avoid_loss_iff_value]
+  simp [lowerRayPairTwoGame]
+
+/-- A product-basin implication for both owners is enough to transport the `b = 2` draw. -/
+def LowerRayPairTwoBasinTransfer (N : ℕ) : Prop :=
+  ∀ player, CanAvoidLoss player (lowerRayPairTwoGame N) →
+    CanAvoidLoss player (lowerRayPairTwoGame (N + 4))
+
+/-- Old canonical tails require only preservation of player one's non-loss. -/
+def OldCanonicalLowerRayBasinTransfer (N : ℕ) : Prop :=
+  ∀ b ∈ Finset.Icc 3 N, ∀ k, IsLowerRayCeiling k b →
+    CanAvoidLoss .p1 (lowerRayTailGame N k b) →
+    CanAvoidLoss .p1 (lowerRayTailGame (N + 4) k b)
+
+/-- The four genuinely new `b` values need direct player-one safety at their canonical tails. -/
+def NewCanonicalLowerRayBasinSafety (N : ℕ) : Prop :=
+  ∀ b ∈ Finset.Icc (N + 1) (N + 4), ∃ k, IsLowerRayCeiling k b ∧
+    CanAvoidLoss .p1 (lowerRayTailGame (N + 4) k b)
+
+/-- A shifted boundary transfer can discharge the four direct new-tail obligations. -/
+def BoundaryCanonicalLowerRayBasinTransfer (N : ℕ) : Prop :=
+  ∀ offset ∈ Finset.Icc 1 4, ∀ smallK,
+    IsLowerRayCeiling smallK (N + offset - 4) →
+    CanAvoidLoss .p1 (lowerRayTailGame N smallK (N + offset - 4)) →
+    ∃ largeK, IsLowerRayCeiling largeK (N + offset) ∧
+      CanAvoidLoss .p1 (lowerRayTailGame (N + 4) largeK (N + offset))
+
+@[category API, AMS 91]
+theorem new_canonical_lower_ray_basin_safety_of_boundary_transfer
+    (N : ℕ) (hN : 8 ≤ N) (hsmall : CanonicalLowerRayNonwin N)
+    (hboundary : BoundaryCanonicalLowerRayBasinTransfer N) :
+    NewCanonicalLowerRayBasinSafety N := by
+  intro b hb
+  have hbBounds := Finset.mem_Icc.mp hb
+  let offset := b - N
+  have hoffset : offset ∈ Finset.Icc 1 4 := by
+    apply Finset.mem_Icc.mpr
+    dsimp [offset]
+    omega
+  have hlargeB : N + offset = b := by
+    dsimp [offset]
+    omega
+  have hsmallB : N + offset - 4 ∈ Finset.Icc 3 N := by
+    apply Finset.mem_Icc.mpr
+    dsimp [offset]
+    omega
+  obtain ⟨smallK, hsmallCeiling, hsmallSafe⟩ := hsmall _ hsmallB
+  have hsmallBasin :
+      CanAvoidLoss .p1 (lowerRayTailGame N smallK (N + offset - 4)) := by
+    rw [can_avoid_loss_p1_lower_ray_tail_game_iff]
+    exact hsmallSafe
+  obtain ⟨largeK, hlargeCeiling, hlargeSafe⟩ :=
+    hboundary offset hoffset smallK hsmallCeiling hsmallBasin
+  refine ⟨largeK, ?_, ?_⟩
+  · simpa [hlargeB] using hlargeCeiling
+  · simpa [hlargeB] using hlargeSafe
+
+@[category API, AMS 91]
+theorem lower_ray_pair_two_draw_add_four_of_basin_transfer
+    (N : ℕ) (hsmall : LowerRayPairTwoDraw N)
+    (htransfer : LowerRayPairTwoBasinTransfer N) :
+    LowerRayPairTwoDraw (N + 4) := by
+  simp only [LowerRayPairTwoDraw] at hsmall ⊢
+  rw [Outcome.eq_draw_iff]
+  constructor
+  · rw [← can_avoid_loss_p1_lower_ray_pair_two_game_iff]
+    apply htransfer .p1
+    rw [can_avoid_loss_p1_lower_ray_pair_two_game_iff]
+    exact ((Outcome.eq_draw_iff _).mp hsmall).1
+  · rw [← can_avoid_loss_p2_lower_ray_pair_two_game_iff]
+    apply htransfer .p2
+    rw [can_avoid_loss_p2_lower_ray_pair_two_game_iff]
+    exact ((Outcome.eq_draw_iff _).mp hsmall).2
+
+@[category API, AMS 91]
+theorem canonical_lower_ray_nonwin_add_four_of_basin_transfer
+    (N : ℕ) (hsmall : CanonicalLowerRayNonwin N)
+    (hold : OldCanonicalLowerRayBasinTransfer N)
+    (hnew : NewCanonicalLowerRayBasinSafety N) :
+    CanonicalLowerRayNonwin (N + 4) := by
+  intro b hbTarget
+  have hbBounds := Finset.mem_Icc.mp hbTarget
+  by_cases hbOld : b ≤ N
+  · obtain ⟨k, hceiling, hsafe⟩ :=
+      hsmall b (Finset.mem_Icc.mpr ⟨hbBounds.1, hbOld⟩)
+    refine ⟨k, hceiling, ?_⟩
+    rw [← can_avoid_loss_p1_lower_ray_tail_game_iff]
+    apply hold b (Finset.mem_Icc.mpr ⟨hbBounds.1, hbOld⟩) k hceiling
+    rw [can_avoid_loss_p1_lower_ray_tail_game_iff]
+    exact hsafe
+  · have hbNew : b ∈ Finset.Icc (N + 1) (N + 4) := by
+      apply Finset.mem_Icc.mpr
+      omega
+    obtain ⟨k, hceiling, hsafe⟩ := hnew b hbNew
+    refine ⟨k, hceiling, ?_⟩
+    rw [← can_avoid_loss_p1_lower_ray_tail_game_iff]
+    exact hsafe
+
+@[category API, AMS 91]
+theorem lower_ray_induction_invariant_add_four_of_basin_transfer
+    (N : ℕ) (hsmall : LowerRayInductionInvariant N)
+    (hpairTwo : LowerRayPairTwoBasinTransfer N)
+    (hold : OldCanonicalLowerRayBasinTransfer N)
+    (hnew : NewCanonicalLowerRayBasinSafety N) :
+    LowerRayInductionInvariant (N + 4) := by
+  constructor
+  · exact lower_ray_pair_two_draw_add_four_of_basin_transfer N hsmall.1 hpairTwo
+  · exact canonical_lower_ray_nonwin_add_four_of_basin_transfer N hsmall.2 hold hnew
+
+@[category API, AMS 91]
+theorem lower_ray_induction_invariant_add_four_of_boundary_basin_transfer
+    (N : ℕ) (hN : 8 ≤ N) (hsmall : LowerRayInductionInvariant N)
+    (hpairTwo : LowerRayPairTwoBasinTransfer N)
+    (hold : OldCanonicalLowerRayBasinTransfer N)
+    (hboundary : BoundaryCanonicalLowerRayBasinTransfer N) :
+    LowerRayInductionInvariant (N + 4) := by
+  apply lower_ray_induction_invariant_add_four_of_basin_transfer N hsmall hpairTwo hold
+  exact new_canonical_lower_ray_basin_safety_of_boundary_transfer N hN hsmall.2 hboundary
+
+@[category API, AMS 91]
+theorem lower_pair_deletion_nonloss_of_lower_ray_induction_invariant
+    (N : ℕ) (hinvariant : LowerRayInductionInvariant N) :
+    LowerPairDeletionNonloss N := by
+  intro b hbIcc hbOne
+  rcases hinvariant with ⟨hpairTwo, htails⟩
+  by_cases hbTwo : b = 2
+  · subst b
+    simp only [LowerRayPairTwoDraw] at hpairTwo
+    simp [hpairTwo]
+  · have hbThree : 3 ≤ b := by omega
+    have hbLeN := (Finset.mem_Icc.mp hbIcc).2
+    obtain ⟨k, hceiling, htail⟩ := htails b (Finset.mem_Icc.mpr ⟨hbThree, hbLeN⟩)
+    have hkN : k ≤ N := by
+      have hkb := hceiling.2.1
+      omega
+    rw [pair_deletion_position_one_eq_lower_ray_before_catch_one N b]
+    apply lower_ray_before_catch_value_ne_loss N b k 1 hceiling hkN
+    · have hkTwo := hceiling.1
+      omega
+    · exact htail
+
+@[category API, AMS 91]
+theorem value_Icc_eq_draw_of_lower_ray_induction_invariant
+    (N : ℕ) (hN : 3 ≤ N) (hinvariant : LowerRayInductionInvariant N) :
+    value (Finset.Icc 1 N) = .draw := by
+  apply value_Icc_eq_draw_of_lower_pair_deletion_nonloss N (by omega)
+  · exact lower_pair_deletion_nonloss_of_lower_ray_induction_invariant N hinvariant
+  · exact hinvariant.1
+
+@[category API, AMS 91]
+theorem value_Icc_add_four_eq_draw_of_lower_ray_basin_transfers
+    (N : ℕ) (hN : 8 ≤ N) (hsmall : LowerRayInductionInvariant N)
+    (hpairTwo : LowerRayPairTwoBasinTransfer N)
+    (hold : OldCanonicalLowerRayBasinTransfer N)
+    (hboundary : BoundaryCanonicalLowerRayBasinTransfer N) :
+    value (Finset.Icc 1 (N + 4)) = .draw := by
+  apply value_Icc_eq_draw_of_lower_ray_induction_invariant (N + 4) (by omega)
+  exact lower_ray_induction_invariant_add_four_of_boundary_basin_transfer
+    N hN hsmall hpairTwo hold hboundary
+
+end CatchUp
+

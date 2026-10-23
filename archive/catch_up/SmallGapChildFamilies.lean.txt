@@ -1,0 +1,154 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjectures.Paper.CatchUpConjecture
+
+/-!
+# Canonical small-gap residual children
+
+This module records four exact residual families arising at gaps one through four in the dense
+upper-residual analysis, together with the shapes produced by their first continuing picks.
+
+The final two lemmas isolate the game-semantic step used by these shape calculations. They are
+deliberately conditional: this module does not prove that any displayed child is nonlosing, and
+does not close the arbitrary opponent response after the continuing player completes the turn.
+-/
+
+namespace CatchUp
+
+/-- The canonical gap-one child, with deficit `d + 1`. -/
+def smallGapChildOne (N d : ℕ) : Position :=
+  ⟨(((Finset.Icc 1 N).erase 1).erase (d - 1)).erase (d + 1), d + 1⟩
+
+/-- The canonical gap-two child, with deficit `d + 1`. -/
+def smallGapChildTwo (N d : ℕ) : Position :=
+  ⟨(((Finset.Icc 1 N).erase 2).erase d).erase (d + 1), d + 1⟩
+
+/-- The canonical gap-three child, with deficit `d + 1`. -/
+def smallGapChildThree (N d : ℕ) : Position :=
+  ⟨(((((Finset.Icc 1 N).erase 2).erase 3).erase (d - 1)).erase d).erase (d + 1),
+    d + 1⟩
+
+/-- The canonical gap-four child, with deficit `d + 1`. -/
+def smallGapChildFour (N d : ℕ) : Position :=
+  ⟨((((((Finset.Icc 1 N).erase 1).erase 4).erase (d - 2)).erase (d - 1)).erase d).erase
+      (d + 1),
+    d + 1⟩
+
+/-- Counter two is available in the canonical gap-one child. -/
+@[category API, AMS 91]
+theorem small_gap_child_one_two_mem (N d : ℕ) (hd : 8 ≤ d) (hdN : d + 1 ≤ N) :
+    2 ∈ (smallGapChildOne N d).remaining := by
+  simp [smallGapChildOne]
+  omega
+
+/-- Counter one is available in the canonical gap-two child. -/
+@[category API, AMS 91]
+theorem small_gap_child_two_one_mem (N d : ℕ) (hd : 7 ≤ d) (hdN : d + 1 ≤ N) :
+    1 ∈ (smallGapChildTwo N d).remaining := by
+  simp [smallGapChildTwo]
+  omega
+
+/-- Counter one is available in the canonical gap-three child. -/
+@[category API, AMS 91]
+theorem small_gap_child_three_one_mem (N d : ℕ) (hd : 7 ≤ d) (hdN : d + 1 ≤ N) :
+    1 ∈ (smallGapChildThree N d).remaining := by
+  simp [smallGapChildThree]
+  omega
+
+/-- Counter two is available in the canonical gap-four child. -/
+@[category API, AMS 91]
+theorem small_gap_child_four_two_mem (N d : ℕ) (hd : 8 ≤ d) (hdN : d + 1 ≤ N) :
+    2 ∈ (smallGapChildFour N d).remaining := by
+  simp [smallGapChildFour]
+  omega
+
+/-- Picking two in the canonical gap-one child gives the displayed erased-set shape. -/
+@[category API, AMS 91]
+theorem small_gap_child_one_after_pick_two (N d : ℕ) (hd : 8 ≤ d) :
+    (smallGapChildOne N d).afterPick 2 =
+      ⟨((((Finset.Icc 1 N).erase 1).erase 2).erase (d - 1)).erase (d + 1), d - 1⟩ := by
+  unfold smallGapChildOne Position.afterPick
+  simp only [show 2 < d + 1 by omega, if_true]
+  congr 1
+  · ext x
+    simp [and_left_comm, and_assoc, and_comm]
+
+/-- Picking one in the canonical gap-two child gives the displayed erased-set shape. -/
+@[category API, AMS 91]
+theorem small_gap_child_two_after_pick_one (N d : ℕ) (hd : 7 ≤ d) :
+    (smallGapChildTwo N d).afterPick 1 =
+      ⟨((((Finset.Icc 1 N).erase 1).erase 2).erase d).erase (d + 1), d⟩ := by
+  unfold smallGapChildTwo Position.afterPick
+  simp only [show 1 < d + 1 by omega, if_true, Nat.add_sub_cancel]
+  congr 1
+  ext x
+  simp [and_left_comm, and_assoc, and_comm]
+  omega
+
+/-- Picking one in the canonical gap-three child gives the displayed erased-set shape. -/
+@[category API, AMS 91]
+theorem small_gap_child_three_after_pick_one (N d : ℕ) (hd : 7 ≤ d) :
+    (smallGapChildThree N d).afterPick 1 =
+      ⟨((((((Finset.Icc 1 N).erase 1).erase 2).erase 3).erase (d - 1)).erase d).erase
+          (d + 1),
+        d⟩ := by
+  unfold smallGapChildThree Position.afterPick
+  simp only [show 1 < d + 1 by omega, if_true, Nat.add_sub_cancel]
+  congr 1
+  ext x
+  simp [and_left_comm, and_assoc, and_comm]
+  omega
+
+/-- Picking two in the canonical gap-four child gives the displayed erased-set shape. -/
+@[category API, AMS 91]
+theorem small_gap_child_four_after_pick_two (N d : ℕ) (hd : 8 ≤ d) :
+    (smallGapChildFour N d).afterPick 2 =
+      ⟨(((((((Finset.Icc 1 N).erase 1).erase 2).erase 4).erase (d - 2)).erase
+          (d - 1)).erase d).erase (d + 1),
+        d - 1⟩ := by
+  unfold smallGapChildFour Position.afterPick
+  simp only [show 2 < d + 1 by omega, if_true]
+  congr 1
+  ext x
+  simp [and_left_comm, and_assoc, and_comm]
+
+/-- A nonlosing child reached by a legal continuing pick makes the parent nonlosing. -/
+@[category API, AMS 91]
+theorem Position.value_ne_loss_of_continuing_pick
+    (position : Position) (x : ℕ)
+    (hx : x ∈ position.remaining)
+    (hcatch : ¬ position.remaining.sum (fun y => y) < position.deficit)
+    (hcontinue : x < position.deficit)
+    (hchild : (position.afterPick x).value ≠ .loss) :
+    position.value ≠ .loss := by
+  have hremaining : position.remaining ≠ ∅ :=
+    Finset.nonempty_iff_ne_empty.mp ⟨x, hx⟩
+  rw [Position.value_eq_best_move_outcome position hremaining hcatch,
+    Outcome.best_ne_loss_iff]
+  refine ⟨position.moveOutcome x, ?_, ?_⟩
+  · apply List.mem_map.mpr
+    exact ⟨⟨x, hx⟩, by simp, rfl⟩
+  · simpa [Position.moveOutcome, hcontinue] using hchild
+
+/-- A legal normalized pick strictly decreases the remaining-cardinality measure. -/
+@[category API, AMS 91]
+theorem Position.remaining_card_after_pick_lt
+    (position : Position) (x : ℕ) (hx : x ∈ position.remaining) :
+    (position.afterPick x).remaining.card < position.remaining.card := by
+  simpa [Position.afterPick] using Finset.card_erase_lt_of_mem hx
+
+end CatchUp

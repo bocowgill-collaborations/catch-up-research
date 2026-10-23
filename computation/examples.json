@@ -1,0 +1,30 @@
+{
+  "evidence": "Reproduced exact Python calculations, independently compared with the absolute-score recurrence. These entries are not new Lean certificate declarations.",
+  "initial_intervals": [
+    {"N": 0, "outcome": "draw", "winning_openings": []},
+    {"N": 1, "outcome": "win", "winning_openings": [1]},
+    {"N": 2, "outcome": "win", "winning_openings": [2]},
+    {"N": 3, "outcome": "draw", "winning_openings": []},
+    {"N": 4, "outcome": "draw", "winning_openings": []},
+    {"N": 5, "outcome": "win", "winning_openings": [3]},
+    {"N": 6, "outcome": "win", "winning_openings": [2]},
+    {"N": 7, "outcome": "draw", "winning_openings": []},
+    {"N": 8, "outcome": "draw", "winning_openings": []},
+    {"N": 9, "outcome": "loss", "winning_openings": []},
+    {"N": 10, "outcome": "loss", "winning_openings": []},
+    {"N": 11, "outcome": "draw", "winning_openings": []},
+    {"N": 12, "outcome": "draw", "winning_openings": []}
+  ],
+  "positions": [
+    {"remaining": [1, 2, 3, 4], "deficit": 0, "outcome": "draw", "pick_outcomes": {"1": "draw", "2": "draw", "3": "loss", "4": "loss"}},
+    {"remaining": [2, 4, 7], "deficit": 3, "outcome": "win", "pick_outcomes": {"2": "win", "4": "loss", "7": "loss"}},
+    {"remaining": [1, 2], "deficit": 3, "outcome": "draw"},
+    {"remaining": [1, 2], "deficit": 4, "outcome": "loss"},
+    {"remaining": [], "deficit": 0, "outcome": "draw"},
+    {"remaining": [], "deficit": 1, "outcome": "loss"},
+    {"remaining": [3], "deficit": 3, "outcome": "draw"},
+    {"remaining": [1], "deficit": 0, "outcome": "win"},
+    {"remaining": [6, 7, 10, 11, 20, 21, 40, 41], "deficit": 4, "outcome": "win"},
+    {"remaining": [6, 7, 12, 13, 18, 19, 40, 41], "deficit": 4, "outcome": "loss"}
+  ]
+}

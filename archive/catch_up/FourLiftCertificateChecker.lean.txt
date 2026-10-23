@@ -1,0 +1,252 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CertificateSoundness
+import catch_up.SimulationLedger
+
+/-!
+# Independent certificates for Catch-Up four-counter simulations
+
+This module defines a finite product-strategy certificate whose nodes retain the small game, the
+large game, and the persistent four-counter ledger. The checker does not import the product-search
+implementation. It independently decodes every state, checks every selected or adversarial large
+move, and validates the corresponding ghost transition with the proved ledger edge checker.
+
+The soundness theorem turns an accepted certificate into membership of the semantic
+`ExplicitFourLiftBasin`. It does not assert that any particular generated certificate is valid.
+-/
+
+namespace CatchUpSearch.FourLiftCertificateChecker
+
+open CatchUp
+
+/-- An encoded small/large position pair together with its semantic persistent ledger. -/
+structure FourLiftProductKey where
+  small : State
+  large : State
+  ledger : FourLiftLedger
+deriving DecidableEq
+
+/-- Decode the small position and ledger carried by one product key. -/
+def FourLiftProductKey.toGhost (key : FourLiftProductKey) (smallSize : ℕ) : FourLiftGhost :=
+  ⟨CertificateChecker.toGamePosition smallSize key.small, key.ledger⟩
+
+/-- Decode the large position, whose game has four additional counters. -/
+def FourLiftProductKey.toLarge (key : FourLiftProductKey) (smallSize : ℕ) : GamePosition :=
+  CertificateChecker.toGamePosition (smallSize + 4) key.large
+
+/-- One checked large move, optional ghost move, and exact child product key. -/
+structure FourLiftProductEdge where
+  largeCounter : ℕ
+  smallCounter : Option ℕ
+  child : FourLiftProductKey
+deriving DecidableEq
+
+/-- The local strategy obligation retained at one product node. -/
+inductive FourLiftProductBranch
+  | leaf
+  | owner (edge : FourLiftProductEdge)
+  | opponent (edges : List FourLiftProductEdge)
+deriving DecidableEq
+
+/-- One product key and its selected or exhaustive branch information. -/
+structure FourLiftProductNode where
+  key : FourLiftProductKey
+  branch : FourLiftProductBranch
+deriving DecidableEq
+
+/-- A finite product-strategy DAG for a fixed small game size and protected player. -/
+structure FourLiftProductDAG where
+  smallSize : ℕ
+  player : Player
+  root : FourLiftProductKey
+  nodes : List FourLiftProductNode
+deriving DecidableEq
+
+/-- Decidability of the semantic relation carried by an encoded product key. -/
+instance (N : ℕ) (ghost : FourLiftGhost) (large : GamePosition) :
+    Decidable (ghost.Related N large) := by
+  unfold FourLiftGhost.Related FourLiftLedger.Consistent
+  infer_instance
+
+/-- Whether a certificate lists one exact product key. -/
+def ContainsKey (dag : FourLiftProductDAG) (key : FourLiftProductKey) : Prop :=
+  key ∈ dag.nodes.map fun node => node.key
+
+instance (dag : FourLiftProductDAG) (key : FourLiftProductKey) :
+    Decidable (ContainsKey dag key) := by
+  unfold ContainsKey
+  infer_instance
+
+/-- The decoded product pairs represented by the certificate's node list. -/
+def ContainsPair (dag : FourLiftProductDAG) (ghost : FourLiftGhost)
+    (large : GamePosition) : Prop :=
+  ∃ node ∈ dag.nodes,
+    node.key.toGhost dag.smallSize = ghost ∧ node.key.toLarge dag.smallSize = large
+
+/-- Independent validity conditions for one product edge. -/
+def EdgeValid (dag : FourLiftProductDAG) (parent : FourLiftProductKey)
+    (edge : FourLiftProductEdge) : Prop :=
+  let ghost := parent.toGhost dag.smallSize
+  let large := parent.toLarge dag.smallSize
+  let childGhost := edge.child.toGhost dag.smallSize
+  CertificateChecker.LegalMove large edge.largeCounter ∧
+    edge.child.toLarge dag.smallSize = large.afterPick edge.largeCounter ∧
+    ghost.advanceCheck dag.player dag.smallSize large edge.largeCounter childGhost
+        edge.smallCounter = true ∧
+    ContainsKey dag edge.child
+
+instance (dag : FourLiftProductDAG) (parent : FourLiftProductKey)
+    (edge : FourLiftProductEdge) : Decidable (EdgeValid dag parent edge) := by
+  unfold EdgeValid
+  infer_instance
+
+/-- Independent local validity conditions for one product node. -/
+def NodeValid (dag : FourLiftProductDAG) (node : FourLiftProductNode) : Prop :=
+  let large := node.key.toLarge dag.smallSize
+  CertificateChecker.ValidState dag.smallSize node.key.small ∧
+    CertificateChecker.ValidState (dag.smallSize + 4) node.key.large ∧
+    (node.key.toGhost dag.smallSize).Related dag.smallSize large ∧
+    match node.branch with
+    | .leaf =>
+        isExplicitFourLiftTargetState dag.smallSize dag.player node.key.large = true ∨
+          (large.IsTerminal ∧ large.terminalOutcomeFor dag.player ≠ .loss)
+    | .owner edge =>
+        ¬large.IsTerminal ∧ large.toMove = dag.player ∧ EdgeValid dag node.key edge
+    | .opponent edges =>
+        ¬large.IsTerminal ∧ large.toMove ≠ dag.player ∧
+          edges.map FourLiftProductEdge.largeCounter =
+            CertificateChecker.availableCounters (dag.smallSize + 4) node.key.large ∧
+          edges.Forall (EdgeValid dag node.key)
+
+instance (dag : FourLiftProductDAG) (node : FourLiftProductNode) :
+    Decidable (NodeValid dag node) := by
+  unfold NodeValid
+  cases node.branch <;> dsimp <;> infer_instance
+
+/-- Global validity of a finite four-counter product-strategy certificate. -/
+def DAGValid (dag : FourLiftProductDAG) : Prop :=
+  ContainsKey dag dag.root ∧
+    (dag.nodes.map fun node => node.key).Nodup ∧
+    dag.nodes.Forall (NodeValid dag)
+
+instance (dag : FourLiftProductDAG) : Decidable (DAGValid dag) := by
+  unfold DAGValid
+  infer_instance
+
+/-- Independently check every finite product-certificate obligation. -/
+def checkProductCertificate (dag : FourLiftProductDAG) : Bool :=
+  decide (DAGValid dag)
+
+/-- Exact encoded-key containment implies containment of its decoded semantic pair. -/
+theorem contains_pair_of_contains_key (dag : FourLiftProductDAG) (key : FourLiftProductKey)
+    (hkey : ContainsKey dag key) :
+    ContainsPair dag (key.toGhost dag.smallSize) (key.toLarge dag.smallSize) := by
+  rw [ContainsKey] at hkey
+  rcases List.mem_map.mp hkey with ⟨node, hnode, hnodeKey⟩
+  refine ⟨node, hnode, ?_, ?_⟩ <;> rw [hnodeKey]
+
+/-- Every listed node of a globally valid product DAG satisfies its local obligations. -/
+theorem node_valid_of_dag_valid {dag : FourLiftProductDAG} (hvalid : DAGValid dag)
+    {node : FourLiftProductNode} (hnode : node ∈ dag.nodes) : NodeValid dag node := by
+  unfold DAGValid at hvalid
+  rw [List.forall_iff_forall_mem] at hvalid
+  exact hvalid.2.2 node hnode
+
+/-- A valid finite product DAG denotes a locally closed semantic simulation relation. -/
+theorem locally_closed_of_dag_valid (dag : FourLiftProductDAG) (hvalid : DAGValid dag) :
+    ExplicitFourLiftLocallyClosed dag.smallSize dag.player (ContainsPair dag) := by
+  intro ghost large hmember
+  rcases hmember with ⟨node, hnode, hghost, hlarge⟩
+  have hnodeValid := node_valid_of_dag_valid hvalid hnode
+  rcases hnodeValid with ⟨_, _, hrelated, hbranch⟩
+  rw [← hghost, ← hlarge]
+  constructor
+  · exact hrelated
+  · cases hbranchEq : node.branch with
+    | leaf =>
+        simp only [hbranchEq] at hbranch
+        rcases hbranch with htarget | hterminal
+        · exact Or.inl ⟨node.key.large, rfl, htarget⟩
+        · exact Or.inr (Or.inl hterminal)
+    | owner edge =>
+        simp only [hbranchEq] at hbranch
+        rcases hbranch with ⟨hterminal, htoMove, hedge⟩
+        simp only [EdgeValid] at hedge
+        rcases hedge with ⟨hlegal, hlargeAfter, hadvance, hchild⟩
+        refine Or.inr (Or.inr ⟨hterminal, Or.inl ⟨htoMove, edge.largeCounter,
+          hlegal, edge.child.toGhost dag.smallSize, ?_, ?_⟩⟩)
+        · exact FourLiftGhost.advances_of_advance_check_eq_true _ _ _ _ _ _ _ hadvance
+        · rw [← hlargeAfter]
+          exact contains_pair_of_contains_key dag edge.child hchild
+    | opponent edges =>
+        simp only [hbranchEq] at hbranch
+        rcases hbranch with ⟨hterminal, htoMove, hcounters, hedges⟩
+        refine Or.inr (Or.inr ⟨hterminal, Or.inr ⟨htoMove, ?_⟩⟩)
+        intro counter hlegal
+        have hcounterAvailable :
+            counter ∈ CertificateChecker.availableCounters
+              (dag.smallSize + 4) node.key.large :=
+          (CertificateChecker.mem_available_counters_iff_legal_move
+            (dag.smallSize + 4) node.key.large counter).2 hlegal
+        have hcounter : counter ∈ edges.map FourLiftProductEdge.largeCounter := by
+          simpa [hcounters] using hcounterAvailable
+        rcases List.mem_map.mp hcounter with ⟨edge, hedgeMem, hedgeCounter⟩
+        have hedge := (List.forall_iff_forall_mem.mp hedges) edge hedgeMem
+        simp only [EdgeValid] at hedge
+        rcases hedge with ⟨_, hlargeAfter, hadvance, hchild⟩
+        subst counter
+        refine ⟨edge.child.toGhost dag.smallSize, ?_, ?_⟩
+        · exact FourLiftGhost.advances_of_advance_check_eq_true _ _ _ _ _ _ _ hadvance
+        · rw [← hlargeAfter]
+          exact contains_pair_of_contains_key dag edge.child hchild
+
+/-- An accepted product certificate proves basin membership at every contained safe ghost pair. -/
+theorem basin_of_checked_member (dag : FourLiftProductDAG)
+    (hcheck : checkProductCertificate dag = true) {key : FourLiftProductKey}
+    (hkey : ContainsKey dag key) (hsafe : (key.toGhost dag.smallSize).Safe dag.player) :
+    ExplicitFourLiftBasin dag.smallSize dag.player
+      (key.toGhost dag.smallSize) (key.toLarge dag.smallSize) := by
+  have hvalid : DAGValid dag :=
+    of_decide_eq_true (by simpa [checkProductCertificate] using hcheck)
+  exact (locally_closed_of_dag_valid dag hvalid).to_basin
+    (contains_pair_of_contains_key dag key hkey) hsafe
+
+/-- An accepted product certificate proves basin membership at its safe root pair. -/
+theorem root_basin_of_checked_product (dag : FourLiftProductDAG)
+    (hcheck : checkProductCertificate dag = true)
+    (hsafe : (dag.root.toGhost dag.smallSize).Safe dag.player) :
+    ExplicitFourLiftBasin dag.smallSize dag.player
+      (dag.root.toGhost dag.smallSize) (dag.root.toLarge dag.smallSize) := by
+  have hvalid : DAGValid dag :=
+    of_decide_eq_true (by simpa [checkProductCertificate] using hcheck)
+  exact basin_of_checked_member dag hcheck hvalid.1 hsafe
+
+/-- Check both the product DAG and the small-game safety premise at its root. -/
+def checkProductRootCertificate (dag : FourLiftProductDAG) : Bool :=
+  checkProductCertificate dag &&
+    CanAvoidLossClassifier.check dag.player (dag.root.toGhost dag.smallSize).position
+
+/-- A fully accepted root certificate supplies its own small-game safety premise. -/
+theorem check_product_root_certificate_sound (dag : FourLiftProductDAG)
+    (hcheck : checkProductRootCertificate dag = true) :
+    ExplicitFourLiftBasin dag.smallSize dag.player
+      (dag.root.toGhost dag.smallSize) (dag.root.toLarge dag.smallSize) := by
+  simp only [checkProductRootCertificate, Bool.and_eq_true] at hcheck
+  apply root_basin_of_checked_product dag hcheck.1
+  exact (CanAvoidLossClassifier.check_eq_true_iff _ _).1 hcheck.2
+
+end CatchUpSearch.FourLiftCertificateChecker

@@ -1,0 +1,426 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.NewOpeningImmediate
+
+/-!
+# Repair phases for Catch-Up new-opening endpoints
+
+This module develops oriented old-counter discrepancies for the root-generated repair phases that
+arise from the canonical immediate new-opening endpoint. A debt is an old counter present only in
+the smaller guide game, while a credit is an old counter present only in the larger game.
+-/
+
+namespace CatchUp.NewOpeningRepair
+
+/-- Old counters present only in the small game. -/
+def oldDebts (N : ℕ) (small large : GamePosition) : Finset ℕ :=
+  small.fourLiftOldRemaining N \ large.fourLiftOldRemaining N
+
+/-- Old counters present only in the large game. -/
+def oldCredits (N : ℕ) (small large : GamePosition) : Finset ℕ :=
+  large.fourLiftOldRemaining N \ small.fourLiftOldRemaining N
+
+/-- The pending support is the union of its two oriented sides. -/
+@[category API, AMS 91]
+theorem pending_eq_old_debts_union_old_credits
+    (N : ℕ) (small large : GamePosition) :
+    fourLiftPendingCounters N small large =
+      oldDebts N small large ∪ oldCredits N small large := by
+  ext counter
+  simp [fourLiftPendingCounters, oldDebts, oldCredits, Finset.mem_symmDiff]
+
+/-- Small-only and large-only old counters are disjoint. -/
+@[category API, AMS 91]
+theorem old_debts_disjoint_old_credits
+    (N : ℕ) (small large : GamePosition) :
+    Disjoint (oldDebts N small large) (oldCredits N small large) := by
+  rw [Finset.disjoint_left]
+  intro counter hdebt hcredit
+  simp [oldDebts] at hdebt
+  simp [oldCredits] at hcredit
+  exact hdebt.2 hcredit.1
+
+/-- Pending width is exactly the sum of the two oriented discrepancy widths. -/
+@[category API, AMS 91]
+theorem card_pending_eq_card_old_debts_add_card_old_credits
+    (N : ℕ) (small large : GamePosition) :
+    (fourLiftPendingCounters N small large).card =
+      (oldDebts N small large).card + (oldCredits N small large).card := by
+  rw [pending_eq_old_debts_union_old_credits,
+    Finset.card_union_of_disjoint (old_debts_disjoint_old_credits N small large)]
+
+/-- A paired pick erases its two counters before taking the small-only difference. -/
+@[simp, category API, AMS 91]
+theorem old_debts_after_paired_pick
+    (N : ℕ) (small large : GamePosition) (y x : ℕ) :
+    oldDebts N (small.afterPick y) (large.afterPick x) =
+      (small.fourLiftOldRemaining N).erase y \
+        (large.fourLiftOldRemaining N).erase x := by
+  simp [oldDebts]
+
+/-- A paired pick erases its two counters before taking the large-only difference. -/
+@[simp, category API, AMS 91]
+theorem old_credits_after_paired_pick
+    (N : ℕ) (small large : GamePosition) (y x : ℕ) :
+    oldCredits N (small.afterPick y) (large.afterPick x) =
+      (large.fourLiftOldRemaining N).erase x \
+        (small.fourLiftOldRemaining N).erase y := by
+  simp [oldCredits]
+
+/-- A common paired pick simply erases that counter from the old debt set. -/
+@[simp, category API, AMS 91]
+theorem old_debts_after_common_pick
+    (N : ℕ) (small large : GamePosition) (x : ℕ) :
+    oldDebts N (small.afterPick x) (large.afterPick x) =
+      (oldDebts N small large).erase x := by
+  ext counter
+  simp [oldDebts]
+  tauto
+
+/-- A common paired pick simply erases that counter from the old credit set. -/
+@[simp, category API, AMS 91]
+theorem old_credits_after_common_pick
+    (N : ℕ) (small large : GamePosition) (x : ℕ) :
+    oldCredits N (small.afterPick x) (large.afterPick x) =
+      (oldCredits N small large).erase x := by
+  ext counter
+  simp [oldCredits]
+  tauto
+
+/-- Picking a counter present in both games preserves the old debt set. -/
+@[category API, AMS 91]
+theorem old_debts_after_pick_of_common
+    (N : ℕ) (small large : GamePosition) (x : ℕ)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    oldDebts N (small.afterPick x) (large.afterPick x) =
+      oldDebts N small large := by
+  rw [old_debts_after_common_pick, Finset.erase_eq_self.mpr]
+  simp [oldDebts, hsmall, hlarge]
+
+/-- Picking a counter present in both games preserves the old credit set. -/
+@[category API, AMS 91]
+theorem old_credits_after_pick_of_common
+    (N : ℕ) (small large : GamePosition) (x : ℕ)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    oldCredits N (small.afterPick x) (large.afterPick x) =
+      oldCredits N small large := by
+  rw [old_credits_after_common_pick, Finset.erase_eq_self.mpr]
+  simp [oldCredits, hsmall, hlarge]
+
+/--
+Mirroring the same counter preserves mover alignment exactly when the counter has the same
+catch-up status in both games. A threshold straddle is therefore precisely a one-step skew.
+-/
+@[category API, AMS 91]
+theorem to_move_after_common_pick_eq_iff
+    (small large : GamePosition) (x : ℕ)
+    (hmovers : small.toMove = large.toMove) :
+    (small.afterPick x).toMove = (large.afterPick x).toMove ↔
+      (x < small.deficit ↔ x < large.deficit) := by
+  have hneOther (player : Player) : player ≠ player.other := by
+    cases player <;> decide
+  have hotherNe (player : Player) : player.other ≠ player := by
+    cases player <;> decide
+  by_cases hsmall : x < small.deficit
+  · by_cases hlarge : x < large.deficit
+    · simp [hsmall, hlarge, hmovers]
+    · have hlargeLe : large.deficit ≤ x := Nat.le_of_not_gt hlarge
+      rw [GamePosition.to_move_after_pick_of_lt _ _ hsmall,
+        GamePosition.to_move_after_pick_of_le _ _ hlargeLe]
+      simp [hsmall, hlarge, hmovers, hneOther]
+  · have hsmallLe : small.deficit ≤ x := Nat.le_of_not_gt hsmall
+    by_cases hlarge : x < large.deficit
+    · rw [GamePosition.to_move_after_pick_of_le _ _ hsmallLe,
+        GamePosition.to_move_after_pick_of_lt _ _ hlarge]
+      simp [hsmall, hlarge, hmovers, hotherNe]
+    · have hlargeLe : large.deficit ≤ x := Nat.le_of_not_gt hlarge
+      simp [hsmall, hlarge, hsmallLe, hlargeLe, hmovers]
+
+/--
+If the large side of a skew pair is tied, its next pick ends that turn and realigns its mover with
+the small side. The picked counter becomes the new deficit.
+-/
+@[category API, AMS 91]
+theorem realign_after_large_pick_of_large_deficit_zero
+    (small large : GamePosition) (x : ℕ)
+    (hmovers : large.toMove = small.toMove.other)
+    (hdeficit : large.deficit = 0) :
+    (large.afterPick x).toMove = small.toMove ∧
+      (large.afterPick x).deficit = x := by
+  have hcatch : large.deficit ≤ x := by omega
+  constructor
+  · rw [GamePosition.to_move_after_pick_of_le _ _ hcatch, hmovers]
+    cases small.toMove <;> rfl
+  · simp [GamePosition.afterPick, Position.afterPick, hdeficit]
+
+/-- A legal pick removes exactly the selected counter from a position. -/
+@[simp, category API, AMS 91]
+theorem counter_removed_by_after_pick
+    (position : GamePosition) (x counter : ℕ) (hx : position.LegalMove x) :
+    position.counterRemovedBy (position.afterPick x) counter = decide (counter = x) := by
+  change x ∈ position.remaining at hx
+  by_cases hcounter : counter = x
+  · subst counter
+    simp [GamePosition.counterRemovedBy, GamePosition.afterPick, Position.afterPick, hx]
+  · simp [GamePosition.counterRemovedBy, GamePosition.afterPick, Position.afterPick, hcounter]
+
+/-- Mirroring a counter present on both old supports leaves the pending support unchanged. -/
+@[category API, AMS 91]
+theorem pending_after_common_pick_of_common
+    (N : ℕ) (small large : GamePosition) (x : ℕ)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    fourLiftPendingCounters N (small.afterPick x) (large.afterPick x) =
+      fourLiftPendingCounters N small large := by
+  rw [pending_eq_old_debts_union_old_credits,
+    old_debts_after_pick_of_common N small large x hsmall hlarge,
+    old_credits_after_pick_of_common N small large x hsmall hlarge,
+    ← pending_eq_old_debts_union_old_credits]
+
+/-- Mirroring a common old counter preserves every old-counter ledger coefficient. -/
+@[category API, AMS 91]
+theorem old_coefficient_after_common_pick_of_common
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) (x counter : ℕ)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    ledger.oldCoefficient N (small.afterPick x) (large.afterPick x) counter =
+      ledger.oldCoefficient N small large counter := by
+  rw [FourLiftLedger.oldCoefficient, FourLiftLedger.oldCoefficient,
+    FourLiftLedger.pendingCoefficient, FourLiftLedger.pendingCoefficient,
+    pending_after_common_pick_of_common N small large x hsmall hlarge]
+
+/-- An old-counter pick preserves every top-counter ledger coefficient. -/
+@[category API, AMS 91]
+theorem top_coefficient_after_common_old_pick
+    (N : ℕ) (large : GamePosition) (ledger : FourLiftLedger) (x counter : ℕ)
+    (hx : x ∈ fourLiftOldCounters N) :
+    ledger.topCoefficient N (large.afterPick x) counter =
+      ledger.topCoefficient N large counter := by
+  have hxTop : x ∉ fourLiftTopCounters N := by
+    simp [fourLiftOldCounters, fourLiftTopCounters] at hx ⊢
+    omega
+  simp [FourLiftLedger.topCoefficient, hxTop]
+
+/-- Mirroring a common old pick with aligned movers preserves ledger history pointwise. -/
+@[category API, AMS 91]
+theorem history_step_common_old_pick
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) (x : ℕ)
+    (hmovers : small.toMove = large.toMove)
+    (hsmallLegal : small.LegalMove x)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    ledger.HistoryStep N small large (small.afterPick x) x ledger := by
+  constructor
+  · intro counter _
+    rw [old_coefficient_after_common_pick_of_common N small large ledger x counter
+      hsmall hlarge, counter_removed_by_after_pick small x counter hsmallLegal]
+    by_cases hcounterX : counter = x
+    · subst counter
+      simp [hmovers]
+    · have hne : x ≠ counter := Ne.symm hcounterX
+      simp [hcounterX, hne]
+  · intro counter hcounter
+    have hxOld : x ∈ fourLiftOldCounters N := (Finset.mem_inter.mp hsmall).2
+    rw [top_coefficient_after_common_old_pick N large ledger x counter hxOld]
+    have hne : x ≠ counter := by
+      have hxBounds := Finset.mem_Icc.mp hxOld
+      have hcounterBounds := Finset.mem_Icc.mp hcounter
+      omega
+    simp [hne]
+
+/-- Mirroring a common old pick leaves the numerical ledger value unchanged. -/
+@[category API, AMS 91]
+theorem value_after_common_old_pick
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) (x : ℕ)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    ledger.value N (small.afterPick x) (large.afterPick x) =
+      ledger.value N small large := by
+  have hxOld : x ∈ fourLiftOldCounters N := (Finset.mem_inter.mp hsmall).2
+  have hxTop : x ∉ fourLiftTopCounters N := by
+    have hxBounds := Finset.mem_Icc.mp hxOld
+    simp [fourLiftTopCounters]
+    omega
+  simp [FourLiftLedger.value, hxTop,
+    pending_after_common_pick_of_common N small large x hsmall hlarge]
+
+/-- Mirroring a common old pick with aligned movers satisfies the numerical ledger update. -/
+@[category API, AMS 91]
+theorem value_step_common_old_pick
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) (x : ℕ)
+    (hmovers : small.toMove = large.toMove)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N) :
+    ledger.ValueStep N small large (small.afterPick x) x ledger := by
+  unfold FourLiftLedger.ValueStep
+  rw [value_after_common_old_pick N small large ledger x hsmall hlarge,
+    GamePosition.p1_score_balance_after_pick, hmovers]
+  ring
+
+/-- Mirroring a common old pick preserves the ledger support conditions. -/
+@[category API, AMS 91]
+theorem supports_after_common_old_pick
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) (x : ℕ)
+    (hsmall : x ∈ small.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N)
+    (hsupports : ledger.Supports N small large) :
+    ledger.Supports N (small.afterPick x) (large.afterPick x) := by
+  rcases hsupports with ⟨hsmallSubset, hlargeSubset, htop, hpending, hwidth, hresidual⟩
+  have hxOld : x ∈ fourLiftOldCounters N := (Finset.mem_inter.mp hsmall).2
+  have hxTop : x ∉ fourLiftTopCounters N := by
+    have hxBounds := Finset.mem_Icc.mp hxOld
+    simp [fourLiftTopCounters]
+    omega
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+  · intro counter hcounter
+    exact hsmallSubset (Finset.mem_of_mem_erase hcounter)
+  · intro counter hcounter
+    exact hlargeSubset (Finset.mem_of_mem_erase hcounter)
+  · simpa [hxTop] using htop
+  · simpa [pending_after_common_pick_of_common N small large x hsmall hlarge] using hpending
+  · simpa [pending_after_common_pick_of_common N small large x hsmall hlarge] using hwidth
+  · cases hledger : ledger.residual with
+    | none => trivial
+    | some residual =>
+        rw [hledger] at hresidual
+        exact ⟨hresidual.1,
+          fun hmem => hresidual.2.1 (Finset.mem_of_mem_erase hmem),
+          fun hmem => hresidual.2.2 (Finset.mem_of_mem_erase hmem)⟩
+
+/-- A safe mirrored common-old ghost move is a ledger-preserving simulation advance. -/
+@[category API, AMS 91]
+theorem advances_common_old_pick
+    (player : Player) (N : ℕ) (before : FourLiftGhost) (large : GamePosition) (x : ℕ)
+    (hmovers : before.position.toMove = large.toMove)
+    (hsmall : x ∈ before.position.fourLiftOldRemaining N)
+    (hlarge : x ∈ large.fourLiftOldRemaining N)
+    (hghost : before.position.AlignedSafeGhostStep player large.toMove
+      (before.position.afterPick x))
+    (hsupports : before.ledger.Supports N before.position large) :
+    before.Advances player N large x
+      { position := before.position.afterPick x, ledger := before.ledger } := by
+  refine ⟨hghost, ?_, ?_, ?_⟩
+  · exact history_step_common_old_pick N before.position large before.ledger x hmovers
+      (Finset.mem_inter.mp hsmall).1 hsmall hlarge
+  · exact supports_after_common_old_pick N before.position large before.ledger x hsmall hlarge
+      hsupports
+  · exact value_step_common_old_pick N before.position large before.ledger x hmovers hsmall hlarge
+
+/-- Matching a small-only debt with a large-only credit removes that debt. -/
+@[category API, AMS 91]
+theorem old_debts_after_debt_credit_pick
+    (N : ℕ) (small large : GamePosition) (debt credit : ℕ)
+    (hdebt : debt ∈ oldDebts N small large)
+    (hcredit : credit ∈ oldCredits N small large) :
+    oldDebts N (small.afterPick debt) (large.afterPick credit) =
+      (oldDebts N small large).erase debt := by
+  simp [oldDebts, oldCredits] at hdebt hcredit
+  ext counter
+  by_cases hcounter : counter = credit
+  · subst counter
+    simp [oldDebts, hcredit.2]
+  · simp [oldDebts, hcounter]
+    tauto
+
+/-- Matching a small-only debt with a large-only credit removes that credit. -/
+@[category API, AMS 91]
+theorem old_credits_after_debt_credit_pick
+    (N : ℕ) (small large : GamePosition) (debt credit : ℕ)
+    (hdebt : debt ∈ oldDebts N small large)
+    (hcredit : credit ∈ oldCredits N small large) :
+    oldCredits N (small.afterPick debt) (large.afterPick credit) =
+      (oldCredits N small large).erase credit := by
+  simp [oldDebts, oldCredits] at hdebt hcredit
+  ext counter
+  by_cases hcounter : counter = debt
+  · subst counter
+    simp [oldCredits, hdebt.2]
+  · simp [oldCredits, hcounter]
+    tauto
+
+/-- A matched debt-credit substitution lowers total old pending width by exactly two. -/
+@[category API, AMS 91]
+theorem card_pending_after_debt_credit_pick_add_two
+    (N : ℕ) (small large : GamePosition) (debt credit : ℕ)
+    (hdebt : debt ∈ oldDebts N small large)
+    (hcredit : credit ∈ oldCredits N small large) :
+    (fourLiftPendingCounters N (small.afterPick debt) (large.afterPick credit)).card + 2 =
+      (fourLiftPendingCounters N small large).card := by
+  have hdebtCard : 0 < (oldDebts N small large).card := Finset.card_pos.mpr ⟨debt, hdebt⟩
+  have hcreditCard : 0 < (oldCredits N small large).card :=
+    Finset.card_pos.mpr ⟨credit, hcredit⟩
+  rw [card_pending_eq_card_old_debts_add_card_old_credits,
+    old_debts_after_debt_credit_pick N small large debt credit hdebt hcredit,
+    old_credits_after_debt_credit_pick N small large debt credit hdebt hcredit,
+    Finset.card_erase_of_mem hdebt, Finset.card_erase_of_mem hcredit,
+    card_pending_eq_card_old_debts_add_card_old_credits]
+  omega
+
+/-- Matching a small-only debt with a non-old large pick removes that debt. -/
+@[category API, AMS 91]
+theorem old_debts_after_debt_top_pick
+    (N : ℕ) (small large : GamePosition) (debt top : ℕ)
+    (hdebt : debt ∈ oldDebts N small large)
+    (htop : top ∉ large.fourLiftOldRemaining N) :
+    oldDebts N (small.afterPick debt) (large.afterPick top) =
+      (oldDebts N small large).erase debt := by
+  simp [oldDebts] at hdebt
+  ext counter
+  by_cases hcounter : counter = top
+  · subst counter
+    simp [oldDebts, htop]
+  · simp [oldDebts, hcounter]
+    tauto
+
+/-- Matching a small-only debt with a non-old large pick preserves the old credit set. -/
+@[category API, AMS 91]
+theorem old_credits_after_debt_top_pick
+    (N : ℕ) (small large : GamePosition) (debt top : ℕ)
+    (hdebt : debt ∈ oldDebts N small large)
+    (htop : top ∉ large.fourLiftOldRemaining N) :
+    oldCredits N (small.afterPick debt) (large.afterPick top) =
+      oldCredits N small large := by
+  simp [oldDebts] at hdebt
+  ext counter
+  by_cases hcounter : counter = debt
+  · subst counter
+    simp [oldCredits, hdebt.2]
+  · simp [oldCredits, hcounter]
+    by_cases hc : counter = top
+    · subst counter
+      simp [htop]
+    · simp [hc]
+
+/-- A matched debt-top substitution lowers total old pending width by exactly one. -/
+@[category API, AMS 91]
+theorem card_pending_after_debt_top_pick_add_one
+    (N : ℕ) (small large : GamePosition) (debt top : ℕ)
+    (hdebt : debt ∈ oldDebts N small large)
+    (htop : top ∉ large.fourLiftOldRemaining N) :
+    (fourLiftPendingCounters N (small.afterPick debt) (large.afterPick top)).card + 1 =
+      (fourLiftPendingCounters N small large).card := by
+  have hdebtCard : 0 < (oldDebts N small large).card := Finset.card_pos.mpr ⟨debt, hdebt⟩
+  rw [card_pending_eq_card_old_debts_add_card_old_credits,
+    old_debts_after_debt_top_pick N small large debt top hdebt htop,
+    old_credits_after_debt_top_pick N small large debt top hdebt htop,
+    Finset.card_erase_of_mem hdebt,
+    card_pending_eq_card_old_debts_add_card_old_credits]
+  omega
+
+end CatchUp.NewOpeningRepair

@@ -1,0 +1,80 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PartialCertificateChecker
+import catch_up.StrategyExtraction
+
+/-!
+# Catch-Up partial-strategy extraction
+
+This untrusted research module extracts one-sided strategy DAGs that stop at states selected by a
+Boolean target predicate. It can traverse several roots into one shared DAG. The independent partial
+checker and its Lean soundness theorem must validate the result before it is mathematical evidence.
+-/
+
+namespace CatchUpSearch.PartialStrategyExtraction
+
+open CatchUp
+open CertificateChecker
+open StrategyExtraction
+
+/-- Traverse the selected one-sided policy, stopping at recognized target states. -/
+def extractUntilAux (target : TargetPredicate) (output : SolverOutput) (player : Player) :
+    ℕ → State → ExtractionM Unit
+  | 0, state => do
+      if (← get)[state.cacheKey]?.isSome then
+        return ()
+      throw s!"partial strategy extraction fuel exhausted at {repr state}"
+  | fuel + 1, state => do
+      if (← get)[state.cacheKey]?.isSome then
+        return ()
+      if target state then
+        modify fun cache => cache.insert state.cacheKey ⟨state, .terminal⟩
+        return ()
+      let solvedNode ←
+        match ExactSolver.findNode? output state with
+        | none => throw s!"solved graph is missing state {repr state}"
+        | some node => pure node
+      let (branch, followedMoves) ← selectBranch output.gameSize player solvedNode
+      modify fun cache => cache.insert state.cacheKey ⟨state, branch⟩
+      for move in followedMoves do
+        extractUntilAux target output player fuel move.child
+
+/-- Extract one shared partial strategy DAG containing every supplied root. -/
+def extractManyUntil (target : TargetPredicate) (output : SolverOutput) (player : Player)
+    (roots : List State) : Except String StrategyDAG :=
+  match roots with
+  | [] => .error "partial strategy extraction requires at least one root"
+  | root :: _ =>
+      let extraction : ExtractionM Unit := do
+        for state in roots do
+          extractUntilAux target output player (output.gameSize + 1) state
+      match extraction.run {} with
+      | .error message => .error message
+      | .ok (_, cache) =>
+          .ok ⟨output.gameSize, player, root, sortedStrategyNodes cache⟩
+
+/-- Extract a partial strategy DAG rooted at one state. -/
+def extractUntil (target : TargetPredicate) (output : SolverOutput) (player : Player)
+    (root : State) : Except String StrategyDAG :=
+  extractManyUntil target output player [root]
+
+/-- Extract one shared partial strategy DAG containing every interval post-opening root. -/
+def extractAllOpeningsUntil (target : TargetPredicate) (output : SolverOutput) (player : Player) :
+    Except String StrategyDAG :=
+  extractManyUntil target output player (output.openingRoots.map fun root => root.2)
+
+end CatchUpSearch.PartialStrategyExtraction

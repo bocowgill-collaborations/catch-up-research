@@ -1,0 +1,905 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import Mathlib.Data.Finset.SymmDiff
+import catch_up.CanAvoidLossClassifier
+import catch_up.ExplicitTargetSoundness
+import catch_up.SimulationSoundness
+
+/-!
+# A semantic ledger for Catch-Up four-counter simulations
+
+This module states the fixed-width, one-residual ledger suggested by exact product searches. It is
+proof-oriented: counter values remain parameters, while the ledger records only signs and one
+resolved ownership mismatch.
+-/
+
+namespace CatchUp
+
+open scoped BigOperators symmDiff
+open CatchUpSearch
+open CatchUpSearch.FourCounterAttractor
+
+/-- The counters belonging to the small game. -/
+def fourLiftOldCounters (N : ℕ) : Finset ℕ :=
+  Finset.Icc 1 N
+
+/-- The four counters adjoined to pass from size `N` to size `N + 4`. -/
+def fourLiftTopCounters (N : ℕ) : Finset ℕ :=
+  Finset.Icc (N + 1) (N + 4)
+
+/-- Old counters still present in one normalized position. -/
+def GamePosition.fourLiftOldRemaining (N : ℕ) (position : GamePosition) : Finset ℕ :=
+  position.remaining ∩ fourLiftOldCounters N
+
+/-- Picking a counter erases it from the old-counter support. -/
+@[simp]
+theorem GamePosition.four_lift_old_remaining_after_pick
+    (N : ℕ) (position : GamePosition) (x : ℕ) :
+    (position.afterPick x).fourLiftOldRemaining N =
+      (position.fourLiftOldRemaining N).erase x := by
+  change position.remaining.erase x ∩ fourLiftOldCounters N =
+    (position.remaining ∩ fourLiftOldCounters N).erase x
+  ext counter
+  simp
+
+/-- Old counters present in exactly one of the two simulated positions. -/
+def fourLiftPendingCounters (N : ℕ) (small large : GamePosition) : Finset ℕ :=
+  small.fourLiftOldRemaining N ∆ large.fourLiftOldRemaining N
+
+/-- Paired picks erase their counters before taking the old-support symmetric difference. -/
+@[simp]
+theorem four_lift_pending_counters_after_picks
+    (N : ℕ) (small large : GamePosition) (y x : ℕ) :
+    fourLiftPendingCounters N (small.afterPick y) (large.afterPick x) =
+      (small.fourLiftOldRemaining N).erase y ∆
+        (large.fourLiftOldRemaining N).erase x := by
+  simp [fourLiftPendingCounters]
+
+/-- A large-only pick erases its counter from the large old support before symmetric difference. -/
+@[simp]
+theorem four_lift_pending_counters_after_large_pick
+    (N : ℕ) (small large : GamePosition) (x : ℕ) :
+    fourLiftPendingCounters N small (large.afterPick x) =
+      small.fourLiftOldRemaining N ∆
+        (large.fourLiftOldRemaining N).erase x := by
+  simp [fourLiftPendingCounters]
+
+/-- Comparing opening `k` with opening `N + k` leaves exactly the old counter `k` pending. -/
+@[simp]
+theorem four_lift_pending_counters_after_new_opening
+    (N k : ℕ) (hkLower : 1 ≤ k) (hkN : k ≤ N) :
+    fourLiftPendingCounters N
+      (GamePosition.afterOpening (Finset.Icc 1 N) k)
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)) = {k} := by
+  ext counter
+  by_cases hcounter : counter = k
+  · subst counter
+    simp [fourLiftPendingCounters, GamePosition.fourLiftOldRemaining, fourLiftOldCounters,
+      Finset.mem_symmDiff, GamePosition.afterOpening, CatchUp.afterOpening]
+    omega
+  · simp [fourLiftPendingCounters, GamePosition.fourLiftOldRemaining, fourLiftOldCounters,
+      Finset.mem_symmDiff, GamePosition.afterOpening, CatchUp.afterOpening, hcounter]
+    omega
+
+/-- Added top counters already consumed in the large game. -/
+def fourLiftConsumedTopCounters (N : ℕ) (large : GamePosition) : Finset ℕ :=
+  fourLiftTopCounters N \ large.remaining
+
+/-- Picking a top counter inserts it into the consumed-top support; old picks leave it unchanged. -/
+@[simp]
+theorem four_lift_consumed_top_counters_after_pick
+    (N : ℕ) (large : GamePosition) (x : ℕ) :
+    fourLiftConsumedTopCounters N (large.afterPick x) =
+      if x ∈ fourLiftTopCounters N then
+        insert x (fourLiftConsumedTopCounters N large)
+      else
+        fourLiftConsumedTopCounters N large := by
+  change fourLiftTopCounters N \ large.remaining.erase x =
+    if x ∈ fourLiftTopCounters N then
+      insert x (fourLiftTopCounters N \ large.remaining)
+    else
+      fourLiftTopCounters N \ large.remaining
+  ext counter
+  by_cases hx : x ∈ fourLiftTopCounters N
+  · by_cases hcounter : counter = x
+    · subst counter
+      simp [hx]
+    · simp [hx, hcounter]
+  · by_cases hcounter : counter = x
+    · subst counter
+      simp [hx]
+    · simp [hx, hcounter]
+
+/-- Opening `N + k` consumes exactly that one counter from the added top interval. -/
+@[simp]
+theorem four_lift_consumed_top_counters_after_new_opening
+    (N k : ℕ) (hkLower : 1 ≤ k) (hkUpper : k ≤ 4) :
+    fourLiftConsumedTopCounters N
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)) = {N + k} := by
+  ext counter
+  by_cases hcounter : counter = N + k
+  · subst counter
+    simp [fourLiftConsumedTopCounters, fourLiftTopCounters, GamePosition.afterOpening,
+      CatchUp.afterOpening]
+    omega
+  · simp [fourLiftConsumedTopCounters, fourLiftTopCounters, GamePosition.afterOpening,
+      CatchUp.afterOpening, hcounter]
+    omega
+
+/-- Sum a finite counter support with signs selected by `positive`. -/
+def signedCounterSum (support positive : Finset ℕ) : ℤ :=
+  ∑ counter ∈ support, if counter ∈ positive then (counter : ℤ) else -(counter : ℤ)
+
+/-- One resolved old counter assigned to opposite players in the two simulated games. -/
+structure FourLiftResidual where
+  counter : ℕ
+  positive : Bool
+deriving DecidableEq
+
+/-- Persistent signs for a four-counter simulation with at most one resolved mismatch. -/
+structure FourLiftLedger where
+  topPositive : Finset ℕ
+  pendingPositive : Finset ℕ
+  residual : Option FourLiftResidual
+deriving DecidableEq
+
+/-- The empty ledger at an aligned simulation root. -/
+def FourLiftLedger.empty : FourLiftLedger :=
+  ⟨∅, ∅, none⟩
+
+/-- Initial ledger comparing small opening `k` with large opening `N + k`. -/
+def FourLiftLedger.newOpening (N k : ℕ) : FourLiftLedger :=
+  ⟨{N + k}, ∅, none⟩
+
+/-- Numerical contribution of the optional resolved mismatch. -/
+def FourLiftResidual.value (residual : FourLiftResidual) : ℤ :=
+  if residual.positive then 2 * residual.counter else -(2 * residual.counter : ℤ)
+
+/-- Numerical score gap represented by a ledger at one state pair. -/
+def FourLiftLedger.value (N : ℕ) (small large : GamePosition)
+    (ledger : FourLiftLedger) : ℤ :=
+  signedCounterSum (fourLiftConsumedTopCounters N large) ledger.topPositive +
+    signedCounterSum (fourLiftPendingCounters N small large) ledger.pendingPositive +
+    (ledger.residual.map FourLiftResidual.value).getD 0
+
+/-- Finite support and width-three conditions for the one-residual ledger. -/
+def FourLiftLedger.Supports (N : ℕ) (small large : GamePosition)
+    (ledger : FourLiftLedger) : Prop :=
+  small.remaining ⊆ fourLiftOldCounters N ∧
+    large.remaining ⊆ Finset.Icc 1 (N + 4) ∧
+    ledger.topPositive ⊆ fourLiftConsumedTopCounters N large ∧
+    ledger.pendingPositive ⊆ fourLiftPendingCounters N small large ∧
+    (fourLiftPendingCounters N small large).card ≤ 3 ∧
+    (match ledger.residual with
+      | none => True
+      | some residual =>
+          residual.counter ∈ fourLiftOldCounters N ∧
+            residual.counter ∉ small.remaining ∧ residual.counter ∉ large.remaining)
+
+instance FourLiftLedger.instDecidableSupports
+    (N : ℕ) (small large : GamePosition) (ledger : FourLiftLedger) :
+    Decidable (ledger.Supports N small large) := by
+  unfold FourLiftLedger.Supports
+  cases ledger.residual <;> infer_instance
+
+/--
+Static consistency of the fixed-width one-residual ledger.
+
+Persistence is deliberately not hidden in this predicate; a separate transition relation must
+prove that child ledgers are obtained from parent ledgers rather than reconstructed from scratch.
+-/
+def FourLiftLedger.Consistent (N : ℕ) (small large : GamePosition)
+    (ledger : FourLiftLedger) : Prop :=
+  ledger.Supports N small large ∧
+    large.p1ScoreBalance - small.p1ScoreBalance = ledger.value N small large
+
+/-- The one-top/one-pending ledger is consistent at each paired new-opening root. -/
+theorem FourLiftLedger.consistent_new_opening
+    (N k : ℕ) (hkLower : 1 ≤ k) (hkUpper : k ≤ 4) (hkN : k ≤ N) :
+    (FourLiftLedger.newOpening N k).Consistent N
+      (GamePosition.afterOpening (Finset.Icc 1 N) k)
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)) := by
+  constructor
+  · refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
+    · intro counter hcounter
+      change counter ∈ (Finset.Icc 1 N).erase k at hcounter
+      simpa [fourLiftOldCounters] using Finset.mem_of_mem_erase hcounter
+    · intro counter hcounter
+      change counter ∈ (Finset.Icc 1 (N + 4)).erase (N + k) at hcounter
+      exact Finset.mem_of_mem_erase hcounter
+    · rw [four_lift_consumed_top_counters_after_new_opening N k hkLower hkUpper]
+      simp [FourLiftLedger.newOpening]
+    · simp [FourLiftLedger.newOpening]
+    · rw [four_lift_pending_counters_after_new_opening N k hkLower hkN]
+      simp
+    · simp [FourLiftLedger.newOpening]
+  · rw [FourLiftLedger.value,
+      four_lift_consumed_top_counters_after_new_opening N k hkLower hkUpper,
+      four_lift_pending_counters_after_new_opening N k hkLower hkN]
+    simp [FourLiftLedger.newOpening, signedCounterSum, GamePosition.p1ScoreBalance,
+      GamePosition.afterOpening, CatchUp.afterOpening]
+
+/-- One large pick changes the score gap by that pick minus the arbitrary ghost score change. -/
+theorem GamePosition.p1_score_gap_after_paired_pick
+    (small large smallAfter : GamePosition) (x : ℕ) :
+    (large.afterPick x).p1ScoreBalance - smallAfter.p1ScoreBalance =
+      (large.p1ScoreBalance - small.p1ScoreBalance) +
+        large.toMove.scoreCoefficient * (x : ℤ) -
+          (smallAfter.p1ScoreBalance - small.p1ScoreBalance) := by
+  rw [GamePosition.p1_score_balance_after_pick]
+  ring
+
+/-- Numerical update required of a ledger across one large pick and an optional ghost advance. -/
+def FourLiftLedger.ValueStep (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : FourLiftLedger) : Prop :=
+  after.value N smallAfter (large.afterPick x) =
+    before.value N small large + large.toMove.scoreCoefficient * (x : ℤ) -
+      (smallAfter.p1ScoreBalance - small.p1ScoreBalance)
+
+instance FourLiftLedger.instDecidableValueStep
+    (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : FourLiftLedger) :
+    Decidable (before.ValueStep N small large smallAfter x after) := by
+  unfold FourLiftLedger.ValueStep
+  infer_instance
+
+/-- A supported value step preserves ledger consistency. -/
+theorem FourLiftLedger.consistent_after_pick (N : ℕ)
+    (small large smallAfter : GamePosition) (x : ℕ) (before after : FourLiftLedger)
+    (hbefore : before.Consistent N small large)
+    (hsupport : after.Supports N smallAfter (large.afterPick x))
+    (hvalue : before.ValueStep N small large smallAfter x after) :
+    after.Consistent N smallAfter (large.afterPick x) := by
+  refine ⟨hsupport, ?_⟩
+  rw [hvalue, GamePosition.p1_score_balance_after_pick, ← hbefore.2]
+  ring
+
+/-- With parent consistency fixed, child support plus a value step is exactly child consistency. -/
+theorem FourLiftLedger.value_step_iff_consistent_after_pick (N : ℕ)
+    (small large smallAfter : GamePosition) (x : ℕ) (before after : FourLiftLedger)
+    (hbefore : before.Consistent N small large) :
+    after.Supports N smallAfter (large.afterPick x) ∧
+        before.ValueStep N small large smallAfter x after ↔
+      after.Consistent N smallAfter (large.afterPick x) := by
+  constructor
+  · rintro ⟨hsupport, hvalue⟩
+    exact FourLiftLedger.consistent_after_pick N small large smallAfter x before after
+      hbefore hsupport hvalue
+  · intro hafter
+    refine ⟨hafter.1, ?_⟩
+    unfold FourLiftLedger.ValueStep
+    rw [← hafter.2, GamePosition.p1_score_gap_after_paired_pick, hbefore.2]
+
+/-- A safe small position augmented by the persistent ledger carried by a simulation. -/
+structure FourLiftGhost where
+  position : GamePosition
+  ledger : FourLiftLedger
+
+/-- The semantic state relation tested by the one-residual product search. -/
+def FourLiftGhost.Related (N : ℕ) (ghost : FourLiftGhost) (large : GamePosition) : Prop :=
+  ghost.ledger.Consistent N ghost.position large
+
+/-- Signed ownership coefficient of one consumed top counter. -/
+def FourLiftLedger.topCoefficient (N : ℕ) (large : GamePosition)
+    (ledger : FourLiftLedger) (counter : ℕ) : ℤ :=
+  if counter ∈ fourLiftConsumedTopCounters N large then
+    if counter ∈ ledger.topPositive then 1 else -1
+  else
+    0
+
+/-- Signed ownership coefficient of one pending old counter. -/
+def FourLiftLedger.pendingCoefficient (N : ℕ) (small large : GamePosition)
+    (ledger : FourLiftLedger) (counter : ℕ) : ℤ :=
+  if counter ∈ fourLiftPendingCounters N small large then
+    if counter ∈ ledger.pendingPositive then 1 else -1
+  else
+    0
+
+/-- Signed coefficient of the optional resolved old counter. -/
+def FourLiftLedger.residualCoefficient (ledger : FourLiftLedger) (counter : ℕ) : ℤ :=
+  match ledger.residual with
+  | none => 0
+  | some residual =>
+      if residual.counter = counter then if residual.positive then 2 else -2 else 0
+
+/-- Total signed coefficient carried by one old counter. -/
+def FourLiftLedger.oldCoefficient (N : ℕ) (small large : GamePosition)
+    (ledger : FourLiftLedger) (counter : ℕ) : ℤ :=
+  ledger.pendingCoefficient N small large counter + ledger.residualCoefficient counter
+
+/-- Whether one counter was removed by a ghost advance. -/
+def GamePosition.counterRemovedBy (before after : GamePosition) (counter : ℕ) : Bool :=
+  decide (counter ∈ before.remaining ∧ counter ∉ after.remaining)
+
+/-- Pointwise persistence of all top and old ownership coefficients across one paired pick. -/
+def FourLiftLedger.HistoryStep (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : FourLiftLedger) : Prop :=
+  (∀ counter ∈ fourLiftOldCounters N,
+    after.oldCoefficient N smallAfter (large.afterPick x) counter =
+      before.oldCoefficient N small large counter +
+        (if x = counter then large.toMove.scoreCoefficient else 0) -
+        (if small.counterRemovedBy smallAfter counter then small.toMove.scoreCoefficient else 0)) ∧
+  (∀ counter ∈ fourLiftTopCounters N,
+    after.topCoefficient N (large.afterPick x) counter =
+      before.topCoefficient N large counter +
+        if x = counter then large.toMove.scoreCoefficient else 0)
+
+/-- Executable finite check of pointwise old- and top-counter ledger persistence. -/
+def FourLiftLedger.historyStepCheck (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : FourLiftLedger) : Bool :=
+  (List.range (N + 1)).all (fun counter =>
+      decide (counter ∈ fourLiftOldCounters N →
+        after.oldCoefficient N smallAfter (large.afterPick x) counter =
+          before.oldCoefficient N small large counter +
+            (if x = counter then large.toMove.scoreCoefficient else 0) -
+            (if small.counterRemovedBy smallAfter counter then
+              small.toMove.scoreCoefficient else 0))) &&
+    (List.range (N + 5)).all (fun counter =>
+      decide (counter ∈ fourLiftTopCounters N →
+        after.topCoefficient N (large.afterPick x) counter =
+          before.topCoefficient N large counter +
+            if x = counter then large.toMove.scoreCoefficient else 0))
+
+/-- The finite Boolean persistence check is equivalent to semantic history persistence. -/
+theorem FourLiftLedger.history_step_check_eq_true
+    (N : ℕ) (small large smallAfter : GamePosition) (x : ℕ)
+    (before after : FourLiftLedger) :
+    before.historyStepCheck N small large smallAfter x after = true ↔
+      before.HistoryStep N small large smallAfter x after := by
+  simp only [FourLiftLedger.historyStepCheck, Bool.and_eq_true, List.all_eq_true,
+    decide_eq_true_eq, FourLiftLedger.HistoryStep]
+  constructor
+  · rintro ⟨hold, htop⟩
+    constructor
+    · intro counter hcounter
+      apply hold counter
+      · simp only [List.mem_range]
+        have hcounterUpper := (Finset.mem_Icc.mp hcounter).2
+        omega
+      · exact hcounter
+    · intro counter hcounter
+      apply htop counter
+      · simp only [List.mem_range]
+        have hcounterUpper := (Finset.mem_Icc.mp hcounter).2
+        omega
+      · exact hcounter
+  · rintro ⟨hold, htop⟩
+    constructor
+    · intro counter _ hcounter
+      exact hold counter hcounter
+    · intro counter _ hcounter
+      exact htop counter hcounter
+
+/--
+Check a certificate's explicit ghost action: `none` means stutter and `some y` means pick `y`.
+-/
+def GamePosition.alignedSafeGhostStepCheck (player actor : Player)
+    (before after : GamePosition) (counter : Option ℕ) : Bool :=
+  match counter with
+  | none => decide (after = before)
+  | some counter =>
+      decide (before.toMove = actor) && decide (¬before.IsTerminal) &&
+        decide (counter ∈ before.remaining) && decide (after = before.afterPick counter) &&
+          (decide (actor ≠ player) || CanAvoidLossClassifier.check player after)
+
+/-- Every accepted explicit ghost action is a semantic aligned safe ghost step. -/
+theorem GamePosition.aligned_safe_ghost_step_of_check_eq_true
+    (player actor : Player) (before after : GamePosition) (counter : Option ℕ)
+    (hcheck : before.alignedSafeGhostStepCheck player actor after counter = true) :
+    before.AlignedSafeGhostStep player actor after := by
+  cases counter with
+  | none =>
+      exact Or.inl (by simpa [GamePosition.alignedSafeGhostStepCheck] using hcheck)
+  | some counter =>
+      simp only [GamePosition.alignedSafeGhostStepCheck, Bool.and_eq_true, decide_eq_true_eq,
+        Bool.or_eq_true] at hcheck
+      rcases hcheck with ⟨⟨⟨⟨halign, hterminal⟩, hlegal⟩, hafter⟩, hsafe⟩
+      refine Or.inr ⟨halign, hterminal, counter, hlegal, hafter, ?_⟩
+      intro hactor
+      rcases hsafe with hne | hsafe
+      · exact (hne hactor).elim
+      · exact (CanAvoidLossClassifier.check_eq_true_iff player after).1 hsafe
+
+/-- Every semantic aligned safe ghost step has an accepted explicit optional-counter encoding. -/
+theorem GamePosition.exists_aligned_safe_ghost_step_check_eq_true
+    (player actor : Player) (before after : GamePosition)
+    (hstep : before.AlignedSafeGhostStep player actor after) :
+    ∃ counter, before.alignedSafeGhostStepCheck player actor after counter = true := by
+  rcases hstep with rfl | ⟨halign, hterminal, counter, hlegal, rfl, hsafe⟩
+  · exact ⟨none, by simp [GamePosition.alignedSafeGhostStepCheck]⟩
+  · refine ⟨some counter, ?_⟩
+    simp only [GamePosition.alignedSafeGhostStepCheck, Bool.and_eq_true, decide_eq_true_eq,
+      Bool.or_eq_true]
+    refine ⟨⟨⟨⟨halign, hterminal⟩, hlegal⟩, True.intro⟩, ?_⟩
+    by_cases hactor : actor = player
+    · exact Or.inr ((CanAvoidLossClassifier.check_eq_true_iff player _).2 (hsafe hactor))
+    · exact Or.inl hactor
+
+/-- The protected player can avoid loss in the position carried by a ghost state. -/
+def FourLiftGhost.Safe (player : Player) (ghost : FourLiftGhost) : Prop :=
+  CanAvoidLoss player ghost.position
+
+/-- One aligned, history-preserving transition of the fixed-width ledger simulation. -/
+def FourLiftGhost.Advances (player : Player) (N : ℕ) (before : FourLiftGhost)
+    (large : GamePosition) (x : ℕ) (after : FourLiftGhost) : Prop :=
+  before.position.AlignedSafeGhostStep player large.toMove after.position ∧
+    before.ledger.HistoryStep N before.position large after.position x after.ledger ∧
+    after.ledger.Supports N after.position (large.afterPick x) ∧
+    before.ledger.ValueStep N before.position large after.position x after.ledger
+
+/--
+Check the ghost action and ledger-transition obligations carried by one explicit product edge.
+Large-move legality and branch coverage remain node-level certificate obligations.
+-/
+def FourLiftGhost.advanceCheck (player : Player) (N : ℕ) (before : FourLiftGhost)
+    (large : GamePosition) (x : ℕ) (after : FourLiftGhost)
+    (smallCounter : Option ℕ) : Bool :=
+  before.position.alignedSafeGhostStepCheck player large.toMove after.position smallCounter &&
+    before.ledger.historyStepCheck N before.position large after.position x after.ledger &&
+    decide (after.ledger.Supports N after.position (large.afterPick x)) &&
+    decide (before.ledger.ValueStep N before.position large after.position x after.ledger)
+
+/-- Every product-certificate edge accepted by the Boolean checker is a semantic advance. -/
+theorem FourLiftGhost.advances_of_advance_check_eq_true
+    (player : Player) (N : ℕ) (before : FourLiftGhost)
+    (large : GamePosition) (x : ℕ) (after : FourLiftGhost)
+    (smallCounter : Option ℕ)
+    (hcheck : before.advanceCheck player N large x after smallCounter = true) :
+    before.Advances player N large x after := by
+  simp only [FourLiftGhost.advanceCheck, Bool.and_eq_true, decide_eq_true_eq] at hcheck
+  rcases hcheck with ⟨⟨⟨haligned, hhistory⟩, hsupport⟩, hvalue⟩
+  exact ⟨GamePosition.aligned_safe_ghost_step_of_check_eq_true _ _ _ _ _ haligned,
+    (FourLiftLedger.history_step_check_eq_true _ _ _ _ _ _ _).1 hhistory,
+    hsupport, hvalue⟩
+
+/-- A semantic product edge has an accepted optional-counter encoding, and conversely. -/
+theorem FourLiftGhost.exists_advance_check_eq_true_iff
+    (player : Player) (N : ℕ) (before : FourLiftGhost)
+    (large : GamePosition) (x : ℕ) (after : FourLiftGhost) :
+    (∃ smallCounter, before.advanceCheck player N large x after smallCounter = true) ↔
+      before.Advances player N large x after := by
+  constructor
+  · rintro ⟨smallCounter, hcheck⟩
+    exact FourLiftGhost.advances_of_advance_check_eq_true
+      player N before large x after smallCounter hcheck
+  · intro hadvance
+    rcases GamePosition.exists_aligned_safe_ghost_step_check_eq_true
+      player large.toMove before.position after.position hadvance.1 with ⟨smallCounter, haligned⟩
+    refine ⟨smallCounter, ?_⟩
+    simp only [FourLiftGhost.advanceCheck, Bool.and_eq_true, decide_eq_true_eq]
+    exact ⟨⟨⟨haligned,
+      (FourLiftLedger.history_step_check_eq_true _ _ _ _ _ _ _).2 hadvance.2.1⟩,
+      hadvance.2.2.1⟩, hadvance.2.2.2⟩
+
+/-- A simulation advance preserves safety of the ghost position. -/
+theorem FourLiftGhost.safe_after_advance {player : Player} {N : ℕ}
+    {before after : FourLiftGhost} {large : GamePosition} {x : ℕ}
+    (hadvance : before.Advances player N large x after) (hbefore : before.Safe player) :
+    after.Safe player := by
+  exact hadvance.1.can_avoid_loss hbefore
+
+/-- A simulation advance from a related state preserves the semantic ledger relation. -/
+theorem FourLiftGhost.related_after_advance {player : Player} {N : ℕ}
+    {before after : FourLiftGhost} {large : GamePosition} {x : ℕ}
+    (hrelated : before.Related N large) (hadvance : before.Advances player N large x after) :
+    after.Related N (large.afterPick x) := by
+  exact FourLiftLedger.consistent_after_pick N before.position large after.position x
+    before.ledger after.ledger hrelated hadvance.2.2.1 hadvance.2.2.2
+
+/-- State-level form of the three proof-backed endgame targets used by the product search. -/
+def isExplicitFourLiftTargetState (N : ℕ) (player : Player) (state : State) : Bool :=
+  isExplicitSafeTopOnly N player state || isExplicitOneOldPair N player state ||
+    isExplicitFourCounterEntry N player state
+
+/-- Every state accepted by the combined state-level endgame target is safe. -/
+theorem can_avoid_loss_of_is_explicit_four_lift_target_state
+    (N : ℕ) (player : Player) (state : State)
+    (hstate : isExplicitFourLiftTargetState N player state = true) :
+    CanAvoidLoss player (CertificateChecker.toGamePosition (N + 4) state) := by
+  have hcases :
+      (isExplicitSafeTopOnly N player state = true ∨
+        isExplicitOneOldPair N player state = true) ∨
+      isExplicitFourCounterEntry N player state = true := by
+    simpa [isExplicitFourLiftTargetState, Bool.or_eq_true] using hstate
+  rcases hcases with (htop | honeOld) | hfour
+  · exact can_avoid_loss_of_is_explicit_safe_top_only N player state htop
+  · exact can_avoid_loss_of_is_explicit_one_old_pair N player state honeOld
+  · exact can_avoid_loss_of_is_explicit_four_counter_entry N player state hfour
+
+/-- Semantic large-game target obtained by independently decoding a proof-backed endgame state. -/
+def explicitFourLiftTarget (N : ℕ) (player : Player) (position : GamePosition) : Prop :=
+  ∃ state : State,
+    CertificateChecker.toGamePosition (N + 4) state = position ∧
+      isExplicitFourLiftTargetState N player state = true
+
+/-- The semantic combined endgame target is safe for its protected player. -/
+theorem explicit_four_lift_target_safe (N : ℕ) (player : Player) (position : GamePosition)
+    (htarget : explicitFourLiftTarget N player position) :
+    CanAvoidLoss player position := by
+  rcases htarget with ⟨state, rfl, hstate⟩
+  exact can_avoid_loss_of_is_explicit_four_lift_target_state N player state hstate
+
+/--
+The least forcing basin inside the history-preserving one-residual ledger relation.
+
+This is the proof-level counterpart of the executable AND/OR product search. Membership is the
+remaining strategic content; the theorem below proves that every member is safe.
+-/
+inductive ExplicitFourLiftBasin (N : ℕ) (player : Player) :
+    FourLiftGhost → GamePosition → Prop
+  | target {ghost large} :
+      ghost.Related N large →
+      explicitFourLiftTarget N player large →
+      ExplicitFourLiftBasin N player ghost large
+  | terminal {ghost large} :
+      ghost.Related N large →
+      ¬explicitFourLiftTarget N player large →
+      large.IsTerminal →
+      large.terminalOutcomeFor player ≠ .loss →
+      ExplicitFourLiftBasin N player ghost large
+  | owner {ghost large} :
+      ghost.Related N large →
+      ghost.Safe player →
+      ¬explicitFourLiftTarget N player large →
+      ¬large.IsTerminal →
+      large.toMove = player →
+      (x : ℕ) → large.LegalMove x →
+      (ghost' : FourLiftGhost) → ghost.Advances player N large x ghost' →
+      ExplicitFourLiftBasin N player ghost' (large.afterPick x) →
+      ExplicitFourLiftBasin N player ghost large
+  | opponent {ghost large} :
+      ghost.Related N large →
+      ghost.Safe player →
+      ¬explicitFourLiftTarget N player large →
+      ¬large.IsTerminal →
+      large.toMove ≠ player →
+      (nextGhost : ∀ x, large.LegalMove x → FourLiftGhost) →
+      (∀ x (hx : large.LegalMove x),
+        ghost.Advances player N large x (nextGhost x hx)) →
+      (∀ x (hx : large.LegalMove x),
+        ExplicitFourLiftBasin N player (nextGhost x hx) (large.afterPick x)) →
+      ExplicitFourLiftBasin N player ghost large
+
+/-- Every state in the explicit one-residual forcing basin is safe for its protected player. -/
+theorem ExplicitFourLiftBasin.can_avoid_loss {N : ℕ} {player : Player}
+    (ghost : FourLiftGhost) (large : GamePosition)
+    (hbasin : ExplicitFourLiftBasin N player ghost large) :
+    CanAvoidLoss player large := by
+  induction large using
+      (measure fun position : GamePosition => position.remaining.card).wf.induction
+      generalizing ghost with
+  | h large ih =>
+      cases hbasin with
+      | target _ htarget =>
+          exact explicit_four_lift_target_safe N player large htarget
+      | terminal _ _ hterminal hsafe =>
+          exact (can_avoid_loss_iff_terminal_outcome_ne_loss player large hterminal).2 hsafe
+      | owner _ _ _ hterminal htoMove x hx ghost' _ hnext =>
+          apply (can_avoid_loss_iff_exists_safe_move player large hterminal htoMove).2
+          refine ⟨x, hx, ?_⟩
+          exact ih (large.afterPick x) (large.remaining_card_after_pick_lt x hx) ghost' hnext
+      | opponent _ _ _ hterminal htoMove nextGhost _ hnext =>
+          apply (can_avoid_loss_iff_forall_safe_moves player large hterminal htoMove).2
+          intro x hx
+          exact ih (large.afterPick x) (large.remaining_card_after_pick_lt x hx)
+            (nextGhost x hx) (hnext x hx)
+
+/--
+A selected relation is locally closed when every member is a target, a safe terminal, or has the
+appropriate owner/opponent advances to further members of the relation.
+-/
+def ExplicitFourLiftLocallyClosed (N : ℕ) (player : Player)
+    (R : FourLiftGhost → GamePosition → Prop) : Prop :=
+  ∀ ghost large, R ghost large →
+    ghost.Related N large ∧
+      (explicitFourLiftTarget N player large ∨
+        (large.IsTerminal ∧ large.terminalOutcomeFor player ≠ .loss) ∨
+        (¬large.IsTerminal ∧
+          ((large.toMove = player ∧
+              ∃ x, large.LegalMove x ∧ ∃ ghost',
+                ghost.Advances player N large x ghost' ∧
+                  R ghost' (large.afterPick x)) ∨
+            (large.toMove ≠ player ∧
+              ∀ x, large.LegalMove x → ∃ ghost',
+                ghost.Advances player N large x ghost' ∧
+                  R ghost' (large.afterPick x)))))
+
+/--
+Every member of a locally closed selected relation whose ghost is safe belongs to the explicit
+forcing basin.
+-/
+theorem ExplicitFourLiftLocallyClosed.to_basin
+    {N : ℕ} {player : Player} {R : FourLiftGhost → GamePosition → Prop}
+    (hclosed : ExplicitFourLiftLocallyClosed N player R)
+    {ghost : FourLiftGhost} {large : GamePosition}
+    (hmember : R ghost large) (hsafe : ghost.Safe player) :
+    ExplicitFourLiftBasin N player ghost large := by
+  induction large using
+      (measure fun position : GamePosition => position.remaining.card).wf.induction
+      generalizing ghost with
+  | h large ih =>
+      rcases hclosed ghost large hmember with ⟨hrelated, hcases⟩
+      by_cases htarget : explicitFourLiftTarget N player large
+      · exact ExplicitFourLiftBasin.target hrelated htarget
+      · rcases hcases with htarget' | hterminal | hplay
+        · exact (htarget htarget').elim
+        · exact ExplicitFourLiftBasin.terminal hrelated htarget hterminal.1 hterminal.2
+        · rcases hplay with ⟨hnterminal, howner | hopponent⟩
+          · rcases howner with ⟨htoMove, x, hx, ghost', hadvance, hchild⟩
+            apply ExplicitFourLiftBasin.owner hrelated hsafe htarget hnterminal htoMove
+              x hx ghost' hadvance
+            exact ih (large.afterPick x) (large.remaining_card_after_pick_lt x hx)
+              hchild (FourLiftGhost.safe_after_advance hadvance hsafe)
+          · rcases hopponent with ⟨htoMove, hresponses⟩
+            choose nextGhost hadvance hchild using hresponses
+            apply ExplicitFourLiftBasin.opponent hrelated hsafe htarget hnterminal htoMove
+              nextGhost hadvance
+            intro x hx
+            exact ih (large.afterPick x) (large.remaining_card_after_pick_lt x hx)
+              (hchild x hx)
+              (FourLiftGhost.safe_after_advance (hadvance x hx) hsafe)
+
+/-- The explicit forcing basin satisfies its own local closure obligations. -/
+theorem ExplicitFourLiftBasin.locally_closed (N : ℕ) (player : Player) :
+    ExplicitFourLiftLocallyClosed N player (ExplicitFourLiftBasin N player) := by
+  intro ghost large hbasin
+  cases hbasin with
+  | target hrelated htarget =>
+      exact ⟨hrelated, Or.inl htarget⟩
+  | terminal hrelated _ hterminal hsafe =>
+      exact ⟨hrelated, Or.inr (Or.inl ⟨hterminal, hsafe⟩)⟩
+  | owner hrelated _ _ hterminal htoMove x hx ghost' hadvance hchild =>
+      exact ⟨hrelated, Or.inr (Or.inr
+        ⟨hterminal, Or.inl ⟨htoMove, x, hx, ghost', hadvance, hchild⟩⟩)⟩
+  | opponent hrelated _ _ hterminal htoMove nextGhost hadvance hchild =>
+      refine ⟨hrelated, Or.inr (Or.inr ⟨hterminal, Or.inr ⟨htoMove, ?_⟩⟩)⟩
+      intro x hx
+      exact ⟨nextGhost x hx, hadvance x hx, hchild x hx⟩
+
+/-- Safety transfer from every old opening at size `N` to the same opening at size `N + 4`. -/
+def FourLiftOldOpeningTransfer (N : ℕ) (player : Player) : Prop :=
+  ∀ opening ∈ Finset.Icc 1 N,
+    CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 N) opening) →
+      CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening)
+
+/-- Basin membership for the aligned empty-ledger roots associated with one old opening. -/
+def ExplicitFourLiftOldOpeningBasin (N : ℕ) (player : Player) (opening : ℕ) : Prop :=
+  ExplicitFourLiftBasin N player
+    ⟨GamePosition.afterOpening (Finset.Icc 1 N) opening, FourLiftLedger.empty⟩
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening)
+
+/-- Proof-carrying basin membership at every safe old-opening root. -/
+def ExplicitFourLiftOldOpeningBasins (N : ℕ) (player : Player) : Prop :=
+  ∀ opening ∈ Finset.Icc 1 N,
+    CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 N) opening) →
+      ExplicitFourLiftOldOpeningBasin N player opening
+
+/-- Root-specific basin proofs imply the old-opening transfer property. -/
+theorem ExplicitFourLiftOldOpeningBasins.to_old_opening_transfer
+    {N : ℕ} {player : Player} (basins : ExplicitFourLiftOldOpeningBasins N player) :
+    FourLiftOldOpeningTransfer N player := by
+  intro opening hopening hsafe
+  exact ExplicitFourLiftBasin.can_avoid_loss
+    ⟨GamePosition.afterOpening (Finset.Icc 1 N) opening, FourLiftLedger.empty⟩
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening)
+    (basins opening hopening hsafe)
+
+/-- Safety transfer from small opening `k` to the newly adjoined opening `N + k`. -/
+def FourLiftNewOpeningTransfer (N : ℕ) (player : Player) : Prop :=
+  ∀ k ∈ Finset.Icc 1 4,
+    CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 N) k) →
+      CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k))
+
+/-- A new-opening transfer covers every opening in the four-counter extension interval. -/
+theorem FourLiftNewOpeningTransfer.can_avoid_loss_of_mem_new_interval
+    {N : ℕ} {player : Player} (transfer : FourLiftNewOpeningTransfer N player)
+    (hN : 4 ≤ N)
+    (smallSafe : ∀ opening ∈ Finset.Icc 1 N,
+      CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 N) opening))
+    {x : ℕ} (hx : x ∈ Finset.Icc (N + 1) (N + 4)) :
+    CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) x) := by
+  have hxLower : N + 1 ≤ x := (Finset.mem_Icc.mp hx).1
+  have hxUpper : x ≤ N + 4 := (Finset.mem_Icc.mp hx).2
+  let k := x - N
+  have hkLower : 1 ≤ k := by
+    dsimp [k]
+    omega
+  have hkUpper : k ≤ 4 := by
+    dsimp [k]
+    omega
+  have hkFour : k ∈ Finset.Icc 1 4 := Finset.mem_Icc.mpr ⟨hkLower, hkUpper⟩
+  have hkSmall : k ∈ Finset.Icc 1 N := Finset.mem_Icc.mpr ⟨hkLower, by omega⟩
+  have hxEq : x = N + k := by
+    dsimp [k]
+    omega
+  rw [hxEq]
+  exact transfer k hkFour (smallSafe k hkSmall)
+
+/-- Basin membership at a new-opening root with its one-top/one-pending initial ledger. -/
+def ExplicitFourLiftNewOpeningBasin (N : ℕ) (player : Player) (k : ℕ) : Prop :=
+  ExplicitFourLiftBasin N player
+    ⟨GamePosition.afterOpening (Finset.Icc 1 N) k, FourLiftLedger.newOpening N k⟩
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k))
+
+/-- Proof-carrying basin membership at every safe new-opening root. -/
+def ExplicitFourLiftNewOpeningBasins (N : ℕ) (player : Player) : Prop :=
+  ∀ k ∈ Finset.Icc 1 4,
+    CanAvoidLoss player (GamePosition.afterOpening (Finset.Icc 1 N) k) →
+      ExplicitFourLiftNewOpeningBasin N player k
+
+/-- Root-specific new-opening basin proofs imply the new-opening transfer property. -/
+theorem ExplicitFourLiftNewOpeningBasins.to_new_opening_transfer
+    {N : ℕ} {player : Player} (basins : ExplicitFourLiftNewOpeningBasins N player) :
+    FourLiftNewOpeningTransfer N player := by
+  intro k hk hsafe
+  exact ExplicitFourLiftBasin.can_avoid_loss
+    ⟨GamePosition.afterOpening (Finset.Icc 1 N) k, FourLiftLedger.newOpening N k⟩
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k))
+    (basins k hk hsafe)
+
+/-- Aligned roots have a consistent empty ledger. -/
+theorem FourLiftLedger.consistent_empty (N : ℕ) (small large : GamePosition)
+    (hsmall : small.remaining ⊆ fourLiftOldCounters N)
+    (hlarge : large.remaining ⊆ Finset.Icc 1 (N + 4))
+    (hold : small.fourLiftOldRemaining N = large.fourLiftOldRemaining N)
+    (htop : fourLiftTopCounters N ⊆ large.remaining)
+    (hbalance : large.p1ScoreBalance = small.p1ScoreBalance) :
+    FourLiftLedger.empty.Consistent N small large := by
+  have hpending : fourLiftPendingCounters N small large = ∅ := by
+    simp [fourLiftPendingCounters, hold]
+  have hconsumed : fourLiftConsumedTopCounters N large = ∅ :=
+    Finset.sdiff_eq_empty_iff_subset.mpr htop
+  simp [FourLiftLedger.Consistent, FourLiftLedger.Supports, FourLiftLedger.empty,
+    FourLiftLedger.value,
+    hsmall, hlarge, hpending, hconsumed, hbalance, signedCounterSum]
+
+/-- The unchanged old-opening roots begin with a consistent empty ledger. -/
+@[simp]
+theorem FourLiftLedger.consistent_old_opening
+    (N opening : ℕ) (hopening : opening ∈ Finset.Icc 1 N) :
+    FourLiftLedger.empty.Consistent N
+      (GamePosition.afterOpening (Finset.Icc 1 N) opening)
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening) := by
+  have hopeningUpper : opening ≤ N := (Finset.mem_Icc.mp hopening).2
+  apply FourLiftLedger.consistent_empty
+  · intro counter hcounter
+    change counter ∈ (Finset.Icc 1 N).erase opening at hcounter
+    exact Finset.mem_of_mem_erase hcounter
+  · intro counter hcounter
+    change counter ∈ (Finset.Icc 1 (N + 4)).erase opening at hcounter
+    exact Finset.mem_of_mem_erase hcounter
+  · ext counter
+    simp [GamePosition.fourLiftOldRemaining, fourLiftOldCounters,
+      GamePosition.afterOpening, CatchUp.afterOpening]
+    omega
+  · intro counter hcounter
+    rw [fourLiftTopCounters, Finset.mem_Icc] at hcounter
+    change counter ∈ (Finset.Icc 1 (N + 4)).erase opening
+    rw [Finset.mem_erase]
+    constructor
+    · omega
+    · exact Finset.mem_Icc.mpr ⟨by omega, hcounter.2⟩
+  · rfl
+
+/--
+Old-opening transfers and player-two safety at the four new openings reduce the draw at `N + 4`
+to the draw at `N`.
+-/
+theorem value_Icc_add_four_eq_draw_of_old_opening_transfers_and_new_opening_safety
+    (N : ℕ) (hN : 1 ≤ N)
+    (playerOneTransfer : FourLiftOldOpeningTransfer N .p1)
+    (playerTwoTransfer : FourLiftOldOpeningTransfer N .p2)
+    (hdraw : value (Finset.Icc 1 N) = .draw)
+    (hnewOpenings : ∀ x ∈ Finset.Icc (N + 1) (N + 4),
+      CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) x)) :
+    value (Finset.Icc 1 (N + 4)) = .draw := by
+  have hsmall := (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 N)
+    (Finset.nonempty_Icc.mpr hN)).1 hdraw
+  apply (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 (N + 4))
+    (Finset.nonempty_Icc.mpr (by omega))).2
+  constructor
+  · rcases hsmall.1 with ⟨x, hx, hsafe⟩
+    refine ⟨x, ?_, playerOneTransfer x hx hsafe⟩
+    have hxLower : 1 ≤ x := (Finset.mem_Icc.mp hx).1
+    have hxUpper : x ≤ N := (Finset.mem_Icc.mp hx).2
+    exact Finset.mem_Icc.mpr ⟨hxLower, by omega⟩
+  · intro x hx
+    by_cases hxOld : x ≤ N
+    · have hxSmall : x ∈ Finset.Icc 1 N :=
+        Finset.mem_Icc.mpr ⟨(Finset.mem_Icc.mp hx).1, hxOld⟩
+      exact playerTwoTransfer x hxSmall (hsmall.2 x hxSmall)
+    · apply hnewOpenings x
+      exact Finset.mem_Icc.mpr ⟨by omega, (Finset.mem_Icc.mp hx).2⟩
+
+/-- Root-specific basin proofs reduce the draw step to the four new player-two openings. -/
+theorem value_Icc_add_four_eq_draw_of_old_opening_basins_and_new_opening_safety
+    (N : ℕ) (hN : 1 ≤ N)
+    (playerOneBasins : ExplicitFourLiftOldOpeningBasins N .p1)
+    (playerTwoBasins : ExplicitFourLiftOldOpeningBasins N .p2)
+    (hdraw : value (Finset.Icc 1 N) = .draw)
+    (hnewOpenings : ∀ x ∈ Finset.Icc (N + 1) (N + 4),
+      CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) x)) :
+    value (Finset.Icc 1 (N + 4)) = .draw := by
+  exact value_Icc_add_four_eq_draw_of_old_opening_transfers_and_new_opening_safety N hN
+    playerOneBasins.to_old_opening_transfer playerTwoBasins.to_old_opening_transfer hdraw
+    hnewOpenings
+
+/-- Old- and new-opening transfers together give the complete `N` to `N + 4` draw reduction. -/
+theorem value_Icc_add_four_eq_draw_of_opening_transfers
+    (N : ℕ) (hN : 4 ≤ N)
+    (playerOneOld : FourLiftOldOpeningTransfer N .p1)
+    (playerTwoOld : FourLiftOldOpeningTransfer N .p2)
+    (playerTwoNew : FourLiftNewOpeningTransfer N .p2)
+    (hdraw : value (Finset.Icc 1 N) = .draw) :
+    value (Finset.Icc 1 (N + 4)) = .draw := by
+  apply value_Icc_add_four_eq_draw_of_old_opening_transfers_and_new_opening_safety N
+    (by omega) playerOneOld playerTwoOld hdraw
+  have hsmall := (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 N)
+    (Finset.nonempty_Icc.mpr (by omega))).1 hdraw
+  intro x hx
+  exact playerTwoNew.can_avoid_loss_of_mem_new_interval hN hsmall.2 hx
+
+/--
+One player-one old-opening basin and the complete player-two basin families imply a draw at
+`N + 4`, provided player two is safe after every opening at size `N`.
+-/
+theorem value_Icc_add_four_eq_draw_of_some_player_one_old_opening_basin_and_player_two_basins
+    (N : ℕ) (hN : 4 ≤ N)
+    (playerOneOld : ∃ opening ∈ Finset.Icc 1 N,
+      ExplicitFourLiftOldOpeningBasin N .p1 opening)
+    (playerTwoOld : ExplicitFourLiftOldOpeningBasins N .p2)
+    (playerTwoNew : ExplicitFourLiftNewOpeningBasins N .p2)
+    (playerTwoSmall : ∀ opening ∈ Finset.Icc 1 N,
+      CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 N) opening)) :
+    value (Finset.Icc 1 (N + 4)) = .draw := by
+  apply (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 (N + 4))
+    (Finset.nonempty_Icc.mpr (by omega))).2
+  constructor
+  · rcases playerOneOld with ⟨opening, hopening, hbasin⟩
+    have hopeningBounds := Finset.mem_Icc.mp hopening
+    have hopeningLarge : opening ∈ Finset.Icc 1 (N + 4) :=
+      Finset.mem_Icc.mpr ⟨hopeningBounds.1, by omega⟩
+    refine ⟨opening, hopeningLarge, ?_⟩
+    exact ExplicitFourLiftBasin.can_avoid_loss
+      ⟨GamePosition.afterOpening (Finset.Icc 1 N) opening, FourLiftLedger.empty⟩
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) opening) hbasin
+  · intro x hx
+    by_cases hxOld : x ≤ N
+    · have hxSmall : x ∈ Finset.Icc 1 N :=
+        Finset.mem_Icc.mpr ⟨(Finset.mem_Icc.mp hx).1, hxOld⟩
+      exact playerTwoOld.to_old_opening_transfer x hxSmall
+        (playerTwoSmall x hxSmall)
+    · have hxNew : x ∈ Finset.Icc (N + 1) (N + 4) :=
+        Finset.mem_Icc.mpr ⟨by omega, (Finset.mem_Icc.mp hx).2⟩
+      exact playerTwoNew.to_new_opening_transfer.can_avoid_loss_of_mem_new_interval
+        hN playerTwoSmall hxNew
+
+/-- Root-specific old- and new-opening basin proofs give the complete draw reduction. -/
+theorem value_Icc_add_four_eq_draw_of_opening_basins
+    (N : ℕ) (hN : 4 ≤ N)
+    (playerOneOld : ExplicitFourLiftOldOpeningBasins N .p1)
+    (playerTwoOld : ExplicitFourLiftOldOpeningBasins N .p2)
+    (playerTwoNew : ExplicitFourLiftNewOpeningBasins N .p2)
+    (hdraw : value (Finset.Icc 1 N) = .draw) :
+    value (Finset.Icc 1 (N + 4)) = .draw := by
+  have hsmall := (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 N)
+    (Finset.nonempty_Icc.mpr (by omega))).1 hdraw
+  rcases hsmall.1 with ⟨opening, hopening, hsafe⟩
+  exact value_Icc_add_four_eq_draw_of_some_player_one_old_opening_basin_and_player_two_basins N hN
+    ⟨opening, hopening, playerOneOld opening hopening hsafe⟩ playerTwoOld playerTwoNew hsmall.2
+
+end CatchUp

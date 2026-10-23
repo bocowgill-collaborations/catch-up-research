@@ -1,0 +1,205 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.NewOpeningEntry
+
+/-!
+# Root-generated history for Catch-Up new-opening simulations
+
+This module strengthens the new-opening mirror phase by recording the old counters already picked
+during player two's first post-opening turn. The sum of those preparation counters is strictly less
+than the opening offset `k`. Since `k ≤ 4`, every preparation counter belongs to `{1, 2, 3}` and
+the history has uniformly bounded support independent of the game size.
+-/
+
+namespace CatchUp.NewOpeningEntry
+
+/-- Root-generated history during player two's first mirrored post-opening turn. -/
+structure NewOpeningInitialTurnPhase (N k : ℕ) (preparation : Finset ℕ)
+    (small large : GamePosition) : Prop where
+  mirror : NewOpeningMirrorPhase N k small large
+  preparation_old : preparation ⊆ fourLiftOldCounters N
+  k_not_preparation : k ∉ preparation
+  small_remaining_eq :
+    small.remaining = fourLiftOldCounters N \ insert k preparation
+  preparation_sum_add_deficit :
+    preparation.sum (fun counter => counter) + small.deficit = k
+
+/-- The paired new-opening roots have empty initial-turn history. -/
+theorem new_opening_root_initial_turn_phase {N k : ℕ} (hk : ValidNewOpening N k) :
+    NewOpeningInitialTurnPhase N k ∅
+      (GamePosition.afterOpening (Finset.Icc 1 N) k)
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)) := by
+  refine ⟨new_opening_root_mirror_phase hk, ?_, ?_, ?_, ?_⟩
+  · simp
+  · simp
+  · change (Finset.Icc 1 N).erase k = Finset.Icc 1 N \ {k}
+    ext counter
+    simp only [Finset.mem_erase, Finset.mem_Icc, Finset.mem_sdiff,
+      Finset.mem_singleton]
+    tauto
+  · simp [GamePosition.afterOpening, CatchUp.afterOpening]
+
+/-- A below-deficit mirrored pick inserts its counter into the initial-turn history. -/
+theorem NewOpeningInitialTurnPhase.after_paired_pick_of_lt
+    {N k x : ℕ} {preparation : Finset ℕ} {small large : GamePosition}
+    (hphase : NewOpeningInitialTurnPhase N k preparation small large)
+    (hx : small.LegalMove x) (hlt : x < small.deficit) :
+    NewOpeningInitialTurnPhase N k (insert x preparation)
+      (small.afterPick x) (large.afterPick x) := by
+  have hxOld := hphase.mirror.small_old hx
+  have hxNeK : x ≠ k := by
+    intro h
+    exact hphase.mirror.k_not_small (h ▸ hx)
+  have hxNotPreparation : x ∉ preparation := by
+    change x ∈ small.remaining at hx
+    rw [hphase.small_remaining_eq] at hx
+    simp only [Finset.mem_sdiff, Finset.mem_insert] at hx
+    exact fun hpreparation => hx.2 (Or.inr hpreparation)
+  refine ⟨hphase.mirror.after_paired_pick_of_lt hx hlt, ?_, ?_, ?_, ?_⟩
+  · intro counter hcounter
+    rcases Finset.mem_insert.mp hcounter with rfl | hcounter
+    · exact hxOld
+    · exact hphase.preparation_old hcounter
+  · simp [hxNeK.symm, hphase.k_not_preparation]
+  · rw [GamePosition.remaining_after_pick, hphase.small_remaining_eq]
+    ext counter
+    simp only [Finset.mem_erase, Finset.mem_sdiff, Finset.mem_insert]
+    tauto
+  · rw [Finset.sum_insert hxNotPreparation]
+    simp only [GamePosition.afterPick, Position.afterPick, hlt, if_true]
+    have hsum := hphase.preparation_sum_add_deficit
+    omega
+
+/-- The preparation sum is strictly smaller than the opening offset. -/
+theorem NewOpeningInitialTurnPhase.preparation_sum_lt
+    {N k : ℕ} {preparation : Finset ℕ} {small large : GamePosition}
+    (hphase : NewOpeningInitialTurnPhase N k preparation small large) :
+    preparation.sum (fun counter => counter) < k := by
+  have hpos := hphase.mirror.small_deficit_pos
+  have hsum := hphase.preparation_sum_add_deficit
+  omega
+
+/-- Every preparation counter is strictly smaller than the opening offset. -/
+theorem NewOpeningInitialTurnPhase.preparation_subset_Ico
+    {N k : ℕ} {preparation : Finset ℕ} {small large : GamePosition}
+    (hphase : NewOpeningInitialTurnPhase N k preparation small large) :
+    preparation ⊆ Finset.Ico 1 k := by
+  intro counter hcounter
+  have hbounds := Finset.mem_Icc.mp (hphase.preparation_old hcounter)
+  have hcounterLe : counter ≤ preparation.sum (fun value => value) :=
+    Finset.single_le_sum (fun value _ => Nat.zero_le value) hcounter
+  exact Finset.mem_Ico.mpr ⟨hbounds.1, hcounterLe.trans_lt hphase.preparation_sum_lt⟩
+
+/-- For a valid new opening, all preparation counters lie among `1`, `2`, and `3`. -/
+theorem NewOpeningInitialTurnPhase.preparation_subset_three
+    {N k : ℕ} {preparation : Finset ℕ} {small large : GamePosition}
+    (hphase : NewOpeningInitialTurnPhase N k preparation small large)
+    (hk : ValidNewOpening N k) :
+    preparation ⊆ Finset.Icc 1 3 := by
+  intro counter hcounter
+  have hbounds := Finset.mem_Ico.mp (hphase.preparation_subset_Ico hcounter)
+  exact Finset.mem_Icc.mpr ⟨hbounds.1, by rcases hk with ⟨_, hkUpper, _⟩; omega⟩
+
+/-- At most two counters can precede the catch-up pick in a valid initial turn. -/
+theorem NewOpeningInitialTurnPhase.preparation_card_le_two
+    {N k : ℕ} {preparation : Finset ℕ} {small large : GamePosition}
+    (hphase : NewOpeningInitialTurnPhase N k preparation small large)
+    (hk : ValidNewOpening N k) :
+    preparation.card ≤ 2 := by
+  have hsubset := hphase.preparation_subset_three hk
+  have htargetCard : (Finset.Icc 1 3).card = 3 := by decide
+  by_contra hcard
+  have hthree : 3 ≤ preparation.card := by omega
+  have heq : preparation = Finset.Icc 1 3 := by
+    apply Finset.eq_of_subset_of_card_le hsubset
+    simpa [htargetCard] using hthree
+  have hsum := hphase.preparation_sum_lt
+  rcases hk with ⟨_, hkUpper, _⟩
+  rw [heq] at hsum
+  have htargetSum : (Finset.Icc 1 3).sum (fun counter => counter) = 6 := by decide
+  rw [htargetSum] at hsum
+  omega
+
+/--
+A selected safe small turn whose catch-up endpoint is safe after one valid added-counter reply.
+-/
+inductive NewOpeningLiftableTurn (N k : ℕ) :
+    Finset ℕ → GamePosition → GamePosition → Prop
+  | finish {preparation small large}
+      (phase : NewOpeningInitialTurnPhase N k preparation small large)
+      (smallSafe : CanAvoidLoss .p2 small)
+      (x : ℕ) (hx : small.LegalMove x) (hle : small.deficit ≤ x)
+      (smallAfterSafe : CanAvoidLoss .p2 (small.afterPick x))
+      (j : ℕ) (hj : ValidNewOpeningReply k j)
+      (largeAfterSafe : CanAvoidLoss .p2 ((large.afterPick x).afterPick (N + j))) :
+      NewOpeningLiftableTurn N k preparation small large
+  | step {preparation small large}
+      (phase : NewOpeningInitialTurnPhase N k preparation small large)
+      (smallSafe : CanAvoidLoss .p2 small)
+      (x : ℕ) (hx : small.LegalMove x) (hlt : x < small.deficit)
+      (smallAfterSafe : CanAvoidLoss .p2 (small.afterPick x))
+      (next : NewOpeningLiftableTurn N k (insert x preparation)
+        (small.afterPick x) (large.afterPick x)) :
+      NewOpeningLiftableTurn N k preparation small large
+
+/-- A selected liftable initial turn makes its large mirror state safe for player two. -/
+theorem NewOpeningLiftableTurn.large_can_avoid_loss
+    {N k : ℕ} {preparation : Finset ℕ} {small large : GamePosition}
+    (hk : ValidNewOpening N k)
+    (hlift : NewOpeningLiftableTurn N k preparation small large) :
+    CanAvoidLoss .p2 large := by
+  induction hlift with
+  | @finish preparation' small' large' phase _ x hx hle _ j hj largeAfterSafe =>
+      have hlargeTerminal := phase.mirror.large_not_terminal hk hj
+      apply (can_avoid_loss_iff_exists_safe_move .p2 large' hlargeTerminal
+        phase.mirror.large_toMove).2
+      refine ⟨x, phase.mirror.large_legal hx, ?_⟩
+      have hready := phase.mirror.after_paired_pick_of_le hx hle
+      obtain ⟨hlargeAfterTerminal, hjLegal, _⟩ := hready.after_reply hk hj
+      apply (can_avoid_loss_iff_exists_safe_move .p2 (large'.afterPick x)
+        hlargeAfterTerminal hready.large_toMove).2
+      exact ⟨N + j, hjLegal, largeAfterSafe⟩
+  | @step preparation' small' large' phase _ x hx _ _ next ih =>
+      have hj := valid_canonical_new_opening_reply k
+      have hlargeTerminal := phase.mirror.large_not_terminal hk hj
+      apply (can_avoid_loss_iff_exists_safe_move .p2 large' hlargeTerminal
+        phase.mirror.large_toMove).2
+      exact ⟨x, phase.mirror.large_legal hx, ih⟩
+
+/-- A selected liftable turn at one paired new-opening root. -/
+def LiftableNewOpeningRoot (N k : ℕ) : Prop :=
+  NewOpeningLiftableTurn N k ∅
+    (GamePosition.afterOpening (Finset.Icc 1 N) k)
+    (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k))
+
+/-- Liftable selected turns at every safe small new-opening root. -/
+def LiftableNewOpeningRoots (N : ℕ) : Prop :=
+  ∀ k ∈ Finset.Icc 1 4,
+    CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 N) k) →
+      LiftableNewOpeningRoot N k
+
+/-- Selected liftable turns imply the complete player-two new-opening transfer. -/
+theorem LiftableNewOpeningRoots.to_new_opening_transfer
+    {N : ℕ} (hN : 4 ≤ N) (hroots : LiftableNewOpeningRoots N) :
+    FourLiftNewOpeningTransfer N .p2 := by
+  intro k hk hsmall
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkValid : ValidNewOpening N k :=
+    ⟨hkBounds.1, hkBounds.2, hkBounds.2.trans hN⟩
+  exact NewOpeningLiftableTurn.large_can_avoid_loss hkValid (hroots k hk hsmall)
+
+end CatchUp.NewOpeningEntry

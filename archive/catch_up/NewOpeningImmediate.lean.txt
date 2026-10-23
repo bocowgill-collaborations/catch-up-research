@@ -1,0 +1,841 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.NewOpeningHistory
+
+/-!
+# Immediate Catch-Up new-opening endpoints
+
+This module isolates a concrete sufficient condition for all four player-two new-opening
+obligations in the comparison of the size-`N` and size-`N + 4` games. After the large game opens
+at `N + k`, player two catches up immediately with old counter `k + 1` and then with one distinct
+added counter `N + j`. The resulting dense position is the interval with exactly three counters
+removed, deficit `j + 1`, and player one to move.
+
+Thus the parametric research problem is reduced to finding one safe reply offset `j` for each
+opening offset `k`. This module proves the reduction but does not prove those dense endpoints safe.
+-/
+
+namespace CatchUp
+
+/--
+Suppose the opponent's completed turn scored `preparationSum + catchCounter` from an original
+deficit `originalDeficit`. Picking `preparationSum + transfer` and then
+`catchCounter - transfer` scores the same total and restores the original deficit and mover.
+-/
+@[category API, AMS 91]
+theorem GamePosition.after_pick_balancing_pair
+    (position : GamePosition) {originalDeficit preparationSum catchCounter transfer : ℕ}
+    (hdeficit : position.deficit = catchCounter + preparationSum - originalDeficit)
+    (htransfer : transfer < catchCounter - originalDeficit) :
+    ((position.afterPick (preparationSum + transfer)).afterPick (catchCounter - transfer)) =
+      ⟨⟨(position.remaining.erase (preparationSum + transfer)).erase
+        (catchCounter - transfer), originalDeficit⟩, position.toMove.other⟩ := by
+  rcases position with ⟨⟨remaining, deficit⟩, toMove⟩
+  change deficit = catchCounter + preparationSum - originalDeficit at hdeficit
+  have hfirst : preparationSum + transfer < deficit := by omega
+  have hsecond : ¬catchCounter - transfer < deficit - (preparationSum + transfer) := by
+    omega
+  simp [GamePosition.afterPick, Position.afterPick, hfirst, hsecond]
+  omega
+
+/--
+The additive triple `high = low + middle` can be played as catch, continue, catch without changing
+the original deficit or mover, provided the middle pick remains strictly below the new deficit.
+-/
+@[category API, AMS 91]
+theorem GamePosition.after_pick_additive_triple
+    (position : GamePosition) {high middle low : ℕ}
+    (hadd : high = low + middle)
+    (hstrict : position.deficit + middle < high) :
+    (((position.afterPick high).afterPick middle).afterPick low) =
+      ⟨⟨((position.remaining.erase high).erase middle).erase low,
+        position.deficit⟩, position.toMove⟩ := by
+  rcases position with ⟨⟨remaining, deficit⟩, toMove⟩
+  change high = low + middle at hadd
+  change deficit + middle < high at hstrict
+  have hhigh : ¬high < deficit := by omega
+  have hmiddle : middle < high - deficit := by omega
+  have hlow : ¬low < high - deficit - middle := by omega
+  simp [GamePosition.afterPick, Position.afterPick, hhigh, hmiddle, hlow]
+  omega
+
+end CatchUp
+
+namespace CatchUp.NewOpeningEntry
+
+/-- Bounds ensuring that `k + 1` is an old counter distinct from opening `k`. -/
+def ValidImmediateNewOpening (N k : ℕ) : Prop :=
+  ValidNewOpening N k ∧ k < N
+
+/-- The large state after the new opening, immediate old catch, and one distinct top reply. -/
+def immediateNewOpeningEndpoint (N k j : ℕ) : GamePosition :=
+  ((GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)).afterPick (k + 1)).afterPick
+    (N + j)
+
+/-- An immediate endpoint has exactly the opening, old reply, and top reply removed. -/
+@[simp, category API, AMS 91]
+theorem immediate_new_opening_endpoint_remaining (N k j : ℕ) :
+    (immediateNewOpeningEndpoint N k j).remaining =
+      Finset.Icc 1 (N + 4) \ {k + 1, N + k, N + j} := by
+  change (((Finset.Icc 1 (N + 4)).erase (N + k)).erase (k + 1)).erase (N + j) = _
+  ext counter
+  simp only [Finset.mem_erase, Finset.mem_sdiff, Finset.mem_insert,
+    Finset.mem_singleton]
+  tauto
+
+/-- The four counters present at an immediate endpoint but absent from its size-four-smaller analogue. -/
+def immediateNewOpeningFourPacket (N k j : ℕ) : Finset ℕ :=
+  {N - 4 + k, N - 4 + j} ∪
+    (Finset.Icc (N + 1) (N + 4) \ {N + k, N + j})
+
+/-- The endpoint comparison packet has exactly four distinct counters. -/
+@[category API, AMS 91]
+theorem immediate_new_opening_four_packet_card
+    {N k j : ℕ} (hN : 11 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hj : ValidNewOpeningReply k j) :
+    (immediateNewOpeningFourPacket N k j).card = 4 := by
+  rcases Finset.mem_Icc.mp hk with ⟨hkLower, hkUpper⟩
+  rcases hj with ⟨hjLower, hjUpper, hjk⟩
+  have hkj : k ≠ j := fun h => hjk h.symm
+  have hrestoredCard : ({N - 4 + k, N - 4 + j} : Finset ℕ).card = 2 := by
+    rw [Finset.card_insert_of_notMem]
+    · simp
+    · simp [hkj]
+  have hremovedCard : ({N + k, N + j} : Finset ℕ).card = 2 := by
+    rw [Finset.card_insert_of_notMem]
+    · simp
+    · simp [hkj]
+  have hremovedSubset :
+      ({N + k, N + j} : Finset ℕ) ⊆ Finset.Icc (N + 1) (N + 4) := by
+    intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    rcases hx with rfl | rfl
+    · exact Finset.mem_Icc.mpr ⟨by omega, by omega⟩
+    · exact Finset.mem_Icc.mpr ⟨by omega, by omega⟩
+  have htopCard :
+      (Finset.Icc (N + 1) (N + 4) \ {N + k, N + j}).card = 2 := by
+    rw [Finset.card_sdiff, Finset.inter_eq_left.mpr hremovedSubset,
+      Nat.card_Icc, hremovedCard]
+    omega
+  have hdisjoint : Disjoint ({N - 4 + k, N - 4 + j} : Finset ℕ)
+      (Finset.Icc (N + 1) (N + 4) \ {N + k, N + j}) := by
+    rw [Finset.disjoint_left]
+    intro x hxRestored hxTop
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hxRestored
+    have hxLower := (Finset.mem_Icc.mp (Finset.mem_sdiff.mp hxTop).1).1
+    rcases hxRestored with rfl | rfl <;> omega
+  rw [immediateNewOpeningFourPacket,
+    Finset.card_union_of_disjoint hdisjoint, hrestoredCard, htopCard]
+
+/-- A dense immediate endpoint is its size-four-smaller analogue plus a four-counter packet. -/
+@[category API, AMS 91]
+theorem immediate_new_opening_endpoint_remaining_eq_prior_union_packet
+    {N k j : ℕ} (hN : 11 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hj : ValidNewOpeningReply k j) :
+    (immediateNewOpeningEndpoint N k j).remaining =
+      (immediateNewOpeningEndpoint (N - 4) k j).remaining ∪
+        immediateNewOpeningFourPacket N k j := by
+  rcases Finset.mem_Icc.mp hk with ⟨hkLower, hkUpper⟩
+  rcases hj with ⟨hjLower, hjUpper, hjk⟩
+  ext counter
+  simp [immediateNewOpeningFourPacket]
+  omega
+
+/-- A valid immediate endpoint has deficit `j + 1`. -/
+@[simp, category API, AMS 91]
+theorem immediate_new_opening_endpoint_deficit
+    {N k j : ℕ} (hk : ValidImmediateNewOpening N k)
+    (hj : ValidNewOpeningReply k j) :
+    (immediateNewOpeningEndpoint N k j).deficit = j + 1 := by
+  rcases hk with ⟨⟨hkLower, _, _⟩, hkLt⟩
+  rcases hj with ⟨hjLower, _, _⟩
+  have hfirst : k + 1 < N + k := by omega
+  have hfirstDeficit : N + k - (k + 1) = N - 1 := by omega
+  have hsecond : ¬N + j < N - 1 := by omega
+  simp [immediateNewOpeningEndpoint, GamePosition.afterPick, Position.afterPick,
+    GamePosition.afterOpening, CatchUp.afterOpening, hfirst, hfirstDeficit, hsecond]
+  omega
+
+/-- A valid immediate endpoint has passed to player one. -/
+@[simp, category API, AMS 91]
+theorem immediate_new_opening_endpoint_to_move
+    {N k j : ℕ} (hk : ValidImmediateNewOpening N k)
+    (hj : ValidNewOpeningReply k j) :
+    (immediateNewOpeningEndpoint N k j).toMove = .p1 := by
+  rcases hk with ⟨⟨hkLower, _, _⟩, hkLt⟩
+  rcases hj with ⟨hjLower, _, _⟩
+  have hfirst : k + 1 < N + k := by omega
+  have hfirstDeficit : N + k - (k + 1) = N - 1 := by omega
+  have hsecond : ¬N + j < N - 1 := by omega
+  simp [immediateNewOpeningEndpoint, GamePosition.afterPick, Position.afterPick,
+    GamePosition.afterOpening, CatchUp.afterOpening, hfirst, hfirstDeficit, hsecond]
+
+/-- The dense endpoint using the uniform reply offset `2` at `k = 1`, and `1` otherwise. -/
+def canonicalImmediateNewOpeningEndpoint (N k : ℕ) : GamePosition :=
+  immediateNewOpeningEndpoint N k (canonicalNewOpeningReply k)
+
+/-- Every canonical-endpoint move other than `1` catches up immediately. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_deficit_le_of_ne_one
+    {N k x : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hx : (canonicalImmediateNewOpeningEndpoint N k).LegalMove x)
+    (hxNe : x ≠ 1) :
+    (canonicalImmediateNewOpeningEndpoint N k).deficit ≤ x := by
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkLower := hkBounds.1
+  have hkUpper := hkBounds.2
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkLower, hkUpper, hkUpper.trans (by omega)⟩, by omega⟩
+  rw [canonicalImmediateNewOpeningEndpoint,
+    immediate_new_opening_endpoint_deficit hkValid (valid_canonical_new_opening_reply k)]
+  rw [GamePosition.LegalMove, canonicalImmediateNewOpeningEndpoint,
+    immediate_new_opening_endpoint_remaining] at hx
+  interval_cases k <;> simp [canonicalNewOpeningReply] at hx ⊢ <;> omega
+
+/-- The only canonical-endpoint pick that can leave player one behind is counter `1`. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_subdeficit_eq_one
+    {N k x : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hx : (canonicalImmediateNewOpeningEndpoint N k).LegalMove x)
+    (hlt : x < (canonicalImmediateNewOpeningEndpoint N k).deficit) :
+    x = 1 := by
+  by_contra hxNe
+  exact (not_le_of_gt hlt)
+    (canonical_immediate_endpoint_deficit_le_of_ne_one hN hk hx hxNe)
+
+/-- After canonical preparation pick `1`, every remaining legal pick catches up. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_after_one_deficit_le
+    {N k y : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hy : ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).LegalMove y) :
+    ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).deficit ≤ y := by
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkLower := hkBounds.1
+  have hkUpper := hkBounds.2
+  rw [GamePosition.LegalMove, GamePosition.remaining_after_pick,
+    canonicalImmediateNewOpeningEndpoint, immediate_new_opening_endpoint_remaining] at hy
+  change (if 1 < (canonicalImmediateNewOpeningEndpoint N k).deficit then
+      (canonicalImmediateNewOpeningEndpoint N k).deficit - 1
+    else 1 - (canonicalImmediateNewOpeningEndpoint N k).deficit) ≤ y
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkLower, hkUpper, hkUpper.trans (by omega)⟩, by omega⟩
+  rw [canonicalImmediateNewOpeningEndpoint,
+    immediate_new_opening_endpoint_deficit hkValid (valid_canonical_new_opening_reply k)]
+  interval_cases k <;> simp [canonicalNewOpeningReply] at hy ⊢ <;> omega
+
+/-- A first pick from a canonical endpoint continues the turn exactly when it is counter one. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_after_pick_to_move_eq_p1_iff
+    {N k x : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hx : (canonicalImmediateNewOpeningEndpoint N k).LegalMove x) :
+    ((canonicalImmediateNewOpeningEndpoint N k).afterPick x).toMove = .p1 ↔ x = 1 := by
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkLower := hkBounds.1
+  have hkUpper := hkBounds.2
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkBounds.1, hkBounds.2, hkBounds.2.trans (by omega)⟩, by omega⟩
+  have htoMove : (canonicalImmediateNewOpeningEndpoint N k).toMove = .p1 := by
+    exact immediate_new_opening_endpoint_to_move hkValid
+      (valid_canonical_new_opening_reply k)
+  constructor
+  · intro hmove
+    by_contra hxNe
+    have hle := canonical_immediate_endpoint_deficit_le_of_ne_one hN hk hx hxNe
+    rw [GamePosition.to_move_after_pick_of_le _ _ hle, htoMove] at hmove
+    simp at hmove
+  · intro hxOne
+    subst x
+    have hdeficit : 1 < (canonicalImmediateNewOpeningEndpoint N k).deficit := by
+      rw [canonicalImmediateNewOpeningEndpoint,
+        immediate_new_opening_endpoint_deficit hkValid (valid_canonical_new_opening_reply k)]
+      interval_cases k <;> simp [canonicalNewOpeningReply]
+    rw [GamePosition.to_move_after_pick_of_lt _ _ hdeficit, htoMove]
+
+/-- After the optional preparation pick one, the next legal pick completes player one's turn. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_after_one_after_pick_to_move
+    {N k y : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hy : ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).LegalMove y) :
+    (((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).afterPick y).toMove = .p2 := by
+  have hle := canonical_immediate_endpoint_after_one_deficit_le hN hk hy
+  rw [GamePosition.to_move_after_pick_of_le _ _ hle]
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkLower := hkBounds.1
+  have hkUpper := hkBounds.2
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkBounds.1, hkBounds.2, hkBounds.2.trans (by omega)⟩, by omega⟩
+  have htoMove : (canonicalImmediateNewOpeningEndpoint N k).toMove = .p1 := by
+    exact immediate_new_opening_endpoint_to_move hkValid
+      (valid_canonical_new_opening_reply k)
+  have hdeficit : 1 < (canonicalImmediateNewOpeningEndpoint N k).deficit := by
+    rw [canonicalImmediateNewOpeningEndpoint,
+      immediate_new_opening_endpoint_deficit hkValid (valid_canonical_new_opening_reply k)]
+    interval_cases k <;> simp [canonicalNewOpeningReply]
+  rw [GamePosition.to_move_after_pick_of_lt _ _ hdeficit, htoMove]
+  rfl
+
+/-- A legal non-`1` pick completes the canonical endpoint's player-one turn in one move. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_after_pick_eq_completed_turn
+    {N k x : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hx : (canonicalImmediateNewOpeningEndpoint N k).LegalMove x)
+    (hxNe : x ≠ 1) :
+    (canonicalImmediateNewOpeningEndpoint N k).afterPick x =
+      { remaining := (canonicalImmediateNewOpeningEndpoint N k).remaining.erase x
+        deficit := x - (canonicalNewOpeningReply k + 1)
+        toMove := .p2 } := by
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkBounds.1, hkBounds.2, hkBounds.2.trans (by omega)⟩, by omega⟩
+  have hdeficit : (canonicalImmediateNewOpeningEndpoint N k).deficit =
+      canonicalNewOpeningReply k + 1 := by
+    exact immediate_new_opening_endpoint_deficit hkValid
+      (valid_canonical_new_opening_reply k)
+  have htoMove : (canonicalImmediateNewOpeningEndpoint N k).toMove = .p1 := by
+    exact immediate_new_opening_endpoint_to_move hkValid
+      (valid_canonical_new_opening_reply k)
+  have hle := canonical_immediate_endpoint_deficit_le_of_ne_one hN hk hx hxNe
+  rw [hdeficit] at hle
+  have hnlt : ¬x < canonicalNewOpeningReply k + 1 := not_lt_of_ge hle
+  simp [GamePosition.afterPick, Position.afterPick, hnlt,
+    hdeficit, htoMove, Player.other]
+
+/-- Picking `1` and then any legal counter completes the canonical endpoint's player-one turn. -/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_after_one_after_pick_eq_completed_turn
+    {N k y : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hy : ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).LegalMove y) :
+    ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).afterPick y =
+      { remaining :=
+          ((canonicalImmediateNewOpeningEndpoint N k).remaining.erase 1).erase y
+        deficit := y + 1 - (canonicalNewOpeningReply k + 1)
+        toMove := .p2 } := by
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkBounds.1, hkBounds.2, hkBounds.2.trans (by omega)⟩, by omega⟩
+  have hdeficit : (canonicalImmediateNewOpeningEndpoint N k).deficit =
+      canonicalNewOpeningReply k + 1 := by
+    exact immediate_new_opening_endpoint_deficit hkValid
+      (valid_canonical_new_opening_reply k)
+  have htoMove : (canonicalImmediateNewOpeningEndpoint N k).toMove = .p1 := by
+    exact immediate_new_opening_endpoint_to_move hkValid
+      (valid_canonical_new_opening_reply k)
+  have hfirstLt : 1 < (canonicalImmediateNewOpeningEndpoint N k).deficit := by
+    rw [hdeficit]
+    have hjLower : 1 ≤ canonicalNewOpeningReply k :=
+      (valid_canonical_new_opening_reply k).1
+    omega
+  have hafterOneDeficit :
+      ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).deficit =
+        canonicalNewOpeningReply k := by
+    change (if 1 < (canonicalImmediateNewOpeningEndpoint N k).deficit then
+        (canonicalImmediateNewOpeningEndpoint N k).deficit - 1
+      else 1 - (canonicalImmediateNewOpeningEndpoint N k).deficit) = _
+    rw [if_pos hfirstLt, hdeficit]
+    omega
+  have hle := canonical_immediate_endpoint_after_one_deficit_le hN hk hy
+  rw [hafterOneDeficit] at hle
+  have hnlt : ¬y < canonicalNewOpeningReply k := not_lt_of_ge hle
+  let finalPosition :=
+    ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).afterPick y
+  have hremaining : finalPosition.remaining =
+      ((canonicalImmediateNewOpeningEndpoint N k).remaining.erase 1).erase y := by
+    rfl
+  have hfinalDeficit : finalPosition.deficit =
+      y + 1 - (canonicalNewOpeningReply k + 1) := by
+    change (if y <
+        ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).deficit then
+        ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).deficit - y
+      else y - ((canonicalImmediateNewOpeningEndpoint N k).afterPick 1).deficit) = _
+    rw [hafterOneDeficit, if_neg hnlt]
+    omega
+  have hfinalToMove : finalPosition.toMove = .p2 := by
+    exact canonical_immediate_endpoint_after_one_after_pick_to_move hN hk hy
+  change finalPosition = _
+  rcases finalPosition with ⟨⟨remaining, deficit⟩, toMove⟩
+  change remaining = _ at hremaining
+  change deficit = _ at hfinalDeficit
+  change toMove = .p2 at hfinalToMove
+  subst remaining
+  subst deficit
+  subst toMove
+  rfl
+
+/--
+Every player-one turn from a canonical immediate endpoint has one of two shapes: a single legal
+non-`1` pick, or preparation pick `1` followed by one legal catch-up pick.
+-/
+@[category API, AMS 91]
+theorem canonical_immediate_endpoint_completed_turn_classification
+    {N k x : ℕ} (hN : 5 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hx : (canonicalImmediateNewOpeningEndpoint N k).LegalMove x) :
+    (x ≠ 1 ∧
+      (canonicalImmediateNewOpeningEndpoint N k).afterPick x =
+        { remaining := (canonicalImmediateNewOpeningEndpoint N k).remaining.erase x
+          deficit := x - (canonicalNewOpeningReply k + 1)
+          toMove := .p2 }) ∨
+    (x = 1 ∧
+      ((canonicalImmediateNewOpeningEndpoint N k).afterPick x).toMove = .p1 ∧
+      ∀ y, ((canonicalImmediateNewOpeningEndpoint N k).afterPick x).LegalMove y →
+        ((canonicalImmediateNewOpeningEndpoint N k).afterPick x).afterPick y =
+          { remaining :=
+              ((canonicalImmediateNewOpeningEndpoint N k).remaining.erase 1).erase y
+            deficit := y + 1 - (canonicalNewOpeningReply k + 1)
+            toMove := .p2 }) := by
+  by_cases hxOne : x = 1
+  · subst x
+    refine Or.inr ⟨rfl, ?_, ?_⟩
+    · exact (canonical_immediate_endpoint_after_pick_to_move_eq_p1_iff hN hk hx).2 rfl
+    · intro y hy
+      exact canonical_immediate_endpoint_after_one_after_pick_eq_completed_turn hN hk hy
+  · exact Or.inl ⟨hxOne,
+      canonical_immediate_endpoint_after_pick_eq_completed_turn hN hk hx hxOne⟩
+
+/--
+For a turn ending at a surviving top counter `N + h`, one of the two restored offsets `k` or `j`
+gives a legal-shaped balancing pair. The first response avoids both the fixed missing old counter
+`k + 1` and the second response `N - 4 + a`.
+-/
+@[category API, AMS 91]
+theorem exists_balancing_restored_offset
+    {N k j h preparationSum : ℕ}
+    (hN : 11 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (hj : ValidNewOpeningReply k j) (hh : h ∈ Finset.Icc 1 4)
+    (hhk : h ≠ k) (hhj : h ≠ j) (hpreparation : preparationSum ≤ 1) :
+    ∃ a, (a = k ∨ a = j) ∧
+      let transfer := 4 + h - a
+      let first := preparationSum + transfer
+      let low := N - 4 + a
+      1 ≤ transfer ∧ first ≤ N ∧ 1 ≤ low ∧ low ≤ N ∧
+        first ≠ k + 1 ∧ first ≠ low ∧
+        transfer < N + h - (j + 1) := by
+  rcases Finset.mem_Icc.mp hk with ⟨hkLower, hkUpper⟩
+  rcases hj with ⟨hjLower, hjUpper, hjk⟩
+  rcases Finset.mem_Icc.mp hh with ⟨hhLower, hhUpper⟩
+  let Good := fun a : ℕ =>
+    let transfer := 4 + h - a
+    let first := preparationSum + transfer
+    let low := N - 4 + a
+    1 ≤ transfer ∧ first ≤ N ∧ 1 ≤ low ∧ low ≤ N ∧
+      first ≠ k + 1 ∧ first ≠ low ∧
+      transfer < N + h - (j + 1)
+  have hchoice : Good k ∨ Good j := by
+    dsimp [Good]
+    omega
+  rcases hchoice with hgood | hgood
+  · exact ⟨k, Or.inl rfl, hgood⟩
+  · exact ⟨j, Or.inr rfl, hgood⟩
+
+/--
+After a player-one turn from a valid immediate endpoint ends at a surviving top counter `N + h`,
+with total preparation score at most one, player two has a legal two-counter balancing response.
+The response restores both the endpoint deficit `j + 1` and player one as the player to move.
+-/
+@[category API, AMS 91]
+theorem exists_legal_balancing_response_after_surviving_top
+    {N k j h preparationSum : ℕ} {preparation : Finset ℕ}
+    (hN : 11 ≤ N) (hk : ValidImmediateNewOpening N k)
+    (hj : ValidNewOpeningReply k j) (hh : h ∈ Finset.Icc 1 4)
+    (htop : N + h ∈ (immediateNewOpeningEndpoint N k j).remaining)
+    (hpreparation : preparation ⊆ (immediateNewOpeningEndpoint N k j).remaining)
+    (hpreparationSum : preparation.sum (fun counter => counter) = preparationSum)
+    (hpreparationSmall : preparationSum ≤ 1) :
+    let endpoint := immediateNewOpeningEndpoint N k j
+    let afterTopTurn : GamePosition :=
+      { remaining := endpoint.remaining \ insert (N + h) preparation
+        deficit := N + h + preparationSum - (j + 1)
+        toMove := .p2 }
+    ∃ a, (a = k ∨ a = j) ∧
+      let transfer := 4 + h - a
+      let firstResponse := preparationSum + transfer
+      let secondResponse := N - 4 + a
+      afterTopTurn.LegalMove firstResponse ∧
+        (afterTopTurn.afterPick firstResponse).LegalMove secondResponse ∧
+        ((afterTopTurn.afterPick firstResponse).afterPick secondResponse).deficit = j + 1 ∧
+        ((afterTopTurn.afterPick firstResponse).afterPick secondResponse).toMove = .p1 := by
+  dsimp only
+  have hkBounds : k ∈ Finset.Icc 1 4 := by
+    exact Finset.mem_Icc.mpr ⟨hk.1.1, hk.1.2.1⟩
+  have hNltNk : N < N + k := Nat.lt_add_of_pos_right hk.1.1
+  have hNltNj : N < N + j := Nat.lt_add_of_pos_right hj.1
+  have hkOneLeFive : k + 1 ≤ 5 := by
+    have := (Finset.mem_Icc.mp hkBounds).2
+    omega
+  have hsevenLe : 7 ≤ N - 4 := by omega
+  have htopMissing : N + h ≠ N + k ∧ N + h ≠ N + j := by
+    rw [immediate_new_opening_endpoint_remaining] at htop
+    simp only [Finset.mem_sdiff, Finset.mem_insert, Finset.mem_singleton] at htop
+    exact ⟨fun heq => htop.2 (Or.inr (Or.inl heq)),
+      fun heq => htop.2 (Or.inr (Or.inr heq))⟩
+  have hhk : h ≠ k := by omega
+  have hhj : h ≠ j := by omega
+  obtain ⟨a, ha, htransferPos, hfirstLe, hlowPos, hlowLe,
+      hfirstNeMissing, hresponsesNe, htransferStrict⟩ :=
+    exists_balancing_restored_offset hN hkBounds hj hh hhk hhj hpreparationSmall
+  let transfer := 4 + h - a
+  let firstResponse := preparationSum + transfer
+  let secondResponse := N - 4 + a
+  have htransferPos' : 1 ≤ transfer := by
+    simpa [transfer] using htransferPos
+  have hfirstLe' : firstResponse ≤ N := by
+    simpa [firstResponse, transfer] using hfirstLe
+  have hsecondPos' : 1 ≤ secondResponse := by
+    simpa [secondResponse] using hlowPos
+  have hsecondLe' : secondResponse ≤ N := by
+    simpa [secondResponse] using hlowLe
+  have hfirstNeMissing' : firstResponse ≠ k + 1 := by
+    simpa [firstResponse, transfer] using hfirstNeMissing
+  have hresponsesNe' : firstResponse ≠ secondResponse := by
+    simpa [firstResponse, transfer, secondResponse] using hresponsesNe
+  have haBounds : 1 ≤ a ∧ a ≤ 4 := by
+    rcases ha with rfl | rfl
+    · exact Finset.mem_Icc.mp hkBounds
+    · exact ⟨hj.1, hj.2.1⟩
+  have heightLeSecond : 8 ≤ secondResponse := by
+    change 7 + 1 ≤ (N - 4) + a
+    exact Nat.add_le_add hsevenLe haBounds.1
+  have hfirstPos : 1 ≤ firstResponse := by omega
+  have hfirstMemEndpoint :
+      firstResponse ∈ (immediateNewOpeningEndpoint N k j).remaining := by
+    rw [immediate_new_opening_endpoint_remaining]
+    simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert, Finset.mem_singleton]
+    constructor
+    · exact ⟨hfirstPos, hfirstLe'.trans (by omega)⟩
+    · intro hmissing
+      rcases hmissing with hmissing | hmissing | hmissing
+      · exact hfirstNeMissing' hmissing
+      · have : firstResponse < N + k := hfirstLe'.trans_lt hNltNk
+        exact this.ne hmissing
+      · have : firstResponse < N + j := hfirstLe'.trans_lt hNltNj
+        exact this.ne hmissing
+  have hsecondMemEndpoint :
+      secondResponse ∈ (immediateNewOpeningEndpoint N k j).remaining := by
+    rw [immediate_new_opening_endpoint_remaining]
+    simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert, Finset.mem_singleton]
+    constructor
+    · exact ⟨hsecondPos', hsecondLe'.trans (by omega)⟩
+    · intro hmissing
+      rcases hmissing with hmissing | hmissing | hmissing
+      · have : k + 1 < secondResponse := by
+          exact hkOneLeFive.trans_lt ((by decide : 5 < 8).trans_le heightLeSecond)
+        exact this.ne' hmissing
+      · have : secondResponse < N + k := hsecondLe'.trans_lt hNltNk
+        exact this.ne hmissing
+      · have : secondResponse < N + j := hsecondLe'.trans_lt hNltNj
+        exact this.ne hmissing
+  have hfirstNotPreparation : firstResponse ∉ preparation := by
+    intro hmem
+    have hleSum : firstResponse ≤ preparation.sum (fun counter => counter) :=
+      Finset.single_le_sum (fun counter _ => Nat.zero_le counter) hmem
+    rw [hpreparationSum] at hleSum
+    omega
+  have hsecondNotPreparation : secondResponse ∉ preparation := by
+    intro hmem
+    have hleSum : secondResponse ≤ preparation.sum (fun counter => counter) :=
+      Finset.single_le_sum (fun counter _ => Nat.zero_le counter) hmem
+    rw [hpreparationSum] at hleSum
+    omega
+  have hfirstNeTop : firstResponse ≠ N + h := by omega
+  have hsecondNeTop : secondResponse ≠ N + h := by omega
+  have hfirstLegal :
+      ({ remaining := (immediateNewOpeningEndpoint N k j).remaining \
+            insert (N + h) preparation
+         deficit := N + h + preparationSum - (j + 1)
+         toMove := .p2 } : GamePosition).LegalMove firstResponse := by
+    change firstResponse ∈
+      (immediateNewOpeningEndpoint N k j).remaining \
+        insert (N + h) preparation
+    exact Finset.mem_sdiff.mpr
+      ⟨hfirstMemEndpoint, by simp [hfirstNeTop, hfirstNotPreparation]⟩
+  have hsecondLegal :
+      (({ remaining := (immediateNewOpeningEndpoint N k j).remaining \
+            insert (N + h) preparation
+          deficit := N + h + preparationSum - (j + 1)
+          toMove := .p2 } : GamePosition).afterPick firstResponse).LegalMove secondResponse := by
+    change secondResponse ∈
+      ((immediateNewOpeningEndpoint N k j).remaining \
+        insert (N + h) preparation).erase firstResponse
+    apply Finset.mem_erase.mpr
+    refine ⟨?_, Finset.mem_sdiff.mpr
+      ⟨hsecondMemEndpoint, by simp [hsecondNeTop, hsecondNotPreparation]⟩⟩
+    exact hresponsesNe'.symm
+  refine ⟨a, ha, hfirstLegal, hsecondLegal, ?_⟩
+  let afterTopTurn : GamePosition :=
+    { remaining := (immediateNewOpeningEndpoint N k j).remaining \
+        insert (N + h) preparation
+      deficit := N + h + preparationSum - (j + 1)
+      toMove := .p2 }
+  have hpair := GamePosition.after_pick_balancing_pair afterTopTurn
+    (originalDeficit := j + 1) (preparationSum := preparationSum)
+    (catchCounter := N + h) (transfer := transfer) (by rfl) (by
+      simpa [transfer] using htransferStrict)
+  have hsecondEq : N + h - transfer = secondResponse := by
+    dsimp [transfer, secondResponse]
+    rcases ha with rfl | rfl <;> omega
+  rw [hsecondEq] at hpair
+  have hstate :
+      ((afterTopTurn.afterPick firstResponse).afterPick secondResponse) =
+        ⟨⟨(afterTopTurn.remaining.erase firstResponse).erase secondResponse, j + 1⟩,
+          .p1⟩ := by
+    simpa [firstResponse, Player.other] using hpair
+  constructor
+  · simpa [afterTopTurn] using congrArg (fun position : GamePosition => position.deficit) hstate
+  · simpa [afterTopTurn] using congrArg (fun position : GamePosition => position.toMove) hstate
+
+/--
+For a restored-low catch counter `N - 4 + a` at a canonical immediate endpoint, a transfer in
+`{1, 2, 3}` makes both balancing responses old counters distinct from the missing counter `k + 1`.
+The proof uses `3` when `k = 1`, or when `k = 2` and the preparation sum is one, and `1` otherwise.
+-/
+private theorem exists_canonical_low_balancing_transfer
+    {N k a preparationSum : ℕ}
+    (hN : 11 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (ha : a = k ∨ a = canonicalNewOpeningReply k)
+    (hpreparationSmall : preparationSum ≤ 1) :
+    ∃ transfer ∈ Finset.Icc 1 3,
+      let catchCounter := N - 4 + a
+      let firstResponse := preparationSum + transfer
+      let secondResponse := catchCounter - transfer
+      1 ≤ catchCounter ∧ catchCounter ≤ N ∧
+        1 ≤ firstResponse ∧ firstResponse ≤ 4 ∧
+        5 ≤ secondResponse ∧ secondResponse ≤ N ∧
+        firstResponse ≠ k + 1 ∧ secondResponse ≠ k + 1 ∧
+        firstResponse < secondResponse ∧ secondResponse < catchCounter ∧
+        transfer < catchCounter - (canonicalNewOpeningReply k + 1) := by
+  rcases Finset.mem_Icc.mp hk with ⟨hkLower, hkUpper⟩
+  by_cases hthree : k = 1 ∨ (k = 2 ∧ preparationSum = 1)
+  · refine ⟨3, by decide, ?_⟩
+    interval_cases preparationSum <;>
+      interval_cases k <;>
+      simp [canonicalNewOpeningReply] at ha hthree ⊢ <;>
+      rcases ha with rfl | rfl <;>
+      omega
+  · refine ⟨1, by decide, ?_⟩
+    interval_cases preparationSum <;>
+      interval_cases k <;>
+      simp [canonicalNewOpeningReply] at ha hthree ⊢ <;>
+      rcases ha with rfl | rfl <;>
+      omega
+
+/--
+After a player-one turn from a canonical immediate endpoint ends at a restored-low counter
+`N - 4 + a`, with total preparation score at most one, player two has a legal two-counter
+balancing response. The response restores the canonical endpoint deficit and player one as mover.
+-/
+@[category API, AMS 91]
+theorem exists_legal_balancing_response_after_canonical_restored_low
+    {N k a preparationSum : ℕ} {preparation : Finset ℕ}
+    (hN : 11 ≤ N) (hk : k ∈ Finset.Icc 1 4)
+    (ha : a = k ∨ a = canonicalNewOpeningReply k)
+    (hpreparation : preparation ⊆ (canonicalImmediateNewOpeningEndpoint N k).remaining)
+    (hpreparationSum : preparation.sum (fun counter => counter) = preparationSum)
+    (hpreparationSmall : preparationSum ≤ 1) :
+    let endpoint := canonicalImmediateNewOpeningEndpoint N k
+    let catchCounter := N - 4 + a
+    let afterLowTurn : GamePosition :=
+      { remaining := endpoint.remaining \ insert catchCounter preparation
+        deficit := catchCounter + preparationSum - (canonicalNewOpeningReply k + 1)
+        toMove := .p2 }
+    ∃ transfer ∈ Finset.Icc 1 3,
+      let firstResponse := preparationSum + transfer
+      let secondResponse := catchCounter - transfer
+      afterLowTurn.LegalMove firstResponse ∧
+        (afterLowTurn.afterPick firstResponse).LegalMove secondResponse ∧
+        ((afterLowTurn.afterPick firstResponse).afterPick secondResponse).deficit =
+          canonicalNewOpeningReply k + 1 ∧
+        ((afterLowTurn.afterPick firstResponse).afterPick secondResponse).toMove = .p1 := by
+  dsimp only
+  obtain ⟨transfer, htransfer, hcatchPos, hcatchLe, hfirstPos, hfirstLeFour,
+      hsecondLeFive, hsecondLe, hfirstNeMissing, hsecondNeMissing,
+      hfirstLtSecond, hsecondLtCatch, htransferStrict⟩ :=
+    exists_canonical_low_balancing_transfer hN hk ha hpreparationSmall
+  let catchCounter := N - 4 + a
+  let firstResponse := preparationSum + transfer
+  let secondResponse := catchCounter - transfer
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkValid : ValidImmediateNewOpening N k :=
+    ⟨⟨hkBounds.1, hkBounds.2, hkBounds.2.trans (by omega)⟩, by omega⟩
+  have hj := valid_canonical_new_opening_reply k
+  have hNltNk : N < N + k := Nat.lt_add_of_pos_right hkBounds.1
+  have hNltNj : N < N + canonicalNewOpeningReply k :=
+    Nat.lt_add_of_pos_right hj.1
+  have hfirstLeN : firstResponse ≤ N := by
+    dsimp [firstResponse]
+    omega
+  have hsecondPos : 1 ≤ secondResponse := by
+    dsimp [secondResponse]
+    omega
+  have hcatchMemEndpoint :
+      catchCounter ∈ (canonicalImmediateNewOpeningEndpoint N k).remaining := by
+    rw [canonicalImmediateNewOpeningEndpoint,
+      immediate_new_opening_endpoint_remaining]
+    simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert,
+      Finset.mem_singleton]
+    constructor
+    · exact ⟨hcatchPos, hcatchLe.trans (Nat.le_add_right N 4)⟩
+    · intro hmissing
+      rcases hmissing with hmissing | hmissing | hmissing
+      · dsimp [catchCounter] at hmissing
+        omega
+      · exact (hcatchLe.trans_lt hNltNk).ne hmissing
+      · exact (hcatchLe.trans_lt hNltNj).ne hmissing
+  have hfirstMemEndpoint :
+      firstResponse ∈ (canonicalImmediateNewOpeningEndpoint N k).remaining := by
+    by_cases hfirstPreparation : firstResponse ∈ preparation
+    · exact hpreparation hfirstPreparation
+    · rw [canonicalImmediateNewOpeningEndpoint,
+        immediate_new_opening_endpoint_remaining]
+      simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert,
+        Finset.mem_singleton]
+      constructor
+      · exact ⟨hfirstPos, hfirstLeN.trans (Nat.le_add_right N 4)⟩
+      · intro hmissing
+        rcases hmissing with hmissing | hmissing | hmissing
+        · exact hfirstNeMissing hmissing
+        · exact (hfirstLeN.trans_lt hNltNk).ne hmissing
+        · exact (hfirstLeN.trans_lt hNltNj).ne hmissing
+  have hsecondMemEndpoint :
+      secondResponse ∈ (canonicalImmediateNewOpeningEndpoint N k).remaining := by
+    rw [canonicalImmediateNewOpeningEndpoint,
+      immediate_new_opening_endpoint_remaining]
+    simp only [Finset.mem_sdiff, Finset.mem_Icc, Finset.mem_insert,
+      Finset.mem_singleton]
+    constructor
+    · exact ⟨hsecondPos, hsecondLe.trans (Nat.le_add_right N 4)⟩
+    · intro hmissing
+      rcases hmissing with hmissing | hmissing | hmissing
+      · exact hsecondNeMissing hmissing
+      · exact (hsecondLe.trans_lt hNltNk).ne hmissing
+      · exact (hsecondLe.trans_lt hNltNj).ne hmissing
+  have hfirstNotPreparation : firstResponse ∉ preparation := by
+    intro hmem
+    have hleSum : firstResponse ≤ preparation.sum (fun counter => counter) :=
+      Finset.single_le_sum (fun counter _ => Nat.zero_le counter) hmem
+    rw [hpreparationSum] at hleSum
+    dsimp [firstResponse] at hleSum
+    have htransferPos := (Finset.mem_Icc.mp htransfer).1
+    omega
+  have hsecondNotPreparation : secondResponse ∉ preparation := by
+    intro hmem
+    have hleSum : secondResponse ≤ preparation.sum (fun counter => counter) :=
+      Finset.single_le_sum (fun counter _ => Nat.zero_le counter) hmem
+    rw [hpreparationSum] at hleSum
+    dsimp [secondResponse] at hleSum hsecondLeFive
+    omega
+  have hfirstNeCatch : firstResponse ≠ catchCounter := hfirstLtSecond.trans hsecondLtCatch |>.ne
+  have hsecondNeCatch : secondResponse ≠ catchCounter := hsecondLtCatch.ne
+  let afterLowTurn : GamePosition :=
+    { remaining := (canonicalImmediateNewOpeningEndpoint N k).remaining \
+        insert catchCounter preparation
+      deficit := catchCounter + preparationSum - (canonicalNewOpeningReply k + 1)
+      toMove := .p2 }
+  have hfirstLegal : afterLowTurn.LegalMove firstResponse := by
+    change firstResponse ∈
+      (canonicalImmediateNewOpeningEndpoint N k).remaining \
+        insert catchCounter preparation
+    exact Finset.mem_sdiff.mpr
+      ⟨hfirstMemEndpoint, by simp [hfirstNeCatch, hfirstNotPreparation]⟩
+  have hsecondLegal : (afterLowTurn.afterPick firstResponse).LegalMove secondResponse := by
+    change secondResponse ∈
+      ((canonicalImmediateNewOpeningEndpoint N k).remaining \
+        insert catchCounter preparation).erase firstResponse
+    apply Finset.mem_erase.mpr
+    exact ⟨hfirstLtSecond.ne', Finset.mem_sdiff.mpr
+      ⟨hsecondMemEndpoint, by simp [hsecondNeCatch, hsecondNotPreparation]⟩⟩
+  refine ⟨transfer, htransfer, hfirstLegal, hsecondLegal, ?_⟩
+  have hpair := GamePosition.after_pick_balancing_pair afterLowTurn
+    (originalDeficit := canonicalNewOpeningReply k + 1)
+    (preparationSum := preparationSum) (catchCounter := catchCounter)
+    (transfer := transfer) (by rfl) (by
+      simpa [catchCounter] using htransferStrict)
+  have hstate :
+      ((afterLowTurn.afterPick firstResponse).afterPick secondResponse) =
+        ⟨⟨(afterLowTurn.remaining.erase firstResponse).erase secondResponse,
+          canonicalNewOpeningReply k + 1⟩, .p1⟩ := by
+    simpa [firstResponse, secondResponse, Player.other] using hpair
+  constructor
+  · simpa [afterLowTurn] using
+      congrArg (fun position : GamePosition => position.deficit) hstate
+  · simpa [afterLowTurn] using
+      congrArg (fun position : GamePosition => position.toMove) hstate
+
+/-- Safety of one immediate endpoint gives player two a two-pick safe opening turn. -/
+@[category API, AMS 91]
+theorem can_avoid_loss_after_large_new_opening_of_immediate_endpoint
+    {N k j : ℕ} (hk : ValidImmediateNewOpening N k)
+    (hj : ValidNewOpeningReply k j)
+    (hsafe : CanAvoidLoss .p2 (immediateNewOpeningEndpoint N k j)) :
+    CanAvoidLoss .p2
+      (GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)) := by
+  rcases hk with ⟨hk, hkLt⟩
+  let small := GamePosition.afterOpening (Finset.Icc 1 N) k
+  let large := GamePosition.afterOpening (Finset.Icc 1 (N + 4)) (N + k)
+  have hphase : NewOpeningMirrorPhase N k small large :=
+    new_opening_root_mirror_phase hk
+  have hxSmall : small.LegalMove (k + 1) := by
+    simp [small, GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening]
+    omega
+  have hxLarge := hphase.large_legal hxSmall
+  have hlargeTerminal := hphase.large_not_terminal hk hj
+  apply (can_avoid_loss_iff_exists_safe_move .p2 large hlargeTerminal
+    hphase.large_toMove).2
+  refine ⟨k + 1, hxLarge, ?_⟩
+  have hle : small.deficit ≤ k + 1 := hphase.small_deficit_le.trans (by omega)
+  have hready := hphase.after_paired_pick_of_le hxSmall hle
+  obtain ⟨hlargeAfterTerminal, hjLegal, _⟩ := hready.after_reply hk hj
+  apply (can_avoid_loss_iff_exists_safe_move .p2 (large.afterPick (k + 1))
+    hlargeAfterTerminal hready.large_toMove).2
+  simpa [immediateNewOpeningEndpoint, large] using ⟨N + j, hjLegal, hsafe⟩
+
+/-- Every new opening has a distinct top reply with a safe immediate endpoint. -/
+def ImmediateNewOpeningEndpointsSafe (N : ℕ) : Prop :=
+  ∀ k ∈ Finset.Icc 1 4, ∃ j, ValidNewOpeningReply k j ∧
+    CanAvoidLoss .p2 (immediateNewOpeningEndpoint N k j)
+
+/-- The four dense endpoints selected by the uniform canonical top reply are safe for player two. -/
+def CanonicalImmediateNewOpeningEndpointsSafe (N : ℕ) : Prop :=
+  ∀ k ∈ Finset.Icc 1 4,
+    CanAvoidLoss .p2 (canonicalImmediateNewOpeningEndpoint N k)
+
+/-- Canonical immediate endpoint safety supplies the existential endpoint family. -/
+@[category API, AMS 91]
+theorem CanonicalImmediateNewOpeningEndpointsSafe.to_immediate_endpoints_safe
+    {N : ℕ} (hsafe : CanonicalImmediateNewOpeningEndpointsSafe N) :
+    ImmediateNewOpeningEndpointsSafe N := by
+  intro k hk
+  exact ⟨canonicalNewOpeningReply k, valid_canonical_new_opening_reply k,
+    hsafe k hk⟩
+
+/-- Safe immediate endpoints imply the complete player-two new-opening transfer. -/
+@[category API, AMS 91]
+theorem ImmediateNewOpeningEndpointsSafe.to_new_opening_transfer
+    {N : ℕ} (hN : 5 ≤ N) (hsafe : ImmediateNewOpeningEndpointsSafe N) :
+    FourLiftNewOpeningTransfer N .p2 := by
+  intro k hk _
+  obtain ⟨j, hj, hendpoint⟩ := hsafe k hk
+  have hkBounds := Finset.mem_Icc.mp hk
+  exact can_avoid_loss_after_large_new_opening_of_immediate_endpoint
+    ⟨⟨hkBounds.1, hkBounds.2, hkBounds.2.trans (by omega)⟩, by omega⟩ hj hendpoint
+
+/-- Canonical immediate endpoint safety implies the complete player-two new-opening transfer. -/
+@[category API, AMS 91]
+theorem CanonicalImmediateNewOpeningEndpointsSafe.to_new_opening_transfer
+    {N : ℕ} (hN : 5 ≤ N) (hsafe : CanonicalImmediateNewOpeningEndpointsSafe N) :
+    FourLiftNewOpeningTransfer N .p2 :=
+  (hsafe.to_immediate_endpoints_safe).to_new_opening_transfer hN
+
+end CatchUp.NewOpeningEntry
