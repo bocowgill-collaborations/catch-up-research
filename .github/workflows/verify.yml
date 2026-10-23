@@ -15,6 +15,10 @@ jobs:
         run: python3 scripts/check_collection.py
       - name: Compile recovered solvers and replay small experiments only
         run: python3 computation/experiments/check.py
+      - name: Install SMT solver for small reproduction checks
+        run: sudo apt-get update && sudo apt-get install -y z3
+      - name: Replay small mutation, SMT and shrinking diagnostics only
+        run: python3 computation/experiments/check_campaign.py
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 60

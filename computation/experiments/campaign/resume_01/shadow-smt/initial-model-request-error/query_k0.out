@@ -1,0 +1,6 @@
+unsat
+(error "line 370 column 28: model is not available")
+(:max-memory   18.15
+ :memory       18.15
+ :num-allocs   55952
+ :rlimit-count 6586)

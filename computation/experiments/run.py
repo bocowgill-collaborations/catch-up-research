@@ -14,6 +14,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 
 HERE = Path(__file__).resolve().parent
@@ -37,8 +38,15 @@ def bounded(command, *, cwd, seconds, memory_mib, stdin=None):
         if sys.platform.startswith('linux'):
             resource.setrlimit(resource.RLIMIT_AS, (memory_mib * 1024**2,) * 2)
     try:
-        result = subprocess.run(command, cwd=cwd, input=stdin, text=True,
-                                capture_output=True, timeout=seconds, preexec_fn=limits)
+        # Batch inputs are already finite strings. A file avoids blocking writes to
+        # stdin while the solver is blocked flushing its reply pipe (seen on macOS).
+        with tempfile.TemporaryFile(mode='w+', encoding='utf-8') as batch:
+            if stdin is not None:
+                batch.write(stdin)
+                batch.seek(0)
+            result = subprocess.run(command, cwd=cwd,
+                                    stdin=batch if stdin is not None else subprocess.DEVNULL,
+                                    text=True, capture_output=True, timeout=seconds, preexec_fn=limits)
     except subprocess.TimeoutExpired as exc:
         raise Incomplete('wall timeout; no complete experiment result') from exc
     if result.returncode:

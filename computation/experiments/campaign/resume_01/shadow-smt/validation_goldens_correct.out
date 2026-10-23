@@ -1,0 +1,8 @@
+sat
+(:max-memory          22.39
+ :memory              21.30
+ :num-allocs          822062
+ :rlimit-count        161104
+ :solve-eqs-elim-vars 2560
+ :solve-eqs-steps     2560
+ :time                0.01)

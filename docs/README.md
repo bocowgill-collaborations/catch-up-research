@@ -11,6 +11,7 @@ Catch-Up has simple rules and a difficult distinction: a draw can be possible wi
 | See the main results and their limits | [Results overview](../results/), then the [complete module guide](../results/modules.md) |
 | Explore a small position yourself | `python3 computation/explore.py --initial 4` — no Lean installation needed |
 | Compile a solver and reproduce a bounded research experiment | [Runnable experiment bundles](../computation/experiments/) — small defaults, frozen inputs and explicit limits |
+| Reproduce mutation, SMT and witness-compression experiments | [Campaign reproduction guide](../computation/experiments/campaign/) — complete seeds/inputs, stopped prefixes and tiny default replays |
 | Understand exact computation and parity compression | [What exact computation can reuse](exact-computation.md) |
 | Understand certificate-size limits and compression | [Proof size](proof-size.md) |
 | Browse recovered local work and older attempts | [Earlier work](earlier-work.md) |

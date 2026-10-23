@@ -1,0 +1,518 @@
+CASE mask 0 tail_card 0 tail_sum 0 E1 1 E3 0 E 4,7,
+CASE mask 1 tail_card 1 tail_sum 18 E1 1 E3 1 E 4,7,18,
+ODD_SKIPPED mask 2 tail_sum 33
+ODD_SKIPPED mask 3 tail_sum 51
+ODD_SKIPPED mask 4 tail_sum 35
+ODD_SKIPPED mask 5 tail_sum 53
+CASE mask 6 tail_card 2 tail_sum 68 E1 0 E3 1 E 4,7,33,35,
+CASE mask 7 tail_card 3 tail_sum 86 E1 1 E3 1 E 4,7,18,33,35,
+CASE mask 8 tail_card 1 tail_sum 36 E1 1 E3 1 E 4,7,36,
+CASE mask 9 tail_card 2 tail_sum 54 E1 1 E3 1 E 4,7,18,36,
+ODD_SKIPPED mask 10 tail_sum 69
+ODD_SKIPPED mask 11 tail_sum 87
+ODD_SKIPPED mask 12 tail_sum 71
+ODD_SKIPPED mask 13 tail_sum 89
+CASE mask 14 tail_card 3 tail_sum 104 E1 1 E3 1 E 4,7,33,35,36,
+CASE mask 15 tail_card 4 tail_sum 122 E1 1 E3 1 E 4,7,18,33,35,36,
+CASE mask 16 tail_card 1 tail_sum 52 E1 1 E3 1 E 4,7,52,
+CASE mask 17 tail_card 2 tail_sum 70 E1 1 E3 1 E 4,7,18,52,
+ODD_SKIPPED mask 18 tail_sum 85
+ODD_SKIPPED mask 19 tail_sum 103
+ODD_SKIPPED mask 20 tail_sum 87
+ODD_SKIPPED mask 21 tail_sum 105
+CASE mask 22 tail_card 3 tail_sum 120 E1 1 E3 1 E 4,7,33,35,52,
+CASE mask 23 tail_card 4 tail_sum 138 E1 0 E3 1 E 4,7,18,33,35,52,
+CASE mask 24 tail_card 2 tail_sum 88 E1 1 E3 1 E 4,7,36,52,
+CASE mask 25 tail_card 3 tail_sum 106 E1 0 E3 1 E 4,7,18,36,52,
+ODD_SKIPPED mask 26 tail_sum 121
+ODD_SKIPPED mask 27 tail_sum 139
+ODD_SKIPPED mask 28 tail_sum 123
+ODD_SKIPPED mask 29 tail_sum 141
+CASE mask 30 tail_card 4 tail_sum 156 E1 1 E3 0 E 4,7,33,35,36,52,
+CASE mask 31 tail_card 5 tail_sum 174 E1 0 E3 0 E 4,7,18,33,35,36,52,
+CASE mask 32 tail_card 1 tail_sum 56 E1 1 E3 1 E 4,7,56,
+CASE mask 33 tail_card 2 tail_sum 74 E1 1 E3 1 E 4,7,18,56,
+ODD_SKIPPED mask 34 tail_sum 89
+ODD_SKIPPED mask 35 tail_sum 107
+ODD_SKIPPED mask 36 tail_sum 91
+ODD_SKIPPED mask 37 tail_sum 109
+CASE mask 38 tail_card 3 tail_sum 124 E1 0 E3 -1 E 4,7,33,35,56,
+CASE mask 39 tail_card 4 tail_sum 142 E1 1 E3 1 E 4,7,18,33,35,56,
+CASE mask 40 tail_card 2 tail_sum 92 E1 1 E3 1 E 4,7,36,56,
+CASE mask 41 tail_card 3 tail_sum 110 E1 0 E3 1 E 4,7,18,36,56,
+ODD_SKIPPED mask 42 tail_sum 125
+ODD_SKIPPED mask 43 tail_sum 143
+ODD_SKIPPED mask 44 tail_sum 127
+ODD_SKIPPED mask 45 tail_sum 145
+CASE mask 46 tail_card 4 tail_sum 160 E1 1 E3 1 E 4,7,33,35,36,56,
+CASE mask 47 tail_card 5 tail_sum 178 E1 1 E3 0 E 4,7,18,33,35,36,56,
+CASE mask 48 tail_card 2 tail_sum 108 E1 0 E3 1 E 4,7,52,56,
+CASE mask 49 tail_card 3 tail_sum 126 E1 1 E3 0 E 4,7,18,52,56,
+ODD_SKIPPED mask 50 tail_sum 141
+ODD_SKIPPED mask 51 tail_sum 159
+ODD_SKIPPED mask 52 tail_sum 143
+ODD_SKIPPED mask 53 tail_sum 161
+CASE mask 54 tail_card 4 tail_sum 176 E1 0 E3 1 E 4,7,33,35,52,56,
+CASE mask 55 tail_card 5 tail_sum 194 E1 1 E3 1 E 4,7,18,33,35,52,56,
+CASE mask 56 tail_card 3 tail_sum 144 E1 1 E3 1 E 4,7,36,52,56,
+CASE mask 57 tail_card 4 tail_sum 162 E1 1 E3 0 E 4,7,18,36,52,56,
+ODD_SKIPPED mask 58 tail_sum 177
+ODD_SKIPPED mask 59 tail_sum 195
+ODD_SKIPPED mask 60 tail_sum 179
+ODD_SKIPPED mask 61 tail_sum 197
+CASE mask 62 tail_card 5 tail_sum 212 E1 1 E3 1 E 4,7,33,35,36,52,56,
+CASE mask 63 tail_card 6 tail_sum 230 E1 0 E3 1 E 4,7,18,33,35,36,52,56,
+CASE mask 64 tail_card 1 tail_sum 62 E1 1 E3 1 E 4,7,62,
+CASE mask 65 tail_card 2 tail_sum 80 E1 1 E3 1 E 4,7,18,62,
+ODD_SKIPPED mask 66 tail_sum 95
+ODD_SKIPPED mask 67 tail_sum 113
+ODD_SKIPPED mask 68 tail_sum 97
+ODD_SKIPPED mask 69 tail_sum 115
+CASE mask 70 tail_card 3 tail_sum 130 E1 1 E3 1 E 4,7,33,35,62,
+CASE mask 71 tail_card 4 tail_sum 148 E1 0 E3 -1 E 4,7,18,33,35,62,
+CASE mask 72 tail_card 2 tail_sum 98 E1 1 E3 1 E 4,7,36,62,
+CASE mask 73 tail_card 3 tail_sum 116 E1 1 E3 0 E 4,7,18,36,62,
+ODD_SKIPPED mask 74 tail_sum 131
+ODD_SKIPPED mask 75 tail_sum 149
+ODD_SKIPPED mask 76 tail_sum 133
+ODD_SKIPPED mask 77 tail_sum 151
+CASE mask 78 tail_card 4 tail_sum 166 E1 1 E3 1 E 4,7,33,35,36,62,
+CASE mask 79 tail_card 5 tail_sum 184 E1 0 E3 1 E 4,7,18,33,35,36,62,
+CASE mask 80 tail_card 2 tail_sum 114 E1 0 E3 -1 E 4,7,52,62,
+CASE mask 81 tail_card 3 tail_sum 132 E1 1 E3 0 E 4,7,18,52,62,
+ODD_SKIPPED mask 82 tail_sum 147
+ODD_SKIPPED mask 83 tail_sum 165
+ODD_SKIPPED mask 84 tail_sum 149
+ODD_SKIPPED mask 85 tail_sum 167
+CASE mask 86 tail_card 4 tail_sum 182 E1 1 E3 0 E 4,7,33,35,52,62,
+CASE mask 87 tail_card 5 tail_sum 200 E1 1 E3 1 E 4,7,18,33,35,52,62,
+CASE mask 88 tail_card 3 tail_sum 150 E1 1 E3 1 E 4,7,36,52,62,
+CASE mask 89 tail_card 4 tail_sum 168 E1 1 E3 0 E 4,7,18,36,52,62,
+ODD_SKIPPED mask 90 tail_sum 183
+ODD_SKIPPED mask 91 tail_sum 201
+ODD_SKIPPED mask 92 tail_sum 185
+ODD_SKIPPED mask 93 tail_sum 203
+CASE mask 94 tail_card 5 tail_sum 218 E1 0 E3 -1 E 4,7,33,35,36,52,62,
+CASE mask 95 tail_card 6 tail_sum 236 E1 1 E3 1 E 4,7,18,33,35,36,52,62,
+CASE mask 96 tail_card 2 tail_sum 118 E1 1 E3 1 E 4,7,56,62,
+CASE mask 97 tail_card 3 tail_sum 136 E1 0 E3 -1 E 4,7,18,56,62,
+ODD_SKIPPED mask 98 tail_sum 151
+ODD_SKIPPED mask 99 tail_sum 169
+ODD_SKIPPED mask 100 tail_sum 153
+ODD_SKIPPED mask 101 tail_sum 171
+CASE mask 102 tail_card 4 tail_sum 186 E1 0 E3 1 E 4,7,33,35,56,62,
+CASE mask 103 tail_card 5 tail_sum 204 E1 1 E3 0 E 4,7,18,33,35,56,62,
+CASE mask 104 tail_card 3 tail_sum 154 E1 1 E3 1 E 4,7,36,56,62,
+CASE mask 105 tail_card 4 tail_sum 172 E1 0 E3 -1 E 4,7,18,36,56,62,
+ODD_SKIPPED mask 106 tail_sum 187
+ODD_SKIPPED mask 107 tail_sum 205
+ODD_SKIPPED mask 108 tail_sum 189
+ODD_SKIPPED mask 109 tail_sum 207
+CASE mask 110 tail_card 5 tail_sum 222 E1 1 E3 0 E 4,7,33,35,36,56,62,
+CASE mask 111 tail_card 6 tail_sum 240 E1 0 E3 0 E 4,7,18,33,35,36,56,62,
+CASE mask 112 tail_card 3 tail_sum 170 E1 1 E3 1 E 4,7,52,56,62,
+CASE mask 113 tail_card 4 tail_sum 188 E1 1 E3 1 E 4,7,18,52,56,62,
+ODD_SKIPPED mask 114 tail_sum 203
+ODD_SKIPPED mask 115 tail_sum 221
+ODD_SKIPPED mask 116 tail_sum 205
+ODD_SKIPPED mask 117 tail_sum 223
+CASE mask 118 tail_card 5 tail_sum 238 E1 0 E3 -1 E 4,7,33,35,52,56,62,
+CASE mask 119 tail_card 6 tail_sum 256 E1 1 E3 0 E 4,7,18,33,35,52,56,62,
+CASE mask 120 tail_card 4 tail_sum 206 E1 0 E3 -1 E 4,7,36,52,56,62,
+CASE mask 121 tail_card 5 tail_sum 224 E1 0 E3 1 E 4,7,18,36,52,56,62,
+ODD_SKIPPED mask 122 tail_sum 239
+ODD_SKIPPED mask 123 tail_sum 257
+ODD_SKIPPED mask 124 tail_sum 241
+ODD_SKIPPED mask 125 tail_sum 259
+CASE mask 126 tail_card 6 tail_sum 274 E1 0 E3 0 E 4,7,33,35,36,52,56,62,
+CASE mask 127 tail_card 7 tail_sum 292 E1 0 E3 1 E 4,7,18,33,35,36,52,56,62,
+CASE mask 128 tail_card 1 tail_sum 74 E1 1 E3 1 E 4,7,74,
+CASE mask 129 tail_card 2 tail_sum 92 E1 1 E3 1 E 4,7,18,74,
+ODD_SKIPPED mask 130 tail_sum 107
+ODD_SKIPPED mask 131 tail_sum 125
+ODD_SKIPPED mask 132 tail_sum 109
+ODD_SKIPPED mask 133 tail_sum 127
+CASE mask 134 tail_card 3 tail_sum 142 E1 1 E3 1 E 4,7,33,35,74,
+CASE mask 135 tail_card 4 tail_sum 160 E1 0 E3 -1 E 4,7,18,33,35,74,
+CASE mask 136 tail_card 2 tail_sum 110 E1 1 E3 1 E 4,7,36,74,
+CASE mask 137 tail_card 3 tail_sum 128 E1 1 E3 1 E 4,7,18,36,74,
+ODD_SKIPPED mask 138 tail_sum 143
+ODD_SKIPPED mask 139 tail_sum 161
+ODD_SKIPPED mask 140 tail_sum 145
+ODD_SKIPPED mask 141 tail_sum 163
+CASE mask 142 tail_card 4 tail_sum 178 E1 1 E3 1 E 4,7,33,35,36,74,
+CASE mask 143 tail_card 5 tail_sum 196 E1 0 E3 -1 E 4,7,18,33,35,36,74,
+CASE mask 144 tail_card 2 tail_sum 126 E1 1 E3 1 E 4,7,52,74,
+CASE mask 145 tail_card 3 tail_sum 144 E1 0 E3 1 E 4,7,18,52,74,
+ODD_SKIPPED mask 146 tail_sum 159
+ODD_SKIPPED mask 147 tail_sum 177
+ODD_SKIPPED mask 148 tail_sum 161
+ODD_SKIPPED mask 149 tail_sum 179
+CASE mask 150 tail_card 4 tail_sum 194 E1 1 E3 1 E 4,7,33,35,52,74,
+CASE mask 151 tail_card 5 tail_sum 212 E1 1 E3 1 E 4,7,18,33,35,52,74,
+CASE mask 152 tail_card 3 tail_sum 162 E1 1 E3 0 E 4,7,36,52,74,
+CASE mask 153 tail_card 4 tail_sum 180 E1 0 E3 1 E 4,7,18,36,52,74,
+ODD_SKIPPED mask 154 tail_sum 195
+ODD_SKIPPED mask 155 tail_sum 213
+ODD_SKIPPED mask 156 tail_sum 197
+ODD_SKIPPED mask 157 tail_sum 215
+CASE mask 158 tail_card 5 tail_sum 230 E1 0 E3 -1 E 4,7,33,35,36,52,74,
+CASE mask 159 tail_card 6 tail_sum 248 E1 1 E3 0 E 4,7,18,33,35,36,52,74,
+CASE mask 160 tail_card 2 tail_sum 130 E1 1 E3 1 E 4,7,56,74,
+CASE mask 161 tail_card 3 tail_sum 148 E1 1 E3 0 E 4,7,18,56,74,
+ODD_SKIPPED mask 162 tail_sum 163
+ODD_SKIPPED mask 163 tail_sum 181
+ODD_SKIPPED mask 164 tail_sum 165
+ODD_SKIPPED mask 165 tail_sum 183
+CASE mask 166 tail_card 4 tail_sum 198 E1 1 E3 1 E 4,7,33,35,56,74,
+CASE mask 167 tail_card 5 tail_sum 216 E1 0 E3 1 E 4,7,18,33,35,56,74,
+CASE mask 168 tail_card 3 tail_sum 166 E1 1 E3 1 E 4,7,36,56,74,
+CASE mask 169 tail_card 4 tail_sum 184 E1 1 E3 0 E 4,7,18,36,56,74,
+ODD_SKIPPED mask 170 tail_sum 199
+ODD_SKIPPED mask 171 tail_sum 217
+ODD_SKIPPED mask 172 tail_sum 201
+ODD_SKIPPED mask 173 tail_sum 219
+CASE mask 174 tail_card 5 tail_sum 234 E1 1 E3 0 E 4,7,33,35,36,56,74,
+CASE mask 175 tail_card 6 tail_sum 252 E1 0 E3 1 E 4,7,18,33,35,36,56,74,
+CASE mask 176 tail_card 3 tail_sum 182 E1 1 E3 1 E 4,7,52,56,74,
+CASE mask 177 tail_card 4 tail_sum 200 E1 1 E3 1 E 4,7,18,52,56,74,
+ODD_SKIPPED mask 178 tail_sum 215
+ODD_SKIPPED mask 179 tail_sum 233
+ODD_SKIPPED mask 180 tail_sum 217
+ODD_SKIPPED mask 181 tail_sum 235
+CASE mask 182 tail_card 5 tail_sum 250 E1 0 E3 -1 E 4,7,33,35,52,56,74,
+CASE mask 183 tail_card 6 tail_sum 268 E1 1 E3 1 E 4,7,18,33,35,52,56,74,
+CASE mask 184 tail_card 4 tail_sum 218 E1 0 E3 1 E 4,7,36,52,56,74,
+CASE mask 185 tail_card 5 tail_sum 236 E1 1 E3 1 E 4,7,18,36,52,56,74,
+ODD_SKIPPED mask 186 tail_sum 251
+ODD_SKIPPED mask 187 tail_sum 269
+ODD_SKIPPED mask 188 tail_sum 253
+ODD_SKIPPED mask 189 tail_sum 271
+CASE mask 190 tail_card 6 tail_sum 286 E1 0 E3 0 E 4,7,33,35,36,52,56,74,
+CASE mask 191 tail_card 7 tail_sum 304 E1 1 E3 1 E 4,7,18,33,35,36,52,56,74,
+CASE mask 192 tail_card 2 tail_sum 136 E1 0 E3 -1 E 4,7,62,74,
+CASE mask 193 tail_card 3 tail_sum 154 E1 1 E3 1 E 4,7,18,62,74,
+ODD_SKIPPED mask 194 tail_sum 169
+ODD_SKIPPED mask 195 tail_sum 187
+ODD_SKIPPED mask 196 tail_sum 171
+ODD_SKIPPED mask 197 tail_sum 189
+CASE mask 198 tail_card 4 tail_sum 204 E1 0 E3 0 E 4,7,33,35,62,74,
+CASE mask 199 tail_card 5 tail_sum 222 E1 0 E3 1 E 4,7,18,33,35,62,74,
+CASE mask 200 tail_card 3 tail_sum 172 E1 1 E3 1 E 4,7,36,62,74,
+CASE mask 201 tail_card 4 tail_sum 190 E1 1 E3 1 E 4,7,18,36,62,74,
+ODD_SKIPPED mask 202 tail_sum 205
+ODD_SKIPPED mask 203 tail_sum 223
+ODD_SKIPPED mask 204 tail_sum 207
+ODD_SKIPPED mask 205 tail_sum 225
+CASE mask 206 tail_card 5 tail_sum 240 E1 1 E3 1 E 4,7,33,35,36,62,74,
+CASE mask 207 tail_card 6 tail_sum 258 E1 0 E3 1 E 4,7,18,33,35,36,62,74,
+CASE mask 208 tail_card 3 tail_sum 188 E1 1 E3 1 E 4,7,52,62,74,
+CASE mask 209 tail_card 4 tail_sum 206 E1 1 E3 1 E 4,7,18,52,62,74,
+ODD_SKIPPED mask 210 tail_sum 221
+ODD_SKIPPED mask 211 tail_sum 239
+ODD_SKIPPED mask 212 tail_sum 223
+ODD_SKIPPED mask 213 tail_sum 241
+CASE mask 214 tail_card 5 tail_sum 256 E1 0 E3 1 E 4,7,33,35,52,62,74,
+CASE mask 215 tail_card 6 tail_sum 274 E1 0 E3 0 E 4,7,18,33,35,52,62,74,
+CASE mask 216 tail_card 4 tail_sum 224 E1 0 E3 1 E 4,7,36,52,62,74,
+CASE mask 217 tail_card 5 tail_sum 242 E1 0 E3 0 E 4,7,18,36,52,62,74,
+ODD_SKIPPED mask 218 tail_sum 257
+ODD_SKIPPED mask 219 tail_sum 275
+ODD_SKIPPED mask 220 tail_sum 259
+ODD_SKIPPED mask 221 tail_sum 277
+CASE mask 222 tail_card 6 tail_sum 292 E1 0 E3 1 E 4,7,33,35,36,52,62,74,
+CASE mask 223 tail_card 7 tail_sum 310 E1 0 E3 1 E 4,7,18,33,35,36,52,62,74,
+CASE mask 224 tail_card 3 tail_sum 192 E1 1 E3 1 E 4,7,56,62,74,
+CASE mask 225 tail_card 4 tail_sum 210 E1 1 E3 1 E 4,7,18,56,62,74,
+ODD_SKIPPED mask 226 tail_sum 225
+ODD_SKIPPED mask 227 tail_sum 243
+ODD_SKIPPED mask 228 tail_sum 227
+ODD_SKIPPED mask 229 tail_sum 245
+CASE mask 230 tail_card 5 tail_sum 260 E1 1 E3 0 E 4,7,33,35,56,62,74,
+CASE mask 231 tail_card 6 tail_sum 278 E1 1 E3 1 E 4,7,18,33,35,56,62,74,
+CASE mask 232 tail_card 4 tail_sum 228 E1 1 E3 0 E 4,7,36,56,62,74,
+CASE mask 233 tail_card 5 tail_sum 246 E1 0 E3 0 E 4,7,18,36,56,62,74,
+ODD_SKIPPED mask 234 tail_sum 261
+ODD_SKIPPED mask 235 tail_sum 279
+ODD_SKIPPED mask 236 tail_sum 263
+ODD_SKIPPED mask 237 tail_sum 281
+CASE mask 238 tail_card 6 tail_sum 296 E1 1 E3 1 E 4,7,33,35,36,56,62,74,
+CASE mask 239 tail_card 7 tail_sum 314 E1 0 E3 1 E 4,7,18,33,35,36,56,62,74,
+CASE mask 240 tail_card 4 tail_sum 244 E1 1 E3 0 E 4,7,52,56,62,74,
+CASE mask 241 tail_card 5 tail_sum 262 E1 0 E3 -1 E 4,7,18,52,56,62,74,
+ODD_SKIPPED mask 242 tail_sum 277
+ODD_SKIPPED mask 243 tail_sum 295
+ODD_SKIPPED mask 244 tail_sum 279
+ODD_SKIPPED mask 245 tail_sum 297
+CASE mask 246 tail_card 6 tail_sum 312 E1 0 E3 0 E 4,7,33,35,52,56,62,74,
+CASE mask 247 tail_card 7 tail_sum 330 E1 0 E3 0 E 4,7,18,33,35,52,56,62,74,
+CASE mask 248 tail_card 5 tail_sum 280 E1 1 E3 1 E 4,7,36,52,56,62,74,
+CASE mask 249 tail_card 6 tail_sum 298 E1 0 E3 -1 E 4,7,18,36,52,56,62,74,
+ODD_SKIPPED mask 250 tail_sum 313
+ODD_SKIPPED mask 251 tail_sum 331
+ODD_SKIPPED mask 252 tail_sum 315
+ODD_SKIPPED mask 253 tail_sum 333
+CASE mask 254 tail_card 7 tail_sum 348 E1 1 E3 1 E 4,7,33,35,36,52,56,62,74,
+CASE mask 255 tail_card 8 tail_sum 366 E1 0 E3 -1 E 4,7,18,33,35,36,52,56,62,74,
+CASE mask 256 tail_card 1 tail_sum 100 E1 1 E3 1 E 4,7,100,
+CASE mask 257 tail_card 2 tail_sum 118 E1 1 E3 1 E 4,7,18,100,
+ODD_SKIPPED mask 258 tail_sum 133
+ODD_SKIPPED mask 259 tail_sum 151
+ODD_SKIPPED mask 260 tail_sum 135
+ODD_SKIPPED mask 261 tail_sum 153
+CASE mask 262 tail_card 3 tail_sum 168 E1 1 E3 1 E 4,7,33,35,100,
+CASE mask 263 tail_card 4 tail_sum 186 E1 1 E3 0 E 4,7,18,33,35,100,
+CASE mask 264 tail_card 2 tail_sum 136 E1 1 E3 1 E 4,7,36,100,
+CASE mask 265 tail_card 3 tail_sum 154 E1 1 E3 1 E 4,7,18,36,100,
+ODD_SKIPPED mask 266 tail_sum 169
+ODD_SKIPPED mask 267 tail_sum 187
+ODD_SKIPPED mask 268 tail_sum 171
+ODD_SKIPPED mask 269 tail_sum 189
+CASE mask 270 tail_card 4 tail_sum 204 E1 0 E3 1 E 4,7,33,35,36,100,
+CASE mask 271 tail_card 5 tail_sum 222 E1 1 E3 0 E 4,7,18,33,35,36,100,
+CASE mask 272 tail_card 2 tail_sum 152 E1 1 E3 1 E 4,7,52,100,
+CASE mask 273 tail_card 3 tail_sum 170 E1 1 E3 1 E 4,7,18,52,100,
+ODD_SKIPPED mask 274 tail_sum 185
+ODD_SKIPPED mask 275 tail_sum 203
+ODD_SKIPPED mask 276 tail_sum 187
+ODD_SKIPPED mask 277 tail_sum 205
+CASE mask 278 tail_card 4 tail_sum 220 E1 1 E3 1 E 4,7,33,35,52,100,
+CASE mask 279 tail_card 5 tail_sum 238 E1 0 E3 1 E 4,7,18,33,35,52,100,
+CASE mask 280 tail_card 3 tail_sum 188 E1 0 E3 -1 E 4,7,36,52,100,
+CASE mask 281 tail_card 4 tail_sum 206 E1 1 E3 1 E 4,7,18,36,52,100,
+ODD_SKIPPED mask 282 tail_sum 221
+ODD_SKIPPED mask 283 tail_sum 239
+ODD_SKIPPED mask 284 tail_sum 223
+ODD_SKIPPED mask 285 tail_sum 241
+CASE mask 286 tail_card 5 tail_sum 256 E1 0 E3 -1 E 4,7,33,35,36,52,100,
+CASE mask 287 tail_card 6 tail_sum 274 E1 0 E3 1 E 4,7,18,33,35,36,52,100,
+CASE mask 288 tail_card 2 tail_sum 156 E1 1 E3 1 E 4,7,56,100,
+CASE mask 289 tail_card 3 tail_sum 174 E1 1 E3 1 E 4,7,18,56,100,
+ODD_SKIPPED mask 290 tail_sum 189
+ODD_SKIPPED mask 291 tail_sum 207
+ODD_SKIPPED mask 292 tail_sum 191
+ODD_SKIPPED mask 293 tail_sum 209
+CASE mask 294 tail_card 4 tail_sum 224 E1 1 E3 1 E 4,7,33,35,56,100,
+CASE mask 295 tail_card 5 tail_sum 242 E1 1 E3 1 E 4,7,18,33,35,56,100,
+CASE mask 296 tail_card 3 tail_sum 192 E1 1 E3 0 E 4,7,36,56,100,
+CASE mask 297 tail_card 4 tail_sum 210 E1 0 E3 -1 E 4,7,18,36,56,100,
+ODD_SKIPPED mask 298 tail_sum 225
+ODD_SKIPPED mask 299 tail_sum 243
+ODD_SKIPPED mask 300 tail_sum 227
+ODD_SKIPPED mask 301 tail_sum 245
+CASE mask 302 tail_card 5 tail_sum 260 E1 1 E3 1 E 4,7,33,35,36,56,100,
+CASE mask 303 tail_card 6 tail_sum 278 E1 1 E3 1 E 4,7,18,33,35,36,56,100,
+CASE mask 304 tail_card 3 tail_sum 208 E1 1 E3 0 E 4,7,52,56,100,
+CASE mask 305 tail_card 4 tail_sum 226 E1 0 E3 -1 E 4,7,18,52,56,100,
+ODD_SKIPPED mask 306 tail_sum 241
+ODD_SKIPPED mask 307 tail_sum 259
+ODD_SKIPPED mask 308 tail_sum 243
+ODD_SKIPPED mask 309 tail_sum 261
+CASE mask 310 tail_card 5 tail_sum 276 E1 1 E3 1 E 4,7,33,35,52,56,100,
+CASE mask 311 tail_card 6 tail_sum 294 E1 0 E3 0 E 4,7,18,33,35,52,56,100,
+CASE mask 312 tail_card 4 tail_sum 244 E1 1 E3 1 E 4,7,36,52,56,100,
+CASE mask 313 tail_card 5 tail_sum 262 E1 0 E3 -1 E 4,7,18,36,52,56,100,
+ODD_SKIPPED mask 314 tail_sum 277
+ODD_SKIPPED mask 315 tail_sum 295
+ODD_SKIPPED mask 316 tail_sum 279
+ODD_SKIPPED mask 317 tail_sum 297
+CASE mask 318 tail_card 6 tail_sum 312 E1 1 E3 1 E 4,7,33,35,36,52,56,100,
+CASE mask 319 tail_card 7 tail_sum 330 E1 1 E3 0 E 4,7,18,33,35,36,52,56,100,
+CASE mask 320 tail_card 2 tail_sum 162 E1 1 E3 1 E 4,7,62,100,
+CASE mask 321 tail_card 3 tail_sum 180 E1 1 E3 1 E 4,7,18,62,100,
+ODD_SKIPPED mask 322 tail_sum 195
+ODD_SKIPPED mask 323 tail_sum 213
+ODD_SKIPPED mask 324 tail_sum 197
+ODD_SKIPPED mask 325 tail_sum 215
+CASE mask 326 tail_card 4 tail_sum 230 E1 1 E3 1 E 4,7,33,35,62,100,
+CASE mask 327 tail_card 5 tail_sum 248 E1 0 E3 -1 E 4,7,18,33,35,62,100,
+CASE mask 328 tail_card 3 tail_sum 198 E1 0 E3 1 E 4,7,36,62,100,
+CASE mask 329 tail_card 4 tail_sum 216 E1 1 E3 1 E 4,7,18,36,62,100,
+ODD_SKIPPED mask 330 tail_sum 231
+ODD_SKIPPED mask 331 tail_sum 249
+ODD_SKIPPED mask 332 tail_sum 233
+ODD_SKIPPED mask 333 tail_sum 251
+CASE mask 334 tail_card 5 tail_sum 266 E1 1 E3 0 E 4,7,33,35,36,62,100,
+CASE mask 335 tail_card 6 tail_sum 284 E1 0 E3 1 E 4,7,18,33,35,36,62,100,
+CASE mask 336 tail_card 3 tail_sum 214 E1 1 E3 0 E 4,7,52,62,100,
+CASE mask 337 tail_card 4 tail_sum 232 E1 0 E3 1 E 4,7,18,52,62,100,
+ODD_SKIPPED mask 338 tail_sum 247
+ODD_SKIPPED mask 339 tail_sum 265
+ODD_SKIPPED mask 340 tail_sum 249
+ODD_SKIPPED mask 341 tail_sum 267
+CASE mask 342 tail_card 5 tail_sum 282 E1 0 E3 -1 E 4,7,33,35,52,62,100,
+CASE mask 343 tail_card 6 tail_sum 300 E1 1 E3 1 E 4,7,18,33,35,52,62,100,
+CASE mask 344 tail_card 4 tail_sum 250 E1 1 E3 1 E 4,7,36,52,62,100,
+CASE mask 345 tail_card 5 tail_sum 268 E1 0 E3 1 E 4,7,18,36,52,62,100,
+ODD_SKIPPED mask 346 tail_sum 283
+ODD_SKIPPED mask 347 tail_sum 301
+ODD_SKIPPED mask 348 tail_sum 285
+ODD_SKIPPED mask 349 tail_sum 303
+CASE mask 350 tail_card 6 tail_sum 318 E1 1 E3 1 E 4,7,33,35,36,52,62,100,
+CASE mask 351 tail_card 7 tail_sum 336 E1 1 E3 0 E 4,7,18,33,35,36,52,62,100,
+CASE mask 352 tail_card 3 tail_sum 218 E1 1 E3 1 E 4,7,56,62,100,
+CASE mask 353 tail_card 4 tail_sum 236 E1 1 E3 0 E 4,7,18,56,62,100,
+ODD_SKIPPED mask 354 tail_sum 251
+ODD_SKIPPED mask 355 tail_sum 269
+ODD_SKIPPED mask 356 tail_sum 253
+ODD_SKIPPED mask 357 tail_sum 271
+CASE mask 358 tail_card 5 tail_sum 286 E1 1 E3 1 E 4,7,33,35,56,62,100,
+CASE mask 359 tail_card 6 tail_sum 304 E1 0 E3 0 E 4,7,18,33,35,56,62,100,
+CASE mask 360 tail_card 4 tail_sum 254 E1 1 E3 1 E 4,7,36,56,62,100,
+CASE mask 361 tail_card 5 tail_sum 272 E1 1 E3 0 E 4,7,18,36,56,62,100,
+ODD_SKIPPED mask 362 tail_sum 287
+ODD_SKIPPED mask 363 tail_sum 305
+ODD_SKIPPED mask 364 tail_sum 289
+ODD_SKIPPED mask 365 tail_sum 307
+CASE mask 366 tail_card 6 tail_sum 322 E1 0 E3 -1 E 4,7,33,35,36,56,62,100,
+CASE mask 367 tail_card 7 tail_sum 340 E1 1 E3 0 E 4,7,18,33,35,36,56,62,100,
+CASE mask 368 tail_card 4 tail_sum 270 E1 1 E3 1 E 4,7,52,56,62,100,
+CASE mask 369 tail_card 5 tail_sum 288 E1 1 E3 1 E 4,7,18,52,56,62,100,
+ODD_SKIPPED mask 370 tail_sum 303
+ODD_SKIPPED mask 371 tail_sum 321
+ODD_SKIPPED mask 372 tail_sum 305
+ODD_SKIPPED mask 373 tail_sum 323
+CASE mask 374 tail_card 6 tail_sum 338 E1 1 E3 0 E 4,7,33,35,52,56,62,100,
+CASE mask 375 tail_card 7 tail_sum 356 E1 1 E3 1 E 4,7,18,33,35,52,56,62,100,
+CASE mask 376 tail_card 5 tail_sum 306 E1 0 E3 1 E 4,7,36,52,56,62,100,
+CASE mask 377 tail_card 6 tail_sum 324 E1 1 E3 1 E 4,7,18,36,52,56,62,100,
+ODD_SKIPPED mask 378 tail_sum 339
+ODD_SKIPPED mask 379 tail_sum 357
+ODD_SKIPPED mask 380 tail_sum 341
+ODD_SKIPPED mask 381 tail_sum 359
+CASE mask 382 tail_card 7 tail_sum 374 E1 0 E3 0 E 4,7,33,35,36,52,56,62,100,
+CASE mask 383 tail_card 8 tail_sum 392 E1 1 E3 0 E 4,7,18,33,35,36,52,56,62,100,
+CASE mask 384 tail_card 2 tail_sum 174 E1 1 E3 1 E 4,7,74,100,
+CASE mask 385 tail_card 3 tail_sum 192 E1 1 E3 0 E 4,7,18,74,100,
+ODD_SKIPPED mask 386 tail_sum 207
+ODD_SKIPPED mask 387 tail_sum 225
+ODD_SKIPPED mask 388 tail_sum 209
+ODD_SKIPPED mask 389 tail_sum 227
+CASE mask 390 tail_card 4 tail_sum 242 E1 1 E3 1 E 4,7,33,35,74,100,
+CASE mask 391 tail_card 5 tail_sum 260 E1 0 E3 0 E 4,7,18,33,35,74,100,
+CASE mask 392 tail_card 3 tail_sum 210 E1 0 E3 -1 E 4,7,36,74,100,
+CASE mask 393 tail_card 4 tail_sum 228 E1 1 E3 0 E 4,7,18,36,74,100,
+ODD_SKIPPED mask 394 tail_sum 243
+ODD_SKIPPED mask 395 tail_sum 261
+ODD_SKIPPED mask 396 tail_sum 245
+ODD_SKIPPED mask 397 tail_sum 263
+CASE mask 398 tail_card 5 tail_sum 278 E1 1 E3 0 E 4,7,33,35,36,74,100,
+CASE mask 399 tail_card 6 tail_sum 296 E1 0 E3 -1 E 4,7,18,33,35,36,74,100,
+CASE mask 400 tail_card 3 tail_sum 226 E1 1 E3 1 E 4,7,52,74,100,
+CASE mask 401 tail_card 4 tail_sum 244 E1 1 E3 0 E 4,7,18,52,74,100,
+ODD_SKIPPED mask 402 tail_sum 259
+ODD_SKIPPED mask 403 tail_sum 277
+ODD_SKIPPED mask 404 tail_sum 261
+ODD_SKIPPED mask 405 tail_sum 279
+CASE mask 406 tail_card 5 tail_sum 294 E1 0 E3 -1 E 4,7,33,35,52,74,100,
+CASE mask 407 tail_card 6 tail_sum 312 E1 1 E3 0 E 4,7,18,33,35,52,74,100,
+CASE mask 408 tail_card 4 tail_sum 262 E1 0 E3 -1 E 4,7,36,52,74,100,
+CASE mask 409 tail_card 5 tail_sum 280 E1 1 E3 0 E 4,7,18,36,52,74,100,
+ODD_SKIPPED mask 410 tail_sum 295
+ODD_SKIPPED mask 411 tail_sum 313
+ODD_SKIPPED mask 412 tail_sum 297
+ODD_SKIPPED mask 413 tail_sum 315
+CASE mask 414 tail_card 6 tail_sum 330 E1 1 E3 1 E 4,7,33,35,36,52,74,100,
+CASE mask 415 tail_card 7 tail_sum 348 E1 0 E3 1 E 4,7,18,33,35,36,52,74,100,
+CASE mask 416 tail_card 3 tail_sum 230 E1 1 E3 1 E 4,7,56,74,100,
+CASE mask 417 tail_card 4 tail_sum 248 E1 0 E3 -1 E 4,7,18,56,74,100,
+ODD_SKIPPED mask 418 tail_sum 263
+ODD_SKIPPED mask 419 tail_sum 281
+ODD_SKIPPED mask 420 tail_sum 265
+ODD_SKIPPED mask 421 tail_sum 283
+CASE mask 422 tail_card 5 tail_sum 298 E1 1 E3 0 E 4,7,33,35,56,74,100,
+CASE mask 423 tail_card 6 tail_sum 316 E1 0 E3 1 E 4,7,18,33,35,56,74,100,
+CASE mask 424 tail_card 4 tail_sum 266 E1 1 E3 1 E 4,7,36,56,74,100,
+CASE mask 425 tail_card 5 tail_sum 284 E1 0 E3 -1 E 4,7,18,36,56,74,100,
+ODD_SKIPPED mask 426 tail_sum 299
+ODD_SKIPPED mask 427 tail_sum 317
+ODD_SKIPPED mask 428 tail_sum 301
+ODD_SKIPPED mask 429 tail_sum 319
+CASE mask 430 tail_card 6 tail_sum 334 E1 0 E3 1 E 4,7,33,35,36,56,74,100,
+CASE mask 431 tail_card 7 tail_sum 352 E1 1 E3 1 E 4,7,18,33,35,36,56,74,100,
+CASE mask 432 tail_card 4 tail_sum 282 E1 1 E3 1 E 4,7,52,56,74,100,
+CASE mask 433 tail_card 5 tail_sum 300 E1 0 E3 1 E 4,7,18,52,56,74,100,
+ODD_SKIPPED mask 434 tail_sum 315
+ODD_SKIPPED mask 435 tail_sum 333
+ODD_SKIPPED mask 436 tail_sum 317
+ODD_SKIPPED mask 437 tail_sum 335
+CASE mask 438 tail_card 6 tail_sum 350 E1 0 E3 1 E 4,7,33,35,52,56,74,100,
+CASE mask 439 tail_card 7 tail_sum 368 E1 0 E3 1 E 4,7,18,33,35,52,56,74,100,
+CASE mask 440 tail_card 5 tail_sum 318 E1 1 E3 1 E 4,7,36,52,56,74,100,
+CASE mask 441 tail_card 6 tail_sum 336 E1 0 E3 -1 E 4,7,18,36,52,56,74,100,
+ODD_SKIPPED mask 442 tail_sum 351
+ODD_SKIPPED mask 443 tail_sum 369
+ODD_SKIPPED mask 444 tail_sum 353
+ODD_SKIPPED mask 445 tail_sum 371
+CASE mask 446 tail_card 7 tail_sum 386 E1 0 E3 1 E 4,7,33,35,36,52,56,74,100,
+CASE mask 447 tail_card 8 tail_sum 404 E1 1 E3 0 E 4,7,18,33,35,36,52,56,74,100,
+CASE mask 448 tail_card 3 tail_sum 236 E1 1 E3 1 E 4,7,62,74,100,
+CASE mask 449 tail_card 4 tail_sum 254 E1 1 E3 1 E 4,7,18,62,74,100,
+ODD_SKIPPED mask 450 tail_sum 269
+ODD_SKIPPED mask 451 tail_sum 287
+ODD_SKIPPED mask 452 tail_sum 271
+ODD_SKIPPED mask 453 tail_sum 289
+CASE mask 454 tail_card 5 tail_sum 304 E1 1 E3 1 E 4,7,33,35,62,74,100,
+CASE mask 455 tail_card 6 tail_sum 322 E1 0 E3 1 E 4,7,18,33,35,62,74,100,
+CASE mask 456 tail_card 4 tail_sum 272 E1 1 E3 0 E 4,7,36,62,74,100,
+CASE mask 457 tail_card 5 tail_sum 290 E1 1 E3 1 E 4,7,18,36,62,74,100,
+ODD_SKIPPED mask 458 tail_sum 305
+ODD_SKIPPED mask 459 tail_sum 323
+ODD_SKIPPED mask 460 tail_sum 307
+ODD_SKIPPED mask 461 tail_sum 325
+CASE mask 462 tail_card 6 tail_sum 340 E1 0 E3 1 E 4,7,33,35,36,62,74,100,
+CASE mask 463 tail_card 7 tail_sum 358 E1 1 E3 1 E 4,7,18,33,35,36,62,74,100,
+CASE mask 464 tail_card 4 tail_sum 288 E1 1 E3 1 E 4,7,52,62,74,100,
+CASE mask 465 tail_card 5 tail_sum 306 E1 0 E3 1 E 4,7,18,52,62,74,100,
+ODD_SKIPPED mask 466 tail_sum 321
+ODD_SKIPPED mask 467 tail_sum 339
+ODD_SKIPPED mask 468 tail_sum 323
+ODD_SKIPPED mask 469 tail_sum 341
+CASE mask 470 tail_card 6 tail_sum 356 E1 1 E3 0 E 4,7,33,35,52,62,74,100,
+CASE mask 471 tail_card 7 tail_sum 374 E1 1 E3 0 E 4,7,18,33,35,52,62,74,100,
+CASE mask 472 tail_card 5 tail_sum 324 E1 1 E3 0 E 4,7,36,52,62,74,100,
+CASE mask 473 tail_card 6 tail_sum 342 E1 0 E3 1 E 4,7,18,36,52,62,74,100,
+ODD_SKIPPED mask 474 tail_sum 357
+ODD_SKIPPED mask 475 tail_sum 375
+ODD_SKIPPED mask 476 tail_sum 359
+ODD_SKIPPED mask 477 tail_sum 377
+CASE mask 478 tail_card 7 tail_sum 392 E1 0 E3 1 E 4,7,33,35,36,52,62,74,100,
+CASE mask 479 tail_card 8 tail_sum 410 E1 0 E3 1 E 4,7,18,33,35,36,52,62,74,100,
+CASE mask 480 tail_card 4 tail_sum 292 E1 1 E3 1 E 4,7,56,62,74,100,
+CASE mask 481 tail_card 5 tail_sum 310 E1 0 E3 1 E 4,7,18,56,62,74,100,
+ODD_SKIPPED mask 482 tail_sum 325
+ODD_SKIPPED mask 483 tail_sum 343
+ODD_SKIPPED mask 484 tail_sum 327
+ODD_SKIPPED mask 485 tail_sum 345
+CASE mask 486 tail_card 6 tail_sum 360 E1 0 E3 1 E 4,7,33,35,56,62,74,100,
+CASE mask 487 tail_card 7 tail_sum 378 E1 1 E3 0 E 4,7,18,33,35,56,62,74,100,
+CASE mask 488 tail_card 5 tail_sum 328 E1 0 E3 1 E 4,7,36,56,62,74,100,
+CASE mask 489 tail_card 6 tail_sum 346 E1 1 E3 0 E 4,7,18,36,56,62,74,100,
+ODD_SKIPPED mask 490 tail_sum 361
+ODD_SKIPPED mask 491 tail_sum 379
+ODD_SKIPPED mask 492 tail_sum 363
+ODD_SKIPPED mask 493 tail_sum 381
+CASE mask 494 tail_card 7 tail_sum 396 E1 1 E3 0 E 4,7,33,35,36,56,62,74,100,
+CASE mask 495 tail_card 8 tail_sum 414 E1 1 E3 1 E 4,7,18,33,35,36,56,62,74,100,
+CASE mask 496 tail_card 5 tail_sum 344 E1 0 E3 1 E 4,7,52,56,62,74,100,
+CASE mask 497 tail_card 6 tail_sum 362 E1 1 E3 0 E 4,7,18,52,56,62,74,100,
+ODD_SKIPPED mask 498 tail_sum 377
+ODD_SKIPPED mask 499 tail_sum 395
+ODD_SKIPPED mask 500 tail_sum 379
+ODD_SKIPPED mask 501 tail_sum 397
+CASE mask 502 tail_card 7 tail_sum 412 E1 0 E3 1 E 4,7,33,35,52,56,62,74,100,
+CASE mask 503 tail_card 8 tail_sum 430 E1 0 E3 0 E 4,7,18,33,35,52,56,62,74,100,
+CASE mask 504 tail_card 6 tail_sum 380 E1 1 E3 1 E 4,7,36,52,56,62,74,100,
+CASE mask 505 tail_card 7 tail_sum 398 E1 -1 E3 1 E 4,7,18,36,52,56,62,74,100,
+ODD_SKIPPED mask 506 tail_sum 413
+ODD_SKIPPED mask 507 tail_sum 431
+ODD_SKIPPED mask 508 tail_sum 415
+ODD_SKIPPED mask 509 tail_sum 433
+CASE mask 510 tail_card 8 tail_sum 448 E1 0 E3 0 E 4,7,33,35,36,52,56,62,74,100,
+CASE mask 511 tail_card 9 tail_sum 466 E1 -1 E3 -1 E 4,7,18,33,35,36,52,56,62,74,100,
+STATE label E1 deficit 1 value -1 remaining 4,7,18,33,35,36,52,56,62,74,100, moves 4:-1,7:-1,18:-1,33:-1,35:-1,36:-1,52:-1,56:-1,62:-1,74:-1,100:-1,
+STATE label E3 deficit 3 value -1 remaining 4,7,18,33,35,36,52,56,62,74,100, moves 4:-1,7:-1,18:-1,33:-1,35:-1,36:-1,52:-1,56:-1,62:-1,74:-1,100:-1,
+STATE label C8 deficit 8 value 1 remaining 2,3,4,7,18,33,35,36,52,56,62,74,100, moves 2:-1,3:1,4:1,7:1,18:-1,33:-1,35:-1,36:-1,52:-1,56:-1,62:-1,74:-1,100:-1,
+STATE label C2 deficit 2 value 1 remaining 2,3,4,7,18,33,35,36,52,56,62,74,100, moves 2:-1,3:-1,4:1,7:-1,18:-1,33:-1,35:-1,36:-1,52:-1,56:-1,62:-1,74:-1,100:-1,
+STATE label Cerase2_4 deficit 4 value -1 remaining 3,4,7,18,33,35,36,52,56,62,74,100, moves 3:-1,4:-1,7:-1,18:-1,33:-1,35:-1,36:-1,52:-1,56:-1,62:-1,74:-1,100:-1,
+COMPLETE_FIXED_SUPPORT_SHRINK total_subsets 512 even_subsets 256 odd_skipped 256 doubleloss_subsets 1 minimum_mask 511 minimum_tail_card 9 minimum_max 100 minimum_sum 466 seconds 0.00299363 max_rss_bytes 3260416

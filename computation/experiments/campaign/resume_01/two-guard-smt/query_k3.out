@@ -1,0 +1,28 @@
+unsat
+(:added-eqs                   1057
+ :arith-bound-propagations-lp 2851
+ :arith-conflicts             5
+ :arith-fixed-eqs             1015
+ :arith-lower                 2388
+ :arith-make-feasible         231
+ :arith-max-columns           401
+ :arith-max-rows              199
+ :arith-offset-eqs            179
+ :arith-upper                 2612
+ :binary-propagations         3560
+ :conflicts                   30
+ :decisions                   77
+ :del-clause                  232
+ :max-memory                  21.21
+ :memory                      18.75
+ :minimized-lits              2
+ :mk-bool-var                 1458
+ :mk-clause                   496
+ :mk-clause-binary            2542
+ :num-allocs                  1135761
+ :num-checks                  1
+ :propagations                4383
+ :rlimit-count                96502
+ :solve-eqs-elim-vars         163
+ :solve-eqs-steps             2147
+ :time                        0.01)

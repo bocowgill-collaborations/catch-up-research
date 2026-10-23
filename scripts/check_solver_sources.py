@@ -15,12 +15,15 @@ def digest_matches(data, expected):
 def main():
     m = json.loads((ROOT/'verification/solver-sources.json').read_text())
     rows = m['sources'] + m['adapters']
+    campaign = json.loads((ROOT/'verification/campaign-sources.json').read_text())
     assert len({r['path'] for r in rows}) == len(rows)
     actual = set()
     for folder in ['computation/experiments', 'computation/solvers']:
         actual.update(str(p.relative_to(ROOT)) for p in (ROOT/folder).rglob('*')
                       if p.is_file() and p.suffix != '.md' and '__pycache__' not in p.parts)
-    assert actual == {r['path'] for r in rows if r['path'].startswith('computation/')}
+    expected = {r['path'] for r in rows+campaign['sources']+campaign['adapters']
+                if r['path'].startswith('computation/') and not r['path'].endswith('.md')}
+    assert actual == expected
     for r in rows:
         path = ROOT/r['path']
         assert ROOT in path.resolve().parents

@@ -1,0 +1,29 @@
+unknown
+(:added-eqs                   8676430
+ :arith-bound-propagations-lp 23804679
+ :arith-conflicts             316
+ :arith-fixed-eqs             8630084
+ :arith-lower                 19834578
+ :arith-make-feasible         31913
+ :arith-max-columns           183418
+ :arith-max-rows              92364
+ :arith-offset-eqs            992652
+ :arith-upper                 20012265
+ :binary-propagations         27178768
+ :conflicts                   1200
+ :decisions                   9304
+ :del-clause                  54230
+ :max-memory                  1792.05
+ :memory                      831.23
+ :minimized-lits              4708
+ :mk-bool-var                 678836
+ :mk-clause                   241569
+ :mk-clause-binary            1258093
+ :num-allocs                  1603710437316.00
+ :num-checks                  1
+ :propagations                34898454
+ :restarts                    4
+ :rlimit-count                231493498
+ :solve-eqs-elim-vars         39367
+ :solve-eqs-steps             567663
+ :time                        120.45)

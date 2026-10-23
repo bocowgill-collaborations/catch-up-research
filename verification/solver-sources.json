@@ -147,11 +147,11 @@
       "four-orphan driver, inputs and seeded generator",
       "near-repair completed-turn-set driver",
       "seven/nine-pair whole-turn arithmetic test and frozen input shapes",
-      "actual consecutive-tail C++ evaluator"
+      "actual consecutive-tail C++ evaluator",
+      "October campaign mutation, SMT and shrinking closures in campaign-sources.json"
     ],
     "not_yet_ported": [
-      "campaign_2026_10_22/search mutation/SMT/interval/shrinking drivers and replay dependency closures",
-      "remaining resume_01 mutation/SMT experiments and seeds",
+      "Separate interval/reflection/density experiment replay routes outside the four inventoried campaign areas",
       "full near_repair forest extraction and independent forest validator",
       "earlier large saved binary exact tables (not located in this audit)"
     ],
@@ -163,8 +163,8 @@
   "adapters": [
     {
       "path": "computation/experiments/run.py",
-      "sha256": "f06c8bca96ce56d7aabf01eadcafcfdff4a382af5a6e865507a2ae30c66ebd4f",
-      "bytes": 11694,
+      "sha256": "d0f24ce15fca0e76cd711e41060eda38cb60688f13338967d45733808b6beeee",
+      "bytes": 12142,
       "purpose": "New portable entry point or small independent publication check; no formal proof claim."
     },
     {
@@ -181,8 +181,8 @@
     },
     {
       "path": "scripts/check_solver_sources.py",
-      "sha256": "283d620d74bce00b28699c828ed4f06f228202a2f1a3cf305e06cc0410576fea",
-      "bytes": 3003,
+      "sha256": "ee378fd4ff37ae4fe1a6aa6ddc8a1372680d48e3a66c623a1cf342562c5384ce",
+      "bytes": 3201,
       "purpose": "New portable entry point or small independent publication check; no formal proof claim."
     }
   ]
