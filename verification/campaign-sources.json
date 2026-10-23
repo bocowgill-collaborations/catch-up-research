@@ -1454,8 +1454,8 @@
     },
     {
       "path": "scripts/check_campaign_sources.py",
-      "sha256": "ab223e8e1608d4c07910b3803162e6a63932904257012fb449dc256ee1bf3b12",
-      "bytes": 4388,
+      "sha256": "1519b4f9777320ee2931c00923d88c202de55f403f56cffb513cc03635d0dffd",
+      "bytes": 4332,
       "purpose": "New portable publication entry point or small independent check."
     }
   ],
@@ -4306,15 +4306,10 @@
       "disposition": "published dependency outside the four primary inventoried directories"
     }
   ],
-  "privacy_exclusions": [
-    "Email threads and drafts, personal contact details, privately received von Stengel attachments pending permission, and private attachment extraction/screenshots.",
-    "Account/usage records, credentials, automation settings and unrelated campaign administration."
-  ],
   "coverage_notes": [
     "Frozen mutation lists retain all planned cases and original unprocessed suffixes; no continuation was launched.",
     "Large SMT inputs are generated from the retained unchanged Encoding and exact parameters; fingerprints retained.",
-    "Formal proof and cryptid files are unchanged.",
-    "Alias-dependent optimized audit omitted in favor of the self-contained literal-leaf baseline; this is a dependency choice, not confidentiality."
+    "Formal proof and cryptid files are unchanged."
   ],
   "closures": [
     {

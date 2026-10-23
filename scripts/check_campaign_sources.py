@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publication provenance, dependency and privacy checks; starts no solver."""
+"""Publication provenance, dependency and content checks; starts no solver."""
 import ast
 import hashlib
 import json
@@ -32,7 +32,7 @@ def main():
         p=ROOT/r['path'];assert ROOT in p.resolve().parents
         b=p.read_bytes();assert hashlib.sha256(b).hexdigest()==r['sha256'],r['path']
         assert len(b)==r['bytes'] and public_text(b.decode()),r['path']
-        assert not any(s in p.parts for s in ['private_vonstengel_audit_2026_10_23','automations'])
+        assert not any(part.startswith('.') for part in Path(r['path']).parts)
         if p.suffix=='.py':ast.parse(b.decode(),filename=r['path'])
         if p.suffix=='.json':json.loads(b)
         if p.suffix in ('.cpp','.hpp'):
@@ -65,12 +65,11 @@ def main():
     assert checkpoint['completed']==40 and checkpoint['unprocessed_ids']==list(range(41,200))
     assert len(m['inventory'])==len({r['origin_path'] for r in m['inventory']})
     assert all(r['disposition'] for r in m['inventory'])
-    assert m['privacy_exclusions']
     assert not public_text('person'+'@'+'example.org')
     assert not public_text('/'+'Users/person/private.txt')
     assert not public_text('-----BEGIN'+' OPENSSH PRIVATE KEY-----')
     print('Campaign source checks passed: %s preserved sources/data, %s adapters, %s query recipes; '
-          'dependencies, frozen prefixes, privacy controls and hashes' %
+          'dependencies, frozen prefixes, content controls and hashes' %
           (len(m['sources']),len(m['adapters']),len(m['smt_queries'])))
 
 

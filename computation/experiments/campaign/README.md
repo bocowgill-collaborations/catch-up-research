@@ -85,9 +85,3 @@ PY
 ```
 
 The same layout supports the retained original audits and generators. Recreating a JSON file can change timing, path and helper-source hash metadata; regenerated numerical inputs should be compared with the frozen input lists. Historical reports still describe their original paths and constraints. Original `max_rss_bytes` fields from C++ `getrusage` are platform-dependent: the old code did not convert Linux KiB to bytes. Do not use those labels to compare memory across operating systems without conversion.
-
-## Private material and remaining scope
-
-Excluded from publication are **your email threads and outreach draft, personal contact metadata, the privately received von Stengel slides/attachments and their private extraction/screenshots while sharing permission is pending**, plus account/usage records and automation/administrative settings. Those sources are not needed to run these experiments. The publicly hosted 2019 seminar source remains linked from the [source guide](../../../docs/sources.md). Failed examples, unproved hypotheses, incomplete searches and research checkpoints are included with evidence labels.
-
-The [manifest](../../../verification/campaign-sources.json) records original/exported hashes, every source adaptation, dependency bundles, and dispositions for the inspected source/data paths. Machine-local paths are normalized, JSON is compacted, and the historical SMT launcher now finds Z3 through PATH or `Z3`; the ownership encoding is unchanged. Superseded duplicates, administrative receipts, a Lean-alias-dependent optimized audit, and unrelated interval/reflection/density replay routes are outside these executable bundles. The full near-repair forest extractor remains a separate publication gap. No verified proof or cryptid definition changed in this addition.
