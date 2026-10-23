@@ -22,7 +22,9 @@ def main():
     assert len(paths)==len(rows)
     source=(ROOT/'computation/experiments/campaign/resume_01/shadow-smt/search.py').read_text()
     encoding=next(n for n in ast.parse(source).body if isinstance(n,ast.ClassDef) and n.name=='Encoding')
-    assert hashlib.sha256(ast.dump(encoding,include_attributes=False).encode()).hexdigest()==m['encoding_class_ast_sha256']
+    # AST field sets change between Python versions; the preserved class text does not.
+    body=ast.get_source_segment(source,encoding).encode()
+    assert hashlib.sha256(body).hexdigest()==m['encoding_class_source_sha256']
     actual={str(p.relative_to(ROOT)) for p in (ROOT/'computation/experiments/campaign').rglob('*')
             if p.is_file() and p.name!='README.md' and '__pycache__' not in p.parts}
     assert actual=={r['path'] for r in m['sources']}

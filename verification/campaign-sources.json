@@ -1454,8 +1454,8 @@
     },
     {
       "path": "scripts/check_campaign_sources.py",
-      "sha256": "92b0ebcabe8c74a5b2af5ceae4c503eeb0475b15e517fc73c93cc0d327da3953",
-      "bytes": 4287,
+      "sha256": "ab223e8e1608d4c07910b3803162e6a63932904257012fb449dc256ee1bf3b12",
+      "bytes": 4388,
       "purpose": "New portable publication entry point or small independent check."
     }
   ],
@@ -4368,5 +4368,5 @@
       ]
     }
   ],
-  "encoding_class_ast_sha256": "16179a226273a5e9149106425190eb19737b887f0e550caacca37531f368c1aa"
+  "encoding_class_source_sha256": "8e38b1e45b7d1a5a7be6081241e9134a1031b7decc0f11905388a5dd183637db"
 }
