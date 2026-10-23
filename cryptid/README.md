@@ -58,3 +58,5 @@ The concrete contracts cover arbitrary valid data and caller frames, including t
 | Normalize successor input | 1 | [SourceSucc.Relocation](CatchUp/Machine/Lowering/SourceSucc/Relocation.lean) |
 
 The successor-input contract hands off to a shared arithmetic increment instruction; it does not prove that redirected core's execution. The remaining integration obligations are substantive: preserve inherited core operations under hook redirection; compose all bank and core contracts into a full partial-program simulation; then prove both halting directions and connect them to the search.
+
+The [machine-design notebook](../archive/research-notes/README.md#machine-design) retains earlier optimization, shared-decoder, interpreter, stack, word, dispatch and lowering reports, including unsuccessful proof approaches. Their component and historical machine counts have their stated scopes; the current complete-machine count remains the one at the top of this page.
