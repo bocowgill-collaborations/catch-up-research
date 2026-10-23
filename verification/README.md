@@ -1,5 +1,9 @@
 # Verification and provenance
 
+The [August–September source manifest](legacy-sources.json) and [finding ledger](../results/legacy-findings.md) describe an additional historical import outside both Lean builds. Run `python3 scripts/check_legacy_archive.py` to check hashes, coverage, finding references, notebook locators, data parseability and corruption/privacy controls. This check is included in `check_collection.py`. With the original local Git database available, `python3 scripts/check_legacy_archive.py --source-repository PATH` additionally rechecks every original blob and the complete inspected-tree inventory. It executes no historical probe or CHECK instruction.
+
+The [import receipt](legacy-import.json) records the checks actually run, log fingerprints, unchanged proof-source scope, editorial discrepancies and deferred artifacts. Its source manifest and finding-ledger hashes are checked along with the retained logs.
+
 There are two independent, pinned Lake packages. Their `CatchUp` namespaces intentionally contain the same game interface compiled with different Lean versions; build them separately. The cryptid package also has separate audit entry points for the baseline and the candidate components: those developments reused some declaration names and must not be imported into a single Lean environment.
 
 | Package | Lean | Mathlib commit |

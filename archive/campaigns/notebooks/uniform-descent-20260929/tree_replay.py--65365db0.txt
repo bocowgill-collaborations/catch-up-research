@@ -1,0 +1,48 @@
+"""Replay the saved exact-sum trees symbolically for every m>=17.
+
+This verifies affine arithmetic and complete witness enumeration, not Lean
+semantics. The production theorem and transitive axiom audit are authoritative.
+No optimal game outcomes are queried.
+"""
+import json
+from pathlib import Path
+
+roots = json.loads((Path(__file__).with_name("quad_trees.json")).read_text())
+nodes = leaves = max_depth = 0
+small_max = 0
+pivot_min = 0
+
+def replay(node, expected_deficit, removed_small, removed_offsets, depth):
+    global nodes, leaves, max_depth, small_max, pivot_min
+    t, q = node["deficit_offset"], node["pivot_offset"]
+    block = node["small_block"]
+    assert t == expected_deficit
+    assert q <= 0 or q in (3,4,5,6)
+    assert q not in removed_offsets
+    assert len(block)==len(set(block)) and block
+    assert all(2<=x<=11 and x not in removed_small for x in block)
+    assert q+sum(block)==t
+    # m>=17: all small entries are <=11, and every large pivot >=12.
+    assert q>=-5 and 17+q>max(block)
+    # Every lower counter greater than m+q has an offset in q+1,...,0.
+    # All earlier large deletions are distinct from small deletions at m>=17.
+    expected = sorted(set(range(q+1,1)) | {x for x in (3,4,5,6) if x>q})
+    expected = [x for x in expected if x not in removed_offsets]
+    actual = [w for w,_ in node["children"]]
+    assert sorted(actual)==expected and len(actual)==len(set(actual))
+    nodes += 1
+    leaves += int(not actual)
+    max_depth = max(max_depth,depth)
+    small_max = max(small_max,max(block))
+    pivot_min = min(pivot_min,q)
+    for w,child in node["children"]:
+        replay(child,w,removed_small|set(block),removed_offsets|{q,w},depth+1)
+
+assert sorted(x["opening_offset"] for x in roots)==[3,4,5,6]
+for root in roots:
+    assert root["k"]==4
+    t = root["opening_offset"]
+    replay(root["tree"],t,set(),{t},1)
+print(json.dumps({"symbolic_replay":"passed","m_lower_bound":17,
+                  "nodes":nodes,"leaves":leaves,"max_depth":max_depth,
+                  "largest_small_counter":small_max,"lowest_pivot_offset":pivot_min}))

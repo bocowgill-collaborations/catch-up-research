@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Exact finite tests of adjacent-hole transport in Catch-Up.
+
+Positive counter x is bit x-1. Values -1/0/1 mean loss/draw/win for
+the player to move. No floating point or randomized choices are used.
+"""
+
+import argparse
+import json
+from collections import Counter
+from functools import cache
+
+
+def mask_of(items):
+    """Encode a set of strictly positive counters; never encode zero."""
+    items = tuple(items)
+    assert all(x > 0 for x in items) and len(set(items)) == len(items)
+    return sum(1 << (x - 1) for x in items)
+
+
+@cache
+def counters(mask):
+    return tuple(i + 1 for i in range(mask.bit_length()) if mask & (1 << i))
+
+
+@cache
+def value(mask, deficit):
+    if mask == 0:
+        return 0 if deficit == 0 else -1
+    if sum(counters(mask)) < deficit:
+        return -1
+    return max(move_value(mask, deficit, x) for x in counters(mask))
+
+
+def move_value(mask, deficit, x):
+    assert mask & (1 << (x - 1))
+    child = value(mask ^ (1 << (x - 1)), abs(deficit - x))
+    return child if x < deficit else -child
+
+
+def state(mask, deficit):
+    return {"remaining": list(counters(mask)), "deficit": deficit,
+            "value": value(mask, deficit),
+            "moves": {str(x): move_value(mask, deficit, x) for x in counters(mask)}}
+
+
+@cache
+def absolute_value(remaining, score_one, score_two, mover):
+    """Independent fixed-player recurrence, without normalized gaps or negation.
+
+    Player one maximizes and player two minimizes. The answer is always from
+    player one's perspective. A tie after a pick switches the mover.
+    """
+    if not remaining:
+        return (score_one > score_two) - (score_one < score_two)
+    scores = (score_one, score_two)
+    if scores[mover] + sum(remaining) < scores[1 - mover]:
+        return -1 if mover == 0 else 1
+    children = []
+    for x in remaining:
+        updated = list(scores)
+        updated[mover] += x
+        next_mover = 1 - mover if updated[mover] >= updated[1 - mover] else mover
+        children.append(absolute_value(tuple(y for y in remaining if y != x),
+                                       *updated, next_mover))
+    return max(children) if mover == 0 else min(children)
+
+
+def verify_independently(mask, deficit):
+    """Cross-check a state and every legal edge against absolute scores."""
+    remaining = counters(mask)
+    assert value(mask, deficit) == absolute_value(remaining, 0, deficit, 0)
+    if not remaining or sum(remaining) < deficit:
+        return
+    for x in remaining:
+        child = tuple(y for y in remaining if y != x)
+        assert move_value(mask, deficit, x) == absolute_value(
+            child, x, deficit, int(x >= deficit))
+
+
+def copy_obstruction():
+    """An admissible root with disjoint safe first moves under the natural map."""
+    n, b, y = 11, 4, 8
+    root = set(range(2, n + 1)) - {b - 1, b}
+    u = mask_of(sorted(root - {y - 1, y}))
+    v = mask_of(sorted(root - {y, y + 1}))
+    mapped = lambda x: y + 1 if x == y - 1 else x
+    safe_u = [x for x in counters(u) if move_value(u, 1, x) != -1]
+    safe_v = [x for x in counters(v) if move_value(v, 1, x) != -1]
+    assert safe_u == [2] and safe_v == [5, 10]
+    assert (value(u, 1), value(v, 1)) == (0, 1)
+    assert all(mapped(x) in counters(u) for x in counters(v))
+    assert all(move_value(u, 1, mapped(x)) == -1 for x in safe_v)
+    verify_independently(u, 1)
+    verify_independently(v, 1)
+    child_u, child_v = u ^ (1 << 1), v ^ (1 << 4)
+    unmatched_u = sorted(set(counters(child_u)) - set(counters(child_v)))
+    unmatched_v = sorted(set(counters(child_v)) - set(counters(child_u)))
+    assert unmatched_u == [5, 9] and unmatched_v == [2, 7]
+    return {"N": n, "b": b, "y": y, "U": state(u, 1), "V": state(v, 1),
+            "safe_U": safe_u, "safe_V": safe_v,
+            "map_V_to_U": {str(x): mapped(x) for x in counters(v)},
+            "forced_win_preserving_repair": {
+                "picks_U_V": [2, 5], "U_child": state(child_u, 1),
+                "V_child": state(child_v, 4), "unmatched_U": unmatched_u,
+                "unmatched_V": unmatched_v, "deficit_difference": 3},
+            "meaning": "Obstruction to copying safe moves, NOT a forbidden-jump counterexample"}
+
+
+def refinement_obstructions():
+    """Small exact witnesses against two proposed relaxations of the geometry."""
+    alternating_u = mask_of([6, 11, 14, 15, 18, 23])
+    alternating_v = mask_of([4, 11, 14, 15, 18, 23])
+    for mask in [alternating_u, alternating_v]:
+        assert all(x % 2 == i % 2 for i, x in enumerate(counters(mask)))
+        verify_independently(mask, 1)
+    assert (value(alternating_u, 1), value(alternating_v, 1)) == (-1, 1)
+    pair_starts = [2, 7, 9, 12, 16, 19, 21]
+    removed = {x for a in pair_starts for x in (a, a + 1)}
+    root = mask_of([4, 5, 6, 11, 14, 15, 18, 23])
+    assert len(removed) == 2 * len(pair_starts) == 14
+    assert set(counters(root)) == set(range(2, 24)) - removed
+    assert value(root ^ (1 << 4), 5) == 0
+    verify_independently(root ^ (1 << 4), 5)
+    sparse_u = mask_of([4, 7, 9, 10, 12, 15])
+    sparse_v = mask_of([4, 5, 9, 10, 12, 15])
+    for mask in [sparse_u, sparse_v]:
+        verify_independently(mask, 1)
+    assert (value(sparse_u, 1), value(sparse_v, 1)) == (-1, 1)
+    return {"alternating_parity": {"U": state(alternating_u, 1),
+                                   "V": state(alternating_v, 1),
+                                   "pair_starts_omitted_from_I_2_23": pair_starts,
+                                   "root": state(root, 0),
+                                   "post_opening_five": state(root ^ (1 << 4), 5)},
+            "known_sparse_mechanism": {"U": state(sparse_u, 1),
+                                        "V": state(sparse_v, 1)}}
+
+
+def probe(n):
+    assert n >= 11 and (n * (n + 1) // 2) % 2 == 0
+    counts = Counter()
+    witnesses = []
+    for b in range(3, n + 1):
+        r = ((1 << n) - 1) & ~sum(1 << (x - 1) for x in {1, b - 1, b})
+        for y in range(3, n):
+            if not all(r & (1 << (x - 1)) for x in (y - 1, y, y + 1)):
+                continue
+            u = r & ~((1 << (y - 2)) | (1 << (y - 1)))
+            v = r & ~((1 << (y - 1)) | (1 << y))
+            pair = (value(u, 1), value(v, 1))
+            counts[str(pair)] += 1
+            if pair == (-1, 1):
+                parent = r ^ (1 << (y - 1))
+                witnesses.append({"N": n, "b": b, "y": y,
+                                  "R": list(counters(r)),
+                                  "root_value": value(r, 0),
+                                  "post_opening": state(parent, y),
+                                  "U": state(u, 1), "V": state(v, 1)})
+    return {"N": n, "triangular_total": n * (n + 1) // 2,
+            "tested": sum(counts.values()), "pairs": dict(sorted(counts.items())),
+            "forbidden_jumps": witnesses}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--sizes", nargs="+", type=int, default=[11, 12, 15, 16])
+    args = parser.parse_args()
+    assert all(n <= 20 for n in args.sizes), "Do not regenerate large tables with this probe"
+    for mask, deficit in [(0, 0), (0, 1), (mask_of([2]), 3),
+                          (mask_of([2]), 2), (mask_of([2]), 1)]:
+        verify_independently(mask, deficit)
+    for n in args.sizes:
+        print(json.dumps(probe(n), sort_keys=True), flush=True)
+    print(json.dumps({"copy_obstruction": copy_obstruction()}, sort_keys=True))
+    print(json.dumps({"refinement_obstructions": refinement_obstructions()}, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

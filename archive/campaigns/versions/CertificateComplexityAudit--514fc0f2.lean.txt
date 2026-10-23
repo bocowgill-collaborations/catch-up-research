@@ -1,0 +1,71 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CertificateComplexityHighCounters
+
+/-!
+# Certificate-complexity axiom audit
+
+Every completed claim is audited transitively. The unproved Catch-Up conjecture is
+a negative control: its `sorryAx` must be detected, not silently allowed.
+-/
+
+namespace CatchUpSearch.CertificateComplexity
+
+/-- Counting the two protected players separately preserves the lower bound. -/
+theorem sum_minimumNodes_exponential (N : ℕ)
+    (h1 : CertificateExists N .p1) (h2 : CertificateExists N .p2) (hN : 16 ≤ N) :
+    2 * 2 ^ ((N - 2) / 12) ≤ minimumNodes N .p1 h1 + minimumNodes N .p2 h2 := by
+  have h := Nat.add_le_add (minimumNodes_exponential N .p1 h1 hN)
+    (minimumNodes_exponential N .p2 h2 hN)
+  simpa only [two_mul] using h
+
+/-- The exact integer exponent is at least a linear fraction of the size. -/
+theorem exponent_linear_bound (N : ℕ) (hN : 28 ≤ N) : N ≤ 24 * ((N - 2) / 12) := by
+  omega
+
+open Lean Elab Command in
+run_cmd do
+  let declarations := #[
+    ``initial_after_pick, ``minimumNodes_realized, ``minimumNodes_le,
+    ``sdiff_mem_of_deletionClosed, ``powerset_subset_of_deletionClosed,
+    ``exponential_of_deletionClosed, ``powerset_deletionClosed,
+    ``target_cover_count, ``two_pow_mul_choose_le, ``target_cover_exponential,
+    ``card_mul_succ_le_twice_sum, ``bounded_after_pick, ``bounded_after_trace,
+    ``nonterminal_of_half_remaining, ``completed_turn_length_le,
+    ``completed_turn_card, ``owner_step, ``opponent_step, ``owner_completed_turn,
+    ``adversary_macro, ``force_target_deletion, ``deletionFamily_card_le,
+    ``mem_deletionFamily, ``opponent_node_lower_bound,
+    ``initial_certificate_node_lower_bound, ``large_counter_twice_gt,
+    ``nonterminal_of_two_large, ``completed_turn_large_card_le_two,
+    ``completed_turn_large_count, ``large_count_after_pick, ``largeRemaining_mono,
+    ``large_adversary_macro, ``force_large_target_deletion,
+    ``large_opponent_node_lower_bound, ``initial_large_card,
+    ``initial_certificate_exponential, ``initial_certificate_exponential_floor,
+    ``minimumNodes_exponential, ``sum_minimumNodes_exponential, ``exponent_linear_bound]
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for declaration in declarations do
+    let actual ← Lean.collectAxioms declaration
+    for axiomName in actual do
+      unless allowed.contains axiomName do
+        throwError "Unexpected axiom in {declaration}: {axiomName}"
+    logInfo m!"Verified axioms for {declaration}: {actual}"
+  let control ← Lean.collectAxioms ``CatchUp.value_of_even_mul_succ_self_div_two
+  unless control.contains ``sorryAx do
+    throwError "Negative control failed to expose the conjecture's sorryAx"
+  logInfo "CERTIFICATE COMPLEXITY AXIOM AUDIT PASSED; negative control detected sorryAx"
+
+end CatchUpSearch.CertificateComplexity

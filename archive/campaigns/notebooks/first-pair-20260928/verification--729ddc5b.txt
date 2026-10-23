@@ -1,0 +1,28 @@
+Command: lake --wfail build catch_up.FirstPairDescentAudit
+ℹ [8059/8059] Replayed catch_up.FirstPairDescentAudit
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.root_eq_pair: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.first_pick: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.deficit_one_loss_child_win: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.loss_forces_all_first_children_win: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.base_seven: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.base_eight: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.sparse_loss: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.sparse_shadow_win: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.sparse_structure: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.no_geometry_free_three_reserve_transfer: [propext,
+ Quot.sound,
+ Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.raw_two_pick_exchange: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_values: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_shadow_win_forces_eight: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_copy_eight_loses: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_actual_six_wins: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_legal_prefixes: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_copied_endpoints: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.sparse_has_no_nonloss_strategy: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.sparse_all_first_children_win: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.shadow_after_three: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_shadow_root_draw: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_owner_conflict: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/FirstPairDescentAudit.lean:27:0: Verified axioms for CatchUp.FirstPairDescent.bridge_completed_copy_obstruction: [propext, Quot.sound, Classical.choice]
+Build completed successfully (8059 jobs).

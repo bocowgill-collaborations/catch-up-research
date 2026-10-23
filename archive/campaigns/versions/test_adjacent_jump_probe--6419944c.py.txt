@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Independent, unpruned absolute-score regression for adjacent_jump_probe.
+
+Run from any directory with Python 3. No third-party dependencies are needed.
+This tests the executable encoding, not the unbounded mathematical conjecture.
+"""
+
+from functools import cache
+
+from adjacent_jump_probe import counters, mask_of, move_value, value
+
+
+@cache
+def absolute_no_prune(remaining, score_one, score_two, mover):
+    """Play all counters, even after catch-up is already impossible."""
+    if not remaining:
+        return (score_one > score_two) - (score_one < score_two)
+    children = []
+    for x in remaining:
+        child = tuple(y for y in remaining if y != x)
+        if mover == 0:
+            children.append(absolute_no_prune(
+                child, score_one + x, score_two, int(score_one + x >= score_two)))
+        else:
+            children.append(absolute_no_prune(
+                child, score_one, score_two + x, int(score_two + x < score_one)))
+    return (max if mover == 0 else min)(children)
+
+
+def check_state(remaining, deficit):
+    mask = mask_of(remaining)
+    assert value(mask, deficit) == absolute_no_prune(remaining, 0, deficit, 0)
+    if not remaining or sum(remaining) < deficit:
+        return 0
+    for x in remaining:
+        child = tuple(y for y in remaining if y != x)
+        assert move_value(mask, deficit, x) == absolute_no_prune(
+            child, x, deficit, int(x >= deficit))
+    return len(remaining)
+
+
+def main():
+    checked = 0
+    for mask in range(1 << 7):
+        remaining = counters(mask)
+        for deficit in range(sum(remaining) + 3):
+            assert value(mask, deficit) == absolute_no_prune(remaining, 0, deficit, 0)
+            checked += 1
+    assert checked == 2176
+    witnesses = [((2, 5, 6, 9, 10, 11), 1), ((2, 5, 6, 7, 10, 11), 1),
+                 ((6, 11, 14, 15, 18, 23), 1), ((4, 11, 14, 15, 18, 23), 1),
+                 ((4, 6, 11, 14, 15, 18, 23), 5)]
+    edges = sum(check_state(remaining, deficit) for remaining, deficit in witnesses)
+    assert edges == 31
+    print(f"PASS: {checked} small states; {len(witnesses)} witness states; "
+          f"{edges} witness moves; independent absolute scores, no early pruning")
+
+
+if __name__ == "__main__":
+    main()

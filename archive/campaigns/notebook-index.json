@@ -1,0 +1,2635 @@
+{
+  "scope": "Headings in canonical campaign ledgers, with full text retained in the linked record. These are navigation entries, not additional verified findings.",
+  "entries": [
+    {
+      "id": "CU-N-11413716-0013",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 13,
+      "end_line": 22,
+      "title": "Deadline and operating constraints",
+      "body_sha256": "46d9c3d5cca3ec704dbaef55c091d3291e2c5291963236177aef556fa4c13817",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0023",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 23,
+      "end_line": 34,
+      "title": "Current repository state",
+      "body_sha256": "e84599905df3009e0da086e869e187dd2d330bd3a7091cb69d07d4e92e12c388",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0035",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 35,
+      "end_line": 49,
+      "title": "Rigorously or formally established before this checkpoint",
+      "body_sha256": "6fb3cf2c264951aafcbd98a02a42c142f22f6a8af4b856074688ef90648e5fed",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0050",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 50,
+      "end_line": 64,
+      "title": "Computational evidence before this checkpoint",
+      "body_sha256": "e45f529dc97027c87d805461c1ead282d40bbb56953b58423a15479737e90de5",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0065",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 65,
+      "end_line": 75,
+      "title": "Failed or narrowed approaches",
+      "body_sha256": "1f7cde0a5a6971cb242db04ac2b8d1c2c158950aaa7c547675c1e58c58cb5428",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0078",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 78,
+      "end_line": 84,
+      "title": "Proof route",
+      "body_sha256": "d6cfffb4839cfbc28f67afb270ce5ab11ac73473946572e84eb3e92c62cd7293",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0085",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 85,
+      "end_line": 90,
+      "title": "Counterexample route",
+      "body_sha256": "15cd5782c6587e6feb9d3ba34fda87cb53d098b5c7bd00196f573cbec209fcfe",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0091",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 91,
+      "end_line": 100,
+      "title": "Commands already run in this continuation",
+      "body_sha256": "5e6194bc5e21dc20965875561a05b64f70ec7c665b8800462eb75b597d328de0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0101",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 101,
+      "end_line": 110,
+      "title": "Active unit: audit before selecting the next experiment",
+      "body_sha256": "394376cf6081ad4febf9626292838b94d64bba91058122324821560272f476ef",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0111",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 111,
+      "end_line": 116,
+      "title": "Precise next action",
+      "body_sha256": "3de5e2964bed4e64df090e6d5b894b1e55482693bf6c9cdfb30cdec344c9a1f4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0117",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 117,
+      "end_line": 126,
+      "title": "Interim handoff report",
+      "body_sha256": "0f99571175a1ceb346dfd5415643196ccd5b7ed833032cf80d33dec38788d8c0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0129",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 129,
+      "end_line": 145,
+      "title": "Rigorously established from source inspection",
+      "body_sha256": "dc1145c36b585a059d29150469c5afefb2e6bccb867678fdd385db6beeea5d8b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0146",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 146,
+      "end_line": 152,
+      "title": "Current external computational status",
+      "body_sha256": "81217e6190446469ecb59cd568604f448c418089a7924aa4827281d365c44c3b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0153",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 153,
+      "end_line": 158,
+      "title": "Failed-proof warning",
+      "body_sha256": "e9463e09e9d73991dcf80dfd7bb67194b06c28a309c9b905f4d27f48c596a7ed",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0159",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 159,
+      "end_line": 171,
+      "title": "Active unit: test a broad structural draw hypothesis",
+      "body_sha256": "03ee5090d7b96840c20f8afba5bb11f217997d4052bedb75c1c9c2383abdea4f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0172",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 172,
+      "end_line": 186,
+      "title": "Result — 2026-08-07 23:50:51 EDT",
+      "body_sha256": "c56745745757087539f66711c4a3e83883a7ab283826ec9d1c7da51b63b19bd0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0187",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 187,
+      "end_line": 200,
+      "title": "Active unit: residue-specific common opening turns",
+      "body_sha256": "d80365233352ca1947fb1818ca11ceab4b95ccc3b7a1819c44012320607713cb",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0201",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 201,
+      "end_line": 222,
+      "title": "Result — 2026-08-07 23:57:00 EDT",
+      "body_sha256": "cd73a8d2a22c6bd3eb0b207f9a5b3b630cb071ee3993b83fe2860ce188f04628",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0223",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 223,
+      "end_line": 245,
+      "title": "Corrected external frontier and solver trust boundary — 2026-08-07 23:57:00 EDT",
+      "body_sha256": "40943613bcb91ba9f3f9332a4efa7459569c83241b175770f48449332bde01e2",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0246",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 246,
+      "end_line": 259,
+      "title": "Updated best next actions",
+      "body_sha256": "828c4da759d0a63528e4ffc9c46d63560005e4a2663ef4e543285e7c088d5f85",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0260",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 260,
+      "end_line": 272,
+      "title": "Interim handoff report — 2026-08-07 23:57:00 EDT",
+      "body_sha256": "51cdaae1f0f69e5053caa369c319c9cbe874305131e68bd56b9fb77107c38453",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0273",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 273,
+      "end_line": 289,
+      "title": "Active unit: reachable-state draw-lift falsification at `11 → 15`",
+      "body_sha256": "e991501c0a6ed5e01af425254862c7c4be2b3403fbc924820efeb3474e8e7e39",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0290",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 290,
+      "end_line": 313,
+      "title": "Result — 2026-08-08 00:00:55 EDT",
+      "body_sha256": "207c0633b453d17806e026e715dd9986874b2fe9fd478e668503091df5f5df20",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0314",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 314,
+      "end_line": 325,
+      "title": "Active unit: test the six-old-counter boundary at `12 → 16`",
+      "body_sha256": "0c6d298e6019e6271e019b361013cc7bb40672d28b1b3ec80829aec1b6107dd3",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0326",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 326,
+      "end_line": 339,
+      "title": "Result — 2026-08-08 00:02:19 EDT",
+      "body_sha256": "2fada646a083a36012dcfff9db352b8ad41454fffd7662f40642b7e65fc697e6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0340",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 340,
+      "end_line": 350,
+      "title": "Active unit: test the six-old-counter boundary at `15 → 19`",
+      "body_sha256": "b2cb41134c979262612b48a716b158549484144dd99d9d39f019c5b6dfc5c53b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0351",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 351,
+      "end_line": 368,
+      "title": "Result — 2026-08-08 00:05:13 EDT",
+      "body_sha256": "0fb50aa16c22f74fed9df3837629cc167dbb06413578dd58298b063d1a2e367d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0369",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 369,
+      "end_line": 383,
+      "title": "Active unit: prove the all-openings draw bridge",
+      "body_sha256": "84cebf7efb9ae260c02a05287abcfa00060e48731ec7f6b27805ee1959fcd3c7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0384",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 384,
+      "end_line": 398,
+      "title": "Result — 2026-08-08 00:07:56 EDT",
+      "body_sha256": "f35dcb9cd5c1b748db2acdce6cea12c906415d865a77d82c34b7bc0d313b9ff6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0399",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 399,
+      "end_line": 416,
+      "title": "Active unit: proof-producing partial-strategy certificates",
+      "body_sha256": "bde561d90ce5d614895c52629c4573e9e8a05e2143e343b4f8880bddc7ffc217",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0417",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 417,
+      "end_line": 433,
+      "title": "Generic checker result — 2026-08-08 00:11:34 EDT",
+      "body_sha256": "700c79d759a358e1ce202f51c5225b2125a67a3fe48ea29bcbd6936d5ceaf28a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0434",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 434,
+      "end_line": 450,
+      "title": "Active unit: extract and check an all-openings partial certificate at `N=11`",
+      "body_sha256": "b37beaa38c3442b952b0a2c7c428f8cdad799451f9f333db1407a4ef3315686d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0451",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 451,
+      "end_line": 460,
+      "title": "Execution checkpoint — 2026-08-08 00:14:38 EDT",
+      "body_sha256": "e32d78bd59ac65aab27ec93b8b7a720636d061529927ef02c4c555b9beab4e7d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0461",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 461,
+      "end_line": 475,
+      "title": "Interrupted validation attempt — 2026-08-08 00:17:32 EDT",
+      "body_sha256": "19f7e23ba9d1116798e436410cd3e377ffe95d245236f80a62e1dfb0b8df3b52",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0476",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 476,
+      "end_line": 491,
+      "title": "Accepted runtime certificates — 2026-08-08 00:18:56 EDT",
+      "body_sha256": "0384a98916284104fcd62706f9fd64f2c90342d282971ac3092a2923466f5f75",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0492",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 492,
+      "end_line": 506,
+      "title": "Active unit: serialize the `N=11` certificates and prove the full draw in Lean",
+      "body_sha256": "8c624c8a8250826241e90cd14d21156f763d8e385c1e315241837751f22a9803",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0507",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 507,
+      "end_line": 533,
+      "title": "Formally checked full draw at `N=11` — 2026-08-08 00:25:25 EDT",
+      "body_sha256": "2a2bbc7f484432fa1a18b34a64b17a9c3c216ff43681a523e464482b5159f2bb",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0534",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 534,
+      "end_line": 544,
+      "title": "Active unit: repeat the complete formal certificate at `N=12`",
+      "body_sha256": "606094660f70443fb36d1c59bc65389f724c878f6a7450f2a907576c9a403b64",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0545",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 545,
+      "end_line": 561,
+      "title": "Formally checked full draw at `N=12` — 2026-08-08 00:28:00 EDT",
+      "body_sha256": "26fba741750db9215318b8f3a0357d36991938be559063302ab8ce7fe66c4491",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0562",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 562,
+      "end_line": 576,
+      "title": "Active unit: replace the recursive top-four target by a symbolic classification",
+      "body_sha256": "116fc819215f671ed4b8ed49f0b92d868e9a37e7fdb59fbbfef0bf7c818ab065",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0577",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 577,
+      "end_line": 597,
+      "title": "Formula audit and failed brute-force proof — 2026-08-08 00:34:31 EDT",
+      "body_sha256": "fcbcf0375f3f8620ae1bba83121f9995df1b5a8070826f11168dadb3f1d7b17b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0598",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 598,
+      "end_line": 609,
+      "title": "Active unit: derive structured top-four child lemmas",
+      "body_sha256": "5df8b65dc940ccd5ed84155e842f748c0eb60d512a07d4b6b30476d5b8e22c73",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0610",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 610,
+      "end_line": 622,
+      "title": "Verified empty and singleton value formulas — 2026-08-08 00:43:30 EDT",
+      "body_sha256": "19a97ace731531f9fab2ffcb247d81daaf68131a75abddc3b6dbad0020aefd80",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0623",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 623,
+      "end_line": 637,
+      "title": "Verified exact close-pair classification — 2026-08-08 00:55:39 EDT",
+      "body_sha256": "3850a62413548ae09d836b1c7bad2ff8ba330daa46fecb88303a8088b7342bc3",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0638",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 638,
+      "end_line": 650,
+      "title": "First exact three-counter table proved — 2026-08-08 01:01:10 EDT",
+      "body_sha256": "be40d59490217d238ae3b24ba7e6c82a8a7ccd90238f38dbe34e4f6c54f7933b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0651",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 651,
+      "end_line": 664,
+      "title": "Complete exact three-counter child classification — 2026-08-08 01:04:48 EDT",
+      "body_sha256": "4b900bb4d1aa10a3f729cd9b2593eeb5dce8dc831a444e69d7145954fd8782d6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0665",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 665,
+      "end_line": 677,
+      "title": "Parametric full top-four theorem proved — 2026-08-08 01:08:45 EDT",
+      "body_sha256": "a703a849958c6949b599036a958ffe19e8b02284a6540c45d5f97a450264ef12",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0678",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 678,
+      "end_line": 690,
+      "title": "Solver-independent all-subsets integration — 2026-08-08 01:13:30 EDT",
+      "body_sha256": "475c4d0fdde9fbd1bb69e9db3be627cb9cc0f5f9c7d3daa2a6bef9335faeb19a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0691",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 691,
+      "end_line": 700,
+      "title": "Active unit: regression-test symbolic top-only coverage and basin behavior",
+      "body_sha256": "ea5051d2b56387b71a1b9f0e0f02f56ce461a41d406aff29a2d484d8196cd36f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0701",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 701,
+      "end_line": 713,
+      "title": "Complete-domain classifier regression passed — 2026-08-08 01:17:10 EDT",
+      "body_sha256": "f81f7bc302861f046ba7cef24120a063b2726b009dbf215d41787e70b0c7e226",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0714",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 714,
+      "end_line": 730,
+      "title": "Symbolic target basin integration passed — 2026-08-08 01:21:30 EDT",
+      "body_sha256": "1221f3e0753877b371eeb8319ddd4bfe5be87ece0f58b817ecbbc1998f667c79",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0731",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 731,
+      "end_line": 740,
+      "title": "Active unit: test residue-specific complete-turn protocols at the next sizes",
+      "body_sha256": "5debe1a3d0a401330afa01d646e29b11fb957494d7c3cd0f0a2054404b56837d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0741",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 741,
+      "end_line": 754,
+      "title": "Three-size common-turn run stopped on cost — 2026-08-08 01:31:00 EDT",
+      "body_sha256": "9c67764390371171f966d1b7d01849cde872c8f1dceb8eafd739f9cf3d275b15",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0755",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 755,
+      "end_line": 772,
+      "title": "Indexed protocol filter and successful `N≡3` three-size result — 2026-08-08 01:39:30 EDT",
+      "body_sha256": "230aa9a12778d3c1eb88a4680ab47dfd69c65bc697fad74c3b167340287fdc7c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0773",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 773,
+      "end_line": 780,
+      "title": "Active unit: run the `N≡0 mod 4` three-size protocol test",
+      "body_sha256": "fe15bcfbdae7eb6df2d2f1a8445b4c39653598f06291fd06c2fbc1d746df85d3",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0781",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 781,
+      "end_line": 798,
+      "title": "Indexed `N≡0 mod 4` three-size result, with quantifier caveat — 2026-08-08 01:57:30 EDT",
+      "body_sha256": "32f6ebdffde811cc20b7daff867abb3e9ae75187e0094976475514e66d48dc7d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0799",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 799,
+      "end_line": 809,
+      "title": "Active unit: discover an all-replies residue-specific response formula",
+      "body_sha256": "3adfd1a207867943480e9e82b9050f773066971e5993a6861e91b01a92582cd4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0810",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 810,
+      "end_line": 820,
+      "title": "Corrected profiler and small-size output — 2026-08-08 02:09:11 EDT",
+      "body_sha256": "da4805feb79e2d78da2c3c4ce65a3e3d26a6bc57ca5789f8b1c92168732b21d6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0821",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 821,
+      "end_line": 830,
+      "title": "Parallel unit: retest the at-least-four-old draw-lift family",
+      "body_sha256": "0c667f90f0d4bfd1ae529975bd2c2dc742b068ad307be16b5e50a6cfe9d16327",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0831",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 831,
+      "end_line": 846,
+      "title": "Four-old threshold refuted; six-old threshold survives — 2026-08-08 02:10:17 EDT",
+      "body_sha256": "62d12fefd4a5a27b3d26c0a387a266f1fa60beadd78eee8d2ad7175e16548394",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0847",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 847,
+      "end_line": 856,
+      "title": "Six-old threshold refuted at the held-out size — 2026-08-08 02:12:30 EDT",
+      "body_sha256": "866dc1bfa55f06af5f3a763fbb3844e100478f68870308f59b661f75418a0b22",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0857",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 857,
+      "end_line": 866,
+      "title": "Corrected all-reply profile at `N=15` — 2026-08-08 02:12:30 EDT",
+      "body_sha256": "839e04b48d8156ba1c65cef184e4fd2b44349337576a3df81e4ec6b388b96072",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0867",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 867,
+      "end_line": 877,
+      "title": "Corrected all-reply profile at `N=16` — 2026-08-08 02:23:45 EDT",
+      "body_sha256": "6bafbe294b938b681ea71bf53b0b541aad7f1c4e24d15ab46ebf0a41acf6030d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0878",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 878,
+      "end_line": 892,
+      "title": "Active unit: solve the old-matched/new-stuttering product simulation",
+      "body_sha256": "7165647a395b357a0226ee7216fdcfcef65ebeae08849e730cf9e1bf5f99abe0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0893",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 893,
+      "end_line": 910,
+      "title": "First product result and exact residue-0 obstruction — 2026-08-08 02:28:30 EDT",
+      "body_sha256": "ef45db92e981c93e919775ee0928be06ab7d78d16f01f5b394c6c57ebe299b5b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0911",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 911,
+      "end_line": 924,
+      "title": "Exact old matching rejected as the uniform relation — 2026-08-08 02:38:30 EDT",
+      "body_sha256": "f6201265fdc5d10a10825080bc99d5ed9f36a1995e5061876b5b88b7b6252de7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0925",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 925,
+      "end_line": 937,
+      "title": "Active unit: test the one-pending-counter asynchronous relation",
+      "body_sha256": "7f22c019f7063233988557e6d47342c97a0b065785a805ffb3fc06cefffec3f6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0938",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 938,
+      "end_line": 951,
+      "title": "Ownership-aligned asynchronous matching succeeds, but unrestricted replacement is too loose — 2026-08-08 03:05:03 EDT",
+      "body_sha256": "5553292df6e2e10df626f4d1568145f286c606547496b1e596b3248527597423",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0952",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 952,
+      "end_line": 973,
+      "title": "Exact score-debt invariant and two-pending relation — 2026-08-08 03:05:03 EDT",
+      "body_sha256": "379207549379949e5b3c71f427917161de18a240ba83894de8120dbfa20a6fd7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-0974",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 974,
+      "end_line": 1000,
+      "title": "Two-pending exact-debt relation passes the next validation sizes — 2026-08-08 03:10:30 EDT",
+      "body_sha256": "905abb2e155f6815cfae1108002f80c94f2fbd04df8e7040d5ba54020531256d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1001",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1001,
+      "end_line": 1025,
+      "title": "Edge-template audit rejects the local-debt phases as a compact controller — 2026-08-08 03:27 EDT",
+      "body_sha256": "609fd468cb45858f8278dd0854f9b60c1487077e99ec7964264a1916c78148a5",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1026",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1026,
+      "end_line": 1042,
+      "title": "Persistent same-owner ledger fails at the smallest lift — 2026-08-08 03:33 EDT",
+      "body_sha256": "0bc773c9ea8a759393d054e9d932d8c8426a8303b171da9757df5d1951049c36",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1043",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1043,
+      "end_line": 1061,
+      "title": "Persistent ledger succeeds with six pending old counters at `7→11` — 2026-08-08 03:36 EDT",
+      "body_sha256": "1f388bb2d055feb48cde5dff15105e19e210a328a2fb2d45ee72d4131caa5e47",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1062",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1062,
+      "end_line": 1074,
+      "title": "No-residual ledger width grows immediately — 2026-08-08 03:38 EDT",
+      "body_sha256": "fde5c68ff46663937cbf94ee5186f9ae56ac0ebfb9638002f9699417ce2ef527",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1075",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1075,
+      "end_line": 1094,
+      "title": "One residual plus two pending counters passes both base lifts — 2026-08-08 03:39 EDT",
+      "body_sha256": "a684eece79953f267228c267af3c54e943a3ecf9ff7c24ea2c4ce99d4cf71e5a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1095",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1095,
+      "end_line": 1107,
+      "title": "One-residual relation passes `11→15` unchanged — 2026-08-08 03:45 EDT",
+      "body_sha256": "f384f2768b527324484e0363f67809b314b33109284e23392de73f92d2b112cd",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1108",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1108,
+      "end_line": 1124,
+      "title": "One-residual relation passes `12→16` unchanged — 2026-08-08 03:59 EDT",
+      "body_sha256": "f73a6b4eb06d58ba65ae3fd555a0131627faac7e708e6bbe447b852303ce9954",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1125",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1125,
+      "end_line": 1141,
+      "title": "Generic simulation soundness is formally proved — 2026-08-08 04:04 EDT",
+      "body_sha256": "bb65d1eb557e2b5109c5008c338cbb0c297e3e83b0b0ed32cf9a45b2b5c345e9",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1142",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1142,
+      "end_line": 1162,
+      "title": "Semantic one-residual forcing basin is formally sound — 2026-08-08 04:15 EDT",
+      "body_sha256": "a3e26955b57ee96482398045fb5f6e38e36d411d949160524180cbbec7513129",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1163",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1163,
+      "end_line": 1178,
+      "title": "Active unit: controller extraction plus rigorous finite-certificate extension",
+      "body_sha256": "9f50a799a920be0ace93ef3796b3b3d117dcaaeb89e14d59bd7a36823341ca40",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1179",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1179,
+      "end_line": 1189,
+      "title": "Launching `N=15` partial-certificate feasibility run — 2026-08-08 04:20 EDT",
+      "body_sha256": "384a4b4689924d9a6356b483a219c30d61ccd39cab386e2b3e984e628be9009b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1190",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1190,
+      "end_line": 1203,
+      "title": "`N=15` partial-certificate feasibility result — 2026-08-08 04:22 EDT",
+      "body_sha256": "67b8d9386c986cbb0a124b9ca2686136ece4220034952a95d000543cd01432a7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1204",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1204,
+      "end_line": 1220,
+      "title": "Trust-boundary and serialization audit — 2026-08-08 04:25 EDT",
+      "body_sha256": "cfc2c5f39f1a48387dd3c59544d5990fb921f47122c3cfce1b2630af6aa2ac11",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1221",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1221,
+      "end_line": 1229,
+      "title": "Launching deterministic `N=15` certificate emission — 2026-08-08 04:26 EDT",
+      "body_sha256": "a2d1347e089f762e9948349a16e68d113dfdba5444d406f68ea741bdd9e13c86",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1230",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1230,
+      "end_line": 1237,
+      "title": "First `N=15` emission captured — 2026-08-08 04:31 EDT",
+      "body_sha256": "5a1d6c702a4c20bb59c7b79e2d3fa96b8791f364e5c08a701ebd6a1ee5b8a431",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1238",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1238,
+      "end_line": 1254,
+      "title": "Formally checked `N=15` draw certificate — 2026-08-08 04:39 EDT",
+      "body_sha256": "214e0555a3947585687fa7b100d33caa1e8113d3c88a818510502151fc712555",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1255",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1255,
+      "end_line": 1267,
+      "title": "`N=15` module build and trust report — 2026-08-08 04:42 EDT",
+      "body_sha256": "5f6e7397db93d4ec7703c766f7614c597303f93b2a527249dd4cd047aafd656d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1268",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1268,
+      "end_line": 1279,
+      "title": "`N=15` certificate complete — 2026-08-08 04:43 EDT",
+      "body_sha256": "08ac8050b257d45c27426d2735879b226a72238e2b8434d5bc2a0d9087a08333",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1280",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1280,
+      "end_line": 1294,
+      "title": "`N=16` partial-certificate feasibility result — 2026-08-08 04:52 EDT",
+      "body_sha256": "3e6712fd7e8a5ad038b9b1e333f38d1f76485dc9f04be32401f3d92b06ae637a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1295",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1295,
+      "end_line": 1308,
+      "title": "Formally checked `N=16` draw certificate — 2026-08-08 05:05 EDT",
+      "body_sha256": "7a7f0e2670a57744bae76ef71708aabc46a41149dc943d878e3ca2c3ac104a28",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1309",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1309,
+      "end_line": 1316,
+      "title": "`N=16` certificate complete; finite track closed — 2026-08-08 05:09 EDT",
+      "body_sha256": "a62980aa272570c310512234fbcfc0370a9ee188219cf4741c33581880b0398b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1317",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1317,
+      "end_line": 1331,
+      "title": "Active unit: normalized one-residual witness report",
+      "body_sha256": "39cbbc7d52889cc29a25f985027d1c1bd694eb471920534743f1f0df3fe61502",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1332",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1332,
+      "end_line": 1343,
+      "title": "Reporter implementation compiled — 2026-08-08 05:16 EDT",
+      "body_sha256": "d7096e87789660c07d08c0bc52345ffb4b9a3638d5152e7c787f0aef9e737d7c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1344",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1344,
+      "end_line": 1358,
+      "title": "N=7 selected-witness result and coarse projection — 2026-08-08 05:19 EDT",
+      "body_sha256": "66465bfe9844d329fc1f9955f3a54ca4165b35972e3f0c98381f12d715467474",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1359",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1359,
+      "end_line": 1376,
+      "title": "N=8 selected-witness result — 2026-08-08 05:22 EDT",
+      "body_sha256": "4b696cf7775d95778c8f186b7c33e62009df617b14404c297de8717de8498c52",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1377",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1377,
+      "end_line": 1386,
+      "title": "Launching same-residue witness validation at N=11 — 2026-08-08 05:25 EDT",
+      "body_sha256": "bc58aeca913e1fa3a25fbb443bfc4405e89fd7ec2e4a0c46a21dc47377b287d8",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1387",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1387,
+      "end_line": 1404,
+      "title": "N=11 selected-witness result; solver-selected seven-action pattern fails — 2026-08-08 05:26 EDT",
+      "body_sha256": "64b7eed5c3d990b185d03203dd309757250a9688629893965c115c5e4cc8e843",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1405",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1405,
+      "end_line": 1421,
+      "title": "Semantic transition-normalization block — 2026-08-08 05:26 EDT",
+      "body_sha256": "0c99152399e65b5c8834e37fc89fbf0a8da622b31e72ee7fca198f8d102076f7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1422",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1422,
+      "end_line": 1438,
+      "title": "Active unit: lazy all-alternatives context intersections",
+      "body_sha256": "33f8babbdbb0f0e2163dc935578a544f71bf70ddb883f880bd5c2f985ef69575",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1439",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1439,
+      "end_line": 1453,
+      "title": "Lazy N=7 context-intersection results — 2026-08-08 05:34 EDT",
+      "body_sha256": "0e03cb6e8419214bfe7570fecac56cad6e3fc79ff7d92758bcc4931605bda6ce",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1454",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1454,
+      "end_line": 1468,
+      "title": "Parametric old-opening and draw reductions — 2026-08-08 05:38 EDT",
+      "body_sha256": "5d7a3dcbfe3aab057c543c0f482f2751744e6089b356ac58fafd33c81c94a259",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1469",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1469,
+      "end_line": 1487,
+      "title": "Lazy N=8 context-intersection result; controller refinement frozen — 2026-08-08 05:41 EDT",
+      "body_sha256": "c13cd64215512147b3e8cba389b5f0ea6be68ca9bb72bcf0411647d39d654f23",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1488",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1488,
+      "end_line": 1495,
+      "title": "Full retained-work audit — 2026-08-08 05:41 EDT",
+      "body_sha256": "82c0624a2433d996b3c5830abbc7af9ffdfd1bdfaf0cf47a636e444eee512f87",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1496",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1496,
+      "end_line": 1522,
+      "title": "Independent-review corrections and root-specific reduction API — 2026-08-08 05:53 EDT",
+      "body_sha256": "dda68a09a42d26a32bfdc7a0a592ec4a27d4ed345090fb05514cf957fe83c35b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1523",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1523,
+      "end_line": 1538,
+      "title": "Corrected N=7 selected-parent diagnostic — 2026-08-08 05:55 EDT",
+      "body_sha256": "0fdbc544e474c51e7f3fab233e75b9d8648226ff99bbc771d4ee63301766befb",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1539",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1539,
+      "end_line": 1563,
+      "title": "New-opening ledger and complete conditional draw reduction — 2026-08-08 06:05 EDT",
+      "body_sha256": "54d330390faa8ac178e5f4276302daafa6ab3817eb68991fadb0ed9fcde11482",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1564",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1564,
+      "end_line": 1576,
+      "title": "Active unit: quantify the executable root obligations",
+      "body_sha256": "1eca4d6928da26495253f030362f136c187fb1ac1aea0f0d35d42e3ca6b263b3",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1577",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1577,
+      "end_line": 1594,
+      "title": "Universal static closure rejected; root-basin API retained — 2026-08-08 06:12 EDT",
+      "body_sha256": "f61ffedea9a72c2669c227b4cf892825aa43d83f2be8b4adf1b14ceb55965bff",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1595",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1595,
+      "end_line": 1609,
+      "title": "Complete N=7→11 executable root matrix — 2026-08-08 06:12 EDT",
+      "body_sha256": "328c6edcf46d041676381b422fdaef2a593a02ad8057de6a595c904b77f5b185",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1610",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1610,
+      "end_line": 1625,
+      "title": "N=8→12 root matrix and exact width-two obstruction — 2026-08-08 06:22 EDT",
+      "body_sha256": "6635b6dd16863ac04156c4b9f0aa9dc295b2f71d505758ea174a3c1eabb7763b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1626",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1626,
+      "end_line": 1642,
+      "title": "Width three absorbs the residue-zero boundary obstruction — 2026-08-08 06:23 EDT",
+      "body_sha256": "8fd03a75b2904c72d3183cd61487b77401ea92fabc781fccff5b1bd1e72c786e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1643",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1643,
+      "end_line": 1661,
+      "title": "Consolidated verification and next gate — 2026-08-08 06:24 EDT",
+      "body_sha256": "1fb3ad12f7a3560910a09c53411fc9f10f985484a16fa5680b05918f1fa90d4d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1662",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1662,
+      "end_line": 1675,
+      "title": "Active final theorem unit: weaken the player-one root obligation — 2026-08-08 06:27 EDT",
+      "body_sha256": "eedae7be39496cee2379b41fd3d97ff3c4c049a6de94b846aa69c65f96c8213a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1676",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1676,
+      "end_line": 1688,
+      "title": "Player-one root obligation weakened — 2026-08-08 06:35 EDT",
+      "body_sha256": "7b78e20977399cbeeed155ad51ede118722af1162f5052c093bc12f1e4214ce5",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1689",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1689,
+      "end_line": 1698,
+      "title": "Active final bridge unit: local reachable closure implies basin membership — 2026-08-08 06:35 EDT",
+      "body_sha256": "8648cf8ba97b375da180b39a6373111bed5d6007f105017853754fbfce010a0e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1699",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1699,
+      "end_line": 1708,
+      "title": "Local reachable closure theorem complete — 2026-08-08 06:37 EDT",
+      "body_sha256": "15e63230645f0c455f3efbbbb1edc52ca222ef0cf32212ba13f6e0c3240e1761",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1709",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1709,
+      "end_line": 1715,
+      "title": "Active finite-reflection unit: make history persistence executable — 2026-08-08 06:37 EDT",
+      "body_sha256": "5f21f3e78c79ee41334aefce87ed3d21a851bfb2d8596a222ebed075daf01835",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1716",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1716,
+      "end_line": 1726,
+      "title": "History persistence reflection complete — 2026-08-08 06:43 EDT",
+      "body_sha256": "d6db98ed02134ef9f562959d00fa436f4474b71860ce54f862ec48feb53f0bdb",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1727",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1727,
+      "end_line": 1732,
+      "title": "Active final regression: basin constructors satisfy local closure — 2026-08-08 06:43 EDT",
+      "body_sha256": "5f3ec3b1a0ef0700aa3a98b054f71e0fca070392e16343d25933c43e50279001",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1733",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1733,
+      "end_line": 1752,
+      "title": "Final bridge/regression unit complete — 2026-08-08 06:44 EDT",
+      "body_sha256": "d4d717f3be3ee307589be86e40c2330daca81b1fc519d7961ded69164eb1af13",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1753",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1753,
+      "end_line": 1765,
+      "title": "Consolidated verification — 2026-08-08 06:44 EDT",
+      "body_sha256": "a19109e9fb6e8bf792f615e6f67f186de26b62a68b14f1e5aaeb4d1597c7cef3",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1766",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1766,
+      "end_line": 1777,
+      "title": "Active final executable edge-reflection unit — 2026-08-08 06:45 EDT",
+      "body_sha256": "d089c34218237cf6758806e99a712f9a62a5befe98a18b2d038a8b7a3ab77638",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1778",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1778,
+      "end_line": 1793,
+      "title": "Executable edge reflection complete — 2026-08-08 06:48 EDT",
+      "body_sha256": "ba1ba34a546fd92a515357285d45037390f14f76244672dc520c6aec6ebf0c28",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1794",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1794,
+      "end_line": 1804,
+      "title": "Edge encoding completeness complete — 2026-08-08 06:51 EDT",
+      "body_sha256": "d2e2055ec9931689e9c744cedb83ccd4ffe55947dc8454359534568ef5ba438b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1805",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1805,
+      "end_line": 1823,
+      "title": "Independent edge-reflection audit — 2026-08-08 06:53 EDT",
+      "body_sha256": "54dfff26e889c0d0bba5c3d15f52c416d73e512d1af2cea819eb061c08efb8cf",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1826",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1826,
+      "end_line": 1836,
+      "title": "Outcome",
+      "body_sha256": "824624df218f1bede171b90fdb20f46bd4acb3365e2d0dd2127f4aee5e299389",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1837",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1837,
+      "end_line": 1866,
+      "title": "Formally established facts",
+      "body_sha256": "be924ca71b3bf45e63f2e06f11704bb734f24bc82fd09e6b7adfdf3dfc8cf87c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1867",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1867,
+      "end_line": 1884,
+      "title": "Computational evidence, not formal proof",
+      "body_sha256": "97c8672ba854a69753b406c0027fc29aff6d457c17780f3a16f8784231206fac",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1885",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1885,
+      "end_line": 1908,
+      "title": "Failed or narrowed approaches",
+      "body_sha256": "1faa2dc0e80e452604a5de80d59fa80db0f182030380abf3db5d8204e8d92a01",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1909",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1909,
+      "end_line": 1918,
+      "title": "Trust boundaries",
+      "body_sha256": "fca8c10148fcbd43e253d3cc7fcd8f5da2fd5e209c19b3936fdfa7b4e3649b13",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1919",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1919,
+      "end_line": 1942,
+      "title": "Artifacts and reproduction",
+      "body_sha256": "bf2ddb19b27143b1c09f0d1392c2395eaeb26a15cafc478bb3e32f34f080e5c9",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1943",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1943,
+      "end_line": 1962,
+      "title": "Strongest remaining route",
+      "body_sha256": "41bfd082f0ecf9666ee43d19e9ae123351add466dc2f2c6cf5293a9389a8c6ed",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-11413716-1963",
+      "source_id": "legacy-source-114137163fd8-5767cd",
+      "path": "archive/campaigns/reports/catchup_progress--11413716.md",
+      "line": 1963,
+      "end_line": 1974,
+      "title": "Final consolidation freeze — 2026-08-08 07:15 EDT",
+      "body_sha256": "e3c7bc33ccfca3c6216ae66e2e1bfe00ebd2dd3f137b90ebda0e620cc28e4bb6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0005",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 5,
+      "end_line": 247,
+      "title": "RESUME HERE",
+      "body_sha256": "bb0f391cfff5a3af21effc091f91d4125f8fd94bd4667608057979dab63bc0ec",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0248",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 248,
+      "end_line": 252,
+      "title": "Baseline repository ownership manifest",
+      "body_sha256": "83566b580cd7c207538470559ac94f4e0ad73a4281f15408b4620090ff236807",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0253",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 253,
+      "end_line": 265,
+      "title": "Inherited tracked modifications",
+      "body_sha256": "433147c2eb6523d608e24b37299755a35d8d4ff192f2e269df8f30c348c2d907",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0266",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 266,
+      "end_line": 302,
+      "title": "Inherited untracked artifacts",
+      "body_sha256": "00ad1412ca9a34a5a4d65eb242597ab0975a97f1dd3f3ea4daa5aeaaba42abde",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0303",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 303,
+      "end_line": 312,
+      "title": "Launch audit — 2026-08-08 22:06 EDT",
+      "body_sha256": "7d9e18f96e8cf1035302317f525833f2ccca294da6d7ca98ac6686ddf05c62cf",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0313",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 313,
+      "end_line": 375,
+      "title": "Current approach-family registry — 2026-08-09 11:31 EDT",
+      "body_sha256": "b4eddada902d7de864866438221c777edf6bcbda1508aae18799aaf5142d5b0a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0376",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 376,
+      "end_line": 394,
+      "title": "Launch-state formal verification — 2026-08-08 22:09 EDT",
+      "body_sha256": "44214ca445d7379205ed2a6ed0c56faacdaa801d237dceea3ece0c3a0f736c82",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0395",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 395,
+      "end_line": 417,
+      "title": "Experiment RA-1: missing player-one new-opening roots — 2026-08-08 22:11 EDT",
+      "body_sha256": "b40cffa0cca86022fdbf74b9189b6c86dfd640de10808fba3e9ab58cfe7877bd",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0418",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 418,
+      "end_line": 442,
+      "title": "RA-1 result — 2026-08-08 22:12 EDT",
+      "body_sha256": "164247e263ca536a79a998cf8dbba591bed0e50409424a24bd7e60d52be5e306",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0443",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 443,
+      "end_line": 454,
+      "title": "Experiment RA-2: smallest corrected pending width — 2026-08-08 22:12 EDT",
+      "body_sha256": "744a91f23d9db51ee77bf2bf62fcd78e3be7f386256ae2b5e822fbf163df7fd0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0455",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 455,
+      "end_line": 470,
+      "title": "RA-2 result — 2026-08-08 22:14 EDT",
+      "body_sha256": "3d95261a9ec5186bd2d32fa87168b16531b0fc0d28568db22d80bed1e5c3def0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0471",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 471,
+      "end_line": 488,
+      "title": "Initial portfolio review — 2026-08-08 22:19 EDT",
+      "body_sha256": "b907c76f851e9b087ec9205b81ca579255b6e19edd17ceaedfa720d9e715a843",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0489",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 489,
+      "end_line": 502,
+      "title": "Experiment AR-1: held-out new player-two root at `12 → 16` — 2026-08-08 22:19 EDT",
+      "body_sha256": "ffe0d7fbf087451a3be6e4b0c02ccf0d8751d70e2f9cb063f1f64fe41d03be51",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0503",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 503,
+      "end_line": 511,
+      "title": "AR-1 result — 2026-08-08 22:26 EDT",
+      "body_sha256": "9915d129207752d56aca67918c9b35bd85b8117c9d1816c60cebf965c48d8793",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0512",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 512,
+      "end_line": 523,
+      "title": "Experiment AR-2: remaining new player-two roots at `12 → 16` — 2026-08-08 22:26 EDT",
+      "body_sha256": "32aa17707f52d7bbca318d3ebd645984bdd4b4073a06416c3af59d6ecfa19462",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0524",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 524,
+      "end_line": 534,
+      "title": "AR-2 result — 2026-08-08 22:33 EDT",
+      "body_sha256": "cee4ba51eb19ed036cda4c98537e68b5885740b77cfdd28130bccbc0a80464ba",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0535",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 535,
+      "end_line": 544,
+      "title": "Bankable parity proof status — 2026-08-08 22:26 EDT",
+      "body_sha256": "c5c7deb8ac8f032bd44aae0e36c8c1722f12b2f8694058c1ea0730f1440aecf7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0545",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 545,
+      "end_line": 558,
+      "title": "Bankable parity result integrated — 2026-08-08 22:33 EDT",
+      "body_sha256": "583bbd86fe4c690ae6a65751deb186ec2466c9b9bcf268afcd937af881f90e6e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0559",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 559,
+      "end_line": 572,
+      "title": "Route-selection gate — 2026-08-08 22:33 EDT",
+      "body_sha256": "3eaa227ffe2775358f1cbc6f086666cd562bd8a3e3c0298ea3f79821b1e18d02",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0573",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 573,
+      "end_line": 584,
+      "title": "Experiment AR-3: protected-player-two old roots at `12 → 16` — 2026-08-08 22:33 EDT",
+      "body_sha256": "e78af672923a2eec1cbd2790ef001c10c199baa8980b33bf343aab3ef9f120f4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0585",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 585,
+      "end_line": 595,
+      "title": "AR-3 opening-two result — 2026-08-08 22:37 EDT",
+      "body_sha256": "46d15d769fa9c3c5950c8913014ea5123578aae8b0baa6f4e4707eec8fd3bee5",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0596",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 596,
+      "end_line": 602,
+      "title": "AR-3 opening-three result — 2026-08-08 22:41 EDT",
+      "body_sha256": "fc9958a07b83f188e9ade6acff805bf7f4c574bbd4742d46524db4507501c532",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0603",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 603,
+      "end_line": 609,
+      "title": "AR-3 opening-four result — 2026-08-08 22:44 EDT",
+      "body_sha256": "927084a4856eeb5d848620aa7c8c5cc5cbde2bde6dad370b702bd79df39747a9",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0610",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 610,
+      "end_line": 616,
+      "title": "AR-3 opening-five result — 2026-08-08 22:49 EDT",
+      "body_sha256": "393a2bad126db0670c817d4ca0578ffe0ae1ab426e0d834f965fbfd9f92318fe",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0617",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 617,
+      "end_line": 623,
+      "title": "AR-3 opening-six result — 2026-08-08 22:54 EDT",
+      "body_sha256": "4abd9b3fa1b3a5a6e55492122bb1167d0613a0c3bab10cd50eb15ac6eafd704d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0624",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 624,
+      "end_line": 630,
+      "title": "AR-3 opening-seven result — 2026-08-08 23:00 EDT",
+      "body_sha256": "20ec752f792e249b261aa6e23c67e907028a8807793c9cb47f1999ec01e705a2",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0631",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 631,
+      "end_line": 637,
+      "title": "AR-3 opening-eight result — 2026-08-08 23:02 EDT",
+      "body_sha256": "4b39a7c90456c8ba30df271f925c9a0e19b16150234e39f6b283db336dbf19d0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0638",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 638,
+      "end_line": 644,
+      "title": "AR-3 opening-nine result — 2026-08-08 23:04 EDT",
+      "body_sha256": "3c6d9fc52d211bdac5cf7367260e7a6df2a8ec0238a2026e25f2c80224f788a4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0645",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 645,
+      "end_line": 651,
+      "title": "AR-3 opening-ten result — 2026-08-08 23:05 EDT",
+      "body_sha256": "84c71ca4a79b82160c23aab158e1a26c9ec7d0c84a7ad85f605e45e923d26179",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0652",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 652,
+      "end_line": 658,
+      "title": "AR-3 opening-eleven result — 2026-08-08 23:07 EDT",
+      "body_sha256": "df87f62a4170f736483042a7384dd1837ec6dcf98849ca55db455905e572f364",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0659",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 659,
+      "end_line": 671,
+      "title": "AR-3 complete result — 2026-08-08 23:08 EDT",
+      "body_sha256": "3a39298c1e414aec621f06c431856259b39c0bfc56717cab673b659afaf9ca33",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0672",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 672,
+      "end_line": 684,
+      "title": "Product-certificate soundness core — 2026-08-08 22:49 EDT",
+      "body_sha256": "1e5474c30e2b3ab1b48fbf874789a19847340959c57f3efb241ae824b3ff8060",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0685",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 685,
+      "end_line": 696,
+      "title": "Product-certificate soundness integrated — 2026-08-08 22:54 EDT",
+      "body_sha256": "3584f17d616209ce04ff3e2ac72b0d20e301d9d57b2a4e4adfffe4d0d05952d4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0697",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 697,
+      "end_line": 710,
+      "title": "First nontrivial extracted product certificate — 2026-08-08 23:08 EDT",
+      "body_sha256": "81d7fd9f8c43e7bb47ef37359422cf8fa0460a27003a24661029bb854a0748a3",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0711",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 711,
+      "end_line": 735,
+      "title": "First Lean-verified product-basin certificate — 2026-08-08 23:13 EDT",
+      "body_sha256": "2d1af06a9aedfb5bc5d277d3cf5af969dbfad306fa11cc3474aec0b606aed438",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0736",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 736,
+      "end_line": 753,
+      "title": "Parametric relation refinement — 2026-08-08 23:07 EDT",
+      "body_sha256": "99d7640b4d36aa0fbf63e6a128d086480c1440589b2148182be54c5fa100b854",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0754",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 754,
+      "end_line": 776,
+      "title": "Uniform three-packet entry reduction formalized — 2026-08-08 23:34 EDT",
+      "body_sha256": "75e95bf15188f64db4bc4672961b42b3a4952a927a4421aed84ae9e57b07a4f6",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0777",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 777,
+      "end_line": 804,
+      "title": "Experiment TP-1: exhaustive safe first-turn endpoints — 2026-08-08 23:55 EDT",
+      "body_sha256": "ba023f36bdb048a30a42477c6b658f1ae3f1aa77588cc1c0debe9763256c4fbc",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0805",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 805,
+      "end_line": 825,
+      "title": "Root-generated selected-turn reduction — 2026-08-09 00:08 EDT",
+      "body_sha256": "276aa7ffa7f05e77b5c6d04c9d7cec08fe46fb9eaa47e776343aab886981b6e1",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0826",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 826,
+      "end_line": 849,
+      "title": "Finite selected-turn regressions",
+      "body_sha256": "c20085c033bb4d5b9e08fb8669015caf2f9c69544b1fbf2d2dbdaa06956c357f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0850",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 850,
+      "end_line": 885,
+      "title": "Dense immediate endpoints and balancing responses — 2026-08-09 00:37 EDT",
+      "body_sha256": "7404a02d3d83ebc3ce8da197dbae79ba89bd13515f665d9d92dc0f1bb8876c90",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0886",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 886,
+      "end_line": 919,
+      "title": "End of initial discriminating phase and route decision — 2026-08-09 01:02 EDT",
+      "body_sha256": "b761d40031efad802360cf77397401a97802f98045971c14b816af1d77e06ef0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0920",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 920,
+      "end_line": 935,
+      "title": "Selected portfolio",
+      "body_sha256": "85611b303eb6a9a154186e43004f896c93650074fb31492a36ca6cb4ed050b0b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0936",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 936,
+      "end_line": 946,
+      "title": "Verification snapshot",
+      "body_sha256": "ad329e5791b27dd4cda2cdaf0d2a7f7b4496587c8dc7d2fb81e74fc5f7c26ee7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0947",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 947,
+      "end_line": 979,
+      "title": "Oriented repair API and first-generation affine grammar — 2026-08-09 01:21 EDT",
+      "body_sha256": "77dcda7fa164853b00ac908e2640245da62d579e5eb77fe7695035e9b57106ea",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-0980",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 980,
+      "end_line": 1018,
+      "title": "Common-move semantic closure and aggregate-residual obstruction — 2026-08-09 01:42 EDT",
+      "body_sha256": "415f7b86e06cb9a5e5522c765a4a61024227cf84c72478a4a183e45cd1999023",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1019",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1019,
+      "end_line": 1061,
+      "title": "Aggregate history semantics and corrected second-generation gate — 2026-08-09 01:58 EDT",
+      "body_sha256": "d3e5214f5f7318abe46c27d5783a8fd10b87cd534506f7e14f46188afed10999",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1062",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1062,
+      "end_line": 1096,
+      "title": "Finite affine-controller route provisionally suspended — 2026-08-09 02:00 EDT",
+      "body_sha256": "b55ed72fe7e522c05894b3f4ebd8455cc1477fdefcd24852cbaf9b4e41b3307f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1097",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1097,
+      "end_line": 1107,
+      "title": "Reproducibility alert — 2026-08-09 02:02 EDT",
+      "body_sha256": "38d74b275a7d85fd0cbbcb3aa905e7bf902112e7dc6e9c1ba4c0b687207eaa11",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1108",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1108,
+      "end_line": 1126,
+      "title": "Reproducibility alert resolved — 2026-08-09 02:11 EDT",
+      "body_sha256": "5c413583e9ca906e0e1f63a43fb8b365a1b511d43df52385ac89de039da4ce5f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1127",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1127,
+      "end_line": 1137,
+      "title": "Live multi-agent capacity audit — 2026-08-09 02:04 EDT",
+      "body_sha256": "b37cc7330bd697e29b25f24f6fc4318aa1494178b1cb5b28861f8b2ca0ee3ebf",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1138",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1138,
+      "end_line": 1154,
+      "title": "Reachable interval bounds and parity — 2026-08-09 02:12 EDT",
+      "body_sha256": "ce02f8994b08bd5017159c7f4cb4bf7ae070d21292a5a0c45db5efe213a5223e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1155",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1155,
+      "end_line": 1176,
+      "title": "Approach-family registry — 2026-08-09 02:12 EDT",
+      "body_sha256": "94583dc560f790c9f407bf80f8835368a6db05152ade9ee23c38a8979760b1c2",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1177",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1177,
+      "end_line": 1197,
+      "title": "Arbitrary-set winning-opening uniqueness — 2026-08-09 02:19 EDT",
+      "body_sha256": "51f692b358a623cc4a662e8f4d2eb28cf7ce7f10df9fca27ddad842a628ca1e4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1198",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1198,
+      "end_line": 1227,
+      "title": "Second route gate: completed-turn compression — 2026-08-09 02:25 EDT",
+      "body_sha256": "6a64e4153bbdc07eb101baf72c2be68cc3acf3e5c18ba3c3158975b11e17360a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1228",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1228,
+      "end_line": 1242,
+      "title": "Completed-turn semantics — 2026-08-09 02:34 EDT",
+      "body_sha256": "286719a1362c1ca5a8bf2efeac1aa4c385924430f0dd40585c4a7c320bd222d8",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1243",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1243,
+      "end_line": 1269,
+      "title": "Lower pair-deletion reduction — 2026-08-09 02:44 EDT",
+      "body_sha256": "ac0bc28c738de88f556414b1a8a2578f3a96f3ffcb176638ac51ac29268cedad",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1270",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1270,
+      "end_line": 1281,
+      "title": "Approach-family registry update — 2026-08-09 02:44 EDT",
+      "body_sha256": "24b2d7e4521a6e96cd47f95ee049b409f68ed811ea6213ff9dfbc26cb7ae251c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1282",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1282,
+      "end_line": 1301,
+      "title": "First independent lower-ray and complete-set audit — 2026-08-09 02:48 EDT",
+      "body_sha256": "5f7c0e76600347cabda03a3b9993358ce90fcfd6349fc4e1b2abaf807f95c40e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1302",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1302,
+      "end_line": 1323,
+      "title": "Lower-ray canonical first turn — 2026-08-09 02:54 EDT",
+      "body_sha256": "f1c8236286f0e6307583934a75744848308957fd55ccf6e9e8a46eb80acf12a2",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1324",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1324,
+      "end_line": 1341,
+      "title": "Adversarial scope corrections — 2026-08-09 03:03 EDT",
+      "body_sha256": "42fb51eef1e2d7ae0f16f954d86b14723372f60729fe1279d3040cc61975ea68",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1342",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1342,
+      "end_line": 1363,
+      "title": "Complete-set and one-scalar-tail routes refuted — 2026-08-09 03:14 EDT",
+      "body_sha256": "6eb63b2ba6eee3a08e5c33a42f02e6fa8c80a7ce8a699ef5048f481b3263cc6e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1364",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1364,
+      "end_line": 1383,
+      "title": "Draw-opening theorem and canonical-tail transfer pilot — 2026-08-09 03:20 EDT",
+      "body_sha256": "eae0b9c07686dc45b2f7cb7a38632c0429ce2032cd0364473dd259ad07ecc7b7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1384",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1384,
+      "end_line": 1404,
+      "title": "Complete old-tail matrix and independent draw-opening audit — 2026-08-09 03:28 EDT",
+      "body_sha256": "ae0317f68883b49a6d77604d6bb390bb7d551a73663dee12f40427b7505eb8f2",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1405",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1405,
+      "end_line": 1430,
+      "title": "Four boundary-tail pairing — 2026-08-09 03:35 EDT",
+      "body_sha256": "ef280fd9fb9f1b048f4a4d42d3737687cee0a9349fa2ab81eeeb445e61532ce1",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1431",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1431,
+      "end_line": 1471,
+      "title": "Tail-transfer API and phase-compression stop — 2026-08-09 03:50 EDT",
+      "body_sha256": "ba2cc405c5a8022cd9a3319a0eb2ea9ca6419c0a95ae882e121a981a7baadb49",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1472",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1472,
+      "end_line": 1486,
+      "title": "Direct lower-ray structural probes — 2026-08-09 04:12 EDT",
+      "body_sha256": "d34d9f00007f07f20054ec5b59c3ba60ebedb9c7e0ee3bbbe519028d97966a11",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1487",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1487,
+      "end_line": 1514,
+      "title": "Constant-deficit consecutive-hole reduction — 2026-08-09 04:19 EDT",
+      "body_sha256": "e27d85680b1ed4978a2a8689ed6dc8f6411e900486fc4b93ea638f31fbedb8c8",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1515",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1515,
+      "end_line": 1539,
+      "title": "Successor API and first transfer pilots — 2026-08-09 04:31 EDT",
+      "body_sha256": "fd63be84f355fa009edfe8bde2234c60c990cff57d67ea0ab9cc6659750f2347",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1540",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1540,
+      "end_line": 1578,
+      "title": "Full old-root successor matrix and endpoint descent — 2026-08-09 04:45 EDT",
+      "body_sha256": "83be4db11ccee2334a7954ce9f61a1a54cebc27f309b93ab5f355f40e665c22c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1579",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1579,
+      "end_line": 1757,
+      "title": "Exact-deficit tied-residual reduction — 2026-08-09 05:07 EDT",
+      "body_sha256": "c819f36da99e3076d6a6a54f035e5687fc9404615bf7ffd9b46e7af9f47723b9",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1758",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1758,
+      "end_line": 1857,
+      "title": "Dense three-hole reduction and hierarchy gate — 2026-08-09 07:21 EDT",
+      "body_sha256": "c26e3e9d85267e760f8c04bc5daa3fe58adf63126bdd6519afdc87d527ca3ba4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1858",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1858,
+      "end_line": 1912,
+      "title": "Dense minimum route review — 2026-08-09 08:00 EDT",
+      "body_sha256": "fb16fd89d240699c98c89e203486b28498d92afa1fec5b834822d043b29e474f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1913",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1913,
+      "end_line": 1939,
+      "title": "Saturated exact-sum audit — 2026-08-09 08:29 EDT",
+      "body_sha256": "8d62034314c7ae340054709fcc2dcc0a43b6af107585a9f3e4f7b0e222e2ccd8",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1940",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1940,
+      "end_line": 1963,
+      "title": "Every opening draws at twelve — 2026-08-09 08:56 EDT",
+      "body_sha256": "63defc7a6c0fd6420f98744798ec4abef4ac9e6cb1d74a5512aa56c4343d6c24",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1964",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1964,
+      "end_line": 1987,
+      "title": "Maximum-counter potential boundary — 2026-08-09 08:59 EDT",
+      "body_sha256": "378bc2a7f528361948749a382c33ab8ca057935a96dbb9371717e82719760fa4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-1988",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 1988,
+      "end_line": 2012,
+      "title": "Dense-loss residual injection — 2026-08-09 09:40 EDT",
+      "body_sha256": "754ecf73f14241b7d71d2eee4fe2c5c96203b4279171ea17f6995b108b6dc089",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2013",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2013,
+      "end_line": 2029,
+      "title": "Consecutive quadruple-block candidate — 2026-08-09 09:40 EDT",
+      "body_sha256": "53a2a102b126b969cce0ea50fa9bf683d0ce0c4420e58c241837a1941b46587e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2030",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2030,
+      "end_line": 2072,
+      "title": "Adjacent-pair falsification and turn-level API — 2026-08-09 10:07 EDT",
+      "body_sha256": "02b174f8f7536dcb60e08957d04718f44557e955aae417dc624cbcc8a6215ef0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2073",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2073,
+      "end_line": 2095,
+      "title": "Order-free completed turns and the deficit-four block obstruction — 2026-08-09 10:24 EDT",
+      "body_sha256": "0a80e801a380e71897c91658f6d3464d4254ab69c6a7c97eb7d5d5c72584ccbf",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2096",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2096,
+      "end_line": 2123,
+      "title": "Quad-block stress test and phase stop — 2026-08-09 10:34 EDT",
+      "body_sha256": "1354e4598819d356be159058eea7efe4d4d2f868fe67a74af27bdaa13a1fb6a5",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2124",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2124,
+      "end_line": 2159,
+      "title": "Quad reply-cycle and internal-neutrality falsifications — 2026-08-09 10:50 EDT",
+      "body_sha256": "86b0f6ccf5f27192d048864ff684cd1e79426521cd0658a12f395f9d3da80c57",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2160",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2160,
+      "end_line": 2180,
+      "title": "Bounded six-quad counterexample search — 2026-08-09 10:56 EDT",
+      "body_sha256": "ba2ad1fda275a37bd9cc825f6ed58c8d4ba3cf16530acc4797b416ca7e13e03c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2181",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2181,
+      "end_line": 2205,
+      "title": "Completed-turn minimax target and exact-block obstruction — 2026-08-09 11:13 EDT",
+      "body_sha256": "af4ea077679bbdba3a0077d01664ec04d91d10050f374576ba124a4cf4c2cbe8",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2206",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2206,
+      "end_line": 2231,
+      "title": "Complete-set and joint-residue falsifications — 2026-08-09 11:31 EDT",
+      "body_sha256": "ab01b805a7475ebe6ae5389b19ab9146ffc543bd32bf33ba63207f146ef0f02b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2232",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2232,
+      "end_line": 2260,
+      "title": "Completed-turn minimax integration — 2026-08-09 11:48 EDT",
+      "body_sha256": "d7804efc9c321815176e5635cdf6586d9c90a3a2d7bc1833cf809665023b163c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2261",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2261,
+      "end_line": 2294,
+      "title": "Unbounded obligation memory audit — 2026-08-09 11:53 EDT",
+      "body_sha256": "f044431e7a2c5b44a4c5799cec18d6e1b33a58779b5455d2f3699687f7ec78e9",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2295",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2295,
+      "end_line": 2321,
+      "title": "Completed-turn reflection and complement-duality stop — 2026-08-09 12:23 EDT",
+      "body_sha256": "d8f72d6e333f8767ccb90d42a46d619003976a43b94eb657ea4f7974f61f0877",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2322",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2322,
+      "end_line": 2361,
+      "title": "Infinite reachable tied-top-five trap — 2026-08-09 12:23 EDT",
+      "body_sha256": "caf8990f14461d78212d016fae74028f75b04096b71d9770a110dc5abeac1187",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2362",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2362,
+      "end_line": 2377,
+      "title": "Bounded `N=15` all-opening extraction stop — 2026-08-09 12:49 EDT",
+      "body_sha256": "529ec8ee43097f17aafcee53c8d889a1bf7c589e6fd29ad0b37bc91af5048e09",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2378",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2378,
+      "end_line": 2402,
+      "title": "Rigid prefix-blocked dense endpoints — 2026-08-09 12:49 EDT",
+      "body_sha256": "dbdf51076803d00b4d35b2ff2273d2c870c077a7c927e1c8ae5e549da40cf1e1",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2403",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2403,
+      "end_line": 2433,
+      "title": "Prefix parity elimination and production integration — 2026-08-09 13:00 EDT",
+      "body_sha256": "f032df77a48ea49ebdc5840ba66626268a33acb75781951ac2c28b9e5e99cfb7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2434",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2434,
+      "end_line": 2459,
+      "title": "Held-out `8 → 12` product certificate — 2026-08-09 13:00 EDT",
+      "body_sha256": "80963ed0107d32bbdb0ac899069f63784509c1f6c0747f8c00c94f24c70cb2ff",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2460",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2460,
+      "end_line": 2482,
+      "title": "Fixed-low response obstruction for the surviving prefix family — 2026-08-09 13:13 EDT",
+      "body_sha256": "b0ae923338851c00e2022010e54fa66cc49fa76b888b6820b6ebc0585e702e00",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2483",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2483,
+      "end_line": 2517,
+      "title": "Six-hole upper-gap counting reduction and stop — 2026-08-09 13:23 EDT",
+      "body_sha256": "bfa60685b609a40d6217ad747c75e0d11fd206d9541940dd785293ce45dfac78",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2518",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2518,
+      "end_line": 2541,
+      "title": "Symmetric every-opening four-lift transfer — 2026-08-09 13:28 EDT",
+      "body_sha256": "d599631fdbd7cf3dfc48419decd3b7cfdd6ef59872a0968e9461a59f62eac89c",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2542",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2542,
+      "end_line": 2569,
+      "title": "End-to-end dense upper-gap pipeline — 2026-08-09 13:59 EDT",
+      "body_sha256": "bb416dcfe14ff3ac6e687a0a4f069cee2f327d909867386b2a3ae376037a4162",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2570",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2570,
+      "end_line": 2595,
+      "title": "Proof-backed finite dense-three-hole checker — 2026-08-09 13:59 EDT",
+      "body_sha256": "85c094ca6d0d4d0fa02249f3002148663f53bca80d9e6dc876b18f93b83d612d",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2596",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2596,
+      "end_line": 2630,
+      "title": "Canonical small-gap children and exact scalar descent — 2026-08-09 14:18 EDT",
+      "body_sha256": "fa8d59c33c50e79abc7515c07c67d526c7e5fb455ead3d5856e5ab21931b6782",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2631",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2631,
+      "end_line": 2665,
+      "title": "Shared dense-root certificate and `N=11` invariant — 2026-08-09 14:18 EDT",
+      "body_sha256": "d668082dec88e5a502211538f58ecdceb3ba106db00eca4d2b767394417908cb",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2666",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2666,
+      "end_line": 2717,
+      "title": "Dense transfer opening and exact-block dominance — 2026-08-09 14:34 EDT",
+      "body_sha256": "f810d1f03df4ff5810603160d8394547ce2937aeaa9982afed4949f5b2519104",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2718",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2718,
+      "end_line": 2787,
+      "title": "Five-counter add-top window and quantified `H_12` invariant — 2026-08-09 15:57 EDT",
+      "body_sha256": "643868d8ba3eafba4b0870c68cdf0ae67fa945f2da27358e539e9c3bdefa556a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2788",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2788,
+      "end_line": 2847,
+      "title": "Exact completed-turn compression of the small-gap target — 2026-08-09 16:38 EDT",
+      "body_sha256": "de12ef375c5d7519bb856c07f79205f2883aab45c2971dcde1d335713306ee02",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2848",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2848,
+      "end_line": 2887,
+      "title": "Shifted-tail reduction of the exact endpoint strata — 2026-08-09 17:25 EDT",
+      "body_sha256": "818a4cf0db32f6a0ff24c06c9af48f6eea4c1f0a9135f5c6f321c77699fe3774",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2888",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2888,
+      "end_line": 2930,
+      "title": "Duplicate-tolerant certificate soundness and finite endpoint probe — 2026-08-09 17:27 EDT",
+      "body_sha256": "50003771aaa09c6e79e2c51f3b97081dde1bf70a35ea42f6fd7e603738919b89",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-2931",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 2931,
+      "end_line": 3004,
+      "title": "Linear indexed and packed certificates; dense endpoint thirteen — 2026-08-09 18:05 EDT",
+      "body_sha256": "b632414f18dca48818844da79bcbd45007621d878deef0864e155168234c9043",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3005",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3005,
+      "end_line": 3025,
+      "title": "Packed dense endpoint fourteen — 2026-08-09 18:11 EDT",
+      "body_sha256": "78a7f8098f2f122110096efe25cd6dacffe6b517eb6fc247cb677680c3a8b728",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3026",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3026,
+      "end_line": 3047,
+      "title": "Packed dense endpoint and interval draw at fifteen — 2026-08-09 18:17 EDT",
+      "body_sha256": "fd23aca34766a2120e081a8eeb5d36d3037140fde2161f5fa0213cb03439f7d7",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3048",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3048,
+      "end_line": 3082,
+      "title": "Packed dense endpoints sixteen through eighteen — 2026-08-09 18:35 EDT",
+      "body_sha256": "b4b881834bbe1c2386f450eb8a9b91d42ff3328df905e30fa1d59a62da8e6a6b",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3083",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3083,
+      "end_line": 3102,
+      "title": "Packed dense endpoint and interval draw at nineteen — 2026-08-09 18:38 EDT",
+      "body_sha256": "27454066ee453f7d4a1428d7616dae5bc824d0d893ba5e852a664f64ea6203ec",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3103",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3103,
+      "end_line": 3139,
+      "title": "Packed dense endpoint and interval draw at twenty — 2026-08-09 18:43 EDT",
+      "body_sha256": "b5f5b98e30e1dc32e734ccb79bbded616f3adebb378becb7e99abd359c32d719",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3140",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3140,
+      "end_line": 3158,
+      "title": "Packed dense endpoint twenty-one — 2026-08-09 18:51 EDT",
+      "body_sha256": "5a2519e7ad4cd83712d673139bc5d5107ae9cca8e355216412b31a13eca0acb0",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3159",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3159,
+      "end_line": 3178,
+      "title": "Packed dense endpoint twenty-two — 2026-08-09 18:57 EDT",
+      "body_sha256": "5493348a02251579756a4d1488b3df58122217da572f0cbb66bc284d3a4e3193",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3179",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3179,
+      "end_line": 3216,
+      "title": "Exact formal dense invariant and interval draw at twenty-three — 2026-08-09 19:09 EDT",
+      "body_sha256": "98cb2b5ed1433683e55d5a667ebef159a74a024bb200a067db3aa9b670b09148",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3217",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3217,
+      "end_line": 3236,
+      "title": "Exact formal dense invariant and interval draw at twenty-four — 2026-08-09 19:35 EDT",
+      "body_sha256": "a889c0c1d595ff8e1f0c9feeb87f09247a3ab502dacd7af66f078d7df7e28c4f",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3237",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3237,
+      "end_line": 3274,
+      "title": "Exact formal dense invariant at twenty-five — 2026-08-09 19:35 EDT",
+      "body_sha256": "9fd653723198ac5417df587b95496031ec49a67ba4792614406810893af17732",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3275",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3275,
+      "end_line": 3305,
+      "title": "All even-triangular intervals through twenty-four — 2026-08-09 19:39 EDT",
+      "body_sha256": "277e21669b88d80d7fed2dc9cfc259a46a7921e5e65957f326c84acf0f3888f2",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3306",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3306,
+      "end_line": 3324,
+      "title": "One-opening packed root-draw checker — 2026-08-09 19:53 EDT",
+      "body_sha256": "a1ade688bd088b889c2d2bb5f08f1d641361574485807c2c5a69de1637e5ccc4",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3325",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3325,
+      "end_line": 3352,
+      "title": "Exact formal root draw at twenty-seven — 2026-08-09 20:01 EDT",
+      "body_sha256": "8fb609e585a48dde25732e24414aff221a5a2494ec4657f35cf886faaf741c2e",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3353",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3353,
+      "end_line": 3376,
+      "title": "Exact formal root draw at twenty-eight — 2026-08-09 20:04 EDT",
+      "body_sha256": "9a7d1664e6544f5315507aacdfd7eb579b8f17a5ccccddbfe0d8ba8952fc2fda",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3377",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3377,
+      "end_line": 3398,
+      "title": "All even-triangular intervals through twenty-eight — 2026-08-09 20:06 EDT",
+      "body_sha256": "b86d643d7ece23841797930c6f7bd21d482e7f326e305a8f8e65e1580df24cee",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3399",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3399,
+      "end_line": 3420,
+      "title": "Held-out shifted-tail package through twenty-eight — 2026-08-09 20:45 EDT",
+      "body_sha256": "45bb1f6a60d71e25a0c6f20e73cadecc5ca6e3857647bcc51acfc63b0eaaef88",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3421",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3421,
+      "end_line": 3443,
+      "title": "Sharp seven-hole catch-rank reduction — 2026-08-09 21:12 EDT",
+      "body_sha256": "ae8be88187c0cb1f5b342c976ce390fdf13e2a6ade4e7b52d3d9b8bb0f63b4d1",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-923fc1f6-3444",
+      "source_id": "legacy-source-923fc1f667de-59ed99",
+      "path": "archive/campaigns/reports/catchup_campaign_20260808_2206_et--923fc1f6.md",
+      "line": 3444,
+      "end_line": 3459,
+      "title": "Final process-stop and readback — 2026-08-09 22:47 EDT",
+      "body_sha256": "a2be9a2cd2d060995370fb6bba7019e27409d7b81ca520402949856fa5c86abf",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-b838c055-0011",
+      "source_id": "legacy-source-b838c05525b7-cabcba",
+      "path": "archive/campaigns/reports/catchup_campaign_20260812_0038_et--b838c055.md",
+      "line": 11,
+      "end_line": 17,
+      "title": "Objective",
+      "body_sha256": "4acbf684751eef4420985ae05fe380fc989ac6581f7a5cd73268f6fbfec7638a",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-b838c055-0018",
+      "source_id": "legacy-source-b838c05525b7-cabcba",
+      "path": "archive/campaigns/reports/catchup_campaign_20260812_0038_et--b838c055.md",
+      "line": 18,
+      "end_line": 30,
+      "title": "Baseline",
+      "body_sha256": "a7b08454eec2a4a044421e374242309c3adf80bf27bea52ee0c44ad2a9493323",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-b838c055-0031",
+      "source_id": "legacy-source-b838c05525b7-cabcba",
+      "path": "archive/campaigns/reports/catchup_campaign_20260812_0038_et--b838c055.md",
+      "line": 31,
+      "end_line": 51,
+      "title": "Approach-family registry",
+      "body_sha256": "519e94cc05a35fa5ea09b26469bedb22159a0ce13a1c2cba17d1b956b6135321",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-b838c055-0052",
+      "source_id": "legacy-source-b838c05525b7-cabcba",
+      "path": "archive/campaigns/reports/catchup_campaign_20260812_0038_et--b838c055.md",
+      "line": 52,
+      "end_line": 68,
+      "title": "Catch-Up adversarial checklist",
+      "body_sha256": "d7134ffcdc1f5b7aac7374ee4a738bc20125e666ffe13c6db9ea73fcc170c919",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-b838c055-0071",
+      "source_id": "legacy-source-b838c05525b7-cabcba",
+      "path": "archive/campaigns/reports/catchup_campaign_20260812_0038_et--b838c055.md",
+      "line": 71,
+      "end_line": 84,
+      "title": "2026-08-12 00:38–01:00 ET",
+      "body_sha256": "0c4a5fe7db70fa2d4333a61506772bee2809e9b1401c9d794ed8ef422f849347",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    },
+    {
+      "id": "CU-N-b838c055-0085",
+      "source_id": "legacy-source-b838c05525b7-cabcba",
+      "path": "archive/campaigns/reports/catchup_campaign_20260812_0038_et--b838c055.md",
+      "line": 85,
+      "end_line": 144,
+      "title": "2026-08-12 01:00 ET checkpoint",
+      "body_sha256": "f982e20ad67652c86c7e26947c72b12202e1f13d3988491aed91119b08e9c023",
+      "evidence": "Historical notebook entry. Its text may be an intention, failed experiment, conjecture, correction, or reported check; use the finding ledger for current assurance."
+    }
+  ]
+}

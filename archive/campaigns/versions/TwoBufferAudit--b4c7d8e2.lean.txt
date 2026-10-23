@@ -1,0 +1,65 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.TwoBufferMandatory
+import catch_up.CompletedMarginBounds
+import catch_up.TwoPickDebtRepair
+
+/-!
+# Axiom audit for the full mandatory two-buffer controller
+
+The check covers every public theorem added for the protocol, scalar bounds,
+mandatory policy, and parametric two-pick repair. Only standard axioms are allowed.
+Any transitive use of a conjecture placeholder or a new assumption fails the build.
+-/
+
+open Lean Elab Command in
+run_cmd do
+  let declarations := #[
+    ``CatchUp.TwoBuffer.singleton_tie_safe,
+    ``CatchUp.TwoBuffer.pair_draw_reply,
+    ``CatchUp.TwoBuffer.bridge_forced_parametric,
+    ``CatchUp.TwoBuffer.two_pick_trace,
+    ``CatchUp.TwoBuffer.copied_pair_repair,
+    ``CatchUp.TwoBuffer.pair_reply_forced,
+    ``CatchUp.TwoBuffer.preparation_first,
+    ``CatchUp.TwoBuffer.preparation_second,
+    ``CatchUp.TwoBuffer.preparation_turn,
+    ``CatchUp.TwoBuffer.repaired_pair_all_choices,
+    ``CatchUp.TwoBuffer.mandatory_eleven_preparation,
+    ``CatchUp.TwoBuffer.shadow_preparation_first,
+    ``CatchUp.TwoBuffer.shadow_preparation_second,
+    ``CatchUp.TwoBuffer.mandatory_shadow_preparation,
+    ``CatchUp.TwoBuffer.shadow_preparation_trace,
+    ``CatchUp.TwoBuffer.ensures_terminal,
+    ``CatchUp.TwoBuffer.ensures_choice,
+    ``CatchUp.TwoBuffer.ensures_all,
+    ``CatchUp.TwoBuffer.completed_margin_neg,
+    ``CatchUp.TwoBuffer.positive_bound_not_avoid,
+    ``CatchUp.TwoBuffer.protocol_necessary_bound,
+    ``CatchUp.TwoBuffer.force_check_sound,
+    ``CatchUp.TwoBuffer.mandatory_scalar_bounds,
+    ``CatchUp.TwoBuffer.mandatory_policy_checked,
+    ``CatchUp.TwoBuffer.mandatory_protocol,
+    ``CatchUp.TwoBuffer.shadow_good_iff,
+    ``CatchUp.TwoBuffer.run_check_sound]
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for declaration in declarations do
+    let actual ← Lean.collectAxioms declaration
+    for axiomName in actual do
+      unless allowed.contains axiomName do
+        throwError "Unexpected axiom in {declaration}: {axiomName}"
+    logInfo m!"Verified axioms for {declaration}: {actual}"

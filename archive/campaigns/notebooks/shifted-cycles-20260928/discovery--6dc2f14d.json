@@ -1,0 +1,332 @@
+{
+  "semantics": "shifted-reply-v1; legal nonterminal C(a); positive move margin",
+  "intervals": [
+    {
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sum": 25,
+      "effective_total": 26,
+      "root_margin": 0,
+      "edges": [
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          3
+        ]
+      ],
+      "cycles": [],
+      "filled_span_cycles": [],
+      "vacuous": false
+    },
+    {
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sum": 33,
+      "effective_total": 34,
+      "root_margin": 0,
+      "edges": [
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          6
+        ]
+      ],
+      "cycles": [],
+      "filled_span_cycles": [],
+      "vacuous": false
+    },
+    {
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "sum": 63,
+      "effective_total": 64,
+      "root_margin": 0,
+      "edges": [
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          11,
+          8
+        ]
+      ],
+      "cycles": [],
+      "filled_span_cycles": [],
+      "vacuous": false
+    },
+    {
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sum": 75,
+      "effective_total": 76,
+      "root_margin": 0,
+      "edges": [],
+      "cycles": [],
+      "filled_span_cycles": [],
+      "vacuous": true
+    },
+    {
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "sum": 117,
+      "effective_total": 118,
+      "root_margin": 0,
+      "edges": [],
+      "cycles": [],
+      "filled_span_cycles": [],
+      "vacuous": true
+    },
+    {
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "sum": 133,
+      "effective_total": 134,
+      "root_margin": 0,
+      "edges": [],
+      "cycles": [],
+      "filled_span_cycles": [],
+      "vacuous": true
+    }
+  ],
+  "sparse": {
+    "support": [
+      3,
+      7,
+      9,
+      14,
+      17,
+      20,
+      29,
+      34
+    ],
+    "sum": 133,
+    "effective_total": 134,
+    "root_margin": -2,
+    "edges": [
+      [
+        3,
+        14
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        14,
+        7
+      ],
+      [
+        14,
+        9
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        17,
+        7
+      ],
+      [
+        17,
+        9
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        20,
+        7
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        14
+      ],
+      [
+        29,
+        3
+      ],
+      [
+        29,
+        7
+      ],
+      [
+        29,
+        9
+      ],
+      [
+        29,
+        14
+      ],
+      [
+        29,
+        17
+      ],
+      [
+        29,
+        20
+      ],
+      [
+        34,
+        3
+      ],
+      [
+        34,
+        7
+      ],
+      [
+        34,
+        9
+      ],
+      [
+        34,
+        14
+      ],
+      [
+        34,
+        17
+      ],
+      [
+        34,
+        20
+      ]
+    ],
+    "cycles": [
+      [
+        3,
+        14,
+        7
+      ],
+      [
+        3,
+        14,
+        9
+      ],
+      [
+        3,
+        14,
+        9,
+        7
+      ]
+    ],
+    "filled_span_cycles": [],
+    "vacuous": false
+  },
+  "span_search": {
+    "search_tested": 6585,
+    "found": false
+  }
+}

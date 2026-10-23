@@ -1,0 +1,139 @@
+"""Independent replay of full and structurally compressed Catch-Up witnesses.
+
+No minimax, solver calls, outcome tables, or minimization. The compression rule is
+proved in CertificateComplexityCompression.lean. All other leaves must be terminal.
+"""
+
+import copy
+import json
+from pathlib import Path
+
+
+def counters(n, state):
+    return [x for x in range(1, n + 1) if state[0] & (1 << (x - 1))]
+
+
+def child(state, x):
+    mask, deficit, mover = state
+    assert mask & (1 << (x - 1)), "illegal pick"
+    return (mask ^ (1 << (x - 1)), abs(deficit - x), mover if x < deficit else 3 - mover)
+
+
+def check(dag, allow_macro=False):
+    n, owner = dag["N"], dag["protected_player"]
+    root = tuple(dag["root"])
+    assert root == ((1 << n) - 1, 0, 1), "not the full initial root"
+    assert owner in (1, 2)
+    nodes = {tuple(node["state"]): node["branch"] for node in dag["nodes"]}
+    assert len(nodes) == len(dag["nodes"]), "duplicate state"
+    assert root in nodes
+    edges, macros = {}, 0
+    for state, branch in nodes.items():
+        mask, deficit, mover = state
+        assert isinstance(mask, int) and 0 <= mask < (1 << n)
+        assert isinstance(deficit, int) and deficit >= 0 and mover in (1, 2)
+        available = counters(n, state)
+        terminal = not available or sum(available) < deficit
+        safe_terminal = terminal and (deficit == 0 or mover != owner)
+        macro = (mover == owner and deficit in available and max(available) == deficit)
+        kind = branch["kind"]
+        if kind == "terminal":
+            assert safe_terminal or (allow_macro and macro), "unsafe or nonterminal leaf"
+            assert set(branch) == {"kind"}
+            edges[state] = []
+            macros += int(not terminal)
+            continue
+        assert not terminal, "expanded terminal node"
+        if kind == "owner":
+            assert mover == owner and set(branch) == {"kind", "pick"}
+            picks = [branch["pick"]]
+        else:
+            assert kind == "opponent" and mover != owner
+            assert set(branch) == {"kind", "picks"}
+            picks = branch["picks"]
+            assert picks == available, "opponent moves omitted or changed"
+        assert all(x in available for x in picks)
+        next_states = [child(state, x) for x in picks]
+        for next_state in next_states:
+            assert next_state in nodes, "uncovered child"
+            assert bin(next_state[0]).count("1") == bin(mask).count("1") - 1
+        edges[state] = next_states
+    seen, stack = set(), [root]
+    while stack:
+        state = stack.pop()
+        if state not in seen:
+            seen.add(state)
+            stack.extend(edges[state])
+    assert seen == set(nodes), "unreachable listed nodes in measured witness"
+    return len(nodes), sum(map(len, edges.values())), macros
+
+
+def must_reject(dag, allow_macro=False):
+    try:
+        check(dag, allow_macro)
+    except AssertionError:
+        return
+    raise AssertionError("negative control was unexpectedly accepted")
+
+
+def json_bytes(dag):
+    return len(json.dumps(dag, ensure_ascii=False, separators=(",", ":")).encode("utf-8"))
+
+
+def verify_rows(rows):
+    assert [(r["N"], r["protected_player"]) for r in rows] == [
+        (n, p) for n in (3, 4, 7) for p in (1, 2)
+    ]
+    for row in rows:
+        full, compressed = row["full"], row["compressed"]
+        assert full["N"] == compressed["N"] == row["N"]
+        assert full["protected_player"] == compressed["protected_player"] == row["protected_player"]
+        f_nodes, f_edges, f_macros = check(full)
+        c_nodes, c_edges, c_macros = check(compressed, allow_macro=True)
+        assert f_macros == 0
+        assert (f_nodes, f_edges) == (row["full_nodes"], row["full_edges"])
+        assert (c_nodes, c_edges, c_macros) == (
+            row["compressed_nodes"], row["compressed_edges"], row["nonterminal_macro_leaves"]
+        )
+        assert json_bytes(full) == row["full_json_bytes"]
+        assert json_bytes(compressed) == row["compressed_json_bytes"]
+        assert row["classification"] == "witness upper bounds; not minima"
+        full_policy = {tuple(node["state"]): node["branch"] for node in full["nodes"]}
+        for node in compressed["nodes"]:
+            state, branch = tuple(node["state"]), node["branch"]
+            assert state in full_policy, "compression introduced a new state"
+            if branch["kind"] != "terminal":
+                assert branch == full_policy[state], "compression changed the underlying policy"
+        if c_macros:
+            must_reject(compressed)  # A richer-language witness is not a full DAG.
+        bad_leaf = copy.deepcopy(full)
+        root_node = next(node for node in bad_leaf["nodes"] if node["state"] == bad_leaf["root"])
+        root_node["branch"] = {"kind": "terminal"}
+        must_reject(bad_leaf)
+        bad_coverage = copy.deepcopy(full)
+        opponent = next(node for node in bad_coverage["nodes"] if node["branch"]["kind"] == "opponent")
+        opponent["branch"]["picks"].pop()
+        must_reject(bad_coverage)
+        bad_root = copy.deepcopy(full)
+        bad_root["root"][2] = 2
+        must_reject(bad_root)
+    # Equality must switch; strictly below must continue, including for p2.
+    assert child((3, 2, 1), 2) == (1, 0, 2)
+    assert child((3, 2, 2), 1) == (2, 1, 2)
+
+
+def main():
+    path = Path(__file__).with_name("measurements.jsonl")
+    rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    verify_rows(rows)
+    for row in rows:
+        print(f"N={row['N']} p{row['protected_player']}: "
+              f"full={row['full_nodes']} nodes/{row['full_edges']} edges/"
+              f"{row['full_json_bytes']} bytes; compressed={row['compressed_nodes']} nodes/"
+              f"{row['compressed_edges']} edges/{row['compressed_json_bytes']} bytes; "
+              f"macros={row['nonterminal_macro_leaves']}; UPPER BOUNDS ONLY")
+    print("CERTIFICATE COMPLEXITY REPLAY PASSED; semantic negative controls rejected")
+
+
+if __name__ == "__main__":
+    main()

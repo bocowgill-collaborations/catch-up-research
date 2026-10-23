@@ -1,0 +1,526 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PartialCertificateTargets
+
+/-!
+# A formally checked Catch-Up draw certificate for twelve counters
+
+This module contains deterministic one-sided partial-strategy DAGs for the interval game on
+`{1, ..., 12}`. The player-1 DAG covers opening `1`; the player-2 DAG covers every legal opening.
+Target leaves use the exact proof-backed six-counter safety classifier. The independent checker and
+its soundness theorem turn the literal data into a proof of the complete game's draw value.
+-/
+
+namespace CatchUpSearch.N12Certificate
+
+open CatchUp
+open CertificateChecker
+open PartialCertificateTargets
+
+def playerOneDAG : StrategyDAG :=
+  ⟨12, .p1, ⟨4094, 1, .p2⟩,
+    [⟨⟨1520, 12, .p1⟩, .terminal⟩,
+      ⟨⟨1776, 11, .p1⟩, .terminal⟩,
+      ⟨⟨1904, 10, .p1⟩, .terminal⟩,
+      ⟨⟨1968, 9, .p1⟩, .terminal⟩,
+      ⟨⟨1992, 9, .p1⟩, .terminal⟩,
+      ⟨⟨1992, 11, .p1⟩, .terminal⟩,
+      ⟨⟨2000, 8, .p1⟩, .terminal⟩,
+      ⟨⟨2000, 10, .p1⟩, .terminal⟩,
+      ⟨⟨2008, 12, .p1⟩, .owner 4⟩,
+      ⟨⟨2016, 1, .p1⟩, .terminal⟩,
+      ⟨⟨2016, 3, .p1⟩, .terminal⟩,
+      ⟨⟨2016, 3, .p2⟩, .terminal⟩,
+      ⟨⟨2016, 5, .p1⟩, .terminal⟩,
+      ⟨⟨2016, 7, .p1⟩, .terminal⟩,
+      ⟨⟨2016, 9, .p1⟩, .terminal⟩,
+      ⟨⟨2024, 11, .p1⟩, .owner 4⟩,
+      ⟨⟨2032, 2, .p1⟩, .owner 5⟩,
+      ⟨⟨2032, 6, .p1⟩, .owner 5⟩,
+      ⟨⟨2032, 8, .p1⟩, .owner 5⟩,
+      ⟨⟨2032, 10, .p1⟩, .owner 5⟩,
+      ⟨⟨2040, 6, .p1⟩, .owner 4⟩,
+      ⟨⟨2040, 10, .p1⟩, .owner 4⟩,
+      ⟨⟨2040, 12, .p1⟩, .owner 4⟩,
+      ⟨⟨2044, 9, .p1⟩, .owner 3⟩,
+      ⟨⟨2046, 11, .p1⟩, .owner 2⟩,
+      ⟨⟨2544, 11, .p1⟩, .terminal⟩,
+      ⟨⟨2800, 10, .p1⟩, .terminal⟩,
+      ⟨⟨2928, 9, .p1⟩, .terminal⟩,
+      ⟨⟨2992, 8, .p1⟩, .terminal⟩,
+      ⟨⟨3016, 8, .p1⟩, .terminal⟩,
+      ⟨⟨3016, 10, .p1⟩, .terminal⟩,
+      ⟨⟨3024, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3024, 9, .p1⟩, .terminal⟩,
+      ⟨⟨3032, 11, .p1⟩, .owner 4⟩,
+      ⟨⟨3040, 0, .p2⟩, .terminal⟩,
+      ⟨⟨3040, 2, .p1⟩, .terminal⟩,
+      ⟨⟨3040, 4, .p1⟩, .terminal⟩,
+      ⟨⟨3040, 4, .p2⟩, .terminal⟩,
+      ⟨⟨3040, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3040, 8, .p1⟩, .terminal⟩,
+      ⟨⟨3048, 10, .p1⟩, .owner 4⟩,
+      ⟨⟨3056, 1, .p1⟩, .owner 5⟩,
+      ⟨⟨3056, 5, .p1⟩, .owner 5⟩,
+      ⟨⟨3056, 7, .p1⟩, .owner 5⟩,
+      ⟨⟨3056, 9, .p1⟩, .owner 5⟩,
+      ⟨⟨3064, 5, .p1⟩, .owner 4⟩,
+      ⟨⟨3064, 9, .p1⟩, .owner 4⟩,
+      ⟨⟨3064, 11, .p1⟩, .owner 4⟩,
+      ⟨⟨3068, 8, .p1⟩, .owner 3⟩,
+      ⟨⟨3070, 10, .p1⟩, .owner 2⟩,
+      ⟨⟨3312, 9, .p1⟩, .terminal⟩,
+      ⟨⟨3440, 8, .p1⟩, .terminal⟩,
+      ⟨⟨3504, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3528, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3528, 9, .p1⟩, .terminal⟩,
+      ⟨⟨3536, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3536, 8, .p1⟩, .terminal⟩,
+      ⟨⟨3544, 10, .p1⟩, .owner 4⟩,
+      ⟨⟨3552, 1, .p1⟩, .terminal⟩,
+      ⟨⟨3552, 1, .p2⟩, .terminal⟩,
+      ⟨⟨3552, 3, .p1⟩, .terminal⟩,
+      ⟨⟨3552, 5, .p1⟩, .terminal⟩,
+      ⟨⟨3552, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3560, 9, .p1⟩, .owner 4⟩,
+      ⟨⟨3568, 0, .p2⟩, .opponent [5, 6, 7, 8, 9, 11, 12]⟩,
+      ⟨⟨3568, 4, .p1⟩, .owner 5⟩,
+      ⟨⟨3568, 6, .p1⟩, .owner 5⟩,
+      ⟨⟨3568, 8, .p1⟩, .owner 5⟩,
+      ⟨⟨3576, 4, .p1⟩, .owner 4⟩,
+      ⟨⟨3576, 8, .p1⟩, .owner 4⟩,
+      ⟨⟨3576, 10, .p1⟩, .owner 4⟩,
+      ⟨⟨3580, 7, .p1⟩, .owner 3⟩,
+      ⟨⟨3582, 9, .p1⟩, .owner 2⟩,
+      ⟨⟨3696, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3760, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3784, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3784, 8, .p1⟩, .terminal⟩,
+      ⟨⟨3792, 5, .p1⟩, .terminal⟩,
+      ⟨⟨3792, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3800, 9, .p1⟩, .owner 4⟩,
+      ⟨⟨3808, 0, .p2⟩, .terminal⟩,
+      ⟨⟨3808, 2, .p1⟩, .terminal⟩,
+      ⟨⟨3808, 2, .p2⟩, .terminal⟩,
+      ⟨⟨3808, 4, .p1⟩, .terminal⟩,
+      ⟨⟨3808, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3816, 8, .p1⟩, .owner 4⟩,
+      ⟨⟨3824, 1, .p2⟩, .opponent [5, 6, 7, 8, 10, 11, 12]⟩,
+      ⟨⟨3824, 3, .p1⟩, .owner 5⟩,
+      ⟨⟨3824, 5, .p1⟩, .owner 5⟩,
+      ⟨⟨3824, 7, .p1⟩, .owner 5⟩,
+      ⟨⟨3832, 3, .p1⟩, .owner 4⟩,
+      ⟨⟨3832, 7, .p1⟩, .owner 4⟩,
+      ⟨⟨3832, 9, .p1⟩, .owner 4⟩,
+      ⟨⟨3836, 6, .p1⟩, .owner 3⟩,
+      ⟨⟨3838, 8, .p1⟩, .owner 2⟩,
+      ⟨⟨3888, 5, .p1⟩, .terminal⟩,
+      ⟨⟨3912, 5, .p1⟩, .terminal⟩,
+      ⟨⟨3912, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3920, 4, .p1⟩, .terminal⟩,
+      ⟨⟨3920, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3928, 8, .p1⟩, .owner 4⟩,
+      ⟨⟨3936, 1, .p1⟩, .terminal⟩,
+      ⟨⟨3936, 1, .p2⟩, .terminal⟩,
+      ⟨⟨3936, 3, .p1⟩, .terminal⟩,
+      ⟨⟨3936, 3, .p2⟩, .terminal⟩,
+      ⟨⟨3936, 5, .p1⟩, .terminal⟩,
+      ⟨⟨3944, 7, .p1⟩, .owner 4⟩,
+      ⟨⟨3952, 2, .p1⟩, .owner 5⟩,
+      ⟨⟨3952, 2, .p2⟩, .opponent [5, 6, 7, 9, 10, 11, 12]⟩,
+      ⟨⟨3952, 4, .p1⟩, .owner 5⟩,
+      ⟨⟨3952, 6, .p1⟩, .owner 5⟩,
+      ⟨⟨3960, 2, .p1⟩, .owner 4⟩,
+      ⟨⟨3960, 6, .p1⟩, .owner 4⟩,
+      ⟨⟨3960, 8, .p1⟩, .owner 4⟩,
+      ⟨⟨3964, 5, .p1⟩, .owner 3⟩,
+      ⟨⟨3966, 7, .p1⟩, .owner 2⟩,
+      ⟨⟨3976, 4, .p1⟩, .terminal⟩,
+      ⟨⟨3976, 6, .p1⟩, .terminal⟩,
+      ⟨⟨3984, 3, .p1⟩, .terminal⟩,
+      ⟨⟨3984, 5, .p1⟩, .terminal⟩,
+      ⟨⟨3992, 7, .p1⟩, .owner 4⟩,
+      ⟨⟨4000, 0, .p2⟩, .terminal⟩,
+      ⟨⟨4000, 2, .p1⟩, .terminal⟩,
+      ⟨⟨4000, 2, .p2⟩, .terminal⟩,
+      ⟨⟨4000, 4, .p1⟩, .terminal⟩,
+      ⟨⟨4000, 4, .p2⟩, .terminal⟩,
+      ⟨⟨4008, 6, .p1⟩, .owner 4⟩,
+      ⟨⟨4016, 1, .p1⟩, .owner 5⟩,
+      ⟨⟨4016, 3, .p1⟩, .owner 5⟩,
+      ⟨⟨4016, 3, .p2⟩, .opponent [5, 6, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4016, 5, .p1⟩, .owner 5⟩,
+      ⟨⟨4024, 1, .p1⟩, .owner 4⟩,
+      ⟨⟨4024, 5, .p1⟩, .owner 4⟩,
+      ⟨⟨4024, 7, .p1⟩, .owner 4⟩,
+      ⟨⟨4028, 4, .p1⟩, .owner 3⟩,
+      ⟨⟨4030, 6, .p1⟩, .owner 2⟩,
+      ⟨⟨4032, 1, .p1⟩, .terminal⟩,
+      ⟨⟨4032, 1, .p2⟩, .terminal⟩,
+      ⟨⟨4032, 3, .p1⟩, .terminal⟩,
+      ⟨⟨4032, 3, .p2⟩, .terminal⟩,
+      ⟨⟨4032, 5, .p2⟩, .terminal⟩,
+      ⟨⟨4040, 1, .p2⟩, .opponent [4, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4040, 3, .p2⟩, .opponent [4, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4040, 5, .p1⟩, .owner 4⟩,
+      ⟨⟨4048, 2, .p1⟩, .owner 5⟩,
+      ⟨⟨4048, 2, .p2⟩, .opponent [5, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4048, 4, .p1⟩, .owner 5⟩,
+      ⟨⟨4056, 0, .p2⟩, .opponent [4, 5, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4056, 4, .p1⟩, .owner 5⟩,
+      ⟨⟨4056, 6, .p1⟩, .owner 4⟩,
+      ⟨⟨4060, 3, .p1⟩, .owner 3⟩,
+      ⟨⟨4062, 5, .p1⟩, .owner 2⟩,
+      ⟨⟨4064, 1, .p1⟩, .owner 6⟩,
+      ⟨⟨4064, 3, .p1⟩, .owner 6⟩,
+      ⟨⟨4064, 3, .p2⟩, .opponent [6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4072, 1, .p2⟩, .opponent [4, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4072, 3, .p1⟩, .owner 6⟩,
+      ⟨⟨4072, 5, .p1⟩, .owner 4⟩,
+      ⟨⟨4076, 2, .p1⟩, .owner 3⟩,
+      ⟨⟨4078, 4, .p1⟩, .owner 2⟩,
+      ⟨⟨4080, 2, .p1⟩, .owner 5⟩,
+      ⟨⟨4080, 2, .p2⟩, .opponent [5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4080, 4, .p1⟩, .owner 6⟩,
+      ⟨⟨4084, 1, .p1⟩, .owner 3⟩,
+      ⟨⟨4086, 3, .p1⟩, .owner 2⟩,
+      ⟨⟨4088, 0, .p2⟩, .opponent [4, 5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4088, 2, .p2⟩, .opponent [4, 5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4090, 2, .p1⟩, .owner 2⟩,
+      ⟨⟨4092, 1, .p1⟩, .owner 3⟩,
+      ⟨⟨4094, 1, .p2⟩, .opponent [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]⟩]⟩
+
+def playerTwoDAG : StrategyDAG :=
+  ⟨12, .p2, ⟨4094, 1, .p2⟩,
+    [⟨⟨1520, 12, .p2⟩, .terminal⟩,
+      ⟨⟨1776, 11, .p2⟩, .terminal⟩,
+      ⟨⟨1904, 10, .p2⟩, .terminal⟩,
+      ⟨⟨1904, 12, .p2⟩, .terminal⟩,
+      ⟨⟨1968, 9, .p2⟩, .terminal⟩,
+      ⟨⟨1968, 11, .p2⟩, .terminal⟩,
+      ⟨⟨1992, 9, .p2⟩, .terminal⟩,
+      ⟨⟨1992, 11, .p2⟩, .terminal⟩,
+      ⟨⟨2000, 8, .p2⟩, .terminal⟩,
+      ⟨⟨2000, 10, .p2⟩, .terminal⟩,
+      ⟨⟨2008, 12, .p2⟩, .owner 4⟩,
+      ⟨⟨2016, 1, .p1⟩, .terminal⟩,
+      ⟨⟨2016, 1, .p2⟩, .terminal⟩,
+      ⟨⟨2016, 3, .p1⟩, .terminal⟩,
+      ⟨⟨2016, 3, .p2⟩, .terminal⟩,
+      ⟨⟨2016, 5, .p2⟩, .terminal⟩,
+      ⟨⟨2016, 7, .p2⟩, .terminal⟩,
+      ⟨⟨2016, 9, .p2⟩, .terminal⟩,
+      ⟨⟨2024, 11, .p2⟩, .owner 4⟩,
+      ⟨⟨2032, 2, .p2⟩, .owner 5⟩,
+      ⟨⟨2032, 4, .p2⟩, .owner 5⟩,
+      ⟨⟨2032, 6, .p2⟩, .owner 5⟩,
+      ⟨⟨2032, 8, .p2⟩, .owner 5⟩,
+      ⟨⟨2032, 10, .p2⟩, .owner 5⟩,
+      ⟨⟨2032, 12, .p2⟩, .owner 5⟩,
+      ⟨⟨2040, 6, .p2⟩, .owner 4⟩,
+      ⟨⟨2040, 8, .p2⟩, .owner 4⟩,
+      ⟨⟨2040, 10, .p2⟩, .owner 4⟩,
+      ⟨⟨2040, 12, .p2⟩, .owner 4⟩,
+      ⟨⟨2044, 9, .p2⟩, .owner 3⟩,
+      ⟨⟨2044, 11, .p2⟩, .owner 3⟩,
+      ⟨⟨2046, 11, .p2⟩, .owner 2⟩,
+      ⟨⟨2047, 12, .p2⟩, .owner 1⟩,
+      ⟨⟨2544, 11, .p2⟩, .terminal⟩,
+      ⟨⟨2800, 10, .p2⟩, .terminal⟩,
+      ⟨⟨2928, 9, .p2⟩, .terminal⟩,
+      ⟨⟨2928, 11, .p2⟩, .terminal⟩,
+      ⟨⟨2992, 8, .p2⟩, .terminal⟩,
+      ⟨⟨2992, 10, .p2⟩, .terminal⟩,
+      ⟨⟨3016, 8, .p2⟩, .terminal⟩,
+      ⟨⟨3016, 10, .p2⟩, .terminal⟩,
+      ⟨⟨3024, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3024, 9, .p2⟩, .terminal⟩,
+      ⟨⟨3032, 11, .p2⟩, .owner 4⟩,
+      ⟨⟨3040, 0, .p1⟩, .terminal⟩,
+      ⟨⟨3040, 2, .p1⟩, .terminal⟩,
+      ⟨⟨3040, 2, .p2⟩, .terminal⟩,
+      ⟨⟨3040, 4, .p1⟩, .terminal⟩,
+      ⟨⟨3040, 4, .p2⟩, .terminal⟩,
+      ⟨⟨3040, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3040, 8, .p2⟩, .terminal⟩,
+      ⟨⟨3048, 10, .p2⟩, .owner 4⟩,
+      ⟨⟨3056, 1, .p2⟩, .owner 5⟩,
+      ⟨⟨3056, 3, .p2⟩, .owner 5⟩,
+      ⟨⟨3056, 5, .p2⟩, .owner 5⟩,
+      ⟨⟨3056, 7, .p2⟩, .owner 5⟩,
+      ⟨⟨3056, 9, .p2⟩, .owner 5⟩,
+      ⟨⟨3056, 11, .p2⟩, .owner 5⟩,
+      ⟨⟨3064, 5, .p2⟩, .owner 4⟩,
+      ⟨⟨3064, 7, .p2⟩, .owner 4⟩,
+      ⟨⟨3064, 9, .p2⟩, .owner 4⟩,
+      ⟨⟨3064, 11, .p2⟩, .owner 4⟩,
+      ⟨⟨3068, 8, .p2⟩, .owner 3⟩,
+      ⟨⟨3068, 10, .p2⟩, .owner 3⟩,
+      ⟨⟨3070, 10, .p2⟩, .owner 2⟩,
+      ⟨⟨3071, 11, .p2⟩, .owner 1⟩,
+      ⟨⟨3312, 9, .p2⟩, .terminal⟩,
+      ⟨⟨3440, 8, .p2⟩, .terminal⟩,
+      ⟨⟨3440, 10, .p2⟩, .terminal⟩,
+      ⟨⟨3504, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3504, 9, .p2⟩, .terminal⟩,
+      ⟨⟨3528, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3528, 9, .p2⟩, .terminal⟩,
+      ⟨⟨3536, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3536, 8, .p2⟩, .terminal⟩,
+      ⟨⟨3544, 10, .p2⟩, .owner 4⟩,
+      ⟨⟨3552, 1, .p1⟩, .terminal⟩,
+      ⟨⟨3552, 1, .p2⟩, .terminal⟩,
+      ⟨⟨3552, 3, .p1⟩, .terminal⟩,
+      ⟨⟨3552, 3, .p2⟩, .terminal⟩,
+      ⟨⟨3552, 5, .p2⟩, .terminal⟩,
+      ⟨⟨3552, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3560, 9, .p2⟩, .owner 4⟩,
+      ⟨⟨3568, 0, .p1⟩, .opponent [5, 6, 7, 8, 9, 11, 12]⟩,
+      ⟨⟨3568, 2, .p2⟩, .owner 5⟩,
+      ⟨⟨3568, 4, .p2⟩, .owner 5⟩,
+      ⟨⟨3568, 6, .p2⟩, .owner 5⟩,
+      ⟨⟨3568, 8, .p2⟩, .owner 5⟩,
+      ⟨⟨3568, 10, .p2⟩, .owner 5⟩,
+      ⟨⟨3576, 4, .p2⟩, .owner 4⟩,
+      ⟨⟨3576, 6, .p2⟩, .owner 4⟩,
+      ⟨⟨3576, 8, .p2⟩, .owner 4⟩,
+      ⟨⟨3576, 10, .p2⟩, .owner 4⟩,
+      ⟨⟨3580, 7, .p2⟩, .owner 3⟩,
+      ⟨⟨3580, 9, .p2⟩, .owner 3⟩,
+      ⟨⟨3582, 9, .p2⟩, .owner 2⟩,
+      ⟨⟨3583, 10, .p2⟩, .owner 1⟩,
+      ⟨⟨3696, 7, .p1⟩, .terminal⟩,
+      ⟨⟨3696, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3696, 9, .p2⟩, .terminal⟩,
+      ⟨⟨3760, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3760, 8, .p2⟩, .terminal⟩,
+      ⟨⟨3784, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3784, 8, .p2⟩, .terminal⟩,
+      ⟨⟨3792, 5, .p2⟩, .terminal⟩,
+      ⟨⟨3792, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3800, 9, .p2⟩, .owner 4⟩,
+      ⟨⟨3808, 0, .p1⟩, .terminal⟩,
+      ⟨⟨3808, 2, .p1⟩, .terminal⟩,
+      ⟨⟨3808, 2, .p2⟩, .terminal⟩,
+      ⟨⟨3808, 4, .p2⟩, .terminal⟩,
+      ⟨⟨3808, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3816, 8, .p2⟩, .owner 4⟩,
+      ⟨⟨3824, 1, .p1⟩, .opponent [5, 6, 7, 8, 10, 11, 12]⟩,
+      ⟨⟨3824, 1, .p2⟩, .owner 8⟩,
+      ⟨⟨3824, 3, .p2⟩, .owner 5⟩,
+      ⟨⟨3824, 5, .p2⟩, .owner 5⟩,
+      ⟨⟨3824, 7, .p2⟩, .owner 5⟩,
+      ⟨⟨3824, 9, .p2⟩, .owner 5⟩,
+      ⟨⟨3832, 3, .p2⟩, .owner 4⟩,
+      ⟨⟨3832, 5, .p2⟩, .owner 4⟩,
+      ⟨⟨3832, 7, .p2⟩, .owner 4⟩,
+      ⟨⟨3832, 9, .p2⟩, .owner 4⟩,
+      ⟨⟨3836, 6, .p2⟩, .owner 3⟩,
+      ⟨⟨3836, 8, .p2⟩, .owner 3⟩,
+      ⟨⟨3838, 8, .p2⟩, .owner 2⟩,
+      ⟨⟨3839, 9, .p2⟩, .owner 1⟩,
+      ⟨⟨3888, 5, .p2⟩, .terminal⟩,
+      ⟨⟨3888, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3912, 5, .p2⟩, .terminal⟩,
+      ⟨⟨3912, 7, .p2⟩, .terminal⟩,
+      ⟨⟨3920, 4, .p2⟩, .terminal⟩,
+      ⟨⟨3920, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3928, 8, .p2⟩, .owner 4⟩,
+      ⟨⟨3936, 1, .p1⟩, .terminal⟩,
+      ⟨⟨3936, 1, .p2⟩, .terminal⟩,
+      ⟨⟨3936, 3, .p1⟩, .terminal⟩,
+      ⟨⟨3936, 3, .p2⟩, .terminal⟩,
+      ⟨⟨3936, 5, .p2⟩, .terminal⟩,
+      ⟨⟨3944, 7, .p2⟩, .owner 4⟩,
+      ⟨⟨3952, 0, .p1⟩, .opponent [5, 6, 7, 9, 10, 11, 12]⟩,
+      ⟨⟨3952, 2, .p1⟩, .opponent [5, 6, 7, 9, 10, 11, 12]⟩,
+      ⟨⟨3952, 2, .p2⟩, .owner 5⟩,
+      ⟨⟨3952, 4, .p2⟩, .owner 5⟩,
+      ⟨⟨3952, 6, .p2⟩, .owner 5⟩,
+      ⟨⟨3952, 8, .p2⟩, .owner 5⟩,
+      ⟨⟨3960, 2, .p2⟩, .owner 4⟩,
+      ⟨⟨3960, 4, .p2⟩, .owner 4⟩,
+      ⟨⟨3960, 6, .p2⟩, .owner 4⟩,
+      ⟨⟨3960, 8, .p2⟩, .owner 4⟩,
+      ⟨⟨3964, 5, .p2⟩, .owner 3⟩,
+      ⟨⟨3964, 7, .p2⟩, .owner 3⟩,
+      ⟨⟨3966, 7, .p2⟩, .owner 2⟩,
+      ⟨⟨3967, 8, .p2⟩, .owner 1⟩,
+      ⟨⟨3976, 4, .p2⟩, .terminal⟩,
+      ⟨⟨3976, 6, .p2⟩, .terminal⟩,
+      ⟨⟨3984, 3, .p2⟩, .terminal⟩,
+      ⟨⟨3984, 5, .p2⟩, .terminal⟩,
+      ⟨⟨3992, 7, .p2⟩, .owner 4⟩,
+      ⟨⟨4000, 0, .p1⟩, .terminal⟩,
+      ⟨⟨4000, 2, .p1⟩, .terminal⟩,
+      ⟨⟨4000, 2, .p2⟩, .terminal⟩,
+      ⟨⟨4000, 4, .p1⟩, .terminal⟩,
+      ⟨⟨4000, 4, .p2⟩, .terminal⟩,
+      ⟨⟨4008, 6, .p2⟩, .owner 4⟩,
+      ⟨⟨4016, 1, .p1⟩, .opponent [5, 6, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4016, 1, .p2⟩, .owner 5⟩,
+      ⟨⟨4016, 3, .p1⟩, .opponent [5, 6, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4016, 3, .p2⟩, .owner 5⟩,
+      ⟨⟨4016, 5, .p2⟩, .owner 5⟩,
+      ⟨⟨4016, 7, .p2⟩, .owner 5⟩,
+      ⟨⟨4024, 1, .p2⟩, .owner 4⟩,
+      ⟨⟨4024, 3, .p2⟩, .owner 4⟩,
+      ⟨⟨4024, 5, .p2⟩, .owner 4⟩,
+      ⟨⟨4024, 7, .p2⟩, .owner 4⟩,
+      ⟨⟨4028, 4, .p2⟩, .owner 3⟩,
+      ⟨⟨4028, 6, .p2⟩, .owner 3⟩,
+      ⟨⟨4030, 6, .p2⟩, .owner 2⟩,
+      ⟨⟨4031, 7, .p2⟩, .owner 1⟩,
+      ⟨⟨4032, 1, .p1⟩, .terminal⟩,
+      ⟨⟨4032, 1, .p2⟩, .terminal⟩,
+      ⟨⟨4032, 3, .p1⟩, .terminal⟩,
+      ⟨⟨4032, 3, .p2⟩, .terminal⟩,
+      ⟨⟨4032, 5, .p1⟩, .terminal⟩,
+      ⟨⟨4040, 1, .p1⟩, .opponent [4, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4040, 3, .p1⟩, .opponent [4, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4040, 5, .p2⟩, .owner 4⟩,
+      ⟨⟨4048, 2, .p1⟩, .opponent [5, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4048, 2, .p2⟩, .owner 5⟩,
+      ⟨⟨4048, 4, .p2⟩, .owner 5⟩,
+      ⟨⟨4048, 6, .p2⟩, .owner 5⟩,
+      ⟨⟨4056, 0, .p1⟩, .opponent [4, 5, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4056, 2, .p2⟩, .owner 4⟩,
+      ⟨⟨4056, 4, .p2⟩, .owner 5⟩,
+      ⟨⟨4056, 6, .p2⟩, .owner 4⟩,
+      ⟨⟨4060, 3, .p2⟩, .owner 3⟩,
+      ⟨⟨4060, 5, .p2⟩, .owner 3⟩,
+      ⟨⟨4062, 5, .p2⟩, .owner 2⟩,
+      ⟨⟨4063, 6, .p2⟩, .owner 1⟩,
+      ⟨⟨4064, 1, .p2⟩, .owner 6⟩,
+      ⟨⟨4064, 3, .p1⟩, .opponent [6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4064, 3, .p2⟩, .owner 6⟩,
+      ⟨⟨4064, 5, .p2⟩, .owner 6⟩,
+      ⟨⟨4072, 1, .p1⟩, .opponent [4, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4072, 1, .p2⟩, .owner 4⟩,
+      ⟨⟨4072, 3, .p2⟩, .owner 6⟩,
+      ⟨⟨4072, 5, .p2⟩, .owner 4⟩,
+      ⟨⟨4076, 2, .p2⟩, .owner 3⟩,
+      ⟨⟨4076, 4, .p2⟩, .owner 3⟩,
+      ⟨⟨4078, 4, .p2⟩, .owner 2⟩,
+      ⟨⟨4079, 5, .p2⟩, .owner 1⟩,
+      ⟨⟨4080, 0, .p1⟩, .opponent [5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4080, 2, .p1⟩, .opponent [5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4080, 2, .p2⟩, .owner 5⟩,
+      ⟨⟨4080, 4, .p2⟩, .owner 6⟩,
+      ⟨⟨4084, 1, .p2⟩, .owner 3⟩,
+      ⟨⟨4084, 3, .p2⟩, .owner 3⟩,
+      ⟨⟨4086, 3, .p2⟩, .owner 2⟩,
+      ⟨⟨4087, 4, .p2⟩, .owner 1⟩,
+      ⟨⟨4088, 0, .p1⟩, .opponent [4, 5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4088, 2, .p1⟩, .opponent [4, 5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4088, 2, .p2⟩, .owner 4⟩,
+      ⟨⟨4090, 2, .p2⟩, .owner 2⟩,
+      ⟨⟨4091, 3, .p2⟩, .owner 1⟩,
+      ⟨⟨4092, 1, .p1⟩, .opponent [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]⟩,
+      ⟨⟨4092, 1, .p2⟩, .owner 3⟩,
+      ⟨⟨4093, 2, .p2⟩, .owner 1⟩,
+      ⟨⟨4094, 1, .p2⟩, .owner 2⟩]⟩
+
+/-- The proof-backed target used by the player-1 certificate. -/
+def playerOneTarget : TargetPredicate :=
+  smallSafeTarget 6 playerOneDAG.gameSize playerOneDAG.player
+
+/-- The proof-backed target used by the player-2 certificate. -/
+def playerTwoTarget : TargetPredicate :=
+  smallSafeTarget 6 playerTwoDAG.gameSize playerTwoDAG.player
+
+/-- The literal player-1 partial certificate passes the independent checker. -/
+@[category test, AMS 91]
+theorem player_one_certificate_checks :
+    checkPartialCertificate playerOneTarget playerOneDAG = true := by
+  native_decide
+
+/-- The literal player-2 all-openings partial certificate passes the independent checker. -/
+@[category test, AMS 91]
+theorem player_two_certificate_checks :
+    checkPartialCertificate playerTwoTarget playerTwoDAG = true := by
+  native_decide
+
+/-- The encoded post-opening state for each legal opening of the twelve-counter game. -/
+def openingState : ℕ → State
+  | 1 => ⟨4094, 1, .p2⟩
+  | 2 => ⟨4093, 2, .p2⟩
+  | 3 => ⟨4091, 3, .p2⟩
+  | 4 => ⟨4087, 4, .p2⟩
+  | 5 => ⟨4079, 5, .p2⟩
+  | 6 => ⟨4063, 6, .p2⟩
+  | 7 => ⟨4031, 7, .p2⟩
+  | 8 => ⟨3967, 8, .p2⟩
+  | 9 => ⟨3839, 9, .p2⟩
+  | 10 => ⟨3583, 10, .p2⟩
+  | 11 => ⟨3071, 11, .p2⟩
+  | 12 => ⟨2047, 12, .p2⟩
+  | _ => ⟨0, 0, .p2⟩
+
+/-- Every legal encoded opening state decodes to the formal post-opening game position. -/
+@[category test, AMS 91]
+theorem to_game_position_opening_state (x : ℕ) (hx : x ∈ Finset.Icc 1 12) :
+    toGamePosition 12 (openingState x) =
+      GamePosition.afterOpening (Finset.Icc 1 12) x := by
+  have hxLower : 1 ≤ x := (Finset.mem_Icc.mp hx).1
+  have hxUpper : x ≤ 12 := (Finset.mem_Icc.mp hx).2
+  interval_cases x <;> decide
+
+/-- The player-2 DAG contains the encoded state after every legal opening. -/
+@[category test, AMS 91]
+theorem player_two_contains_opening_state (x : ℕ) (hx : x ∈ Finset.Icc 1 12) :
+    ContainsState playerTwoDAG (openingState x) := by
+  have hxLower : 1 ≤ x := (Finset.mem_Icc.mp hx).1
+  have hxUpper : x ≤ 12 := (Finset.mem_Icc.mp hx).2
+  interval_cases x <;> decide
+
+/-- Player 1 can avoid losing after opening with counter one. -/
+@[category test, AMS 91]
+theorem player_one_can_avoid_loss :
+    CanAvoidLoss .p1 (GamePosition.afterOpening (Finset.Icc 1 12) 1) := by
+  have htarget : TargetSound playerOneTarget playerOneDAG := by
+    simpa only [playerOneTarget] using small_safe_target_sound 6 playerOneDAG
+  have hsafe := check_partial_certificate_sound playerOneTarget playerOneDAG htarget
+    player_one_certificate_checks
+  simpa [playerOneDAG, toGamePosition, GamePosition.afterOpening, CatchUp.afterOpening] using hsafe
+
+/-- Player 2 can avoid losing after every legal opening. -/
+@[category test, AMS 91]
+theorem player_two_can_avoid_loss (x : ℕ) (hx : x ∈ Finset.Icc 1 12) :
+    CanAvoidLoss .p2 (GamePosition.afterOpening (Finset.Icc 1 12) x) := by
+  have htarget : TargetSound playerTwoTarget playerTwoDAG := by
+    simpa only [playerTwoTarget] using small_safe_target_sound 6 playerTwoDAG
+  have hvalid : PartialDAGValid playerTwoTarget playerTwoDAG :=
+    of_decide_eq_true (by
+      simpa only [checkPartialCertificate] using player_two_certificate_checks)
+  have hsafe := can_avoid_loss_of_contains_state_partial playerTwoTarget playerTwoDAG htarget
+    hvalid (openingState x) (player_two_contains_opening_state x hx)
+  change CanAvoidLoss .p2 (toGamePosition 12 (openingState x)) at hsafe
+  rw [to_game_position_opening_state x hx] at hsafe
+  exact hsafe
+
+/-- Optimal play in Catch-Up on `{1, ..., 12}` results in a draw. -/
+@[category test, AMS 91]
+theorem value_Icc_twelve :
+    value (Finset.Icc 1 12) = .draw := by
+  apply (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 12)
+    (Finset.nonempty_Icc.mpr (by decide))).2
+  constructor
+  · exact ⟨1, by decide, player_one_can_avoid_loss⟩
+  · exact player_two_can_avoid_loss
+
+end CatchUpSearch.N12Certificate

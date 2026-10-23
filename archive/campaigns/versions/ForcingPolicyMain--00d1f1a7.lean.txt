@@ -1,0 +1,111 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+
+/-!
+# Catch-Up explicit-basin root policies
+
+Print the basin-preserving root moves and first owner responses for the proof-backed combined
+target. This is discovery data for a possible parametric forcing strategy, not a proof.
+-/
+
+namespace CatchUpSearch.ForcingPolicy
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourCounterAttractor
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def goodMoves (cache : BasinCache) (node : SolvedNode) : List MoveEvaluation :=
+  node.moves.filter fun move => basinContains cache move.child
+
+def formatMove (move : MoveEvaluation) : String :=
+  s!"{move.counter}(d={move.child.deficit},{playerName move.child.toMove})"
+
+def formatMoves (moves : List MoveEvaluation) : String :=
+  "[" ++ String.intercalate "," (moves.map formatMove) ++ "]"
+
+def childOwnerResponse (output : SolverOutput) (cache : BasinCache) (owner : Player)
+    (move : MoveEvaluation) : String :=
+  match findNode? output move.child with
+  | none => s!"{move.counter}->missing"
+  | some child =>
+      let choices := goodMoves cache child
+      let first := choices.head?.map (fun response => toString response.counter) |>.getD "none"
+      s!"{move.counter}->d{child.state.deficit}/{playerName child.state.toMove}:" ++
+        (if child.state.toMove = owner then first else formatMoves choices)
+
+def ownerRepliesAfterRootChoice (output : SolverOutput) (cache : BasinCache)
+    (rootChoice : MoveEvaluation) : String :=
+  match findNode? output rootChoice.child with
+  | none => "chosen child missing"
+  | some opponentNode =>
+      let replies := opponentNode.moves.map fun opponentMove =>
+        match findNode? output opponentMove.child with
+        | none => s!"{opponentMove.counter}->missing"
+        | some ownerNode =>
+            s!"{opponentMove.counter}->{formatMoves (goodMoves cache ownerNode)}"
+      "next-owner-replies=[" ++ String.intercalate "," replies ++ "]"
+
+def analyzeOwner (N : ℕ) (owner : Player) (output : SolverOutput) : Except String String := do
+  let cache ← computeBasin .explicitEndgame N owner output
+  let root ← match output.openingRoots.find? fun pair => decide (pair.1 = 1) with
+    | none => throw "opening-1 root is missing"
+    | some pair => pure pair.2
+  let rootNode ← match findNode? output root with
+    | none => throw "opening-1 solved node is missing"
+    | some node => pure node
+  if !basinContains cache root then
+    throw s!"root is outside the combined basin for {playerName owner}"
+  let rootGood := goodMoves cache rootNode
+  let responses := rootNode.moves.map (childOwnerResponse output cache owner)
+  let nextReplies :=
+    if rootNode.state.toMove = owner then
+      rootGood.head?.map (ownerRepliesAfterRootChoice output cache) |>.getD "no root choice"
+    else
+      ""
+  return s!"owner={playerName owner}; root-good={formatMoves rootGood}; " ++
+    s!"children=[{String.intercalate ";" responses}]; {nextReplies}"
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural number, got '{argument}'."
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def runSize (N : ℕ) : IO Unit := do
+  let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println s!"N={N}"
+  for owner in [.p1, .p2] do
+    IO.println s!"  {← orThrow (analyzeOwner N owner output)}"
+
+def runArgs (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [3, 4, 7, 8, 11] else args.mapM parseSize
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.ForcingPolicy
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.ForcingPolicy.runArgs args

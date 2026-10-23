@@ -1,0 +1,29 @@
+"""Falsify the even-pair deficit-two nonwinning sublemma.
+
+If true, this would support mate responses in the NONWINNING direction
+of the odd-pair deficit-one target. Minimum three retains P_N geometry.
+This is a targeted lemma test, not an outcome-table expansion.
+"""
+import itertools
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+tested = 0
+for n in (2, 4):
+    for starts in itertools.combinations(range(3, 17), n):
+        if any(b <= a+1 for a,b in zip(starts, starts[1:])):
+            continue
+        support = [x for a in starts for x in (a,a+1)]
+        mask = mask_of(support)
+        tested += 1
+        if value(mask,2) == 1:
+            verify_independently(mask,2)
+            print(json.dumps({"refuted": True, "pair_starts": starts,
+                              "state": state(mask,2), "tested": tested}))
+            raise SystemExit(0)
+        value.cache_clear()
+print(json.dumps({"refuted":False,"tested":tested}))

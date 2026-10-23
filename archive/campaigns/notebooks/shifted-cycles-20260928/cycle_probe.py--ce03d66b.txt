@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+"""Exact shifted reply graphs; local span hypothesis and controls.
+
+Bits x-1 represent positive counter x. Nodes are alternative first picks,
+not positions visited along one play. Edge a,b is allowed only if C(a) is
+nonterminal and b is available; its normalized move outcome must be win.
+The imported exact minimax margin is used only for finite diagnostics.
+"""
+import argparse
+from functools import cache
+from itertools import combinations
+import json
+import random
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'scripts/catch_up'))
+from two_buffer_controller import margin, mask, counters, total, absolute_margin
+
+
+@cache
+def outcome(xs, d):
+    """Independent three-outcome recurrence; tuples, no early completion margin."""
+    if not xs:
+        return 0 if d == 0 else -1
+    if sum(xs) < d:
+        return -1
+    return max(outcome(tuple(z for z in xs if z != x), d-x) if x < d else
+               -outcome(tuple(z for z in xs if z != x), x-d) for x in xs)
+
+
+def move_margin(xs, a, b):
+    rem = tuple(x for x in xs if x != a)
+    d = a-1
+    assert rem and sum(rem) >= d and b in rem
+    post = mask(x for x in rem if x != b)
+    return margin(post, d-b) if b < d else -margin(post, b-d)
+
+
+def graph(xs, independent=False):
+    edges = []
+    for a in xs:
+        rem = tuple(x for x in xs if x != a)
+        d = a-1
+        if not rem or sum(rem) < d:
+            continue
+        for b in rem:
+            v = move_margin(xs,a,b)
+            if independent:
+                post = tuple(x for x in rem if x != b)
+                w = outcome(post,d-b) if b<d else -outcome(post,b-d)
+                assert (v>0)-(v<0) == w
+            if v>0:
+                edges.append((a,b))
+    return edges
+
+
+def cycles(xs, edges):
+    """Enumerate directed simple cycles once, rotated to their smallest vertex."""
+    adj = {a:[b for x,b in edges if x==a] for a in xs}
+    found = []
+    def walk(start,path):
+        for b in adj[path[-1]]:
+            if b==start:
+                found.append(path[:])
+            elif b>start and b not in path:
+                walk(start,path+[b])
+    for a in xs:
+        walk(a,[a])
+    return sorted(found,key=lambda c:(len(c),c))
+
+
+def analyze(xs, independent=True):
+    xs = tuple(sorted(xs))
+    es = graph(xs,independent)
+    cs = cycles(xs,es)
+    root_margin = margin(mask(xs),1)
+    if independent:
+        assert (root_margin>0)-(root_margin<0) == outcome(xs,1)
+    return {'support':xs, 'sum':sum(xs), 'effective_total':1+sum(xs),
+            'root_margin':root_margin, 'edges':es, 'cycles':cs,
+            'filled_span_cycles':[c for c in cs
+                if all(x in xs for x in range(min(c),max(c)+1))],
+            'vacuous':not es}
+
+
+def clear():
+    margin.cache_clear(); outcome.cache_clear(); absolute_margin.cache_clear()
+
+
+def search():
+    tested = 0
+    for k in range(4,10):
+        for tail_size in (2,3):
+            for tail in combinations(range(k+1,31),tail_size):
+                xs = tuple(range(3,k+1))+tail
+                if sum(xs)%2!=1:
+                    continue
+                tested += 1
+                es = graph(xs)
+                cs = cycles(xs,es)
+                full = [c for c in cs if all(x in xs for x in range(min(c),max(c)+1))]
+                if full:
+                    result = analyze(xs)
+                    result['search_tested'] = tested
+                    return result
+                clear()
+    return {'search_tested':tested, 'found':False}
+
+
+def discover_adjacent():
+    """Replay the bounded discovery of a simultaneous deficit-zero/two loss."""
+    rng = random.Random(928)
+    for trial in range(3000):
+        xs = tuple(sorted(rng.sample(range(3,38),8)))
+        if sum(xs)%2==0 and margin(mask(xs),0)<0 and margin(mask(xs),2)<0:
+            return {'seed':928, 'trial_zero_based':trial, 'tail':xs}
+        clear()
+    raise AssertionError('Saved discovery was not reproduced')
+
+
+def discover_interior():
+    rng = random.Random(92835)
+    for trial in range(6000):
+        xs = tuple(sorted([4]+rng.sample(range(6,44),7)))
+        if sum(xs)%2==1 and margin(mask(xs),1)>0 and margin(mask(xs),3)<0:
+            return {'seed':92835, 'trial_zero_based':trial, 'tail':xs}
+        clear()
+    raise AssertionError('Saved interior-counter discovery was not reproduced')
+
+
+def main():
+    p=argparse.ArgumentParser()
+    p.add_argument('--search',action='store_true')
+    p.add_argument('--discover-adjacent',action='store_true')
+    p.add_argument('--output')
+    args=p.parse_args()
+    data={'semantics':'shifted-reply-v1; legal nonterminal C(a); positive move margin'}
+    data['intervals']=[]
+    for n in (7,8,11,12,15,16):
+        rec=analyze(range(3,n+1))
+        assert rec['root_margin']==0 and not rec['cycles']
+        data['intervals'].append(rec)
+        clear()
+    assert (4,6) in data['intervals'][0]['edges']
+    sparse=analyze((3,7,9,14,17,20,29,34))
+    assert all(e in sparse['edges'] for e in ((3,14),(14,7),(7,3)))
+    assert sparse['root_margin']==-2
+    data['sparse']=sparse
+    clear()
+    tail=(9,16,17,18,26,28,31,37)
+    obstruction=analyze((3,4)+tail)
+    assert obstruction['sum']==189 and obstruction['cycles']==[[3,4]]
+    assert obstruction['filled_span_cycles']==[[3,4]]
+    residual_margins=[margin(mask(tail),d) for d in (0,2)]
+    assert residual_margins==[-2,-2]
+    for d,m in zip((0,2),residual_margins):
+        assert absolute_margin(tail,0,d,0)==m
+    assert absolute_margin(tuple(obstruction['support']),0,1,0)==-2
+    obstruction['residual_margins_at_zero_and_two']=residual_margins
+    data['local_span_obstruction']=obstruction
+    clear()
+    interior=analyze((3,4,5,6,9,19,24,26,29,38))
+    assert interior['root_margin']==0 and [3,5] in interior['filled_span_cycles']
+    assert interior['cycles']==[[3,5],[4,6]]
+    slide={(a,b):move_margin(interior['support'],a,b)
+           for a,b in ((3,5),(5,3),(5,4),(4,5))}
+    assert slide=={(3,5):2,(5,3):2,(5,4):0,(4,5):-2}
+    interior['minimum_slide_moves']=[{'a':a,'b':b,'margin':m} for (a,b),m in slide.items()]
+    interior_tail=(4,6,9,19,24,26,29,38)
+    assert absolute_margin(interior_tail,0,1,0)==2
+    assert absolute_margin(interior_tail,0,3,0)==-2
+    data['interior_counter_obstruction']=interior
+    clear()
+    small=tuple(range(3,8))
+    max_moves={b:move_margin(small,7,b) for b in small if b!=7}
+    assert max_moves=={3:2,4:0,5:0,6:-2}
+    data['maximum_companion_obstruction']={'N':7, 'C7_moves':max_moves,
+        'after_7_3':{'remaining':[4,5,6], 'deficit':3,
+                    'winning_reply':6, 'margin':margin(mask((4,5,6)),3)},
+        'after_7_6':{'remaining':[3,4,5], 'deficit':0,
+                    'margin':margin(mask((3,4,5)),0)}}
+    assert data['maximum_companion_obstruction']['after_7_3']['margin']==2
+    assert data['maximum_companion_obstruction']['after_7_6']['margin']==2
+    clear()
+    # Holdout selected before looking at its shifted graph; save no memo table.
+    holdout=analyze(range(3,20),independent=False)
+    assert holdout['root_margin']==0 and not holdout['cycles']
+    data['holdout_N19']=holdout
+    data['holdout_margin_cached_states']=margin.cache_info().currsize
+    clear()
+    if args.search:
+        data['span_search']=search()
+    if args.discover_adjacent:
+        data['adjacent_discovery']=discover_adjacent()
+        assert tuple(data['adjacent_discovery']['tail'])==tail
+        data['interior_discovery']=discover_interior()
+        assert tuple(data['interior_discovery']['tail'])==interior_tail
+    print(json.dumps({'interval_edge_counts':{len(r['support'])+2:len(r['edges'])
+        for r in data['intervals']}, 'holdout_N19_edges':len(holdout['edges']),
+        'local_span_cycle':[3,4], 'interior_cycle':[3,5],
+        'maximum_companion_refuted_at_N':7},sort_keys=True))
+    if args.output:
+        Path(args.output).write_text(json.dumps(data,indent=2)+'\n')
+    print('SHIFTED CYCLE CHECKS PASS')
+
+
+if __name__=='__main__':
+    main()

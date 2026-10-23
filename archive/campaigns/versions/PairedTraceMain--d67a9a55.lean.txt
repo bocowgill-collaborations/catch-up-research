@@ -1,0 +1,61 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PairedTrace
+
+/-!
+# Catch-Up paired normalized strategy-trace executable
+
+Summarize the default discovery pairs `7 → 11` and `8 → 12` with:
+
+```bash
+lake env lean --run scripts/catch_up/PairedTraceMain.lean
+```
+
+Pass small game sizes to choose other pairs:
+
+```bash
+lake env lean --run scripts/catch_up/PairedTraceMain.lean 11 12
+```
+
+Export every row for one pair as tab-separated data with:
+
+```bash
+lake env lean --run scripts/catch_up/PairedTraceMain.lean --tsv 7
+```
+-/
+
+namespace CatchUpSearch.PairedTrace
+
+def parseGameSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural-number game size, got '{argument}'."
+
+def runArgs (args : List String) : IO Unit :=
+  match args with
+  | [] => runSummaries [7, 8]
+  | ["--tsv", argument] => do
+      runTsv (← parseGameSize argument)
+  | "--tsv" :: _ => throw <| IO.userError "Usage: PairedTraceMain.lean --tsv N"
+  | arguments => do
+      runSummaries (← arguments.mapM parseGameSize)
+
+end CatchUpSearch.PairedTrace
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.PairedTrace.runArgs args

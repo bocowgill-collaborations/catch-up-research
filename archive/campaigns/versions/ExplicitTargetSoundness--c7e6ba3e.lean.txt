@@ -1,0 +1,141 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+import catch_up.ThreeCounterSafety
+
+/-!
+# Soundness of explicit Catch-Up forcing-basin targets
+
+This module connects executable forcing-basin target predicates to solver-independent theorems
+about `CatchUp.CanAvoidLoss`.
+-/
+
+namespace CatchUpSearch.FourCounterAttractor
+
+open CatchUp
+
+/-- Every state accepted by the proof-backed top-only classifier is safe for its owner. -/
+theorem can_avoid_loss_of_is_explicit_safe_top_only (N : ℕ) (owner : Player) (state : State)
+    (hstate : isExplicitSafeTopOnly N owner state = true) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) state) := by
+  have hparts : isTopOnly N state = true ∧
+      CanAvoidLossClassifier.check owner
+        (CertificateChecker.toGamePosition (N + 4) state) = true := by
+    simpa [isExplicitSafeTopOnly] using hstate
+  exact (CanAvoidLossClassifier.check_eq_true_iff owner _).1 hparts.2
+
+/-- Every decoded state in the proof-level explicit three-counter family is safe for its owner. -/
+theorem can_avoid_loss_of_explicit_one_old_pair (N : ℕ) (owner : Player) (state : State)
+    (hstate : ExplicitOneOldPair N owner state) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) state) := by
+  generalize hcounters : CertificateChecker.availableCounters (N + 4) state = counters at hstate
+  unfold ExplicitOneOldPair at hstate
+  rw [hcounters] at hstate
+  cases counters with
+  | nil => contradiction
+  | cons x counters =>
+      cases counters with
+      | nil => contradiction
+      | cons lower counters =>
+          cases counters with
+          | nil => contradiction
+          | cons upper counters =>
+              cases counters with
+              | nil =>
+                  simp only at hstate
+                  rcases hstate with
+                    ⟨hxN, hNLower, hlowerUpper, htoMove, hdeficitPos, hdeficitLower, hregion⟩
+                  have hxLower : x < lower := by omega
+                  have htoMoveEq : state.toMove = owner.other := by
+                    exact ((Player.other_eq_iff_ne owner state.toMove).2 (Ne.symm htoMove)).symm
+                  have hsafe := ThreeCounterSafety.can_avoid_loss_three_counters owner x lower upper
+                    state.deficit hxLower hlowerUpper hdeficitPos hdeficitLower hregion
+                  simpa [CertificateChecker.toGamePosition, hcounters, htoMoveEq] using hsafe
+              | cons fourth counters => contradiction
+
+/-- A successful executable explicit-target check is a proof-backed non-loss target. -/
+theorem can_avoid_loss_of_is_explicit_one_old_pair (N : ℕ) (owner : Player) (state : State)
+    (hstate : isExplicitOneOldPair N owner state = true) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) state) := by
+  apply can_avoid_loss_of_explicit_one_old_pair N owner state
+  exact of_decide_eq_true (by simpa [isExplicitOneOldPair] using hstate)
+
+/-- Every decoded state in the explicit four-counter entry family is safe for its owner. -/
+theorem can_avoid_loss_of_explicit_four_counter_entry (N : ℕ) (owner : Player) (state : State)
+    (hstate : ExplicitFourCounterEntry N owner state) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) state) := by
+  generalize hcounters : CertificateChecker.availableCounters (N + 4) state = counters at hstate
+  unfold ExplicitFourCounterEntry at hstate
+  rw [hcounters] at hstate
+  cases counters with
+  | nil => contradiction
+  | cons x counters =>
+      cases counters with
+      | nil => contradiction
+      | cons y counters =>
+          cases counters with
+          | nil => contradiction
+          | cons lower counters =>
+              cases counters with
+              | nil => contradiction
+              | cons upper counters =>
+                  cases counters with
+                  | nil =>
+                      simp only at hstate
+                      rcases hstate with
+                        ⟨hxY, hyN, hNLower, hlowerUpper, hupperBound, htoMove,
+                          hdeficitY, hregion⟩
+                      have hsafe :=
+                        FourCounterEntry.can_avoid_loss_four_counter_entry N owner x y lower upper
+                          state.deficit hxY hyN hNLower hlowerUpper hupperBound hdeficitY hregion
+                      simpa [CertificateChecker.toGamePosition, hcounters, htoMove] using hsafe
+                  | cons fifth counters => contradiction
+
+/-- A successful executable four-counter-entry check is proof-backed. -/
+theorem can_avoid_loss_of_is_explicit_four_counter_entry
+    (N : ℕ) (owner : Player) (state : State)
+    (hstate : isExplicitFourCounterEntry N owner state = true) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) state) := by
+  apply can_avoid_loss_of_explicit_four_counter_entry N owner state
+  exact of_decide_eq_true (by simpa [isExplicitFourCounterEntry] using hstate)
+
+/-- Every node selected by the combined explicit forcing-basin target is safe for its owner. -/
+theorem can_avoid_loss_of_is_explicit_target (N : ℕ) (owner : Player) (node : SolvedNode)
+    (hnode : isTarget .safeTopOnlyOrOneOldPair N owner node = true) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) node.state) := by
+  have hcases : isExplicitSafeTopOnly N owner node.state = true ∨
+      isExplicitOneOldPair N owner node.state = true := by
+    simpa [isTarget] using hnode
+  rcases hcases with htopOnly | honeOldPair
+  · exact can_avoid_loss_of_is_explicit_safe_top_only N owner node.state htopOnly
+  · exact can_avoid_loss_of_is_explicit_one_old_pair N owner node.state honeOldPair
+
+/-- Every node in the enlarged explicit endgame target is safe for its owner. -/
+theorem can_avoid_loss_of_is_explicit_endgame (N : ℕ) (owner : Player) (node : SolvedNode)
+    (hnode : isTarget .explicitEndgame N owner node = true) :
+    CanAvoidLoss owner (CertificateChecker.toGamePosition (N + 4) node.state) := by
+  have hcases :
+      (isExplicitSafeTopOnly N owner node.state = true ∨
+        isExplicitOneOldPair N owner node.state = true) ∨
+      isExplicitFourCounterEntry N owner node.state = true := by
+    simpa [isTarget] using hnode
+  rcases hcases with (htopOnly | honeOldPair) | hfourCounter
+  · exact can_avoid_loss_of_is_explicit_safe_top_only N owner node.state htopOnly
+  · exact can_avoid_loss_of_is_explicit_one_old_pair N owner node.state honeOldPair
+  · exact can_avoid_loss_of_is_explicit_four_counter_entry N owner node.state hfourCounter
+
+end CatchUpSearch.FourCounterAttractor

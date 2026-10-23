@@ -1,0 +1,57 @@
+{
+  "checks": [
+    {
+      "name": "strict_scope",
+      "command": "lake",
+      "args": [
+        "--wfail",
+        "build",
+        "catch_up.LowerRayFifthEndpointAudit",
+        "catch_up.AdjacentPairGeometryAudit",
+        "catch_up.UniformExactSumDescentAudit",
+        "catch_up.AdjacentPairGeometryRepairAudit"
+      ],
+      "cwd": "HISTORICAL_TMP/catchup-score-debt-20260928",
+      "launcher": "zsh; direct child via node spawnSync",
+      "exit": 0,
+      "pass": true,
+      "ms": 2840,
+      "sha256": "a170ea64066da109f52e238b6de6f9d90f8c789bf99c0cdc05c122d543a8b1bd",
+      "output": "ℹ [8063/8070] Replayed catch_up.LowerRayFifthEndpointAudit\ninfo: scripts/catch_up/LowerRayFifthEndpointAudit.lean:41:0: Verified axioms for CatchUp.upper_quadruple_first_opening_ne_loss: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/LowerRayFifthEndpointAudit.lean:41:0: Verified axioms for CatchUp.upper_quadruple_second_opening_ne_loss: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/LowerRayFifthEndpointAudit.lean:41:0: Verified axioms for CatchUp.upper_quadruple_third_opening_ne_loss: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/LowerRayFifthEndpointAudit.lean:41:0: Verified axioms for CatchUp.upper_quadruple_last_opening_ne_loss: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/LowerRayFifthEndpointAudit.lean:41:0: Verified axioms for CatchUp.pair_deletion_position_fifth_from_top_value_ne_loss: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/LowerRayFifthEndpointAudit.lean:41:0: Verified axioms for CatchUp.FifthEndpointAudit.set_difference_form: [propext, Quot.sound, Classical.choice]\nℹ [8066/8070] Replayed catch_up.AdjacentPairGeometryAudit\ninfo: scripts/catch_up/AdjacentPairGeometryAudit.lean:29:0: Verified axioms for CatchUp.AdjacentPairGeometry.orphan_pair_wins: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryAudit.lean:29:0: Verified axioms for CatchUp.AdjacentPairGeometry.skipped_quadruple_loses: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryAudit.lean:29:0: Verified axioms for CatchUp.AdjacentPairGeometry.smallest_upper_pick_loses: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryAudit.lean:29:0: Verified axioms for CatchUp.AdjacentPairGeometry.smallest_upper_pick_legal: [propext, Quot.sound, Classical.choice]\nℹ [8068/8070] Replayed catch_up.UniformExactSumDescentAudit\ninfo: scripts/catch_up/UniformExactSumDescentAudit.lean:27:0: Verified axioms for CatchUp.UniformExactSumDescent.first_block_forced: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/UniformExactSumDescentAudit.lean:27:0: Verified axioms for CatchUp.UniformExactSumDescent.no_second_upper_only_block: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/UniformExactSumDescentAudit.lean:27:0: Verified axioms for CatchUp.UniformExactSumDescent.forced_branch_available: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/UniformExactSumDescentAudit.lean:27:0: Verified axioms for CatchUp.UniformExactSumDescent.no_two_upper_only_steps: [propext, Quot.sound, Classical.choice]\nℹ [8070/8070] Replayed catch_up.AdjacentPairGeometryRepairAudit\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.orphan_plus_draw: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.orphan_minus_draw: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.two_pairs_tied_draw: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.two_pairs_deficit_two_nonwin: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.three_pairs_nonloss_of_separation: [propext,\n Quot.sound,\n Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.three_pairs_nonwin: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.three_pairs_draw_of_separation: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.three_pairs_anchor_three_draw: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.orphan_minus_win_of_close: [propext, Quot.sound, Classical.choice]\ninfo: scripts/catch_up/AdjacentPairGeometryRepairAudit.lean:27:0: Verified axioms for CatchUp.AdjacentPairRepair.orphan_minus_draw_iff: [propext, Quot.sound, Classical.choice]\nBuild completed successfully (8070 jobs)."
+    },
+    {
+      "name": "gap_accounting",
+      "command": "lake",
+      "args": [
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "research/uniform-descent-20260929/GapAccounting.lean"
+      ],
+      "cwd": "HISTORICAL_TMP/catchup-score-debt-20260928",
+      "launcher": "zsh; direct child via node spawnSync",
+      "exit": 0,
+      "pass": true,
+      "ms": 3909,
+      "sha256": "d59ffd4469fc0fc1c8527df91b6b6d79cc98d9886a7e2e11e0f0e77e05280175",
+      "output": "Verified axioms for CatchUp.AdjacentPairGapAccounting.orphan_nonwins_force_draw: [propext, Quot.sound, Classical.choice]"
+    },
+    {
+      "name": "negative_control",
+      "command": "lake",
+      "args": [
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "research/uniform-descent-20260929/AxiomNegativeControl.lean"
+      ],
+      "cwd": "HISTORICAL_TMP/catchup-score-debt-20260928",
+      "launcher": "zsh; direct child via node spawnSync",
+      "exit": 1,
+      "pass": true,
+      "ms": 3787,
+      "sha256": "0405f6a0dc0b315a7c0f7b427614c8b4d281267448e11693fa91564b84e5ec95",
+      "output": "research/uniform-descent-20260929/AxiomNegativeControl.lean:10:0: error: Negative control rejected axiom in CatchUp.value_of_even_mul_succ_self_div_two: sorryAx"
+    }
+  ]
+}

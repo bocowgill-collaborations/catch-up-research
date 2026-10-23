@@ -1,5 +1,7 @@
 # Research notebook
 
+For the earlier August–September campaigns, see the [campaign archive](../campaigns/) and its 263-entry [chronological index](../campaigns/notebook-index.json). These are additional historical records with their own evidence and source manifest.
+
 These optional historical notes preserve arguments, concrete failures, experimental scope and why routes changed. Start with the [current route guide](../../results/research-routes.md) and [failure guide](../../results/failed-ideas.md). Old next steps and checking commands refer to their original context; the current Lean library and verification instructions determine what is checked now.
 
 This collection contains 90 notes. Machine-readable source/export hashes and evidence labels are in [the manifest](../../verification/research-collection.json). [Retained numerical observations](../../computation/observations/README.md) are separate from proof certificates.

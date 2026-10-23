@@ -1,0 +1,40 @@
+"""Falsify a proposed closed small-deficit payoff window for adjacent pairs.
+
+Candidate for n intact pairs and 0<=d<min(S): loss if d>n, draw if
+d<=n and d==n mod 2, win otherwise. This candidate comes from symbolic
+dominant-pair elimination; it is NOT assumed valid for arbitrary geometry.
+"""
+import itertools
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+
+def predicted(n, d):
+    return -1 if n < d else (0 if (n - d) % 2 == 0 else 1)
+
+
+started = time.monotonic()
+tested = 0
+for n in range(1, 5):
+    for starts in itertools.combinations(range(2, 16), n):
+        if any(b <= a + 1 for a, b in zip(starts, starts[1:])):
+            continue
+        support = sorted(x for a in starts for x in (a, a + 1))
+        mask = mask_of(support)
+        for d in range(min(starts[0] - 1, n + 1) + 1):
+            tested += 1
+            actual = value(mask, d)
+            if actual != predicted(n, d):
+                verify_independently(mask, d)
+                print(json.dumps({"refuted": True, "pair_starts": starts,
+                                  "predicted": predicted(n, d), "state": state(mask, d),
+                                  "tested": tested, "elapsed": time.monotonic() - started}))
+                raise SystemExit(0)
+        value.cache_clear()
+print(json.dumps({"refuted": False, "tested": tested,
+                  "elapsed": time.monotonic() - started}))

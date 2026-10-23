@@ -1,0 +1,45 @@
+Verification of full mandatory two-buffer controller
+Run date: 2026-09-28
+Base: c81982ef681b36dd08bc8ea7429c853935308d69
+
+Command:
+lake --wfail build catch_up.TwoBufferProtocol catch_up.TwoBufferMandatory catch_up.CompletedMarginBounds catch_up.TwoPickDebtRepair catch_up.TwoBufferAudit
+
+✔ [8063/8064] Built catch_up.TwoPickDebtRepair (4.5s)
+ℹ [8064/8064] Built catch_up.TwoBufferAudit (4.0s)
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.singleton_tie_safe: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.pair_draw_reply: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.bridge_forced_parametric: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.two_pick_trace: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.copied_pair_repair: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.pair_reply_forced: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.preparation_first: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.preparation_second: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.preparation_turn: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.repaired_pair_all_choices: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.mandatory_eleven_preparation: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.shadow_preparation_first: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.shadow_preparation_second: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.mandatory_shadow_preparation: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.shadow_preparation_trace: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.ensures_terminal: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.ensures_choice: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.ensures_all: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.completed_margin_neg: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.positive_bound_not_avoid: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.protocol_necessary_bound: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.force_check_sound: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.mandatory_scalar_bounds: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.mandatory_policy_checked: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.mandatory_protocol: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.shadow_good_iff: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/TwoBufferAudit.lean:30:0: Verified axioms for CatchUp.TwoBuffer.run_check_sound: [propext, Quot.sound, Classical.choice]
+Build completed successfully (8064 jobs).
+
+Command: python3 -B scripts/catch_up/two_buffer_controller.py
+{"scalar_gate": {"U": 0, "V": 2, "passes": true}, "unpruned_regression_states": 4352}
+{"controller_exists": true, "policy_nodes": 251, "refutation_nodes": 590, "states_evaluated": 1061}
+
+Independent replay: 87 nodes, 17 terminal histories, 4 corruption tests rejected.
+Full replay is saved in two_buffer_replay_20260928.json.
+Policy regeneration and JSON-to-Lean table agreement: PASS.

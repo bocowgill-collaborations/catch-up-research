@@ -1,0 +1,206 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+
+/-!
+# Catch-Up explicit-basin root policies
+
+Print the basin-preserving root moves and first owner responses for the proof-backed combined
+target. This is discovery data for a possible parametric forcing strategy, not a proof.
+-/
+
+namespace CatchUpSearch.ForcingPolicy
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourCounterAttractor
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def goodMoves (cache : BasinCache) (node : SolvedNode) : List MoveEvaluation :=
+  node.moves.filter fun move => basinContains cache move.child
+
+def formatMove (move : MoveEvaluation) : String :=
+  s!"{move.counter}(d={move.child.deficit},{playerName move.child.toMove})"
+
+def formatMoves (moves : List MoveEvaluation) : String :=
+  "[" ++ String.intercalate "," (moves.map formatMove) ++ "]"
+
+def childOwnerResponse (output : SolverOutput) (cache : BasinCache) (owner : Player)
+    (move : MoveEvaluation) : String :=
+  match findNode? output move.child with
+  | none => s!"{move.counter}->missing"
+  | some child =>
+      let choices := goodMoves cache child
+      let first := choices.head?.map (fun response => toString response.counter) |>.getD "none"
+      s!"{move.counter}->d{child.state.deficit}/{playerName child.state.toMove}:" ++
+        (if child.state.toMove = owner then first else formatMoves choices)
+
+def ownerRepliesAfterRootChoice (output : SolverOutput) (cache : BasinCache)
+    (rootChoice : MoveEvaluation) : String :=
+  match findNode? output rootChoice.child with
+  | none => "chosen child missing"
+  | some opponentNode =>
+      let replies := opponentNode.moves.map fun opponentMove =>
+        match findNode? output opponentMove.child with
+        | none => s!"{opponentMove.counter}->missing"
+        | some ownerNode =>
+            s!"{opponentMove.counter}->{formatMoves (goodMoves cache ownerNode)}"
+      "next-owner-replies=[" ++ String.intercalate "," replies ++ "]"
+
+/-- Whether one specific counter is a basin-preserving move at a solved node. -/
+def hasGoodCounter (cache : BasinCache) (node : SolvedNode) (counter : ℕ) : Bool :=
+  (goodMoves cache node).any fun move => decide (move.counter = counter)
+
+/-- The observed uniform first response for player one. -/
+def playerOneReply (opponentCounter : ℕ) : ℕ :=
+  if opponentCounter = 2 then 3 else 2
+
+/-- The observed uniform second response for player two. -/
+def playerTwoReply (opponentCounter : ℕ) : ℕ :=
+  if opponentCounter ≤ 4 then 5
+  else if opponentCounter = 5 then 3
+  else if opponentCounter = 6 then 4
+  else 3
+
+/-- Check the small opening protocol suggested by the `N = 7, 8, 11` discovery cases. -/
+def uniformOpeningRuleHolds (output : SolverOutput) (cache : BasinCache) (owner : Player)
+    (rootNode : SolvedNode) : Bool :=
+  match owner with
+  | .p1 =>
+      rootNode.moves.all fun opponentMove =>
+        basinContains cache opponentMove.child &&
+          match findNode? output opponentMove.child with
+          | none => false
+          | some ownerNode => hasGoodCounter cache ownerNode (playerOneReply opponentMove.counter)
+  | .p2 =>
+      match rootNode.moves.find? fun move => decide (move.counter = 2) with
+      | none => false
+      | some rootChoice =>
+          basinContains cache rootChoice.child &&
+            match findNode? output rootChoice.child with
+            | none => false
+            | some opponentNode =>
+                opponentNode.moves.all fun opponentMove =>
+                  basinContains cache opponentMove.child &&
+                    match findNode? output opponentMove.child with
+                    | none => false
+                    | some ownerNode =>
+                        hasGoodCounter cache ownerNode (playerTwoReply opponentMove.counter)
+
+/-- Follow one owner turn, using a prescribed first counter and least good moves thereafter. -/
+def followOwnerTurn (output : SolverOutput) (cache : BasinCache) (owner : Player) :
+    ℕ → State → ℕ → Except String (List ℕ × State)
+  | 0, state, _ => throw s!"owner-turn fuel exhausted at {repr state}"
+  | fuel + 1, state, firstCounter => do
+      let node ← match findNode? output state with
+        | none => throw s!"owner turn is missing state {repr state}"
+        | some node => pure node
+      if state.toMove ≠ owner then
+        return ([], state)
+      let move ← match (goodMoves cache node).find? fun move => decide (move.counter = firstCounter) with
+        | none => throw s!"counter {firstCounter} is not basin-preserving at {repr state}"
+        | some move => pure move
+      if move.child.toMove ≠ owner then
+        return ([move.counter], move.child)
+      let childNode ← match findNode? output move.child with
+        | none => throw s!"owner turn is missing child {repr move.child}"
+        | some childNode => pure childNode
+      let nextCounter ← match (goodMoves cache childNode).head? with
+        | none => throw s!"owner turn has no continuation at {repr move.child}"
+        | some nextMove => pure nextMove.counter
+      let (tail, finalState) ← followOwnerTurn output cache owner fuel move.child nextCounter
+      return (move.counter :: tail, finalState)
+
+def formatCounters (counters : List ℕ) : String :=
+  "[" ++ String.intercalate "," (counters.map toString) ++ "]"
+
+def formatTurn (opponentCounter : ℕ) (turn : List ℕ × State) : String :=
+  s!"{opponentCounter}->{formatCounters turn.1}(d={turn.2.deficit},{playerName turn.2.toMove})"
+
+/-- Complete first-owner-turn profiles below the opening-`1` root. -/
+def firstOwnerTurnProfiles (output : SolverOutput) (cache : BasinCache) (owner : Player)
+    (rootNode : SolvedNode) : Except String (List String) :=
+  match owner with
+  | .p1 =>
+      rootNode.moves.mapM fun opponentMove => do
+        let turn ← followOwnerTurn output cache owner (output.gameSize + 1) opponentMove.child
+          (playerOneReply opponentMove.counter)
+        pure (formatTurn opponentMove.counter turn)
+  | .p2 => do
+      let rootChoice ← match rootNode.moves.find? fun move => decide (move.counter = 2) with
+        | none => throw "opening root has no counter 2"
+        | some move => pure move
+      let opponentNode ← match findNode? output rootChoice.child with
+        | none => throw "opening-2 child is missing"
+        | some node => pure node
+      opponentNode.moves.mapM fun opponentMove => do
+        let turn ← followOwnerTurn output cache owner (output.gameSize + 1) opponentMove.child
+          (playerTwoReply opponentMove.counter)
+        pure (formatTurn opponentMove.counter turn)
+
+def analyzeOwner (N : ℕ) (owner : Player) (output : SolverOutput) : Except String String := do
+  let cache ← computeBasin .explicitEndgame N owner output
+  let root ← match output.openingRoots.find? fun pair => decide (pair.1 = 1) with
+    | none => throw "opening-1 root is missing"
+    | some pair => pure pair.2
+  let rootNode ← match findNode? output root with
+    | none => throw "opening-1 solved node is missing"
+    | some node => pure node
+  if !basinContains cache root then
+    throw s!"root is outside the combined basin for {playerName owner}"
+  let rootGood := goodMoves cache rootNode
+  let responses := rootNode.moves.map (childOwnerResponse output cache owner)
+  let nextReplies :=
+    if rootNode.state.toMove = owner then
+      rootGood.head?.map (ownerRepliesAfterRootChoice output cache) |>.getD "no root choice"
+    else
+      ""
+  let uniformRule := uniformOpeningRuleHolds output cache owner rootNode
+  let turnProfiles ← firstOwnerTurnProfiles output cache owner rootNode
+  return s!"owner={playerName owner}; uniform-opening-rule={uniformRule}; " ++
+    s!"root-good={formatMoves rootGood}; " ++
+    s!"children=[{String.intercalate ";" responses}]; {nextReplies}; " ++
+    s!"first-owner-turns=[{String.intercalate ";" turnProfiles}]"
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural number, got '{argument}'."
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def runSize (N : ℕ) : IO Unit := do
+  let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println s!"N={N}"
+  for owner in [.p1, .p2] do
+    IO.println s!"  {← orThrow (analyzeOwner N owner output)}"
+
+def runArgs (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [3, 4, 7, 8, 11] else args.mapM parseSize
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.ForcingPolicy
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.ForcingPolicy.runArgs args

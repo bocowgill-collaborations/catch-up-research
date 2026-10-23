@@ -1,0 +1,118 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.NewOpeningHistory
+
+/-!
+# Finite regressions for selected Catch-Up new-opening turns
+
+This module proves the player-two new-opening transfer at small sizes `7` and `8`. At each of the
+four paired roots, player two catches up immediately with the old counter `k + 1` and then catches
+up in the large game with counter `N + 2` when `k = 1`, or `N + 1` otherwise.
+
+The structural reduction is proved in `NewOpeningHistory`. Here the finitely many small and large
+endpoint safety obligations are discharged by the proof-backed exact classifier. Consequently,
+the uses of `native_decide` add Lean's native-code trust boundary, as in the literal finite-game
+certificates elsewhere in this research directory.
+-/
+
+namespace CatchUp.NewOpeningEntry
+
+open CatchUpSearch
+
+/-- All four player-two new-opening roots from size `7` have selected liftable turns. -/
+@[category test, AMS 91]
+theorem liftable_new_opening_roots_seven : LiftableNewOpeningRoots 7 := by
+  intro k hk hsmall
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkCases : k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 := by omega
+  rcases hkCases with rfl | rfl | rfl | rfl
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 2
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      2 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 3
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      1 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 4
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      1 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 5
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      1 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+
+/-- Player-two safety transfers at all four new openings from size `7` to size `11`. -/
+@[category test, AMS 91]
+theorem new_opening_transfer_seven : FourLiftNewOpeningTransfer 7 .p2 :=
+  liftable_new_opening_roots_seven.to_new_opening_transfer (by omega)
+
+/-- All four player-two new-opening roots from size `8` have selected liftable turns. -/
+@[category test, AMS 91]
+theorem liftable_new_opening_roots_eight : LiftableNewOpeningRoots 8 := by
+  intro k hk hsmall
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkCases : k = 1 ∨ k = 2 ∨ k = 3 ∨ k = 4 := by omega
+  rcases hkCases with rfl | rfl | rfl | rfl
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 2
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      2 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 3
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      1 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 4
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      1 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+  · refine NewOpeningLiftableTurn.finish
+      (new_opening_root_initial_turn_phase (by simp [ValidNewOpening])) hsmall 5
+      (by simp [GamePosition.LegalMove, GamePosition.afterOpening, CatchUp.afterOpening])
+      (by decide)
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+      1 (by simp [ValidNewOpeningReply])
+      ((CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (by native_decide))
+
+/-- Player-two safety transfers at all four new openings from size `8` to size `12`. -/
+@[category test, AMS 91]
+theorem new_opening_transfer_eight : FourLiftNewOpeningTransfer 8 .p2 :=
+  liftable_new_opening_roots_eight.to_new_opening_transfer (by omega)
+
+end CatchUp.NewOpeningEntry

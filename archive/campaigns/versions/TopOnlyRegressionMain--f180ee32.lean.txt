@@ -1,0 +1,80 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CanAvoidLossClassifier
+import catch_up.FourCounterAttractor
+
+/-!
+# Catch-Up symbolic top-only classifier regression
+
+This executable compares the symbolic four-counter classifier with the recursive proof-level
+classifier on every top-counter subset and relevant deficit, then compares it with the exact solved
+annotations on every reachable top-only node.
+-/
+
+namespace CatchUpSearch.TopOnlyRegression
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourCounterAttractor
+
+def players : List Player := [.p1, .p2]
+
+def topOnlyState (N mask deficit : ℕ) (toMove : Player) : State :=
+  { remainingMask := Nat.shiftLeft mask N
+    deficit
+    toMove }
+
+/-- Exhaustively compare symbolic and recursive proof-level safety on the intended finite domain. -/
+def exhaustiveAgrees (N : ℕ) : Bool :=
+  (List.range 16).all fun mask =>
+    (List.range (N + 5)).all fun deficit =>
+      players.all fun toMove =>
+        players.all fun owner =>
+          let state := topOnlyState N mask deficit toMove
+          decide (isExplicitSafeTopOnly N owner state =
+            CanAvoidLossClassifier.check owner
+              (CertificateChecker.toGamePosition (N + 4) state))
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural-number game size, got '{argument}'."
+
+def runSize (N : ℕ) : IO Unit := do
+  if !exhaustiveAgrees N then
+    throw <| IO.userError s!"symbolic and recursive top-only classifiers disagree at N={N}"
+  IO.println s!"N={N}: all 16 masks, deficits 0..{N + 4}, movers, and owners agree"
+  let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  for owner in players do
+    if !topOnlyClassificationAgrees N owner output then
+      throw <| IO.userError s!"symbolic classifier disagrees with solved nodes at N={N}"
+  IO.println s!"N={N}: all reachable top-only solved nodes agree for both owners"
+
+def runArgs (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [4, 7, 8, 11] else args.mapM parseSize
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.TopOnlyRegression
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.TopOnlyRegression.runArgs args

@@ -1,0 +1,31 @@
+"""Test a refined paired-support window with matching deficit/pair-count parity.
+
+Candidate: n disjoint actual adjacent pairs, min counter > d, min >=2,
+0<=d<=n, and d congruent to n modulo 2 imply draw. This is distinct from
+the already refuted formula assigning wins at the opposite parity.
+"""
+import itertools
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+tested = 0
+for n in (2,3,4,5):
+    for starts in itertools.combinations(range(2,17),n):
+        if any(b<=a+1 for a,b in zip(starts,starts[1:])):
+            continue
+        mask = mask_of([x for a in starts for x in (a,a+1)])
+        for d in range(n%2,n+1,2):
+            if d>=starts[0]:
+                continue
+            tested += 1
+            if value(mask,d)!=0:
+                verify_independently(mask,d)
+                print(json.dumps({"refuted": True,"pair_starts":starts,
+                                  "state":state(mask,d),"tested":tested}))
+                raise SystemExit(0)
+        value.cache_clear()
+print(json.dumps({"refuted":False,"tested":tested}))

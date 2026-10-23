@@ -1,0 +1,28 @@
+"""Falsify the explicit small-endpoint claims, not expand outcome tables.
+
+Uses the existing exact recurrence. Positive x is bit x-1; outcomes -1/0/1
+are current-mover-relative. Only the three exceptional sizes below the
+parametric proof threshold and its one failed intermediate leaf are queried.
+"""
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, verify_independently
+
+started = time.monotonic()
+for n in (11, 12, 15):
+    r = set(range(2, n + 1)) - {n - 4, n - 3}
+    for y in (n - 2, n - 1, n):
+        p = mask_of(sorted(r - {y}))
+        answer = state(p, y)
+        assert answer["value"] != -1
+        print(json.dumps({"N": n, "opening": y, "post_opening": answer}), flush=True)
+leaf = mask_of([2, 3, 6, 7, 15])
+verify_independently(leaf, 9)
+repair = state(leaf, 9)
+assert repair["value"] == 1
+print(json.dumps({"failed_m10_intermediate": repair}))
+print(json.dumps({"elapsed_seconds": time.monotonic() - started}))

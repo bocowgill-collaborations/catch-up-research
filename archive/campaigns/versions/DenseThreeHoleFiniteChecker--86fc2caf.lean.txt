@@ -1,0 +1,91 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CanAvoidLossClassifier
+import catch_up.DenseHoleReduction
+
+/-!
+# Finite checker for the dense three-hole invariant
+
+This module enumerates the bounded supports and deficits in `DenseThreeHoleNonloss` and connects
+the executable checks to the proof-level invariant.
+-/
+
+namespace CatchUpSearch.DenseThreeHoleFiniteChecker
+
+open CatchUp
+
+/-- The non-value hypotheses that remain after support containment and the deficit bound are
+enforced by the finite enumeration. -/
+def qualifies (N : ℕ) (remaining : Finset ℕ) (deficit : ℕ) : Bool :=
+  decide (((Finset.Icc 1 N) \ remaining).card ≤ 3 ∧
+    ¬ remaining.sum (fun x => x) < deficit ∧
+      Even (deficit + remaining.sum (fun x => x)))
+
+/-- Exhaustively test all anchored supports and deficits relevant to `DenseThreeHoleNonloss`. -/
+def check (N : ℕ) : Bool :=
+  (Finset.Icc 1 N).powerset.attach.fold (· && ·) true fun
+      remaining : {s // s ∈ (Finset.Icc 1 N).powerset} =>
+    (Finset.range (N + 1)).attach.fold (· && ·) true fun
+        deficit : {d // d ∈ Finset.range (N + 1)} =>
+      !qualifies N remaining.1 deficit.1 ||
+        CanAvoidLossClassifier.check .p1 ⟨⟨remaining.1, deficit.1⟩, .p1⟩
+
+/-- Acceptance of the finite checker proves the quantified dense three-hole non-loss invariant. -/
+@[category API, AMS 91]
+theorem dense_three_hole_nonloss_of_check_eq_true
+    (N : ℕ) (hcheck : check N = true) :
+    DenseThreeHoleNonloss N := by
+  intro position hsub hholes hdN hcatch heven
+  have hremaining : position.remaining ∈ (Finset.Icc 1 N).powerset := by
+    simp only [Finset.mem_powerset]
+    exact hsub
+  have hdeficit : position.deficit ∈ Finset.range (N + 1) := by
+    simp only [Finset.mem_range]
+    omega
+  rw [check, Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at hcheck
+  simp only [true_and, Finset.mem_attach] at hcheck
+  have houter := hcheck ⟨position.remaining, hremaining⟩ True.intro
+  rw [Finset.fold_op_rel_iff_and
+    (r := fun _ value : Bool => value = true) (c := true) (by simp)] at houter
+  simp only [true_and, Finset.mem_attach] at houter
+  have hinner := houter ⟨position.deficit, hdeficit⟩ True.intro
+  have hqualifies : qualifies N position.remaining position.deficit = true := by
+    simp only [qualifies, decide_eq_true_eq]
+    exact ⟨hholes, hcatch, heven⟩
+  have hclassifier :
+      CanAvoidLossClassifier.check .p1 ⟨position, .p1⟩ = true := by
+    simpa [hqualifies] using hinner
+  have hsafe : CanAvoidLoss .p1 (⟨position, .p1⟩ : GamePosition) :=
+    (CanAvoidLossClassifier.check_eq_true_iff .p1 _).mp hclassifier
+  rw [can_avoid_loss_iff_value] at hsafe
+  simpa using hsafe
+
+/-- The dense three-hole invariant holds at the first endpoint where the general candidate was
+observed computationally. -/
+@[category test, AMS 91]
+theorem dense_three_hole_nonloss_nine : DenseThreeHoleNonloss 9 := by
+  apply dense_three_hole_nonloss_of_check_eq_true
+  native_decide
+
+/-- The dense three-hole invariant also holds at endpoint ten. -/
+@[category test, AMS 91]
+theorem dense_three_hole_nonloss_ten : DenseThreeHoleNonloss 10 := by
+  apply dense_three_hole_nonloss_of_check_eq_true
+  native_decide
+
+end CatchUpSearch.DenseThreeHoleFiniteChecker

@@ -1,0 +1,98 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.LowerRayFourthEndpoint
+
+/-!
+# Fourth-from-top endpoint statement and axiom audit
+
+The requested transfer follows from the stronger unconditional endpoint theorem.
+The audit rejects every transitive axiom outside the standard logical three.
+-/
+
+namespace CatchUp.FourthEndpointAudit
+
+/-- The requested endpoint is nonlosing without a smaller-instance hypothesis. -/
+theorem set_difference_form (N : ℕ) (hN : 11 ≤ N)
+    (heven : Even (N * (N + 1) / 2)) :
+    Position.value ⟨Finset.Icc 1 N \ {1, N - 3}, N - 4⟩ ≠ .loss := by
+  have hremaining : Finset.Icc 1 N \ {1, N - 3} =
+      ((Finset.Icc 1 N).erase 1).erase (N - 3) := by
+    ext x
+    simp only [Finset.mem_sdiff, Finset.mem_insert, Finset.mem_singleton,
+      Finset.mem_erase]
+    tauto
+  simpa only [hremaining, pairDeletionPosition, Nat.sub_sub] using
+    pair_deletion_position_fourth_from_top_value_ne_loss N hN heven
+
+/-- The precise transfer requested in the research task; its draw hypothesis is unnecessary. -/
+theorem requested_transfer (N : ℕ) (hN : 11 ≤ N)
+    (heven : Even (N * (N + 1) / 2))
+    (_hdraw : (afterOpening (Finset.Icc 1 (N - 4)) 1).value = .draw) :
+    Position.value ⟨Finset.Icc 1 N \ {1, N - 3}, N - 4⟩ ≠ .loss :=
+  set_difference_form N hN heven
+
+/-- Target A's complete upper-opening exclusion when the adjacent hole is fourth from the top. -/
+theorem upper_opening_specialization (N : ℕ) (hN : 11 ≤ N)
+    (heven : Even (N * (N + 1) / 2)) (y : ℕ)
+    (hy : y ∈ Finset.Icc (N - 2) N) :
+    (afterOpening (Finset.Icc 1 N \ {1, N - 4, N - 3}) y).value ≠ .loss := by
+  have hm : 10 ≤ N - 5 ∨ N - 5 = 6 ∨ N - 5 = 7 := by
+    by_cases hlarge : 15 ≤ N
+    · omega
+    have hcases : N = 11 ∨ N = 12 := by
+      interval_cases N <;> first | omega | norm_num at heven
+    omega
+  have hres : Finset.Icc 1 N \ {1, N - 4, N - 3} = upperTripleResidual (N - 5) := by
+    ext x
+    simp [upperTripleResidual]
+    omega
+  rw [hres]
+  have hcases : y = (N - 5) + 3 ∨ y = (N - 5) + 4 ∨ y = (N - 5) + 5 := by
+    simp only [Finset.mem_Icc] at hy
+    omega
+  rcases hcases with rfl | rfl | rfl
+  · rcases hm with hm | hm
+    · exact upper_triple_first_opening_ne_loss _ hm
+    · exact upper_triple_small_first_opening_ne_loss _ hm
+  · rcases hm with hm | hm
+    · exact upper_triple_middle_opening_ne_loss _ hm
+    · exact upper_triple_small_middle_opening_ne_loss _ hm
+  · exact upper_triple_last_opening_ne_loss _ (by omega)
+
+open Lean Elab Command in
+run_cmd do
+  let declarations := #[
+    ``Position.value_ne_loss_of_exact_sum_residuals,
+    ``Position.value_ne_loss_of_exact_pair_residuals,
+    ``upper_triple_five_counter_repair,
+    ``upper_triple_first_opening_ne_loss,
+    ``upper_triple_middle_opening_ne_loss,
+    ``upper_triple_last_opening_ne_loss,
+    ``upper_triple_small_first_opening_ne_loss,
+    ``upper_triple_small_middle_opening_ne_loss,
+    ``pair_deletion_position_fourth_from_top_value_ne_loss_of_fifteen_le,
+    ``pair_deletion_position_fourth_from_top_value_ne_loss,
+    ``set_difference_form, ``requested_transfer, ``upper_opening_specialization]
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for declaration in declarations do
+    let actual ← Lean.collectAxioms declaration
+    for axiomName in actual do
+      unless allowed.contains axiomName do
+        throwError "Unexpected axiom in {declaration}: {axiomName}"
+    logInfo m!"Verified axioms for {declaration}: {actual}"
+
+end CatchUp.FourthEndpointAudit

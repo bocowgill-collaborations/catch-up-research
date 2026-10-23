@@ -1,0 +1,40 @@
+"""Read-only preservation oracle relative to the inspected task base."""
+
+from pathlib import Path
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[2]
+BASE = "79ae377f"
+BRANCH = "codex/catchup-certificate-complexity-20260929"
+REPORT = "CATCHUP_CERTIFICATE_COMPLEXITY_REPORT_20260929_0126_ET.md"
+MODULES = {
+    "scripts/catch_up/CertificateComplexity.lean",
+    "scripts/catch_up/CertificateComplexityGame.lean",
+    "scripts/catch_up/CertificateComplexityHighCounters.lean",
+    "scripts/catch_up/CertificateComplexityAudit.lean",
+    "scripts/catch_up/CertificateComplexityCompression.lean",
+    "scripts/catch_up/CertificateComplexityFixtures.lean",
+}
+
+
+def git(*args):
+    return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
+
+
+def allowed(path):
+    return path in MODULES or path == REPORT or path.startswith("research/certificate_complexity_20260929/")
+
+
+assert git("branch", "--show-current") == BRANCH
+subprocess.run(["git", "merge-base", "--is-ancestor", BASE, "HEAD"], cwd=ROOT, check=True)
+for line in git("diff", "--name-status", "--no-renames", BASE).splitlines():
+    status, path = line.split("\t", 1)
+    assert status == "A", f"pre-existing file changed: {line}"
+    assert allowed(path), f"out-of-scope addition: {path}"
+for path in git("ls-files", "--others", "--exclude-standard").splitlines():
+    assert allowed(path), f"out-of-scope untracked file: {path}"
+for path in MODULES | {REPORT}:
+    assert (ROOT / path).is_file(), f"missing deliverable: {path}"
+assert (ROOT / "research/certificate_complexity_20260929/REVIEW_FINAL.md").is_file()
+subprocess.run(["git", "diff", "--check", BASE], cwd=ROOT, check=True)
+print("CERTIFICATE COMPLEXITY PRESERVATION PASSED; prior tracked files unchanged")

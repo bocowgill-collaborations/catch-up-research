@@ -4,6 +4,8 @@ This page separates the central conjecture, wider questions about the game, and 
 
 The [current route guide](research-routes.md) gives concrete proof obligations; [experimental findings](experimental-findings.md) explain what the existing tests support and which tests were vacuous. Detailed earlier arguments are retained in the [research notebook](../archive/research-notes/).
 
+The [earlier campaign ledger](legacy-findings.md) also identifies concrete recovery tasks: locate the missing August scratch proofs and audit programs, replay historical native certificates under an explicitly chosen trust policy, and port the archived September endpoints and causal controller if useful to a new proof route. The [missing-artifact list](../archive/campaigns/README.md#missing-artifacts-and-deferred-verification) distinguishes absent files from unresolved mathematics. The 263 historical notebook entries record the research process; they do not add proved claims.
+
 ## The central problem
 
 **C:** for every N, even `N(N+1)/2` implies a draw on `{1,…,N}` under optimal play. This includes N=0. C remains open in the inspected [formal statement](https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
@@ -35,4 +37,4 @@ The highest-value mathematical next step for this route is a defensive condition
 
 The 388,819,712-state baseline has `Halts(M) ↔ ¬C`. The 211,100,482-state candidate has checked local routines and all 277 added bank-site relocations, but still needs inherited-core preservation under hook redirection, full partial-program simulation and final equivalence. See [the machine page](../cryptid/).
 
-Another useful task is to locate the older solver and retained outputs, audit its semantics and reproduce small cases before considering a full large-instance replay. Large reruns are optional, separately budgeted work; existing structural arguments may be more useful for a general proof. Connecting output to a sound certificate checker is a distinct obligation. A least-counterexample claim would additionally require certification of all smaller eligible cases. A smaller machine, by itself, proves neither C nor a short proof-size bound.
+Another useful task is to recover the missing large tables and independent audit programs behind the [historical packed-solver runs](../archive/campaigns/packed-exact-run-2026-08-07.md). The solver source and small reproduction checks are already available in [computation/solvers/packed](../computation/solvers/packed/). Large reruns are optional, separately budgeted work; existing structural arguments may be more useful for a general proof. Connecting output to a sound certificate checker is a distinct obligation. A least-counterexample claim would additionally require certification of all smaller eligible cases. A smaller machine, by itself, proves neither C nor a short proof-size bound.
