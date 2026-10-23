@@ -1,7 +1,14 @@
 # Catch-Up Research
 
-A shared home for Catch-Up research: proofs, computations, failed approaches,
-and the Catch-Up cryptid.
+Catch-Up is a two-player game invented by **Aaron Isaksen, Mehmet Ismail,
+Steven J. Brams, and Andy Nealen**, and introduced in their 2015 paper
+[*Catch-Up: A Game in Which the Lead Alternates*](https://www.nealen.net/papers/catch-up-a-game-in-which-the-lead-alternates-2015.pdf).
+
+This repository is a shared home for research on the game-theoretic and
+number-theoretic properties of Catch-Up, including the main
+[Catch-Up Conjecture](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
+It contains proofs, computations, failed approaches, and the
+[Catch-Up cryptid](cryptid/).
 
 **Status, 22 October 2026:** the conjecture remains open. Verified work currently
 covers intermediate results and the machine construction.
