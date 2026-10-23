@@ -1,0 +1,8301 @@
+{
+  "cutoff": 7,
+  "nodes": [
+    {
+      "id": 1,
+      "deficit": 10,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 2,
+      "deficit": 16,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 3,
+      "deficit": 32,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 4,
+      "deficit": 33,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 5,
+      "deficit": 47,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 6,
+      "deficit": 54,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 7,
+      "deficit": 57,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 8,
+      "deficit": 96,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 9,
+      "deficit": 3,
+      "value": -1,
+      "card": 8,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 9,
+          "pick": 13,
+          "child": 1,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 19,
+          "child": 2,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 35,
+          "child": 3,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 36,
+          "child": 4,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 50,
+          "child": 5,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 57,
+          "child": 6,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 60,
+          "child": 7,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 9,
+          "pick": 99,
+          "child": 8,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "deficit": 4,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 11,
+      "deficit": 3,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 11,
+          "pick": 7,
+          "child": 10,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "deficit": 2,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 13,
+      "deficit": 9,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 13,
+          "pick": 7,
+          "child": 12,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "deficit": 11,
+      "value": -1,
+      "card": 7,
+      "kind": "alias",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "lean_alias": "CatchUp.NearDeficitGuardObstruction.node_014",
+      "alias_private": true,
+      "alias_source": "CatchUp/NearDeficitGuardObstruction.lean",
+      "alias_source_sha256": "756995ea398c31afcc627f1674bf9616a26874d0c8303f93b75423d12abc1942",
+      "literal_alias_value": -1,
+      "literal_alias_pass": true
+    },
+    {
+      "id": 15,
+      "deficit": 25,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 15,
+          "pick": 36,
+          "child": 14,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "deficit": 9,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 17,
+      "deficit": 26,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 17,
+          "pick": 35,
+          "child": 16,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "deficit": 33,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 19,
+      "deficit": 40,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 19,
+          "pick": 7,
+          "child": 18,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "deficit": 40,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 21,
+      "deficit": 47,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 21,
+          "pick": 7,
+          "child": 20,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "deficit": 43,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 23,
+      "deficit": 50,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 23,
+          "pick": 7,
+          "child": 22,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "deficit": 82,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 25,
+      "deficit": 89,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 25,
+          "pick": 7,
+          "child": 24,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "deficit": 10,
+      "value": -1,
+      "card": 9,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 26,
+          "pick": 7,
+          "child": 9,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 26,
+          "pick": 13,
+          "child": 11,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 19,
+          "child": 13,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 35,
+          "child": 15,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 36,
+          "child": 17,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 50,
+          "child": 19,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 57,
+          "child": 21,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 60,
+          "child": 23,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 26,
+          "pick": 99,
+          "child": 25,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "deficit": 29,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 28,
+      "deficit": 6,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 28,
+          "pick": 35,
+          "child": 27,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "deficit": 8,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 30,
+      "deficit": 12,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 30,
+          "pick": 4,
+          "child": 29,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "deficit": 24,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 32,
+      "deficit": 28,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 32,
+          "pick": 4,
+          "child": 31,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "deficit": 25,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 34,
+      "deficit": 29,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 34,
+          "pick": 4,
+          "child": 33,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "deficit": 39,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 36,
+      "deficit": 43,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 36,
+          "pick": 4,
+          "child": 35,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "deficit": 46,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 38,
+      "deficit": 50,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 38,
+          "pick": 4,
+          "child": 37,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "deficit": 49,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 40,
+      "deficit": 53,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 40,
+          "pick": 4,
+          "child": 39,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "deficit": 88,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 42,
+      "deficit": 92,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 42,
+          "pick": 4,
+          "child": 41,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "deficit": 7,
+      "value": -1,
+      "card": 9,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 43,
+          "pick": 4,
+          "child": 9,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 43,
+          "pick": 13,
+          "child": 28,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 19,
+          "child": 30,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 35,
+          "child": 32,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 36,
+          "child": 34,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 50,
+          "child": 36,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 57,
+          "child": 38,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 60,
+          "child": 40,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 43,
+          "pick": 99,
+          "child": 42,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "deficit": 14,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 45,
+      "deficit": 18,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 45,
+          "pick": 4,
+          "child": 44,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "deficit": 16,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 47,
+      "deficit": 34,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 47,
+          "pick": 50,
+          "child": 46,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "deficit": 15,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 49,
+      "deficit": 35,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 49,
+          "pick": 50,
+          "child": 48,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "deficit": 45,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 51,
+      "deficit": 49,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 51,
+          "pick": 4,
+          "child": 50,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "deficit": 52,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 53,
+      "deficit": 56,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 53,
+          "pick": 4,
+          "child": 52,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "deficit": 55,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 55,
+      "deficit": 59,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 55,
+          "pick": 4,
+          "child": 54,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "deficit": 94,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 57,
+      "deficit": 98,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 57,
+          "pick": 4,
+          "child": 56,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "deficit": 1,
+      "value": -1,
+      "card": 9,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 58,
+          "pick": 4,
+          "child": 11,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 7,
+          "child": 28,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 19,
+          "child": 45,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 35,
+          "child": 47,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 36,
+          "child": 49,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 50,
+          "child": 51,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 57,
+          "child": 53,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 60,
+          "child": 55,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 58,
+          "pick": 99,
+          "child": 57,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "deficit": 26,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 60,
+      "deficit": 23,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 61,
+      "deficit": 17,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 62,
+      "deficit": 6,
+      "value": 1,
+      "card": 7,
+      "kind": "alias",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "lean_alias": "CatchUp.NearDeficitGuardObstruction.node_047",
+      "alias_private": true,
+      "alias_source": "CatchUp/NearDeficitGuardObstruction.lean",
+      "alias_source_sha256": "756995ea398c31afcc627f1674bf9616a26874d0c8303f93b75423d12abc1942",
+      "literal_alias_value": 1,
+      "literal_alias_pass": true
+    },
+    {
+      "id": 63,
+      "deficit": 20,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 64,
+      "deficit": 27,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 65,
+      "deficit": 30,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 66,
+      "deficit": 69,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 67,
+      "deficit": 30,
+      "value": -1,
+      "card": 8,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 67,
+          "pick": 4,
+          "child": 59,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 67,
+          "pick": 7,
+          "child": 60,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 67,
+          "pick": 13,
+          "child": 61,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 67,
+          "pick": 36,
+          "child": 62,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 67,
+          "pick": 50,
+          "child": 63,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 67,
+          "pick": 57,
+          "child": 64,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 67,
+          "pick": 60,
+          "child": 65,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 67,
+          "pick": 99,
+          "child": 66,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "deficit": 5,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 68,
+          "pick": 35,
+          "child": 67,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "deficit": 4,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 70,
+      "deficit": 17,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 70,
+          "pick": 13,
+          "child": 69,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "deficit": 21,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 71,
+          "pick": 4,
+          "child": 70,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "deficit": 5,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 73,
+      "deficit": 18,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 73,
+          "pick": 13,
+          "child": 72,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "deficit": 22,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 74,
+          "pick": 4,
+          "child": 73,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "deficit": 19,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 76,
+      "deficit": 32,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 76,
+          "pick": 13,
+          "child": 75,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "deficit": 36,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 77,
+          "pick": 4,
+          "child": 76,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "deficit": 4,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 79,
+      "deficit": 39,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 79,
+          "pick": 35,
+          "child": 78,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "deficit": 43,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 80,
+          "pick": 4,
+          "child": 79,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "deficit": 35,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 82,
+      "deficit": 42,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 82,
+          "pick": 7,
+          "child": 81,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "deficit": 46,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 83,
+          "pick": 4,
+          "child": 82,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "deficit": 74,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 85,
+      "deficit": 81,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 85,
+          "pick": 7,
+          "child": 84,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "deficit": 85,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 86,
+          "pick": 4,
+          "child": 85,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "deficit": 14,
+      "value": -1,
+      "card": 10,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 87,
+          "pick": 4,
+          "child": 26,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 87,
+          "pick": 7,
+          "child": 43,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 87,
+          "pick": 13,
+          "child": 58,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 87,
+          "pick": 19,
+          "child": 68,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 87,
+          "pick": 35,
+          "child": 71,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 87,
+          "pick": 36,
+          "child": 74,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 87,
+          "pick": 50,
+          "child": 77,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 87,
+          "pick": 57,
+          "child": 80,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 87,
+          "pick": 60,
+          "child": 83,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 87,
+          "pick": 99,
+          "child": 86,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "deficit": 1,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 88,
+          "pick": 15,
+          "child": 87,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "deficit": 14,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 90,
+      "deficit": 30,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 91,
+      "deficit": 31,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 92,
+      "deficit": 45,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 93,
+      "deficit": 52,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 94,
+      "deficit": 55,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 95,
+      "deficit": 94,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 96,
+      "deficit": 5,
+      "value": -1,
+      "card": 8,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 96,
+          "pick": 15,
+          "child": 1,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 19,
+          "child": 89,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 35,
+          "child": 90,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 36,
+          "child": 91,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 50,
+          "child": 92,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 57,
+          "child": 93,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 60,
+          "child": 94,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 96,
+          "pick": 99,
+          "child": 95,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "deficit": 28,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 98,
+      "deficit": 7,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 98,
+          "pick": 35,
+          "child": 97,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "deficit": 16,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 100,
+      "deficit": 23,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 100,
+          "pick": 7,
+          "child": 99,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "deficit": 11,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 102,
+      "deficit": 24,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 102,
+          "pick": 35,
+          "child": 101,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "deficit": 23,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 104,
+      "deficit": 38,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 104,
+          "pick": 15,
+          "child": 103,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "deficit": 38,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 106,
+      "deficit": 45,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 106,
+          "pick": 7,
+          "child": 105,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "deficit": 41,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 108,
+      "deficit": 48,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 108,
+          "pick": 7,
+          "child": 107,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "deficit": 80,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 110,
+      "deficit": 87,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 110,
+          "pick": 7,
+          "child": 109,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "deficit": 12,
+      "value": -1,
+      "card": 9,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 111,
+          "pick": 7,
+          "child": 96,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 111,
+          "pick": 15,
+          "child": 11,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 19,
+          "child": 98,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 35,
+          "child": 100,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 36,
+          "child": 102,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 50,
+          "child": 104,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 57,
+          "child": 106,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 60,
+          "child": 108,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 111,
+          "pick": 99,
+          "child": 110,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "deficit": 1,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 112,
+          "pick": 13,
+          "child": 111,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "deficit": 3,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 113,
+          "pick": 2,
+          "child": 112,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "deficit": 27,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 115,
+      "deficit": 8,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 115,
+          "pick": 35,
+          "child": 114,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "deficit": 21,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 117,
+      "deficit": 14,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 117,
+          "pick": 35,
+          "child": 116,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "deficit": 28,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 119,
+      "deficit": 30,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 119,
+          "pick": 2,
+          "child": 118,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "deficit": 29,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 121,
+      "deficit": 31,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 121,
+          "pick": 2,
+          "child": 120,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "deficit": 43,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 123,
+      "deficit": 45,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 123,
+          "pick": 2,
+          "child": 122,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "deficit": 50,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 125,
+      "deficit": 52,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 125,
+          "pick": 2,
+          "child": 124,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "deficit": 53,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 127,
+      "deficit": 55,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 127,
+          "pick": 2,
+          "child": 126,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "deficit": 92,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 129,
+      "deficit": 94,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 129,
+          "pick": 2,
+          "child": 128,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "deficit": 5,
+      "value": -1,
+      "card": 9,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 130,
+          "pick": 2,
+          "child": 9,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 130,
+          "pick": 13,
+          "child": 115,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 19,
+          "child": 117,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 35,
+          "child": 119,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 36,
+          "child": 121,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 50,
+          "child": 123,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 57,
+          "child": 125,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 60,
+          "child": 127,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 130,
+          "pick": 99,
+          "child": 129,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "deficit": 2,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 132,
+      "deficit": 2,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 132,
+          "pick": 4,
+          "child": 131,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "deficit": 4,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 133,
+          "pick": 2,
+          "child": 132,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "deficit": 4,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 135,
+      "deficit": 8,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 135,
+          "pick": 4,
+          "child": 134,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "deficit": 10,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 136,
+          "pick": 2,
+          "child": 135,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "deficit": 20,
+      "value": 1,
+      "card": 7,
+      "kind": "alias",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "lean_alias": "CatchUp.NearDeficitGuardObstruction.node_016",
+      "alias_private": true,
+      "alias_source": "CatchUp/NearDeficitGuardObstruction.lean",
+      "alias_source_sha256": "756995ea398c31afcc627f1674bf9616a26874d0c8303f93b75423d12abc1942",
+      "literal_alias_value": 1,
+      "literal_alias_pass": true
+    },
+    {
+      "id": 138,
+      "deficit": 24,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 138,
+          "pick": 4,
+          "child": 137,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 139,
+      "deficit": 26,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 139,
+          "pick": 2,
+          "child": 138,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 140,
+      "deficit": 6,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 141,
+      "deficit": 4,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 142,
+      "deficit": 5,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 143,
+      "deficit": 11,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 144,
+      "deficit": 42,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 145,
+      "deficit": 49,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 146,
+      "deficit": 52,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 147,
+      "deficit": 91,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 148,
+      "deficit": 8,
+      "value": -1,
+      "card": 8,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 148,
+          "pick": 2,
+          "child": 140,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 148,
+          "pick": 4,
+          "child": 141,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 148,
+          "pick": 13,
+          "child": 142,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 148,
+          "pick": 19,
+          "child": 143,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 148,
+          "pick": 50,
+          "child": 144,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 148,
+          "pick": 57,
+          "child": 145,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 148,
+          "pick": 60,
+          "child": 146,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 148,
+          "pick": 99,
+          "child": 147,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 149,
+      "deficit": 27,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 149,
+          "pick": 35,
+          "child": 148,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "deficit": 35,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 151,
+      "deficit": 39,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 151,
+          "pick": 4,
+          "child": 150,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "deficit": 41,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 152,
+          "pick": 2,
+          "child": 151,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "deficit": 42,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 154,
+      "deficit": 46,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 154,
+          "pick": 4,
+          "child": 153,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "deficit": 48,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 155,
+          "pick": 2,
+          "child": 154,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "deficit": 45,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 157,
+      "deficit": 49,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 157,
+          "pick": 4,
+          "child": 156,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 158,
+      "deficit": 51,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 158,
+          "pick": 2,
+          "child": 157,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 159,
+      "deficit": 84,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 160,
+      "deficit": 88,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 160,
+          "pick": 4,
+          "child": 159,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "deficit": 90,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 161,
+          "pick": 2,
+          "child": 160,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "deficit": 9,
+      "value": -1,
+      "card": 10,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 162,
+          "pick": 2,
+          "child": 43,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 162,
+          "pick": 4,
+          "child": 130,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 162,
+          "pick": 13,
+          "child": 133,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 19,
+          "child": 136,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 35,
+          "child": 139,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 36,
+          "child": 149,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 50,
+          "child": 152,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 57,
+          "child": 155,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 60,
+          "child": 158,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 162,
+          "pick": 99,
+          "child": 161,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 163,
+      "deficit": 6,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 163,
+          "pick": 15,
+          "child": 162,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "deficit": 10,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 165,
+      "deficit": 26,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 166,
+      "deficit": 27,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 167,
+      "deficit": 41,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 168,
+      "deficit": 48,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 169,
+      "deficit": 51,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 170,
+      "deficit": 90,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 171,
+      "deficit": 9,
+      "value": -1,
+      "card": 8,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 171,
+          "pick": 7,
+          "child": 131,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 171,
+          "pick": 19,
+          "child": 164,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 171,
+          "pick": 35,
+          "child": 165,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 171,
+          "pick": 36,
+          "child": 166,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 171,
+          "pick": 50,
+          "child": 167,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 171,
+          "pick": 57,
+          "child": 168,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 171,
+          "pick": 60,
+          "child": 169,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 171,
+          "pick": 99,
+          "child": 170,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 172,
+      "deficit": 6,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 172,
+          "pick": 15,
+          "child": 171,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "deficit": 10,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 173,
+          "pick": 4,
+          "child": 172,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "deficit": 12,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 174,
+          "pick": 2,
+          "child": 173,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "deficit": 12,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 175,
+          "pick": 13,
+          "child": 58,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 176,
+      "deficit": 14,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 176,
+          "pick": 2,
+          "child": 175,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "deficit": 41,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 178,
+      "deficit": 35,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        15,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        15,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 179,
+      "deficit": 33,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 180,
+      "deficit": 13,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 181,
+      "deficit": 12,
+      "value": -1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        35,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        35,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": -1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 182,
+      "deficit": 2,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 183,
+      "deficit": 9,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 184,
+      "deficit": 51,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 185,
+      "deficit": 48,
+      "value": -1,
+      "card": 8,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 185,
+          "pick": 7,
+          "child": 177,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 185,
+          "pick": 13,
+          "child": 178,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 185,
+          "pick": 15,
+          "child": 179,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 185,
+          "pick": 35,
+          "child": 180,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 185,
+          "pick": 36,
+          "child": 181,
+          "child_value": -1,
+          "switches": false
+        },
+        {
+          "parent": 185,
+          "pick": 50,
+          "child": 182,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 185,
+          "pick": 57,
+          "child": 183,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 185,
+          "pick": 99,
+          "child": 184,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 186,
+      "deficit": 12,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 186,
+          "pick": 60,
+          "child": 185,
+          "child_value": -1,
+          "switches": true
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "deficit": 16,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 187,
+          "pick": 4,
+          "child": 186,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "deficit": 18,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 188,
+          "pick": 2,
+          "child": 187,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "deficit": 8,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 190,
+      "deficit": 21,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 190,
+          "pick": 13,
+          "child": 189,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 191,
+      "deficit": 28,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 191,
+          "pick": 7,
+          "child": 190,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 192,
+      "deficit": 32,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 192,
+          "pick": 4,
+          "child": 191,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "deficit": 34,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 193,
+          "pick": 2,
+          "child": 192,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 194,
+      "deficit": 9,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 195,
+      "deficit": 22,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 195,
+          "pick": 13,
+          "child": 194,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 196,
+      "deficit": 29,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 196,
+          "pick": 7,
+          "child": 195,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 197,
+      "deficit": 33,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 197,
+          "pick": 4,
+          "child": 196,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 198,
+      "deficit": 35,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 198,
+          "pick": 2,
+          "child": 197,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 199,
+      "deficit": 21,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 200,
+      "deficit": 36,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 200,
+          "pick": 15,
+          "child": 199,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 201,
+      "deficit": 43,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 201,
+          "pick": 7,
+          "child": 200,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "deficit": 47,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 202,
+          "pick": 4,
+          "child": 201,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "deficit": 49,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 203,
+          "pick": 2,
+          "child": 202,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "deficit": 30,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 205,
+      "deficit": 43,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 205,
+          "pick": 13,
+          "child": 204,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 206,
+      "deficit": 50,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 206,
+          "pick": 7,
+          "child": 205,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 207,
+      "deficit": 54,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 207,
+          "pick": 4,
+          "child": 206,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 208,
+      "deficit": 56,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 208,
+          "pick": 2,
+          "child": 207,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 209,
+      "deficit": 11,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 210,
+      "deficit": 46,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 210,
+          "pick": 35,
+          "child": 209,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 211,
+      "deficit": 53,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 211,
+          "pick": 7,
+          "child": 210,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 212,
+      "deficit": 57,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 212,
+          "pick": 4,
+          "child": 211,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 213,
+      "deficit": 59,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 213,
+          "pick": 2,
+          "child": 212,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 214,
+      "deficit": 72,
+      "value": 1,
+      "card": 7,
+      "kind": "leaf",
+      "terminal": false,
+      "support": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [],
+      "literal_leaf_value": 1,
+      "literal_leaf_pass": true
+    },
+    {
+      "id": 215,
+      "deficit": 85,
+      "value": 1,
+      "card": 8,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 215,
+          "pick": 13,
+          "child": 214,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 216,
+      "deficit": 92,
+      "value": 1,
+      "card": 9,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 216,
+          "pick": 7,
+          "child": 215,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 217,
+      "deficit": 96,
+      "value": 1,
+      "card": 10,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 217,
+          "pick": 4,
+          "child": 216,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 218,
+      "deficit": 98,
+      "value": 1,
+      "card": 11,
+      "kind": "win",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60
+      ],
+      "edges": [
+        {
+          "parent": 218,
+          "pick": 2,
+          "child": 217,
+          "child_value": 1,
+          "switches": false
+        }
+      ]
+    },
+    {
+      "id": 219,
+      "deficit": 1,
+      "value": -1,
+      "card": 12,
+      "kind": "loss",
+      "terminal": false,
+      "support": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "remaining": [
+        2,
+        4,
+        7,
+        13,
+        15,
+        19,
+        35,
+        36,
+        50,
+        57,
+        60,
+        99
+      ],
+      "edges": [
+        {
+          "parent": 219,
+          "pick": 2,
+          "child": 88,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 4,
+          "child": 113,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 7,
+          "child": 163,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 13,
+          "child": 174,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 15,
+          "child": 176,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 19,
+          "child": 188,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 35,
+          "child": 193,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 36,
+          "child": 198,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 50,
+          "child": 203,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 57,
+          "child": 208,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 60,
+          "child": 213,
+          "child_value": 1,
+          "switches": true
+        },
+        {
+          "parent": 219,
+          "pick": 99,
+          "child": 218,
+          "child_value": 1,
+          "switches": true
+        }
+      ]
+    }
+  ],
+  "roots": [
+    {
+      "label": "G1",
+      "node": 219,
+      "value": -1
+    }
+  ],
+  "scope": "Only fixed G1 LOSS; new leaves cutoff7; three imported proved B-private aliases",
+  "node_count": 219,
+  "leaf_count": 100,
+  "alias_count": 3,
+  "edge_count": 227,
+  "same_player_edges": 103,
+  "all_leaf_values_independently_literal": true,
+  "all_edges_arithmetic_and_perspective_checked": true,
+  "literal_root_value": -1,
+  "literal_all_root_moves": {
+    "2": -1,
+    "4": -1,
+    "7": -1,
+    "13": -1,
+    "15": -1,
+    "19": -1,
+    "35": -1,
+    "36": -1,
+    "50": -1,
+    "57": -1,
+    "60": -1,
+    "99": -1
+  },
+  "negative_controls_rejected": [
+    "missing_loss_branch",
+    "illegal_winning_move",
+    "circular_child",
+    "wrong_child_state",
+    "wrong_root_value",
+    "wrong_alias_theorem"
+  ],
+  "kernel_certification_claimed": false,
+  "max_literal_cached_states": 998,
+  "seconds": 0.222435917,
+  "max_rss_bytes": 40468480,
+  "source_log_sha256": "50039ffbed39e96a07c46799bda79805352790a8b2ce9f1acbe9f80a69139203",
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432"
+}

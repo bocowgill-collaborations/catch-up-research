@@ -1,0 +1,1838 @@
+{
+  "CatchUp/AdjacentPairGeometryRepair.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AdjacentPairGeometryRepair",
+    "sha256": "ece0994a42a084c8594818e0f06c8272a22c4ab7c32d0f4e85e6fc3071ee49cd",
+    "bytes": 20120
+  },
+  "CatchUp/PairClassification.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.PairClassification",
+    "sha256": "6ac58f1ac14ecd51ce46961e757f691e18525556e7643fe9409fd063edf5871d",
+    "bytes": 11650
+  },
+  "CatchUp/Reference.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.Reference",
+    "sha256": "4a70fb0842ab74d6e3b232a189eb5f82824ba1aebb3e2eb504f778bddd33af8b",
+    "bytes": 33875
+  },
+  "CatchUp/DrawOpening.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DrawOpening",
+    "sha256": "e0126bb1495f3a9c25dbe1b996880b3031ee5db5901c447f710ee707764696b6",
+    "bytes": 5643
+  },
+  "CatchUp/ZeroDeficit.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ZeroDeficit",
+    "sha256": "2f8964d1e623b809da7149a04ebd6a314b56586e3f5f880ac9d17abe058c34ed",
+    "bytes": 481
+  },
+  "CatchUp/Executable.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.Executable",
+    "sha256": "7bd81a1ee38c45c6756aa85bf50d94e3c90e26a873c001492fd1220cada54622",
+    "bytes": 3168
+  },
+  "CatchUp/Classifier.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.Classifier",
+    "sha256": "a877edd172cf2dc05f55f8c56b8bdca8d32cbff8d4e9c93e9e43405ab2a5d19b",
+    "bytes": 3450
+  },
+  "CatchUp/AdviceFeatureCollision.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AdviceFeatureCollision",
+    "sha256": "86172557d610ee32fff6a4ae216af54304788f09c1e9a049e509dbf5cc26168a",
+    "bytes": 3413
+  },
+  "CatchUp/WholeTurn.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.WholeTurn",
+    "sha256": "9cb3b9ffa2eb8ee86a0e1356fe972b7a4de92b24c1bb7feaf12070943c1b6210",
+    "bytes": 15294
+  },
+  "CatchUp/CompletedTurn.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.CompletedTurn",
+    "sha256": "862c0915a1ec9f77ed9d40f671f8dcf8617d8d664ba999a9655e52d23cdc58bb",
+    "bytes": 40562
+  },
+  "CatchUp/SevenPairTest.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.SevenPairTest",
+    "sha256": "251c27810eb9ce340e795d7430037f2c71bb3cd5d256871a6707a8d9887c7e1a",
+    "bytes": 8576
+  },
+  "CatchUp/AnchorFive.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AnchorFive",
+    "sha256": "0fed615e1974c440c0b4b2a6bc53ef6ff3dec13ee9df7ea7c56cd181bba082f0",
+    "bytes": 7057
+  },
+  "CatchUp/AnchorFour.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AnchorFour",
+    "sha256": "4be4fa1f359dae7139b808ed95aa62d3be3de85959d30825bd411e5137ab5e2b",
+    "bytes": 5762
+  },
+  "CatchUp/AnchorFourEndgames.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AnchorFourEndgames",
+    "sha256": "75ab9c12e867958867e1fe7d24f3d251ff208dba052a6d2c3f3805cd0de50347",
+    "bytes": 20511
+  },
+  "CatchUp/CanonicalFive.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.CanonicalFive",
+    "sha256": "d263323fce10b26fc4e13239c7f2ca2f9e1cd092f55c6cdbbdbf0118cec5e8eb",
+    "bytes": 7949
+  },
+  "CatchUp/CanonicalFiveLeaves.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.CanonicalFiveLeaves",
+    "sha256": "6b5ec0eaefdafff45b3bbe6f157fdb6d15535c59ef6a1f35f9001b3c2a67d870",
+    "bytes": 4837
+  },
+  "CatchUp/CanonicalFour.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.CanonicalFour",
+    "sha256": "9d4163cf503690fe11f1c72d43110f14b63f001f49b71cb6b5a150b160d424a4",
+    "bytes": 9007
+  },
+  "CatchUp/CanonicalSmall.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.CanonicalSmall",
+    "sha256": "2041b0fb3d9dd2395c11bfe4156acfbb3dcbb52f6605d2326787457f0e0aa3f5",
+    "bytes": 9979
+  },
+  "CatchUp/FiveThree.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.FiveThree",
+    "sha256": "553a7a05455da0475397be1c61234a5157ba868570d93632d3dcab075069acb4",
+    "bytes": 7166
+  },
+  "CatchUp/DeficitTwo.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DeficitTwo",
+    "sha256": "822136c91576ed8ba70b08d9971fecab9673754f8ad310aabb7ce95c080c1834",
+    "bytes": 21069
+  },
+  "CatchUp/Increasing.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.Increasing",
+    "sha256": "3f3b862b4baccff82e09c4d91cbc17bde75c36c630c97dfb95cc75fcdd5ff584",
+    "bytes": 17464
+  },
+  "CatchUp/PairDeletion.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.PairDeletion",
+    "sha256": "aa2815ab573bba416041dade1d69a30134d824262a1f105dd435bed1393be846",
+    "bytes": 7848
+  },
+  "CatchUp/ReachableBounds.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ReachableBounds",
+    "sha256": "094e94e1f9dd27a6f124b65efba4e7fb990ef6d03defecab8a7356e1e52eb6bf",
+    "bytes": 2923
+  },
+  "CatchUp/TiedFour.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.TiedFour",
+    "sha256": "c2d629c509830b3a66e985fd2f0bedc339813b594c6ad04135182ac46b0f3240",
+    "bytes": 15882
+  },
+  "CatchUp/ThreePairClose.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ThreePairClose",
+    "sha256": "86ae9cadbf9cbf7b881e022e93e5aa131abbeb7fcf6a776245d061714a7bbfb6",
+    "bytes": 11655
+  },
+  "CatchUp/ExactSumLossObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ExactSumLossObstruction",
+    "sha256": "9d10839491d906c149d2f1825ed53d71c603d265b9b615c6b2a0fed98a6a0036",
+    "bytes": 11285
+  },
+  "CatchUp/WinningOpening.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.WinningOpening",
+    "sha256": "31b58ef1ddeebf3420cd970deacb594fc1f70e8327fef319378b05840e72580d",
+    "bytes": 6991
+  },
+  "CatchUp/AlternatingTailObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AlternatingTailObstruction",
+    "sha256": "4142052a77a1377c80ce56c7101c01e5dcdab7496227272793ceedd78e3cb6d7",
+    "bytes": 9995
+  },
+  "CatchUp/AlternativeSumDefense.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.AlternativeSumDefense",
+    "sha256": "a15bfc3b9705f0f9debca0334c623c3eb0c8f1ef5d434489e3f254fdf43f461d",
+    "bytes": 7734
+  },
+  "CatchUp/DeficitCrossing.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DeficitCrossing",
+    "sha256": "e2ca5fd5d4dcd7a2ead9f2b8cc9b32f5ab23a90833a2a3c0bc6cd9345d9c43da",
+    "bytes": 1878
+  },
+  "CatchUp/PairEntranceShadow.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.PairEntranceShadow",
+    "sha256": "05dd3412e801ad0706a8b6e891f98a6bfa70044017b549165038e189e5dfd97f",
+    "bytes": 8915
+  },
+  "CatchUp/ComplementaryPairDefense.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ComplementaryPairDefense",
+    "sha256": "a0f4945e515876aca0583b97e01838548442b9b8163b5f11eea25c2768d131af",
+    "bytes": 5528
+  },
+  "CatchUp/NearMaximumDefense.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.NearMaximumDefense",
+    "sha256": "428dd31437f51380f630e72c76d57645d83049998d60758bcdcd67e2aa7deccc",
+    "bytes": 6364
+  },
+  "CatchUp/ConsecutiveGuardBoundary.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ConsecutiveGuardBoundary",
+    "sha256": "24c6e659d8c5066dbf8496e9267b547cdeba5f9d254d4f17e480ee2c742e797e",
+    "bytes": 2541
+  },
+  "CatchUp/ConsecutiveGuardDescent.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ConsecutiveGuardDescent",
+    "sha256": "7af5986a71269a24d2eabc95be3966c6659ea15a2602786801e8e9ebe47e2573",
+    "bytes": 10092
+  },
+  "CatchUp/DeficitCrossingEntry.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DeficitCrossingEntry",
+    "sha256": "594e1cb1d141ca7a1789c6dc9e1094b27ef472622bde2e9b0f340565354bf2a9",
+    "bytes": 4381
+  },
+  "CatchUp/DenseBlockEntryObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseBlockEntryObstruction",
+    "sha256": "f8719ba57b8750a214f5e838c4c5cdf11e7fbc986e11aab1cf5c45e7b3569249",
+    "bytes": 8971
+  },
+  "CatchUp/DenseBlockMass.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseBlockMass",
+    "sha256": "c742f8463cbb01631fde5a45a1693e5e5f1e4c15388dff6555ac51e1426bf140",
+    "bytes": 5689
+  },
+  "CatchUp/DenseTerminalReduction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseTerminalReduction",
+    "sha256": "944ffcf0e5a9030aed6138fded6048bf65c3e03d3ad987f65dc966b25bbadb28",
+    "bytes": 4189
+  },
+  "CatchUp/TurnDepth.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.TurnDepth",
+    "sha256": "112fec32bf5a0e9c5447d2b1a820c001a616d1dbdb4a1feab103ee059861673c",
+    "bytes": 11965
+  },
+  "CatchUp/DenseGapMass.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseGapMass",
+    "sha256": "4ce01bb9065f0261dfc862e5888811b7a737163eb7cfec76874937b758b065a8",
+    "bytes": 2393
+  },
+  "CatchUp/DenseLossSubsumGap.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseLossSubsumGap",
+    "sha256": "af914461f1cb419ac34de1fd5bba43ab5e9989eb71ae402168353cec7157e6fb",
+    "bytes": 6347
+  },
+  "CatchUp/DenseLossGeneral.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseLossGeneral",
+    "sha256": "cc16db8f70c2ee8e6646c6fc2cf525eafb64d9b7705639e2006a581c1367f99c",
+    "bytes": 9280
+  },
+  "CatchUp/DenseGapMassGeneral.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseGapMassGeneral",
+    "sha256": "210cfe47773e47040e0a195a815dafe0ea61844d11ddda5ac56fdccc56e5f8a8",
+    "bytes": 1821
+  },
+  "CatchUp/IncompleteSubsumMass.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.IncompleteSubsumMass",
+    "sha256": "dbc349e05e21cc5e92a4fc3864fa0283cb924f72def3a7e6ec19f4e954570053",
+    "bytes": 6254
+  },
+  "CatchUp/DenseLossFrontier.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseLossFrontier",
+    "sha256": "d8bfa0016701f71a39562caf1695f09b473fd7b8f155b5905cc876566d9e0037",
+    "bytes": 8356
+  },
+  "CatchUp/DenseThreeResidual.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseThreeResidual",
+    "sha256": "29561377f8370ed48137060fd887714208f3089689d7effff69084d47961d798",
+    "bytes": 18641
+  },
+  "CatchUp/DenseTwoResidual.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseTwoResidual",
+    "sha256": "3397d1a679fc31b711c7a7c609acf98a261cea819b08f1759de6145f8ef4db54",
+    "bytes": 9912
+  },
+  "CatchUp/DenseTerminalNonloss.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.DenseTerminalNonloss",
+    "sha256": "907ded4e072f225c8c6da166bb12cd7fcd96d5fa264247a58bc7a37d9be97ea8",
+    "bytes": 5231
+  },
+  "CatchUp/EqualityReserveObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.EqualityReserveObstruction",
+    "sha256": "9c695341d699bf698575b2f24af4ce51d32a383e31dfdafd807eaa96de964b2c",
+    "bytes": 6876
+  },
+  "CatchUp/FivePair.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.FivePair",
+    "sha256": "9f01e04ae373bc3ffb29bd9657882e4585a3b67ba2a17293f121ec501e8a81c0",
+    "bytes": 6173
+  },
+  "CatchUp/FivePairLeaves.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.FivePairLeaves",
+    "sha256": "3c4b050c739e4020d978cd1c63c04fb20df307e9275288ef7d7e6313fc6f38ec",
+    "bytes": 7605
+  },
+  "CatchUp/FourOrphan.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.FourOrphan",
+    "sha256": "87e2d467b8bff5af6a0d0bfa615ff5ced6fcb92c5e6558f2fc85fb3aaabb64a3",
+    "bytes": 10046
+  },
+  "CatchUp/ReserveTriangle.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ReserveTriangle",
+    "sha256": "807cceee7ff3266d636a2fd8c1261b47211e6f21b546f42e4ec3725f59847b74",
+    "bytes": 32631
+  },
+  "CatchUp/FullGapDensityFamily.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.FullGapDensityFamily",
+    "sha256": "9928e8f8f2c6b0bfa5a1495e2cb9c4e8009394e9c7a48cfab9ccdbbf1b8e8309",
+    "bytes": 16537
+  },
+  "CatchUp/FullGapDensityObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.FullGapDensityObstruction",
+    "sha256": "cf1b444c6bc93cb7f7cd53769bc307c9ba6e4dc0b1977e7b1cac249d635bea80",
+    "bytes": 4570
+  },
+  "CatchUp/GapSuccessorObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.GapSuccessorObstruction",
+    "sha256": "d36f798a130a29fb7e86f5200514752da7081343c5e8fc209f2ceed253862b8e",
+    "bytes": 4381
+  },
+  "CatchUp/IntervalReserveDepth.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.IntervalReserveDepth",
+    "sha256": "0c779ee454ce512f99779e651beed08b86f5907ea8b89ed7a7ca3f14935b60dd",
+    "bytes": 8409
+  },
+  "CatchUp/IntervalSuccessorReplyObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.IntervalSuccessorReplyObstruction",
+    "sha256": "ec6ae08978e854ca841b8ed0cba16f661df93a7b0268c7238112b040e16afb6a",
+    "bytes": 4643
+  },
+  "CatchUp/NearDeficitGuardObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.NearDeficitGuardObstruction",
+    "sha256": "756995ea398c31afcc627f1674bf9616a26874d0c8303f93b75423d12abc1942",
+    "bytes": 32061
+  },
+  "CatchUp/NearRepair.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.NearRepair",
+    "sha256": "1edf2767799a7d76b2b3999f95c924ac48b6eb57be502c41174ba76b7102fac0",
+    "bytes": 7538
+  },
+  "CatchUp/OddPairRootObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.OddPairRootObstruction",
+    "sha256": "72db15beecc842b90a2dc9c2157e0c7fad3ea4dcf6a682659c70149e969d7461",
+    "bytes": 47464
+  },
+  "CatchUp/RootUpperEightCriterion.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.RootUpperEightCriterion",
+    "sha256": "ca4c0b33b07c7e295e24b3b0c7653d871d191db9e69c3f7c1844678b331e789b",
+    "bytes": 5352
+  },
+  "CatchUp/RootUpperEightFrontier.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.RootUpperEightFrontier",
+    "sha256": "62495a2df401a306a71f7d04b1fd23c95042883d11cca310b87cac6938dff5ab",
+    "bytes": 11552
+  },
+  "CatchUp/RootUpperReentry.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.RootUpperReentry",
+    "sha256": "b60d79d69be929f502a853e33ee87f0d28bd843ecebc047a8de997d1ea5f4ddf",
+    "bytes": 6129
+  },
+  "CatchUp/Search.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.Search",
+    "sha256": "70b80ff82eccc9fde21b18902552ef03e835ccdbc4a78cb2ab4156de982da273",
+    "bytes": 6586
+  },
+  "CatchUp/ThreeHoleTopBoundary.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.ThreeHoleTopBoundary",
+    "sha256": "d277bd33c6e2773c096876eb5f23dc59f7ea36aa9c5cbd5b6a6bd1c00ef3cc38",
+    "bytes": 8034
+  },
+  "CatchUp/TwoAnchorDoubleLossObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.TwoAnchorDoubleLossObstruction",
+    "sha256": "93ed1e63c17b016d28a36a48b66a29771441e083947c31d7b552fd0fb27474b9",
+    "bytes": 114176
+  },
+  "CatchUp/TwoHoleTopBoundary.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.TwoHoleTopBoundary",
+    "sha256": "e39f9b0956a4222b2220f33e9c634e9d6222156722a59b11b49c49ae45e4ae58",
+    "bytes": 6454
+  },
+  "CatchUp/UnitGuardObstruction.lean": {
+    "origin": "Catch-Up mathematics snapshot, 22 October 2026",
+    "module": "CatchUp.UnitGuardObstruction",
+    "sha256": "5061258a83acaabb5fcc2931e055676a48c6047e9d42df6ea92e899c0b57f3cb",
+    "bytes": 84101
+  },
+  "cryptid/CatchUp/Machine/RestoreShare/Cryptid.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.RestoreShare.Cryptid",
+    "sha256": "31211ce70800703f22f13e74729156ac8ba7c1c2437b837a24efac29e0581c77",
+    "bytes": 2571
+  },
+  "cryptid/CatchUp/Machine/ReusedCryptid.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReusedCryptid",
+    "sha256": "0354d13b798613c604dd41e13b895510c235f8e31e2e4e7b06742740045a4638",
+    "bytes": 2530
+  },
+  "cryptid/CatchUp/Machine/Literal.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.Literal",
+    "sha256": "72961effb30f90537d642430d7cdaf2df213641689f8546186525df5f553b980",
+    "bytes": 3779
+  },
+  "cryptid/CatchUp/Machine/Program.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.Program",
+    "sha256": "d1f3d850bb5e99f6b7d35a95ad63d5ba56c45f53afc8deb007628743f03ed62f",
+    "bytes": 61972
+  },
+  "cryptid/CatchUp/Search.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Search",
+    "sha256": "c480ebcd33d64f6f9b90dbc4f7d5b15b1d9ad342f4df5fd3768b96f13a3105aa",
+    "bytes": 6586
+  },
+  "cryptid/CatchUp/Executable.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Executable",
+    "sha256": "7bd81a1ee38c45c6756aa85bf50d94e3c90e26a873c001492fd1220cada54622",
+    "bytes": 3168
+  },
+  "cryptid/CatchUp/Classifier.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Classifier",
+    "sha256": "4fa0989272462ab86d9b6ef48bd40bb5a3a0b4a495e8da683e582bb84b667d7a",
+    "bytes": 3473
+  },
+  "cryptid/CatchUp/Reference.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Reference",
+    "sha256": "bbab80bd9ddfccdeb62ab8c4d20a2cd9f780b06f5b2ee7e978e5a2fe6c86a008",
+    "bytes": 33891
+  },
+  "cryptid/Cryptids/Compilation/RuntimeWire.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeWire",
+    "sha256": "feb92be30f18c80c3d4351d31a68e416393dbb50f056936b450c5437b58384b6",
+    "bytes": 10470
+  },
+  "cryptid/Cryptids/Compilation/RuntimeData.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeData",
+    "sha256": "33cacaf0dca24fb303652fc4aec55ef4e17711d31f982ac8c05600a38e710f13",
+    "bytes": 5136
+  },
+  "cryptid/Cryptids/Compilation/Runtime.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Runtime",
+    "sha256": "01c2c0d38d30368c81ac496bd1612b76f710e1e9d7f395eda942cb3a78171d46",
+    "bytes": 6420
+  },
+  "cryptid/Cryptids/Compilation/Code.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Code",
+    "sha256": "689a9c45309a378abb90cbfd6e343dc92268c692636f574e62729d6302c30fb5",
+    "bytes": 12958
+  },
+  "cryptid/Cryptids/Compilation/AssemblyFast.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.AssemblyFast",
+    "sha256": "ad02716cedeb4b859f199df6e5a6505e533f810f9122f96edbf45b4297dec647",
+    "bytes": 7420
+  },
+  "cryptid/Cryptids/Compilation/Assembly.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Assembly",
+    "sha256": "c033657393cf781877f57e920e5167cd5be39b8b0c563445d2be58f6ed41d7f1",
+    "bytes": 4645
+  },
+  "cryptid/Cryptids/Compilation/FreeNormalize.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.FreeNormalize",
+    "sha256": "93045e6875f7ce4ee7f754849a9544882b4def579810d5cc0341900e51695547",
+    "bytes": 4639
+  },
+  "cryptid/Cryptids/Compilation/Normalize.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Normalize",
+    "sha256": "d8ae53bfa24b712b77183306e6f5403a4bf218a669c0c24782b58952e3f8d564",
+    "bytes": 6834
+  },
+  "cryptid/Cryptids/Compilation/Finite.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Finite",
+    "sha256": "1dc05b336652338fb27b29587802e88be27af8428c0233d3401c7c78a18cfe5b",
+    "bytes": 20642
+  },
+  "cryptid/Cryptids/Compilation/Block.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Block",
+    "sha256": "80802fdd1f524bf2e43c416d03e56b9c9b251a0ebff252752ea9cf737854bc38",
+    "bytes": 15206
+  },
+  "cryptid/Cryptids/Compilation/Stack.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Stack",
+    "sha256": "efbc3dd34eaa344f0b24fe9c47978556c4512a69d99e87241775d1799a794845",
+    "bytes": 13517
+  },
+  "cryptid/Cryptids/Compilation/NumberTM1.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.NumberTM1",
+    "sha256": "254696f86962943e0d6f4bcbd950ec4f70589be09020866a6fae82c2464059d0",
+    "bytes": 11392
+  },
+  "cryptid/Cryptids/Compilation/HashSupport.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.HashSupport",
+    "sha256": "54ddc70d36188ee7865765d66d29fd3491ae56181bbb8ddd4a5eb5d3df403e29",
+    "bytes": 1998
+  },
+  "cryptid/Cryptids/Compilation/HashNumber.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.HashNumber",
+    "sha256": "5cc2b70124af09d4b5bfa4a0681edfa447e649919469f6b46dfe9a625e1108c4",
+    "bytes": 7653
+  },
+  "cryptid/Cryptids/Compilation/Memo.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Memo",
+    "sha256": "fe5bc8bef4617489207cb6b687b14843d5f17ba9dd31344914b32b7e8ae0ee7c",
+    "bytes": 3294
+  },
+  "cryptid/Cryptids/Compilation/Binary.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Binary",
+    "sha256": "a8ea5ef150f3ec9ba7a2911fb896c0d28bdc30f3e3bd8149f4d4741ec24be1a4",
+    "bytes": 8216
+  },
+  "cryptid/Cryptids/Machines.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Machines",
+    "sha256": "31d791e357fb1860d4b4eb916ce6b5a6bd372f942cd2af5c10c0c15703e2aacb",
+    "bytes": 6954
+  },
+  "cryptid/Cryptids/Compilation/Init.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Init",
+    "sha256": "174b8190aa49e4f68518ec0f87a66c29a3747cc65c100f0259dac3cb4432b3bf",
+    "bytes": 9437
+  },
+  "cryptid/Cryptids/Compilation/RuntimeMacros.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeMacros",
+    "sha256": "1dd97c9bd286efe3b8f797356efb5b949952833897c46f00717994af9e87d7a7",
+    "bytes": 18199
+  },
+  "cryptid/Cryptids/Compilation/CodeVM.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.CodeVM",
+    "sha256": "e9a6ded3eca2e12dc5c0ceaa151b16460199eb98b2fb3de638abac3b83fd43ab",
+    "bytes": 15047
+  },
+  "cryptid/Cryptids/Compilation/CodeDAG.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.CodeDAG",
+    "sha256": "89750a8d709f5e90b8b61c8b44b394b0b57be8f443092a632b0190d0c632a80f",
+    "bytes": 26461
+  },
+  "cryptid/CatchUp/Machine/ReusedRuntime.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReusedRuntime",
+    "sha256": "de0fc74e2e3f866d8231327712559f4803b6542aa06f830d2dc39e54f867f8b4",
+    "bytes": 3578
+  },
+  "cryptid/Cryptids/Chess/Compilation/Image.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Image",
+    "sha256": "78dc9a503d77dfa7049f467bf331760e76ac8bf6da5416ad9426083b0f15a960",
+    "bytes": 18480
+  },
+  "cryptid/Cryptids/Chess/Compilation/Templates.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Templates",
+    "sha256": "b0914767d7b7fa371b5fc82000bfb3492fc0c51f7affa5d83835d745e8fa6360",
+    "bytes": 1077927
+  },
+  "cryptid/Cryptids/Compilation/BinaryTemplates.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.BinaryTemplates",
+    "sha256": "8f5da13cb689ae2a37bf24a88589e6a6ea28ef78631c8db6474ed9125fae4024",
+    "bytes": 19259
+  },
+  "cryptid/Cryptids/Compilation/LocalCertificate.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.LocalCertificate",
+    "sha256": "9dc5468d680b93a644a7700cee29cd525bc3144e9780ac82883a034436edac21",
+    "bytes": 7338
+  },
+  "cryptid/Cryptids/Compilation/SharedCertificate.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.SharedCertificate",
+    "sha256": "26cafc22189b21663b4903671e9dd283788e1ba3dc21f4d31a55838a5216f97b",
+    "bytes": 1859804
+  },
+  "cryptid/Cryptids/Compilation/SharedModel.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.SharedModel",
+    "sha256": "b12f925cbbb0cb1871424a2af4f90fbc5423ff9bb19797672ac1b8705b101aaa",
+    "bytes": 892544
+  },
+  "cryptid/Cryptids/Compilation/RuntimeModel.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeModel",
+    "sha256": "190d0f4ecac779cc6444f37db07e05f66b60c769b4a454a09f54952fdcf5d587",
+    "bytes": 98528
+  },
+  "cryptid/Cryptids/Compilation/BalancedTable.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.BalancedTable",
+    "sha256": "2a5beebb78067cf14a139eeaf3a0820b6bd1a9cc70941e8af57173f66b003904",
+    "bytes": 10699
+  },
+  "cryptid/Cryptids/Compilation/RuntimeCertificate.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeCertificate",
+    "sha256": "360895f958efa22ce314c3ca4bd7c8ceef2e5e0baa32a45ed4d43f868b3a74ed",
+    "bytes": 56519
+  },
+  "cryptid/Cryptids/Compilation/RuntimeSupport.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeSupport",
+    "sha256": "5f7f79735980be93d2cdca717d359b1aca801fb5b60e00bd48ce9af811894e6a",
+    "bytes": 7553
+  },
+  "cryptid/Cryptids/Compilation/NumberTM2.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.NumberTM2",
+    "sha256": "c44b95cb776c3f4a7774e03821d0fdbcc1467306c534b0aefbe22537efc45e58",
+    "bytes": 14480
+  },
+  "cryptid/Cryptids/Chess/Compilation/Input.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Input",
+    "sha256": "5ace349af5d55572f80dc653c208ec6047d39ff77c6ab5b177b793eab3541f18",
+    "bytes": 9049
+  },
+  "cryptid/Cryptids/Chess/Compilation/Tape.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Tape",
+    "sha256": "7dfc07955ae460efb1e37fb1bb212b7feccfb7b5aa4ea5758f199c6893383fea",
+    "bytes": 1837
+  },
+  "cryptid/Cryptids/Chess/Compilation/Control.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Control",
+    "sha256": "73488605bd9b35c7106979c1ad77d5fa4b67e9f2afc2ee0c1349bc17be78c603",
+    "bytes": 32767
+  },
+  "cryptid/Cryptids/Chess/Compilation/WithoutDead.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.WithoutDead",
+    "sha256": "166243a37183462adedefb479b61cd763eecbcfb41eef1e27a3ceddf1a60eb9a",
+    "bytes": 13492
+  },
+  "cryptid/Cryptids/Chess/Compilation/Evaluator.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Evaluator",
+    "sha256": "06330ee274b7011ee6f272ee4e110dfa654d7d4748f66644a5d73d1f5d52f63d",
+    "bytes": 7962
+  },
+  "cryptid/Cryptids/Chess/Evaluation/Solver.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Evaluation.Solver",
+    "sha256": "c54a99e77134bae9aa40a2f2ddb4f69d8c4052b32dad43909a623414deeaa121",
+    "bytes": 3766
+  },
+  "cryptid/Cryptids/Chess/Evaluation/Choice.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Evaluation.Choice",
+    "sha256": "53ba656c84761e41a69443ecfdc966507abebfbf3cbe6c5a27e6d303ee60d3b3",
+    "bytes": 1991
+  },
+  "cryptid/Cryptids/Chess/Evaluation/Bound.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Evaluation.Bound",
+    "sha256": "1b2fb91fb6e4a470266831c0e5d96f485647f6a447fe5f75d45ded8acbf0c834",
+    "bytes": 6756
+  },
+  "cryptid/Cryptids/Chess/Adjudication.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication",
+    "sha256": "c5a5eb0e7c4f13f930ea1d8a9457bd3ae509af6ca88709b113a394b8b549e607",
+    "bytes": 501
+  },
+  "cryptid/Cryptids/Chess/Adjudication/Outcomes.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication.Outcomes",
+    "sha256": "a811a709d79e6810d1faf54a2409541accdf854df75f4054f58b76517471da87",
+    "bytes": 5566
+  },
+  "cryptid/Cryptids/Chess/Adjudication/Claims.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication.Claims",
+    "sha256": "aa851f7e56befbc85b59da544baa5916b1c1e77d6f4a28a40b11e0ef9c166800",
+    "bytes": 1901
+  },
+  "cryptid/Cryptids/Chess/Adjudication/History.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication.History",
+    "sha256": "fcd6c49ae7966f71ae2c9f2afaccf3264a6702ed9684057eb4072a22df0db5b1",
+    "bytes": 4947
+  },
+  "cryptid/Cryptids/Chess/Adjudication/DeadPosition.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication.DeadPosition",
+    "sha256": "ac016c85405469c34f59bfd8bd9088b9cb33ca1bdc792a425851335c94180f45",
+    "bytes": 3495
+  },
+  "cryptid/Cryptids/Chess/Adjudication/Projection.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication.Projection",
+    "sha256": "806e8dcf07ba5ea18efd5301fd3990b95de67ccff5924a32d146f8743fb7ad7c",
+    "bytes": 4000
+  },
+  "cryptid/Cryptids/Chess/Adjudication/Search.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Adjudication.Search",
+    "sha256": "a2f9b0d2df6ef30658fc95ce3247943b62b855c4c29806177b6eb8486c02dc72",
+    "bytes": 4220
+  },
+  "cryptid/Cryptids/Chess/Exec.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Exec",
+    "sha256": "3a945e569077f08b2bd0eb0a316c10bdae3c1b2470f237c477d7d663da47db57",
+    "bytes": 477
+  },
+  "cryptid/Cryptids/Chess/Exec/Moves.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Exec.Moves",
+    "sha256": "8d373aa13c83a13eaca7d1a6fb242c68cae28a8f67c0345c90e3aac1c41add1a",
+    "bytes": 2889
+  },
+  "cryptid/Cryptids/Chess/Exec/Rules.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Exec.Rules",
+    "sha256": "5bb5ea30312fe0aac54c6f9b09118c8526e4c48e228965b240856b3a94deb71d",
+    "bytes": 10228
+  },
+  "cryptid/Cryptids/Chess/Exec/Encoding.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Exec.Encoding",
+    "sha256": "f47516c0d7f62d711d8d11bf067f2b0dfcb0d1ca87ab54d2f195245567fd5206",
+    "bytes": 3092
+  },
+  "cryptid/Cryptids/Chess/Spec.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Spec",
+    "sha256": "de4f27f006453a21f3332a7b2090c2d52ccb00ac981b3fb7dd34e71518c056b0",
+    "bytes": 25133
+  },
+  "cryptid/Cryptids/Chess/Compilation/Program.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Program",
+    "sha256": "d3070bcb46f1d3c37f7faeadd154748280206fd9b23ea519094433b5793a6f5b",
+    "bytes": 3803
+  },
+  "cryptid/Cryptids/Chess/Compilation/Encoding.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Encoding",
+    "sha256": "99326200c77c35515d37357427f1db0291a6f67a6ba0dfcaf59e310a1ab6aa8b",
+    "bytes": 15731
+  },
+  "cryptid/Cryptids/Compilation/NatCode.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.NatCode",
+    "sha256": "f90a4364c6a3d0c2b8ab2dcacd047ed94b6b41b3df41f27bcd19290d8f8212a9",
+    "bytes": 13757
+  },
+  "cryptid/Cryptids/Compilation/ListCode.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.ListCode",
+    "sha256": "a2b75847a979c96bf9f1491e353f100e41995b83bfd2c6e4c9bae4569a177bfe",
+    "bytes": 22741
+  },
+  "cryptid/Cryptids/Chess/Compilation/SourceCertificate.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.SourceCertificate",
+    "sha256": "07b5db3de36215ab913508a8f93b7ea67cf580197cf9832b04c8efb569fd4531",
+    "bytes": 12469
+  },
+  "cryptid/Cryptids/Chess/Compilation/SourceModel.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.SourceModel",
+    "sha256": "077268682267b94fae672c7b1bad726a4baa201fa3eb46c553bd4ba016d55202",
+    "bytes": 945096
+  },
+  "cryptid/Cryptids/Chess/Compilation/Source.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Source",
+    "sha256": "ebf1db07ca2550986c9f9e1c61bbadb50da11c552c5e754fdad7fe8cfb008d5e",
+    "bytes": 3642
+  },
+  "cryptid/Cryptids/Chess/Compilation/HistoryCode.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.HistoryCode",
+    "sha256": "8010fc7542d4dec9a7b0ac0cef293b1317eaf6026c2c679d6315813c4853dbf7",
+    "bytes": 57735
+  },
+  "cryptid/Cryptids/Chess/Compilation/History.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.History",
+    "sha256": "6ac2876f4b0f40920790f12105a897848590fe39a24b0084332e59c49356ed78",
+    "bytes": 2362
+  },
+  "cryptid/Cryptids/Chess/Compilation/Geometry.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Geometry",
+    "sha256": "2bed099cdba1b84bf99f2a0c5355ebb3b29b0ace70eca6d13765fe3986cb38fc",
+    "bytes": 32838
+  },
+  "cryptid/Cryptids/Compilation/Scalar.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Scalar",
+    "sha256": "7fcdb76c1e51a95668545218b3d6d33a4d9f69ea775ee0a732656a2c9c11e020",
+    "bytes": 4982
+  },
+  "cryptid/Cryptids/Chess/Compilation/Updates.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Updates",
+    "sha256": "706514ccb746fd9d987cc4505672ed19f175ac58d6b6258919cfd508a621989e",
+    "bytes": 35324
+  },
+  "cryptid/Cryptids/Chess/Compilation/Rules.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Rules",
+    "sha256": "9fcb95d8e8824799e4491132577b9a3030ad5ac424e01ae7da0185c20393b787",
+    "bytes": 2767
+  },
+  "cryptid/Cryptids/Compilation/Commands.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.Commands",
+    "sha256": "7611ec5c4e666daa23bf551ab0496d5a262ae1be7d289240af16a0cf699f1180",
+    "bytes": 11287
+  },
+  "cryptid/Cryptids/Chess/Compilation/Legality.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Compilation.Legality",
+    "sha256": "ba10473ad8b019fe10fa58612b543dc8cb5fd068379db976b75c086d2600c8df",
+    "bytes": 22943
+  },
+  "cryptid/Cryptids/Chess/Evaluation/Correspondence.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Evaluation.Correspondence",
+    "sha256": "b5ec4053b7f79711506f5975a7d1ee52cf02af1fb87d8b89b2593a62ff94cedd",
+    "bytes": 5730
+  },
+  "cryptid/Cryptids/Chess/Evaluation/Optimality.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Evaluation.Optimality",
+    "sha256": "a473cf779715d992d4a60039b566d9b09bb012033057392ef6203a087fe93e01",
+    "bytes": 5666
+  },
+  "cryptid/Cryptids/Chess/Evaluation/Strategies.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Chess.Evaluation.Strategies",
+    "sha256": "88393901d711844fe2bd0e30a799f3334d0209d72bb38a9aaa22ce9923aaa757",
+    "bytes": 5048
+  },
+  "cryptid/Cryptids/Compilation/RuntimeProof.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeProof",
+    "sha256": "9ccbf5acffdf5c230be75b3591b8b2fad1fb9d9da903e202d39cdcd76bd69501",
+    "bytes": 14882
+  },
+  "cryptid/Cryptids/Compilation/RuntimeEval.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeEval",
+    "sha256": "ff1b8b79e484757ea292fae73e41b3f1984de14332291449e6d9113a15d62c5e",
+    "bytes": 18102
+  },
+  "cryptid/Cryptids/Compilation/RuntimeReturn.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeReturn",
+    "sha256": "54ce3ce960845b300b3472799ae6cbf9fc6ea1d116bef551275763c2426e74a6",
+    "bytes": 12585
+  },
+  "cryptid/Cryptids/Compilation/RuntimeDispatch.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeDispatch",
+    "sha256": "e272fa4413cca8fec49266845297b9b14587b09089983c57dfb3e58bd4f11182",
+    "bytes": 2937
+  },
+  "cryptid/Cryptids/Compilation/RuntimeLookup.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.RuntimeLookup",
+    "sha256": "808d6d6047221bd15fb5ffdf73c9fd8068f5599e75754ce79f2fb49c575680c2",
+    "bytes": 17051
+  },
+  "cryptid/Cryptids/Compilation/FlatInit.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.FlatInit",
+    "sha256": "e22032cd5880d9c394c1f8442ab95a85e38c56f57f10ab3b964a9329baf5124d",
+    "bytes": 13516
+  },
+  "cryptid/Cryptids/Compilation/TemplateGraph.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.TemplateGraph",
+    "sha256": "71dc7ef7de855c565036b1775b2b44a721fc67499c56eb004f6884c35f5399b7",
+    "bytes": 58725
+  },
+  "cryptid/Cryptids/Compilation/LazyGraph.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.LazyGraph",
+    "sha256": "4fad8311577d4f3a7849e6a20c11daae0a7c6b0b07e8331432e694d1c2c73b83",
+    "bytes": 10986
+  },
+  "cryptid/Cryptids/Compilation/GraphPost.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.GraphPost",
+    "sha256": "13b82b6e776ff4160359910571f75749b1ad724711768d580b5c6d55875a9cb0",
+    "bytes": 14475
+  },
+  "cryptid/Cryptids/Compilation/BoolGraph.lean": {
+    "origin": "Cryptids/Chess compiler snapshot 8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "module": "Cryptids.Compilation.BoolGraph",
+    "sha256": "e34e90ac94e385e67e06879335fcebebda03fbffb8d2c6835c608a151e43cb0d",
+    "bytes": 4922
+  },
+  "cryptid/CatchUp/Machine/RestoreShare/Simulation.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.RestoreShare.Simulation",
+    "sha256": "8db2d1f697e969b1539d89cac38dbb8c4a61c82c6ae12aa23bd244eabfdfec51",
+    "bytes": 6551
+  },
+  "cryptid/CatchUp/Machine/RestoreShare/Proof.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.RestoreShare.Proof",
+    "sha256": "53392ce9aedc81f719632e35f9720d5ded8afcb5faf436ed58a05a92a2d96d7c",
+    "bytes": 8236
+  },
+  "cryptid/CatchUp/Machine/RestoreShare/Graph.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.RestoreShare.Graph",
+    "sha256": "fa63e16a380c7146a901eff7e9aa65433b827a404490738710835e9384619dbd",
+    "bytes": 4321
+  },
+  "cryptid/CatchUp/Machine/ReadShare/Cryptid.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReadShare.Cryptid",
+    "sha256": "aa7eb618bb5fe7b1d51d2111b7d39f72391123bb3ba3d776504c1eab230cb9dc",
+    "bytes": 2339
+  },
+  "cryptid/CatchUp/Machine/ReadShare/Simulation.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReadShare.Simulation",
+    "sha256": "65d1318bb1fdf93f2d5236aae4eedbc3319a459834162683003275a6b7b45dfd",
+    "bytes": 8381
+  },
+  "cryptid/CatchUp/Machine/ReadShare/Proof.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReadShare.Proof",
+    "sha256": "f0244a6562708f59f7f43c8c725dae18468e7aee831d1b5df3561af0c7129014",
+    "bytes": 5739
+  },
+  "cryptid/CatchUp/Machine/ReadShare/Graph.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReadShare.Graph",
+    "sha256": "29ab598d0014032cbe9fb74e6c34a3af5fcf3630cf9e18618a480fc4abae0a78",
+    "bytes": 4615
+  },
+  "cryptid/CatchUp/Machine/ReadShare/Sites.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReadShare.Sites",
+    "sha256": "5b194f7e5dc217137b7a4fa2ffddcb33adb575410993a930da12afd304df1fb4",
+    "bytes": 1891
+  },
+  "cryptid/CatchUp/Machine/ReadShare/ReaderSemantics.lean": {
+    "origin": "Catch-Up verified compiler snapshot",
+    "module": "CatchUp.Machine.ReadShare.ReaderSemantics",
+    "sha256": "724618a5370c0cae13f6017d9a96d70478d34b068eab0922ada55c6583339886",
+    "bytes": 2645
+  },
+  "cryptid/baselines/tables/goldbach_25.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "f5b995cb7917d9943431fc8f2554b0872b185ca81e14865307d26db2776b52a5",
+    "bytes": 816
+  },
+  "cryptid/artifacts/goldbach_21/machine.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "b248827bd190d5aedcc9ed6eae5e85f58ed43df8208b0406a9f477fdb2607602",
+    "bytes": 190
+  },
+  "cryptid/baselines/tables/zf_432.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "e662deaa52994e73413af37a434dbfb4e8c8204a8d972154ead2d839f442af66",
+    "bytes": 17402
+  },
+  "cryptid/baselines/tables/zf_393.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "f0acf81abb428d9407a9ddd837a1bee07a709634692862386dd6d3e25cc45a97",
+    "bytes": 15792
+  },
+  "cryptid/artifacts/zf_380/machine.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "c3b8b166f41bd731e6de552a0f9cf7bfa15938fa5165cb4ccd19ead3206b8784",
+    "bytes": 4282
+  },
+  "cryptid/baselines/tables/riemann_744.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "9866af71143c85cceeaf2e05be8fef1c3ccb226fe04640b23b7b887f815a25d0",
+    "bytes": 33830
+  },
+  "cryptid/baselines/tables/riemann_120.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "ec3d408bbeba415afb0666573354bb1e1f2b3f4290b84b8745a3d84c841ab6d0",
+    "bytes": 3225
+  },
+  "cryptid/artifacts/riemann_104/machine.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "ac0c7e8a76679ba2a3f2c1814166b392c8301e51110a08bcd2c06624be35f25d",
+    "bytes": 1009
+  },
+  "cryptid/artifacts/riemann_95/machine.txt": {
+    "origin": "Cryptids machine table dependency, same compiler snapshot",
+    "sha256": "7e9731ed1b7c63d4e67c0f8d646f8498d9645f26e237a8604d4b7f91a6ab398d",
+    "bytes": 924
+  },
+  "cryptid/CatchUp/Machine/Lowering/Relocation.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Relocation",
+    "sha256": "56299c419767865a95330d2fbd8c99d0ae27ec0f63ba9bc58a4a3f98fef18827",
+    "bytes": 5800
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationRun.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationRun",
+    "sha256": "f05db82b406c9100c3c46cc1af112600b36e9d0da523bc1545590860c27c7de8",
+    "bytes": 6828
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationGeometry.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationGeometry",
+    "sha256": "3b6fe875c8d9a9d96bcefa6892228e80a298b5742f0b154c808d92e75d97fb7c",
+    "bytes": 3460
+  },
+  "cryptid/CatchUp/Machine/Lowering/Candidate.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Candidate",
+    "sha256": "d2a82dfd81c4870b48990dda44b0d17b12dc3fc9a719869cd97fb82b6dddbed6",
+    "bytes": 3997
+  },
+  "cryptid/CatchUp/Machine/Lowering/Library.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Library",
+    "sha256": "47e303e6c8b4e3dc8f4e97f5dc2ad4546de3277881f0c04467c1497f3d538787",
+    "bytes": 12511
+  },
+  "cryptid/CatchUp/Machine/Lowering/Micro.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Micro",
+    "sha256": "3b168ddb9d2e8e2df3104f90ec2e20b1ba576c96834be78abe394ddea893c6d3",
+    "bytes": 1608
+  },
+  "cryptid/CatchUp/Machine/Lowering/Program.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Program",
+    "sha256": "1660d3305cb448c2ad59334d0324618a9e1301a8e513cfe496f32a908b902ff2",
+    "bytes": 3124
+  },
+  "cryptid/CatchUp/Machine/Lowering/Source.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Source",
+    "sha256": "1bab35adfb97b3a9911e0306e3192dd12631909412fc35a110a498afa85e7e8b",
+    "bytes": 3870
+  },
+  "cryptid/CatchUp/Machine/Comp/Partial.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Comp.Partial",
+    "sha256": "e32e8b6baaaccd9b542e9bad11078853c7d005a31d80bfdb47e9529c07b8825a",
+    "bytes": 6073
+  },
+  "cryptid/CatchUp/Machine/Comp/Contract.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Comp.Contract",
+    "sha256": "bd0a32de31a2d4743361e5cf8f9b3b5358973a9013844ec839728755aec4f1eb",
+    "bytes": 9466
+  },
+  "cryptid/CatchUp/Machine/Cases/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Prototype",
+    "sha256": "74252c5122e60f12fb4317ccdd8f26793dd905812e2c0516dbc264598a6ab983",
+    "bytes": 9245
+  },
+  "cryptid/CatchUp/Machine/Cases/Initialization.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Initialization",
+    "sha256": "3de815d5202de062dd608cd05dee7fc690fb940e500239a7f28759d8d9059669",
+    "bytes": 4207
+  },
+  "cryptid/CatchUp/Machine/Cases/Case.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Case",
+    "sha256": "fce021a7bd63a2c3b7c430ebc52db321a084c46aecbf874e596421810781e0d8",
+    "bytes": 12107
+  },
+  "cryptid/CatchUp/Machine/Cases/Source.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Source",
+    "sha256": "53637ca838734b299684273049c57a604ae00787f012cf505e33e7d6bd308bda",
+    "bytes": 5088
+  },
+  "cryptid/CatchUp/Machine/Cases/Discard.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Discard",
+    "sha256": "a5ba9cf238b82af7b425bf370406b4fbda08c823b76a079a708adab50ac226f2",
+    "bytes": 6699
+  },
+  "cryptid/CatchUp/Machine/Cases/Composition.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Composition",
+    "sha256": "9197ded8318801caab1e9f04cb114aff747361e25ff517efac4ec5ecfdf4ae2b",
+    "bytes": 5795
+  },
+  "cryptid/CatchUp/Machine/Cases/Push.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Push",
+    "sha256": "de2655020941833b10a8cf73b9fb3a7cdc0ffa9802fae0183c0aabcd65ad523a",
+    "bytes": 6352
+  },
+  "cryptid/CatchUp/Machine/Cases/Contracts.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Contracts",
+    "sha256": "35ccfb40009b9945b2fd7cf79fa00c73c0074870f49a0e4541438710c03d870e",
+    "bytes": 7096
+  },
+  "cryptid/CatchUp/Machine/Cases/Inherited.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Inherited",
+    "sha256": "fe4984220f66a41bd4be438cd95ae3f1ef0b2d18e451476a10ec6dee1888fe74",
+    "bytes": 4910
+  },
+  "cryptid/CatchUp/Machine/Cases/Arithmetic.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Arithmetic",
+    "sha256": "0af294cf4109984abef59b42da6f3d778088501424035a5a126cd82b6e7ef2fb",
+    "bytes": 10626
+  },
+  "cryptid/CatchUp/Machine/Cases/Semantics.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Semantics",
+    "sha256": "17f3ca6c1d21a25a93efae10f4f8fb1a3d89fe2229aafed44c99b4dd65d823ee",
+    "bytes": 5577
+  },
+  "cryptid/CatchUp/Machine/Cases/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Lookup",
+    "sha256": "9796f6570f4d65b5a031deafe6bfeccd9e7661efea304c788e9b70e951b6d006",
+    "bytes": 5107
+  },
+  "cryptid/CatchUp/Machine/Cases/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Routines",
+    "sha256": "dd200b3d587722e7e2b02b24feb6936a67b7e66df38daa1c60f29c34eb22c247",
+    "bytes": 6203
+  },
+  "cryptid/CatchUp/Machine/Cases/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Control",
+    "sha256": "ffec10dd1ac570e1dd6dd43d8cdc9610d7619f665e3c39f452baf287de0aca52",
+    "bytes": 12827
+  },
+  "cryptid/CatchUp/Machine/Cases/Program.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Cases.Program",
+    "sha256": "ef54b2e2625ba56d0d66f24737997a3ee7190bf584a9ed87b6587f6562738c8f",
+    "bytes": 2290
+  },
+  "cryptid/CatchUp/Machine/Tail/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Prototype",
+    "sha256": "5a0989d20bd09aaebd66579aa5db686a7fa2aabb7aa25f50f352ec23c3c635b0",
+    "bytes": 6681
+  },
+  "cryptid/CatchUp/Machine/Tail/Initialization.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Initialization",
+    "sha256": "ada1bd35d8c32779e4cff41c32f5f22bcd82a2dc333c94c94999bd987bc4af2a",
+    "bytes": 4206
+  },
+  "cryptid/CatchUp/Machine/Tail/Source.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Source",
+    "sha256": "25fe5060f91debcdcd3810a25828298bbd1e4a4d1db9e8025fae07c1930e45df",
+    "bytes": 5085
+  },
+  "cryptid/CatchUp/Machine/Tail/Discard.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Discard",
+    "sha256": "6862915796ba38c3b59f4de901f70e96023081bf36c2af7425d3e1caa22afac4",
+    "bytes": 6696
+  },
+  "cryptid/CatchUp/Machine/Tail/Composition.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Composition",
+    "sha256": "1ebd3ba9a5471fcf48a7405dc7d4673fce1526c20948665d4ba98e47204d56fb",
+    "bytes": 5792
+  },
+  "cryptid/CatchUp/Machine/Tail/Push.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Push",
+    "sha256": "805c2e9a03fe1849bfdc40d8faf365084f8556bb5e9ab55849c7fe9ab5a98956",
+    "bytes": 6349
+  },
+  "cryptid/CatchUp/Machine/Tail/Contracts.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Contracts",
+    "sha256": "2e04cbad50c8d18416a86491ec5a5984c5940ff8764722e9d31a69cc157a6b6d",
+    "bytes": 7093
+  },
+  "cryptid/CatchUp/Machine/Tail/Inherited.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Inherited",
+    "sha256": "588ff45eba180f2adb76640d3086ddca721f7059709f8812bab6faa5b5367241",
+    "bytes": 4907
+  },
+  "cryptid/CatchUp/Machine/Tail/Arithmetic.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Arithmetic",
+    "sha256": "97c43156848f5f719b07c22759f3d128c4d70f8f8b8cd693502079aecd2f6f45",
+    "bytes": 10385
+  },
+  "cryptid/CatchUp/Machine/Tail/Semantics.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Semantics",
+    "sha256": "58ab54a54974f7dc17c10c1c3868693227350db16b98b26e7a233384ae788ef3",
+    "bytes": 5574
+  },
+  "cryptid/CatchUp/Machine/Tail/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Lookup",
+    "sha256": "decdb2a755a1e2fd28a3d0e8c6d9544c4a09e1ada574eae74eb5a7aeea8242f9",
+    "bytes": 5104
+  },
+  "cryptid/CatchUp/Machine/Tail/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Routines",
+    "sha256": "8c8283aba3766df91af2fe354238c1e4719d2a695b69becfc8c29449852df158",
+    "bytes": 6200
+  },
+  "cryptid/CatchUp/Machine/Tail/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Control",
+    "sha256": "1cc36ffe91a4fa64a31f7b3908872bfafd9684562721f12ed710255920baafdb",
+    "bytes": 12434
+  },
+  "cryptid/CatchUp/Machine/Tail/Program.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Tail.Program",
+    "sha256": "24864c7ca2840f0633107d5000862e7c8a8d889c2885ac99c1fb2a384d91121a",
+    "bytes": 2075
+  },
+  "cryptid/CatchUp/Machine/Literal/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Prototype",
+    "sha256": "6c7dfe4f915a9c90b0631075d2f953545daa0412142d9def24425481520ffd57",
+    "bytes": 6487
+  },
+  "cryptid/CatchUp/Machine/Literal/Initialization.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Initialization",
+    "sha256": "1c2b1f1983a19fdafd75b07998a21a61c750a9f9d1e24cd604129edf7ddcba4c",
+    "bytes": 4199
+  },
+  "cryptid/CatchUp/Machine/Literal/Composition.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Composition",
+    "sha256": "ec08040b9b931cd81ea31ea12c87f635208d15b069ebcd4f79baba078be5167d",
+    "bytes": 5782
+  },
+  "cryptid/CatchUp/Machine/Literal/Push.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Push",
+    "sha256": "04c0e0c649bd76a5dfed20faf5028a7ddb1a821f4f41b73ac23b391497e0be1e",
+    "bytes": 6358
+  },
+  "cryptid/CatchUp/Machine/Literal/Contracts.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Contracts",
+    "sha256": "938e479bf9bc5ab002f0fe7d229f90b199eccb083531be5b81b57edd90b5c161",
+    "bytes": 7092
+  },
+  "cryptid/CatchUp/Machine/Literal/Inherited.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Inherited",
+    "sha256": "6330dd16409a5aafc6a6916e50002d9d90e0c8eb6665817f459034667a9cc31c",
+    "bytes": 4916
+  },
+  "cryptid/CatchUp/Machine/Literal/Arithmetic.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Arithmetic",
+    "sha256": "3c2169fd429aabd048ccea67cb52c8051a6c21b2656aa21c1e54e3d6e6fa1ebb",
+    "bytes": 10390
+  },
+  "cryptid/CatchUp/Machine/Literal/Semantics.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Semantics",
+    "sha256": "1310810b0e955e6045c4f2977b1e39f9e1fe71338f4b9388eb6bd994029378cc",
+    "bytes": 5534
+  },
+  "cryptid/CatchUp/Machine/Literal/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Lookup",
+    "sha256": "1c2c2f41e3d998694ddccd512267d0d0807a3d434859be5b8cceaedf96683422",
+    "bytes": 5103
+  },
+  "cryptid/CatchUp/Machine/Literal/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Routines",
+    "sha256": "09722afc2966234e708ae6b579148938c91144397b9cd04ac540169b01c38a78",
+    "bytes": 6189
+  },
+  "cryptid/CatchUp/Machine/Literal/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Control",
+    "sha256": "9524e610747e39c20fcc98e166995447908e5dd34366101afaa30a029d1d545b",
+    "bytes": 10878
+  },
+  "cryptid/CatchUp/Machine/Literal/Program.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Literal.Program",
+    "sha256": "f264807d10955b37f622ccd35cb1deb9c280afcd89b54b841a1148fb3a84b006",
+    "bytes": 2063
+  },
+  "cryptid/CatchUp/Machine/Pred/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Prototype",
+    "sha256": "c7a1b9a4177ebc738dd8b85ff9087d018a2fb1cce02463a0196a24e74570a9fe",
+    "bytes": 6677
+  },
+  "cryptid/CatchUp/Machine/Pred/Initialization.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Initialization",
+    "sha256": "25a7606c8f47ffc173d564b6a96a1d3acd5eb26e56eb42ca907d583c85cea157",
+    "bytes": 4144
+  },
+  "cryptid/CatchUp/Machine/Pred/Contracts.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Contracts",
+    "sha256": "102a234cc9558c7353a4fec5de24a7deb1ba375959ecf5b50b19f63cb9a613ec",
+    "bytes": 7083
+  },
+  "cryptid/CatchUp/Machine/Pred/Inherited.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Inherited",
+    "sha256": "5ee83397ec0a06dced3975ad12a6d737072427fefd957cd0142cc7464666b7cf",
+    "bytes": 4907
+  },
+  "cryptid/CatchUp/Machine/Pred/Arithmetic.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Arithmetic",
+    "sha256": "9c3be29cb62b0be632bb76239742651e625b650e2646dd0832af256735253634",
+    "bytes": 10381
+  },
+  "cryptid/CatchUp/Machine/Pred/Semantics.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Semantics",
+    "sha256": "a0b4207b31d819a60b9d19da0133ab3d5816ddb28b77e85d4adcc7bf3a362a1f",
+    "bytes": 5525
+  },
+  "cryptid/CatchUp/Machine/Pred/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Lookup",
+    "sha256": "7ed3c42fe2d3493f59a112e6d67ddd4d6284733867ad7f634d1400f7fa7e69ee",
+    "bytes": 5094
+  },
+  "cryptid/CatchUp/Machine/Pred/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Routines",
+    "sha256": "915b59b005c9d14b233390788e358752d7bc99e885e7f1884db872b891e5d00c",
+    "bytes": 6180
+  },
+  "cryptid/CatchUp/Machine/Pred/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Pred.Control",
+    "sha256": "61470adb29cf607b15037ee3eddfd1fb5be367e1d7fb83ee14dbeac81c26e39c",
+    "bytes": 8899
+  },
+  "cryptid/CatchUp/Machine/Succ/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Prototype",
+    "sha256": "7a0fe86defcdc6a779762ffdc22ad7c682ba2acab564e999bdbe667a8b68d481",
+    "bytes": 5165
+  },
+  "cryptid/CatchUp/Machine/Succ/Initialization.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Initialization",
+    "sha256": "a746a079bd4d3ecaa1a824b9edfa914f9ed335ceda340b43d9a0a0f117bf33e3",
+    "bytes": 4136
+  },
+  "cryptid/CatchUp/Machine/Succ/Arithmetic.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Arithmetic",
+    "sha256": "7419332b17b826fad0e20fdd0650739c11bb05b2db96168e676d00f9a26543aa",
+    "bytes": 7795
+  },
+  "cryptid/CatchUp/Machine/Succ/Semantics.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Semantics",
+    "sha256": "b16d1c732eb2c22c9f75698de6d9db813a9610e8c2d233d8e2251d965d994d74",
+    "bytes": 6144
+  },
+  "cryptid/CatchUp/Machine/Succ/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Lookup",
+    "sha256": "673b005cf0f9e570937c6823c21162fee30f6552555a77c80286205880465a20",
+    "bytes": 5260
+  },
+  "cryptid/CatchUp/Machine/Succ/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Routines",
+    "sha256": "c465329a965d3ae37465d8f4adba6e138ab7d18695f59b9083e3e36c85bd4d3e",
+    "bytes": 6232
+  },
+  "cryptid/CatchUp/Machine/Succ/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Succ.Control",
+    "sha256": "7d6228ef549220f8fa51ccb32557573b980746bbdf5260a73f02b391f0982aeb",
+    "bytes": 6342
+  },
+  "cryptid/CatchUp/Machine/Call/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Prototype",
+    "sha256": "a00e4d99a51b1c801598e153cab4ed17cf3ce63851d3eadb250e1eeacbb2e934",
+    "bytes": 4962
+  },
+  "cryptid/CatchUp/Machine/Call/Initialization.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Initialization",
+    "sha256": "f810631589cd6d2e0b1a372631d7c91fd2f9a2983af96bebd583d9cfa406eddb",
+    "bytes": 4038
+  },
+  "cryptid/CatchUp/Machine/Call/Mirror.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Mirror",
+    "sha256": "954431287e9eec74420066d2cda9407327cbcf195d96267b1c59f1453f7f7edd",
+    "bytes": 1881
+  },
+  "cryptid/CatchUp/Machine/Call/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Control",
+    "sha256": "8003c6af114c46579ff5636cc443e402446bfb2fb4395a43ab661d642d7573f3",
+    "bytes": 5195
+  },
+  "cryptid/CatchUp/Machine/Call/Boundary.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Boundary",
+    "sha256": "2fbb1390f670d26932995c77ef168cc5972804efd89669d8eb236c4a501c90a4",
+    "bytes": 4017
+  },
+  "cryptid/CatchUp/Machine/Dispatch/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Dispatch.Prototype",
+    "sha256": "ca724119b0b8d26df48176a3cc931b84db8f3ae44cc6e3286a751855b1fcd9c8",
+    "bytes": 7109
+  },
+  "cryptid/CatchUp/Machine/Dispatch/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Dispatch.Lookup",
+    "sha256": "d59a45e3d74325f3a6513f24f8a831c845330a6ddeb9f4acd768e881662f78ab",
+    "bytes": 7192
+  },
+  "cryptid/CatchUp/Machine/Dispatch/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Dispatch.Routines",
+    "sha256": "0486c82acab68e8e070ba9726e53f9715ef06bb6575c70e0685e8a62d9092f34",
+    "bytes": 5256
+  },
+  "cryptid/CatchUp/Machine/Dispatch/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Dispatch.Control",
+    "sha256": "a1cd4dd21a7b9aac86c9bccc4e61eb8a11c4b621f71d59fa377b40df16ade85c",
+    "bytes": 5061
+  },
+  "cryptid/CatchUp/Machine/Words/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Words.Prototype",
+    "sha256": "de66e1c1334d0b08bf77664bf9fc6f669e5508571a5552fa62985ec4e74e5f6d",
+    "bytes": 5627
+  },
+  "cryptid/CatchUp/Machine/Words/Calls.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Words.Calls",
+    "sha256": "b31efa70c0185c63cd54e3748ce1eb511207e33a7e500ccbfe7d75dca6518202",
+    "bytes": 3911
+  },
+  "cryptid/CatchUp/Machine/Words/Transfer.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Words.Transfer",
+    "sha256": "84092af2770a814a8ba30e8d6f07b05a444800ca05e2a808401fd5c73a26e9ac",
+    "bytes": 4474
+  },
+  "cryptid/CatchUp/Machine/Words/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Words.Routines",
+    "sha256": "3a81a933a4296442ef08739e33561b10792e8c61a80ee368dddfde5599d70ad6",
+    "bytes": 2983
+  },
+  "cryptid/CatchUp/Machine/Words/Control.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Words.Control",
+    "sha256": "a30f4a11dcd7985221bc193917d9d9b7099dfa1516d3a442fac7e7ede1f2ac1e",
+    "bytes": 3703
+  },
+  "cryptid/CatchUp/Machine/Words/Codec.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Words.Codec",
+    "sha256": "24ac298833f120c117b8eb6513fcec80b36d0dee88ee2ee0be02e2a838358906",
+    "bytes": 2018
+  },
+  "cryptid/CatchUp/Machine/Separate/Encoding.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Separate.Encoding",
+    "sha256": "ef5b7951227522e22efbdf069260287eaa0e3a68afce6cb7a35f8aded41cbe01",
+    "bytes": 1405
+  },
+  "cryptid/CatchUp/Machine/Separate/Calls.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Separate.Calls",
+    "sha256": "3f30c15d68b8151b35e4d888e2cc10e537ad77c3b65d1c58c749d85f4683c1c3",
+    "bytes": 3635
+  },
+  "cryptid/CatchUp/Machine/Separate/Operations.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Separate.Operations",
+    "sha256": "a3dfabd5c128e02582cf84a248bf01c9f1b00dd6a30053585b118d9eec347e38",
+    "bytes": 4021
+  },
+  "cryptid/CatchUp/Machine/Separate/Stacks.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Separate.Stacks",
+    "sha256": "ce7688d51d99fb653cc25e9e863f0f4871cf40bbbfefcb493dbcbc61d40c6a5f",
+    "bytes": 6526
+  },
+  "cryptid/CatchUp/Machine/Separate/Prototype.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Separate.Prototype",
+    "sha256": "e593f2d64b89a4f52b4cd9dd24916b0f1f091fa40407d525925aefa13625d2c1",
+    "bytes": 6645
+  },
+  "cryptid/CatchUp/Machine/Call/Semantics.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Semantics",
+    "sha256": "c703567ef81caf00b32ba28327ee8299de3702f5952ce892d39a5df36e9b1220",
+    "bytes": 6124
+  },
+  "cryptid/CatchUp/Machine/Call/Lookup.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Lookup",
+    "sha256": "ab94f3b36c0b34ff610bf5585157eed44793a3893ee174b79a22d048e53a50a7",
+    "bytes": 4213
+  },
+  "cryptid/CatchUp/Machine/Call/Routines.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Call.Routines",
+    "sha256": "ecf0a4da4c9dfdb21db94f4f3055a86514d1b2826760af9e2dde389a4b21e8fb",
+    "bytes": 6210
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/Entrance.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.Entrance",
+    "sha256": "2f449c36899c5e4b149ef00807eb54a79c0009e011968032c35eabef18a97fc1",
+    "bytes": 4364
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/EntranceStage.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.EntranceStage",
+    "sha256": "014e6bd56162dd754a18f8924c0d0a502acef0a935093ad34d22592ef0847bdb",
+    "bytes": 4892
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/EntranceTransfer.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.EntranceTransfer",
+    "sha256": "a9f3f50fe8a8dd7cc8dc7f309bc21ff28c985a7a14d0b354bce0d061ac84d0f4",
+    "bytes": 4378
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/Extract.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.Extract",
+    "sha256": "885e7749e1dfc929835dc4fd852a146c4cb5168c2927a908c3d0ed5f10d5399a",
+    "bytes": 4818
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/ExtractBoundary.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.ExtractBoundary",
+    "sha256": "022f050ab9460f54c82dc5e6e9e41fa881e3d8bc2f215e5e62501998d32b883c",
+    "bytes": 3178
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/ExtractShift.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.ExtractShift",
+    "sha256": "a939e143fe61053da7f51fb77b6d1eb4b30e964d1d95364bffcdfd0c6cee84ff",
+    "bytes": 5795
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/ExtractTape.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.ExtractTape",
+    "sha256": "91259320094899338f269d27aa46cf3b6f970c8ee86d85569fb544f50a4b6690",
+    "bytes": 3221
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/ExtractRows.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.ExtractRows",
+    "sha256": "d9221ac316dc99d8be913081432e4f506da186cbbfbc3ff10ad6e2d93b51f5b6",
+    "bytes": 4110
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/Finite.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.Finite",
+    "sha256": "e87f234fe27cbf2d2adec1dc1dc40e05fdcb2c98d61d165549ed4ad3e3c168e0",
+    "bytes": 3973
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/Restore.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.Restore",
+    "sha256": "d9ea0368d7403314b3b8bedc1e2649a6fbf7fa740f59539c93c781a72fb6f961",
+    "bytes": 9373
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/Run.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.Run",
+    "sha256": "5fcd216b9166abdbb5e28e6773da41d2f81f3c7744072e4e89226f3eaedded48",
+    "bytes": 5311
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/ExtractCopy.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.ExtractCopy",
+    "sha256": "8789fadf58f18b3281a3b91ce72c145f05dd02aa5f8a3555de4ddf20c4cbee57",
+    "bytes": 8226
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/ExtractPush.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.ExtractPush",
+    "sha256": "b5748175f93a2a2f5f1520a3efae57626e2aa0caa51f2e3a176be3490fb9cdd0",
+    "bytes": 5533
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/EntranceClear.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.EntranceClear",
+    "sha256": "8ffe35ad0af1f7470108015780cf9d785ab519a5428c86cfe8e13a62689d6cf0",
+    "bytes": 4174
+  },
+  "cryptid/CatchUp/Machine/Lowering/Switch/EntranceRows.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Switch.EntranceRows",
+    "sha256": "d2a376c38d9a7d465694b010b490cefc7f3d9392e635c4cb1f5dd7f707f2b19d",
+    "bytes": 2878
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationTargets.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationTargets",
+    "sha256": "efd38d3eb648d3247e9482badf07b96f94b7a4a54ce5bd74a46c9b010659d65a",
+    "bytes": 4740
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationEntry.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationEntry",
+    "sha256": "7c51be170dcdec60c5bf3026c7909a98d9cb222471c875ac4d57d6b5c6ab56b7",
+    "bytes": 3304
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationSites.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationSites",
+    "sha256": "096aecb065f468eee0e04b4d5a87b00146a4cefd1e84290f4865ef6cc99f3771",
+    "bytes": 3149
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationHooks.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationHooks",
+    "sha256": "a89cb76cfd7bfefab12fcca9981b35633930d7f532184b12f95a80f53af2f24d",
+    "bytes": 4268
+  },
+  "cryptid/CatchUp/Machine/Lowering/RelocationData.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.RelocationData",
+    "sha256": "3af61b003049c21d1ceb9d6f5d09667814440c66e133b8eb7a97b74d08366290",
+    "bytes": 7345
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Relocation.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Relocation",
+    "sha256": "ad9e9bf1d12c96ed88e0ae4405612d6622d55cb4c3f090e9f03b4cacb4106460",
+    "bytes": 4527
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Lift.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Lift",
+    "sha256": "f59e15a67872a79deeac082311cb2db61453ae87dfff5f3a29d379a7badb9a87",
+    "bytes": 3208
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Sites.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Sites",
+    "sha256": "d56c5c8deddda7c4e90676157b86de4902eadb3e9a58d5cec63eccc7dbe383bc",
+    "bytes": 1973
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Contract.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Contract",
+    "sha256": "9189c2def4ed7ca78a2e155f207868f658938c66dd3e2210f0f30facf654e039",
+    "bytes": 6734
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Copy.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Copy",
+    "sha256": "e1e0049100c085681e397a780a33ceeac387f55d6ed36fb5b67f0ecb1192cb22",
+    "bytes": 6927
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Push.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Push",
+    "sha256": "da7ab88e9c13ad72b00e42702cfe71a6fb474f76b14f3603de4c3a2f8fd1f41e",
+    "bytes": 3064
+  },
+  "cryptid/CatchUp/Machine/Lowering/Save/Rows.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Save.Rows",
+    "sha256": "77afed8c25b8f85fbafe75237c5fc7abdbb5ea2c0559b002907cfef41d33cce9",
+    "bytes": 4350
+  },
+  "cryptid/CatchUp/Machine/Lowering/Finish/Relocation.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Finish.Relocation",
+    "sha256": "6780f9de6ce9008ab149580d03ecede44f33ec8f2701d0b2213df8edab5db6d8",
+    "bytes": 4634
+  },
+  "cryptid/CatchUp/Machine/Lowering/Finish/Lift.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Finish.Lift",
+    "sha256": "28ad4146951f56accb942928ed5e37313f829f9f173a41b5fdd12516a746a959",
+    "bytes": 3256
+  },
+  "cryptid/CatchUp/Machine/Lowering/Finish/Sites.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Finish.Sites",
+    "sha256": "7c3da4c2778abc4440dbdbdeb2bb772fcc96aba240a23dcd3d10c11e5ef53061",
+    "bytes": 2035
+  },
+  "cryptid/CatchUp/Machine/Lowering/Finish/Contract.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.Finish.Contract",
+    "sha256": "1aebe7a1d2b8ac752c8e5a5f450940c2d56c3e8525c75ea6ec1895fbf8f9d8aa",
+    "bytes": 2884
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Relocation.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Relocation",
+    "sha256": "b17e074c81087d6136f131e4552bb96c4b8eafa6d40f5a73cc742952441b1d5f",
+    "bytes": 5082
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Lift.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Lift",
+    "sha256": "487b5990986e5197dd9436e37a84cbf407d9e35f4590779ae4ab6f13b7da37b9",
+    "bytes": 3358
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Sites.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Sites",
+    "sha256": "af3e78a14f8bc70b4c80e4113a113a6b81577bc007183f4ca94ed4c9d2223f15",
+    "bytes": 3058
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Contract.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Contract",
+    "sha256": "c3883bff7511ff80d7bf1780969e893e8f8c96d3b203b4a6b596e3f38aacdadf",
+    "bytes": 3709
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Stage.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Stage",
+    "sha256": "635e14f8fdfbafd70502a5adfa1b49d890b6e114d47782746d84daf41af94b95",
+    "bytes": 5103
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Clear.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Clear",
+    "sha256": "c40b1562e81b3087b464bad8435cef5102ad105f1670a8d27bc953e0f25b3cad",
+    "bytes": 3833
+  },
+  "cryptid/CatchUp/Machine/Lowering/SourceSucc/Rows.lean": {
+    "origin": "Catch-Up checked component snapshot",
+    "module": "CatchUp.Machine.Lowering.SourceSucc.Rows",
+    "sha256": "e761673275530fbb4fb3ae888a73188f38bde2ff2ac43c817123151ddac0251e",
+    "bytes": 3062
+  },
+  "computation/certificates/near-deficit-guard.json": {
+    "origin": "Retained experimental certificate serialization underlying the checked Lean instance",
+    "sha256": "554aa7be0d9c4450c51ce2b2b011ed3e6c76029345577420dd919bae1ea13161",
+    "bytes": 42400
+  },
+  "computation/certificates/unit-guard.json": {
+    "origin": "Retained experimental certificate serialization underlying the checked Lean instance",
+    "sha256": "d8da7a9d16f4e18c6c6c28675fa1b0887402101f40d5615e2b43eda08978f80c",
+    "bytes": 128926
+  },
+  "computation/certificates/odd-pair-root.json": {
+    "origin": "Retained experimental certificate serialization underlying the checked Lean instance",
+    "sha256": "2b5b693a274403cab45f5e50c5b7bda72eabf724ff8383f31f1572f5d959298a",
+    "bytes": 71174
+  }
+}

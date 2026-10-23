@@ -1,0 +1,19 @@
+{
+  "cryptids_commit": "a0c1f56af53a76e985a656032b48015f7e48921b",
+  "research_commit": "bb10b8246c8f7b99de084865826150459e5627f1",
+  "reference_blob": "413bb420af5d78c79be7f55096862fa534ca0b7d",
+  "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "lean": "4.27.0",
+  "note": "Frozen API copied without the unfinished conjecture. Reference definitions unchanged.",
+  "literal_reference_commit": "1646ca16afd6cc7a693d3bdc9f066c4d3cc01a89",
+  "literal_reference_lean": "4.33.1 (source inspection only; compiled API uses 4.27.0)",
+  "classifier_blob": "bc391f4c3da960e7b8185b1b0ef6e2ee41283560",
+  "literal_reference_blob": "b7b75fcd7892889c85924b8fb12ce31d2124a12d",
+  "cryptid": {
+    "lean": "4.35.0-rc4",
+    "lean_commit": "c29b6dda4f7c20e3eeaa717c4e565663c5cfa364",
+    "mathlib": "1f414401f69059aa7eead47b53ee40bd38455eeb",
+    "backend_snapshot": "8fed07fa2981ecd96141303b0d8982116106f6eb",
+    "source_note": "Dependency closure vendored; local development snapshots need not be reachable upstream."
+  }
+}

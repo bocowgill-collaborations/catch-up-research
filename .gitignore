@@ -1,0 +1,7 @@
+.lake/
+**/.lake/
+__pycache__/
+*.pyc
+.DS_Store
+verification/local/
+**/verification/local/

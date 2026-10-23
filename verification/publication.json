@@ -1,0 +1,173 @@
+{
+  "date": "2026-10-23",
+  "status": "PASS: local publication checks",
+  "hardware": {
+    "cpu": "Apple M4 Max",
+    "logical_cpus": 16,
+    "ram_bytes": 137438953472
+  },
+  "build_scope": "All exported local proof modules were freshly compiled during publication; final successful builds can reuse outputs from earlier attempts in this same export. Pinned external dependency caches were reused, rather than rebuilding Mathlib.",
+  "builds": [
+    {
+      "directory": ".",
+      "command": [
+        "lake",
+        "-Kjobs=4",
+        "build"
+      ],
+      "exit_code": 0,
+      "local_proof_modules": 70
+    },
+    {
+      "directory": "cryptid",
+      "command": [
+        "lake",
+        "build"
+      ],
+      "exit_code": 0,
+      "local_proof_modules": 226,
+      "targets": [
+        "CatchUpCryptid",
+        "CandidateComponents"
+      ]
+    }
+  ],
+  "axiom_audits": {
+    "mathematics": {
+      "status": "PASS",
+      "groups": [
+        {
+          "entry": "AxiomAudit.lean",
+          "endpoints": 151,
+          "all_public_catchup_theorems": 3420,
+          "commands": [
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AxiomAudit.lean"
+            ],
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AuditAll.lean"
+            ]
+          ],
+          "seconds": 93.968977459,
+          "audit_source_sha256": "ba115710b4c0db3adaacddfc1119057d75e29c25a310c5744002c089faf14f06",
+          "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+        }
+      ],
+      "seconds": 93.96915162500001,
+      "peak_child_rss_bytes": 5497962496,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "negative_control": "rejected sorryAx"
+    },
+    "cryptid": {
+      "status": "PASS",
+      "groups": [
+        {
+          "entry": "AxiomAudit.lean",
+          "endpoints": 23,
+          "all_public_catchup_theorems": 500,
+          "commands": [
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AxiomAudit.lean"
+            ],
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AuditAll.lean"
+            ]
+          ],
+          "seconds": 10.1248085,
+          "audit_source_sha256": "747f45a51d41990e8b1ae02b7d82d3a19948eeb49500822a847332bd334fc0d3",
+          "full_audit_source_sha256": "c4fe35fcf3f1250743299601fd1726e092a16eb6967c081d871dd0e18da60894"
+        },
+        {
+          "entry": "ComponentAxiomAudit.lean",
+          "endpoints": 201,
+          "all_public_catchup_theorems": 2962,
+          "commands": [
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "ComponentAxiomAudit.lean"
+            ],
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "ComponentAuditAll.lean"
+            ]
+          ],
+          "seconds": 9.224536291,
+          "audit_source_sha256": "32fc2d510ab4049248447d0ef9b4c0ba4243bda1ec8aeace07d00186ddfd1e82",
+          "full_audit_source_sha256": "8712a1b506c7b56228a5fe1d903b29e93e06763853c5c323bb79b8ec1bc263be"
+        }
+      ],
+      "seconds": 19.349592542,
+      "peak_child_rss_bytes": 6270812160,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "negative_control": "rejected sorryAx"
+    }
+  },
+  "semantics": {
+    "status": "PASS",
+    "states": 832,
+    "roots": 10,
+    "seconds": 7.990134416999999
+  },
+  "export": {
+    "command": [
+      "python3",
+      "scripts/verify_export.py"
+    ],
+    "status": "PASS",
+    "preserved_source_and_data_files": 308,
+    "sha256_of_manifest": "254fcc0e2e1612fdc4a95e7a872a336341bc522c51de0f735816c7ee3c24c8bd",
+    "source_bytes": 7881923
+  },
+  "other_checks": [
+    "Reference declaration fidelity and changed-equality negative control passed",
+    "Copied source/data SHA-256 checks passed",
+    "Forbidden proof-term and private-path/token-pattern scans passed",
+    "Relative documentation links passed",
+    "Python scripts compile with Python 3.9"
+  ],
+  "status_scope": "The conjecture remains open. The candidate has local contracts and a counted allocation, not an end-to-end halting equivalence. The GitHub workflow runs independently after publication.",
+  "compatibility": "The preserved 4.35 sources produce advisory module-system import warnings under Lake; their proofs compile, and the audit invocations use warningAsError=true.",
+  "receipts": {
+    "mathematics-build.log": "fb2a7fcba78419fbf121d51e2672e97ad7fd13ecf2171924151dea29205c388e",
+    "cryptid-baseline-build.log": "791bf12c27c32927661db3cc064750796273fc88198ececfd419b0408dc7709b",
+    "cryptid-components-build.log": "adef9c718420a2ff1f078897f41a29b3221839edcab05475d16fc481b2354a0b",
+    "mathematics-axioms.log": "993111a4150d02d843bc53d1cf3538f1522b5c3221aac528f24fed24b49fb7a3",
+    "mathematics-all-theorems.log": "b835fd6964bf3765af6eaf744804eac4f3c4c84c458ce8d5a6743e322abfaba3",
+    "cryptid-axioms.log": "e2aaddb1b00ba235ec4e2334d6bae26e9933fadc975a34b2b8e34dfcd769902d",
+    "cryptid-all-theorems.log": "e6fabdf7ede1f3c0c02060b70e7d8083b4408288fdd34298617888291bf922bb",
+    "components-axioms.log": "24ac30ec540b2d9eeb4d2521d822a3bba50ad5146f7a4b8f568bddf2d44833a4",
+    "components-all-theorems.log": "6a7f1e8ea45917af407f4577425592bb91dc07e9d0a3836d795612276daf49fa"
+  }
+}

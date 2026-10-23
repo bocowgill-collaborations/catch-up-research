@@ -1,0 +1,224 @@
+{
+  "scope": "Selected retained earlier measurements; not proof-size minimality or fresh publication performance. Newly introduced supporting mathematics is included in the exported dependency closure.",
+  "results": [
+    {
+      "source_sha256": "756995ea398c31afcc627f1674bf9616a26874d0c8303f93b75423d12abc1942",
+      "source_bytes": 32061,
+      "source_lines": 616,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "processor": "arm",
+      "lean_toolchain": "leanprover/lean4:v4.27.0",
+      "mathlib_revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "result": "Near-deficit guard obstruction",
+      "measurement_scope": "Earlier campaign runs, 22 October 2026; peak RSS is cumulative maximum child-process RSS, not isolated lemma or aggregate memory.",
+      "checking_runs": [
+        {
+          "label": "fresh_source",
+          "seconds": 18.499746457999997,
+          "timeout_seconds": 120,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 7989772288
+        },
+        {
+          "label": "build",
+          "seconds": 20.5590795,
+          "timeout_seconds": 120,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 8024915968
+        },
+        {
+          "label": "axioms",
+          "seconds": 4.556132374999997,
+          "timeout_seconds": 120,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 8024915968
+        },
+        {
+          "label": "negative_control",
+          "seconds": 3.942102042000002,
+          "timeout_seconds": 120,
+          "exit_code": 1,
+          "cumulative_child_peak_rss_bytes": 8024915968
+        }
+      ],
+      "certificate": {
+        "certificate_bytes": 42400,
+        "certificate_sha256": "554aa7be0d9c4450c51ce2b2b011ed3e6c76029345577420dd919bae1ea13161",
+        "nodes": 72,
+        "new_leaves": 37,
+        "reused_aliases": 1,
+        "edges": 73,
+        "generation_seconds": 0.0016573330000000004
+      },
+      "generation_scope": "Certificate emission time excludes the preceding game search; no complete search-cost measurement is asserted."
+    },
+    {
+      "source_sha256": "5061258a83acaabb5fcc2931e055676a48c6047e9d42df6ea92e899c0b57f3cb",
+      "source_bytes": 84101,
+      "source_lines": 1532,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "processor": "arm",
+      "lean_toolchain": "leanprover/lean4:v4.27.0",
+      "mathlib_revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "result": "Unit guard obstruction",
+      "measurement_scope": "Earlier campaign runs, 22 October 2026; peak RSS is cumulative maximum child-process RSS, not isolated lemma or aggregate memory.",
+      "checking_runs": [
+        {
+          "label": "fresh_source",
+          "seconds": 54.082864375,
+          "timeout_seconds": 180,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 11248140288
+        },
+        {
+          "label": "build",
+          "seconds": 57.48191575,
+          "timeout_seconds": 180,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 12044845056
+        },
+        {
+          "label": "axioms",
+          "seconds": 4.555739959000007,
+          "timeout_seconds": 180,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 12044845056
+        },
+        {
+          "label": "negative_control",
+          "seconds": 3.961717084,
+          "timeout_seconds": 180,
+          "exit_code": 1,
+          "cumulative_child_peak_rss_bytes": 12044845056
+        }
+      ],
+      "certificate": {
+        "certificate_bytes": 128926,
+        "certificate_sha256": "d8da7a9d16f4e18c6c6c28675fa1b0887402101f40d5615e2b43eda08978f80c",
+        "nodes": 219,
+        "new_leaves": 100,
+        "reused_aliases": 3,
+        "edges": 227,
+        "generation_seconds": 0.0028037500000000007
+      },
+      "generation_scope": "Certificate emission time excludes the preceding game search; no complete search-cost measurement is asserted."
+    },
+    {
+      "source_sha256": "72db15beecc842b90a2dc9c2157e0c7fad3ea4dcf6a682659c70149e969d7461",
+      "source_bytes": 47464,
+      "source_lines": 885,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "processor": "arm",
+      "lean_toolchain": "leanprover/lean4:v4.27.0",
+      "mathlib_revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "result": "Odd pair root obstruction",
+      "measurement_scope": "Earlier campaign runs, 22 October 2026; peak RSS is cumulative maximum child-process RSS, not isolated lemma or aggregate memory.",
+      "checking_runs": [
+        {
+          "label": "fresh_source",
+          "seconds": 114.107785125,
+          "timeout_seconds": 180,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 11333943296
+        },
+        {
+          "label": "build",
+          "seconds": 120.828223834,
+          "timeout_seconds": 180,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 12797771776
+        },
+        {
+          "label": "axioms",
+          "seconds": 6.2947037499999965,
+          "timeout_seconds": 180,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 12797771776
+        },
+        {
+          "label": "negative_control",
+          "seconds": 4.446432207999976,
+          "timeout_seconds": 180,
+          "exit_code": 1,
+          "cumulative_child_peak_rss_bytes": 12797771776
+        }
+      ],
+      "certificate": {
+        "certificate_bytes": 71174,
+        "certificate_sha256": "2b5b693a274403cab45f5e50c5b7bda72eabf724ff8383f31f1572f5d959298a",
+        "nodes": 121,
+        "new_leaves": 68,
+        "reused_aliases": 0,
+        "edges": 121,
+        "generation_seconds": 0.0017239580000000011
+      },
+      "generation_scope": "Certificate emission time excludes the preceding game search; no complete search-cost measurement is asserted."
+    },
+    {
+      "source_sha256": "a15bfc3b9705f0f9debca0334c623c3eb0c8f1ef5d434489e3f254fdf43f461d",
+      "source_bytes": 7734,
+      "source_lines": 166,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "processor": "arm",
+      "lean_toolchain": "leanprover/lean4:v4.27.0",
+      "mathlib_revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "result": "Alternative exact-sum defense",
+      "measurement_scope": "Earlier campaign runs, 22 October 2026; peak RSS is cumulative maximum child-process RSS, not isolated lemma or aggregate memory.",
+      "checking_runs": [
+        {
+          "stage": "source",
+          "seconds": 69.271072,
+          "timeout_seconds": 90,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 3217195008
+        },
+        {
+          "stage": "build",
+          "seconds": 79.62763433399999,
+          "timeout_seconds": 90,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 3217195008
+        },
+        {
+          "stage": "axioms",
+          "seconds": 72.22052187499997,
+          "timeout_seconds": 90,
+          "exit_code": 0,
+          "cumulative_child_peak_rss_bytes": 3217195008
+        }
+      ],
+      "supporting_source_bytes": 205056,
+      "supporting_source_files": 17
+    },
+    {
+      "target": "Halts CatchUp.Machine.RestoreShare.M \u2194 \u00ac CatchUp.Search.Conjecture",
+      "states": 388819712,
+      "node_count": 38875007,
+      "fixed_body_states": 388750082,
+      "initializer_states": 69630,
+      "program_bits": 34815,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "machine": "arm64",
+      "logical_cpus": 16,
+      "lean_version": "Lean (version 4.35.0-rc4, arm64-apple-darwin24.6.0, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)",
+      "new_source_bytes": 21679
+    },
+    {
+      "result": "Smaller machine component construction",
+      "candidate_states": 211100482,
+      "initializer_states": 4,
+      "verified_bank_sites": {
+        "switch": 92,
+        "save": 92,
+        "finish": 92,
+        "source_successor": 1
+      },
+      "status": "Allocation, initialization and local contracts checked; full machine halting equivalence remains open.",
+      "checking_scope": "Fresh component build and audit recorded in publication.json; no proof-generation-cost measurement asserted."
+    }
+  ]
+}

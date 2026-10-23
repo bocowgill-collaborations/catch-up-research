@@ -1,0 +1,50 @@
+ℹ [9070/9119] Replayed Cryptids.Chess.Compilation.SourceCertificate
+info: Cryptids/Chess/Compilation/SourceCertificate.lean:226:0: Source certificate: 7076 checked lemmas, 7037 cache hits
+info: Cryptids/Chess/Compilation/SourceCertificate.lean:230:0: Literal row certificate: 5952 checked rows in 186 chunks
+⚠ [9073/9119] Replayed CatchUp.Reference
+warning: CatchUp/Reference.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9077/9119] Replayed CatchUp.Machine.Program
+warning: CatchUp/Machine/Program.lean: imports `Mathlib.Computability.TuringMachine.Config` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✔ [9078/9119] Built Cryptids.Machines (9.1s)
+✔ [9079/9119] Built Cryptids.Compilation.Binary (1.6s)
+✔ [9080/9119] Built Cryptids.Compilation.LocalCertificate (1.6s)
+✔ [9081/9119] Built Cryptids.Compilation.BalancedTable (1.7s)
+✔ [9082/9119] Built Cryptids.Compilation.Init (2.7s)
+✔ [9083/9119] Built Cryptids.Compilation.GraphPost (1.7s)
+✔ [9084/9119] Built Cryptids.Compilation.BinaryTemplates (1.8s)
+✔ [9085/9119] Built Cryptids.Compilation.FlatInit (2.2s)
+✔ [9086/9119] Built Cryptids.Compilation.LazyGraph (1.7s)
+✔ [9087/9119] Built Cryptids.Compilation.Code (2.5s)
+✔ [9088/9119] Built Cryptids.Compilation.Runtime (1.9s)
+✔ [9089/9119] Built Cryptids.Compilation.TemplateGraph (2.7s)
+✔ [9090/9119] Built Cryptids.Compilation.RuntimeData (2.0s)
+✔ [9091/9119] Built Cryptids.Compilation.RuntimeSupport (2.3s)
+✔ [9092/9119] Built CatchUp.Machine.ReadShare.ReaderSemantics (8.5s)
+✔ [9093/9119] Built Cryptids.Compilation.RuntimeWire (3.2s)
+✔ [9094/9119] Built Cryptids.Compilation.RuntimeDispatch (3.2s)
+✔ [9095/9119] Built Cryptids.Compilation.RuntimeLookup (3.3s)
+✔ [9096/9119] Built Cryptids.Compilation.RuntimeEval (3.4s)
+✔ [9097/9119] Built Cryptids.Compilation.RuntimeReturn (3.4s)
+✔ [9098/9119] Built Cryptids.Compilation.RuntimeProof (2.4s)
+✔ [9099/9119] Built Cryptids.Chess.Compilation.Tape (3.2s)
+✔ [9100/9119] Built Cryptids.Compilation.SharedModel (24s)
+ℹ [9101/9119] Built Cryptids.Chess.Compilation.Input (12s)
+info: Cryptids/Chess/Compilation/Input.lean:128:0: Checked 186 literal row chunks: 141042 stack symbols
+✔ [9102/9119] Built CatchUp.Machine.Literal (21s)
+✔ [9103/9119] Built Cryptids.Compilation.RuntimeCertificate (28s)
+✔ [9104/9119] Built Cryptids.Compilation.SharedCertificate (22s)
+✔ [9105/9119] Built Cryptids.Chess.Compilation.Templates (24s)
+✔ [9106/9119] Built Cryptids.Chess.Compilation.Image (1.7s)
+✔ [9107/9119] Built CatchUp.Machine.ReusedRuntime (2.7s)
+✔ [9108/9119] Built CatchUp.Machine.ReadShare.Graph (2.8s)
+✔ [9109/9119] Built CatchUp.Machine.ReadShare.Proof (2.3s)
+✔ [9110/9119] Built CatchUp.Machine.ReadShare.Sites (2.3s)
+✔ [9111/9119] Built CatchUp.Machine.ReusedCryptid (3.4s)
+✔ [9112/9119] Built CatchUp.Machine.ReadShare.Simulation (2.0s)
+✔ [9113/9119] Built CatchUp.Machine.ReadShare.Cryptid (7.9s)
+✔ [9114/9119] Built CatchUp.Machine.RestoreShare.Graph (3.2s)
+✔ [9115/9119] Built CatchUp.Machine.RestoreShare.Proof (3.3s)
+✔ [9116/9119] Built CatchUp.Machine.RestoreShare.Simulation (6.2s)
+✔ [9117/9119] Built CatchUp.Machine.RestoreShare.Cryptid (8.0s)
+✔ [9118/9119] Built CatchUpCryptid (3.3s)
+Build completed successfully (9119 jobs).

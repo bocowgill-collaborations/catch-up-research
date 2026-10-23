@@ -1,0 +1,23 @@
+name = "catchup_cryptid"
+version = "0.1.0"
+defaultTargets = ["CatchUpCryptid", "CandidateComponents"]
+
+[leanOptions]
+autoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "1f414401f69059aa7eead47b53ee40bd38455eeb"
+
+[[lean_lib]]
+name = "CatchUp"
+
+[[lean_lib]]
+name = "Cryptids"
+
+[[lean_lib]]
+name = "CatchUpCryptid"
+
+[[lean_lib]]
+name = "CandidateComponents"
