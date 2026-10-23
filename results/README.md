@@ -2,6 +2,8 @@
 
 The universal conjecture is **open**. These are results about its rules, intermediate positions, and proposed proof methods. Every formal statement is in the linked Lean file; its hypotheses matter.
 
+For the larger research record, see the [current routes](research-routes.md), [experimental findings](experimental-findings.md), and [historical notebook](../archive/research-notes/). They collect useful existing work beyond the short theorem index, while distinguishing proofs, observations and open obligations.
+
 A normalized position `Position ⟨R,d⟩` has remaining counters `R` and an acting player trailing by `d ≥ 0`. **Nonwinning** means that player cannot force a win. **Nonlosing** means that player can avoid losing. Neither alone establishes a draw.
 
 ## Start here

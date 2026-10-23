@@ -1,0 +1,4780 @@
+{
+  "scope": "six consecutive-tail roots, all completed opponent turns after a common safe anchor if one exists",
+  "roots": [
+    {
+      "id": 1,
+      "deficit": 1,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": -1,
+        "4": -1,
+        "9": 0,
+        "10": -1,
+        "11": 0
+      },
+      "states": 186,
+      "cpu_seconds": 4.6e-05,
+      "N": 11,
+      "support": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11
+      ],
+      "safe_choices": [
+        2,
+        9,
+        11
+      ]
+    },
+    {
+      "id": 2,
+      "deficit": 1,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "states": 160,
+      "cpu_seconds": 0.000127,
+      "N": 12,
+      "support": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12
+      ],
+      "safe_choices": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "deficit": 1,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": -1,
+        "15": -1
+      },
+      "states": 4330,
+      "cpu_seconds": 0.000348,
+      "N": 15,
+      "support": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        2,
+        3,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "id": 4,
+      "deficit": 1,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "states": 1970,
+      "cpu_seconds": 0.000481,
+      "N": 16,
+      "support": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "deficit": 1,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": -1,
+        "16": 0,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 121840,
+      "cpu_seconds": 0.005991,
+      "N": 19,
+      "support": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 6,
+      "deficit": 1,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 1847709,
+      "cpu_seconds": 0.065522,
+      "N": 20,
+      "support": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        2,
+        3,
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  ],
+  "common_safe_anchors": [
+    2
+  ],
+  "selected_anchor": 2,
+  "policy_endpoints": [
+    {
+      "id": 1,
+      "deficit": 2,
+      "value": 1,
+      "moves": {
+        "4": -1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "states": 34,
+      "cpu_seconds": 2.1e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 2,
+      "deficit": 3,
+      "value": 1,
+      "moves": {
+        "3": -1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "states": 31,
+      "cpu_seconds": 4e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "3": -1,
+        "5": null
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 3,
+      "deficit": 8,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "10": -1,
+        "11": 0
+      },
+      "states": 31,
+      "cpu_seconds": 5e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11
+      ],
+      "safe_choices": [
+        3,
+        4,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 4,
+      "deficit": 9,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "11": 0
+      },
+      "states": 28,
+      "cpu_seconds": 5.7e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        10
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        11
+      ],
+      "safe_choices": [
+        3,
+        4,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "9": -1,
+        "11": 0
+      },
+      "safe_adjacent_replies": [
+        11
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 5,
+      "deficit": 10,
+      "value": 1,
+      "moves": {
+        "3": -1,
+        "4": -1,
+        "9": 1,
+        "10": -1
+      },
+      "states": 23,
+      "cpu_seconds": 6.5e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10
+      ],
+      "safe_choices": [
+        9
+      ],
+      "adjacent_reply_moves": {
+        "10": -1,
+        "12": null
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 6,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "states": 48,
+      "cpu_seconds": 7.4e-05,
+      "N": 12,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12
+      ],
+      "safe_choices": [
+        4
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": 0
+      },
+      "safe_adjacent_replies": [
+        4
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 7,
+      "deficit": 3,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "states": 39,
+      "cpu_seconds": 8.2e-05,
+      "N": 12,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11,
+        12
+      ],
+      "safe_choices": [
+        3
+      ],
+      "adjacent_reply_moves": {
+        "3": 0,
+        "5": null
+      },
+      "safe_adjacent_replies": [
+        3
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 8,
+      "deficit": 8,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "10": 0,
+        "11": 0,
+        "12": -1
+      },
+      "states": 49,
+      "cpu_seconds": 9.1e-05,
+      "N": 12,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11,
+        12
+      ],
+      "safe_choices": [
+        3,
+        4,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": 0
+      },
+      "safe_adjacent_replies": [
+        10
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 9,
+      "deficit": 9,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "11": -1,
+        "12": 0
+      },
+      "states": 50,
+      "cpu_seconds": 9.9e-05,
+      "N": 12,
+      "anchor": 2,
+      "opponent_picks": [
+        10
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        11,
+        12
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        12
+      ],
+      "adjacent_reply_moves": {
+        "9": 0,
+        "11": -1
+      },
+      "safe_adjacent_replies": [
+        9
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 10,
+      "deficit": 10,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": -1,
+        "12": 0
+      },
+      "states": 52,
+      "cpu_seconds": 0.000107,
+      "N": 12,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        12
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        12
+      ],
+      "adjacent_reply_moves": {
+        "10": -1,
+        "12": 0
+      },
+      "safe_adjacent_replies": [
+        12
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 11,
+      "deficit": 11,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 1,
+        "11": 0
+      },
+      "states": 52,
+      "cpu_seconds": 0.000116,
+      "N": 12,
+      "anchor": 2,
+      "opponent_picks": [
+        12
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "11": 0,
+        "13": null
+      },
+      "safe_adjacent_replies": [
+        11
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 12,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1
+      },
+      "states": 746,
+      "cpu_seconds": 0.000146,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        9,
+        10,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 13,
+      "deficit": 3,
+      "value": 1,
+      "moves": {
+        "3": -1,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 0,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "states": 527,
+      "cpu_seconds": 0.000167,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "adjacent_reply_moves": {
+        "3": -1,
+        "5": null
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 14,
+      "deficit": 8,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "states": 644,
+      "cpu_seconds": 0.000191,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        3,
+        4,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": 0
+      },
+      "safe_adjacent_replies": [
+        10
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 15,
+      "deficit": 9,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "11": 0,
+        "12": 0,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "states": 607,
+      "cpu_seconds": 0.000213,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        10
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        3,
+        4,
+        11,
+        12
+      ],
+      "adjacent_reply_moves": {
+        "9": -1,
+        "11": 0
+      },
+      "safe_adjacent_replies": [
+        11
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 16,
+      "deficit": 10,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": 0,
+        "15": -1
+      },
+      "states": 795,
+      "cpu_seconds": 0.000237,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        3,
+        9,
+        10,
+        13,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "10": 0,
+        "12": -1
+      },
+      "safe_adjacent_replies": [
+        10
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 17,
+      "deficit": 11,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": -1,
+        "13": 0,
+        "14": 0,
+        "15": -1
+      },
+      "states": 818,
+      "cpu_seconds": 0.000261,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        12
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        13,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "11": -1,
+        "13": 0
+      },
+      "safe_adjacent_replies": [
+        13
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 18,
+      "deficit": 12,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0
+      },
+      "states": 823,
+      "cpu_seconds": 0.000286,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        13
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "safe_choices": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "adjacent_reply_moves": {
+        "12": 0,
+        "14": 0
+      },
+      "safe_adjacent_replies": [
+        12,
+        14
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 19,
+      "deficit": 13,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 0,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0
+      },
+      "states": 851,
+      "cpu_seconds": 0.00031,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        14
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15
+      ],
+      "adjacent_reply_moves": {
+        "13": 0,
+        "15": 0
+      },
+      "safe_adjacent_replies": [
+        13,
+        15
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 20,
+      "deficit": 14,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 0,
+        "13": 1,
+        "14": 0
+      },
+      "states": 733,
+      "cpu_seconds": 0.000333,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        15
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "14": 0,
+        "16": null
+      },
+      "safe_adjacent_replies": [
+        14
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 21,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "states": 1178,
+      "cpu_seconds": 0.000376,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        4
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": 0
+      },
+      "safe_adjacent_replies": [
+        4
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 22,
+      "deficit": 3,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "states": 1059,
+      "cpu_seconds": 0.000418,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3
+      ],
+      "adjacent_reply_moves": {
+        "3": 0,
+        "5": null
+      },
+      "safe_adjacent_replies": [
+        3
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 23,
+      "deficit": 8,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "states": 1325,
+      "cpu_seconds": 0.000454,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": 0
+      },
+      "safe_adjacent_replies": [
+        10
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 24,
+      "deficit": 9,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "states": 1453,
+      "cpu_seconds": 0.000491,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        10
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "9": 0,
+        "11": 0
+      },
+      "safe_adjacent_replies": [
+        9,
+        11
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 25,
+      "deficit": 10,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "12": 0,
+        "13": 0,
+        "14": -1,
+        "15": 0,
+        "16": 0
+      },
+      "states": 1393,
+      "cpu_seconds": 0.000529,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "10": 0,
+        "12": 0
+      },
+      "safe_adjacent_replies": [
+        10,
+        12
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 26,
+      "deficit": 11,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "states": 1436,
+      "cpu_seconds": 0.000566,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        12
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "11": 0,
+        "13": 0
+      },
+      "safe_adjacent_replies": [
+        11,
+        13
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 27,
+      "deficit": 12,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "states": 1090,
+      "cpu_seconds": 0.000596,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        13
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "12": 0,
+        "14": 0
+      },
+      "safe_adjacent_replies": [
+        12,
+        14
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 28,
+      "deficit": 13,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0,
+        "16": 0
+      },
+      "states": 1147,
+      "cpu_seconds": 0.000628,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        14
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "13": 0,
+        "15": 0
+      },
+      "safe_adjacent_replies": [
+        13,
+        15
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 29,
+      "deficit": 14,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 1,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "16": 0
+      },
+      "states": 1217,
+      "cpu_seconds": 0.000661,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        15
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "14": 0,
+        "16": 0
+      },
+      "safe_adjacent_replies": [
+        14,
+        16
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 30,
+      "deficit": 15,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 1,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0
+      },
+      "states": 859,
+      "cpu_seconds": 0.000686,
+      "N": 16,
+      "anchor": 2,
+      "opponent_picks": [
+        16
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "adjacent_reply_moves": {
+        "15": 0,
+        "17": null
+      },
+      "safe_adjacent_replies": [
+        15
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 31,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 20255,
+      "cpu_seconds": 0.001229,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 32,
+      "deficit": 3,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 20473,
+      "cpu_seconds": 0.001768,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "3": 0,
+        "5": null
+      },
+      "safe_adjacent_replies": [
+        3
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 33,
+      "deficit": 8,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 15736,
+      "cpu_seconds": 0.002175,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        10,
+        11,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": 0
+      },
+      "safe_adjacent_replies": [
+        10
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 34,
+      "deficit": 9,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "11": 0,
+        "12": 0,
+        "13": -1,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 22146,
+      "cpu_seconds": 0.00271,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        10
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "9": 0,
+        "11": 0
+      },
+      "safe_adjacent_replies": [
+        9,
+        11
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 35,
+      "deficit": 10,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": -1,
+        "16": 0,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 23082,
+      "cpu_seconds": 0.003274,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        16
+      ],
+      "adjacent_reply_moves": {
+        "10": 0,
+        "12": 0
+      },
+      "safe_adjacent_replies": [
+        10,
+        12
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 36,
+      "deficit": 11,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "13": 0,
+        "14": 0,
+        "15": -1,
+        "16": 0,
+        "17": -1,
+        "18": 0,
+        "19": 0
+      },
+      "states": 24969,
+      "cpu_seconds": 0.003899,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        12
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        16,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "11": 0,
+        "13": 0
+      },
+      "safe_adjacent_replies": [
+        11,
+        13
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 37,
+      "deficit": 12,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "states": 25675,
+      "cpu_seconds": 0.004541,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        13
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "12": 0,
+        "14": 0
+      },
+      "safe_adjacent_replies": [
+        12,
+        14
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 38,
+      "deficit": 13,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "states": 26318,
+      "cpu_seconds": 0.005196,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        14
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "13": 0,
+        "15": 0
+      },
+      "safe_adjacent_replies": [
+        13,
+        15
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 39,
+      "deficit": 14,
+      "value": 1,
+      "moves": {
+        "3": 0,
+        "4": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "states": 25942,
+      "cpu_seconds": 0.005859,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        15
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "14": 0,
+        "16": 0
+      },
+      "safe_adjacent_replies": [
+        14,
+        16
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 40,
+      "deficit": 15,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "states": 25924,
+      "cpu_seconds": 0.006571,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        16
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "15": 0,
+        "17": 0
+      },
+      "safe_adjacent_replies": [
+        15,
+        17
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 41,
+      "deficit": 16,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 0,
+        "11": 1,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "18": 0,
+        "19": 0
+      },
+      "states": 25583,
+      "cpu_seconds": 0.007526,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        17
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "16": 0,
+        "18": 0
+      },
+      "safe_adjacent_replies": [
+        16,
+        18
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 42,
+      "deficit": 17,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "19": 0
+      },
+      "states": 25601,
+      "cpu_seconds": 0.008214,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        18
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "17": 0,
+        "19": 0
+      },
+      "safe_adjacent_replies": [
+        17,
+        19
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 43,
+      "deficit": 18,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 1,
+        "11": 0,
+        "12": 1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0
+      },
+      "states": 23462,
+      "cpu_seconds": 0.008817,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        19
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "adjacent_reply_moves": {
+        "18": 0,
+        "20": null
+      },
+      "safe_adjacent_replies": [
+        18
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 44,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": 0,
+        "9": -1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 64034,
+      "cpu_seconds": 0.010613,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": 0
+      },
+      "safe_adjacent_replies": [
+        4
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 45,
+      "deficit": 3,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "9": -1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 61505,
+      "cpu_seconds": 0.012287,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "3": 0,
+        "5": null
+      },
+      "safe_adjacent_replies": [
+        3
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 46,
+      "deficit": 8,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 56533,
+      "cpu_seconds": 0.013661,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": 0
+      },
+      "safe_adjacent_replies": [
+        10
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 47,
+      "deficit": 9,
+      "value": 1,
+      "moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 59959,
+      "cpu_seconds": 0.015099,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        10
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "9": 0,
+        "11": 0
+      },
+      "safe_adjacent_replies": [
+        9,
+        11
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 48,
+      "deficit": 10,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 61759,
+      "cpu_seconds": 0.016624,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "10": 0,
+        "12": 0
+      },
+      "safe_adjacent_replies": [
+        10,
+        12
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 49,
+      "deficit": 11,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 62417,
+      "cpu_seconds": 0.018189,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        12
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "11": 0,
+        "13": 0
+      },
+      "safe_adjacent_replies": [
+        11,
+        13
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 50,
+      "deficit": 12,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 61791,
+      "cpu_seconds": 0.01998,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        13
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "12": 0,
+        "14": 0
+      },
+      "safe_adjacent_replies": [
+        12,
+        14
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 51,
+      "deficit": 13,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 62024,
+      "cpu_seconds": 0.021859,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        14
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "13": 0,
+        "15": 0
+      },
+      "safe_adjacent_replies": [
+        13,
+        15
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 52,
+      "deficit": 14,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 60884,
+      "cpu_seconds": 0.023333,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        15
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "14": 0,
+        "16": 0
+      },
+      "safe_adjacent_replies": [
+        14,
+        16
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 53,
+      "deficit": 15,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 61006,
+      "cpu_seconds": 0.024866,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        16
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "15": 0,
+        "17": 0
+      },
+      "safe_adjacent_replies": [
+        15,
+        17
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 54,
+      "deficit": 16,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 60263,
+      "cpu_seconds": 0.026357,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        17
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "16": 0,
+        "18": 0
+      },
+      "safe_adjacent_replies": [
+        16,
+        18
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 55,
+      "deficit": 17,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "19": 0,
+        "20": 0
+      },
+      "states": 59122,
+      "cpu_seconds": 0.027926,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        18
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "17": 0,
+        "19": 0
+      },
+      "safe_adjacent_replies": [
+        17,
+        19
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 56,
+      "deficit": 18,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "20": 0
+      },
+      "states": 59410,
+      "cpu_seconds": 0.029597,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        19
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20
+      ],
+      "adjacent_reply_moves": {
+        "18": 0,
+        "20": 0
+      },
+      "safe_adjacent_replies": [
+        18,
+        20
+      ],
+      "has_safe_adjacent_reply": true
+    },
+    {
+      "id": 57,
+      "deficit": 19,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "states": 54791,
+      "cpu_seconds": 0.031094,
+      "N": 20,
+      "anchor": 2,
+      "opponent_picks": [
+        20
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "adjacent_reply_moves": {
+        "19": 0,
+        "21": null
+      },
+      "safe_adjacent_replies": [
+        19
+      ],
+      "has_safe_adjacent_reply": true
+    }
+  ],
+  "literal": [
+    {
+      "id": 1,
+      "N": 11,
+      "kind": "root",
+      "all_moves": {
+        "2": 0,
+        "3": -1,
+        "4": -1,
+        "9": 0,
+        "10": -1,
+        "11": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 2,
+      "N": 12,
+      "kind": "root",
+      "all_moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 3,
+      "N": 15,
+      "kind": "root",
+      "all_moves": {
+        "2": 0,
+        "3": 0,
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": -1,
+        "15": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 4,
+      "N": 16,
+      "kind": "root",
+      "all_moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 5,
+      "N": 19,
+      "kind": "root",
+      "all_moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": -1,
+        "16": 0,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 6,
+      "N": 20,
+      "kind": "root",
+      "all_moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 1,
+      "N": 11,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "4": -1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 2,
+      "N": 11,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": -1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 3,
+      "N": 11,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "10": -1,
+        "11": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 4,
+      "N": 11,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "11": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 5,
+      "N": 11,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": -1,
+        "4": -1,
+        "9": 1,
+        "10": -1
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 6,
+      "N": 12,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 7,
+      "N": 12,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 8,
+      "N": 12,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "10": 0,
+        "11": 0,
+        "12": -1
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 9,
+      "N": 12,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "11": -1,
+        "12": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 10,
+      "N": 12,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": -1,
+        "12": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 11,
+      "N": 12,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 1,
+        "11": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 12,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 13,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": -1,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 0,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 14,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 15,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": -1,
+        "11": 0,
+        "12": 0,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 16,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": 0,
+        "15": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 17,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": -1,
+        "13": 0,
+        "14": 0,
+        "15": -1
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 18,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 19,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 0,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 20,
+      "N": 15,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 0,
+        "13": 1,
+        "14": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 21,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "4": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 22,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 23,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 24,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 25,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "12": 0,
+        "13": 0,
+        "14": -1,
+        "15": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 26,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 27,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 28,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 29,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 1,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "16": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 30,
+      "N": 16,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "10": 0,
+        "11": 1,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 31,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 32,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 33,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 34,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "11": 0,
+        "12": 0,
+        "13": -1,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 35,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": -1,
+        "16": 0,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 36,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "13": 0,
+        "14": 0,
+        "15": -1,
+        "16": 0,
+        "17": -1,
+        "18": 0,
+        "19": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 37,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 38,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 39,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 40,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 41,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 0,
+        "11": 1,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "18": 0,
+        "19": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 42,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "19": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 43,
+      "N": 19,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 1,
+        "10": 1,
+        "11": 0,
+        "12": 1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 44,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "4": 0,
+        "9": -1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 45,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "9": -1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 46,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 47,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 1,
+        "4": 1,
+        "9": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 1,
+      "pass_": true
+    },
+    {
+      "id": 48,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 49,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 50,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 51,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 52,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 53,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 54,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 55,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "19": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 56,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "20": 0
+      },
+      "value": 0,
+      "pass_": true
+    },
+    {
+      "id": 57,
+      "N": 20,
+      "kind": "policy_endpoint",
+      "all_moves": {
+        "3": 0,
+        "4": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0
+      },
+      "value": 0,
+      "pass_": true
+    }
+  ],
+  "adjacent_policy_failures": [
+    {
+      "id": 1,
+      "deficit": 2,
+      "value": 1,
+      "moves": {
+        "4": -1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "states": 34,
+      "cpu_seconds": 2.1e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 2,
+      "deficit": 3,
+      "value": 1,
+      "moves": {
+        "3": -1,
+        "9": 1,
+        "10": 1,
+        "11": 1
+      },
+      "states": 31,
+      "cpu_seconds": 4e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "3": -1,
+        "5": null
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 3,
+      "deficit": 8,
+      "value": 0,
+      "moves": {
+        "3": 0,
+        "4": 0,
+        "10": -1,
+        "11": 0
+      },
+      "states": 31,
+      "cpu_seconds": 5e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        9
+      ],
+      "support": [
+        3,
+        4,
+        10,
+        11
+      ],
+      "safe_choices": [
+        3,
+        4,
+        11
+      ],
+      "adjacent_reply_moves": {
+        "8": null,
+        "10": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 5,
+      "deficit": 10,
+      "value": 1,
+      "moves": {
+        "3": -1,
+        "4": -1,
+        "9": 1,
+        "10": -1
+      },
+      "states": 23,
+      "cpu_seconds": 6.5e-05,
+      "N": 11,
+      "anchor": 2,
+      "opponent_picks": [
+        11
+      ],
+      "support": [
+        3,
+        4,
+        9,
+        10
+      ],
+      "safe_choices": [
+        9
+      ],
+      "adjacent_reply_moves": {
+        "10": -1,
+        "12": null
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 12,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1
+      },
+      "states": 746,
+      "cpu_seconds": 0.000146,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        9,
+        10,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 13,
+      "deficit": 3,
+      "value": 1,
+      "moves": {
+        "3": -1,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 0,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "states": 527,
+      "cpu_seconds": 0.000167,
+      "N": 15,
+      "anchor": 2,
+      "opponent_picks": [
+        4
+      ],
+      "support": [
+        3,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "adjacent_reply_moves": {
+        "3": -1,
+        "5": null
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    },
+    {
+      "id": 31,
+      "deficit": 2,
+      "value": 0,
+      "moves": {
+        "4": -1,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": -1,
+        "13": -1,
+        "14": 0,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "states": 20255,
+      "cpu_seconds": 0.001229,
+      "N": 19,
+      "anchor": 2,
+      "opponent_picks": [
+        3
+      ],
+      "support": [
+        4,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "safe_choices": [
+        9,
+        10,
+        11,
+        14
+      ],
+      "adjacent_reply_moves": {
+        "2": null,
+        "4": -1
+      },
+      "safe_adjacent_replies": [],
+      "has_safe_adjacent_reply": false
+    }
+  ],
+  "seconds": 5.017336375,
+  "max_child_rss_bytes": 105611264,
+  "ExactSlots_sha256": "0bf12ba8e6f9c4caf1e615e0a86fc990fceb7cd96229e582d07ca4a46a32e4ef",
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432",
+  "active_jobs": []
+}

@@ -1,0 +1,2738 @@
+{
+  "kind": "Exact finite experiment, not a formal certificate or uniform theorem",
+  "predicate": "S subset[1,N];3*(N-|S|)<=N;0<=d<=N;sum(S)>=d;(d+sum(S))%2=0",
+  "ambient_domain": "All integersN0..24, no eligibility restriction",
+  "qualifying_domains": [
+    {
+      "n": 0,
+      "holes": 0,
+      "cases": 1,
+      "draw": 1,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 1,
+      "holes": 0,
+      "cases": 1,
+      "draw": 1,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 2,
+      "holes": 0,
+      "cases": 1,
+      "draw": 1,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 3,
+      "holes": 0,
+      "cases": 2,
+      "draw": 2,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 3,
+      "holes": 1,
+      "cases": 6,
+      "draw": 3,
+      "win": 3,
+      "prefix": 3
+    },
+    {
+      "n": 4,
+      "holes": 0,
+      "cases": 3,
+      "draw": 3,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 4,
+      "holes": 1,
+      "cases": 10,
+      "draw": 7,
+      "win": 3,
+      "prefix": 4
+    },
+    {
+      "n": 5,
+      "holes": 0,
+      "cases": 3,
+      "draw": 1,
+      "win": 2,
+      "prefix": 1
+    },
+    {
+      "n": 5,
+      "holes": 1,
+      "cases": 15,
+      "draw": 11,
+      "win": 4,
+      "prefix": 6
+    },
+    {
+      "n": 6,
+      "holes": 0,
+      "cases": 3,
+      "draw": 3,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 6,
+      "holes": 1,
+      "cases": 21,
+      "draw": 12,
+      "win": 9,
+      "prefix": 7
+    },
+    {
+      "n": 6,
+      "holes": 2,
+      "cases": 54,
+      "draw": 32,
+      "win": 22,
+      "prefix": 18
+    },
+    {
+      "n": 7,
+      "holes": 0,
+      "cases": 4,
+      "draw": 4,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 7,
+      "holes": 1,
+      "cases": 28,
+      "draw": 21,
+      "win": 7,
+      "prefix": 7
+    },
+    {
+      "n": 7,
+      "holes": 2,
+      "cases": 84,
+      "draw": 46,
+      "win": 38,
+      "prefix": 25
+    },
+    {
+      "n": 8,
+      "holes": 0,
+      "cases": 5,
+      "draw": 5,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 8,
+      "holes": 1,
+      "cases": 36,
+      "draw": 34,
+      "win": 2,
+      "prefix": 8
+    },
+    {
+      "n": 8,
+      "holes": 2,
+      "cases": 124,
+      "draw": 88,
+      "win": 36,
+      "prefix": 32
+    },
+    {
+      "n": 9,
+      "holes": 0,
+      "cases": 5,
+      "draw": 5,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 9,
+      "holes": 1,
+      "cases": 45,
+      "draw": 38,
+      "win": 7,
+      "prefix": 10
+    },
+    {
+      "n": 9,
+      "holes": 2,
+      "cases": 180,
+      "draw": 136,
+      "win": 44,
+      "prefix": 40
+    },
+    {
+      "n": 9,
+      "holes": 3,
+      "cases": 420,
+      "draw": 246,
+      "win": 174,
+      "prefix": 100
+    },
+    {
+      "n": 10,
+      "holes": 0,
+      "cases": 5,
+      "draw": 5,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 10,
+      "holes": 1,
+      "cases": 55,
+      "draw": 49,
+      "win": 6,
+      "prefix": 11
+    },
+    {
+      "n": 10,
+      "holes": 2,
+      "cases": 250,
+      "draw": 192,
+      "win": 58,
+      "prefix": 50
+    },
+    {
+      "n": 10,
+      "holes": 3,
+      "cases": 660,
+      "draw": 448,
+      "win": 212,
+      "prefix": 140
+    },
+    {
+      "n": 11,
+      "holes": 0,
+      "cases": 6,
+      "draw": 6,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 11,
+      "holes": 1,
+      "cases": 66,
+      "draw": 64,
+      "win": 2,
+      "prefix": 11
+    },
+    {
+      "n": 11,
+      "holes": 2,
+      "cases": 330,
+      "draw": 277,
+      "win": 53,
+      "prefix": 61
+    },
+    {
+      "n": 11,
+      "holes": 3,
+      "cases": 990,
+      "draw": 720,
+      "win": 270,
+      "prefix": 195
+    },
+    {
+      "n": 12,
+      "holes": 0,
+      "cases": 7,
+      "draw": 7,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 12,
+      "holes": 1,
+      "cases": 78,
+      "draw": 76,
+      "win": 2,
+      "prefix": 12
+    },
+    {
+      "n": 12,
+      "holes": 2,
+      "cases": 426,
+      "draw": 401,
+      "win": 25,
+      "prefix": 72
+    },
+    {
+      "n": 12,
+      "holes": 3,
+      "cases": 1430,
+      "draw": 1149,
+      "win": 281,
+      "prefix": 256
+    },
+    {
+      "n": 12,
+      "holes": 4,
+      "cases": 3225,
+      "draw": 2150,
+      "win": 1075,
+      "prefix": 605
+    },
+    {
+      "n": 13,
+      "holes": 0,
+      "cases": 7,
+      "draw": 7,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 13,
+      "holes": 1,
+      "cases": 91,
+      "draw": 90,
+      "win": 1,
+      "prefix": 14
+    },
+    {
+      "n": 13,
+      "holes": 2,
+      "cases": 546,
+      "draw": 503,
+      "win": 43,
+      "prefix": 84
+    },
+    {
+      "n": 13,
+      "holes": 3,
+      "cases": 2002,
+      "draw": 1721,
+      "win": 281,
+      "prefix": 322
+    },
+    {
+      "n": 13,
+      "holes": 4,
+      "cases": 5005,
+      "draw": 3707,
+      "win": 1298,
+      "prefix": 861
+    },
+    {
+      "n": 14,
+      "holes": 0,
+      "cases": 7,
+      "draw": 7,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 14,
+      "holes": 1,
+      "cases": 105,
+      "draw": 105,
+      "win": 0,
+      "prefix": 15
+    },
+    {
+      "n": 14,
+      "holes": 2,
+      "cases": 686,
+      "draw": 676,
+      "win": 10,
+      "prefix": 98
+    },
+    {
+      "n": 14,
+      "holes": 3,
+      "cases": 2730,
+      "draw": 2486,
+      "win": 244,
+      "prefix": 406
+    },
+    {
+      "n": 14,
+      "holes": 4,
+      "cases": 7497,
+      "draw": 6138,
+      "win": 1359,
+      "prefix": 1183
+    },
+    {
+      "n": 15,
+      "holes": 0,
+      "cases": 8,
+      "draw": 8,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 15,
+      "holes": 1,
+      "cases": 120,
+      "draw": 120,
+      "win": 0,
+      "prefix": 15
+    },
+    {
+      "n": 15,
+      "holes": 2,
+      "cases": 840,
+      "draw": 830,
+      "win": 10,
+      "prefix": 113
+    },
+    {
+      "n": 15,
+      "holes": 3,
+      "cases": 3640,
+      "draw": 3507,
+      "win": 133,
+      "prefix": 511
+    },
+    {
+      "n": 15,
+      "holes": 4,
+      "cases": 10920,
+      "draw": 9555,
+      "win": 1365,
+      "prefix": 1589
+    },
+    {
+      "n": 15,
+      "holes": 5,
+      "cases": 24024,
+      "draw": 18422,
+      "win": 5602,
+      "prefix": 3675
+    },
+    {
+      "n": 16,
+      "holes": 0,
+      "cases": 9,
+      "draw": 9,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 16,
+      "holes": 1,
+      "cases": 136,
+      "draw": 136,
+      "win": 0,
+      "prefix": 16
+    },
+    {
+      "n": 16,
+      "holes": 2,
+      "cases": 1016,
+      "draw": 1011,
+      "win": 5,
+      "prefix": 128
+    },
+    {
+      "n": 16,
+      "holes": 3,
+      "cases": 4760,
+      "draw": 4673,
+      "win": 87,
+      "prefix": 624
+    },
+    {
+      "n": 16,
+      "holes": 4,
+      "cases": 15484,
+      "draw": 14525,
+      "win": 959,
+      "prefix": 2100
+    },
+    {
+      "n": 16,
+      "holes": 5,
+      "cases": 37128,
+      "draw": 31258,
+      "win": 5870,
+      "prefix": 5264
+    },
+    {
+      "n": 17,
+      "holes": 0,
+      "cases": 9,
+      "draw": 9,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 17,
+      "holes": 1,
+      "cases": 153,
+      "draw": 153,
+      "win": 0,
+      "prefix": 18
+    },
+    {
+      "n": 17,
+      "holes": 2,
+      "cases": 1224,
+      "draw": 1224,
+      "win": 0,
+      "prefix": 144
+    },
+    {
+      "n": 17,
+      "holes": 3,
+      "cases": 6120,
+      "draw": 6047,
+      "win": 73,
+      "prefix": 744
+    },
+    {
+      "n": 17,
+      "holes": 4,
+      "cases": 21420,
+      "draw": 20672,
+      "win": 748,
+      "prefix": 2724
+    },
+    {
+      "n": 17,
+      "holes": 5,
+      "cases": 55692,
+      "draw": 50553,
+      "win": 5139,
+      "prefix": 7392
+    },
+    {
+      "n": 18,
+      "holes": 0,
+      "cases": 9,
+      "draw": 9,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 18,
+      "holes": 1,
+      "cases": 171,
+      "draw": 171,
+      "win": 0,
+      "prefix": 19
+    },
+    {
+      "n": 18,
+      "holes": 2,
+      "cases": 1458,
+      "draw": 1458,
+      "win": 0,
+      "prefix": 162
+    },
+    {
+      "n": 18,
+      "holes": 3,
+      "cases": 7752,
+      "draw": 7751,
+      "win": 1,
+      "prefix": 888
+    },
+    {
+      "n": 18,
+      "holes": 4,
+      "cases": 29052,
+      "draw": 28559,
+      "win": 493,
+      "prefix": 3468
+    },
+    {
+      "n": 18,
+      "holes": 5,
+      "cases": 81396,
+      "draw": 77279,
+      "win": 4117,
+      "prefix": 10116
+    },
+    {
+      "n": 18,
+      "holes": 6,
+      "cases": 176400,
+      "draw": 155364,
+      "win": 21036,
+      "prefix": 22848
+    },
+    {
+      "n": 19,
+      "holes": 0,
+      "cases": 10,
+      "draw": 10,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 19,
+      "holes": 1,
+      "cases": 190,
+      "draw": 190,
+      "win": 0,
+      "prefix": 19
+    },
+    {
+      "n": 19,
+      "holes": 2,
+      "cases": 1710,
+      "draw": 1710,
+      "win": 0,
+      "prefix": 181
+    },
+    {
+      "n": 19,
+      "holes": 3,
+      "cases": 9690,
+      "draw": 9669,
+      "win": 21,
+      "prefix": 1059
+    },
+    {
+      "n": 19,
+      "holes": 4,
+      "cases": 38760,
+      "draw": 38609,
+      "win": 151,
+      "prefix": 4356
+    },
+    {
+      "n": 19,
+      "holes": 5,
+      "cases": 116280,
+      "draw": 113022,
+      "win": 3258,
+      "prefix": 13548
+    },
+    {
+      "n": 19,
+      "holes": 6,
+      "cases": 271320,
+      "draw": 251340,
+      "win": 19980,
+      "prefix": 32964
+    },
+    {
+      "n": 20,
+      "holes": 0,
+      "cases": 11,
+      "draw": 11,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 20,
+      "holes": 1,
+      "cases": 210,
+      "draw": 210,
+      "win": 0,
+      "prefix": 20
+    },
+    {
+      "n": 20,
+      "holes": 2,
+      "cases": 1990,
+      "draw": 1990,
+      "win": 0,
+      "prefix": 200
+    },
+    {
+      "n": 20,
+      "holes": 3,
+      "cases": 11970,
+      "draw": 11969,
+      "win": 1,
+      "prefix": 1240
+    },
+    {
+      "n": 20,
+      "holes": 4,
+      "cases": 50895,
+      "draw": 50701,
+      "win": 194,
+      "prefix": 5415
+    },
+    {
+      "n": 20,
+      "holes": 5,
+      "cases": 162792,
+      "draw": 161182,
+      "win": 1610,
+      "prefix": 17904
+    },
+    {
+      "n": 20,
+      "holes": 6,
+      "cases": 406920,
+      "draw": 390508,
+      "win": 16412,
+      "prefix": 46512
+    },
+    {
+      "n": 21,
+      "holes": 0,
+      "cases": 11,
+      "draw": 11,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 21,
+      "holes": 1,
+      "cases": 231,
+      "draw": 231,
+      "win": 0,
+      "prefix": 22
+    },
+    {
+      "n": 21,
+      "holes": 2,
+      "cases": 2310,
+      "draw": 2310,
+      "win": 0,
+      "prefix": 220
+    },
+    {
+      "n": 21,
+      "holes": 3,
+      "cases": 14630,
+      "draw": 14630,
+      "win": 0,
+      "prefix": 1430
+    },
+    {
+      "n": 21,
+      "holes": 4,
+      "cases": 65835,
+      "draw": 65776,
+      "win": 59,
+      "prefix": 6655
+    },
+    {
+      "n": 21,
+      "holes": 5,
+      "cases": 223839,
+      "draw": 222158,
+      "win": 1681,
+      "prefix": 23364
+    },
+    {
+      "n": 21,
+      "holes": 6,
+      "cases": 596904,
+      "draw": 585839,
+      "win": 11065,
+      "prefix": 64416
+    },
+    {
+      "n": 21,
+      "holes": 7,
+      "cases": 1279080,
+      "draw": 1207478,
+      "win": 71602,
+      "prefix": 143352
+    },
+    {
+      "n": 22,
+      "holes": 0,
+      "cases": 11,
+      "draw": 11,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 22,
+      "holes": 1,
+      "cases": 253,
+      "draw": 253,
+      "win": 0,
+      "prefix": 23
+    },
+    {
+      "n": 22,
+      "holes": 2,
+      "cases": 2662,
+      "draw": 2662,
+      "win": 0,
+      "prefix": 242
+    },
+    {
+      "n": 22,
+      "holes": 3,
+      "cases": 17710,
+      "draw": 17710,
+      "win": 0,
+      "prefix": 1650
+    },
+    {
+      "n": 22,
+      "holes": 4,
+      "cases": 84095,
+      "draw": 84092,
+      "win": 3,
+      "prefix": 8085
+    },
+    {
+      "n": 22,
+      "holes": 5,
+      "cases": 302841,
+      "draw": 302259,
+      "win": 582,
+      "prefix": 30019
+    },
+    {
+      "n": 22,
+      "holes": 6,
+      "cases": 858132,
+      "draw": 848837,
+      "win": 9295,
+      "prefix": 87780
+    },
+    {
+      "n": 22,
+      "holes": 7,
+      "cases": 1961256,
+      "draw": 1908947,
+      "win": 52309,
+      "prefix": 207768
+    },
+    {
+      "n": 23,
+      "holes": 0,
+      "cases": 12,
+      "draw": 12,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 23,
+      "holes": 1,
+      "cases": 276,
+      "draw": 276,
+      "win": 0,
+      "prefix": 23
+    },
+    {
+      "n": 23,
+      "holes": 2,
+      "cases": 3036,
+      "draw": 3036,
+      "win": 0,
+      "prefix": 265
+    },
+    {
+      "n": 23,
+      "holes": 3,
+      "cases": 21252,
+      "draw": 21252,
+      "win": 0,
+      "prefix": 1903
+    },
+    {
+      "n": 23,
+      "holes": 4,
+      "cases": 106260,
+      "draw": 106242,
+      "win": 18,
+      "prefix": 9735
+    },
+    {
+      "n": 23,
+      "holes": 5,
+      "cases": 403788,
+      "draw": 403511,
+      "win": 277,
+      "prefix": 38049
+    },
+    {
+      "n": 23,
+      "holes": 6,
+      "cases": 1211364,
+      "draw": 1206344,
+      "win": 5020,
+      "prefix": 117799
+    },
+    {
+      "n": 23,
+      "holes": 7,
+      "cases": 2941884,
+      "draw": 2894950,
+      "win": 46934,
+      "prefix": 295713
+    },
+    {
+      "n": 24,
+      "holes": 0,
+      "cases": 13,
+      "draw": 13,
+      "win": 0,
+      "prefix": 1
+    },
+    {
+      "n": 24,
+      "holes": 1,
+      "cases": 300,
+      "draw": 300,
+      "win": 0,
+      "prefix": 24
+    },
+    {
+      "n": 24,
+      "holes": 2,
+      "cases": 3444,
+      "draw": 3444,
+      "win": 0,
+      "prefix": 288
+    },
+    {
+      "n": 24,
+      "holes": 3,
+      "cases": 25300,
+      "draw": 25300,
+      "win": 0,
+      "prefix": 2168
+    },
+    {
+      "n": 24,
+      "holes": 4,
+      "cases": 132858,
+      "draw": 132858,
+      "win": 0,
+      "prefix": 11638
+    },
+    {
+      "n": 24,
+      "holes": 5,
+      "cases": 531300,
+      "draw": 531124,
+      "win": 176,
+      "prefix": 47784
+    },
+    {
+      "n": 24,
+      "holes": 6,
+      "cases": 1682340,
+      "draw": 1680196,
+      "win": 2144,
+      "prefix": 155848
+    },
+    {
+      "n": 24,
+      "holes": 7,
+      "cases": 4326300,
+      "draw": 4298703,
+      "win": 27597,
+      "prefix": 413512
+    },
+    {
+      "n": 24,
+      "holes": 8,
+      "cases": 9193635,
+      "draw": 8998364,
+      "win": 195271,
+      "prefix": 908523
+    }
+  ],
+  "qualifying_total": 27572106,
+  "boundary_union_total": 17457201,
+  "prefix_total": 2768955,
+  "saturated_total": 16365432,
+  "qualifying_outcome_totals": {
+    "loss": 0,
+    "draw": 27055237,
+    "win": 516869
+  },
+  "phase_domains": [
+    {
+      "n": 0,
+      "phase": "boundary",
+      "cases": 1
+    },
+    {
+      "n": 0,
+      "phase": "interior",
+      "cases": 0
+    },
+    {
+      "n": 1,
+      "phase": "boundary",
+      "cases": 1
+    },
+    {
+      "n": 1,
+      "phase": "interior",
+      "cases": 0
+    },
+    {
+      "n": 2,
+      "phase": "boundary",
+      "cases": 1
+    },
+    {
+      "n": 2,
+      "phase": "interior",
+      "cases": 0
+    },
+    {
+      "n": 3,
+      "phase": "boundary",
+      "cases": 7
+    },
+    {
+      "n": 3,
+      "phase": "interior",
+      "cases": 1
+    },
+    {
+      "n": 4,
+      "phase": "boundary",
+      "cases": 11
+    },
+    {
+      "n": 4,
+      "phase": "interior",
+      "cases": 2
+    },
+    {
+      "n": 5,
+      "phase": "boundary",
+      "cases": 16
+    },
+    {
+      "n": 5,
+      "phase": "interior",
+      "cases": 2
+    },
+    {
+      "n": 6,
+      "phase": "boundary",
+      "cases": 62
+    },
+    {
+      "n": 6,
+      "phase": "interior",
+      "cases": 16
+    },
+    {
+      "n": 7,
+      "phase": "boundary",
+      "cases": 92
+    },
+    {
+      "n": 7,
+      "phase": "interior",
+      "cases": 24
+    },
+    {
+      "n": 8,
+      "phase": "boundary",
+      "cases": 133
+    },
+    {
+      "n": 8,
+      "phase": "interior",
+      "cases": 32
+    },
+    {
+      "n": 9,
+      "phase": "boundary",
+      "cases": 471
+    },
+    {
+      "n": 9,
+      "phase": "interior",
+      "cases": 179
+    },
+    {
+      "n": 10,
+      "phase": "boundary",
+      "cases": 722
+    },
+    {
+      "n": 10,
+      "phase": "interior",
+      "cases": 248
+    },
+    {
+      "n": 11,
+      "phase": "boundary",
+      "cases": 1063
+    },
+    {
+      "n": 11,
+      "phase": "interior",
+      "cases": 329
+    },
+    {
+      "n": 12,
+      "phase": "boundary",
+      "cases": 3566
+    },
+    {
+      "n": 12,
+      "phase": "interior",
+      "cases": 1600
+    },
+    {
+      "n": 13,
+      "phase": "boundary",
+      "cases": 5426
+    },
+    {
+      "n": 13,
+      "phase": "interior",
+      "cases": 2225
+    },
+    {
+      "n": 14,
+      "phase": "boundary",
+      "cases": 8017
+    },
+    {
+      "n": 14,
+      "phase": "interior",
+      "cases": 3008
+    },
+    {
+      "n": 15,
+      "phase": "boundary",
+      "cases": 26253
+    },
+    {
+      "n": 15,
+      "phase": "interior",
+      "cases": 13299
+    },
+    {
+      "n": 16,
+      "phase": "boundary",
+      "cases": 39997
+    },
+    {
+      "n": 16,
+      "phase": "interior",
+      "cases": 18536
+    },
+    {
+      "n": 17,
+      "phase": "boundary",
+      "cases": 59323
+    },
+    {
+      "n": 17,
+      "phase": "interior",
+      "cases": 25295
+    },
+    {
+      "n": 18,
+      "phase": "boundary",
+      "cases": 191054
+    },
+    {
+      "n": 18,
+      "phase": "interior",
+      "cases": 105184
+    },
+    {
+      "n": 19,
+      "phase": "boundary",
+      "cases": 290484
+    },
+    {
+      "n": 19,
+      "phase": "interior",
+      "cases": 147476
+    },
+    {
+      "n": 20,
+      "phase": "boundary",
+      "cases": 431700
+    },
+    {
+      "n": 20,
+      "phase": "interior",
+      "cases": 203088
+    },
+    {
+      "n": 21,
+      "phase": "boundary",
+      "cases": 1375188
+    },
+    {
+      "n": 21,
+      "phase": "interior",
+      "cases": 807652
+    },
+    {
+      "n": 22,
+      "phase": "boundary",
+      "cases": 2089056
+    },
+    {
+      "n": 22,
+      "phase": "interior",
+      "cases": 1137904
+    },
+    {
+      "n": 23,
+      "phase": "boundary",
+      "cases": 3109659
+    },
+    {
+      "n": 23,
+      "phase": "interior",
+      "cases": 1578213
+    },
+    {
+      "n": 24,
+      "phase": "boundary",
+      "cases": 9824898
+    },
+    {
+      "n": 24,
+      "phase": "interior",
+      "cases": 6070592
+    }
+  ],
+  "nearest_loss_layers": [
+    {
+      "n": 4,
+      "holes": 2,
+      "density_excess": 2,
+      "deficit_range": [
+        3,
+        3
+      ],
+      "remaining_sum_range": [
+        7,
+        7
+      ],
+      "minimum_counter_range": [
+        3,
+        3
+      ],
+      "losses": 1
+    },
+    {
+      "n": 5,
+      "holes": 2,
+      "density_excess": 1,
+      "deficit_range": [
+        2,
+        4
+      ],
+      "remaining_sum_range": [
+        10,
+        10
+      ],
+      "minimum_counter_range": [
+        1,
+        2
+      ],
+      "losses": 2
+    },
+    {
+      "n": 6,
+      "holes": 3,
+      "density_excess": 3,
+      "deficit_range": [
+        2,
+        5
+      ],
+      "remaining_sum_range": [
+        10,
+        13
+      ],
+      "minimum_counter_range": [
+        1,
+        2
+      ],
+      "losses": 5
+    },
+    {
+      "n": 7,
+      "holes": 3,
+      "density_excess": 2,
+      "deficit_range": [
+        3,
+        6
+      ],
+      "remaining_sum_range": [
+        15,
+        16
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 2
+    },
+    {
+      "n": 8,
+      "holes": 3,
+      "density_excess": 1,
+      "deficit_range": [
+        5,
+        5
+      ],
+      "remaining_sum_range": [
+        27,
+        27
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 1
+    },
+    {
+      "n": 9,
+      "holes": 4,
+      "density_excess": 3,
+      "deficit_range": [
+        3,
+        5
+      ],
+      "remaining_sum_range": [
+        27,
+        31
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 3
+    },
+    {
+      "n": 10,
+      "holes": 4,
+      "density_excess": 2,
+      "deficit_range": [
+        3,
+        7
+      ],
+      "remaining_sum_range": [
+        35,
+        39
+      ],
+      "minimum_counter_range": [
+        1,
+        3
+      ],
+      "losses": 3
+    },
+    {
+      "n": 11,
+      "holes": 4,
+      "density_excess": 1,
+      "deficit_range": [
+        2,
+        2
+      ],
+      "remaining_sum_range": [
+        44,
+        44
+      ],
+      "minimum_counter_range": [
+        2,
+        2
+      ],
+      "losses": 1
+    },
+    {
+      "n": 12,
+      "holes": 5,
+      "density_excess": 3,
+      "deficit_range": [
+        2,
+        6
+      ],
+      "remaining_sum_range": [
+        44,
+        58
+      ],
+      "minimum_counter_range": [
+        1,
+        2
+      ],
+      "losses": 5
+    },
+    {
+      "n": 13,
+      "holes": 5,
+      "density_excess": 2,
+      "deficit_range": [
+        6,
+        8
+      ],
+      "remaining_sum_range": [
+        64,
+        66
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 3
+    },
+    {
+      "n": 14,
+      "holes": 6,
+      "density_excess": 4,
+      "deficit_range": [
+        6,
+        9
+      ],
+      "remaining_sum_range": [
+        64,
+        73
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 9
+    },
+    {
+      "n": 15,
+      "holes": 7,
+      "density_excess": 6,
+      "deficit_range": [
+        3,
+        10
+      ],
+      "remaining_sum_range": [
+        61,
+        92
+      ],
+      "minimum_counter_range": [
+        1,
+        8
+      ],
+      "losses": 36
+    },
+    {
+      "n": 16,
+      "holes": 6,
+      "density_excess": 2,
+      "deficit_range": [
+        9,
+        9
+      ],
+      "remaining_sum_range": [
+        103,
+        103
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 1
+    },
+    {
+      "n": 17,
+      "holes": 7,
+      "density_excess": 4,
+      "deficit_range": [
+        7,
+        10
+      ],
+      "remaining_sum_range": [
+        103,
+        112
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 4
+    },
+    {
+      "n": 18,
+      "holes": 8,
+      "density_excess": 6,
+      "deficit_range": [
+        2,
+        11
+      ],
+      "remaining_sum_range": [
+        100,
+        121
+      ],
+      "minimum_counter_range": [
+        1,
+        2
+      ],
+      "losses": 21
+    },
+    {
+      "n": 19,
+      "holes": 8,
+      "density_excess": 5,
+      "deficit_range": [
+        8,
+        12
+      ],
+      "remaining_sum_range": [
+        128,
+        146
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 4
+    },
+    {
+      "n": 20,
+      "holes": 8,
+      "density_excess": 4,
+      "deficit_range": [
+        10,
+        11
+      ],
+      "remaining_sum_range": [
+        158,
+        159
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 2
+    },
+    {
+      "n": 21,
+      "holes": 9,
+      "density_excess": 6,
+      "deficit_range": [
+        3,
+        12
+      ],
+      "remaining_sum_range": [
+        150,
+        170
+      ],
+      "minimum_counter_range": [
+        1,
+        2
+      ],
+      "losses": 20
+    },
+    {
+      "n": 22,
+      "holes": 9,
+      "density_excess": 5,
+      "deficit_range": [
+        11,
+        13
+      ],
+      "remaining_sum_range": [
+        179,
+        181
+      ],
+      "minimum_counter_range": [
+        1,
+        1
+      ],
+      "losses": 3
+    },
+    {
+      "n": 23,
+      "holes": 10,
+      "density_excess": 7,
+      "deficit_range": [
+        5,
+        14
+      ],
+      "remaining_sum_range": [
+        161,
+        214
+      ],
+      "minimum_counter_range": [
+        1,
+        4
+      ],
+      "losses": 33
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "density_excess": 6,
+      "deficit_range": [
+        11,
+        13
+      ],
+      "remaining_sum_range": [
+        223,
+        227
+      ],
+      "minimum_counter_range": [
+        1,
+        2
+      ],
+      "losses": 7
+    }
+  ],
+  "outside_completed_layers": [
+    {
+      "n": 1,
+      "holes": 1,
+      "loss": 0,
+      "draw": 1,
+      "win": 0
+    },
+    {
+      "n": 2,
+      "holes": 1,
+      "loss": 0,
+      "draw": 2,
+      "win": 1
+    },
+    {
+      "n": 2,
+      "holes": 2,
+      "loss": 0,
+      "draw": 1,
+      "win": 0
+    },
+    {
+      "n": 3,
+      "holes": 2,
+      "loss": 0,
+      "draw": 3,
+      "win": 2
+    },
+    {
+      "n": 3,
+      "holes": 3,
+      "loss": 0,
+      "draw": 1,
+      "win": 0
+    },
+    {
+      "n": 4,
+      "holes": 2,
+      "loss": 1,
+      "draw": 6,
+      "win": 7
+    },
+    {
+      "n": 5,
+      "holes": 2,
+      "loss": 2,
+      "draw": 16,
+      "win": 12
+    },
+    {
+      "n": 6,
+      "holes": 3,
+      "loss": 5,
+      "draw": 31,
+      "win": 34
+    },
+    {
+      "n": 7,
+      "holes": 3,
+      "loss": 2,
+      "draw": 72,
+      "win": 66
+    },
+    {
+      "n": 8,
+      "holes": 3,
+      "loss": 1,
+      "draw": 131,
+      "win": 120
+    },
+    {
+      "n": 9,
+      "holes": 4,
+      "loss": 3,
+      "draw": 290,
+      "win": 337
+    },
+    {
+      "n": 10,
+      "holes": 4,
+      "loss": 3,
+      "draw": 614,
+      "win": 533
+    },
+    {
+      "n": 11,
+      "holes": 4,
+      "loss": 1,
+      "draw": 1223,
+      "win": 756
+    },
+    {
+      "n": 12,
+      "holes": 5,
+      "loss": 5,
+      "draw": 2889,
+      "win": 2254
+    },
+    {
+      "n": 13,
+      "holes": 5,
+      "loss": 3,
+      "draw": 5551,
+      "win": 3455
+    },
+    {
+      "n": 14,
+      "holes": 5,
+      "loss": 0,
+      "draw": 10432,
+      "win": 4583
+    },
+    {
+      "n": 14,
+      "holes": 6,
+      "loss": 9,
+      "draw": 12970,
+      "win": 9561
+    },
+    {
+      "n": 15,
+      "holes": 6,
+      "loss": 0,
+      "draw": 25780,
+      "win": 14260
+    },
+    {
+      "n": 15,
+      "holes": 7,
+      "loss": 36,
+      "draw": 27432,
+      "win": 24012
+    },
+    {
+      "n": 16,
+      "holes": 6,
+      "loss": 1,
+      "draw": 49750,
+      "win": 18289
+    },
+    {
+      "n": 17,
+      "holes": 6,
+      "loss": 0,
+      "draw": 89685,
+      "win": 21699
+    },
+    {
+      "n": 17,
+      "holes": 7,
+      "loss": 4,
+      "draw": 120621,
+      "win": 54407
+    },
+    {
+      "n": 18,
+      "holes": 7,
+      "loss": 0,
+      "draw": 234035,
+      "win": 68293
+    },
+    {
+      "n": 18,
+      "holes": 8,
+      "loss": 21,
+      "draw": 272873,
+      "win": 142744
+    },
+    {
+      "n": 19,
+      "holes": 7,
+      "loss": 0,
+      "draw": 426724,
+      "win": 77156
+    },
+    {
+      "n": 19,
+      "holes": 8,
+      "loss": 4,
+      "draw": 556840,
+      "win": 198976
+    },
+    {
+      "n": 20,
+      "holes": 7,
+      "loss": 0,
+      "draw": 736549,
+      "win": 77411
+    },
+    {
+      "n": 20,
+      "holes": 8,
+      "loss": 2,
+      "draw": 1082163,
+      "win": 240625
+    },
+    {
+      "n": 21,
+      "holes": 8,
+      "loss": 0,
+      "draw": 1971627,
+      "win": 266763
+    },
+    {
+      "n": 21,
+      "holes": 9,
+      "loss": 20,
+      "draw": 2547387,
+      "win": 685823
+    },
+    {
+      "n": 22,
+      "holes": 8,
+      "loss": 0,
+      "draw": 3422490,
+      "win": 254700
+    },
+    {
+      "n": 22,
+      "holes": 9,
+      "loss": 3,
+      "draw": 4921421,
+      "win": 798906
+    },
+    {
+      "n": 23,
+      "holes": 8,
+      "loss": 0,
+      "draw": 5662663,
+      "win": 221105
+    },
+    {
+      "n": 23,
+      "holes": 9,
+      "loss": 0,
+      "draw": 8957026,
+      "win": 849254
+    },
+    {
+      "n": 23,
+      "holes": 10,
+      "loss": 33,
+      "draw": 11481944,
+      "win": 2246815
+    },
+    {
+      "n": 24,
+      "holes": 9,
+      "loss": 0,
+      "draw": 15548987,
+      "win": 794813
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "loss": 7,
+      "draw": 21977264,
+      "win": 2538033
+    }
+  ],
+  "nearest_layer_loss_at_deficit_zero": false,
+  "deeper_layers_after_first_loss": "notchecked",
+  "nearest_representative_literal_replays": [
+    {
+      "n": 4,
+      "holes": 2,
+      "deficit": 3,
+      "remaining": [
+        3,
+        4
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "3": -1,
+        "4": -1
+      },
+      "cache": "CacheInfo(hits=2, misses=5, maxsize=None, currsize=5)"
+    },
+    {
+      "n": 5,
+      "holes": 2,
+      "deficit": 2,
+      "remaining": [
+        2,
+        3,
+        5
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "5": -1
+      },
+      "cache": "CacheInfo(hits=5, misses=12, maxsize=None, currsize=12)"
+    },
+    {
+      "n": 6,
+      "holes": 3,
+      "deficit": 2,
+      "remaining": [
+        2,
+        3,
+        5
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "5": -1
+      },
+      "cache": "CacheInfo(hits=5, misses=12, maxsize=None, currsize=12)"
+    },
+    {
+      "n": 7,
+      "holes": 3,
+      "deficit": 3,
+      "remaining": [
+        1,
+        3,
+        4,
+        7
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "4": -1,
+        "7": -1
+      },
+      "cache": "CacheInfo(hits=15, misses=29, maxsize=None, currsize=29)"
+    },
+    {
+      "n": 8,
+      "holes": 3,
+      "deficit": 5,
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1
+      },
+      "cache": "CacheInfo(hits=82, misses=74, maxsize=None, currsize=74)"
+    },
+    {
+      "n": 9,
+      "holes": 4,
+      "deficit": 5,
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1
+      },
+      "cache": "CacheInfo(hits=82, misses=74, maxsize=None, currsize=74)"
+    },
+    {
+      "n": 10,
+      "holes": 4,
+      "deficit": 5,
+      "remaining": [
+        1,
+        2,
+        6,
+        7,
+        9,
+        10
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "6": -1,
+        "7": -1,
+        "9": -1,
+        "10": -1
+      },
+      "cache": "CacheInfo(hits=307, misses=215, maxsize=None, currsize=215)"
+    },
+    {
+      "n": 11,
+      "holes": 4,
+      "deficit": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "5": -1,
+        "6": -1,
+        "8": -1,
+        "9": -1,
+        "11": -1
+      },
+      "cache": "CacheInfo(hits=947, misses=483, maxsize=None, currsize=483)"
+    },
+    {
+      "n": 12,
+      "holes": 5,
+      "deficit": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "5": -1,
+        "6": -1,
+        "8": -1,
+        "9": -1,
+        "11": -1
+      },
+      "cache": "CacheInfo(hits=947, misses=483, maxsize=None, currsize=483)"
+    },
+    {
+      "n": 13,
+      "holes": 5,
+      "deficit": 6,
+      "remaining": [
+        1,
+        2,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "7": -1,
+        "8": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1
+      },
+      "cache": "CacheInfo(hits=3036, misses=1227, maxsize=None, currsize=1227)"
+    },
+    {
+      "n": 14,
+      "holes": 6,
+      "deficit": 6,
+      "remaining": [
+        1,
+        2,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "7": -1,
+        "8": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1
+      },
+      "cache": "CacheInfo(hits=3036, misses=1227, maxsize=None, currsize=1227)"
+    },
+    {
+      "n": 15,
+      "holes": 7,
+      "deficit": 6,
+      "remaining": [
+        1,
+        2,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "7": -1,
+        "8": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1
+      },
+      "cache": "CacheInfo(hits=3036, misses=1227, maxsize=None, currsize=1227)"
+    },
+    {
+      "n": 16,
+      "holes": 6,
+      "deficit": 9,
+      "remaining": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "cache": "CacheInfo(hits=22029, misses=6292, maxsize=None, currsize=6292)"
+    },
+    {
+      "n": 17,
+      "holes": 7,
+      "deficit": 9,
+      "remaining": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "cache": "CacheInfo(hits=22029, misses=6292, maxsize=None, currsize=6292)"
+    },
+    {
+      "n": 18,
+      "holes": 8,
+      "deficit": 9,
+      "remaining": [
+        1,
+        2,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "cache": "CacheInfo(hits=22029, misses=6292, maxsize=None, currsize=6292)"
+    },
+    {
+      "n": 19,
+      "holes": 8,
+      "deficit": 10,
+      "remaining": [
+        1,
+        2,
+        3,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "11": -1,
+        "12": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "cache": "CacheInfo(hits=64894, misses=15999, maxsize=None, currsize=15999)"
+    },
+    {
+      "n": 20,
+      "holes": 8,
+      "deficit": 10,
+      "remaining": [
+        1,
+        2,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1
+      },
+      "cache": "CacheInfo(hits=162253, misses=35189, maxsize=None, currsize=35189)"
+    },
+    {
+      "n": 21,
+      "holes": 9,
+      "deficit": 10,
+      "remaining": [
+        1,
+        2,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1
+      },
+      "cache": "CacheInfo(hits=162253, misses=35189, maxsize=None, currsize=35189)"
+    },
+    {
+      "n": 22,
+      "holes": 9,
+      "deficit": 11,
+      "remaining": [
+        1,
+        2,
+        3,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "12": -1,
+        "13": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1
+      },
+      "cache": "CacheInfo(hits=412096, misses=79959, maxsize=None, currsize=79959)"
+    },
+    {
+      "n": 23,
+      "holes": 10,
+      "deficit": 11,
+      "remaining": [
+        1,
+        2,
+        3,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "12": -1,
+        "13": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1
+      },
+      "cache": "CacheInfo(hits=412096, misses=79959, maxsize=None, currsize=79959)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 11,
+      "remaining": [
+        1,
+        2,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "value": -1,
+      "move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "12": -1,
+        "13": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "cache": "CacheInfo(hits=1012335, misses=178058, maxsize=None, currsize=178058)"
+    }
+  ],
+  "prior_duplicate_qualifying_gates": [
+    [
+      9,
+      3
+    ],
+    [
+      12,
+      4
+    ],
+    [
+      15,
+      5
+    ],
+    [
+      16,
+      5
+    ],
+    [
+      18,
+      6
+    ],
+    [
+      21,
+      7
+    ]
+  ],
+  "all_seven_N24_nearest_losses": [
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 13,
+      "remaining": [
+        1,
+        4,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 227,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "1": -1,
+        "4": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=986289, misses=174576, maxsize=None, currsize=174576)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 13,
+      "remaining": [
+        2,
+        3,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 227,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=986021, misses=174538, maxsize=None, currsize=174538)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 12,
+      "remaining": [
+        1,
+        3,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 226,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=1012557, misses=178043, maxsize=None, currsize=178043)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 11,
+      "remaining": [
+        1,
+        2,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 225,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=1016456, misses=178615, maxsize=None, currsize=178615)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 13,
+      "remaining": [
+        1,
+        2,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 225,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=981659, misses=173888, maxsize=None, currsize=173888)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 12,
+      "remaining": [
+        1,
+        3,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 224,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "12": -1,
+        "13": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=989782, misses=175089, maxsize=None, currsize=175089)"
+    },
+    {
+      "n": 24,
+      "holes": 10,
+      "deficit": 11,
+      "remaining": [
+        1,
+        2,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "sum": 223,
+      "value": -1,
+      "safe_first_picks": [],
+      "all_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "12": -1,
+        "13": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "literal_cache": "CacheInfo(hits=1012335, misses=178058, maxsize=None, currsize=178058)"
+    }
+  ],
+  "all_seven_N24_literal_first_pick_checks": 98
+}

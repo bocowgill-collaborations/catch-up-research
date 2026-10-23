@@ -1,0 +1,1557 @@
+{
+  "kind": "Fixed actual-interval entry4 strategy test; bounded evidence and concrete policy failure",
+  "N_domain": [
+    11,
+    12,
+    15,
+    16,
+    19,
+    20
+  ],
+  "native_all_six_complete": true,
+  "native_all_51_endpoints_complete": true,
+  "cases": [
+    {
+      "N": 11,
+      "E1": 0,
+      "F3": 0,
+      "entry4": 0,
+      "E": [
+        4,
+        7,
+        9,
+        10,
+        11
+      ],
+      "F": [
+        7,
+        9,
+        10,
+        11
+      ],
+      "all_endpoints": [
+        {
+          "N": 11,
+          "opponent_pick": 7,
+          "deficit": 4,
+          "value": 1,
+          "remaining": [
+            9,
+            10,
+            11
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 8,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 11,
+          "opponent_pick": 9,
+          "deficit": 6,
+          "value": 1,
+          "remaining": [
+            7,
+            10,
+            11
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 10,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 11,
+          "opponent_pick": 10,
+          "deficit": 7,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            11
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 11,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 11,
+          "opponent_pick": 11,
+          "deficit": 8,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 12,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        }
+      ]
+    },
+    {
+      "N": 12,
+      "E1": 0,
+      "F3": 1,
+      "entry4": -1,
+      "E": [
+        4,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "F": [
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "all_endpoints": [
+        {
+          "N": 12,
+          "opponent_pick": 7,
+          "deficit": 4,
+          "value": -1,
+          "remaining": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "literal_normalized_value": -1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 8,
+            "value": -1
+          },
+          "literal_replay_pass": true,
+          "literal_all_first_pick_values": {
+            "9": -1,
+            "10": -1,
+            "11": -1,
+            "12": -1
+          }
+        },
+        {
+          "N": 12,
+          "opponent_pick": 9,
+          "deficit": 6,
+          "value": -1,
+          "remaining": [
+            7,
+            10,
+            11,
+            12
+          ],
+          "literal_normalized_value": -1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 10,
+            "value": -1
+          },
+          "literal_replay_pass": true,
+          "literal_all_first_pick_values": {
+            "7": -1,
+            "10": -1,
+            "11": -1,
+            "12": -1
+          }
+        },
+        {
+          "N": 12,
+          "opponent_pick": 10,
+          "deficit": 7,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            11,
+            12
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 11,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 12,
+          "opponent_pick": 11,
+          "deficit": 8,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            12
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 12,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 12,
+          "opponent_pick": 12,
+          "deficit": 9,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 13,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        }
+      ]
+    },
+    {
+      "N": 15,
+      "E1": 0,
+      "F3": 0,
+      "entry4": 0,
+      "E": [
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "F": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "all_endpoints": [
+        {
+          "N": 15,
+          "opponent_pick": 7,
+          "deficit": 4,
+          "value": 1,
+          "remaining": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 8,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 9,
+          "deficit": 6,
+          "value": 0,
+          "remaining": [
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 10,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 10,
+          "deficit": 7,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 11,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 11,
+          "deficit": 8,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 12,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 12,
+          "deficit": 9,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 13,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 13,
+          "deficit": 10,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 14,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 14,
+          "deficit": 11,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 15,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 15,
+          "opponent_pick": 15,
+          "deficit": 12,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 16,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        }
+      ]
+    },
+    {
+      "N": 16,
+      "E1": 0,
+      "F3": 0,
+      "entry4": 0,
+      "E": [
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "F": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "all_endpoints": [
+        {
+          "N": 16,
+          "opponent_pick": 7,
+          "deficit": 4,
+          "value": 0,
+          "remaining": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 8,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 9,
+          "deficit": 6,
+          "value": 0,
+          "remaining": [
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 10,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 10,
+          "deficit": 7,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 11,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 11,
+          "deficit": 8,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 12,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 12,
+          "deficit": 9,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 13,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 13,
+          "deficit": 10,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 14,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 14,
+          "deficit": 11,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 15,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 15,
+          "deficit": 12,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 16,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 16,
+          "opponent_pick": 16,
+          "deficit": 13,
+          "value": 1,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ],
+          "literal_normalized_value": 1,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 17,
+            "value": 1
+          },
+          "literal_replay_pass": true
+        }
+      ]
+    },
+    {
+      "N": 19,
+      "E1": 0,
+      "F3": 0,
+      "entry4": 0,
+      "E": [
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "F": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "all_endpoints": [
+        {
+          "N": 19,
+          "opponent_pick": 7,
+          "deficit": 4,
+          "value": 0,
+          "remaining": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 8,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 9,
+          "deficit": 6,
+          "value": 0,
+          "remaining": [
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 10,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 10,
+          "deficit": 7,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 11,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 11,
+          "deficit": 8,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 12,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 12,
+          "deficit": 9,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 13,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 13,
+          "deficit": 10,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 14,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 14,
+          "deficit": 11,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 15,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 15,
+          "deficit": 12,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 16,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 16,
+          "deficit": 13,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 17,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 17,
+          "deficit": 14,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 18,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 18,
+          "deficit": 15,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 19,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 19,
+          "opponent_pick": 19,
+          "deficit": 16,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 20,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        }
+      ]
+    },
+    {
+      "N": 20,
+      "E1": 0,
+      "F3": 0,
+      "entry4": 0,
+      "E": [
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "F": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "all_endpoints": [
+        {
+          "N": 20,
+          "opponent_pick": 7,
+          "deficit": 4,
+          "value": 0,
+          "remaining": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 8,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 9,
+          "deficit": 6,
+          "value": 0,
+          "remaining": [
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 10,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 10,
+          "deficit": 7,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 11,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 11,
+          "deficit": 8,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 12,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 12,
+          "deficit": 9,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 13,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 13,
+          "deficit": 10,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 14,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 14,
+          "deficit": 11,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 15,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 15,
+          "deficit": 12,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 16,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 16,
+          "deficit": 13,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 17,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 17,
+          "deficit": 14,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 18,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 18,
+          "deficit": 15,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 19,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 19,
+          "deficit": 16,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 20,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        },
+        {
+          "N": 20,
+          "opponent_pick": 20,
+          "deficit": 17,
+          "value": 0,
+          "remaining": [
+            7,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "literal_normalized_value": 0,
+          "literal_actual_scores": {
+            "me": 4,
+            "opponent": 21,
+            "value": 0
+          },
+          "literal_replay_pass": true
+        }
+      ]
+    }
+  ],
+  "first_failure": {
+    "N": 12,
+    "opponent_pick": 7,
+    "deficit": 4,
+    "value": -1,
+    "remaining": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "literal_normalized_value": -1,
+    "literal_actual_scores": {
+      "me": 4,
+      "opponent": 8,
+      "value": -1
+    },
+    "literal_replay_pass": true,
+    "literal_all_first_pick_values": {
+      "9": -1,
+      "10": -1,
+      "11": -1,
+      "12": -1
+    }
+  },
+  "all_losing_endpoints": [
+    {
+      "N": 12,
+      "opponent_pick": 7,
+      "deficit": 4,
+      "value": -1,
+      "remaining": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "literal_normalized_value": -1,
+      "literal_actual_scores": {
+        "me": 4,
+        "opponent": 8,
+        "value": -1
+      },
+      "literal_replay_pass": true,
+      "literal_all_first_pick_values": {
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      }
+    },
+    {
+      "N": 12,
+      "opponent_pick": 9,
+      "deficit": 6,
+      "value": -1,
+      "remaining": [
+        7,
+        10,
+        11,
+        12
+      ],
+      "literal_normalized_value": -1,
+      "literal_actual_scores": {
+        "me": 4,
+        "opponent": 10,
+        "value": -1
+      },
+      "literal_replay_pass": true,
+      "literal_all_first_pick_values": {
+        "7": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      }
+    }
+  ],
+  "entry4_safe_N": [
+    11,
+    15,
+    16,
+    19,
+    20
+  ],
+  "entry4_losing_N": [
+    12
+  ],
+  "literal_complete": true,
+  "literal_completed_endpoints": 51,
+  "literal_normalized_and_actual_score_queries": 102,
+  "literal_counterexample_root_checks": [
+    {
+      "label": "N12_E1",
+      "remaining": [
+        4,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "deficit": 1,
+      "value": 0,
+      "all_first_pick_values": {
+        "4": -1,
+        "7": 0,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      }
+    },
+    {
+      "label": "N12_F3",
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "deficit": 3,
+      "value": 1,
+      "all_first_pick_values": {
+        "7": 1,
+        "9": 1,
+        "10": 0,
+        "11": -1,
+        "12": -1
+      }
+    }
+  ],
+  "max_literal_cached_states_per_query": 35547,
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432",
+  "seconds": 2.120015167,
+  "max_rss_bytes": 23658496,
+  "scope_caveat": "The candidate first4 fails at N12 although E1 draws. No uniform interval theorem or B/Q_N/C counterexample follows from these six cases."
+}

@@ -1,0 +1,9737 @@
+{
+  "kind": "Complete arithmetic c3 audit plus frozen ExactSlots and independent literal replay; not a kernel theorem",
+  "domain": "All N<=13,k=2..3, Ccard3, actual even density, true original-S gap and global-max exact block; no winning-value filter until C,w is classified",
+  "static_configurations": [
+    {
+      "id": 1,
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "w": 6,
+      "t": 1,
+      "b": 5,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "block": [
+        2,
+        5
+      ],
+      "C": [
+        3,
+        4,
+        9
+      ],
+      "mask": 318,
+      "block_mask": 18,
+      "C_mask": 268,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 2,
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "w": 6,
+      "t": 1,
+      "b": 5,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        5
+      ],
+      "C": [
+        3,
+        8,
+        9
+      ],
+      "mask": 438,
+      "block_mask": 18,
+      "C_mask": 388,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 3,
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "w": 5,
+      "t": 2,
+      "b": 4,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "C": [
+        6,
+        8,
+        9
+      ],
+      "mask": 444,
+      "block_mask": 12,
+      "C_mask": 416,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 4,
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "w": 6,
+      "t": 1,
+      "b": 4,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "C": [
+        5,
+        8,
+        9
+      ],
+      "mask": 444,
+      "block_mask": 12,
+      "C_mask": 400,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 5,
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "w": 6,
+      "t": 2,
+      "b": 5,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "block": [
+        3,
+        5
+      ],
+      "C": [
+        1,
+        4,
+        9
+      ],
+      "mask": 317,
+      "block_mask": 20,
+      "C_mask": 265,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 6,
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "w": 7,
+      "t": 1,
+      "b": 5,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        5
+      ],
+      "C": [
+        2,
+        4,
+        9
+      ],
+      "mask": 350,
+      "block_mask": 20,
+      "C_mask": 266,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 7,
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "w": 7,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        2,
+        6
+      ],
+      "C": [
+        3,
+        5,
+        9
+      ],
+      "mask": 374,
+      "block_mask": 34,
+      "C_mask": 276,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 8,
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "w": 6,
+      "t": 2,
+      "b": 5,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        5
+      ],
+      "C": [
+        4,
+        7,
+        9
+      ],
+      "mask": 380,
+      "block_mask": 20,
+      "C_mask": 328,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 9,
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "w": 7,
+      "t": 1,
+      "b": 5,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        5
+      ],
+      "C": [
+        4,
+        6,
+        9
+      ],
+      "mask": 380,
+      "block_mask": 20,
+      "C_mask": 296,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 10,
+      "N": 9,
+      "h": 3,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "block": [
+        2,
+        7
+      ],
+      "C": [
+        3,
+        4,
+        5
+      ],
+      "mask": 222,
+      "block_mask": 66,
+      "C_mask": 28,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 11,
+      "N": 9,
+      "h": 3,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        2,
+        7
+      ],
+      "C": [
+        3,
+        5,
+        6
+      ],
+      "mask": 246,
+      "block_mask": 66,
+      "C_mask": 52,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 12,
+      "N": 9,
+      "h": 3,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        4,
+        5,
+        8
+      ],
+      "mask": 252,
+      "block_mask": 36,
+      "C_mask": 152,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 13,
+      "N": 9,
+      "h": 3,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        4,
+        5,
+        7
+      ],
+      "mask": 252,
+      "block_mask": 36,
+      "C_mask": 88,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 14,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "block": [
+        2,
+        7
+      ],
+      "C": [
+        3,
+        4,
+        5
+      ],
+      "mask": 222,
+      "block_mask": 66,
+      "C_mask": 28,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 15,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        2,
+        7
+      ],
+      "C": [
+        3,
+        5,
+        6
+      ],
+      "mask": 246,
+      "block_mask": 66,
+      "C_mask": 52,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 16,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        4,
+        5,
+        8
+      ],
+      "mask": 252,
+      "block_mask": 36,
+      "C_mask": 152,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 17,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        4,
+        5,
+        7
+      ],
+      "mask": 252,
+      "block_mask": 36,
+      "C_mask": 88,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 18,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        1,
+        4,
+        10
+      ],
+      "mask": 621,
+      "block_mask": 36,
+      "C_mask": 521,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 19,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 6,
+      "t": 3,
+      "b": 5,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        1,
+        7,
+        10
+      ],
+      "mask": 633,
+      "block_mask": 24,
+      "C_mask": 577,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 20,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 5,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        1,
+        6,
+        10
+      ],
+      "mask": 633,
+      "block_mask": 24,
+      "C_mask": 545,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 21,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        4,
+        5,
+        10
+      ],
+      "mask": 636,
+      "block_mask": 36,
+      "C_mask": 536,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 22,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        2,
+        4,
+        10
+      ],
+      "mask": 686,
+      "block_mask": 36,
+      "C_mask": 522,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 23,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 6,
+      "t": 3,
+      "b": 5,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        2,
+        8,
+        10
+      ],
+      "mask": 698,
+      "block_mask": 24,
+      "C_mask": 642,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 24,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 5,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        2,
+        6,
+        10
+      ],
+      "mask": 698,
+      "block_mask": 24,
+      "C_mask": 546,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 25,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        2,
+        7
+      ],
+      "C": [
+        3,
+        5,
+        10
+      ],
+      "mask": 726,
+      "block_mask": 66,
+      "C_mask": 532,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 26,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 5,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        3,
+        8,
+        10
+      ],
+      "mask": 732,
+      "block_mask": 24,
+      "C_mask": 644,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 27,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 5,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        3,
+        7,
+        10
+      ],
+      "mask": 732,
+      "block_mask": 24,
+      "C_mask": 580,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 28,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        2,
+        7
+      ],
+      "C": [
+        4,
+        6,
+        10
+      ],
+      "mask": 746,
+      "block_mask": 66,
+      "C_mask": 552,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 29,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        5,
+        8,
+        10
+      ],
+      "mask": 756,
+      "block_mask": 36,
+      "C_mask": 656,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 30,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "w": 8,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "C": [
+        5,
+        7,
+        10
+      ],
+      "mask": 756,
+      "block_mask": 36,
+      "C_mask": 592,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 31,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 8,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        1,
+        4,
+        5
+      ],
+      "mask": 221,
+      "block_mask": 68,
+      "C_mask": 25,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 32,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 8,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        1,
+        5,
+        6
+      ],
+      "mask": 245,
+      "block_mask": 68,
+      "C_mask": 49,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 33,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        2,
+        4,
+        5
+      ],
+      "mask": 350,
+      "block_mask": 68,
+      "C_mask": 26,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 34,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        2,
+        5,
+        6
+      ],
+      "mask": 374,
+      "block_mask": 68,
+      "C_mask": 50,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 35,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 380,
+      "block_mask": 68,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 36,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "C": [
+        3,
+        4,
+        6
+      ],
+      "mask": 430,
+      "block_mask": 130,
+      "C_mask": 44,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 37,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 442,
+      "block_mask": 130,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 38,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "C": [
+        3,
+        5,
+        7
+      ],
+      "mask": 470,
+      "block_mask": 130,
+      "C_mask": 84,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 39,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 8,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        9
+      ],
+      "mask": 476,
+      "block_mask": 68,
+      "C_mask": 280,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 40,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        8
+      ],
+      "mask": 476,
+      "block_mask": 68,
+      "C_mask": 152,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 41,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "C": [
+        4,
+        6,
+        7
+      ],
+      "mask": 490,
+      "block_mask": 130,
+      "C_mask": 104,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 42,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 8,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        9
+      ],
+      "mask": 500,
+      "block_mask": 68,
+      "C_mask": 304,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 43,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "w": 9,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        8
+      ],
+      "mask": 500,
+      "block_mask": 68,
+      "C_mask": 176,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 44,
+      "N": 11,
+      "h": 4,
+      "d": 9,
+      "w": 7,
+      "t": 2,
+      "b": 5,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        5
+      ],
+      "C": [
+        4,
+        10,
+        11
+      ],
+      "mask": 1629,
+      "block_mask": 21,
+      "C_mask": 1544,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 45,
+      "N": 11,
+      "h": 4,
+      "d": 10,
+      "w": 8,
+      "t": 2,
+      "b": 6,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        6
+      ],
+      "C": [
+        4,
+        5,
+        11
+      ],
+      "mask": 1213,
+      "block_mask": 37,
+      "C_mask": 1048,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 46,
+      "N": 11,
+      "h": 4,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 381,
+      "block_mask": 69,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 47,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        1,
+        5,
+        6
+      ],
+      "mask": 249,
+      "block_mask": 72,
+      "C_mask": 49,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 48,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        1,
+        3,
+        5
+      ],
+      "mask": 349,
+      "block_mask": 72,
+      "C_mask": 21,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 49,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        1,
+        4,
+        6
+      ],
+      "mask": 429,
+      "block_mask": 132,
+      "C_mask": 41,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 50,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        1,
+        4,
+        9
+      ],
+      "mask": 441,
+      "block_mask": 48,
+      "C_mask": 265,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 51,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        1,
+        4,
+        8
+      ],
+      "mask": 441,
+      "block_mask": 48,
+      "C_mask": 137,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 52,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 444,
+      "block_mask": 132,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 53,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        1,
+        3,
+        5,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        1,
+        5,
+        7
+      ],
+      "mask": 469,
+      "block_mask": 132,
+      "C_mask": 81,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 54,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        1,
+        6,
+        9
+      ],
+      "mask": 489,
+      "block_mask": 72,
+      "C_mask": 289,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 55,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        1,
+        6,
+        8
+      ],
+      "mask": 489,
+      "block_mask": 72,
+      "C_mask": 161,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 56,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        6,
+        7
+      ],
+      "mask": 492,
+      "block_mask": 132,
+      "C_mask": 104,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 57,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        9
+      ],
+      "mask": 504,
+      "block_mask": 72,
+      "C_mask": 304,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 58,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        8
+      ],
+      "mask": 504,
+      "block_mask": 72,
+      "C_mask": 176,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 59,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        2,
+        3,
+        5
+      ],
+      "mask": 606,
+      "block_mask": 72,
+      "C_mask": 22,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 60,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 7,
+      "t": 4,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        2,
+        3,
+        10
+      ],
+      "mask": 630,
+      "block_mask": 48,
+      "C_mask": 518,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 61,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        2,
+        3,
+        7
+      ],
+      "mask": 630,
+      "block_mask": 48,
+      "C_mask": 70,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 62,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        3,
+        5,
+        6
+      ],
+      "mask": 636,
+      "block_mask": 72,
+      "C_mask": 52,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 63,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        2,
+        4,
+        6
+      ],
+      "mask": 686,
+      "block_mask": 132,
+      "C_mask": 42,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 64,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        2,
+        4,
+        10
+      ],
+      "mask": 698,
+      "block_mask": 48,
+      "C_mask": 522,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 65,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        2,
+        4,
+        8
+      ],
+      "mask": 698,
+      "block_mask": 48,
+      "C_mask": 138,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 66,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        2,
+        5,
+        7
+      ],
+      "mask": 726,
+      "block_mask": 132,
+      "C_mask": 82,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 67,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        7
+      ],
+      "mask": 732,
+      "block_mask": 132,
+      "C_mask": 88,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 68,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        2,
+        6,
+        10
+      ],
+      "mask": 746,
+      "block_mask": 72,
+      "C_mask": 546,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 69,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        2,
+        6,
+        8
+      ],
+      "mask": 746,
+      "block_mask": 72,
+      "C_mask": 162,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 70,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "mask": 756,
+      "block_mask": 132,
+      "C_mask": 112,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 71,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        3,
+        4,
+        5
+      ],
+      "mask": 798,
+      "block_mask": 258,
+      "C_mask": 28,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 72,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        3,
+        5,
+        6
+      ],
+      "mask": 822,
+      "block_mask": 258,
+      "C_mask": 52,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 73,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        3,
+        4,
+        10
+      ],
+      "mask": 828,
+      "block_mask": 48,
+      "C_mask": 524,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 74,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        9,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        3,
+        4,
+        9
+      ],
+      "mask": 828,
+      "block_mask": 48,
+      "C_mask": 268,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 75,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        4,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        3,
+        4,
+        7
+      ],
+      "mask": 846,
+      "block_mask": 258,
+      "C_mask": 76,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 76,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        4,
+        5,
+        7
+      ],
+      "mask": 858,
+      "block_mask": 258,
+      "C_mask": 88,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 77,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        3,
+        6,
+        7
+      ],
+      "mask": 870,
+      "block_mask": 258,
+      "C_mask": 100,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 78,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        3,
+        6,
+        10
+      ],
+      "mask": 876,
+      "block_mask": 72,
+      "C_mask": 548,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 79,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        3,
+        6,
+        9
+      ],
+      "mask": 876,
+      "block_mask": 72,
+      "C_mask": 292,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 80,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "mask": 882,
+      "block_mask": 258,
+      "C_mask": 112,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 81,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        10
+      ],
+      "mask": 888,
+      "block_mask": 72,
+      "C_mask": 560,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 82,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        9
+      ],
+      "mask": 888,
+      "block_mask": 72,
+      "C_mask": 304,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 83,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        5,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        3,
+        5,
+        8
+      ],
+      "mask": 918,
+      "block_mask": 258,
+      "C_mask": 148,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 84,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        10
+      ],
+      "mask": 924,
+      "block_mask": 132,
+      "C_mask": 536,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 85,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        5,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        9
+      ],
+      "mask": 924,
+      "block_mask": 132,
+      "C_mask": 280,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 86,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        4,
+        6,
+        8
+      ],
+      "mask": 938,
+      "block_mask": 258,
+      "C_mask": 168,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 87,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        10
+      ],
+      "mask": 948,
+      "block_mask": 132,
+      "C_mask": 560,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 88,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        9
+      ],
+      "mask": 948,
+      "block_mask": 132,
+      "C_mask": 304,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 89,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        3,
+        7,
+        8
+      ],
+      "mask": 966,
+      "block_mask": 258,
+      "C_mask": 196,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 90,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        7,
+        10
+      ],
+      "mask": 972,
+      "block_mask": 132,
+      "C_mask": 584,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 91,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        7,
+        9
+      ],
+      "mask": 972,
+      "block_mask": 132,
+      "C_mask": 328,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 92,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 9,
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "remaining": [
+        2,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        5,
+        7,
+        8
+      ],
+      "mask": 978,
+      "block_mask": 258,
+      "C_mask": 208,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 93,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        9,
+        10
+      ],
+      "mask": 984,
+      "block_mask": 72,
+      "C_mask": 784,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 94,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        8,
+        10
+      ],
+      "mask": 984,
+      "block_mask": 72,
+      "C_mask": 656,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 95,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 7,
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "remaining": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        8,
+        9
+      ],
+      "mask": 984,
+      "block_mask": 72,
+      "C_mask": 400,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 96,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        10
+      ],
+      "mask": 996,
+      "block_mask": 132,
+      "C_mask": 608,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 97,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 8,
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "remaining": [
+        3,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        9
+      ],
+      "mask": 996,
+      "block_mask": 132,
+      "C_mask": 352,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 98,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 7,
+      "t": 4,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        8,
+        9,
+        10
+      ],
+      "mask": 1008,
+      "block_mask": 48,
+      "C_mask": 896,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 99,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        7,
+        9,
+        10
+      ],
+      "mask": 1008,
+      "block_mask": 48,
+      "C_mask": 832,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 100,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        7,
+        8,
+        10
+      ],
+      "mask": 1008,
+      "block_mask": 48,
+      "C_mask": 704,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 101,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 6,
+      "k": 2,
+      "A": [
+        5
+      ],
+      "q": 5,
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "C": [
+        7,
+        8,
+        9
+      ],
+      "mask": 1008,
+      "block_mask": 48,
+      "C_mask": 448,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 102,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 381,
+      "block_mask": 69,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 103,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        9,
+        12
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        12
+      ],
+      "mask": 2397,
+      "block_mask": 69,
+      "C_mask": 2072,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 104,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        9,
+        12
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        12
+      ],
+      "mask": 2421,
+      "block_mask": 69,
+      "C_mask": 2096,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 105,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 8,
+      "t": 3,
+      "b": 6,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        1,
+        4,
+        6
+      ],
+      "C": [
+        5,
+        9,
+        12
+      ],
+      "mask": 2489,
+      "block_mask": 41,
+      "C_mask": 2320,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 106,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 9,
+      "t": 2,
+      "b": 6,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        1,
+        4,
+        6
+      ],
+      "C": [
+        5,
+        8,
+        12
+      ],
+      "mask": 2489,
+      "block_mask": 41,
+      "C_mask": 2192,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 107,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 7,
+      "t": 4,
+      "b": 6,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        10,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        6
+      ],
+      "C": [
+        5,
+        10,
+        12
+      ],
+      "mask": 2678,
+      "block_mask": 38,
+      "C_mask": 2576,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 108,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "w": 10,
+      "t": 1,
+      "b": 6,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        10,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        6
+      ],
+      "C": [
+        5,
+        7,
+        12
+      ],
+      "mask": 2678,
+      "block_mask": 38,
+      "C_mask": 2128,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 109,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 10,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        1,
+        4,
+        7
+      ],
+      "C": [
+        3,
+        5,
+        6
+      ],
+      "mask": 637,
+      "block_mask": 73,
+      "C_mask": 52,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 110,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 10,
+      "t": 2,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        7
+      ],
+      "mask": 733,
+      "block_mask": 133,
+      "C_mask": 88,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 111,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 10,
+      "t": 2,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "mask": 757,
+      "block_mask": 133,
+      "C_mask": 112,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 112,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 9,
+      "t": 3,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        1,
+        4,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        10
+      ],
+      "mask": 889,
+      "block_mask": 73,
+      "C_mask": 560,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 113,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 10,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        1,
+        4,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        9
+      ],
+      "mask": 889,
+      "block_mask": 73,
+      "C_mask": 304,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 114,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 11,
+      "t": 1,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "block": [
+        2,
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 1150,
+      "block_mask": 70,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 115,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 8,
+      "t": 4,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "block": [
+        2,
+        3,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        11
+      ],
+      "mask": 1270,
+      "block_mask": 70,
+      "C_mask": 1072,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 116,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "w": 11,
+      "t": 1,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "block": [
+        2,
+        3,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        8
+      ],
+      "mask": 1270,
+      "block_mask": 70,
+      "C_mask": 176,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 117,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 10,
+      "t": 3,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "mask": 761,
+      "block_mask": 137,
+      "C_mask": 112,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 118,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        5
+      ],
+      "q": 6,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "block": [
+        1,
+        5,
+        7
+      ],
+      "C": [
+        3,
+        4,
+        6
+      ],
+      "mask": 1149,
+      "block_mask": 81,
+      "C_mask": 44,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 119,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8,
+        11
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        3,
+        5,
+        7
+      ],
+      "mask": 1245,
+      "block_mask": 137,
+      "C_mask": 84,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 120,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 9,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "mask": 1341,
+      "block_mask": 261,
+      "C_mask": 56,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 121,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 9,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        4,
+        6,
+        7
+      ],
+      "mask": 1389,
+      "block_mask": 261,
+      "C_mask": 104,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 122,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 9,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        4,
+        5,
+        8
+      ],
+      "mask": 1437,
+      "block_mask": 261,
+      "C_mask": 152,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 123,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 9,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        5,
+        6,
+        8
+      ],
+      "mask": 1461,
+      "block_mask": 261,
+      "C_mask": 176,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 124,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 9,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        4,
+        7,
+        8
+      ],
+      "mask": 1485,
+      "block_mask": 261,
+      "C_mask": 200,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 125,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 9,
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "remaining": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        6,
+        7,
+        8
+      ],
+      "mask": 1509,
+      "block_mask": 261,
+      "C_mask": 224,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 126,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 10,
+      "t": 3,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        11
+      ],
+      "mask": 1721,
+      "block_mask": 137,
+      "C_mask": 1072,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 127,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        10
+      ],
+      "mask": 1721,
+      "block_mask": 137,
+      "C_mask": 560,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 128,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 10,
+      "t": 3,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        11
+      ],
+      "mask": 1769,
+      "block_mask": 137,
+      "C_mask": 1120,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 129,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 8,
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "remaining": [
+        1,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        10
+      ],
+      "mask": 1769,
+      "block_mask": 137,
+      "C_mask": 608,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 130,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 9,
+      "t": 4,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        5
+      ],
+      "q": 6,
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        5,
+        7
+      ],
+      "C": [
+        6,
+        10,
+        11
+      ],
+      "mask": 1905,
+      "block_mask": 81,
+      "C_mask": 1568,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 131,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 10,
+      "t": 3,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        5
+      ],
+      "q": 6,
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        5,
+        7
+      ],
+      "C": [
+        6,
+        9,
+        11
+      ],
+      "mask": 1905,
+      "block_mask": 81,
+      "C_mask": 1312,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 132,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 11,
+      "t": 2,
+      "b": 7,
+      "k": 3,
+      "A": [
+        1,
+        5
+      ],
+      "q": 6,
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        5,
+        7
+      ],
+      "C": [
+        6,
+        9,
+        10
+      ],
+      "mask": 1905,
+      "block_mask": 81,
+      "C_mask": 800,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 133,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 12,
+      "t": 1,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        4
+      ],
+      "q": 6,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        12
+      ],
+      "block": [
+        2,
+        4,
+        7
+      ],
+      "C": [
+        3,
+        5,
+        6
+      ],
+      "mask": 2174,
+      "block_mask": 74,
+      "C_mask": 52,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 134,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 12,
+      "t": 1,
+      "b": 8,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        7
+      ],
+      "mask": 2270,
+      "block_mask": 134,
+      "C_mask": 88,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 135,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 12,
+      "t": 1,
+      "b": 8,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "mask": 2294,
+      "block_mask": 134,
+      "C_mask": 112,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 136,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 9,
+      "t": 4,
+      "b": 8,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        12
+      ],
+      "mask": 2486,
+      "block_mask": 134,
+      "C_mask": 2096,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 137,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 12,
+      "t": 1,
+      "b": 8,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        9
+      ],
+      "mask": 2486,
+      "block_mask": 134,
+      "C_mask": 304,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 138,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 9,
+      "t": 4,
+      "b": 8,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        12
+      ],
+      "mask": 2534,
+      "block_mask": 134,
+      "C_mask": 2144,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 139,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 12,
+      "t": 1,
+      "b": 8,
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        9
+      ],
+      "mask": 2534,
+      "block_mask": 134,
+      "C_mask": 352,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": -1,
+      "literal_shadow_value": -1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 140,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 8,
+      "t": 5,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        4
+      ],
+      "q": 6,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "block": [
+        2,
+        4,
+        7
+      ],
+      "C": [
+        6,
+        10,
+        12
+      ],
+      "mask": 2794,
+      "block_mask": 74,
+      "C_mask": 2592,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 141,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 10,
+      "t": 3,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        4
+      ],
+      "q": 6,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "block": [
+        2,
+        4,
+        7
+      ],
+      "C": [
+        6,
+        8,
+        12
+      ],
+      "mask": 2794,
+      "block_mask": 74,
+      "C_mask": 2208,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 1,
+      "literal_shadow_value": 1,
+      "literal_shadow_pass": true
+    },
+    {
+      "id": 142,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "w": 12,
+      "t": 1,
+      "b": 7,
+      "k": 3,
+      "A": [
+        2,
+        4
+      ],
+      "q": 6,
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "block": [
+        2,
+        4,
+        7
+      ],
+      "C": [
+        6,
+        8,
+        10
+      ],
+      "mask": 2794,
+      "block_mask": 74,
+      "C_mask": 672,
+      "d_absent_forced": true,
+      "in_proposed_A_list": true,
+      "structured_scan_found": true,
+      "shadow_value": 0,
+      "literal_shadow_value": 0,
+      "literal_shadow_pass": true
+    }
+  ],
+  "static_shadow_values": {
+    "1": 93,
+    "-1": 20,
+    "0": 29
+  },
+  "qualified_full_F_cases": [
+    {
+      "id": 2,
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "t": 1,
+      "w": 6,
+      "b": 5,
+      "mask": 438,
+      "block_mask": 18,
+      "C_mask": 388,
+      "C_sum": 20,
+      "terminal": 0,
+      "low_mask": 406,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 3,
+      "chosen_entry": 2,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "8": -1,
+        "9": -1
+      },
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        5
+      ],
+      "C": [
+        3,
+        8,
+        9
+      ],
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "d_absent_forced": true,
+      "low_remaining": [
+        2,
+        3,
+        5,
+        8,
+        9
+      ],
+      "safe_B_picks": [
+        2,
+        5
+      ],
+      "all_safe_picks": [
+        2,
+        3,
+        5
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        6
+      ],
+      "friendly_steps": [
+        {
+          "id": 2,
+          "step": 1,
+          "before_mask": 406,
+          "before_def": 1,
+          "pick": 2,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 2,
+        "friendly_turn_mask": 2,
+        "friendly_sum": 2,
+        "friendly_picks": 1,
+        "opponent_mask": 404,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 2,
+          "Y_mask": 256,
+          "Y_sum": 9,
+          "last": 9,
+          "endpoint_mask": 148,
+          "deficit": 8,
+          "endpoint_value": 1,
+          "Y": [
+            9
+          ],
+          "canonical_order": [
+            9
+          ],
+          "endpoint_remaining": [
+            3,
+            5,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 2,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 276,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            3,
+            5,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 2,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 388,
+          "deficit": 4,
+          "endpoint_value": 0,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            3,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 2,
+          "Y_mask": 4,
+          "Y_sum": 3,
+          "last": 3,
+          "endpoint_mask": 400,
+          "deficit": 2,
+          "endpoint_value": 1,
+          "Y": [
+            3
+          ],
+          "canonical_order": [
+            3
+          ],
+          "endpoint_remaining": [
+            5,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 0
+    },
+    {
+      "id": 19,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "t": 3,
+      "w": 6,
+      "b": 5,
+      "mask": 633,
+      "block_mask": 24,
+      "C_mask": 577,
+      "C_sum": 18,
+      "terminal": 0,
+      "low_mask": 601,
+      "low_value": 1,
+      "safe_B_count": 2,
+      "safe_first_count": 4,
+      "chosen_entry": 4,
+      "moves": {
+        "1": 1,
+        "4": 0,
+        "5": 0,
+        "7": 1,
+        "10": -1
+      },
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        1,
+        7,
+        10
+      ],
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        4,
+        5,
+        7,
+        10
+      ],
+      "safe_B_picks": [
+        4,
+        5
+      ],
+      "all_safe_picks": [
+        1,
+        4,
+        5,
+        7
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        6
+      ],
+      "friendly_steps": [
+        {
+          "id": 19,
+          "step": 1,
+          "before_mask": 601,
+          "before_def": 3,
+          "pick": 4,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 19,
+        "friendly_turn_mask": 8,
+        "friendly_sum": 4,
+        "friendly_picks": 1,
+        "opponent_mask": 593,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 19,
+          "Y_mask": 512,
+          "Y_sum": 10,
+          "last": 10,
+          "endpoint_mask": 81,
+          "deficit": 9,
+          "endpoint_value": 1,
+          "Y": [
+            10
+          ],
+          "canonical_order": [
+            10
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 19,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 529,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 19,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 577,
+          "deficit": 4,
+          "endpoint_value": 0,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            7,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 19,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 592,
+          "deficit": 0,
+          "endpoint_value": 1,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            5,
+            7,
+            10
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 23,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "t": 3,
+      "w": 6,
+      "b": 5,
+      "mask": 698,
+      "block_mask": 24,
+      "C_mask": 642,
+      "C_sum": 20,
+      "terminal": 0,
+      "low_mask": 666,
+      "low_value": 1,
+      "safe_B_count": 1,
+      "safe_first_count": 2,
+      "chosen_entry": 4,
+      "moves": {
+        "2": 1,
+        "4": 0,
+        "5": -1,
+        "8": -1,
+        "10": -1
+      },
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        2,
+        8,
+        10
+      ],
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "safe_B_picks": [
+        4
+      ],
+      "all_safe_picks": [
+        2,
+        4
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        6
+      ],
+      "friendly_steps": [
+        {
+          "id": 23,
+          "step": 1,
+          "before_mask": 666,
+          "before_def": 3,
+          "pick": 4,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 23,
+        "friendly_turn_mask": 8,
+        "friendly_sum": 4,
+        "friendly_picks": 1,
+        "opponent_mask": 658,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 23,
+          "Y_mask": 512,
+          "Y_sum": 10,
+          "last": 10,
+          "endpoint_mask": 146,
+          "deficit": 9,
+          "endpoint_value": 1,
+          "Y": [
+            10
+          ],
+          "canonical_order": [
+            10
+          ],
+          "endpoint_remaining": [
+            2,
+            5,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 23,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 530,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            2,
+            5,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 23,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 642,
+          "deficit": 4,
+          "endpoint_value": 0,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            2,
+            8,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 23,
+          "Y_mask": 2,
+          "Y_sum": 2,
+          "last": 2,
+          "endpoint_mask": 656,
+          "deficit": 1,
+          "endpoint_value": 1,
+          "Y": [
+            2
+          ],
+          "canonical_order": [
+            2
+          ],
+          "endpoint_remaining": [
+            5,
+            8,
+            10
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 26,
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "t": 2,
+      "w": 7,
+      "b": 5,
+      "mask": 732,
+      "block_mask": 24,
+      "C_mask": 644,
+      "C_sum": 21,
+      "terminal": 0,
+      "low_mask": 668,
+      "low_value": 0,
+      "safe_B_count": 1,
+      "safe_first_count": 1,
+      "chosen_entry": 5,
+      "moves": {
+        "3": -1,
+        "4": -1,
+        "5": 0,
+        "8": -1,
+        "10": -1
+      },
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "C": [
+        3,
+        8,
+        10
+      ],
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        3,
+        4,
+        5,
+        8,
+        10
+      ],
+      "safe_B_picks": [
+        5
+      ],
+      "all_safe_picks": [
+        5
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        7
+      ],
+      "friendly_steps": [
+        {
+          "id": 26,
+          "step": 1,
+          "before_mask": 668,
+          "before_def": 2,
+          "pick": 5,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 3
+        }
+      ],
+      "entry_completion": {
+        "id": 26,
+        "friendly_turn_mask": 16,
+        "friendly_sum": 5,
+        "friendly_picks": 1,
+        "opponent_mask": 652,
+        "opponent_def": 3,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 26,
+          "Y_mask": 512,
+          "Y_sum": 10,
+          "last": 10,
+          "endpoint_mask": 140,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            10
+          ],
+          "canonical_order": [
+            10
+          ],
+          "endpoint_remaining": [
+            3,
+            4,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 26,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 524,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            3,
+            4,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 26,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 644,
+          "deficit": 1,
+          "endpoint_value": 0,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            3,
+            8,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 26,
+          "Y_mask": 4,
+          "Y_sum": 3,
+          "last": 3,
+          "endpoint_mask": 648,
+          "deficit": 0,
+          "endpoint_value": 1,
+          "Y": [
+            3
+          ],
+          "canonical_order": [
+            3
+          ],
+          "endpoint_remaining": [
+            4,
+            8,
+            10
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 0
+    },
+    {
+      "id": 35,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "t": 1,
+      "w": 9,
+      "b": 7,
+      "mask": 380,
+      "block_mask": 68,
+      "C_mask": 56,
+      "C_sum": 15,
+      "terminal": 0,
+      "low_mask": 124,
+      "low_value": 0,
+      "safe_B_count": 1,
+      "safe_first_count": 2,
+      "chosen_entry": 3,
+      "moves": {
+        "3": 0,
+        "4": -1,
+        "5": -1,
+        "6": 0,
+        "7": -1
+      },
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "d_absent_forced": true,
+      "low_remaining": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "safe_B_picks": [
+        3
+      ],
+      "all_safe_picks": [
+        3,
+        6
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        9
+      ],
+      "friendly_steps": [
+        {
+          "id": 35,
+          "step": 1,
+          "before_mask": 124,
+          "before_def": 1,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 2
+        }
+      ],
+      "entry_completion": {
+        "id": 35,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 120,
+        "opponent_def": 2,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 35,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 56,
+          "deficit": 5,
+          "endpoint_value": 0,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            6
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 35,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 88,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 35,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 104,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            4,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 35,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 112,
+          "deficit": 2,
+          "endpoint_value": 1,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 37,
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "t": 1,
+      "w": 9,
+      "b": 8,
+      "mask": 442,
+      "block_mask": 130,
+      "C_mask": 56,
+      "C_sum": 15,
+      "terminal": 0,
+      "low_mask": 186,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 4,
+      "chosen_entry": 2,
+      "moves": {
+        "2": 0,
+        "4": -1,
+        "5": 0,
+        "6": 0,
+        "8": 0
+      },
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "d_absent_forced": true,
+      "low_remaining": [
+        2,
+        4,
+        5,
+        6,
+        8
+      ],
+      "safe_B_picks": [
+        2,
+        8
+      ],
+      "all_safe_picks": [
+        2,
+        5,
+        6,
+        8
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        9
+      ],
+      "friendly_steps": [
+        {
+          "id": 37,
+          "step": 1,
+          "before_mask": 186,
+          "before_def": 1,
+          "pick": 2,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 37,
+        "friendly_turn_mask": 2,
+        "friendly_sum": 2,
+        "friendly_picks": 1,
+        "opponent_mask": 184,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 37,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 56,
+          "deficit": 7,
+          "endpoint_value": 0,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            6
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 37,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 152,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 37,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 168,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            4,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 37,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 176,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 44,
+      "N": 11,
+      "h": 4,
+      "d": 9,
+      "t": 2,
+      "w": 7,
+      "b": 5,
+      "mask": 1629,
+      "block_mask": 21,
+      "C_mask": 1544,
+      "C_sum": 25,
+      "terminal": 0,
+      "low_mask": 1565,
+      "low_value": 0,
+      "safe_B_count": 3,
+      "safe_first_count": 4,
+      "chosen_entry": 3,
+      "moves": {
+        "1": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "10": -1,
+        "11": -1
+      },
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        5
+      ],
+      "C": [
+        4,
+        10,
+        11
+      ],
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        3,
+        4,
+        5,
+        10,
+        11
+      ],
+      "safe_B_picks": [
+        1,
+        3,
+        5
+      ],
+      "all_safe_picks": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        7
+      ],
+      "friendly_steps": [
+        {
+          "id": 44,
+          "step": 1,
+          "before_mask": 1565,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 44,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 1561,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 44,
+          "Y_mask": 1024,
+          "Y_sum": 11,
+          "last": 11,
+          "endpoint_mask": 537,
+          "deficit": 10,
+          "endpoint_value": 1,
+          "Y": [
+            11
+          ],
+          "canonical_order": [
+            11
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            5,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 44,
+          "Y_mask": 512,
+          "Y_sum": 10,
+          "last": 10,
+          "endpoint_mask": 1049,
+          "deficit": 9,
+          "endpoint_value": 1,
+          "Y": [
+            10
+          ],
+          "canonical_order": [
+            10
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            5,
+            11
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 44,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 1545,
+          "deficit": 4,
+          "endpoint_value": 0,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            10,
+            11
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 44,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 1553,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            10,
+            11
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 44,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 1560,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            10,
+            11
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 46,
+      "N": 11,
+      "h": 4,
+      "d": 11,
+      "t": 2,
+      "w": 9,
+      "b": 7,
+      "mask": 381,
+      "block_mask": 69,
+      "C_mask": 56,
+      "C_sum": 15,
+      "terminal": 0,
+      "low_mask": 125,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 3,
+      "chosen_entry": 3,
+      "moves": {
+        "1": 0,
+        "3": 0,
+        "4": 0,
+        "5": -1,
+        "6": -1,
+        "7": -1
+      },
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "safe_B_picks": [
+        1,
+        3
+      ],
+      "all_safe_picks": [
+        1,
+        3,
+        4
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        9
+      ],
+      "friendly_steps": [
+        {
+          "id": 46,
+          "step": 1,
+          "before_mask": 125,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 46,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 121,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 46,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 57,
+          "deficit": 6,
+          "endpoint_value": 0,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 46,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 89,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            5,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 46,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 105,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 46,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 113,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 46,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 120,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 52,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 2,
+      "w": 9,
+      "b": 8,
+      "mask": 444,
+      "block_mask": 132,
+      "C_mask": 56,
+      "C_sum": 15,
+      "terminal": 0,
+      "low_mask": 188,
+      "low_value": 0,
+      "safe_B_count": 1,
+      "safe_first_count": 2,
+      "chosen_entry": 3,
+      "moves": {
+        "3": 0,
+        "4": -1,
+        "5": -1,
+        "6": 0,
+        "8": -1
+      },
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "d_absent_forced": true,
+      "low_remaining": [
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "safe_B_picks": [
+        3
+      ],
+      "all_safe_picks": [
+        3,
+        6
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        9
+      ],
+      "friendly_steps": [
+        {
+          "id": 52,
+          "step": 1,
+          "before_mask": 188,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 52,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 184,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 52,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 56,
+          "deficit": 7,
+          "endpoint_value": 0,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            6
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 52,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 152,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 52,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 168,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            4,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 52,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 176,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 0
+    },
+    {
+      "id": 70,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 8,
+      "mask": 756,
+      "block_mask": 132,
+      "C_mask": 112,
+      "C_sum": 18,
+      "terminal": 0,
+      "low_mask": 244,
+      "low_value": 0,
+      "safe_B_count": 1,
+      "safe_first_count": 1,
+      "chosen_entry": 3,
+      "moves": {
+        "3": 0,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1
+      },
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "k": 2,
+      "A": [
+        3
+      ],
+      "q": 3,
+      "d_absent_forced": true,
+      "low_remaining": [
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "safe_B_picks": [
+        3
+      ],
+      "all_safe_picks": [
+        3
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        10
+      ],
+      "friendly_steps": [
+        {
+          "id": 70,
+          "step": 1,
+          "before_mask": 244,
+          "before_def": 1,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 2
+        }
+      ],
+      "entry_completion": {
+        "id": 70,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 240,
+        "opponent_def": 2,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 70,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 112,
+          "deficit": 6,
+          "endpoint_value": 0,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 70,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 176,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 70,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 208,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            5,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 70,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 224,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 80,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "mask": 882,
+      "block_mask": 258,
+      "C_mask": 112,
+      "C_sum": 18,
+      "terminal": 0,
+      "low_mask": 370,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 3,
+      "chosen_entry": 2,
+      "moves": {
+        "2": 0,
+        "5": -1,
+        "6": 0,
+        "7": -1,
+        "9": 0
+      },
+      "remaining": [
+        2,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "k": 2,
+      "A": [
+        2
+      ],
+      "q": 2,
+      "d_absent_forced": true,
+      "low_remaining": [
+        2,
+        5,
+        6,
+        7,
+        9
+      ],
+      "safe_B_picks": [
+        2,
+        9
+      ],
+      "all_safe_picks": [
+        2,
+        6,
+        9
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        10
+      ],
+      "friendly_steps": [
+        {
+          "id": 80,
+          "step": 1,
+          "before_mask": 370,
+          "before_def": 1,
+          "pick": 2,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 80,
+        "friendly_turn_mask": 2,
+        "friendly_sum": 2,
+        "friendly_picks": 1,
+        "opponent_mask": 368,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 80,
+          "Y_mask": 256,
+          "Y_sum": 9,
+          "last": 9,
+          "endpoint_mask": 112,
+          "deficit": 8,
+          "endpoint_value": 0,
+          "Y": [
+            9
+          ],
+          "canonical_order": [
+            9
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 80,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 304,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 80,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 336,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            5,
+            7,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 80,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 352,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            6,
+            7,
+            9
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 0
+    },
+    {
+      "id": 93,
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 3,
+      "w": 8,
+      "b": 7,
+      "mask": 984,
+      "block_mask": 72,
+      "C_mask": 784,
+      "C_sum": 24,
+      "terminal": 0,
+      "low_mask": 856,
+      "low_value": 1,
+      "safe_B_count": 2,
+      "safe_first_count": 5,
+      "chosen_entry": 4,
+      "moves": {
+        "4": 0,
+        "5": 0,
+        "7": 1,
+        "9": 0,
+        "10": 0
+      },
+      "remaining": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "C": [
+        5,
+        9,
+        10
+      ],
+      "k": 2,
+      "A": [
+        4
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "safe_B_picks": [
+        4,
+        7
+      ],
+      "all_safe_picks": [
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        8
+      ],
+      "friendly_steps": [
+        {
+          "id": 93,
+          "step": 1,
+          "before_mask": 856,
+          "before_def": 3,
+          "pick": 4,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 93,
+        "friendly_turn_mask": 8,
+        "friendly_sum": 4,
+        "friendly_picks": 1,
+        "opponent_mask": 848,
+        "opponent_def": 1,
+        "completed_opponent_turns": 4,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 93,
+          "Y_mask": 512,
+          "Y_sum": 10,
+          "last": 10,
+          "endpoint_mask": 336,
+          "deficit": 9,
+          "endpoint_value": 1,
+          "Y": [
+            10
+          ],
+          "canonical_order": [
+            10
+          ],
+          "endpoint_remaining": [
+            5,
+            7,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 93,
+          "Y_mask": 256,
+          "Y_sum": 9,
+          "last": 9,
+          "endpoint_mask": 592,
+          "deficit": 8,
+          "endpoint_value": 1,
+          "Y": [
+            9
+          ],
+          "canonical_order": [
+            9
+          ],
+          "endpoint_remaining": [
+            5,
+            7,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 93,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 784,
+          "deficit": 6,
+          "endpoint_value": 0,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            5,
+            9,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 93,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 832,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            7,
+            9,
+            10
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 102,
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "t": 2,
+      "w": 9,
+      "b": 7,
+      "mask": 381,
+      "block_mask": 69,
+      "C_mask": 56,
+      "C_sum": 15,
+      "terminal": 0,
+      "low_mask": 125,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 3,
+      "chosen_entry": 3,
+      "moves": {
+        "1": 0,
+        "3": 0,
+        "4": 0,
+        "5": -1,
+        "6": -1,
+        "7": -1
+      },
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "C": [
+        4,
+        5,
+        6
+      ],
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "safe_B_picks": [
+        1,
+        3
+      ],
+      "all_safe_picks": [
+        1,
+        3,
+        4
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        9
+      ],
+      "friendly_steps": [
+        {
+          "id": 102,
+          "step": 1,
+          "before_mask": 125,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 102,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 121,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 102,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 57,
+          "deficit": 6,
+          "endpoint_value": 0,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 102,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 89,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            5,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 102,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 105,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            4,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 102,
+          "Y_mask": 8,
+          "Y_sum": 4,
+          "last": 4,
+          "endpoint_mask": 113,
+          "deficit": 3,
+          "endpoint_value": 1,
+          "Y": [
+            4
+          ],
+          "canonical_order": [
+            4
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 102,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 120,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 111,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "t": 2,
+      "w": 10,
+      "b": 8,
+      "mask": 757,
+      "block_mask": 133,
+      "C_mask": 112,
+      "C_sum": 18,
+      "terminal": 0,
+      "low_mask": 245,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 2,
+      "chosen_entry": 3,
+      "moves": {
+        "1": 0,
+        "3": 0,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1
+      },
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        3,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "safe_B_picks": [
+        1,
+        3
+      ],
+      "all_safe_picks": [
+        1,
+        3
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        10
+      ],
+      "friendly_steps": [
+        {
+          "id": 111,
+          "step": 1,
+          "before_mask": 245,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 111,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 241,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 111,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 113,
+          "deficit": 7,
+          "endpoint_value": 0,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 111,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 177,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 111,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 209,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 111,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 225,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 111,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 240,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 116,
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "t": 1,
+      "w": 11,
+      "b": 7,
+      "mask": 1270,
+      "block_mask": 70,
+      "C_mask": 176,
+      "C_sum": 19,
+      "terminal": 0,
+      "low_mask": 246,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 3,
+      "chosen_entry": 2,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "5": -1,
+        "6": 0,
+        "7": -1,
+        "8": -1
+      },
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "block": [
+        2,
+        3,
+        7
+      ],
+      "C": [
+        5,
+        6,
+        8
+      ],
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "d_absent_forced": true,
+      "low_remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "safe_B_picks": [
+        2,
+        3
+      ],
+      "all_safe_picks": [
+        2,
+        3,
+        6
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        11
+      ],
+      "friendly_steps": [
+        {
+          "id": 116,
+          "step": 1,
+          "before_mask": 246,
+          "before_def": 1,
+          "pick": 2,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 116,
+        "friendly_turn_mask": 2,
+        "friendly_sum": 2,
+        "friendly_picks": 1,
+        "opponent_mask": 244,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 116,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 116,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            3,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 116,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 180,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            3,
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 116,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 212,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            3,
+            5,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 116,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 228,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            3,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 116,
+          "Y_mask": 4,
+          "Y_sum": 3,
+          "last": 3,
+          "endpoint_mask": 240,
+          "deficit": 2,
+          "endpoint_value": 0,
+          "Y": [
+            3
+          ],
+          "canonical_order": [
+            3
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 117,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 3,
+      "w": 10,
+      "b": 8,
+      "mask": 761,
+      "block_mask": 137,
+      "C_mask": 112,
+      "C_sum": 18,
+      "terminal": 0,
+      "low_mask": 249,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 4,
+      "chosen_entry": 4,
+      "moves": {
+        "1": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": -1,
+        "8": -1
+      },
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "C": [
+        5,
+        6,
+        7
+      ],
+      "k": 3,
+      "A": [
+        1,
+        4
+      ],
+      "q": 5,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "safe_B_picks": [
+        1,
+        4
+      ],
+      "all_safe_picks": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        10
+      ],
+      "friendly_steps": [
+        {
+          "id": 117,
+          "step": 1,
+          "before_mask": 249,
+          "before_def": 3,
+          "pick": 4,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 117,
+        "friendly_turn_mask": 8,
+        "friendly_sum": 4,
+        "friendly_picks": 1,
+        "opponent_mask": 241,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 117,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 113,
+          "deficit": 7,
+          "endpoint_value": 0,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            7
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 117,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 177,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 117,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 209,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 117,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 225,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 117,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 240,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 0
+    },
+    {
+      "id": 123,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 1461,
+      "block_mask": 261,
+      "C_mask": 176,
+      "C_sum": 19,
+      "terminal": 0,
+      "low_mask": 437,
+      "low_value": 1,
+      "safe_B_count": 2,
+      "safe_first_count": 4,
+      "chosen_entry": 3,
+      "moves": {
+        "1": 1,
+        "3": 0,
+        "5": 0,
+        "6": -1,
+        "8": 0,
+        "9": -1
+      },
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        5,
+        6,
+        8
+      ],
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "safe_B_picks": [
+        1,
+        3
+      ],
+      "all_safe_picks": [
+        1,
+        3,
+        5,
+        8
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        11
+      ],
+      "friendly_steps": [
+        {
+          "id": 123,
+          "step": 1,
+          "before_mask": 437,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 123,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 433,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 123,
+          "Y_mask": 256,
+          "Y_sum": 9,
+          "last": 9,
+          "endpoint_mask": 177,
+          "deficit": 8,
+          "endpoint_value": 1,
+          "Y": [
+            9
+          ],
+          "canonical_order": [
+            9
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 123,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 305,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            6,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 123,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 401,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            5,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 123,
+          "Y_mask": 16,
+          "Y_sum": 5,
+          "last": 5,
+          "endpoint_mask": 417,
+          "deficit": 4,
+          "endpoint_value": 1,
+          "Y": [
+            5
+          ],
+          "canonical_order": [
+            5
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 123,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 432,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            5,
+            6,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 125,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 1509,
+      "block_mask": 261,
+      "C_mask": 224,
+      "C_sum": 21,
+      "terminal": 0,
+      "low_mask": 485,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 2,
+      "chosen_entry": 3,
+      "moves": {
+        "1": 0,
+        "3": 0,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1
+      },
+      "remaining": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "C": [
+        6,
+        7,
+        8
+      ],
+      "k": 3,
+      "A": [
+        1,
+        3
+      ],
+      "q": 4,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9
+      ],
+      "safe_B_picks": [
+        1,
+        3
+      ],
+      "all_safe_picks": [
+        1,
+        3
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        11
+      ],
+      "friendly_steps": [
+        {
+          "id": 125,
+          "step": 1,
+          "before_mask": 485,
+          "before_def": 2,
+          "pick": 3,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 125,
+        "friendly_turn_mask": 4,
+        "friendly_sum": 3,
+        "friendly_picks": 1,
+        "opponent_mask": 481,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 125,
+          "Y_mask": 256,
+          "Y_sum": 9,
+          "last": 9,
+          "endpoint_mask": 225,
+          "deficit": 8,
+          "endpoint_value": 0,
+          "Y": [
+            9
+          ],
+          "canonical_order": [
+            9
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 125,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 353,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            7,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 125,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 417,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 125,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 449,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            7,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 125,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 480,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 130,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 4,
+      "w": 9,
+      "b": 7,
+      "mask": 1905,
+      "block_mask": 81,
+      "C_mask": 1568,
+      "C_sum": 27,
+      "terminal": 0,
+      "low_mask": 1649,
+      "low_value": 1,
+      "safe_B_count": 3,
+      "safe_first_count": 4,
+      "chosen_entry": 5,
+      "moves": {
+        "1": 1,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "10": -1,
+        "11": -1
+      },
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        5,
+        7
+      ],
+      "C": [
+        6,
+        10,
+        11
+      ],
+      "k": 3,
+      "A": [
+        1,
+        5
+      ],
+      "q": 6,
+      "d_absent_forced": true,
+      "low_remaining": [
+        1,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "safe_B_picks": [
+        1,
+        5,
+        7
+      ],
+      "all_safe_picks": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        9
+      ],
+      "friendly_steps": [
+        {
+          "id": 130,
+          "step": 1,
+          "before_mask": 1649,
+          "before_def": 4,
+          "pick": 5,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 130,
+        "friendly_turn_mask": 16,
+        "friendly_sum": 5,
+        "friendly_picks": 1,
+        "opponent_mask": 1633,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 130,
+          "Y_mask": 1024,
+          "Y_sum": 11,
+          "last": 11,
+          "endpoint_mask": 609,
+          "deficit": 10,
+          "endpoint_value": 1,
+          "Y": [
+            11
+          ],
+          "canonical_order": [
+            11
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            7,
+            10
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 130,
+          "Y_mask": 512,
+          "Y_sum": 10,
+          "last": 10,
+          "endpoint_mask": 1121,
+          "deficit": 9,
+          "endpoint_value": 1,
+          "Y": [
+            10
+          ],
+          "canonical_order": [
+            10
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            7,
+            11
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 130,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 1569,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            1,
+            6,
+            10,
+            11
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 130,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 1601,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            1,
+            7,
+            10,
+            11
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 130,
+          "Y_mask": 1,
+          "Y_sum": 1,
+          "last": 1,
+          "endpoint_mask": 1632,
+          "deficit": 0,
+          "endpoint_value": 0,
+          "Y": [
+            1
+          ],
+          "canonical_order": [
+            1
+          ],
+          "endpoint_remaining": [
+            6,
+            7,
+            10,
+            11
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    },
+    {
+      "id": 139,
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 8,
+      "mask": 2534,
+      "block_mask": 134,
+      "C_mask": 352,
+      "C_sum": 22,
+      "terminal": 0,
+      "low_mask": 486,
+      "low_value": 0,
+      "safe_B_count": 2,
+      "safe_first_count": 2,
+      "chosen_entry": 2,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1
+      },
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "C": [
+        6,
+        7,
+        9
+      ],
+      "k": 3,
+      "A": [
+        2,
+        3
+      ],
+      "q": 5,
+      "d_absent_forced": true,
+      "low_remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9
+      ],
+      "safe_B_picks": [
+        2,
+        3
+      ],
+      "all_safe_picks": [
+        2,
+        3
+      ],
+      "literal_replay_pass": true,
+      "unique_residual_winning_opening": [
+        12
+      ],
+      "friendly_steps": [
+        {
+          "id": 139,
+          "step": 1,
+          "before_mask": 486,
+          "before_def": 1,
+          "pick": 2,
+          "move_value": 0,
+          "ends_turn": 1,
+          "next_def": 1
+        }
+      ],
+      "entry_completion": {
+        "id": 139,
+        "friendly_turn_mask": 2,
+        "friendly_sum": 2,
+        "friendly_picks": 1,
+        "opponent_mask": 484,
+        "opponent_def": 1,
+        "completed_opponent_turns": 5,
+        "opponent_cannot_catch": 0
+      },
+      "all_opponent_whole_turns": [
+        {
+          "id": 139,
+          "Y_mask": 256,
+          "Y_sum": 9,
+          "last": 9,
+          "endpoint_mask": 228,
+          "deficit": 8,
+          "endpoint_value": 1,
+          "Y": [
+            9
+          ],
+          "canonical_order": [
+            9
+          ],
+          "endpoint_remaining": [
+            3,
+            6,
+            7,
+            8
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 139,
+          "Y_mask": 128,
+          "Y_sum": 8,
+          "last": 8,
+          "endpoint_mask": 356,
+          "deficit": 7,
+          "endpoint_value": 1,
+          "Y": [
+            8
+          ],
+          "canonical_order": [
+            8
+          ],
+          "endpoint_remaining": [
+            3,
+            6,
+            7,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 139,
+          "Y_mask": 64,
+          "Y_sum": 7,
+          "last": 7,
+          "endpoint_mask": 420,
+          "deficit": 6,
+          "endpoint_value": 1,
+          "Y": [
+            7
+          ],
+          "canonical_order": [
+            7
+          ],
+          "endpoint_remaining": [
+            3,
+            6,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 139,
+          "Y_mask": 32,
+          "Y_sum": 6,
+          "last": 6,
+          "endpoint_mask": 452,
+          "deficit": 5,
+          "endpoint_value": 1,
+          "Y": [
+            6
+          ],
+          "canonical_order": [
+            6
+          ],
+          "endpoint_remaining": [
+            3,
+            7,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        },
+        {
+          "id": 139,
+          "Y_mask": 4,
+          "Y_sum": 3,
+          "last": 3,
+          "endpoint_mask": 480,
+          "deficit": 2,
+          "endpoint_value": 0,
+          "Y": [
+            3
+          ],
+          "canonical_order": [
+            3
+          ],
+          "endpoint_remaining": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "literal_replay_pass": true
+        }
+      ],
+      "literal_parent_value": 1
+    }
+  ],
+  "qualified_count": 20,
+  "semantic_cases_ignoring_ambient_N": 19,
+  "distinct_continuing_states": 19,
+  "source_comparison": {
+    "old_count": 20,
+    "new_count": 20,
+    "exact_ambient_key_match": true,
+    "new_not_old": [],
+    "old_not_new": []
+  },
+  "qualified_counts_by_N": {
+    "9": 1,
+    "10": 5,
+    "11": 6,
+    "12": 3,
+    "13": 5
+  },
+  "qualified_counts_by_B_card": {
+    "2": 10,
+    "3": 10
+  },
+  "continuing_values": {
+    "0": 15,
+    "1": 5
+  },
+  "safe_B_count_distribution": {
+    "2": 13,
+    "1": 5,
+    "3": 2
+  },
+  "no_safe_B_cases": [],
+  "terminal_qualified_cases": 0,
+  "literal_replay": {
+    "all_142_shadow_states": true,
+    "all_20_qualified_first_pick_sets": true,
+    "friendly_first_picks": 110,
+    "same_player_friendly_first_picks": 10,
+    "all_90_opponent_whole_turns": true,
+    "opponent_whole_turns": 90,
+    "same_player_opponent_picks_before_last": 0,
+    "all_residual_unique_winning_openers": true,
+    "source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432"
+  },
+  "source_95_sha256": "49fe4e76b849d7ea63994e9a1f4f10f0ab1c584b8d5503c212338be80e403e74",
+  "qualified_key_sha256": "e491b0f3de8a8ebae895dccb3adeb357e8006ae2b4fb576df1d5a0cf7aaef35c",
+  "seconds": 0.010330334,
+  "max_rss_bytes": 15532032
+}

@@ -1,0 +1,377 @@
+{
+  "kind": "Independent literal-score geometric-gap diagnostic; the residual-winning-opening premise was omitted; not a refutation of the full strategic repair or H",
+  "all_scanned_ambient_domains": [
+    {
+      "N": 0,
+      "even_parents": 0,
+      "gap_candidates": 0,
+      "strong": 0,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 0,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 1,
+      "even_parents": 0,
+      "gap_candidates": 0,
+      "strong": 0,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 0,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 2,
+      "even_parents": 0,
+      "gap_candidates": 0,
+      "strong": 0,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 0,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 3,
+      "even_parents": 0,
+      "gap_candidates": 0,
+      "strong": 0,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 0,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 4,
+      "even_parents": 0,
+      "gap_candidates": 0,
+      "strong": 0,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 0,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 5,
+      "even_parents": 2,
+      "gap_candidates": 1,
+      "strong": 1,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 1,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 6,
+      "even_parents": 5,
+      "gap_candidates": 2,
+      "strong": 2,
+      "weak": 0,
+      "strong_loss": 0,
+      "strong_draw": 2,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 7,
+      "even_parents": 14,
+      "gap_candidates": 4,
+      "strong": 3,
+      "weak": 1,
+      "strong_loss": 0,
+      "strong_draw": 3,
+      "strong_win": 0,
+      "weak_loss": 0,
+      "weak_draw": 0,
+      "weak_win": 1,
+      "complete": true
+    },
+    {
+      "N": 8,
+      "even_parents": 32,
+      "gap_candidates": 8,
+      "strong": 5,
+      "weak": 3,
+      "strong_loss": 0,
+      "strong_draw": 4,
+      "strong_win": 1,
+      "weak_loss": 0,
+      "weak_draw": 3,
+      "weak_win": 0,
+      "complete": true
+    },
+    {
+      "N": 9,
+      "even_parents": 97,
+      "gap_candidates": 44,
+      "strong": 31,
+      "weak": 13,
+      "strong_loss": 0,
+      "strong_draw": 21,
+      "strong_win": 10,
+      "weak_loss": 0,
+      "weak_draw": 5,
+      "weak_win": 8,
+      "complete": true
+    },
+    {
+      "N": 10,
+      "even_parents": 191,
+      "gap_candidates": 88,
+      "strong": 58,
+      "weak": 30,
+      "strong_loss": 0,
+      "strong_draw": 50,
+      "strong_win": 8,
+      "weak_loss": 1,
+      "weak_draw": 20,
+      "weak_win": 9,
+      "complete": true
+    },
+    {
+      "N": 11,
+      "even_parents": 428,
+      "gap_candidates": 239,
+      "strong": 153,
+      "weak": 86,
+      "strong_loss": 0,
+      "strong_draw": 132,
+      "strong_win": 21,
+      "weak_loss": 1,
+      "weak_draw": 51,
+      "weak_win": 34,
+      "complete": true
+    },
+    {
+      "N": 12,
+      "even_parents": 864,
+      "gap_candidates": 504,
+      "strong": 313,
+      "weak": 191,
+      "strong_loss": 0,
+      "strong_draw": 291,
+      "strong_win": 22,
+      "weak_loss": 0,
+      "weak_draw": 150,
+      "weak_win": 41,
+      "complete": true
+    },
+    {
+      "N": 13,
+      "even_parents": 1579,
+      "gap_candidates": 911,
+      "strong": 531,
+      "weak": 380,
+      "strong_loss": 1,
+      "strong_draw": 513,
+      "strong_win": 17,
+      "weak_loss": 1,
+      "weak_draw": 298,
+      "weak_win": 81,
+      "complete": false
+    }
+  ],
+  "diagnostics": [
+    {
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "t": 3,
+      "w": 7,
+      "b": 9,
+      "mask": 497,
+      "block_mask": 257,
+      "successor_mask": 433,
+      "parent_value": "draw",
+      "successor_value": "loss",
+      "parent_moves": "1:D,5:L,6:D,7:L,8:D,9:D,",
+      "successor_moves": "1:L,5:L,6:L,8:L,9:L,",
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        1,
+        9
+      ],
+      "successor_remaining": [
+        1,
+        5,
+        6,
+        8,
+        9
+      ],
+      "strong_constraint": false,
+      "parent_outcome": 0,
+      "successor_outcome": -1,
+      "all_parent_move_outcomes": {
+        "1": 0,
+        "5": -1,
+        "6": 0,
+        "7": -1,
+        "8": 0,
+        "9": 0
+      },
+      "all_successor_move_outcomes": {
+        "1": -1,
+        "5": -1,
+        "6": -1,
+        "8": -1,
+        "9": -1
+      },
+      "literal_cache": "CacheInfo(hits=310, misses=257, maxsize=None, currsize=257)"
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 3,
+      "w": 10,
+      "b": 9,
+      "mask": 3992,
+      "block_mask": 264,
+      "successor_mask": 3480,
+      "parent_value": "win",
+      "successor_value": "loss",
+      "parent_moves": "4:W,5:W,8:W,9:D,10:L,11:D,12:D,",
+      "successor_moves": "4:L,5:L,8:L,9:L,11:L,12:L,",
+      "remaining": [
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "block": [
+        4,
+        9
+      ],
+      "successor_remaining": [
+        4,
+        5,
+        8,
+        9,
+        11,
+        12
+      ],
+      "strong_constraint": true,
+      "parent_outcome": 1,
+      "successor_outcome": -1,
+      "all_parent_move_outcomes": {
+        "4": 1,
+        "5": 1,
+        "8": 1,
+        "9": 0,
+        "10": -1,
+        "11": 0,
+        "12": 0
+      },
+      "all_successor_move_outcomes": {
+        "4": -1,
+        "5": -1,
+        "8": -1,
+        "9": -1,
+        "11": -1,
+        "12": -1
+      },
+      "literal_cache": "CacheInfo(hits=1174, misses=681, maxsize=None, currsize=681)",
+      "satisfies_full_strategic_premise": false,
+      "all_exact_blocks_after_opening_control": [
+        {
+          "block": [
+            5,
+            8
+          ],
+          "block_mask": 144,
+          "global_b": 9,
+          "contains_global_b": false,
+          "after_opening_at_10_value": 1,
+          "opening_10_outcome": -1,
+          "qualifies_full_strategic_premise": false
+        },
+        {
+          "block": [
+            4,
+            9
+          ],
+          "block_mask": 264,
+          "global_b": 9,
+          "contains_global_b": true,
+          "after_opening_at_10_value": 1,
+          "opening_10_outcome": -1,
+          "qualifies_full_strategic_premise": false
+        }
+      ]
+    }
+  ],
+  "smallest_strong_ambient_in_search": 13,
+  "completed_ambient_below_strong": "0..12",
+  "strong_ambient_13": "partial; stopped at first retained-maximality loss",
+  "seconds": 0.0009824169999999993,
+  "max_rss_bytes": 14401536,
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432",
+  "scope_correction": {
+    "geometric_counterexample_only": true,
+    "full_strategic_premise": "There exists an exact-d block B containing global maximal member b with afterOpening(S\\B,w).value=LOSS",
+    "N13_does_not_satisfy_full_premise": true,
+    "N13_all_exact_blocks_control": [
+      {
+        "block": [
+          5,
+          8
+        ],
+        "block_mask": 144,
+        "global_b": 9,
+        "contains_global_b": false,
+        "after_opening_at_10_value": 1,
+        "opening_10_outcome": -1,
+        "qualifies_full_strategic_premise": false
+      },
+      {
+        "block": [
+          4,
+          9
+        ],
+        "block_mask": 264,
+        "global_b": 9,
+        "contains_global_b": true,
+        "after_opening_at_10_value": 1,
+        "opening_10_outcome": -1,
+        "qualifies_full_strategic_premise": false
+      }
+    ]
+  }
+}

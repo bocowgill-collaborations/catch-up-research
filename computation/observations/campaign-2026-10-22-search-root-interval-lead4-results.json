@@ -1,0 +1,3120 @@
+{
+  "kind": "Fixed reply-policy discriminator on SAME51 endpoints; no repair/domain extension",
+  "all_51_native_complete": true,
+  "all_policy_cases": [
+    {
+      "id": 1,
+      "N": 11,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": 1,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": -1,
+      "policy_value": 1,
+      "remaining": [
+        9,
+        10,
+        11
+      ],
+      "child_remaining": [
+        10,
+        11
+      ],
+      "policy_branch": "y7",
+      "literal_normalized_child_value": -1,
+      "literal_actual_score_policy_value": 1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 2,
+      "N": 11,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": 1,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        10,
+        11
+      ],
+      "child_remaining": [
+        7,
+        11
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 3,
+      "N": 11,
+      "y": 10,
+      "deficit": 7,
+      "endpoint_value": 1,
+      "reply": 11,
+      "child_deficit": 4,
+      "child_value": -1,
+      "policy_value": 1,
+      "remaining": [
+        7,
+        9,
+        11
+      ],
+      "child_remaining": [
+        7,
+        9
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": -1,
+      "literal_actual_score_policy_value": 1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 11,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 4,
+      "N": 11,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 0,
+      "reply": 10,
+      "child_deficit": 2,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10
+      ],
+      "child_remaining": [
+        7,
+        9
+      ],
+      "policy_branch": "top",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 5,
+      "N": 12,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": -1,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12
+      ],
+      "policy_branch": "y7",
+      "all_friendly_first_pick_values": {
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "safe_alternatives": [],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 6,
+      "N": 12,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": -1,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        10,
+        11,
+        12
+      ],
+      "child_remaining": [
+        7,
+        11,
+        12
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "safe_alternatives": [],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 7,
+      "N": 12,
+      "y": 10,
+      "deficit": 7,
+      "endpoint_value": 0,
+      "reply": 11,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        11,
+        12
+      ],
+      "child_remaining": [
+        7,
+        9,
+        12
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 11,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 8,
+      "N": 12,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 1,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": -1,
+        "10": -1,
+        "12": -1
+      },
+      "safe_alternatives": [
+        7
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 9,
+      "N": 12,
+      "y": 12,
+      "deficit": 9,
+      "endpoint_value": 1,
+      "reply": 11,
+      "child_deficit": 2,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10
+      ],
+      "policy_branch": "top",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": -1,
+        "10": -1,
+        "11": -1
+      },
+      "safe_alternatives": [
+        7
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 13,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 10,
+      "N": 15,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": 1,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": -1,
+      "policy_value": 1,
+      "remaining": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "policy_branch": "y7",
+      "literal_normalized_child_value": -1,
+      "literal_actual_score_policy_value": 1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 11,
+      "N": 15,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": 0,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 12,
+      "N": 15,
+      "y": 10,
+      "deficit": 7,
+      "endpoint_value": 0,
+      "reply": 11,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        12,
+        13,
+        14,
+        15
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 11,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 13,
+      "N": 15,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 0,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 0,
+        "9": 0,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": -1,
+        "15": 0
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        13,
+        15
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 14,
+      "N": 15,
+      "y": 12,
+      "deficit": 9,
+      "endpoint_value": 0,
+      "reply": 13,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        14,
+        15
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 13,
+        "original_mover": 17
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 15,
+      "N": 15,
+      "y": 13,
+      "deficit": 10,
+      "endpoint_value": 0,
+      "reply": 14,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        15
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 14,
+        "original_mover": 18
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 16,
+      "N": 15,
+      "y": 14,
+      "deficit": 11,
+      "endpoint_value": 1,
+      "reply": 15,
+      "child_deficit": 4,
+      "child_value": -1,
+      "policy_value": 1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": -1,
+      "literal_actual_score_policy_value": 1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 15,
+        "original_mover": 19
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 17,
+      "N": 15,
+      "y": 15,
+      "deficit": 12,
+      "endpoint_value": 0,
+      "reply": 14,
+      "child_deficit": 2,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "policy_branch": "top",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 16,
+        "original_mover": 18
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 18,
+      "N": 16,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": 0,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "y7",
+      "all_friendly_first_pick_values": {
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": 0
+      },
+      "safe_alternatives": [
+        16
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 19,
+      "N": 16,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": 0,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 20,
+      "N": 16,
+      "y": 10,
+      "deficit": 7,
+      "endpoint_value": 0,
+      "reply": 11,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 11,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 21,
+      "N": 16,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 1,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": -1,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "safe_alternatives": [
+        7,
+        10,
+        13,
+        14,
+        15,
+        16
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 22,
+      "N": 16,
+      "y": 12,
+      "deficit": 9,
+      "endpoint_value": 1,
+      "reply": 13,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 13,
+        "original_mover": 17
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 23,
+      "N": 16,
+      "y": 13,
+      "deficit": 10,
+      "endpoint_value": 1,
+      "reply": 14,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": 1,
+        "10": 0,
+        "11": -1,
+        "12": 0,
+        "14": -1,
+        "15": 0,
+        "16": -1
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        12,
+        15
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 14,
+        "original_mover": 18
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 24,
+      "N": 16,
+      "y": 14,
+      "deficit": 11,
+      "endpoint_value": 1,
+      "reply": 15,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        16
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 15,
+        "original_mover": 19
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 25,
+      "N": 16,
+      "y": 15,
+      "deficit": 12,
+      "endpoint_value": 1,
+      "reply": 16,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 16,
+        "original_mover": 20
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 26,
+      "N": 16,
+      "y": 16,
+      "deficit": 13,
+      "endpoint_value": 1,
+      "reply": 15,
+      "child_deficit": 2,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "policy_branch": "top",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 17,
+        "original_mover": 19
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 27,
+      "N": 19,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": 0,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "y7",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 28,
+      "N": 19,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": 0,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 29,
+      "N": 19,
+      "y": 10,
+      "deficit": 7,
+      "endpoint_value": 0,
+      "reply": 11,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 11,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 30,
+      "N": 19,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 0,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 31,
+      "N": 19,
+      "y": 12,
+      "deficit": 9,
+      "endpoint_value": 0,
+      "reply": 13,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 13,
+        "original_mover": 17
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 32,
+      "N": 19,
+      "y": 13,
+      "deficit": 10,
+      "endpoint_value": 0,
+      "reply": 14,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 14,
+        "original_mover": 18
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 33,
+      "N": 19,
+      "y": 14,
+      "deficit": 11,
+      "endpoint_value": 0,
+      "reply": 15,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 15,
+        "original_mover": 19
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 34,
+      "N": 19,
+      "y": 15,
+      "deficit": 12,
+      "endpoint_value": 0,
+      "reply": 16,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        17,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 16,
+        "original_mover": 20
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 35,
+      "N": 19,
+      "y": 16,
+      "deficit": 13,
+      "endpoint_value": 0,
+      "reply": 17,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        18,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 17,
+        "original_mover": 21
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 36,
+      "N": 19,
+      "y": 17,
+      "deficit": 14,
+      "endpoint_value": 0,
+      "reply": 18,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        19
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 18,
+        "original_mover": 22
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 37,
+      "N": 19,
+      "y": 18,
+      "deficit": 15,
+      "endpoint_value": 0,
+      "reply": 19,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 19,
+        "original_mover": 23
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 38,
+      "N": 19,
+      "y": 19,
+      "deficit": 16,
+      "endpoint_value": 0,
+      "reply": 18,
+      "child_deficit": 2,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "policy_branch": "top",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 20,
+        "original_mover": 22
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 39,
+      "N": 20,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": 0,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "y7",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 40,
+      "N": 20,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": 0,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 41,
+      "N": 20,
+      "y": 10,
+      "deficit": 7,
+      "endpoint_value": 0,
+      "reply": 11,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 11,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 42,
+      "N": 20,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 0,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 43,
+      "N": 20,
+      "y": 12,
+      "deficit": 9,
+      "endpoint_value": 0,
+      "reply": 13,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 13,
+        "original_mover": 17
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 44,
+      "N": 20,
+      "y": 13,
+      "deficit": 10,
+      "endpoint_value": 0,
+      "reply": 14,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 14,
+        "original_mover": 18
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 45,
+      "N": 20,
+      "y": 14,
+      "deficit": 11,
+      "endpoint_value": 0,
+      "reply": 15,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 15,
+        "original_mover": 19
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 46,
+      "N": 20,
+      "y": 15,
+      "deficit": 12,
+      "endpoint_value": 0,
+      "reply": 16,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        17,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 16,
+        "original_mover": 20
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 47,
+      "N": 20,
+      "y": 16,
+      "deficit": 13,
+      "endpoint_value": 0,
+      "reply": 17,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        18,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 17,
+        "original_mover": 21
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 48,
+      "N": 20,
+      "y": 17,
+      "deficit": 14,
+      "endpoint_value": 0,
+      "reply": 18,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        19,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 18,
+        "original_mover": 22
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 49,
+      "N": 20,
+      "y": 18,
+      "deficit": 15,
+      "endpoint_value": 0,
+      "reply": 19,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 19,
+        "original_mover": 23
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 50,
+      "N": 20,
+      "y": 19,
+      "deficit": 16,
+      "endpoint_value": 0,
+      "reply": 20,
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "policy_branch": "interior",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 20,
+        "original_mover": 24
+      },
+      "literal_policy_pass": true
+    },
+    {
+      "id": 51,
+      "N": 20,
+      "y": 20,
+      "deficit": 17,
+      "endpoint_value": 0,
+      "reply": 19,
+      "child_deficit": 2,
+      "child_value": 0,
+      "policy_value": 0,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "policy_branch": "top",
+      "literal_normalized_child_value": 0,
+      "literal_actual_score_policy_value": 0,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 21,
+        "original_mover": 23
+      },
+      "literal_policy_pass": true
+    }
+  ],
+  "policy_values": {
+    "1": 4,
+    "0": 38,
+    "-1": 9
+  },
+  "per_N": {
+    "11": {
+      "cases": 4,
+      "policy_values": {
+        "1": 2,
+        "0": 2
+      },
+      "failed_y": []
+    },
+    "12": {
+      "cases": 5,
+      "policy_values": {
+        "-1": 4,
+        "0": 1
+      },
+      "failed_y": [
+        7,
+        9,
+        11,
+        12
+      ]
+    },
+    "15": {
+      "cases": 8,
+      "policy_values": {
+        "1": 2,
+        "0": 5,
+        "-1": 1
+      },
+      "failed_y": [
+        11
+      ]
+    },
+    "16": {
+      "cases": 9,
+      "policy_values": {
+        "-1": 4,
+        "0": 5
+      },
+      "failed_y": [
+        7,
+        11,
+        13,
+        16
+      ]
+    },
+    "19": {
+      "cases": 12,
+      "policy_values": {
+        "0": 12
+      },
+      "failed_y": []
+    },
+    "20": {
+      "cases": 13,
+      "policy_values": {
+        "0": 13
+      },
+      "failed_y": []
+    }
+  },
+  "first_failure_including_baseline": {
+    "id": 5,
+    "N": 12,
+    "y": 7,
+    "deficit": 4,
+    "endpoint_value": -1,
+    "reply": 9,
+    "child_deficit": 5,
+    "child_value": 1,
+    "policy_value": -1,
+    "remaining": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "child_remaining": [
+      10,
+      11,
+      12
+    ],
+    "policy_branch": "y7",
+    "all_friendly_first_pick_values": {
+      "9": -1,
+      "10": -1,
+      "11": -1,
+      "12": -1
+    },
+    "safe_alternatives": [],
+    "literal_normalized_child_value": 1,
+    "literal_actual_score_policy_value": -1,
+    "literal_actual_after_reply_scores": {
+      "active_opponent": 8,
+      "original_mover": 13
+    },
+    "literal_policy_pass": true,
+    "literal_all_friendly_first_picks_pass": true
+  },
+  "all_failing_cases": [
+    {
+      "id": 5,
+      "N": 12,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": -1,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12
+      ],
+      "policy_branch": "y7",
+      "all_friendly_first_pick_values": {
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "safe_alternatives": [],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 6,
+      "N": 12,
+      "y": 9,
+      "deficit": 6,
+      "endpoint_value": -1,
+      "reply": 10,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        10,
+        11,
+        12
+      ],
+      "child_remaining": [
+        7,
+        11,
+        12
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1
+      },
+      "safe_alternatives": [],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 10,
+        "original_mover": 14
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 8,
+      "N": 12,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 1,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": -1,
+        "10": -1,
+        "12": -1
+      },
+      "safe_alternatives": [
+        7
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 9,
+      "N": 12,
+      "y": 12,
+      "deficit": 9,
+      "endpoint_value": 1,
+      "reply": 11,
+      "child_deficit": 2,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10
+      ],
+      "policy_branch": "top",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": -1,
+        "10": -1,
+        "11": -1
+      },
+      "safe_alternatives": [
+        7
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 13,
+        "original_mover": 15
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 13,
+      "N": 15,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 0,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 0,
+        "9": 0,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": -1,
+        "15": 0
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        13,
+        15
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 18,
+      "N": 16,
+      "y": 7,
+      "deficit": 4,
+      "endpoint_value": 0,
+      "reply": 9,
+      "child_deficit": 5,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "y7",
+      "all_friendly_first_pick_values": {
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": 0
+      },
+      "safe_alternatives": [
+        16
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 8,
+        "original_mover": 13
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 21,
+      "N": 16,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 1,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": -1,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0
+      },
+      "safe_alternatives": [
+        7,
+        10,
+        13,
+        14,
+        15,
+        16
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 23,
+      "N": 16,
+      "y": 13,
+      "deficit": 10,
+      "endpoint_value": 1,
+      "reply": 14,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": 1,
+        "10": 0,
+        "11": -1,
+        "12": 0,
+        "14": -1,
+        "15": 0,
+        "16": -1
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        12,
+        15
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 14,
+        "original_mover": 18
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    {
+      "id": 26,
+      "N": 16,
+      "y": 16,
+      "deficit": 13,
+      "endpoint_value": 1,
+      "reply": 15,
+      "child_deficit": 2,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "policy_branch": "top",
+      "all_friendly_first_pick_values": {
+        "7": 1,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 1,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 17,
+        "original_mover": 19
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    }
+  ],
+  "target_N_ge15_summary": {
+    "cases": 42,
+    "policy_values": {
+      "1": 2,
+      "0": 35,
+      "-1": 5
+    },
+    "failed_count": 5,
+    "first_failure": {
+      "id": 13,
+      "N": 15,
+      "y": 11,
+      "deficit": 8,
+      "endpoint_value": 0,
+      "reply": 12,
+      "child_deficit": 4,
+      "child_value": 1,
+      "policy_value": -1,
+      "remaining": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "child_remaining": [
+        7,
+        9,
+        10,
+        13,
+        14,
+        15
+      ],
+      "policy_branch": "interior",
+      "all_friendly_first_pick_values": {
+        "7": 0,
+        "9": 0,
+        "10": 0,
+        "12": -1,
+        "13": 0,
+        "14": -1,
+        "15": 0
+      },
+      "safe_alternatives": [
+        7,
+        9,
+        10,
+        13,
+        15
+      ],
+      "literal_normalized_child_value": 1,
+      "literal_actual_score_policy_value": -1,
+      "literal_actual_after_reply_scores": {
+        "active_opponent": 12,
+        "original_mover": 16
+      },
+      "literal_policy_pass": true,
+      "literal_all_friendly_first_picks_pass": true
+    },
+    "all_failures": [
+      {
+        "id": 13,
+        "N": 15,
+        "y": 11,
+        "deficit": 8,
+        "endpoint_value": 0,
+        "reply": 12,
+        "child_deficit": 4,
+        "child_value": 1,
+        "policy_value": -1,
+        "remaining": [
+          7,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15
+        ],
+        "child_remaining": [
+          7,
+          9,
+          10,
+          13,
+          14,
+          15
+        ],
+        "policy_branch": "interior",
+        "all_friendly_first_pick_values": {
+          "7": 0,
+          "9": 0,
+          "10": 0,
+          "12": -1,
+          "13": 0,
+          "14": -1,
+          "15": 0
+        },
+        "safe_alternatives": [
+          7,
+          9,
+          10,
+          13,
+          15
+        ],
+        "literal_normalized_child_value": 1,
+        "literal_actual_score_policy_value": -1,
+        "literal_actual_after_reply_scores": {
+          "active_opponent": 12,
+          "original_mover": 16
+        },
+        "literal_policy_pass": true,
+        "literal_all_friendly_first_picks_pass": true
+      },
+      {
+        "id": 18,
+        "N": 16,
+        "y": 7,
+        "deficit": 4,
+        "endpoint_value": 0,
+        "reply": 9,
+        "child_deficit": 5,
+        "child_value": 1,
+        "policy_value": -1,
+        "remaining": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "child_remaining": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "policy_branch": "y7",
+        "all_friendly_first_pick_values": {
+          "9": -1,
+          "10": -1,
+          "11": -1,
+          "12": -1,
+          "13": -1,
+          "14": -1,
+          "15": -1,
+          "16": 0
+        },
+        "safe_alternatives": [
+          16
+        ],
+        "literal_normalized_child_value": 1,
+        "literal_actual_score_policy_value": -1,
+        "literal_actual_after_reply_scores": {
+          "active_opponent": 8,
+          "original_mover": 13
+        },
+        "literal_policy_pass": true,
+        "literal_all_friendly_first_picks_pass": true
+      },
+      {
+        "id": 21,
+        "N": 16,
+        "y": 11,
+        "deficit": 8,
+        "endpoint_value": 1,
+        "reply": 12,
+        "child_deficit": 4,
+        "child_value": 1,
+        "policy_value": -1,
+        "remaining": [
+          7,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "child_remaining": [
+          7,
+          9,
+          10,
+          13,
+          14,
+          15,
+          16
+        ],
+        "policy_branch": "interior",
+        "all_friendly_first_pick_values": {
+          "7": 1,
+          "9": -1,
+          "10": 0,
+          "12": -1,
+          "13": 0,
+          "14": 0,
+          "15": 0,
+          "16": 0
+        },
+        "safe_alternatives": [
+          7,
+          10,
+          13,
+          14,
+          15,
+          16
+        ],
+        "literal_normalized_child_value": 1,
+        "literal_actual_score_policy_value": -1,
+        "literal_actual_after_reply_scores": {
+          "active_opponent": 12,
+          "original_mover": 16
+        },
+        "literal_policy_pass": true,
+        "literal_all_friendly_first_picks_pass": true
+      },
+      {
+        "id": 23,
+        "N": 16,
+        "y": 13,
+        "deficit": 10,
+        "endpoint_value": 1,
+        "reply": 14,
+        "child_deficit": 4,
+        "child_value": 1,
+        "policy_value": -1,
+        "remaining": [
+          7,
+          9,
+          10,
+          11,
+          12,
+          14,
+          15,
+          16
+        ],
+        "child_remaining": [
+          7,
+          9,
+          10,
+          11,
+          12,
+          15,
+          16
+        ],
+        "policy_branch": "interior",
+        "all_friendly_first_pick_values": {
+          "7": 1,
+          "9": 1,
+          "10": 0,
+          "11": -1,
+          "12": 0,
+          "14": -1,
+          "15": 0,
+          "16": -1
+        },
+        "safe_alternatives": [
+          7,
+          9,
+          10,
+          12,
+          15
+        ],
+        "literal_normalized_child_value": 1,
+        "literal_actual_score_policy_value": -1,
+        "literal_actual_after_reply_scores": {
+          "active_opponent": 14,
+          "original_mover": 18
+        },
+        "literal_policy_pass": true,
+        "literal_all_friendly_first_picks_pass": true
+      },
+      {
+        "id": 26,
+        "N": 16,
+        "y": 16,
+        "deficit": 13,
+        "endpoint_value": 1,
+        "reply": 15,
+        "child_deficit": 2,
+        "child_value": 1,
+        "policy_value": -1,
+        "remaining": [
+          7,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "child_remaining": [
+          7,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "policy_branch": "top",
+        "all_friendly_first_pick_values": {
+          "7": 1,
+          "9": 0,
+          "10": 1,
+          "11": 1,
+          "12": 1,
+          "13": -1,
+          "14": -1,
+          "15": -1
+        },
+        "safe_alternatives": [
+          7,
+          9,
+          10,
+          11,
+          12
+        ],
+        "literal_normalized_child_value": 1,
+        "literal_actual_score_policy_value": -1,
+        "literal_actual_after_reply_scores": {
+          "active_opponent": 17,
+          "original_mover": 19
+        },
+        "literal_policy_pass": true,
+        "literal_all_friendly_first_picks_pass": true
+      }
+    ]
+  },
+  "N12_known_baseline": {
+    "E1": 0,
+    "first4": -1,
+    "F3": 1,
+    "unavoidably_losing_y": [
+      7,
+      9
+    ],
+    "policy_failed_y": [
+      7,
+      9,
+      11,
+      12
+    ],
+    "source": "research/catchup/campaign_2026_10_22/search/root_interval_four_results.json",
+    "source_sha256": "0a62014f90adb61908199898f9bdfe5fe54e19806623db15292e10b4ada73343"
+  },
+  "literal_complete": true,
+  "literal_completed_policy_outcomes": 51,
+  "literal_score_queries": 102,
+  "literal_failure_first_pick_count": 55,
+  "literal_failure_scope": "all friendly first picks at every policy-failing endpoint",
+  "literal_controls": [
+    {
+      "label": "N16_y9_policy10",
+      "endpoint": [
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "endpoint_deficit": 6,
+      "reply": 10,
+      "child": [
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_deficit": 4,
+      "child_value": 0,
+      "policy_value": 0,
+      "literal_pass": true
+    },
+    {
+      "label": "N16_y10_copydown9_control",
+      "endpoint": [
+        7,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "endpoint_deficit": 7,
+      "reply": 9,
+      "child": [
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_deficit": 2,
+      "child_value": 1,
+      "move_value": -1,
+      "literal_pass": true
+    },
+    {
+      "label": "N16_y10_primary_policy11",
+      "child": [
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "child_deficit": 4,
+      "policy_value": 0,
+      "literal_pass": true
+    }
+  ],
+  "max_literal_cached_states_per_query": 16869,
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432",
+  "seconds": 0.973836292,
+  "max_rss_bytes": 18759680,
+  "scope_caveat": "Concrete policy failure already at N15,y11 in the stated target. Neither a uniform interval theorem nor B/Q_N/C counterexample follows. No new policy, tail or N was tested."
+}

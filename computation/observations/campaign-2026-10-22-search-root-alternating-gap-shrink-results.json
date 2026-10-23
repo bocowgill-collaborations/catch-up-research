@@ -1,0 +1,6394 @@
+{
+  "scope": "Fixed T0 deletion and deterministic coordinate -2 compression only; no global minimum claim",
+  "source_T0": [
+    19,
+    36,
+    37,
+    52,
+    57,
+    62,
+    101
+  ],
+  "deletion_records": [
+    {
+      "deletion_mask": 0,
+      "retained_original_indices_zero_based": [],
+      "T": [],
+      "E": [
+        4,
+        7
+      ],
+      "deficit": 1,
+      "sumT": 0,
+      "admissible": false,
+      "predicate_failures": [
+        "empty_tail"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        0,
+        0,
+        0,
+        []
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 1,
+      "retained_original_indices_zero_based": [
+        0
+      ],
+      "T": [
+        19
+      ],
+      "E": [
+        4,
+        7,
+        19
+      ],
+      "deficit": 1,
+      "sumT": 19,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        1,
+        19,
+        19,
+        [
+          19
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 2,
+      "retained_original_indices_zero_based": [
+        1
+      ],
+      "T": [
+        36
+      ],
+      "E": [
+        4,
+        7,
+        36
+      ],
+      "deficit": 1,
+      "sumT": 36,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        1,
+        36,
+        36,
+        [
+          36
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 3,
+      "retained_original_indices_zero_based": [
+        0,
+        1
+      ],
+      "T": [
+        19,
+        36
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36
+      ],
+      "deficit": 1,
+      "sumT": 55,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        2,
+        36,
+        55,
+        [
+          19,
+          36
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 4,
+      "retained_original_indices_zero_based": [
+        2
+      ],
+      "T": [
+        37
+      ],
+      "E": [
+        4,
+        7,
+        37
+      ],
+      "deficit": 1,
+      "sumT": 37,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        1,
+        37,
+        37,
+        [
+          37
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 5,
+      "retained_original_indices_zero_based": [
+        0,
+        2
+      ],
+      "T": [
+        19,
+        37
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37
+      ],
+      "deficit": 1,
+      "sumT": 56,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        2,
+        37,
+        56,
+        [
+          19,
+          37
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 6,
+      "retained_original_indices_zero_based": [
+        1,
+        2
+      ],
+      "T": [
+        36,
+        37
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37
+      ],
+      "deficit": 1,
+      "sumT": 73,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        2,
+        37,
+        73,
+        [
+          36,
+          37
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 7,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "T": [
+        19,
+        36,
+        37
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37
+      ],
+      "deficit": 1,
+      "sumT": 92,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        37,
+        92,
+        [
+          19,
+          36,
+          37
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 8,
+      "retained_original_indices_zero_based": [
+        3
+      ],
+      "T": [
+        52
+      ],
+      "E": [
+        4,
+        7,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 52,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        1,
+        52,
+        52,
+        [
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 9,
+      "retained_original_indices_zero_based": [
+        0,
+        3
+      ],
+      "T": [
+        19,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 71,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        2,
+        52,
+        71,
+        [
+          19,
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 10,
+      "retained_original_indices_zero_based": [
+        1,
+        3
+      ],
+      "T": [
+        36,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 88,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        2,
+        52,
+        88,
+        [
+          36,
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 11,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3
+      ],
+      "T": [
+        19,
+        36,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 107,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2
+      ],
+      "objective_key": [
+        3,
+        52,
+        107,
+        [
+          19,
+          36,
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 12,
+      "retained_original_indices_zero_based": [
+        2,
+        3
+      ],
+      "T": [
+        37,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 89,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        2,
+        52,
+        89,
+        [
+          37,
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 13,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3
+      ],
+      "T": [
+        19,
+        37,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 108,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        52,
+        108,
+        [
+          19,
+          37,
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 14,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "T": [
+        36,
+        37,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 125,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        52,
+        125,
+        [
+          36,
+          37,
+          52
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 15,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52
+      ],
+      "deficit": 1,
+      "sumT": 144,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        4,
+        52,
+        144,
+        [
+          19,
+          36,
+          37,
+          52
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 0
+    },
+    {
+      "deletion_mask": 16,
+      "retained_original_indices_zero_based": [
+        4
+      ],
+      "T": [
+        57
+      ],
+      "E": [
+        4,
+        7,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 57,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        1,
+        57,
+        57,
+        [
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 17,
+      "retained_original_indices_zero_based": [
+        0,
+        4
+      ],
+      "T": [
+        19,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 76,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        2,
+        57,
+        76,
+        [
+          19,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 18,
+      "retained_original_indices_zero_based": [
+        1,
+        4
+      ],
+      "T": [
+        36,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 93,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        2,
+        57,
+        93,
+        [
+          36,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 19,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        4
+      ],
+      "T": [
+        19,
+        36,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 112,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        57,
+        112,
+        [
+          19,
+          36,
+          57
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 0
+    },
+    {
+      "deletion_mask": 20,
+      "retained_original_indices_zero_based": [
+        2,
+        4
+      ],
+      "T": [
+        37,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 94,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        2,
+        57,
+        94,
+        [
+          37,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 21,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        4
+      ],
+      "T": [
+        19,
+        37,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 113,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        3,
+        57,
+        113,
+        [
+          19,
+          37,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 22,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        4
+      ],
+      "T": [
+        36,
+        37,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 130,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        3,
+        57,
+        130,
+        [
+          36,
+          37,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 23,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 149,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3
+      ],
+      "objective_key": [
+        4,
+        57,
+        149,
+        [
+          19,
+          36,
+          37,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 24,
+      "retained_original_indices_zero_based": [
+        3,
+        4
+      ],
+      "T": [
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 109,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        2,
+        57,
+        109,
+        [
+          52,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 25,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        4
+      ],
+      "T": [
+        19,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 128,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        57,
+        128,
+        [
+          19,
+          52,
+          57
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 26,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        4
+      ],
+      "T": [
+        36,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 145,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        3,
+        57,
+        145,
+        [
+          36,
+          52,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 27,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 164,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        57,
+        164,
+        [
+          19,
+          36,
+          52,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 28,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        4
+      ],
+      "T": [
+        37,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 146,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        57,
+        146,
+        [
+          37,
+          52,
+          57
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 29,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 165,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        57,
+        165,
+        [
+          19,
+          37,
+          52,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 30,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 182,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        57,
+        182,
+        [
+          36,
+          37,
+          52,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 31,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        57
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        57
+      ],
+      "deficit": 1,
+      "sumT": 201,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        5,
+        57,
+        201,
+        [
+          19,
+          36,
+          37,
+          52,
+          57
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 32,
+      "retained_original_indices_zero_based": [
+        5
+      ],
+      "T": [
+        62
+      ],
+      "E": [
+        4,
+        7,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 62,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        1,
+        62,
+        62,
+        [
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 33,
+      "retained_original_indices_zero_based": [
+        0,
+        5
+      ],
+      "T": [
+        19,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 81,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        2,
+        62,
+        81,
+        [
+          19,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 34,
+      "retained_original_indices_zero_based": [
+        1,
+        5
+      ],
+      "T": [
+        36,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 98,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        2,
+        62,
+        98,
+        [
+          36,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 35,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 117,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        117,
+        [
+          19,
+          36,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 36,
+      "retained_original_indices_zero_based": [
+        2,
+        5
+      ],
+      "T": [
+        37,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 99,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        2,
+        62,
+        99,
+        [
+          37,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 37,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        5
+      ],
+      "T": [
+        19,
+        37,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 118,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        118,
+        [
+          19,
+          37,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 38,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        5
+      ],
+      "T": [
+        36,
+        37,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 135,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        135,
+        [
+          36,
+          37,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 39,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 154,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        4,
+        62,
+        154,
+        [
+          19,
+          36,
+          37,
+          62
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 40,
+      "retained_original_indices_zero_based": [
+        3,
+        5
+      ],
+      "T": [
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 114,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        2,
+        62,
+        114,
+        [
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 41,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        5
+      ],
+      "T": [
+        19,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 133,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        133,
+        [
+          19,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 42,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        5
+      ],
+      "T": [
+        36,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 150,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        150,
+        [
+          36,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 43,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 169,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2
+      ],
+      "objective_key": [
+        4,
+        62,
+        169,
+        [
+          19,
+          36,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 44,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        5
+      ],
+      "T": [
+        37,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 151,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        151,
+        [
+          37,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 45,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        5
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 170,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2
+      ],
+      "objective_key": [
+        4,
+        62,
+        170,
+        [
+          19,
+          37,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 46,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 187,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "objective_key": [
+        4,
+        62,
+        187,
+        [
+          36,
+          37,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 47,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 206,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        4
+      ],
+      "objective_key": [
+        5,
+        62,
+        206,
+        [
+          19,
+          36,
+          37,
+          52,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 48,
+      "retained_original_indices_zero_based": [
+        4,
+        5
+      ],
+      "T": [
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 119,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        2,
+        62,
+        119,
+        [
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 49,
+      "retained_original_indices_zero_based": [
+        0,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 138,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        138,
+        [
+          19,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 50,
+      "retained_original_indices_zero_based": [
+        1,
+        4,
+        5
+      ],
+      "T": [
+        36,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 155,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        155,
+        [
+          36,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 51,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 174,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        4,
+        62,
+        174,
+        [
+          19,
+          36,
+          57,
+          62
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 0
+    },
+    {
+      "deletion_mask": 52,
+      "retained_original_indices_zero_based": [
+        2,
+        4,
+        5
+      ],
+      "T": [
+        37,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 156,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        156,
+        [
+          37,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 53,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        37,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 175,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        4,
+        62,
+        175,
+        [
+          19,
+          37,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 54,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "T": [
+        36,
+        37,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 192,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        4,
+        62,
+        192,
+        [
+          36,
+          37,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 55,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 211,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3,
+        4
+      ],
+      "objective_key": [
+        5,
+        62,
+        211,
+        [
+          19,
+          36,
+          37,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 56,
+      "retained_original_indices_zero_based": [
+        3,
+        4,
+        5
+      ],
+      "T": [
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 171,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "objective_key": [
+        3,
+        62,
+        171,
+        [
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 57,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 190,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        4,
+        62,
+        190,
+        [
+          19,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 58,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        36,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 207,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        4,
+        62,
+        207,
+        [
+          36,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 59,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 226,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3,
+        4
+      ],
+      "objective_key": [
+        5,
+        62,
+        226,
+        [
+          19,
+          36,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 60,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        37,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 208,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        4,
+        62,
+        208,
+        [
+          37,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 0
+    },
+    {
+      "deletion_mask": 61,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 227,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "objective_key": [
+        5,
+        62,
+        227,
+        [
+          19,
+          37,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 62,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 244,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "objective_key": [
+        5,
+        62,
+        244,
+        [
+          36,
+          37,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 63,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        57,
+        62
+      ],
+      "deficit": 1,
+      "sumT": 263,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        6,
+        62,
+        263,
+        [
+          19,
+          36,
+          37,
+          52,
+          57,
+          62
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 64,
+      "retained_original_indices_zero_based": [
+        6
+      ],
+      "T": [
+        101
+      ],
+      "E": [
+        4,
+        7,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 101,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        1,
+        101,
+        101,
+        [
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 65,
+      "retained_original_indices_zero_based": [
+        0,
+        6
+      ],
+      "T": [
+        19,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 120,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        2,
+        101,
+        120,
+        [
+          19,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 66,
+      "retained_original_indices_zero_based": [
+        1,
+        6
+      ],
+      "T": [
+        36,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 137,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        2,
+        101,
+        137,
+        [
+          36,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 67,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 156,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        101,
+        156,
+        [
+          19,
+          36,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 68,
+      "retained_original_indices_zero_based": [
+        2,
+        6
+      ],
+      "T": [
+        37,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 138,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        2,
+        101,
+        138,
+        [
+          37,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 69,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 157,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        3,
+        101,
+        157,
+        [
+          19,
+          37,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 70,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 174,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        3,
+        101,
+        174,
+        [
+          36,
+          37,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 71,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 193,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        193,
+        [
+          19,
+          36,
+          37,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 72,
+      "retained_original_indices_zero_based": [
+        3,
+        6
+      ],
+      "T": [
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 153,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        2,
+        101,
+        153,
+        [
+          52,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 73,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        6
+      ],
+      "T": [
+        19,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 172,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        101,
+        172,
+        [
+          19,
+          52,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 74,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        6
+      ],
+      "T": [
+        36,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 189,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        3,
+        101,
+        189,
+        [
+          36,
+          52,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 75,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 208,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        208,
+        [
+          19,
+          36,
+          52,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 76,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        6
+      ],
+      "T": [
+        37,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 190,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        101,
+        190,
+        [
+          37,
+          52,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 0
+    },
+    {
+      "deletion_mask": 77,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 209,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        209,
+        [
+          19,
+          37,
+          52,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 78,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 226,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        226,
+        [
+          36,
+          37,
+          52,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 79,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 245,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        5,
+        101,
+        245,
+        [
+          19,
+          36,
+          37,
+          52,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 80,
+      "retained_original_indices_zero_based": [
+        4,
+        6
+      ],
+      "T": [
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 158,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        2,
+        101,
+        158,
+        [
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 81,
+      "retained_original_indices_zero_based": [
+        0,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 177,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        3,
+        101,
+        177,
+        [
+          19,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 82,
+      "retained_original_indices_zero_based": [
+        1,
+        4,
+        6
+      ],
+      "T": [
+        36,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 194,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        3,
+        101,
+        194,
+        [
+          36,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 83,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 213,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        213,
+        [
+          19,
+          36,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 84,
+      "retained_original_indices_zero_based": [
+        2,
+        4,
+        6
+      ],
+      "T": [
+        37,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 195,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        3,
+        101,
+        195,
+        [
+          37,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 85,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 214,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        214,
+        [
+          19,
+          37,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 86,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 231,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        231,
+        [
+          36,
+          37,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 87,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 250,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3
+      ],
+      "objective_key": [
+        5,
+        101,
+        250,
+        [
+          19,
+          36,
+          37,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 88,
+      "retained_original_indices_zero_based": [
+        3,
+        4,
+        6
+      ],
+      "T": [
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 210,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        3,
+        101,
+        210,
+        [
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 89,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 229,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        229,
+        [
+          19,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 90,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        36,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 246,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        246,
+        [
+          36,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 91,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 265,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3
+      ],
+      "objective_key": [
+        5,
+        101,
+        265,
+        [
+          19,
+          36,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 92,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        37,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 247,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        247,
+        [
+          37,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 93,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 266,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        5,
+        101,
+        266,
+        [
+          19,
+          37,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 94,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 283,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        5,
+        101,
+        283,
+        [
+          36,
+          37,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 95,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        57,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 302,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        5
+      ],
+      "objective_key": [
+        6,
+        101,
+        302,
+        [
+          19,
+          36,
+          37,
+          52,
+          57,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 96,
+      "retained_original_indices_zero_based": [
+        5,
+        6
+      ],
+      "T": [
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 163,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        2,
+        101,
+        163,
+        [
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 97,
+      "retained_original_indices_zero_based": [
+        0,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 182,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        101,
+        182,
+        [
+          19,
+          62,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 98,
+      "retained_original_indices_zero_based": [
+        1,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 199,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        3,
+        101,
+        199,
+        [
+          36,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 99,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 218,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        218,
+        [
+          19,
+          36,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 100,
+      "retained_original_indices_zero_based": [
+        2,
+        5,
+        6
+      ],
+      "T": [
+        37,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 200,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        101,
+        200,
+        [
+          37,
+          62,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 0
+    },
+    {
+      "deletion_mask": 101,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 219,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        219,
+        [
+          19,
+          37,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 102,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 236,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        236,
+        [
+          36,
+          37,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 103,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 255,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        5,
+        101,
+        255,
+        [
+          19,
+          36,
+          37,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 104,
+      "retained_original_indices_zero_based": [
+        3,
+        5,
+        6
+      ],
+      "T": [
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 215,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        3,
+        101,
+        215,
+        [
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 105,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 234,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        234,
+        [
+          19,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 106,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 251,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        251,
+        [
+          36,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 107,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 270,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2
+      ],
+      "objective_key": [
+        5,
+        101,
+        270,
+        [
+          19,
+          36,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 108,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        37,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 252,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        252,
+        [
+          37,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 109,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 271,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2
+      ],
+      "objective_key": [
+        5,
+        101,
+        271,
+        [
+          19,
+          37,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 110,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 288,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "objective_key": [
+        5,
+        101,
+        288,
+        [
+          36,
+          37,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 111,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 307,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        4,
+        5
+      ],
+      "objective_key": [
+        6,
+        101,
+        307,
+        [
+          19,
+          36,
+          37,
+          52,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 112,
+      "retained_original_indices_zero_based": [
+        4,
+        5,
+        6
+      ],
+      "T": [
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 220,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        3,
+        101,
+        220,
+        [
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": 1
+    },
+    {
+      "deletion_mask": 113,
+      "retained_original_indices_zero_based": [
+        0,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 239,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        239,
+        [
+          19,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 114,
+      "retained_original_indices_zero_based": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 256,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        256,
+        [
+          36,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 115,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 275,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        5,
+        101,
+        275,
+        [
+          19,
+          36,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 116,
+      "retained_original_indices_zero_based": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        37,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 257,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        257,
+        [
+          37,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 117,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 276,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1
+      ],
+      "objective_key": [
+        5,
+        101,
+        276,
+        [
+          19,
+          37,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 118,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 293,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1
+      ],
+      "objective_key": [
+        5,
+        101,
+        293,
+        [
+          36,
+          37,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 119,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 312,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        3,
+        4,
+        5
+      ],
+      "objective_key": [
+        6,
+        101,
+        312,
+        [
+          19,
+          36,
+          37,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 120,
+      "retained_original_indices_zero_based": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 272,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "objective_key": [
+        4,
+        101,
+        272,
+        [
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 121,
+      "retained_original_indices_zero_based": [
+        0,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 291,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        5,
+        101,
+        291,
+        [
+          19,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 122,
+      "retained_original_indices_zero_based": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 308,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0
+      ],
+      "objective_key": [
+        5,
+        101,
+        308,
+        [
+          36,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 123,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 327,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "objective_key": [
+        6,
+        101,
+        327,
+        [
+          19,
+          36,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 124,
+      "retained_original_indices_zero_based": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 309,
+      "admissible": false,
+      "predicate_failures": [
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        5,
+        101,
+        309,
+        [
+          37,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 125,
+      "retained_original_indices_zero_based": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 328,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "objective_key": [
+        6,
+        101,
+        328,
+        [
+          19,
+          37,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 126,
+      "retained_original_indices_zero_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 345,
+      "admissible": false,
+      "predicate_failures": [
+        "rank_parity_mismatch",
+        "odd_tail_sum"
+      ],
+      "rank_parity_mismatches_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "objective_key": [
+        6,
+        101,
+        345,
+        [
+          36,
+          37,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "predicate_skip"
+    },
+    {
+      "deletion_mask": 127,
+      "retained_original_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "T": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "E": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "deficit": 1,
+      "sumT": 364,
+      "admissible": true,
+      "predicate_failures": [],
+      "rank_parity_mismatches_zero_based": [],
+      "objective_key": [
+        7,
+        101,
+        364,
+        [
+          19,
+          36,
+          37,
+          52,
+          57,
+          62,
+          101
+        ]
+      ],
+      "query_status": "queried",
+      "native_value": -1
+    }
+  ],
+  "deletion_outcome_counts": {
+    "1": 9,
+    "0": 6,
+    "-1": 1
+  },
+  "selected_deletion_loss": {
+    "kind": "selected_deletion_loss",
+    "T": [
+      19,
+      36,
+      37,
+      52,
+      57,
+      62,
+      101
+    ]
+  },
+  "all_numeric_trials": [
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 0,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "candidate": [
+        17,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 1,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "candidate": [
+        19,
+        34,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 2,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "candidate": [
+        19,
+        36,
+        35,
+        52,
+        57,
+        62,
+        101
+      ],
+      "admissible": false,
+      "queried": false,
+      "value": null,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 3,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        62,
+        101
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 1,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 4,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        52,
+        55,
+        62,
+        101
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 5,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        62,
+        101
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        101
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": -1,
+      "accepted": true,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        101
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 1,
+      "coordinate_zero_based": 6,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        101
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": -1,
+      "accepted": true,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 0,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        17,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 1,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        34,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 2,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        35,
+        52,
+        57,
+        60,
+        99
+      ],
+      "admissible": false,
+      "queried": false,
+      "value": null,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 3,
+      "before": [
+        19,
+        36,
+        37,
+        52,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": -1,
+      "accepted": true,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 4,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        55,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 5,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        58,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 2,
+      "coordinate_zero_based": 6,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        97
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 0,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        17,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 1,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        34,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 2,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        35,
+        50,
+        57,
+        60,
+        99
+      ],
+      "admissible": false,
+      "queried": false,
+      "value": null,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 3,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        48,
+        57,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 4,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        55,
+        60,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 5,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        58,
+        99
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    },
+    {
+      "kind": "numeric_trial",
+      "sweep": 3,
+      "coordinate_zero_based": 6,
+      "before": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "candidate": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        97
+      ],
+      "admissible": true,
+      "queried": true,
+      "value": 0,
+      "accepted": false,
+      "current_best": [
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ]
+    }
+  ],
+  "frozen_best": {
+    "kind": "frozen_best",
+    "T": [
+      19,
+      36,
+      37,
+      50,
+      57,
+      60,
+      99
+    ],
+    "one_step_fixed_point": true
+  },
+  "native_checkpoint": {
+    "kind": "checkpoint",
+    "phase1_queries": 16,
+    "phase1_unprocessed": 0,
+    "phase2_queries": 18,
+    "accepted_numeric_trials": 3,
+    "sweeps": 3,
+    "one_step_fixed_point": true,
+    "time_cap": false,
+    "seconds": 0.000764042,
+    "max_rss_bytes": 1769472
+  },
+  "final_contexts": [
+    {
+      "kind": "final_E1",
+      "support": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "deficit": 1,
+      "value": -1,
+      "moves": {
+        "4": -1,
+        "7": -1,
+        "19": -1,
+        "36": -1,
+        "37": -1,
+        "50": -1,
+        "57": -1,
+        "60": -1,
+        "99": -1
+      },
+      "literal_root_value": -1,
+      "literal_first_pick_values": {
+        "4": -1,
+        "7": -1,
+        "19": -1,
+        "36": -1,
+        "37": -1,
+        "50": -1,
+        "57": -1,
+        "60": -1,
+        "99": -1
+      },
+      "literal_all_picks_pass": true,
+      "safe_choices": []
+    },
+    {
+      "kind": "final_E3",
+      "support": [
+        4,
+        7,
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "deficit": 3,
+      "value": 0,
+      "moves": {
+        "4": 0,
+        "7": 0,
+        "19": -1,
+        "36": -1,
+        "37": -1,
+        "50": -1,
+        "57": -1,
+        "60": -1,
+        "99": -1
+      },
+      "literal_root_value": 0,
+      "literal_first_pick_values": {
+        "4": 0,
+        "7": 0,
+        "19": -1,
+        "36": -1,
+        "37": -1,
+        "50": -1,
+        "57": -1,
+        "60": -1,
+        "99": -1
+      },
+      "literal_all_picks_pass": true,
+      "safe_choices": [
+        4,
+        7
+      ]
+    },
+    {
+      "kind": "final_C8",
+      "support": [
+        2,
+        3,
+        4,
+        7,
+        19,
+        36,
+        37,
+        50,
+        57,
+        60,
+        99
+      ],
+      "deficit": 8,
+      "value": 0,
+      "moves": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "7": 0,
+        "19": -1,
+        "36": -1,
+        "37": -1,
+        "50": -1,
+        "57": -1,
+        "60": -1,
+        "99": -1
+      },
+      "literal_root_value": 0,
+      "literal_first_pick_values": {
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "7": 0,
+        "19": -1,
+        "36": -1,
+        "37": -1,
+        "50": -1,
+        "57": -1,
+        "60": -1,
+        "99": -1
+      },
+      "literal_all_picks_pass": true,
+      "safe_choices": [
+        2,
+        3,
+        4,
+        7
+      ]
+    }
+  ],
+  "literal_complete": true,
+  "literal_roots": 3,
+  "literal_first_pick_values": 29,
+  "max_literal_cached_states": 42149,
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432",
+  "seconds": 0.07628750000000001,
+  "max_rss_bytes": 22904832
+}

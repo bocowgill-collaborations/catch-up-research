@@ -2,6 +2,10 @@
 
 The Lean executable evaluator is in [Executable.lean](../CatchUp/Executable.lean). Its correspondence to the reference is proved; experiments are not substituted for that theorem.
 
+For state bounds, parity-based storage and the scope of historical reproduction, see [what exact computation can reuse](../docs/exact-computation.md). The [opening guide](../docs/openings.md) distinguishes a drawn root from every opening drawing and links to the existing pair-neutrality theorem.
+
+[Retained observation files](observations/) preserve earlier bounded runs, including failed policies, unprocessed cases and all recorded alternatives. Read the [experimental findings](../results/experimental-findings.md) for their scope. These are not fresh numerical replays or Lean certificates.
+
 ## Explore a position without Lean
 
 ```sh

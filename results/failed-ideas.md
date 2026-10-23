@@ -6,6 +6,8 @@ These are certified failures of proposed auxiliary statements. No entry below is
 | --- | --- | --- |
 | Pair count, total, extrema, deficit, parity and selector sums determine value | At deficit 4, adjacent pairs starting at `{6,10,20,40}` win; starts `{6,12,18,40}` lose. Both have eight counters, total 156, minimum 6 and maximum 41, with the same selector interval. | [AdviceFeatureCollision](../CatchUp/AdviceFeatureCollision.lean) |
 | Extend a successful small paired defense by adding two pairs | The lifted defense fails against a retained opponent reply. This rejects that lift, not every possible strategy on larger supports. | [SevenPairTest](../CatchUp/SevenPairTest.lean) |
+| An immediate balanced turn supplies a universal interval defense | For every N>=7 and every opening, P2 cannot take its entire draw quota in its first turn. A successful defense must carry the task across turns. | [WholeTurn](../CatchUp/WholeTurn.lean) |
+| The four-pair orphan reserve stays nonwinning when two pairs are added | `{7,10,11,18,19,20,21,40,41}` at deficit 7 wins via 41. The later adaptive repair fixes the reached decision, not this false family. | [FourOrphan](../CatchUp/FourOrphan.lean), [NearRepair](../CatchUp/NearRepair.lean) |
 | Enter a maximal exact-sum block with its own counter first | A certified dense drawn state has no safe first pick in the block, but has a safe pick outside it. An arithmetic selector need not supply the strategic entrance. | [DenseBlockEntryObstruction](../CatchUp/DenseBlockEntryObstruction.lean) |
 | A proposed gap-successor move preserves safety | The successor can lose even when its dense even ancestor wins. Do not discard the actual parent-value hypotheses. | [GapSuccessorObstruction](../CatchUp/GapSuccessorObstruction.lean) |
 | Remove density assumptions from a gap argument | A concrete example and an unbounded sparse family break the unrestricted implication. They do not break the version retaining density. | [FullGapDensityObstruction](../CatchUp/FullGapDensityObstruction.lean), [FullGapDensityFamily](../CatchUp/FullGapDensityFamily.lean) |
@@ -13,8 +15,12 @@ These are certified failures of proposed auxiliary statements. No entry below is
 | A counter just below the deficit, or a minimum of two, guarantees nonloss | Explicit sparse positions lose despite these features. Inserting a small counter can even reverse value. | [NearDeficitGuardObstruction](../CatchUp/NearDeficitGuardObstruction.lean), [UnitGuardObstruction](../CatchUp/UnitGuardObstruction.lean) |
 | An even number of odd-start adjacent pairs guarantees a nonwinning initial root | The six-pair support in the source is a forced P1 win via 4. It is not an interval `{1,…,N}`. | [OddPairRootObstruction](../CatchUp/OddPairRootObstruction.lean) |
 | Always answer with the next available integer at the actual interval endpoint | A drawn endpoint reached at N=15 has a losing immediate-successor reply. Other replies are retained and certified. | [IntervalSuccessorReplyObstruction](../CatchUp/IntervalSuccessorReplyObstruction.lean) |
+| Two anchors cannot lose at both deficits one and three | With tail `{18,33,35,36,52,56,62,74,100}`, adding anchors `{4,7}` loses at both deficits. Its high shadow wins, so this does not refute the conditional route retaining high-shadow loss. | [TwoAnchorDoubleLossObstruction](../CatchUp/TwoAnchorDoubleLossObstruction.lean) |
+| Alternating odd/even tail ranks and a balanced allocation guarantee nonloss | `{4,7,19,36,37,50,57,60,99}` loses at deficit 1 despite those properties; every first pick is covered. | [AlternatingTailObstruction](../CatchUp/AlternatingTailObstruction.lean) |
 
 The [module guide](modules.md) includes additional diagnosed exceptions and the successful adaptive repairs. “Repair” refers to a game strategy unless the text explicitly discusses a machine routine.
+
+The [experimental findings](experimental-findings.md) also explain failed fixed entrances, vacuous tests and unprocessed cases. The [research notebook](../archive/research-notes/) retains the full arguments and the sequence of failed and successful repairs; use the [current route guide](research-routes.md) for what is still open.
 
 One can reproduce the first diagnostic computationally without Lean:
 

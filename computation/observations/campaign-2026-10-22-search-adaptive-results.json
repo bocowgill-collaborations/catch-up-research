@@ -1,0 +1,4877 @@
+{
+  "domain": "All eligible N from3 through24; all2<=b<=N; exact minimax first-pick sets in lower ray after legal root picks1,b",
+  "rows": [
+    {
+      "n": 3,
+      "b": 2,
+      "value": "win",
+      "safe": [
+        3
+      ],
+      "candidates": [
+        3
+      ],
+      "candidate_safe": [
+        3
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 3,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2
+      ],
+      "candidates": [
+        2
+      ],
+      "candidate_safe": [
+        2
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 4,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        4
+      ],
+      "candidates": [
+        3,
+        4
+      ],
+      "candidate_safe": [
+        4
+      ],
+      "min_distance": 2
+    },
+    {
+      "n": 4,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        4
+      ],
+      "candidates": [
+        2,
+        4
+      ],
+      "candidate_safe": [
+        4
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 4,
+      "b": 4,
+      "value": "win",
+      "safe": [
+        2
+      ],
+      "candidates": [
+        3
+      ],
+      "candidate_safe": [],
+      "min_distance": 2
+    },
+    {
+      "n": 7,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        6
+      ],
+      "candidates": [
+        3,
+        7
+      ],
+      "candidate_safe": [
+        3
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 7,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        6
+      ],
+      "candidates": [
+        2,
+        4,
+        7
+      ],
+      "candidate_safe": [
+        2
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 7,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        5,
+        6
+      ],
+      "candidates": [
+        3,
+        5,
+        7
+      ],
+      "candidate_safe": [
+        5
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 7,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "candidates": [
+        4,
+        6,
+        7
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        7
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 7,
+      "b": 6,
+      "value": "win",
+      "safe": [
+        2,
+        3,
+        4
+      ],
+      "candidates": [
+        5,
+        7
+      ],
+      "candidate_safe": [],
+      "min_distance": 2
+    },
+    {
+      "n": 7,
+      "b": 7,
+      "value": "win",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "candidates": [
+        6
+      ],
+      "candidate_safe": [
+        6
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "candidates": [
+        3,
+        8
+      ],
+      "candidate_safe": [
+        3
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        4,
+        5,
+        6
+      ],
+      "candidates": [
+        2,
+        4,
+        8
+      ],
+      "candidate_safe": [
+        4
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        6
+      ],
+      "candidates": [
+        3,
+        5,
+        8
+      ],
+      "candidate_safe": [
+        3
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "candidates": [
+        4,
+        6,
+        8
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        8
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "candidates": [
+        5,
+        7,
+        8
+      ],
+      "candidate_safe": [
+        5,
+        7
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "candidates": [
+        6,
+        8
+      ],
+      "candidate_safe": [
+        6,
+        8
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 8,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "candidates": [
+        7
+      ],
+      "candidate_safe": [
+        7
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "candidates": [
+        3,
+        11
+      ],
+      "candidate_safe": [
+        3
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "candidates": [
+        2,
+        4,
+        11
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "candidates": [
+        3,
+        5,
+        11
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "candidates": [
+        4,
+        6,
+        11
+      ],
+      "candidate_safe": [
+        4,
+        6
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11
+      ],
+      "candidates": [
+        5,
+        7,
+        11
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "candidates": [
+        6,
+        8,
+        11
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "candidates": [
+        7,
+        9,
+        11
+      ],
+      "candidate_safe": [
+        7,
+        9
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "candidates": [
+        8,
+        10,
+        11
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 10,
+      "value": "win",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "candidates": [
+        9,
+        11
+      ],
+      "candidate_safe": [
+        9,
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 11,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "candidates": [
+        10
+      ],
+      "candidate_safe": [
+        10
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        3,
+        12
+      ],
+      "candidate_safe": [
+        3,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        2,
+        4,
+        12
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        3,
+        5,
+        12
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        4,
+        6,
+        12
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        5,
+        7,
+        12
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        6,
+        8,
+        12
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        7,
+        9,
+        12
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12
+      ],
+      "candidates": [
+        8,
+        10,
+        12
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12
+      ],
+      "candidates": [
+        9,
+        11,
+        12
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ],
+      "candidates": [
+        10,
+        12
+      ],
+      "candidate_safe": [
+        10,
+        12
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 12,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "candidates": [
+        11
+      ],
+      "candidate_safe": [
+        11
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        3,
+        15
+      ],
+      "candidate_safe": [
+        3,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        2,
+        4,
+        15
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        3,
+        5,
+        15
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        4,
+        6,
+        15
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        5,
+        7,
+        15
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        6,
+        8,
+        15
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        7,
+        9,
+        15
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        8,
+        10,
+        15
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        9,
+        11,
+        15
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        10,
+        12,
+        15
+      ],
+      "candidate_safe": [
+        10,
+        12,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        11,
+        13,
+        15
+      ],
+      "candidate_safe": [
+        11,
+        13,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 13,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "candidates": [
+        12,
+        14,
+        15
+      ],
+      "candidate_safe": [
+        12,
+        14,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 14,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15
+      ],
+      "candidates": [
+        13,
+        15
+      ],
+      "candidate_safe": [
+        13,
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 15,
+      "b": 15,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "candidates": [
+        14
+      ],
+      "candidate_safe": [
+        14
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        3,
+        16
+      ],
+      "candidate_safe": [
+        3,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        2,
+        4,
+        16
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        3,
+        5,
+        16
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        4,
+        6,
+        16
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        5,
+        7,
+        16
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        6,
+        8,
+        16
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        7,
+        9,
+        16
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        8,
+        10,
+        16
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        9,
+        11,
+        16
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        10,
+        12,
+        16
+      ],
+      "candidate_safe": [
+        10,
+        12,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        11,
+        13,
+        16
+      ],
+      "candidate_safe": [
+        11,
+        13,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 13,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "candidates": [
+        12,
+        14,
+        16
+      ],
+      "candidate_safe": [
+        12,
+        14,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 14,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16
+      ],
+      "candidates": [
+        13,
+        15,
+        16
+      ],
+      "candidate_safe": [
+        13,
+        15,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 15,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "candidates": [
+        14,
+        16
+      ],
+      "candidate_safe": [
+        14,
+        16
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 16,
+      "b": 16,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "candidates": [
+        15
+      ],
+      "candidate_safe": [
+        15
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        3,
+        19
+      ],
+      "candidate_safe": [
+        3,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        2,
+        4,
+        19
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        3,
+        5,
+        19
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        4,
+        6,
+        19
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        5,
+        7,
+        19
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        6,
+        8,
+        19
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        7,
+        9,
+        19
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        8,
+        10,
+        19
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        9,
+        11,
+        19
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        10,
+        12,
+        19
+      ],
+      "candidate_safe": [
+        10,
+        12,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        11,
+        13,
+        19
+      ],
+      "candidate_safe": [
+        11,
+        13,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 13,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        12,
+        14,
+        19
+      ],
+      "candidate_safe": [
+        12,
+        14,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 14,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        13,
+        15,
+        19
+      ],
+      "candidate_safe": [
+        13,
+        15,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 15,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        14,
+        16,
+        19
+      ],
+      "candidate_safe": [
+        14,
+        16,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 16,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        15,
+        17,
+        19
+      ],
+      "candidate_safe": [
+        15,
+        17,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 17,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19
+      ],
+      "candidates": [
+        16,
+        18,
+        19
+      ],
+      "candidate_safe": [
+        16,
+        18,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 18,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19
+      ],
+      "candidates": [
+        17,
+        19
+      ],
+      "candidate_safe": [
+        17,
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 19,
+      "b": 19,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "candidates": [
+        18
+      ],
+      "candidate_safe": [
+        18
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        3,
+        20
+      ],
+      "candidate_safe": [
+        3,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        2,
+        4,
+        20
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        3,
+        5,
+        20
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        4,
+        6,
+        20
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        5,
+        7,
+        20
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        6,
+        8,
+        20
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        7,
+        9,
+        20
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        8,
+        10,
+        20
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        9,
+        11,
+        20
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        10,
+        12,
+        20
+      ],
+      "candidate_safe": [
+        10,
+        12,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        11,
+        13,
+        20
+      ],
+      "candidate_safe": [
+        11,
+        13,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 13,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        12,
+        14,
+        20
+      ],
+      "candidate_safe": [
+        12,
+        14,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 14,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        13,
+        15,
+        20
+      ],
+      "candidate_safe": [
+        13,
+        15,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 15,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        14,
+        16,
+        20
+      ],
+      "candidate_safe": [
+        14,
+        16,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 16,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        15,
+        17,
+        20
+      ],
+      "candidate_safe": [
+        15,
+        17,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 17,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20
+      ],
+      "candidates": [
+        16,
+        18,
+        20
+      ],
+      "candidate_safe": [
+        16,
+        18,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 18,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20
+      ],
+      "candidates": [
+        17,
+        19,
+        20
+      ],
+      "candidate_safe": [
+        17,
+        19,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 19,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20
+      ],
+      "candidates": [
+        18,
+        20
+      ],
+      "candidate_safe": [
+        18,
+        20
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 20,
+      "b": 20,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "candidates": [
+        19
+      ],
+      "candidate_safe": [
+        19
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        3,
+        23
+      ],
+      "candidate_safe": [
+        3,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        2,
+        4,
+        23
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        3,
+        5,
+        23
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        4,
+        6,
+        23
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        5,
+        7,
+        23
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        6,
+        8,
+        23
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        7,
+        9,
+        23
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        8,
+        10,
+        23
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        9,
+        11,
+        23
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        10,
+        12,
+        23
+      ],
+      "candidate_safe": [
+        10,
+        12,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        11,
+        13,
+        23
+      ],
+      "candidate_safe": [
+        11,
+        13,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 13,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        12,
+        14,
+        23
+      ],
+      "candidate_safe": [
+        12,
+        14,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 14,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        13,
+        15,
+        23
+      ],
+      "candidate_safe": [
+        13,
+        15,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 15,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        14,
+        16,
+        23
+      ],
+      "candidate_safe": [
+        14,
+        16,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 16,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        15,
+        17,
+        23
+      ],
+      "candidate_safe": [
+        15,
+        17,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 17,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        16,
+        18,
+        23
+      ],
+      "candidate_safe": [
+        16,
+        18,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 18,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        17,
+        19,
+        23
+      ],
+      "candidate_safe": [
+        17,
+        19,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 19,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        18,
+        20,
+        23
+      ],
+      "candidate_safe": [
+        18,
+        20,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 20,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        19,
+        21,
+        23
+      ],
+      "candidate_safe": [
+        19,
+        21,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 21,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23
+      ],
+      "candidates": [
+        20,
+        22,
+        23
+      ],
+      "candidate_safe": [
+        20,
+        22,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 22,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23
+      ],
+      "candidates": [
+        21,
+        23
+      ],
+      "candidate_safe": [
+        21,
+        23
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 23,
+      "b": 23,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "candidates": [
+        22
+      ],
+      "candidate_safe": [
+        22
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 2,
+      "value": "draw",
+      "safe": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        3,
+        24
+      ],
+      "candidate_safe": [
+        3,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 3,
+      "value": "draw",
+      "safe": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        2,
+        4,
+        24
+      ],
+      "candidate_safe": [
+        2,
+        4,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 4,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        3,
+        5,
+        24
+      ],
+      "candidate_safe": [
+        3,
+        5,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 5,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        4,
+        6,
+        24
+      ],
+      "candidate_safe": [
+        4,
+        6,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 6,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        5,
+        7,
+        24
+      ],
+      "candidate_safe": [
+        5,
+        7,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 7,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        6,
+        8,
+        24
+      ],
+      "candidate_safe": [
+        6,
+        8,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 8,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        7,
+        9,
+        24
+      ],
+      "candidate_safe": [
+        7,
+        9,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 9,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        8,
+        10,
+        24
+      ],
+      "candidate_safe": [
+        8,
+        10,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 10,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        9,
+        11,
+        24
+      ],
+      "candidate_safe": [
+        9,
+        11,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 11,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        10,
+        12,
+        24
+      ],
+      "candidate_safe": [
+        10,
+        12,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 12,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        11,
+        13,
+        24
+      ],
+      "candidate_safe": [
+        11,
+        13,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 13,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        12,
+        14,
+        24
+      ],
+      "candidate_safe": [
+        12,
+        14,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 14,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        13,
+        15,
+        24
+      ],
+      "candidate_safe": [
+        13,
+        15,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 15,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        14,
+        16,
+        24
+      ],
+      "candidate_safe": [
+        14,
+        16,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 16,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        15,
+        17,
+        24
+      ],
+      "candidate_safe": [
+        15,
+        17,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 17,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        16,
+        18,
+        24
+      ],
+      "candidate_safe": [
+        16,
+        18,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 18,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        17,
+        19,
+        24
+      ],
+      "candidate_safe": [
+        17,
+        19,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 19,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        18,
+        20,
+        24
+      ],
+      "candidate_safe": [
+        18,
+        20,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 20,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        19,
+        21,
+        24
+      ],
+      "candidate_safe": [
+        19,
+        21,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 21,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23,
+        24
+      ],
+      "candidates": [
+        20,
+        22,
+        24
+      ],
+      "candidate_safe": [
+        20,
+        22,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 22,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23,
+        24
+      ],
+      "candidates": [
+        21,
+        23,
+        24
+      ],
+      "candidate_safe": [
+        21,
+        23,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 23,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        24
+      ],
+      "candidates": [
+        22,
+        24
+      ],
+      "candidate_safe": [
+        22,
+        24
+      ],
+      "min_distance": 1
+    },
+    {
+      "n": 24,
+      "b": 24,
+      "value": "draw",
+      "safe": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "candidates": [
+        23
+      ],
+      "candidate_safe": [
+        23
+      ],
+      "min_distance": 1
+    }
+  ],
+  "cases": 150,
+  "failures": [
+    {
+      "n": 4,
+      "b": 4,
+      "value": "win",
+      "safe": [
+        2
+      ],
+      "candidates": [
+        3
+      ],
+      "candidate_safe": [],
+      "min_distance": 2
+    },
+    {
+      "n": 7,
+      "b": 6,
+      "value": "win",
+      "safe": [
+        2,
+        3,
+        4
+      ],
+      "candidates": [
+        5,
+        7
+      ],
+      "candidate_safe": [],
+      "min_distance": 2
+    }
+  ],
+  "max_min_safe_distance": 2
+}

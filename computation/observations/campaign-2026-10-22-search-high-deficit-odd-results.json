@@ -1,0 +1,2470 @@
+{
+  "kind": "Arithmetic summary/output-only reproduction of the existing high-deficit domain; not a new hypothesis test",
+  "summary": {
+    "losses": 44,
+    "min_margin": 1,
+    "max_margin": 2,
+    "margin_counts": {
+      "1": 38,
+      "2": 6
+    },
+    "coverage_pass": 33,
+    "coverage_fail": 11,
+    "coverage_pass_vacuous": 17,
+    "coverage_pass_nonvacuous": 16,
+    "max_remaining_le_deficit": 8,
+    "all_legal_first_moves_retained": 495,
+    "distinct_loss_domains": 42,
+    "N_le_16_exact_witness_crossmatch": 27,
+    "odd_loss_subset_sha256": "4417d91fe0cbecc9ea75d8db06c43a157ad50891021a08ef285c7c2c94b4e73b",
+    "subset_hash_serialization": "UTF8 compact JSON of lexicographically sorted tuples(N,h,d,remaining_mask),separators comma/colon,no newline"
+  },
+  "all_44_witnesses": [
+    {
+      "N": 3,
+      "h": 0,
+      "d": 1,
+      "mask": 7,
+      "sum": 6,
+      "remaining": [
+        1,
+        2,
+        3
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 4,
+      "h": 1,
+      "d": 3,
+      "mask": 13,
+      "sum": 8,
+      "remaining": [
+        1,
+        3,
+        4
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "4": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 5,
+      "h": 1,
+      "d": 3,
+      "mask": 27,
+      "sum": 12,
+      "remaining": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "4": -1,
+        "5": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 6,
+      "h": 1,
+      "d": 3,
+      "mask": 62,
+      "sum": 20,
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "all_legal_first_move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 6,
+      "h": 2,
+      "d": 5,
+      "mask": 51,
+      "sum": 14,
+      "remaining": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "5": -1,
+        "6": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 7,
+      "h": 0,
+      "d": 1,
+      "mask": 127,
+      "sum": 28,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 7,
+      "h": 1,
+      "d": 4,
+      "mask": 123,
+      "sum": 25,
+      "remaining": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1
+      },
+      "margin_d_minus_two_h": 2,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 7,
+      "h": 3,
+      "d": 7,
+      "mask": 54,
+      "sum": 16,
+      "remaining": [
+        2,
+        3,
+        5,
+        6
+      ],
+      "all_legal_first_move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "5": -1,
+        "6": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 8,
+      "h": 2,
+      "d": 5,
+      "mask": 245,
+      "sum": 30,
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "mask": 287,
+      "sum": 24,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        9
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "9": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "mask": 303,
+      "sum": 25,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        9
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "6": -1,
+        "9": -1
+      },
+      "margin_d_minus_two_h": 2,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 10,
+      "h": 2,
+      "d": 5,
+      "mask": 1011,
+      "sum": 48,
+      "remaining": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 10,
+      "h": 3,
+      "d": 7,
+      "mask": 967,
+      "sum": 40,
+      "remaining": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 11,
+      "h": 3,
+      "d": 7,
+      "mask": 1695,
+      "sum": 44,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "8": -1,
+        "10": -1,
+        "11": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "mask": 497,
+      "sum": 36,
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        2,
+        3,
+        4
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 12,
+      "h": 4,
+      "d": 9,
+      "mask": 3321,
+      "sum": 54,
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        12
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "11": -1,
+        "12": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        2,
+        3
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "mask": 2143,
+      "sum": 34,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        12
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "7": -1,
+        "12": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 13,
+      "h": 0,
+      "d": 2,
+      "mask": 8191,
+      "sum": 91,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1
+      },
+      "margin_d_minus_two_h": 2,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 13,
+      "h": 3,
+      "d": 7,
+      "mask": 6047,
+      "sum": 66,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        13
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "13": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 13,
+      "h": 3,
+      "d": 8,
+      "mask": 7983,
+      "sum": 71,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "6": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1
+      },
+      "margin_d_minus_two_h": 2,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 14,
+      "h": 3,
+      "d": 7,
+      "mask": 16327,
+      "sum": 90,
+      "remaining": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 15,
+      "h": 0,
+      "d": 1,
+      "mask": 32767,
+      "sum": 120,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 15,
+      "h": 1,
+      "d": 4,
+      "mask": 32763,
+      "sum": 117,
+      "remaining": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1
+      },
+      "margin_d_minus_two_h": 2,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 15,
+      "h": 3,
+      "d": 7,
+      "mask": 28575,
+      "sum": 94,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "14": -1,
+        "15": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 15,
+      "h": 6,
+      "d": 13,
+      "mask": 28376,
+      "sum": 86,
+      "remaining": [
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "all_legal_first_move_outcomes": {
+        "4": -1,
+        "5": -1,
+        "7": -1,
+        "8": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "14": -1,
+        "15": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1,
+        2,
+        3
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "mask": 14274,
+      "sum": 74,
+      "remaining": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14
+      ],
+      "all_legal_first_move_outcomes": {
+        "2": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "13": -1,
+        "14": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 16,
+      "h": 1,
+      "d": 3,
+      "mask": 65533,
+      "sum": 134,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 17,
+      "h": 1,
+      "d": 3,
+      "mask": 131067,
+      "sum": 150,
+      "remaining": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 17,
+      "h": 8,
+      "d": 17,
+      "mask": 65408,
+      "sum": 108,
+      "remaining": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "all_legal_first_move_outcomes": {
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 18,
+      "h": 3,
+      "d": 7,
+      "mask": 262087,
+      "sum": 156,
+      "remaining": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 19,
+      "h": 0,
+      "d": 1,
+      "mask": 524287,
+      "sum": 190,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 19,
+      "h": 1,
+      "d": 4,
+      "mask": 524283,
+      "sum": 187,
+      "remaining": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "margin_d_minus_two_h": 2,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 19,
+      "h": 3,
+      "d": 7,
+      "mask": 523935,
+      "sum": 168,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "8": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 19,
+      "h": 9,
+      "d": 19,
+      "mask": 130817,
+      "sum": 118,
+      "remaining": [
+        1,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 19,
+      "h": 9,
+      "d": 19,
+      "mask": 127457,
+      "sum": 106,
+      "remaining": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 20,
+      "h": 1,
+      "d": 3,
+      "mask": 1048573,
+      "sum": 208,
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 21,
+      "h": 1,
+      "d": 3,
+      "mask": 2097147,
+      "sum": 228,
+      "remaining": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 21,
+      "h": 3,
+      "d": 7,
+      "mask": 2096927,
+      "sum": 210,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 22,
+      "h": 2,
+      "d": 5,
+      "mask": 4194291,
+      "sum": 246,
+      "remaining": [
+        1,
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 23,
+      "h": 1,
+      "d": 3,
+      "mask": 8388599,
+      "sum": 272,
+      "remaining": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 23,
+      "h": 3,
+      "d": 7,
+      "mask": 8388534,
+      "sum": 264,
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "all_legal_first_move_outcomes": {
+        "2": -1,
+        "3": -1,
+        "5": -1,
+        "6": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": false
+    },
+    {
+      "N": 23,
+      "h": 11,
+      "d": 23,
+      "mask": 4132800,
+      "sum": 174,
+      "remaining": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "all_legal_first_move_outcomes": {
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 23,
+      "h": 11,
+      "d": 23,
+      "mask": 3668994,
+      "sum": 180,
+      "remaining": [
+        2,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        21,
+        22
+      ],
+      "all_legal_first_move_outcomes": {
+        "2": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "21": -1,
+        "22": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": false,
+      "low_subsum_gaps": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "coverage_vacuous": false,
+      "max_remaining_le_deficit": true
+    },
+    {
+      "N": 24,
+      "h": 0,
+      "d": 1,
+      "mask": 16777215,
+      "sum": 300,
+      "remaining": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "all_legal_first_move_outcomes": {
+        "1": -1,
+        "2": -1,
+        "3": -1,
+        "4": -1,
+        "5": -1,
+        "6": -1,
+        "7": -1,
+        "8": -1,
+        "9": -1,
+        "10": -1,
+        "11": -1,
+        "12": -1,
+        "13": -1,
+        "14": -1,
+        "15": -1,
+        "16": -1,
+        "17": -1,
+        "18": -1,
+        "19": -1,
+        "20": -1,
+        "21": -1,
+        "22": -1,
+        "23": -1,
+        "24": -1
+      },
+      "margin_d_minus_two_h": 1,
+      "low_subsum_coverage": true,
+      "low_subsum_gaps": [],
+      "coverage_vacuous": true,
+      "max_remaining_le_deficit": false
+    }
+  ],
+  "all_loss_domains": [
+    {
+      "N": 3,
+      "h": 0,
+      "d": 1,
+      "count": 1
+    },
+    {
+      "N": 4,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 5,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 6,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 6,
+      "h": 2,
+      "d": 5,
+      "count": 1
+    },
+    {
+      "N": 7,
+      "h": 0,
+      "d": 1,
+      "count": 1
+    },
+    {
+      "N": 7,
+      "h": 1,
+      "d": 4,
+      "count": 1
+    },
+    {
+      "N": 7,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 8,
+      "h": 2,
+      "d": 5,
+      "count": 1
+    },
+    {
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 9,
+      "h": 3,
+      "d": 8,
+      "count": 1
+    },
+    {
+      "N": 10,
+      "h": 2,
+      "d": 5,
+      "count": 1
+    },
+    {
+      "N": 10,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 11,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "count": 1
+    },
+    {
+      "N": 12,
+      "h": 4,
+      "d": 9,
+      "count": 1
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "count": 1
+    },
+    {
+      "N": 13,
+      "h": 0,
+      "d": 2,
+      "count": 1
+    },
+    {
+      "N": 13,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 13,
+      "h": 3,
+      "d": 8,
+      "count": 1
+    },
+    {
+      "N": 14,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 15,
+      "h": 0,
+      "d": 1,
+      "count": 1
+    },
+    {
+      "N": 15,
+      "h": 1,
+      "d": 4,
+      "count": 1
+    },
+    {
+      "N": 15,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 15,
+      "h": 6,
+      "d": 13,
+      "count": 1
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "count": 1
+    },
+    {
+      "N": 16,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 17,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 17,
+      "h": 8,
+      "d": 17,
+      "count": 1
+    },
+    {
+      "N": 18,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 19,
+      "h": 0,
+      "d": 1,
+      "count": 1
+    },
+    {
+      "N": 19,
+      "h": 1,
+      "d": 4,
+      "count": 1
+    },
+    {
+      "N": 19,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 19,
+      "h": 9,
+      "d": 19,
+      "count": 2
+    },
+    {
+      "N": 20,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 21,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 21,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 22,
+      "h": 2,
+      "d": 5,
+      "count": 1
+    },
+    {
+      "N": 23,
+      "h": 1,
+      "d": 3,
+      "count": 1
+    },
+    {
+      "N": 23,
+      "h": 3,
+      "d": 7,
+      "count": 1
+    },
+    {
+      "N": 23,
+      "h": 11,
+      "d": 23,
+      "count": 2
+    },
+    {
+      "N": 24,
+      "h": 0,
+      "d": 1,
+      "count": 1
+    }
+  ],
+  "pattern_definition": "(margin d-2h,complete subset-sum coverage of every1<=t<h)",
+  "patterns": [
+    {
+      "margin": 1,
+      "low_subsum_coverage": false,
+      "count": 11,
+      "first_representative": {
+        "N": 7,
+        "h": 3,
+        "d": 7,
+        "mask": 54,
+        "sum": 16,
+        "remaining": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "all_legal_first_move_outcomes": {
+          "2": -1,
+          "3": -1,
+          "5": -1,
+          "6": -1
+        },
+        "margin_d_minus_two_h": 1,
+        "low_subsum_coverage": false,
+        "low_subsum_gaps": [
+          1
+        ],
+        "coverage_vacuous": false,
+        "max_remaining_le_deficit": true
+      },
+      "first_nonvacuous_representative": {
+        "N": 7,
+        "h": 3,
+        "d": 7,
+        "mask": 54,
+        "sum": 16,
+        "remaining": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "all_legal_first_move_outcomes": {
+          "2": -1,
+          "3": -1,
+          "5": -1,
+          "6": -1
+        },
+        "margin_d_minus_two_h": 1,
+        "low_subsum_coverage": false,
+        "low_subsum_gaps": [
+          1
+        ],
+        "coverage_vacuous": false,
+        "max_remaining_le_deficit": true
+      }
+    },
+    {
+      "margin": 1,
+      "low_subsum_coverage": true,
+      "count": 27,
+      "first_representative": {
+        "N": 3,
+        "h": 0,
+        "d": 1,
+        "mask": 7,
+        "sum": 6,
+        "remaining": [
+          1,
+          2,
+          3
+        ],
+        "all_legal_first_move_outcomes": {
+          "1": -1,
+          "2": -1,
+          "3": -1
+        },
+        "margin_d_minus_two_h": 1,
+        "low_subsum_coverage": true,
+        "low_subsum_gaps": [],
+        "coverage_vacuous": true,
+        "max_remaining_le_deficit": false
+      },
+      "first_nonvacuous_representative": {
+        "N": 6,
+        "h": 2,
+        "d": 5,
+        "mask": 51,
+        "sum": 14,
+        "remaining": [
+          1,
+          2,
+          5,
+          6
+        ],
+        "all_legal_first_move_outcomes": {
+          "1": -1,
+          "2": -1,
+          "5": -1,
+          "6": -1
+        },
+        "margin_d_minus_two_h": 1,
+        "low_subsum_coverage": true,
+        "low_subsum_gaps": [],
+        "coverage_vacuous": false,
+        "max_remaining_le_deficit": false
+      }
+    },
+    {
+      "margin": 2,
+      "low_subsum_coverage": true,
+      "count": 6,
+      "first_representative": {
+        "N": 7,
+        "h": 1,
+        "d": 4,
+        "mask": 123,
+        "sum": 25,
+        "remaining": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "all_legal_first_move_outcomes": {
+          "1": -1,
+          "2": -1,
+          "4": -1,
+          "5": -1,
+          "6": -1,
+          "7": -1
+        },
+        "margin_d_minus_two_h": 2,
+        "low_subsum_coverage": true,
+        "low_subsum_gaps": [],
+        "coverage_vacuous": true,
+        "max_remaining_le_deficit": false
+      },
+      "first_nonvacuous_representative": {
+        "N": 9,
+        "h": 3,
+        "d": 8,
+        "mask": 303,
+        "sum": 25,
+        "remaining": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          9
+        ],
+        "all_legal_first_move_outcomes": {
+          "1": -1,
+          "2": -1,
+          "3": -1,
+          "4": -1,
+          "6": -1,
+          "9": -1
+        },
+        "margin_d_minus_two_h": 2,
+        "low_subsum_coverage": true,
+        "low_subsum_gaps": [],
+        "coverage_vacuous": false,
+        "max_remaining_le_deficit": false
+      }
+    }
+  ],
+  "canonical_subset_tuples": [
+    [
+      3,
+      0,
+      1,
+      7
+    ],
+    [
+      4,
+      1,
+      3,
+      13
+    ],
+    [
+      5,
+      1,
+      3,
+      27
+    ],
+    [
+      6,
+      1,
+      3,
+      62
+    ],
+    [
+      6,
+      2,
+      5,
+      51
+    ],
+    [
+      7,
+      0,
+      1,
+      127
+    ],
+    [
+      7,
+      1,
+      4,
+      123
+    ],
+    [
+      7,
+      3,
+      7,
+      54
+    ],
+    [
+      8,
+      2,
+      5,
+      245
+    ],
+    [
+      9,
+      3,
+      7,
+      287
+    ],
+    [
+      9,
+      3,
+      8,
+      303
+    ],
+    [
+      10,
+      2,
+      5,
+      1011
+    ],
+    [
+      10,
+      3,
+      7,
+      967
+    ],
+    [
+      11,
+      3,
+      7,
+      1695
+    ],
+    [
+      11,
+      5,
+      11,
+      497
+    ],
+    [
+      12,
+      4,
+      9,
+      3321
+    ],
+    [
+      12,
+      5,
+      11,
+      2143
+    ],
+    [
+      13,
+      0,
+      2,
+      8191
+    ],
+    [
+      13,
+      3,
+      7,
+      6047
+    ],
+    [
+      13,
+      3,
+      8,
+      7983
+    ],
+    [
+      14,
+      3,
+      7,
+      16327
+    ],
+    [
+      15,
+      0,
+      1,
+      32767
+    ],
+    [
+      15,
+      1,
+      4,
+      32763
+    ],
+    [
+      15,
+      3,
+      7,
+      28575
+    ],
+    [
+      15,
+      6,
+      13,
+      28376
+    ],
+    [
+      15,
+      7,
+      15,
+      14274
+    ],
+    [
+      16,
+      1,
+      3,
+      65533
+    ],
+    [
+      17,
+      1,
+      3,
+      131067
+    ],
+    [
+      17,
+      8,
+      17,
+      65408
+    ],
+    [
+      18,
+      3,
+      7,
+      262087
+    ],
+    [
+      19,
+      0,
+      1,
+      524287
+    ],
+    [
+      19,
+      1,
+      4,
+      524283
+    ],
+    [
+      19,
+      3,
+      7,
+      523935
+    ],
+    [
+      19,
+      9,
+      19,
+      127457
+    ],
+    [
+      19,
+      9,
+      19,
+      130817
+    ],
+    [
+      20,
+      1,
+      3,
+      1048573
+    ],
+    [
+      21,
+      1,
+      3,
+      2097147
+    ],
+    [
+      21,
+      3,
+      7,
+      2096927
+    ],
+    [
+      22,
+      2,
+      5,
+      4194291
+    ],
+    [
+      23,
+      1,
+      3,
+      8388599
+    ],
+    [
+      23,
+      3,
+      7,
+      8388534
+    ],
+    [
+      23,
+      11,
+      23,
+      3668994
+    ],
+    [
+      23,
+      11,
+      23,
+      4132800
+    ],
+    [
+      24,
+      0,
+      1,
+      16777215
+    ]
+  ],
+  "seconds": 0.003589499999999999
+}

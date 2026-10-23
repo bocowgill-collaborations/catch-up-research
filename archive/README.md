@@ -1,5 +1,7 @@
 # Historical research sources
 
+For readable findings, failed strategies, experiments and machine-design history, start with the [research notebook](research-notes/). The source archive below has a separate verification status from those narrative reports and from the current Lean library.
+
 This archive preserves earlier conditional reductions, simulation/transfer attempts and diagnostics that would otherwise be absent from the collection. **The `.lean.txt` files are not part of the verified build and have not been freshly replayed here.** Their declarations are historical source statements, not a blanket claim of completed proofs. Some dependencies may be available only as other historical artifacts.
 
 The [inventory](inventory.json) records the source commit, original path, SHA-256, declared theorem names and evidence status of each inspected historical module path. Original source headers are retained. The archive excludes generated payloads over 200 KB, direct native-only/unfinished certificate sources, most execution/audit drivers and files containing local execution paths. Their metadata remains in the inventory. Native-only range claims, including the old “through 28” collection, are not promoted into kernel-certified outcomes.

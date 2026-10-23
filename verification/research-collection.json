@@ -1,0 +1,2624 @@
+{
+  "date": "2026-10-23",
+  "scope": "Selected existing mathematical reports, failure notes and raw observations. No private correspondence, attachments, campaign accounting or large reruns.",
+  "reports": [
+    {
+      "id": "catchup-first-pair-report",
+      "title": "Increasing first-pair strategies \u2014 October 20, 2026",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-first-pair-report.md",
+      "origin_path": "research/catchup/first_pair/REPORT.md",
+      "original_sha256": "d8d9eb2111c7069bd3a59656d3ef3a05bb45ae80a15211769c8d805e63a8b952",
+      "sha256": "e4744e3f97c5f53c445c1298e24415cae3a484665814811bbbc8f60fe3ca323c",
+      "bytes": 8767,
+      "current_modules": [
+        "Increasing"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-deficit-two-report",
+      "title": "Deficit-two paired outcome proof",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-deficit-two-report.md",
+      "origin_path": "research/catchup/deficit_two/REPORT.md",
+      "original_sha256": "38cccfb766937ba18785a5d048dfd109a351088930670646045af51bf74cafa1",
+      "sha256": "16879f409a23b847ea35d44ad0a9bd4e1afda4f810a23ecb9351b8c97b9ced05",
+      "bytes": 5667,
+      "current_modules": [
+        "DeficitTwo"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-five-pair-report",
+      "title": "Certified five-pair reserves at fifteen",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-five-pair-report.md",
+      "origin_path": "research/catchup/five_pair/REPORT.md",
+      "original_sha256": "8069c46c3493b9a95b3e1c851583d06bbbc941b09bfca7efc2dad841c594fb6f",
+      "sha256": "22c67d98a98fdcefa522091beaab4c20a7f9a3d91f104cc17a93845855e9830e",
+      "bytes": 6903,
+      "current_modules": [
+        "FivePair"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-four-tied-report",
+      "title": "Symbolic tied-four and deficit-one five-pair results",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-four-tied-report.md",
+      "origin_path": "research/catchup/four_tied/REPORT.md",
+      "original_sha256": "5eb0e716ce45535facff94dd39e7879793ed65441c59d43401da8c92227db0b4",
+      "sha256": "98823fe3a964d74a61d24c83eccd1eb9c84710819eb00b3e669c585a1c3f67b2",
+      "bytes": 9501,
+      "current_modules": [
+        "TiedFour",
+        "ThreePairClose"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-five-three-report",
+      "title": "Five-pair deficit-three invariant: certified counterexample",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-five-three-report.md",
+      "origin_path": "research/catchup/five_three/REPORT.md",
+      "original_sha256": "6480c8d99d516644a035a7844933ae40673568d30267823fb9bf46b1d950820a",
+      "sha256": "2b80f3dcec0019ce47a12932734cc56d7db8b84f3f5e25b412b8b16dd0f7f2f9",
+      "bytes": 8158,
+      "current_modules": [
+        "FiveThree"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-canonical-five3-report",
+      "title": "Canonical five-pair reserve: an unbounded structural reduction",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-canonical-five3-report.md",
+      "origin_path": "research/catchup/canonical_five3/REPORT.md",
+      "original_sha256": "e971a173949e7f1560088949d02a06d43a483b2e6e423fe02a59f87c4b49bb94",
+      "sha256": "5d1f0d899e340700ff2f156cb7efdbbd8d9f61bb63673733e0b794dc526f4ecc",
+      "bytes": 9807,
+      "current_modules": [
+        "CanonicalFive",
+        "CanonicalSmall",
+        "CanonicalFour"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-anchored-four-report",
+      "title": "Anchored-four reserve: eight is necessary and cannot be the winning pick",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-anchored-four-report.md",
+      "origin_path": "research/catchup/anchored_four/REPORT.md",
+      "original_sha256": "c266dd2445e0894d362add6d814625ea106e9468c15c35bbcccc50426089fd66",
+      "sha256": "303e7998e915daa4764aac56fb385b29d271356b11330838b76d64fa32c67fc0",
+      "bytes": 10172,
+      "current_modules": [
+        "AnchorFour",
+        "AnchorFourEndgames"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-seven-pairs-report",
+      "title": "Seven-pair generalization test: the proposed recursive closure fails",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-seven-pairs-report.md",
+      "origin_path": "research/catchup/seven_pairs/REPORT.md",
+      "original_sha256": "3c486681b3476a1767e9679ef89e460ed74734cc85d4c8422ab296f6402bb06c",
+      "sha256": "6044bab56d54e70dd5569a14b844adf32cc9e495a2837fe16d91b5f387c241ee",
+      "bytes": 10049,
+      "current_modules": [
+        "SevenPairTest"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-whole-turn-report",
+      "title": "Whole turns, score quotas, and pair count",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-whole-turn-report.md",
+      "origin_path": "research/catchup/whole_turn/REPORT.md",
+      "original_sha256": "0d281daec1bd3232f62a8d42a3ec1e2cb192f87ff850327532dfd6feb702e122",
+      "sha256": "ebfdb87cf67a72f5b3e9b2e321e10444784dcc18b7ae54eb33cac6c2e4efa602",
+      "bytes": 7826,
+      "current_modules": [
+        "WholeTurn"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-multi-turn-report",
+      "title": "Pick-five defense through a balanced reserve triangle",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-multi-turn-report.md",
+      "origin_path": "research/catchup/multi_turn/REPORT.md",
+      "original_sha256": "876e3005abe1a565197866f157abe8436f3e18a0250fefa025af3e098a1aa1c4",
+      "sha256": "459a5fa000200de50d403ff02a2108ecb0c9ad712204890afbf218f3e221cee7",
+      "bytes": 7705,
+      "current_modules": [
+        "ReserveTriangle"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-four-orphan-report",
+      "title": "Four-pair orphan reserves: certified counterexample",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-four-orphan-report.md",
+      "origin_path": "research/catchup/four_orphan/REPORT.md",
+      "original_sha256": "53eae0d27bf2944190ada3eac2f215a23f0ce2832fa33d03086a5ca40bf4f32b",
+      "sha256": "3d27a5b9d1e158bb4ea73c06e1e48b90a734efbc84ba2d89b224969b648b9567",
+      "bytes": 7955,
+      "current_modules": [
+        "FourOrphan"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-near-repair-report",
+      "title": "Adaptive repair of the reached orphan decision",
+      "group": "paired-strategies",
+      "path": "archive/research-notes/catchup-near-repair-report.md",
+      "origin_path": "research/catchup/near_repair/REPORT.md",
+      "original_sha256": "88c8e9e4af74027d943d4c7853a6de4f48f7c63ac10b258530b233187ea3c6be",
+      "sha256": "fa3b6da7acf83676acb2b045ba7f9f5aaf80ea0ccaefb14b80639336cad194d6",
+      "bytes": 7275,
+      "current_modules": [
+        "NearRepair"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-density-proof-high-deficit-full-strategic-report",
+      "title": "Full strategic closing: a terminal exclusion and a commutation obstruction",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-density-proof-high-deficit-full-strategic-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/density_proof/high-deficit/full-strategic/report.md",
+      "original_sha256": "3d07c174f1a995c403899370ed13b05b2d2b43fca95550b82908b8b29d7ce40f",
+      "sha256": "de8b3fa5bedbfaa1678f474a1a610a05e8c24c7178b6073abd7f31f044587bf4",
+      "bytes": 7263,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-density-proof-high-deficit-report",
+      "title": "High-deficit nonloss: exact obstruction and a conditional top boundary",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-density-proof-high-deficit-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/density_proof/high-deficit/report.md",
+      "original_sha256": "d9d68f0419b61a18ba3952350c7c633dd7da97bc68b3175bfa153a2f9e7c507c",
+      "sha256": "4a6fb85d0b36b74839473166cb0e186c9ec64d136732a53bbcfcb95b6e33e370",
+      "bytes": 7159,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-density-proof-report",
+      "title": "Arbitrary-hole exact-deficit dichotomy",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-density-proof-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/density_proof/report.md",
+      "original_sha256": "e6ebba58ea348126ee647f049b99fb6dcc2c47d40033b8e9ff7a4b55d7aa3247",
+      "sha256": "c20c6f8eb6ebd9427e8a62e13de2aff3cf3848bb6f6dc472eb370bf62ba8b3b0",
+      "bytes": 9063,
+      "current_modules": [
+        "ExactSumLossObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-alternating-tail-obstruction-report",
+      "title": "Alternating-tail diagnostic: kernel-certified loss",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-alternating-tail-obstruction-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/alternating-tail-obstruction/REPORT.md",
+      "original_sha256": "05f61018af14046b1572e0ff21935ca96e52d51e82445cbfe31cacd6155c9836",
+      "sha256": "a89a5afaa4993202c902878fbcbfe30ede5d8d65d835f7be2276dc882d7dfa04",
+      "bytes": 6271,
+      "current_modules": [
+        "AlternatingTailObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-block-entry-report",
+      "title": "Dense block-entry obstruction",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-block-entry-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/block-entry/REPORT.md",
+      "original_sha256": "5384dd81f1741a0c5cbb79a0b9a38377046de5676b45f5e14ec1c98e249f9ad6",
+      "sha256": "62c9c3f834e3aaf5d934dd2a96b4c041c9bf1d3f42e360e11e57871e1381d266",
+      "bytes": 6807,
+      "current_modules": [
+        "DenseBlockEntryObstruction",
+        "Executable",
+        "Reference",
+        "CompletedTurn",
+        "ExactSumLossObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-block-mass-report",
+      "title": "Dense exact-block mass bounds small residuals by finite ambient intervals",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-block-mass-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/block-mass/report.md",
+      "original_sha256": "af535c57f55cd688d5ed92b21ca505d89fe4d7a21c03d058c4d5dcc420eb8809",
+      "sha256": "8ce5c616d18f896059fa11527fa3d5e3f1a4af3884a0c5f155a379421b5b17b1",
+      "bytes": 4989,
+      "current_modules": [
+        "DenseBlockMass"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-crossing-entry-report",
+      "title": "Uniform crossing entry contract",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-crossing-entry-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/crossing-entry/REPORT.md",
+      "original_sha256": "1cb834572e706f5a929733be9f081d3011e763d8ca52f15c68349647068043a7",
+      "sha256": "77fadaa997b8b3bb25ab0d95d8be85ec8131052bd3fce867318c3cb98e463e95",
+      "bytes": 3680,
+      "current_modules": [
+        "DeficitCrossingEntry"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-deficit-crossing-report",
+      "title": "Legal midpoint turns exclude double loss",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-deficit-crossing-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/deficit-crossing/report.md",
+      "original_sha256": "fde016f74d222401855f84a4cc69b85acaf3b103a7a643f8306244a3150f70da",
+      "sha256": "6079a03ece2345013feb723bef188bc448a5a484962d1ff2c9a4327e7368238a",
+      "bytes": 3177,
+      "current_modules": [
+        "DeficitCrossing"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-dense-terminal-report",
+      "title": "Uniform cutoff for the actual terminal lower branch",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-dense-terminal-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/dense-terminal/REPORT.md",
+      "original_sha256": "126fe790fe7dd27fd0ff53eb4f772b577c02c6ef99b658b8f99b4184653ee3ae",
+      "sha256": "409db3340331f2da1f1cfc35cbc4839e041c59840e955152bb60f50c9b981b06",
+      "bytes": 4204,
+      "current_modules": [
+        "DenseTerminalReduction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-gap-obstruction-report",
+      "title": "Maximal-block gap preservation has a dense even counterexample",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-gap-obstruction-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/gap-obstruction/report.md",
+      "original_sha256": "614472fc660d65253d97c9c819be23ee5c085a71615d682e8f53902ab4f42c67",
+      "sha256": "cfb8c72851328d49ae7033c3cd9c5acfbbd328465b8b7dda6b902438f1d147a6",
+      "bytes": 5959,
+      "current_modules": [
+        "GapSuccessorObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-incomplete-mass-report",
+      "title": "Missing subset-sum mass bound",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-incomplete-mass-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/incomplete-mass/REPORT.md",
+      "original_sha256": "eaa1d789f72cefc1246bfe87d521a314dd07449c437e81cdd112c55fd7a44eb0",
+      "sha256": "bb5c145d42f19386613892d90922bec25adcc7eb8130a82511c7f4c95bb2e886",
+      "bytes": 5012,
+      "current_modules": [
+        "IncompleteSubsumMass"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-interval-reserve-depth-report",
+      "title": "Interval reserve closure-depth barriers",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-interval-reserve-depth-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/interval-reserve-depth/report.md",
+      "original_sha256": "f0116b8699ac2c22ceaa29a739e782d8166ee8b9cf1328251c3560d1c51d77bc",
+      "sha256": "34271b7d44af43dbcbdca23a40337ce40ecf9d0659766c68cc2aa2135505070b",
+      "bytes": 6832,
+      "current_modules": [
+        "IntervalReserveDepth"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-interval-successor-obstruction-report",
+      "title": "Immediate-successor reply fails at a drawn actual interval endpoint",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-interval-successor-obstruction-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/interval-successor-obstruction/REPORT.md",
+      "original_sha256": "8b73cda8ee193f280d24c39993928fe350eea3f2c778043a17696d45b2ece52f",
+      "sha256": "aa749679c1f45542eb6b8e5487e98d6953ec6eee255a6d6c05743f31d98751ef",
+      "bytes": 4626,
+      "current_modules": [
+        "IntervalSuccessorReplyObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-loss-frontier-report",
+      "title": "The remaining frontier of an actual dense loss",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-loss-frontier-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/loss-frontier/REPORT.md",
+      "original_sha256": "63898c35681acc2ab45d53a1dcaf3b8232e557cc6672aec80cf0fd349b0055ea",
+      "sha256": "65209848c8a223188061d23743a06779b5c3117cedd6623e28d380e5e37e0b41",
+      "bytes": 7232,
+      "current_modules": [
+        "DenseLossFrontier",
+        "ExactSumLossObstruction",
+        "WinningOpening"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-pair-shadow-report",
+      "title": "An unbounded reserved-counter shadow contract",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-pair-shadow-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/pair-shadow/report.md",
+      "original_sha256": "f913ba01f98f63d7ef87ff7a6e751d8cdf9f9a186c1e5c97f5c35dd9757802c3",
+      "sha256": "e8b3f48217432c7b7d2015345f54e36d92a97cf3a297e21047df613494aecf32",
+      "bytes": 7496,
+      "current_modules": [
+        "PairEntranceShadow"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-root-eight-criterion-report",
+      "title": "Exact criterion for the eight-shadow reserve endpoint",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-root-eight-criterion-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/root-eight-criterion/REPORT.md",
+      "original_sha256": "548d1b541f21ffd5d22f9e4d4d8876ff47f0384837681eff7af8c2458201919a",
+      "sha256": "8343a14c179191695ce155414b9f34dbcae72c28848edd4008cf07d3c6d58dc1",
+      "bytes": 4594,
+      "current_modules": [
+        "RootUpperEightCriterion"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-root-reentry-eight-report",
+      "title": "Actual interval upper frontier at eight",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-root-reentry-eight-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/root-reentry-eight/REPORT.md",
+      "original_sha256": "2b15bfb966fcc00692b4c9b81bdc65c9e7c12ca7ebd0fb38792f88488fdf08d0",
+      "sha256": "c180192d485bfb583ccf210dfbf8dde06ed01a738f7d78a88547a8e1a731cf45",
+      "bytes": 4576,
+      "current_modules": [
+        "RootUpperEightFrontier"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-root-reentry-seven-report",
+      "title": "Uniform seven-opening exclusion: completed Lean integration",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-root-reentry-seven-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/root-reentry-seven/report.md",
+      "original_sha256": "1d4f36188a5deaff203e225e51bd2d22579985e5051af717d817e6e1d0e14aa8",
+      "sha256": "10080d01bb1cde3bf2eeda59bdfe1b8d32bde4b6b081b4c07e813a167032d4a2",
+      "bytes": 7472,
+      "current_modules": [
+        "RootUpperReentry"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-three-residual-report",
+      "title": "Dense gap closure for at most three residual counters",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-three-residual-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/three-residual/REPORT.md",
+      "original_sha256": "1796e90a4f2ca955285a95434ce19845ceede83be9d4882f0ec7302f25550c7c",
+      "sha256": "f93c4ac2288169071b11b4be1cdb39b70e936c8fa07321cb5bbfebd55f5bd832",
+      "bytes": 6898,
+      "current_modules": [
+        "DenseThreeResidual"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-two-anchor-obstruction-report",
+      "title": "Certified sparse two-anchor double loss",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-two-anchor-obstruction-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/two-anchor-obstruction/REPORT.md",
+      "original_sha256": "1bbdd241120b6360e275200e7efca084f81ea84468e1f2f1d6fc91dab84be310",
+      "sha256": "5887690e9f3be6309ba95f3d1b422a63b787931a7345f582aa344f526dc9c817",
+      "bytes": 9427,
+      "current_modules": [
+        "TwoAnchorDoubleLossObstruction",
+        "WinningOpening"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-two-hole-report",
+      "title": "Two-hole top boundary: conditional reduction",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-two-hole-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/two-hole/REPORT.md",
+      "original_sha256": "96c7185b3b2669031a871ee022c29a81965a28c57dc3e111dfee2ab55d0b9bc3",
+      "sha256": "038cd00a20c9c68e5805d3a7e11bf9ecd158d20beb0c70cb47727b36d3d6130e",
+      "bytes": 3560,
+      "current_modules": [
+        "TwoHoleTopBoundary"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-frontier-two-residual-report",
+      "title": "Uniform exclusion of nonterminal two-counter residuals",
+      "group": "density-and-subset-sums",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-frontier-two-residual-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/frontier/two-residual/REPORT.md",
+      "original_sha256": "aa91fdc0fe8f9b37f8365d0a31644351d3fcdc2bd5a3bf38df8713e618e2c317",
+      "sha256": "27b13f517ab1a0a8d5ea4b31f5f73169932e2369590021fe4f06c25073033aa6",
+      "bytes": 5508,
+      "current_modules": [
+        "DenseTwoResidual"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-actual-three-guard-report",
+      "title": "Actual three-anchor endpoint diagnostic",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-actual-three-guard-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/REPORT.md",
+      "original_sha256": "c03119abfc86191ea5f509c0b8ca609cf030b0d8132d157acf6fdc1125f81459",
+      "sha256": "db77a7570aab419396631a5f6e98ea24b87c16957e6254fe1993a4d17635b5e8",
+      "bytes": 3693,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-actual-three-guard-round2-report",
+      "title": "Second prescribed three-anchor endpoint test",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-actual-three-guard-round2-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/round2/REPORT.md",
+      "original_sha256": "d74939a46f6176d926006af15f06ef00077c1dc0abebd5fd8f91faf03b20fcc5",
+      "sha256": "3b3a371004f54ddb111f3677861bbdae53f8925d3259e9b83319dbc3655c59f5",
+      "bytes": 3224,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-actual-three-guard-consecutive-report",
+      "title": "Actual consecutive-tail defense diagnostic",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-actual-three-guard-consecutive-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/consecutive/REPORT.md",
+      "original_sha256": "9a25d2e488ef2c457f46609eccfd2b2cd382452c087c23e2c15c53115a12ee53",
+      "sha256": "9f8793ceff477fd5dcef03dfe0c6480e0ef511c272e7b6217382ecc91a517d62",
+      "bytes": 4882,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-gap-five-diagnostic-report",
+      "title": "The actual c=5 equality diagnostic did not reach its premise",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-gap-five-diagnostic-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/gap-five-diagnostic/REPORT.md",
+      "original_sha256": "1c89c5af902b5ffc8c8b90658537fb77b6ed07284b2ba4e9b1a046771e50318f",
+      "sha256": "458735924025786e67b07846a887f2427fdd55cf70dca044629afb85de677e0e",
+      "bytes": 3606,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-near-deficit-guard-report",
+      "title": "Diagnostic counterexample to the insertion bridge",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-near-deficit-guard-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/near-deficit-guard/REPORT.md",
+      "original_sha256": "6df44535a63f2cfa35acf2ad3ee91cca31d6b6eb4858cc01c1110dceba87f7dd",
+      "sha256": "64530c52047d14ff64bd6c0d1b7f497b158e29005d1d594f4f16b3f7c4689361",
+      "bytes": 3670,
+      "current_modules": [
+        "AlternatingTailObstruction",
+        "NearDeficitGuardObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-odd-pair-root-report",
+      "title": "Odd-start pairs do not rescue arbitrary tied NONWIN",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-odd-pair-root-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/odd-pair-root/REPORT.md",
+      "original_sha256": "851bf9af382c71e7ba035f9f4d7dcee23841c068eee33a6fd7a1706026643513",
+      "sha256": "d755a07d66a2b837b5a5901fd1455b3a7cd38b1ba8671f54e8f5fc2cf45d7b56",
+      "bytes": 3108,
+      "current_modules": [
+        "OddPairRootObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-shadow-proof-report",
+      "title": "Resumed shadow proof: checkpoint of current open kernel",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-shadow-proof-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/shadow-proof/report.md",
+      "original_sha256": "bfb9f64ea495284321e42cf2266cbac3a9f908d5ce93e618f351c89b1aeede7b",
+      "sha256": "9b296ddf6fe21f914e5f875d667b81629c5d09b95ab60b04e21c9b0cce2ee009",
+      "bytes": 10439,
+      "current_modules": [
+        "ConsecutiveGuardDescent",
+        "ConsecutiveGuardBoundary"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-shadow-smt-report",
+      "title": "Eight-shadow finite-arity SMT diagnostic",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-shadow-smt-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/shadow-smt/REPORT.md",
+      "original_sha256": "4ac19466d7b80d0b58c8800b0109c24bf86a7e156c61b15247366fcfdbf479df",
+      "sha256": "2af8fac71a400e79858ecad80c832681b8a3a696b848d0cdf91eb252479b3400",
+      "bytes": 4867,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-two-guard-adaptive-mutation-report",
+      "title": "Counterexample to the minimum-two/unit-deficit candidate",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-two-guard-adaptive-mutation-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/two-guard-adaptive-mutation/REPORT.md",
+      "original_sha256": "6f62efb3f3533a110f0ec4effe91524701296e9148058069bec94c4b138a1e97",
+      "sha256": "9df638c02844b5cda64b6d6b1ba3ce6a1c1617df2a1067263dfb03a57fc6a07c",
+      "bytes": 3919,
+      "current_modules": [
+        "UnitGuardObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-two-guard-smt-report",
+      "title": "Unit-deficit, minimum-two diagnostic",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-two-guard-smt-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/two-guard-smt/REPORT.md",
+      "original_sha256": "da7cc5bbd1d35b028f7db54e8c7bcfb2028d6229afdd677fe868dc339ca63c7a",
+      "sha256": "0b29fb5364d41e5fe281ff78374b73ae2315e13d8963235209cb4d1b34325483",
+      "bytes": 2989,
+      "current_modules": [
+        "UnitGuardObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-resume-01-equality-reserve-report",
+      "title": "Equality excludes every reserve-containing repair turn",
+      "group": "guards-and-interval-cores",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-equality-reserve-report.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/equality-reserve/report.md",
+      "original_sha256": "7da0c0ed1b5546b0f113ee4b6cf33a50d87a91f2d111b2b7d15aabce8310e0aa",
+      "sha256": "b780de50f39e6c69c25c2dcd5cedfbd1a26436959e6bae15f7bc7e31004e9fbf",
+      "bytes": 7190,
+      "current_modules": [
+        "EqualityReserveObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-notes",
+      "title": "Exact search audit and one root-derived experiment",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/NOTES.md",
+      "original_sha256": "70b421b79bd28ab36741061a5234d81e6b921f8d64f541eeaea86a5169c9dab4",
+      "sha256": "e21dbc252ff984e7f109f8bbad308d49dbdd91eaa76007ecd81833f2289ef430",
+      "bytes": 28346,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-gap-full-witness-notes",
+      "title": "Gap closing with the full strategic premise retained",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-gap-full-witness-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/gap_full_witness_NOTES.md",
+      "original_sha256": "1cf96958e98d7a8fd80a6b3384236ba929e1b4873f742aa77549629663580e0d",
+      "sha256": "9a0bd2c36cfa53e6a3138dcbb95deccdc04e4eff56492273efaef245f2b80727",
+      "bytes": 4261,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-gap-successor-notes",
+      "title": "Gap-successor diagnostic and margin-3 filter",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-gap-successor-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/gap_successor_NOTES.md",
+      "original_sha256": "4147deaf39632113f32eae3c0f44daa83148af556c4343633b105814191edbb3",
+      "sha256": "cf1c0e0306d39b84e0b57cf08306169bdc0eebe6181e7ffdf29e9d5cf77824b6",
+      "bytes": 5358,
+      "current_modules": [
+        "GapSuccessorObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-min-block-entry-notes",
+      "title": "Minimum-block entry and every opponent whole turn",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-min-block-entry-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/min_block_entry_NOTES.md",
+      "original_sha256": "9f59e0e9bba7ea53cefcc5b63ee71931584b235289196d2d44c0b103fd0b527b",
+      "sha256": "fd14c4e58d95cce8411b1b7356ae126de88d0628639ddbb767ed987c691cb0b0",
+      "bytes": 7597,
+      "current_modules": [
+        "DenseBlockEntryObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-alternating-gap-notes",
+      "title": "Root alternating gap",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-alternating-gap-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_alternating_gap_NOTES.md",
+      "original_sha256": "9b18c1e6ce3470c82aeee382f132205b73fe983eaf8ecdac455eb57fd23776f7",
+      "sha256": "e9fe6ed2e1fcad42c8788ee4fc3d8440d0b24a392ebd3cc7ccbf15f60887724a",
+      "bytes": 5839,
+      "current_modules": [
+        "AlternatingTailObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-alternating-gap-shrink-notes",
+      "title": "Root alternating gap shrink",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-alternating-gap-shrink-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_alternating_gap_shrink_NOTES.md",
+      "original_sha256": "855634c70bdacaf8ac106899cc7f375a17d0223009b23e761d3a122bf730e061",
+      "sha256": "4e10b47927b6a6aad4fc35776189a4343b9e45f632e95f643963f0fff60bfcba",
+      "bytes": 3714,
+      "current_modules": [
+        "AlternatingTailObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-anchor-doubleloss-notes",
+      "title": "Two-anchor auxiliary: no simultaneous loss in the authorized batch",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-doubleloss-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_doubleloss_NOTES.md",
+      "original_sha256": "ec01bfe550c1707fc5cbd78c64d8df05febf29746752e1412e2a3485ebdc7d7c",
+      "sha256": "31d4f86fbb17e076d2e39becd822848db57fc9bc498612f5980a5159b308fc95",
+      "bytes": 4436,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-anchor-jointloss-mutation-notes",
+      "title": "The generic two-anchor auxiliary has a verified double-loss diagnostic",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-jointloss-mutation-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_jointloss_mutation_NOTES.md",
+      "original_sha256": "68aaee2aeaddd0d4ee7b747a8f977edd620eb1c7c2c64c356468839f2b5d1884",
+      "sha256": "c1965bcaa27fee3868aaac9eb91220638e458ea109e4ffeb09500e2c2e77b335",
+      "bytes": 4588,
+      "current_modules": [
+        "TwoAnchorDoubleLossObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-anchor-jointloss-shrink-notes",
+      "title": "Fixed-support deletion shrink and proof data",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-jointloss-shrink-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_jointloss_shrink_NOTES.md",
+      "original_sha256": "8c59ee4a142999d6f7eb829e5755e45226293b9f34851d81cbccc4c308b04c0e",
+      "sha256": "2b3b36ff21b00d67ab48dd70c1262119fbbf98c88424332bf1f56d7570df6cfc",
+      "bytes": 3917,
+      "current_modules": [
+        "TwoAnchorDoubleLossObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-anchor-unpaired-notes",
+      "title": "One unpaired arbitrary-tail anchor discriminator",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-unpaired-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_unpaired_NOTES.md",
+      "original_sha256": "072e4c5ae836fb34d6d58eea1b19d57ca2ed0102e5aee5bb19a811e7c51dd20d",
+      "sha256": "08cb2cc6faba23156df6d63d7565cf59e4bfb4565f8d90ff84125328a662b50f",
+      "bytes": 5289,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-interval-four-notes",
+      "title": "Fixed actual-interval entry4 test",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-interval-four-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_interval_four_NOTES.md",
+      "original_sha256": "fd017ac2532bafde8f2f92abcf2f0feef449b917b940e59c2170829a11d1633d",
+      "sha256": "6881dcada2e5a3f5af97484d54d64da8593600745006ef7f8d14ac9b45e04256",
+      "bytes": 4247,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-interval-lead4-notes",
+      "title": "Root interval lead4",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-interval-lead4-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_interval_lead4_NOTES.md",
+      "original_sha256": "216c42411554675fb81d9b698f49452bfeb30bea039fba679fe535e462aeacfa",
+      "sha256": "cf714f7db1c78759199e1e90fe75a2c87b9cace62c80fa5020fcfcdb5da163c7",
+      "bytes": 4574,
+      "current_modules": [
+        "IntervalSuccessorReplyObstruction"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-reentry-reflection-notes",
+      "title": "Root reentry generic anchor reflections",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-reentry-reflection-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_reentry_reflection_NOTES.md",
+      "original_sha256": "5600d107ef6c4aa51d6d812be400039a59c710a5acbdf914622ac46c873191a8",
+      "sha256": "4e8c0fe239d64c8b1a2e849d3b9fde908a498ce3ff1b6576bc61855971fe1f6e",
+      "bytes": 4309,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-root-reentry-reflection-heldout-notes",
+      "title": "Held-out direct anchor nonloss test",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-root-reentry-reflection-heldout-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_reentry_reflection_heldout_NOTES.md",
+      "original_sha256": "21f3410e29293b4ffb79b326a6e03f9e8f0ee4fe5ca467c4cbafdf32424cbbcc",
+      "sha256": "02b00981322055a1dd928e96c1d8782b4a8e7891ea880e163ec95e8f39611788",
+      "bytes": 4074,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-terminal-gap-notes",
+      "title": "Terminal gap arithmetic classification, ambient N \u2264 9",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-terminal-gap-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/terminal_gap_NOTES.md",
+      "original_sha256": "364ee57e256521c2051a1a5dc936a2b19533e07bd91ea935f8e1834a6a4b0f5f",
+      "sha256": "c4e1e642960108f13b4292e7f07bdb6f1f98469423fafa85b2fa16d791201d19",
+      "bytes": 6229,
+      "current_modules": [
+        "DenseTerminalNonloss"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-campaign-2026-10-22-search-three-residual-notes",
+      "title": "Three-counter residual audit",
+      "group": "bounded-experiments",
+      "path": "archive/research-notes/catchup-campaign-2026-10-22-search-three-residual-notes.md",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/three_residual_NOTES.md",
+      "original_sha256": "06d4a1391f066d5e62ff36e893c0313361cf6bda870c90816a8c162b33bfaa0f",
+      "sha256": "dd50038b8c140b8cead084fbc347c8e4b41b09406948ed701f529b92394aed37",
+      "bytes": 7115,
+      "current_modules": [
+        "DenseThreeResidual"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-machine-heuristic-report",
+      "title": "Our proof-guided heuristic-search pilot",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-machine-heuristic-report.md",
+      "origin_path": "research/catchup/machine/heuristic/REPORT.md",
+      "original_sha256": "ebc48e8f57c757e961d98bf07b94bc6d0c9a756768a3c6ecfe78785e83e25247",
+      "sha256": "1947f52868fd996d6db25d6038127f32bb64486207299bae39c609ad92186f37",
+      "bytes": 9492,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-machine-decoder-report",
+      "title": "Shared decoder with a tape-stored continuation",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-machine-decoder-report.md",
+      "origin_path": "research/catchup/machine/decoder/REPORT.md",
+      "original_sha256": "b98bed70559b043144723e86355603376bc13829e9aebd88046f3a9e064d5be4",
+      "sha256": "06588e0d2f32341072bd8a99c2b2e0e58fd06b8b4acf3a37b648e719b019ff67",
+      "bytes": 11003,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-report",
+      "title": "Catch-Up on the existing verified Chess interpreter",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-report.md",
+      "origin_path": "research/catchup-reuse/REPORT.md",
+      "original_sha256": "fa9842ce8a37fd8aebabb2ab904ec3673fd3fee177d4bac43c079593150db614",
+      "sha256": "87bd5ac7254da7a13ef63cfc4b1c73617d80066c020791d9401672e11c15dbf9",
+      "bytes": 10934,
+      "current_modules": [
+        "Search"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-failures",
+      "title": "Retired routes in the compatibility/reuse session",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-failures.md",
+      "origin_path": "research/catchup-reuse/FAILURES.md",
+      "original_sha256": "2afdc98d6f4ad4c1c52f21fd65803a488790adf3e5235475f3ee630ff38b645b",
+      "sha256": "d0daa452a4fec9f02db36b71bf14724ae0e0c775e1707291ffe073d92f0cc2ce",
+      "bytes": 3224,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-words-failures",
+      "title": "Retired finite-reduction route",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-words-failures.md",
+      "origin_path": "research/catchup-reuse/words/FAILURES.md",
+      "original_sha256": "b9c6afc13d5c45d7f79495ff4a1fc3c8fdc4ae3a8f2df933e23564f83e9c3d5b",
+      "sha256": "685948a5e2a5bf5311a99bdf2d417c076149159460e5fbdfd6815c936daa93ed",
+      "bytes": 1881,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-restoration-report",
+      "title": "Shared head restoration at the two interpreter loads",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-restoration-report.md",
+      "origin_path": "research/catchup-reuse/restoration/REPORT.md",
+      "original_sha256": "cfaa6845a6155382989b89ec695341e5b534af9c46749707fdae242aa8562d9e",
+      "sha256": "ae4d0223208038bb6b07db4c11e17d843d2f950b3d14db8a41afe60457d96253",
+      "bytes": 10653,
+      "current_modules": [
+        "Search"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-lowering-report",
+      "title": "Costed lowering of the actual Catch-Up program",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-lowering-report.md",
+      "origin_path": "research/catchup-reuse/lowering/REPORT.md",
+      "original_sha256": "7dd862a7c053f48a19845338d6f51ee8ec1518b459a5c1520c0dcf62cd3af512",
+      "sha256": "42a8eb6b908f2aea9838b9188742ef7d6389858dbe7db333da8a091852dfe2e6",
+      "bytes": 9852,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-machine-report",
+      "title": "Baseline Catch-Up cryptid \u2014 2026-10-20",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-machine-report.md",
+      "origin_path": "research/catchup/machine/REPORT.md",
+      "original_sha256": "fbbe5fc9ecc595c33d5b1208e14f5cbd7dd94a4fe2e0af46dd11bc0f18a36f29",
+      "sha256": "737a048af99b30858fbed462317f040946dc787b10dcb8e7339a146776866afd",
+      "bytes": 7811,
+      "current_modules": [
+        "Search"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-machine-direct-report",
+      "title": "Constant continuation jumps without redundant reads",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-machine-direct-report.md",
+      "origin_path": "research/catchup/machine/direct/REPORT.md",
+      "original_sha256": "e12ddbc04768ed3476ed248ab5bea30f9d6df327cf2e2ae62a85f0f3c770cf54",
+      "sha256": "d1f4e4f027bfc26e8809a93924f47539ed9eb4e756125b9c9618bf2b25541eac",
+      "bytes": 8516,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-machine-layout-report",
+      "title": "Dense tape layout: verified search result",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-machine-layout-report.md",
+      "origin_path": "research/catchup/machine/layout/REPORT.md",
+      "original_sha256": "041710733e28a561a5922612f1a620e2d353eb75a4e5b750a9dfcfcbcfb3d220",
+      "sha256": "f80c832e5911fe4b79b2c4e2515d7816c6285b7e4d02af590b4653a2788833a9",
+      "bytes": 9926,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-machine-shared-report",
+      "title": "Shared continuation blocks \u2014 2026-10-20",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-machine-shared-report.md",
+      "origin_path": "research/catchup/machine/shared/REPORT.md",
+      "original_sha256": "b880e188d017a398eab70c038fc1a57c5fff0bb240114f8f0f01c876ee889cae",
+      "sha256": "191af9d43c8e4bc36e3023160c44fc4facdb35e24c919015d184e42884399016",
+      "bytes": 8079,
+      "current_modules": [
+        "Search"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-call-report",
+      "title": "General dynamic call and return",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-call-report.md",
+      "origin_path": "research/catchup-reuse/call/REPORT.md",
+      "original_sha256": "a01114fbba97b2bbad30298a670320c949cfdf3deab482acd2d4c765fc9e4709",
+      "sha256": "a09c92c51bf2fb105826214302eea9eef96498391b8c5bdd0aa089a2f5b7fe2f",
+      "bytes": 12361,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-cases-report",
+      "title": "Source `.case`, both branches and empty input",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-cases-report.md",
+      "origin_path": "research/catchup-reuse/cases/REPORT.md",
+      "original_sha256": "c850bcf620704005257c64596c14aba9f9d6d6a2cc17869a352df5557b75dff1",
+      "sha256": "f4dfb8eaa8a462e49a310f1f7d337c9f516bd558bedae19c92ec77ace5206e29",
+      "bytes": 13892,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-comp-report",
+      "title": "Generic source composition and partial-program halting",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-comp-report.md",
+      "origin_path": "research/catchup-reuse/comp/REPORT.md",
+      "original_sha256": "a976e5f0d6e7244412ec496d41e698a7803593d662d6eba6343b9f6d3aa9b3d8",
+      "sha256": "31fa740640c69e0a0a97cf94fe7f56437914384e06db83fb05a3876f0829ec5b",
+      "bytes": 10988,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-dispatch-report",
+      "title": "Instruction lookup and dispatch from a recovered PC",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-dispatch-report.md",
+      "origin_path": "research/catchup-reuse/dispatch/REPORT.md",
+      "original_sha256": "26eab2df5fb07b91e9936d05b66e93f4dbdc671309703fc28b811c97b56b2e7f",
+      "sha256": "b629db0c3a71c065301c132bf33db0f8a0c5cc5fa9649501afacaa4d3587953f",
+      "bytes": 12120,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-entrance-report",
+      "title": "Complete actual switch contract",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-entrance-report.md",
+      "origin_path": "research/catchup-reuse/entrance/REPORT.md",
+      "original_sha256": "d7c8a2ad9b480ad1668fcb3cdbce9f19aca6623519dd243a6203daa55c3ab6cf",
+      "sha256": "f9af8d82070002c232bef2e980adf0856ef5b0a874b8f78ce3ba7362d8d4f1b5",
+      "bytes": 8319,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-extract-report",
+      "title": "Actual switch prefix extraction: proved",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-extract-report.md",
+      "origin_path": "research/catchup-reuse/extract/REPORT.md",
+      "original_sha256": "54d84915fea3ff0602f7889cba6b1c25702e6088c48d7d1519d88dd4853e64c7",
+      "sha256": "557e307bab3ffe2108c33950ab2d4d0a97a553c82ab40a51484c7fa4e73fab90",
+      "bytes": 8624,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-finish-report",
+      "title": "Actual finishBody and all 92 relocations",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-finish-report.md",
+      "origin_path": "research/catchup-reuse/finish/REPORT.md",
+      "original_sha256": "64a7ba5c7d0983b551ab5b9691bbffb75d715080c9ebe22571296fc9571ae163",
+      "sha256": "f59376e2c8c08f117c299de8f47233569d5492ea0c319847d74c6b072f228661",
+      "bytes": 8484,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-literal-report",
+      "title": "Literal push and generated dynamic calls",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-literal-report.md",
+      "origin_path": "research/catchup-reuse/literal/REPORT.md",
+      "original_sha256": "51a885f88ac291e215fdd889267cafa38af7014bf89dce32d76c68ca52823568",
+      "sha256": "81278315acf616ea9fd06630c06df7b361ca08f9c97c6114616c54f59ceb1d54",
+      "bytes": 14378,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-pred-report",
+      "title": "Conditional predecessor, zero testing and branch dispatch",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-pred-report.md",
+      "origin_path": "research/catchup-reuse/pred/REPORT.md",
+      "original_sha256": "32ecb9644ccbe6162a7613e393b1748e2961205cfaf263e486e8e8ea0663917e",
+      "sha256": "92ef5cdb50e570ec9e834db081008da8f81481be71f5ada5dcfb380538e4651d",
+      "bytes": 16159,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-relocate-report",
+      "title": "All 92 actual switch copies: relocation complete",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-relocate-report.md",
+      "origin_path": "research/catchup-reuse/relocate/REPORT.md",
+      "original_sha256": "dec3dc96f8a50328656ca3b2d99853866c45a1c70b516efef989f29e7774a04a",
+      "sha256": "127fe366003daaee711b0f979acf2d83bf0e07f8f974f75f2f0b3425e7b544c7",
+      "bytes": 10557,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-save-report",
+      "title": "Actual save contract and all 92 copies",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-save-report.md",
+      "origin_path": "research/catchup-reuse/save/REPORT.md",
+      "original_sha256": "4b524a750d59653940ebdaa7c7775ca69ce3acde841e433a538c190634f0ada1",
+      "sha256": "e1485c35b8d823708c1783968d969a0978150b0fb3c53fff26ea9117a56c7296",
+      "bytes": 8296,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-separate-report",
+      "title": "Separate-stack binary prototype",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-separate-report.md",
+      "origin_path": "research/catchup-reuse/separate/REPORT.md",
+      "original_sha256": "f3d474b0718ed7661217ce3f1076d81a72a88843aee28188e91dcc49a24132a5",
+      "sha256": "1747d802833d0be4bc3fcfa709e5fd3865605e2a9cf5c328a85ae81878861c4b",
+      "bytes": 10682,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-sharing-report",
+      "title": "Decoder sharing at two actual interpreter sites",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-sharing-report.md",
+      "origin_path": "research/catchup-reuse/sharing/REPORT.md",
+      "original_sha256": "fcf9fff31ea921517bd81e0ce829142867d28fdd907e1cb25b155c08395d53ac",
+      "sha256": "a726099ccf73a76b122b9b7df789ddf99ecd09075451aeb4fd8af5cf13700f32",
+      "bytes": 10080,
+      "current_modules": [
+        "Search"
+      ],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-sourcesucc-report",
+      "title": "sourceSuccBody and the final added bank site",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-sourcesucc-report.md",
+      "origin_path": "research/catchup-reuse/sourceSucc/REPORT.md",
+      "original_sha256": "549ea60c7eec523390e5d684c41181dabbeefe83870f73dabcfbb1f93bd4cc92",
+      "sha256": "07fd792169196660af7f6797791313b631447a4df7f77a3302e41ee5439ef3f4",
+      "bytes": 8327,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-succ-report",
+      "title": "Successor as a data-changing callee",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-succ-report.md",
+      "origin_path": "research/catchup-reuse/succ/REPORT.md",
+      "original_sha256": "981a3ee0fb4f6e087d55322bba69103940acfbf9c6ea28a6882845861dee741e",
+      "sha256": "6ac369b8032b942e84105cc51907e776c2f9c86d6e2759a33871ca290cefdc58",
+      "bytes": 12880,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-switch-report",
+      "title": "The actual switch restore loop, for arbitrary input lengths",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-switch-report.md",
+      "origin_path": "research/catchup-reuse/switch/REPORT.md",
+      "original_sha256": "344f360bc0174622a6cb908eeb7f85067b89853538dfb9fe5f866fa5b6434474",
+      "sha256": "63af60a4e90ee6cc6ce4015078bc25ae01d26bcae1af4afa7b57f208cf8bcb38",
+      "bytes": 7622,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-tail-report",
+      "title": "Shared discard and the source `.tail` contract",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-tail-report.md",
+      "origin_path": "research/catchup-reuse/tail/REPORT.md",
+      "original_sha256": "672be17ab0f38720f9a55bdaf4e87e6e4d89c8968646da7e718c25aa89007e2e",
+      "sha256": "dcddc08b2920a01d454da5cbade42b96a55d0211350223b748d1847d3cc115bf",
+      "bytes": 13966,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    },
+    {
+      "id": "catchup-reuse-words-report",
+      "title": "Self-delimiting natural words and return-address storage",
+      "group": "machine-design",
+      "path": "archive/research-notes/catchup-reuse-words-report.md",
+      "origin_path": "research/catchup-reuse/words/REPORT.md",
+      "original_sha256": "e24073cef1b128a368a4e3bd68c6d442d1791d2e382012baf7ada6f56b60b8fa",
+      "sha256": "d99d3cd217af7c1a3df20e814439a937ade4299282833f38726224b1452a1896",
+      "bytes": 10150,
+      "current_modules": [],
+      "evidence": "Historical narrative: linked current Lean statements carry formal assurance; experiment claims are retained observations, not fresh replay.",
+      "adaptations": [
+        "historical-status banner",
+        "machine-local path prefixes normalized",
+        "relative links resolved or shown as historical text"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "id": "campaign-2026-10-22-resume-01-actual-three-guard-consecutive-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-actual-three-guard-consecutive-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/consecutive/results.json",
+      "original_sha256": "05bdf7caf8a08209f62024e6c3e073077c3fd28b82b6a768ff50fab83626d648",
+      "sha256": "05bdf7caf8a08209f62024e6c3e073077c3fd28b82b6a768ff50fab83626d648",
+      "bytes": 74909,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-resume-01-actual-three-guard-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-actual-three-guard-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/results.json",
+      "original_sha256": "d87ea53374727be95f53e45e871fa68b78624227d6a160d1b80a404c377fb8c0",
+      "sha256": "d87ea53374727be95f53e45e871fa68b78624227d6a160d1b80a404c377fb8c0",
+      "bytes": 116710,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-resume-01-actual-three-guard-round2-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-actual-three-guard-round2-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/round2/results.json",
+      "original_sha256": "9c2127f4deee47a3546c739f2502b697ef46a30f66319b5a2d438253634b29ea",
+      "sha256": "9c2127f4deee47a3546c739f2502b697ef46a30f66319b5a2d438253634b29ea",
+      "bytes": 119100,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-resume-01-gap-five-diagnostic-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-gap-five-diagnostic-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/gap-five-diagnostic/results.json",
+      "original_sha256": "331e4a993c498a86fa2da0781802cb8be8dcb2e3e94a6bd41607896346613e7b",
+      "sha256": "331e4a993c498a86fa2da0781802cb8be8dcb2e3e94a6bd41607896346613e7b",
+      "bytes": 16179,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-resume-01-near-deficit-guard-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-near-deficit-guard-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/near-deficit-guard/results.json",
+      "original_sha256": "5acb93b8a368ff0089e3e97b0a2e3da4319eb065761745e7f9b09bafb8b8f1c5",
+      "sha256": "5acb93b8a368ff0089e3e97b0a2e3da4319eb065761745e7f9b09bafb8b8f1c5",
+      "bytes": 212352,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-resume-01-odd-pair-root-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-odd-pair-root-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/odd-pair-root/results.json",
+      "original_sha256": "2807a3b9f5d431b2741f8c92702292583fe81397c9cc0be5edb2a82418b864bb",
+      "sha256": "2807a3b9f5d431b2741f8c92702292583fe81397c9cc0be5edb2a82418b864bb",
+      "bytes": 4521,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-resume-01-two-guard-adaptive-mutation-results",
+      "path": "computation/observations/campaign-2026-10-22-resume-01-two-guard-adaptive-mutation-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/two-guard-adaptive-mutation/results.json",
+      "original_sha256": "8ddf9e66a4f9a126d72b3c35a2c33498dfaa07f63065d5f526aec6f6ef14e697",
+      "sha256": "8ddf9e66a4f9a126d72b3c35a2c33498dfaa07f63065d5f526aec6f6ef14e697",
+      "bytes": 131080,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-adaptive-results",
+      "path": "computation/observations/campaign-2026-10-22-search-adaptive-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/adaptive_results.json",
+      "original_sha256": "9a4f88ffcd35693a5bdef55df8510db79286170a2069cb6065a062a366d40eab",
+      "sha256": "9a4f88ffcd35693a5bdef55df8510db79286170a2069cb6065a062a366d40eab",
+      "bytes": 62357,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-construction-results",
+      "path": "computation/observations/campaign-2026-10-22-search-construction-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/construction_results.json",
+      "original_sha256": "e87dc00457f1b095b6849b1e435896f3ea6fb391817cdc4e09c32704da52ad18",
+      "sha256": "e87dc00457f1b095b6849b1e435896f3ea6fb391817cdc4e09c32704da52ad18",
+      "bytes": 64594,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-dense-results",
+      "path": "computation/observations/campaign-2026-10-22-search-dense-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/dense_results.json",
+      "original_sha256": "3eb529092acd72930c7a7f78c4701336b0e9e4ff2388cf2dcfa825e3aaf0536d",
+      "sha256": "3eb529092acd72930c7a7f78c4701336b0e9e4ff2388cf2dcfa825e3aaf0536d",
+      "bytes": 43373,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-dominant-results",
+      "path": "computation/observations/campaign-2026-10-22-search-dominant-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/dominant_results.json",
+      "original_sha256": "8d39080c72766bb294e79b97f3799ee63e4a18173c0927da989a334e0d1482b6",
+      "sha256": "8d39080c72766bb294e79b97f3799ee63e4a18173c0927da989a334e0d1482b6",
+      "bytes": 252327,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-gap-full-witness-results",
+      "path": "computation/observations/campaign-2026-10-22-search-gap-full-witness-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/gap_full_witness_results.json",
+      "original_sha256": "49fe4e76b849d7ea63994e9a1f4f10f0ab1c584b8d5503c212338be80e403e74",
+      "sha256": "49fe4e76b849d7ea63994e9a1f4f10f0ab1c584b8d5503c212338be80e403e74",
+      "bytes": 61485,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-gap-successor-margin3-results",
+      "path": "computation/observations/campaign-2026-10-22-search-gap-successor-margin3-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/gap_successor_margin3_results.json",
+      "original_sha256": "3b08f77984e03321cf0c0ba87f67cdd537c3bcb294a055b2b2c293100c9f4a99",
+      "sha256": "3b08f77984e03321cf0c0ba87f67cdd537c3bcb294a055b2b2c293100c9f4a99",
+      "bytes": 5324,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-gap-successor-results",
+      "path": "computation/observations/campaign-2026-10-22-search-gap-successor-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/gap_successor_results.json",
+      "original_sha256": "996e59f98050a87d5c915dfbf7d001df65128ad2edea7e982b58ea34b66aa749",
+      "sha256": "996e59f98050a87d5c915dfbf7d001df65128ad2edea7e982b58ea34b66aa749",
+      "bytes": 8154,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-high-deficit-even-results",
+      "path": "computation/observations/campaign-2026-10-22-search-high-deficit-even-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/high_deficit_even_results.json",
+      "original_sha256": "2bb29b1d612508327417da288e21b4164a3a1645ba61a99b38bfdafc988c643c",
+      "sha256": "2bb29b1d612508327417da288e21b4164a3a1645ba61a99b38bfdafc988c643c",
+      "bytes": 318601,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-high-deficit-odd-results",
+      "path": "computation/observations/campaign-2026-10-22-search-high-deficit-odd-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/high_deficit_odd_results.json",
+      "original_sha256": "6d5d0fd862af2a115926d54bbf38b768b7d4673f7ffba888bc68e3f16653dc5c",
+      "sha256": "6d5d0fd862af2a115926d54bbf38b768b7d4673f7ffba888bc68e3f16653dc5c",
+      "bytes": 39906,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-min-block-entry-results",
+      "path": "computation/observations/campaign-2026-10-22-search-min-block-entry-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/min_block_entry_results.json",
+      "original_sha256": "ef1e955de01a702e60e6d4c1fdaf30a91502964d3e34b724983ad239307e14fc",
+      "sha256": "ef1e955de01a702e60e6d4c1fdaf30a91502964d3e34b724983ad239307e14fc",
+      "bytes": 312363,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-alternating-gap-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-alternating-gap-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_alternating_gap_results.json",
+      "original_sha256": "fbd4bfedadddd0a95e8f7112b0d88fe21eeac415c65d7823853279571f7fc69d",
+      "sha256": "fbd4bfedadddd0a95e8f7112b0d88fe21eeac415c65d7823853279571f7fc69d",
+      "bytes": 529869,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-alternating-gap-shrink-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-alternating-gap-shrink-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_alternating_gap_shrink_results.json",
+      "original_sha256": "f7f54c39dc44db34efe790fd675697b855389df0a1055b2de317035a6208d355",
+      "sha256": "f7f54c39dc44db34efe790fd675697b855389df0a1055b2de317035a6208d355",
+      "bytes": 100351,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-anchor-doubleloss-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-anchor-doubleloss-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_doubleloss_results.json",
+      "original_sha256": "09db730d2ceb4fc41b1ae1b64394e2cb5a1ecd0deb95fb12f8192bf67b92be1d",
+      "sha256": "09db730d2ceb4fc41b1ae1b64394e2cb5a1ecd0deb95fb12f8192bf67b92be1d",
+      "bytes": 117354,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-anchor-jointloss-mutation-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-anchor-jointloss-mutation-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_jointloss_mutation_results.json",
+      "original_sha256": "1075d3ef1d9bb7ce62492b118c29b2b164858776774edeffbed774dcf5bbbdcc",
+      "sha256": "85b202e1b600e63fc30a7de9dc81877d733a7b922f267cba0176ec7e6c4d76ca",
+      "bytes": 4156460,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-anchor-jointloss-shrink-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-anchor-jointloss-shrink-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_jointloss_shrink_results.json",
+      "original_sha256": "be847a882318c7ea6e84db76bc4eb263b6be734ccedeb39866ec7ee944f88e0c",
+      "sha256": "007bcc41539500fda968b076a26a5bc63e3b6741777eb7454d036160d88594ab",
+      "bytes": 93144,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-anchor-unpaired-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-anchor-unpaired-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_anchor_unpaired_results.json",
+      "original_sha256": "ad0e7c1584c71fd366e8a67f49f98b031e4075760f041ab5e6d7ec12e0440e35",
+      "sha256": "ad0e7c1584c71fd366e8a67f49f98b031e4075760f041ab5e6d7ec12e0440e35",
+      "bytes": 245946,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-interval-four-endpoint-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-interval-four-endpoint-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_interval_four_endpoint_results.json",
+      "original_sha256": "a8da5b2b8dd9dc177e73166d75788e7f6a8d1e345aa1c7c7fe1fcd8a5fbfdbcd",
+      "sha256": "a8da5b2b8dd9dc177e73166d75788e7f6a8d1e345aa1c7c7fe1fcd8a5fbfdbcd",
+      "bytes": 30539,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-interval-four-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-interval-four-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_interval_four_results.json",
+      "original_sha256": "0a62014f90adb61908199898f9bdfe5fe54e19806623db15292e10b4ada73343",
+      "sha256": "b941b30100b1559fcb24adfd72feb6fe98a95713a566a88980c4ed96ac23721e",
+      "bytes": 33365,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-interval-lead4-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-interval-lead4-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_interval_lead4_results.json",
+      "original_sha256": "7d2c82fc3f57d8b0c929bfe85340a254ca541b04586c38ea8239ef3587732e63",
+      "sha256": "7d2c82fc3f57d8b0c929bfe85340a254ca541b04586c38ea8239ef3587732e63",
+      "bytes": 59150,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-reentry-reflection-heldout-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-reentry-reflection-heldout-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_reentry_reflection_heldout_results.json",
+      "original_sha256": "730ccfe0c74af8e415fd348d7708663b8560f8642d947a0f0eceaedd5b5059e6",
+      "sha256": "730ccfe0c74af8e415fd348d7708663b8560f8642d947a0f0eceaedd5b5059e6",
+      "bytes": 290278,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-root-reentry-reflection-results",
+      "path": "computation/observations/campaign-2026-10-22-search-root-reentry-reflection-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/root_reentry_reflection_results.json",
+      "original_sha256": "3fc4a51830159af738a654a8566e8e9ea622161189dd7df3a0beb39359000436",
+      "sha256": "3fc4a51830159af738a654a8566e8e9ea622161189dd7df3a0beb39359000436",
+      "bytes": 1061017,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-subsum-gap-results",
+      "path": "computation/observations/campaign-2026-10-22-search-subsum-gap-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/subsum_gap_results.json",
+      "original_sha256": "fabdd375a18aff3c00da1befa6757b695918ad0677a0b463339672a05af4d241",
+      "sha256": "fabdd375a18aff3c00da1befa6757b695918ad0677a0b463339672a05af4d241",
+      "bytes": 164449,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-terminal-gap-results",
+      "path": "computation/observations/campaign-2026-10-22-search-terminal-gap-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/terminal_gap_results.json",
+      "original_sha256": "6eced239d3a0d1258a7e7a9782fcbb4cbe7ba1fdf4383f4927003c6a903d433c",
+      "sha256": "6eced239d3a0d1258a7e7a9782fcbb4cbe7ba1fdf4383f4927003c6a903d433c",
+      "bytes": 393596,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    },
+    {
+      "id": "campaign-2026-10-22-search-three-residual-results",
+      "path": "computation/observations/campaign-2026-10-22-search-three-residual-results.json",
+      "origin_path": "research/catchup/campaign_2026_10_22/search/three_residual_results.json",
+      "original_sha256": "eb982dfade23db4b9e29c288a7d0a9f0f8ebd3593efe6be1037efd377fa181aa",
+      "sha256": "eb982dfade23db4b9e29c288a7d0a9f0f8ebd3593efe6be1037efd377fa181aa",
+      "bytes": 165539,
+      "evidence": "Retained exact-search observations; not newly replayed or a Lean certificate.",
+      "adaptations": [
+        "JSON reserialization",
+        "machine-local prefixes in string values normalized; numeric values and completeness markers preserved"
+      ]
+    }
+  ],
+  "report_inventory": [
+    {
+      "path": "research/catchup/four_orphan/REPORT.md",
+      "sha256": "53eae0d27bf2944190ada3eac2f215a23f0ce2832fa33d03086a5ca40bf4f32b",
+      "published": "archive/research-notes/catchup-four-orphan-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/whole_turn/REPORT.md",
+      "sha256": "0d281daec1bd3232f62a8d42a3ec1e2cb192f87ff850327532dfd6feb702e122",
+      "published": "archive/research-notes/catchup-whole-turn-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/five_pair/REPORT.md",
+      "sha256": "8069c46c3493b9a95b3e1c851583d06bbbc941b09bfca7efc2dad841c594fb6f",
+      "published": "archive/research-notes/catchup-five-pair-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/first_pair/REPORT.md",
+      "sha256": "d8d9eb2111c7069bd3a59656d3ef3a05bb45ae80a15211769c8d805e63a8b952",
+      "published": "archive/research-notes/catchup-first-pair-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/five_three/REPORT.md",
+      "sha256": "6480c8d99d516644a035a7844933ae40673568d30267823fb9bf46b1d950820a",
+      "published": "archive/research-notes/catchup-five-three-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/canonical_five3/REPORT.md",
+      "sha256": "e971a173949e7f1560088949d02a06d43a483b2e6e423fe02a59f87c4b49bb94",
+      "published": "archive/research-notes/catchup-canonical-five3-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/multi_turn/REPORT.md",
+      "sha256": "876e3005abe1a565197866f157abe8436f3e18a0250fefa025af3e098a1aa1c4",
+      "published": "archive/research-notes/catchup-multi-turn-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/four_tied/REPORT.md",
+      "sha256": "5eb0e716ce45535facff94dd39e7879793ed65441c59d43401da8c92227db0b4",
+      "published": "archive/research-notes/catchup-four-tied-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/anchored_four/REPORT.md",
+      "sha256": "c266dd2445e0894d362add6d814625ea106e9468c15c35bbcccc50426089fd66",
+      "published": "archive/research-notes/catchup-anchored-four-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/near-deficit-guard/REPORT.md",
+      "sha256": "6df44535a63f2cfa35acf2ad3ee91cca31d6b6eb4858cc01c1110dceba87f7dd",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-near-deficit-guard-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/two-guard-smt/REPORT.md",
+      "sha256": "da7cc5bbd1d35b028f7db54e8c7bcfb2028d6229afdd677fe868dc339ca63c7a",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-two-guard-smt-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/two-guard-adaptive-mutation/REPORT.md",
+      "sha256": "6f62efb3f3533a110f0ec4effe91524701296e9148058069bec94c4b138a1e97",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-two-guard-adaptive-mutation-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/shadow-smt/REPORT.md",
+      "sha256": "4ac19466d7b80d0b58c8800b0109c24bf86a7e156c61b15247366fcfdbf479df",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-shadow-smt-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/odd-pair-root/REPORT.md",
+      "sha256": "851bf9af382c71e7ba035f9f4d7dcee23841c068eee33a6fd7a1706026643513",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-odd-pair-root-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/shadow-proof/report.md",
+      "sha256": "bfb9f64ea495284321e42cf2266cbac3a9f908d5ce93e618f351c89b1aeede7b",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-shadow-proof-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/gap-five-diagnostic/REPORT.md",
+      "sha256": "1c89c5af902b5ffc8c8b90658537fb77b6ed07284b2ba4e9b1a046771e50318f",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-gap-five-diagnostic-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/equality-reserve/report.md",
+      "sha256": "7da0c0ed1b5546b0f113ee4b6cf33a50d87a91f2d111b2b7d15aabce8310e0aa",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-equality-reserve-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/REPORT.md",
+      "sha256": "c03119abfc86191ea5f509c0b8ca609cf030b0d8132d157acf6fdc1125f81459",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-actual-three-guard-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/round2/REPORT.md",
+      "sha256": "d74939a46f6176d926006af15f06ef00077c1dc0abebd5fd8f91faf03b20fcc5",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-actual-three-guard-round2-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/consecutive/REPORT.md",
+      "sha256": "9a25d2e488ef2c457f46609eccfd2b2cd382452c087c23e2c15c53115a12ee53",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-resume-01-actual-three-guard-consecutive-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/density_proof/report.md",
+      "sha256": "e6ebba58ea348126ee647f049b99fb6dcc2c47d40033b8e9ff7a4b55d7aa3247",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-density-proof-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/density_proof/high-deficit/report.md",
+      "sha256": "d9d68f0419b61a18ba3952350c7c633dd7da97bc68b3175bfa153a2f9e7c507c",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-density-proof-high-deficit-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/density_proof/high-deficit/full-strategic/report.md",
+      "sha256": "3d07c174f1a995c403899370ed13b05b2d2b43fca95550b82908b8b29d7ce40f",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-density-proof-high-deficit-full-strategic-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/terminal_gap_NOTES.md",
+      "sha256": "364ee57e256521c2051a1a5dc936a2b19533e07bd91ea935f8e1834a6a4b0f5f",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-terminal-gap-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_alternating_gap_shrink_NOTES.md",
+      "sha256": "855634c70bdacaf8ac106899cc7f375a17d0223009b23e761d3a122bf730e061",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-alternating-gap-shrink-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_anchor_jointloss_shrink_NOTES.md",
+      "sha256": "8c59ee4a142999d6f7eb829e5755e45226293b9f34851d81cbccc4c308b04c0e",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-jointloss-shrink-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/three_residual_NOTES.md",
+      "sha256": "06d4a1391f066d5e62ff36e893c0313361cf6bda870c90816a8c162b33bfaa0f",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-three-residual-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/min_block_entry_NOTES.md",
+      "sha256": "9f59e0e9bba7ea53cefcc5b63ee71931584b235289196d2d44c0b103fd0b527b",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-min-block-entry-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_interval_lead4_NOTES.md",
+      "sha256": "216c42411554675fb81d9b698f49452bfeb30bea039fba679fe535e462aeacfa",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-interval-lead4-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_anchor_unpaired_NOTES.md",
+      "sha256": "072e4c5ae836fb34d6d58eea1b19d57ca2ed0102e5aee5bb19a811e7c51dd20d",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-unpaired-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/gap_successor_NOTES.md",
+      "sha256": "4147deaf39632113f32eae3c0f44daa83148af556c4343633b105814191edbb3",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-gap-successor-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/gap_full_witness_NOTES.md",
+      "sha256": "1cf96958e98d7a8fd80a6b3384236ba929e1b4873f742aa77549629663580e0d",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-gap-full-witness-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_anchor_jointloss_mutation_NOTES.md",
+      "sha256": "68aaee2aeaddd0d4ee7b747a8f977edd620eb1c7c2c64c356468839f2b5d1884",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-jointloss-mutation-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_interval_four_NOTES.md",
+      "sha256": "fd017ac2532bafde8f2f92abcf2f0feef449b917b940e59c2170829a11d1633d",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-interval-four-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_reentry_reflection_NOTES.md",
+      "sha256": "5600d107ef6c4aa51d6d812be400039a59c710a5acbdf914622ac46c873191a8",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-reentry-reflection-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_alternating_gap_NOTES.md",
+      "sha256": "9b18c1e6ce3470c82aeee382f132205b73fe983eaf8ecdac455eb57fd23776f7",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-alternating-gap-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_anchor_doubleloss_NOTES.md",
+      "sha256": "ec01bfe550c1707fc5cbd78c64d8df05febf29746752e1412e2a3485ebdc7d7c",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-anchor-doubleloss-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/NOTES.md",
+      "sha256": "70b421b79bd28ab36741061a5234d81e6b921f8d64f541eeaea86a5169c9dab4",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/root_reentry_reflection_heldout_NOTES.md",
+      "sha256": "21f3410e29293b4ffb79b326a6e03f9e8f0ee4fe5ca467c4cbafdf32424cbbcc",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-search-root-reentry-reflection-heldout-notes.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/search/eight_shadow_smt/report.md",
+      "sha256": "52b3cab5ffb7c952985c025fbde6dc09da5b7f23f27ef508a93eb22d3b5ad12a",
+      "published": null,
+      "disposition": "not copied: superseded draft, administrative note, or detailed component report represented by current sources and guides"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/NOTES.md",
+      "sha256": "b0b61bf23cfe07583a2e06486249234c5ce629fd1fae0061ee4ce09d9e13e412",
+      "published": null,
+      "disposition": "not copied: superseded draft, administrative note, or detailed component report represented by current sources and guides"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/interval-reserve-depth/report.md",
+      "sha256": "f0116b8699ac2c22ceaa29a739e782d8166ee8b9cf1328251c3560d1c51d77bc",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-interval-reserve-depth-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/interval-reserve-depth/before-docstring-fix/report.md",
+      "sha256": "b694d02737fd3b028a86dcd2a33505c0b95ab20151c0cd5b9e20df5e5082d9ef",
+      "published": null,
+      "disposition": "not copied: superseded draft, administrative note, or detailed component report represented by current sources and guides"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/loss-frontier/REPORT.md",
+      "sha256": "63898c35681acc2ab45d53a1dcaf3b8232e557cc6672aec80cf0fd349b0055ea",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-loss-frontier-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/pair-shadow/report.md",
+      "sha256": "f913ba01f98f63d7ef87ff7a6e751d8cdf9f9a186c1e5c97f5c35dd9757802c3",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-pair-shadow-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/root-eight-criterion/REPORT.md",
+      "sha256": "548d1b541f21ffd5d22f9e4d4d8876ff47f0384837681eff7af8c2458201919a",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-root-eight-criterion-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/two-anchor-obstruction/REPORT.md",
+      "sha256": "1bbdd241120b6360e275200e7efca084f81ea84468e1f2f1d6fc91dab84be310",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-two-anchor-obstruction-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/block-entry/REPORT.md",
+      "sha256": "5384dd81f1741a0c5cbb79a0b9a38377046de5676b45f5e14ec1c98e249f9ad6",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-block-entry-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/alternating-tail-obstruction/REPORT.md",
+      "sha256": "05f61018af14046b1572e0ff21935ca96e52d51e82445cbfe31cacd6155c9836",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-alternating-tail-obstruction-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/alternating-tail-obstruction/before-balanced-allocation/REPORT.md",
+      "sha256": "a027b4331b20f6c45892c760f317424ba3fa1bac68509eb964d02341d753a353",
+      "published": null,
+      "disposition": "not copied: superseded draft, administrative note, or detailed component report represented by current sources and guides"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/root-reentry-seven/report.md",
+      "sha256": "1d4f36188a5deaff203e225e51bd2d22579985e5051af717d817e6e1d0e14aa8",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-root-reentry-seven-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/block-mass/report.md",
+      "sha256": "af535c57f55cd688d5ed92b21ca505d89fe4d7a21c03d058c4d5dcc420eb8809",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-block-mass-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/three-residual/REPORT.md",
+      "sha256": "1796e90a4f2ca955285a95434ce19845ceede83be9d4882f0ec7302f25550c7c",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-three-residual-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/incomplete-mass/REPORT.md",
+      "sha256": "eaa1d789f72cefc1246bfe87d521a314dd07449c437e81cdd112c55fd7a44eb0",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-incomplete-mass-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/dense-terminal/REPORT.md",
+      "sha256": "126fe790fe7dd27fd0ff53eb4f772b577c02c6ef99b658b8f99b4184653ee3ae",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-dense-terminal-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/two-residual/REPORT.md",
+      "sha256": "aa91fdc0fe8f9b37f8365d0a31644351d3fcdc2bd5a3bf38df8713e618e2c317",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-two-residual-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/gap-obstruction/report.md",
+      "sha256": "614472fc660d65253d97c9c819be23ee5c085a71615d682e8f53902ab4f42c67",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-gap-obstruction-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/two-hole/REPORT.md",
+      "sha256": "96c7185b3b2669031a871ee022c29a81965a28c57dc3e111dfee2ab55d0b9bc3",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-two-hole-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/interval-successor-obstruction/REPORT.md",
+      "sha256": "8b73cda8ee193f280d24c39993928fe350eea3f2c778043a17696d45b2ece52f",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-interval-successor-obstruction-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/deficit-crossing/report.md",
+      "sha256": "fde016f74d222401855f84a4cc69b85acaf3b103a7a643f8306244a3150f70da",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-deficit-crossing-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/root-reentry-eight/REPORT.md",
+      "sha256": "2b15bfb966fcc00692b4c9b81bdc65c9e7c12ca7ebd0fb38792f88488fdf08d0",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-root-reentry-eight-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/campaign_2026_10_22/frontier/crossing-entry/REPORT.md",
+      "sha256": "1cb834572e706f5a929733be9f081d3011e763d8ca52f15c68349647068043a7",
+      "published": "archive/research-notes/catchup-campaign-2026-10-22-frontier-crossing-entry-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/machine/REPORT.md",
+      "sha256": "fbbe5fc9ecc595c33d5b1208e14f5cbd7dd94a4fe2e0af46dd11bc0f18a36f29",
+      "published": "archive/research-notes/catchup-machine-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/machine/direct/REPORT.md",
+      "sha256": "e12ddbc04768ed3476ed248ab5bea30f9d6df327cf2e2ae62a85f0f3c770cf54",
+      "published": "archive/research-notes/catchup-machine-direct-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/machine/layout/REPORT.md",
+      "sha256": "041710733e28a561a5922612f1a620e2d353eb75a4e5b750a9dfcfcbcfb3d220",
+      "published": "archive/research-notes/catchup-machine-layout-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/machine/heuristic/REPORT.md",
+      "sha256": "ebc48e8f57c757e961d98bf07b94bc6d0c9a756768a3c6ecfe78785e83e25247",
+      "published": "archive/research-notes/catchup-machine-heuristic-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/machine/decoder/REPORT.md",
+      "sha256": "b98bed70559b043144723e86355603376bc13829e9aebd88046f3a9e064d5be4",
+      "published": "archive/research-notes/catchup-machine-decoder-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/machine/shared/REPORT.md",
+      "sha256": "b880e188d017a398eab70c038fc1a57c5fff0bb240114f8f0f01c876ee889cae",
+      "published": "archive/research-notes/catchup-machine-shared-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/deficit_two/REPORT.md",
+      "sha256": "38cccfb766937ba18785a5d048dfd109a351088930670646045af51bf74cafa1",
+      "published": "archive/research-notes/catchup-deficit-two-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/seven_pairs/REPORT.md",
+      "sha256": "3c486681b3476a1767e9679ef89e460ed74734cc85d4c8422ab296f6402bb06c",
+      "published": "archive/research-notes/catchup-seven-pairs-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup/near_repair/REPORT.md",
+      "sha256": "88c8e9e4af74027d943d4c7853a6de4f48f7c63ac10b258530b233187ea3c6be",
+      "published": "archive/research-notes/catchup-near-repair-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/FAILURES.md",
+      "sha256": "2afdc98d6f4ad4c1c52f21fd65803a488790adf3e5235475f3ee630ff38b645b",
+      "published": "archive/research-notes/catchup-reuse-failures.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/REPORT.md",
+      "sha256": "fa9842ce8a37fd8aebabb2ab904ec3673fd3fee177d4bac43c079593150db614",
+      "published": "archive/research-notes/catchup-reuse-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/pred/REPORT.md",
+      "sha256": "32ecb9644ccbe6162a7613e393b1748e2961205cfaf263e486e8e8ea0663917e",
+      "published": "archive/research-notes/catchup-reuse-pred-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/words/FAILURES.md",
+      "sha256": "b9c6afc13d5c45d7f79495ff4a1fc3c8fdc4ae3a8f2df933e23564f83e9c3d5b",
+      "published": "archive/research-notes/catchup-reuse-words-failures.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/words/REPORT.md",
+      "sha256": "e24073cef1b128a368a4e3bd68c6d442d1791d2e382012baf7ada6f56b60b8fa",
+      "published": "archive/research-notes/catchup-reuse-words-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/literal/REPORT.md",
+      "sha256": "51a885f88ac291e215fdd889267cafa38af7014bf89dce32d76c68ca52823568",
+      "published": "archive/research-notes/catchup-reuse-literal-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/sharing/REPORT.md",
+      "sha256": "fcf9fff31ea921517bd81e0ce829142867d28fdd907e1cb25b155c08395d53ac",
+      "published": "archive/research-notes/catchup-reuse-sharing-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/restoration/REPORT.md",
+      "sha256": "cfaa6845a6155382989b89ec695341e5b534af9c46749707fdae242aa8562d9e",
+      "published": "archive/research-notes/catchup-reuse-restoration-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/succ/REPORT.md",
+      "sha256": "981a3ee0fb4f6e087d55322bba69103940acfbf9c6ea28a6882845861dee741e",
+      "published": "archive/research-notes/catchup-reuse-succ-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/dispatch/REPORT.md",
+      "sha256": "26eab2df5fb07b91e9936d05b66e93f4dbdc671309703fc28b811c97b56b2e7f",
+      "published": "archive/research-notes/catchup-reuse-dispatch-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/cases/REPORT.md",
+      "sha256": "c850bcf620704005257c64596c14aba9f9d6d6a2cc17869a352df5557b75dff1",
+      "published": "archive/research-notes/catchup-reuse-cases-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/lowering/REPORT.md",
+      "sha256": "7dd862a7c053f48a19845338d6f51ee8ec1518b459a5c1520c0dcf62cd3af512",
+      "published": "archive/research-notes/catchup-reuse-lowering-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/comp/REPORT.md",
+      "sha256": "a976e5f0d6e7244412ec496d41e698a7803593d662d6eba6343b9f6d3aa9b3d8",
+      "published": "archive/research-notes/catchup-reuse-comp-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/tail/REPORT.md",
+      "sha256": "672be17ab0f38720f9a55bdaf4e87e6e4d89c8968646da7e718c25aa89007e2e",
+      "published": "archive/research-notes/catchup-reuse-tail-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/relocate/REPORT.md",
+      "sha256": "dec3dc96f8a50328656ca3b2d99853866c45a1c70b516efef989f29e7774a04a",
+      "published": "archive/research-notes/catchup-reuse-relocate-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/call/REPORT.md",
+      "sha256": "a01114fbba97b2bbad30298a670320c949cfdf3deab482acd2d4c765fc9e4709",
+      "published": "archive/research-notes/catchup-reuse-call-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/finish/REPORT.md",
+      "sha256": "64a7ba5c7d0983b551ab5b9691bbffb75d715080c9ebe22571296fc9571ae163",
+      "published": "archive/research-notes/catchup-reuse-finish-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/switch/REPORT.md",
+      "sha256": "344f360bc0174622a6cb908eeb7f85067b89853538dfb9fe5f866fa5b6434474",
+      "published": "archive/research-notes/catchup-reuse-switch-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/sourceSucc/REPORT.md",
+      "sha256": "549ea60c7eec523390e5d684c41181dabbeefe83870f73dabcfbb1f93bd4cc92",
+      "published": "archive/research-notes/catchup-reuse-sourcesucc-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/extract/REPORT.md",
+      "sha256": "54d84915fea3ff0602f7889cba6b1c25702e6088c48d7d1519d88dd4853e64c7",
+      "published": "archive/research-notes/catchup-reuse-extract-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/save/REPORT.md",
+      "sha256": "4b524a750d59653940ebdaa7c7775ca69ce3acde841e433a538c190634f0ada1",
+      "published": "archive/research-notes/catchup-reuse-save-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/separate/REPORT.md",
+      "sha256": "f3d474b0718ed7661217ce3f1076d81a72a88843aee28188e91dcc49a24132a5",
+      "published": "archive/research-notes/catchup-reuse-separate-report.md",
+      "disposition": "retained report"
+    },
+    {
+      "path": "research/catchup-reuse/entrance/REPORT.md",
+      "sha256": "d7c8a2ad9b480ad1668fcb3cdbce9f19aca6623519dd243a6203daa55c3ab6cf",
+      "published": "archive/research-notes/catchup-reuse-entrance-report.md",
+      "disposition": "retained report"
+    }
+  ]
+}

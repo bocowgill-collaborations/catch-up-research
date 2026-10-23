@@ -2,6 +2,8 @@
 
 This page separates the central conjecture, wider questions about the game, and the specific frontier of the collected proof campaign. Some wider questions are research directions rather than precise conjectures with a proposed answer.
 
+The [current route guide](research-routes.md) gives concrete proof obligations; [experimental findings](experimental-findings.md) explain what the existing tests support and which tests were vacuous. Detailed earlier arguments are retained in the [research notebook](../archive/research-notes/).
+
 ## The central problem
 
 **C:** for every N, even `N(N+1)/2` implies a draw on `{1,…,N}` under optimal play. This includes N=0. C remains open in the inspected [formal statement](https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
@@ -12,6 +14,7 @@ An equal partition or a drawn play is insufficient. A proof must supply the need
 
 | Question | What is established here / useful next evidence |
 | --- | --- |
+| When does every opening draw, rather than just the root? | The existing [all-opening/pair-neutrality equivalence](../CatchUp/Earlier/ReplyDigraphReduction.lean) reduces this stronger property to every two-pick continuation. Small roots can draw while some openings lose. The [opening guide](../docs/openings.md) explains the distinction and the remaining uniform obligation. |
 | Which player wins odd-total interval games, and with which opening? | Small calculations show both P1 and P2 wins. The [2019 report](../docs/sources.md) describes P1 wins with opening at most three from N=21 through its tested range; extending that to all relevant N would require a proof. |
 | Which nonconsecutive supports draw or have a forced winner? | The library has exact small classifications and sparse obstructions. Parity and pair geometry alone are insufficient. Formulate a family with precise hypotheses. |
 | Can subset-sum structure give a uniform defensive rule? | [IncompleteSubsumMass](../CatchUp/IncompleteSubsumMass.lean) and [AlternativeSumDefense](../CatchUp/AlternativeSumDefense.lean) are useful positive results. The challenge is preserving a strategic condition after every legal opponent turn. |
@@ -32,4 +35,4 @@ The highest-value mathematical next step for this route is a defensive condition
 
 The 388,819,712-state baseline has `Halts(M) ↔ ¬C`. The 211,100,482-state candidate has checked local routines and all 277 added bank-site relocations, but still needs inherited-core preservation under hook redirection, full partial-program simulation and final equivalence. See [the machine page](../cryptid/).
 
-Another useful task is to locate and independently replay the older large computations, then connect their output to a sound certificate checker. A least-counterexample claim would additionally require certification of all smaller eligible cases. A smaller machine, by itself, proves neither C nor a short proof-size bound.
+Another useful task is to locate the older solver and retained outputs, audit its semantics and reproduce small cases before considering a full large-instance replay. Large reruns are optional, separately budgeted work; existing structural arguments may be more useful for a general proof. Connecting output to a sound certificate checker is a distinct obligation. A least-counterexample claim would additionally require certification of all smaller eligible cases. A smaller machine, by itself, proves neither C nor a short proof-size bound.

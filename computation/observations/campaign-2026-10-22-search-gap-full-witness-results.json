@@ -1,0 +1,4143 @@
+{
+  "kind": "Full residual-winning-opening premise retained; all maximal exact blocks enumerated; bounded evidence only",
+  "full_ambient_domain": "0..16",
+  "full_scalar_labels": 1114112,
+  "counterexample_found": false,
+  "all_95_block_witnesses": [
+    {
+      "N": 5,
+      "h": 2,
+      "d": 5,
+      "t": 1,
+      "w": 4,
+      "b": 3,
+      "mask": 14,
+      "block_mask": 6,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4
+      ],
+      "block": [
+        2,
+        3
+      ],
+      "residual": [
+        4
+      ],
+      "all_maximal_block_masks": [
+        6
+      ]
+    },
+    {
+      "N": 6,
+      "h": 2,
+      "d": 6,
+      "t": 1,
+      "w": 5,
+      "b": 4,
+      "mask": 30,
+      "block_mask": 10,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "block": [
+        2,
+        4
+      ],
+      "residual": [
+        3,
+        5
+      ],
+      "all_maximal_block_masks": [
+        10
+      ]
+    },
+    {
+      "N": 7,
+      "h": 3,
+      "d": 7,
+      "t": 1,
+      "w": 6,
+      "b": 5,
+      "mask": 58,
+      "block_mask": 18,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "block": [
+        2,
+        5
+      ],
+      "residual": [
+        4,
+        6
+      ],
+      "all_maximal_block_masks": [
+        18
+      ]
+    },
+    {
+      "N": 7,
+      "h": 3,
+      "d": 7,
+      "t": 1,
+      "w": 6,
+      "b": 4,
+      "mask": 46,
+      "block_mask": 12,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "residual": [
+        2,
+        6
+      ],
+      "all_maximal_block_masks": [
+        12
+      ]
+    },
+    {
+      "N": 7,
+      "h": 3,
+      "d": 7,
+      "t": 2,
+      "w": 5,
+      "b": 4,
+      "mask": 29,
+      "block_mask": 12,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "residual": [
+        1,
+        5
+      ],
+      "all_maximal_block_masks": [
+        12
+      ]
+    },
+    {
+      "N": 9,
+      "h": 2,
+      "d": 5,
+      "t": 1,
+      "w": 4,
+      "b": 3,
+      "mask": 494,
+      "block_mask": 6,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        3
+      ],
+      "residual": [
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "all_maximal_block_masks": [
+        6
+      ]
+    },
+    {
+      "N": 9,
+      "h": 3,
+      "d": 7,
+      "t": 1,
+      "w": 6,
+      "b": 5,
+      "mask": 438,
+      "block_mask": 18,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        5
+      ],
+      "residual": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "all_maximal_block_masks": [
+        18
+      ]
+    },
+    {
+      "N": 9,
+      "h": 4,
+      "d": 9,
+      "t": 1,
+      "w": 8,
+      "b": 6,
+      "mask": 174,
+      "block_mask": 36,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        2,
+        3,
+        4,
+        6,
+        8
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "residual": [
+        2,
+        4,
+        8
+      ],
+      "all_maximal_block_masks": [
+        36
+      ]
+    },
+    {
+      "N": 9,
+      "h": 4,
+      "d": 9,
+      "t": 2,
+      "w": 7,
+      "b": 6,
+      "mask": 109,
+      "block_mask": 36,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        7
+      ],
+      "block": [
+        3,
+        6
+      ],
+      "residual": [
+        1,
+        4,
+        7
+      ],
+      "all_maximal_block_masks": [
+        36
+      ]
+    },
+    {
+      "N": 10,
+      "h": 3,
+      "d": 7,
+      "t": 2,
+      "w": 5,
+      "b": 4,
+      "mask": 956,
+      "block_mask": 12,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "residual": [
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "all_maximal_block_masks": [
+        12
+      ]
+    },
+    {
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "t": 2,
+      "w": 7,
+      "b": 5,
+      "mask": 732,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        3,
+        7,
+        8,
+        10
+      ],
+      "all_maximal_block_masks": [
+        24
+      ]
+    },
+    {
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "t": 3,
+      "w": 6,
+      "b": 5,
+      "mask": 698,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        2,
+        6,
+        8,
+        10
+      ],
+      "all_maximal_block_masks": [
+        24
+      ]
+    },
+    {
+      "N": 10,
+      "h": 4,
+      "d": 9,
+      "t": 3,
+      "w": 6,
+      "b": 5,
+      "mask": 633,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        10
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        1,
+        6,
+        7,
+        10
+      ],
+      "all_maximal_block_masks": [
+        24
+      ]
+    },
+    {
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "t": 1,
+      "w": 9,
+      "b": 8,
+      "mask": 442,
+      "block_mask": 130,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "residual": [
+        4,
+        5,
+        6,
+        9
+      ],
+      "all_maximal_block_masks": [
+        130
+      ]
+    },
+    {
+      "N": 10,
+      "h": 4,
+      "d": 10,
+      "t": 1,
+      "w": 9,
+      "b": 7,
+      "mask": 380,
+      "block_mask": 68,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        3,
+        7
+      ],
+      "residual": [
+        4,
+        5,
+        6,
+        9
+      ],
+      "all_maximal_block_masks": [
+        68
+      ]
+    },
+    {
+      "N": 11,
+      "h": 3,
+      "d": 7,
+      "t": 1,
+      "w": 6,
+      "b": 4,
+      "mask": 1966,
+      "block_mask": 12,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "residual": [
+        2,
+        6,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        12
+      ]
+    },
+    {
+      "N": 11,
+      "h": 3,
+      "d": 7,
+      "t": 2,
+      "w": 5,
+      "b": 4,
+      "mask": 1949,
+      "block_mask": 12,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        3,
+        4
+      ],
+      "residual": [
+        1,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        12
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 9,
+      "t": 3,
+      "w": 6,
+      "b": 5,
+      "mask": 1784,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        24
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 9,
+      "t": 1,
+      "w": 8,
+      "b": 5,
+      "mask": 1694,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        10,
+        11
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        2,
+        3,
+        8,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        24
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 9,
+      "t": 2,
+      "w": 7,
+      "b": 5,
+      "mask": 1629,
+      "block_mask": 21,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        5
+      ],
+      "residual": [
+        4,
+        7,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        21,
+        24
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 9,
+      "t": 2,
+      "w": 7,
+      "b": 5,
+      "mask": 1629,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        10,
+        11
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        1,
+        3,
+        7,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        21,
+        24
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 10,
+      "t": 1,
+      "w": 9,
+      "b": 8,
+      "mask": 1522,
+      "block_mask": 130,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        2,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "all_maximal_block_masks": [
+        130
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 10,
+      "t": 3,
+      "w": 7,
+      "b": 6,
+      "mask": 1402,
+      "block_mask": 40,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "block": [
+        4,
+        6
+      ],
+      "residual": [
+        2,
+        5,
+        7,
+        9,
+        11
+      ],
+      "all_maximal_block_masks": [
+        40
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "mask": 974,
+      "block_mask": 258,
+      "margin": 3,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "residual": [
+        3,
+        4,
+        7,
+        8,
+        10
+      ],
+      "all_maximal_block_masks": [
+        258
+      ]
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 11,
+      "t": 2,
+      "w": 9,
+      "b": 7,
+      "mask": 381,
+      "block_mask": 69,
+      "margin": 3,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "residual": [
+        4,
+        5,
+        6,
+        9
+      ],
+      "all_maximal_block_masks": [
+        69,
+        72
+      ]
+    },
+    {
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 3,
+      "w": 8,
+      "b": 7,
+      "mask": 984,
+      "block_mask": 72,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "residual": [
+        5,
+        8,
+        9,
+        10
+      ],
+      "all_maximal_block_masks": [
+        72
+      ]
+    },
+    {
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "mask": 882,
+      "block_mask": 258,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10
+      ],
+      "all_maximal_block_masks": [
+        258
+      ]
+    },
+    {
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 8,
+      "mask": 756,
+      "block_mask": 132,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10
+      ],
+      "all_maximal_block_masks": [
+        132
+      ]
+    },
+    {
+      "N": 11,
+      "h": 5,
+      "d": 11,
+      "t": 2,
+      "w": 9,
+      "b": 8,
+      "mask": 444,
+      "block_mask": 132,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "residual": [
+        4,
+        5,
+        6,
+        9
+      ],
+      "all_maximal_block_masks": [
+        132
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "t": 4,
+      "w": 7,
+      "b": 6,
+      "mask": 3056,
+      "block_mask": 48,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "residual": [
+        7,
+        8,
+        9,
+        10,
+        12
+      ],
+      "all_maximal_block_masks": [
+        48
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "mask": 2930,
+      "block_mask": 258,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10,
+        12
+      ],
+      "all_maximal_block_masks": [
+        258
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 8,
+      "mask": 2804,
+      "block_mask": 132,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12
+      ],
+      "block": [
+        3,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10,
+        12
+      ],
+      "all_maximal_block_masks": [
+        132
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "mask": 974,
+      "block_mask": 258,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "residual": [
+        3,
+        4,
+        7,
+        8,
+        10
+      ],
+      "all_maximal_block_masks": [
+        258
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 11,
+      "t": 2,
+      "w": 9,
+      "b": 7,
+      "mask": 381,
+      "block_mask": 69,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "block": [
+        1,
+        3,
+        7
+      ],
+      "residual": [
+        4,
+        5,
+        6,
+        9
+      ],
+      "all_maximal_block_masks": [
+        69,
+        72
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "t": 1,
+      "w": 11,
+      "b": 10,
+      "mask": 1942,
+      "block_mask": 514,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        2,
+        10
+      ],
+      "residual": [
+        3,
+        5,
+        8,
+        9,
+        11
+      ],
+      "all_maximal_block_masks": [
+        514
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "t": 3,
+      "w": 9,
+      "b": 8,
+      "mask": 1528,
+      "block_mask": 136,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        4,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "all_maximal_block_masks": [
+        136
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "t": 1,
+      "w": 11,
+      "b": 7,
+      "mask": 1270,
+      "block_mask": 70,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        11
+      ],
+      "block": [
+        2,
+        3,
+        7
+      ],
+      "residual": [
+        5,
+        6,
+        8,
+        11
+      ],
+      "all_maximal_block_masks": [
+        70,
+        80
+      ]
+    },
+    {
+      "N": 12,
+      "h": 5,
+      "d": 12,
+      "t": 2,
+      "w": 10,
+      "b": 8,
+      "mask": 757,
+      "block_mask": 133,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        3,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10
+      ],
+      "all_maximal_block_masks": [
+        133
+      ]
+    },
+    {
+      "N": 13,
+      "h": 5,
+      "d": 11,
+      "t": 3,
+      "w": 8,
+      "b": 6,
+      "mask": 7096,
+      "block_mask": 48,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        12,
+        13
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "residual": [
+        4,
+        8,
+        9,
+        10,
+        12,
+        13
+      ],
+      "all_maximal_block_masks": [
+        48
+      ]
+    },
+    {
+      "N": 13,
+      "h": 5,
+      "d": 11,
+      "t": 4,
+      "w": 7,
+      "b": 6,
+      "mask": 7028,
+      "block_mask": 48,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12,
+        13
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "residual": [
+        3,
+        7,
+        9,
+        10,
+        12,
+        13
+      ],
+      "all_maximal_block_masks": [
+        48
+      ]
+    },
+    {
+      "N": 13,
+      "h": 5,
+      "d": 11,
+      "t": 4,
+      "w": 7,
+      "b": 6,
+      "mask": 6898,
+      "block_mask": 48,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12,
+        13
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "residual": [
+        2,
+        7,
+        8,
+        10,
+        12,
+        13
+      ],
+      "all_maximal_block_masks": [
+        48
+      ]
+    },
+    {
+      "N": 13,
+      "h": 5,
+      "d": 11,
+      "t": 4,
+      "w": 7,
+      "b": 6,
+      "mask": 6641,
+      "block_mask": 48,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13
+      ],
+      "block": [
+        5,
+        6
+      ],
+      "residual": [
+        1,
+        7,
+        8,
+        9,
+        12,
+        13
+      ],
+      "all_maximal_block_masks": [
+        48
+      ]
+    },
+    {
+      "N": 13,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 7,
+      "mask": 4858,
+      "block_mask": 72,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        13
+      ],
+      "block": [
+        4,
+        7
+      ],
+      "residual": [
+        2,
+        5,
+        6,
+        8,
+        10,
+        13
+      ],
+      "all_maximal_block_masks": [
+        72
+      ]
+    },
+    {
+      "N": 13,
+      "h": 5,
+      "d": 12,
+      "t": 1,
+      "w": 11,
+      "b": 10,
+      "mask": 5814,
+      "block_mask": 514,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        10,
+        11,
+        13
+      ],
+      "block": [
+        2,
+        10
+      ],
+      "residual": [
+        3,
+        5,
+        6,
+        8,
+        11,
+        13
+      ],
+      "all_maximal_block_masks": [
+        514
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 5,
+      "w": 8,
+      "b": 7,
+      "mask": 4064,
+      "block_mask": 96,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "block": [
+        6,
+        7
+      ],
+      "residual": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "all_maximal_block_masks": [
+        96
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 11,
+      "mask": 3878,
+      "block_mask": 1026,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        6,
+        9,
+        10,
+        11,
+        12
+      ],
+      "block": [
+        2,
+        11
+      ],
+      "residual": [
+        3,
+        6,
+        9,
+        10,
+        12
+      ],
+      "all_maximal_block_masks": [
+        1026
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 11,
+      "mask": 3866,
+      "block_mask": 1026,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        9,
+        10,
+        11,
+        12
+      ],
+      "block": [
+        2,
+        11
+      ],
+      "residual": [
+        4,
+        5,
+        9,
+        10,
+        12
+      ],
+      "all_maximal_block_masks": [
+        1026
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 11,
+      "mask": 3482,
+      "block_mask": 1026,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        8,
+        9,
+        11,
+        12
+      ],
+      "block": [
+        2,
+        11
+      ],
+      "residual": [
+        4,
+        5,
+        8,
+        9,
+        12
+      ],
+      "all_maximal_block_masks": [
+        1026
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 10,
+      "mask": 2972,
+      "block_mask": 516,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "block": [
+        3,
+        10
+      ],
+      "residual": [
+        4,
+        5,
+        8,
+        9,
+        12
+      ],
+      "all_maximal_block_masks": [
+        516
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 3,
+      "w": 10,
+      "b": 9,
+      "mask": 2936,
+      "block_mask": 264,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        12
+      ],
+      "block": [
+        4,
+        9
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10,
+        12
+      ],
+      "all_maximal_block_masks": [
+        264
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 8,
+      "mask": 2534,
+      "block_mask": 134,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        12
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "residual": [
+        6,
+        7,
+        9,
+        12
+      ],
+      "all_maximal_block_masks": [
+        134
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 4,
+      "w": 9,
+      "b": 7,
+      "mask": 1905,
+      "block_mask": 81,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        1,
+        5,
+        7
+      ],
+      "residual": [
+        6,
+        9,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        81,
+        96
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 4,
+      "w": 9,
+      "b": 7,
+      "mask": 1905,
+      "block_mask": 96,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11
+      ],
+      "block": [
+        6,
+        7
+      ],
+      "residual": [
+        1,
+        5,
+        9,
+        10,
+        11
+      ],
+      "all_maximal_block_masks": [
+        81,
+        96
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 10,
+      "mask": 1653,
+      "block_mask": 516,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        10,
+        11
+      ],
+      "block": [
+        3,
+        10
+      ],
+      "residual": [
+        1,
+        5,
+        6,
+        7,
+        11
+      ],
+      "all_maximal_block_masks": [
+        516
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 1509,
+      "block_mask": 261,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        11
+      ],
+      "all_maximal_block_masks": [
+        261
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 1461,
+      "block_mask": 261,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        3,
+        5,
+        6,
+        8,
+        9,
+        11
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "residual": [
+        5,
+        6,
+        8,
+        11
+      ],
+      "all_maximal_block_masks": [
+        261
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 1401,
+      "block_mask": 264,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        9,
+        11
+      ],
+      "block": [
+        4,
+        9
+      ],
+      "residual": [
+        1,
+        5,
+        6,
+        7,
+        11
+      ],
+      "all_maximal_block_masks": [
+        264
+      ]
+    },
+    {
+      "N": 13,
+      "h": 6,
+      "d": 13,
+      "t": 3,
+      "w": 10,
+      "b": 8,
+      "mask": 761,
+      "block_mask": 137,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "block": [
+        1,
+        4,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        10
+      ],
+      "all_maximal_block_masks": [
+        137,
+        144
+      ]
+    },
+    {
+      "N": 14,
+      "h": 4,
+      "d": 9,
+      "t": 3,
+      "w": 6,
+      "b": 5,
+      "mask": 16058,
+      "block_mask": 24,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        4,
+        5
+      ],
+      "residual": [
+        2,
+        6,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        24
+      ]
+    },
+    {
+      "N": 14,
+      "h": 5,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "mask": 15330,
+      "block_mask": 258,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        2,
+        9
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        10,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        258
+      ]
+    },
+    {
+      "N": 14,
+      "h": 6,
+      "d": 13,
+      "t": 1,
+      "w": 12,
+      "b": 8,
+      "mask": 10726,
+      "block_mask": 134,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        12,
+        14
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "residual": [
+        6,
+        7,
+        9,
+        12,
+        14
+      ],
+      "all_maximal_block_masks": [
+        134
+      ]
+    },
+    {
+      "N": 14,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 9701,
+      "block_mask": 261,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        6,
+        7,
+        8,
+        9,
+        11,
+        14
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        11,
+        14
+      ],
+      "all_maximal_block_masks": [
+        261
+      ]
+    },
+    {
+      "N": 14,
+      "h": 6,
+      "d": 14,
+      "t": 3,
+      "w": 11,
+      "b": 8,
+      "mask": 5610,
+      "block_mask": 138,
+      "margin": 2,
+      "successor_value": "win",
+      "remaining": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9,
+        11,
+        13
+      ],
+      "block": [
+        2,
+        4,
+        8
+      ],
+      "residual": [
+        6,
+        7,
+        9,
+        11,
+        13
+      ],
+      "all_maximal_block_masks": [
+        138,
+        160
+      ]
+    },
+    {
+      "N": 14,
+      "h": 6,
+      "d": 14,
+      "t": 3,
+      "w": 11,
+      "b": 8,
+      "mask": 5370,
+      "block_mask": 138,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        11,
+        13
+      ],
+      "block": [
+        2,
+        4,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        11,
+        13
+      ],
+      "all_maximal_block_masks": [
+        138,
+        160
+      ]
+    },
+    {
+      "N": 14,
+      "h": 6,
+      "d": 14,
+      "t": 4,
+      "w": 10,
+      "b": 9,
+      "mask": 5094,
+      "block_mask": 262,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        13
+      ],
+      "block": [
+        2,
+        3,
+        9
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        10,
+        13
+      ],
+      "all_maximal_block_masks": [
+        262
+      ]
+    },
+    {
+      "N": 14,
+      "h": 6,
+      "d": 14,
+      "t": 2,
+      "w": 12,
+      "b": 10,
+      "mask": 2973,
+      "block_mask": 517,
+      "margin": 2,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "block": [
+        1,
+        3,
+        10
+      ],
+      "residual": [
+        4,
+        5,
+        8,
+        9,
+        12
+      ],
+      "all_maximal_block_masks": [
+        517,
+        520
+      ]
+    },
+    {
+      "N": 15,
+      "h": 5,
+      "d": 13,
+      "t": 4,
+      "w": 9,
+      "b": 8,
+      "mask": 27126,
+      "block_mask": 134,
+      "margin": 3,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        14,
+        15
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        9,
+        12,
+        14,
+        15
+      ],
+      "all_maximal_block_masks": [
+        134,
+        144
+      ]
+    },
+    {
+      "N": 15,
+      "h": 6,
+      "d": 13,
+      "t": 2,
+      "w": 11,
+      "b": 9,
+      "mask": 17885,
+      "block_mask": 261,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        7,
+        8,
+        9,
+        11,
+        15
+      ],
+      "block": [
+        1,
+        3,
+        9
+      ],
+      "residual": [
+        4,
+        5,
+        7,
+        8,
+        11,
+        15
+      ],
+      "all_maximal_block_masks": [
+        261,
+        264
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 5,
+      "w": 10,
+      "b": 8,
+      "mask": 16096,
+      "block_mask": 192,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        7,
+        8
+      ],
+      "residual": [
+        6,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 1,
+      "w": 14,
+      "b": 13,
+      "mask": 16066,
+      "block_mask": 4098,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        2,
+        13
+      ],
+      "residual": [
+        7,
+        8,
+        10,
+        11,
+        12,
+        14
+      ],
+      "all_maximal_block_masks": [
+        4098
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 6,
+      "w": 9,
+      "b": 8,
+      "mask": 15824,
+      "block_mask": 192,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        5,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        7,
+        8
+      ],
+      "residual": [
+        5,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 3,
+      "w": 12,
+      "b": 11,
+      "mask": 15592,
+      "block_mask": 1032,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        4,
+        6,
+        7,
+        8,
+        11,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        4,
+        11
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        1032
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 6,
+      "w": 9,
+      "b": 8,
+      "mask": 15304,
+      "block_mask": 192,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        4,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        7,
+        8
+      ],
+      "residual": [
+        4,
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 3,
+      "w": 12,
+      "b": 10,
+      "mask": 15088,
+      "block_mask": 528,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        10,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        5,
+        10
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        528
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 2,
+      "w": 13,
+      "b": 12,
+      "mask": 14908,
+      "block_mask": 2052,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        4,
+        5,
+        6,
+        10,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        3,
+        12
+      ],
+      "residual": [
+        4,
+        5,
+        6,
+        10,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        2052
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 6,
+      "w": 9,
+      "b": 8,
+      "mask": 14276,
+      "block_mask": 192,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        3,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14
+      ],
+      "block": [
+        7,
+        8
+      ],
+      "residual": [
+        3,
+        9,
+        10,
+        11,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 1,
+      "w": 14,
+      "b": 9,
+      "mask": 12256,
+      "block_mask": 288,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "block": [
+        6,
+        9
+      ],
+      "residual": [
+        7,
+        8,
+        10,
+        11,
+        12,
+        14
+      ],
+      "all_maximal_block_masks": [
+        288
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 6,
+      "w": 9,
+      "b": 8,
+      "mask": 12226,
+      "block_mask": 192,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "block": [
+        7,
+        8
+      ],
+      "residual": [
+        2,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "all_maximal_block_masks": [
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 4,
+      "w": 11,
+      "b": 10,
+      "mask": 10150,
+      "block_mask": 518,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        6,
+        8,
+        9,
+        10,
+        11,
+        14
+      ],
+      "block": [
+        2,
+        3,
+        10
+      ],
+      "residual": [
+        6,
+        8,
+        9,
+        11,
+        14
+      ],
+      "all_maximal_block_masks": [
+        518
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 4,
+      "w": 11,
+      "b": 10,
+      "mask": 9958,
+      "block_mask": 518,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        6,
+        7,
+        8,
+        10,
+        11,
+        14
+      ],
+      "block": [
+        2,
+        3,
+        10
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        11,
+        14
+      ],
+      "all_maximal_block_masks": [
+        518
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 6,
+      "w": 9,
+      "b": 8,
+      "mask": 9686,
+      "block_mask": 146,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        9,
+        11,
+        14
+      ],
+      "block": [
+        2,
+        5,
+        8
+      ],
+      "residual": [
+        3,
+        7,
+        9,
+        11,
+        14
+      ],
+      "all_maximal_block_masks": [
+        146,
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 6,
+      "w": 9,
+      "b": 8,
+      "mask": 8129,
+      "block_mask": 192,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "block": [
+        7,
+        8
+      ],
+      "residual": [
+        1,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "all_maximal_block_masks": [
+        192
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 2,
+      "w": 13,
+      "b": 12,
+      "mask": 6941,
+      "block_mask": 2052,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        3,
+        4,
+        5,
+        9,
+        10,
+        12,
+        13
+      ],
+      "block": [
+        3,
+        12
+      ],
+      "residual": [
+        1,
+        4,
+        5,
+        9,
+        10,
+        13
+      ],
+      "all_maximal_block_masks": [
+        2052
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 2,
+      "w": 13,
+      "b": 11,
+      "mask": 5933,
+      "block_mask": 1029,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        9,
+        10,
+        11,
+        13
+      ],
+      "block": [
+        1,
+        3,
+        11
+      ],
+      "residual": [
+        4,
+        6,
+        9,
+        10,
+        13
+      ],
+      "all_maximal_block_masks": [
+        1029,
+        1032
+      ]
+    },
+    {
+      "N": 15,
+      "h": 7,
+      "d": 15,
+      "t": 4,
+      "w": 11,
+      "b": 10,
+      "mask": 5873,
+      "block_mask": 528,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        13
+      ],
+      "block": [
+        5,
+        10
+      ],
+      "residual": [
+        1,
+        6,
+        7,
+        8,
+        11,
+        13
+      ],
+      "all_maximal_block_masks": [
+        528
+      ]
+    },
+    {
+      "N": 16,
+      "h": 6,
+      "d": 13,
+      "t": 5,
+      "w": 8,
+      "b": 7,
+      "mask": 60386,
+      "block_mask": 96,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        14,
+        15,
+        16
+      ],
+      "block": [
+        6,
+        7
+      ],
+      "residual": [
+        2,
+        8,
+        9,
+        10,
+        12,
+        14,
+        15,
+        16
+      ],
+      "all_maximal_block_masks": [
+        96
+      ]
+    },
+    {
+      "N": 16,
+      "h": 6,
+      "d": 13,
+      "t": 4,
+      "w": 9,
+      "b": 8,
+      "mask": 27126,
+      "block_mask": 134,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        14,
+        15
+      ],
+      "block": [
+        2,
+        3,
+        8
+      ],
+      "residual": [
+        5,
+        6,
+        7,
+        9,
+        12,
+        14,
+        15
+      ],
+      "all_maximal_block_masks": [
+        134,
+        144
+      ]
+    },
+    {
+      "N": 16,
+      "h": 6,
+      "d": 14,
+      "t": 4,
+      "w": 10,
+      "b": 9,
+      "mask": 54230,
+      "block_mask": 262,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        9,
+        10,
+        13,
+        15,
+        16
+      ],
+      "block": [
+        2,
+        3,
+        9
+      ],
+      "residual": [
+        5,
+        7,
+        8,
+        10,
+        13,
+        15,
+        16
+      ],
+      "all_maximal_block_masks": [
+        262,
+        272
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 15,
+      "t": 3,
+      "w": 12,
+      "b": 11,
+      "mask": 48360,
+      "block_mask": 1032,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        4,
+        6,
+        7,
+        8,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "block": [
+        4,
+        11
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        12,
+        13,
+        14,
+        16
+      ],
+      "all_maximal_block_masks": [
+        1032
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 15,
+      "t": 3,
+      "w": 12,
+      "b": 10,
+      "mask": 47856,
+      "block_mask": 528,
+      "margin": 1,
+      "successor_value": "draw",
+      "remaining": [
+        5,
+        6,
+        7,
+        8,
+        10,
+        12,
+        13,
+        14,
+        16
+      ],
+      "block": [
+        5,
+        10
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        12,
+        13,
+        14,
+        16
+      ],
+      "all_maximal_block_masks": [
+        528
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 15,
+      "t": 2,
+      "w": 13,
+      "b": 11,
+      "mask": 38509,
+      "block_mask": 1029,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11,
+        13,
+        16
+      ],
+      "block": [
+        1,
+        3,
+        11
+      ],
+      "residual": [
+        4,
+        6,
+        7,
+        10,
+        13,
+        16
+      ],
+      "all_maximal_block_masks": [
+        1029,
+        1032
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 15,
+      "t": 2,
+      "w": 13,
+      "b": 11,
+      "mask": 38509,
+      "block_mask": 1032,
+      "margin": 1,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11,
+        13,
+        16
+      ],
+      "block": [
+        4,
+        11
+      ],
+      "residual": [
+        1,
+        3,
+        6,
+        7,
+        10,
+        13,
+        16
+      ],
+      "all_maximal_block_masks": [
+        1029,
+        1032
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 16,
+      "t": 4,
+      "w": 12,
+      "b": 11,
+      "mask": 32208,
+      "block_mask": 1040,
+      "margin": 2,
+      "successor_value": "draw",
+      "remaining": [
+        5,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "block": [
+        5,
+        11
+      ],
+      "residual": [
+        7,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15
+      ],
+      "all_maximal_block_masks": [
+        1040
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 16,
+      "t": 4,
+      "w": 12,
+      "b": 10,
+      "mask": 31712,
+      "block_mask": 544,
+      "margin": 2,
+      "successor_value": "win",
+      "remaining": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "block": [
+        6,
+        10
+      ],
+      "residual": [
+        7,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15
+      ],
+      "all_maximal_block_masks": [
+        544
+      ]
+    },
+    {
+      "N": 16,
+      "h": 7,
+      "d": 16,
+      "t": 4,
+      "w": 12,
+      "b": 10,
+      "mask": 15089,
+      "block_mask": 529,
+      "margin": 2,
+      "successor_value": "win",
+      "remaining": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        10,
+        12,
+        13,
+        14
+      ],
+      "block": [
+        1,
+        5,
+        10
+      ],
+      "residual": [
+        6,
+        7,
+        8,
+        12,
+        13,
+        14
+      ],
+      "all_maximal_block_masks": [
+        529,
+        544
+      ]
+    }
+  ],
+  "distinct_full_gap_cases": 92,
+  "margin_summary": [
+    {
+      "margin_class": 1,
+      "block_witnesses": 74,
+      "distinct_gap_cases": 71,
+      "successor_loss": 0,
+      "successor_draw": 57,
+      "successor_win": 14
+    },
+    {
+      "margin_class": 2,
+      "block_witnesses": 18,
+      "distinct_gap_cases": 18,
+      "successor_loss": 0,
+      "successor_draw": 14,
+      "successor_win": 4
+    },
+    {
+      "margin_class": "at_least_3",
+      "block_witnesses": 3,
+      "distinct_gap_cases": 3,
+      "successor_loss": 0,
+      "successor_draw": 3,
+      "successor_win": 0
+    }
+  ],
+  "all_ambient_counts": [
+    {
+      "N": 0,
+      "even_parents": 0,
+      "geometric": 0,
+      "max_blocks_tested": 0,
+      "full_gap_cases": 0,
+      "full_blocks": 0
+    },
+    {
+      "N": 1,
+      "even_parents": 0,
+      "geometric": 0,
+      "max_blocks_tested": 0,
+      "full_gap_cases": 0,
+      "full_blocks": 0
+    },
+    {
+      "N": 2,
+      "even_parents": 0,
+      "geometric": 0,
+      "max_blocks_tested": 0,
+      "full_gap_cases": 0,
+      "full_blocks": 0
+    },
+    {
+      "N": 3,
+      "even_parents": 0,
+      "geometric": 0,
+      "max_blocks_tested": 0,
+      "full_gap_cases": 0,
+      "full_blocks": 0
+    },
+    {
+      "N": 4,
+      "even_parents": 0,
+      "geometric": 0,
+      "max_blocks_tested": 0,
+      "full_gap_cases": 0,
+      "full_blocks": 0
+    },
+    {
+      "N": 5,
+      "even_parents": 2,
+      "geometric": 1,
+      "max_blocks_tested": 1,
+      "full_gap_cases": 1,
+      "full_blocks": 1
+    },
+    {
+      "N": 6,
+      "even_parents": 5,
+      "geometric": 2,
+      "max_blocks_tested": 2,
+      "full_gap_cases": 1,
+      "full_blocks": 1
+    },
+    {
+      "N": 7,
+      "even_parents": 14,
+      "geometric": 3,
+      "max_blocks_tested": 3,
+      "full_gap_cases": 3,
+      "full_blocks": 3
+    },
+    {
+      "N": 8,
+      "even_parents": 32,
+      "geometric": 5,
+      "max_blocks_tested": 5,
+      "full_gap_cases": 0,
+      "full_blocks": 0
+    },
+    {
+      "N": 9,
+      "even_parents": 97,
+      "geometric": 31,
+      "max_blocks_tested": 31,
+      "full_gap_cases": 4,
+      "full_blocks": 4
+    },
+    {
+      "N": 10,
+      "even_parents": 191,
+      "geometric": 58,
+      "max_blocks_tested": 58,
+      "full_gap_cases": 6,
+      "full_blocks": 6
+    },
+    {
+      "N": 11,
+      "even_parents": 428,
+      "geometric": 153,
+      "max_blocks_tested": 161,
+      "full_gap_cases": 13,
+      "full_blocks": 14
+    },
+    {
+      "N": 12,
+      "even_parents": 864,
+      "geometric": 313,
+      "max_blocks_tested": 330,
+      "full_gap_cases": 9,
+      "full_blocks": 9
+    },
+    {
+      "N": 13,
+      "even_parents": 1968,
+      "geometric": 743,
+      "max_blocks_tested": 774,
+      "full_gap_cases": 19,
+      "full_blocks": 20
+    },
+    {
+      "N": 14,
+      "even_parents": 3946,
+      "geometric": 1505,
+      "max_blocks_tested": 1569,
+      "full_gap_cases": 8,
+      "full_blocks": 8
+    },
+    {
+      "N": 15,
+      "even_parents": 8761,
+      "geometric": 3587,
+      "max_blocks_tested": 3774,
+      "full_gap_cases": 19,
+      "full_blocks": 19
+    },
+    {
+      "N": 16,
+      "even_parents": 17534,
+      "geometric": 7148,
+      "max_blocks_tested": 7515,
+      "full_gap_cases": 9,
+      "full_blocks": 10
+    }
+  ],
+  "all_margin_domains": [
+    {
+      "N": 0,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 0,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 0,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 1,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 1,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 1,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 2,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 2,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 2,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 3,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 3,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 3,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 4,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 4,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 4,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 5,
+      "margin_class": 1,
+      "gaps": 1,
+      "blocks": 1,
+      "successor_loss": 0,
+      "successor_draw": 1,
+      "successor_win": 0
+    },
+    {
+      "N": 5,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 5,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 6,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 6,
+      "margin_class": 2,
+      "gaps": 1,
+      "blocks": 1,
+      "successor_loss": 0,
+      "successor_draw": 1,
+      "successor_win": 0
+    },
+    {
+      "N": 6,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 7,
+      "margin_class": 1,
+      "gaps": 3,
+      "blocks": 3,
+      "successor_loss": 0,
+      "successor_draw": 3,
+      "successor_win": 0
+    },
+    {
+      "N": 7,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 7,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 8,
+      "margin_class": 1,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 8,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 8,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 9,
+      "margin_class": 1,
+      "gaps": 4,
+      "blocks": 4,
+      "successor_loss": 0,
+      "successor_draw": 3,
+      "successor_win": 1
+    },
+    {
+      "N": 9,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 9,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 10,
+      "margin_class": 1,
+      "gaps": 4,
+      "blocks": 4,
+      "successor_loss": 0,
+      "successor_draw": 2,
+      "successor_win": 2
+    },
+    {
+      "N": 10,
+      "margin_class": 2,
+      "gaps": 2,
+      "blocks": 2,
+      "successor_loss": 0,
+      "successor_draw": 2,
+      "successor_win": 0
+    },
+    {
+      "N": 10,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 11,
+      "margin_class": 1,
+      "gaps": 9,
+      "blocks": 10,
+      "successor_loss": 0,
+      "successor_draw": 8,
+      "successor_win": 1
+    },
+    {
+      "N": 11,
+      "margin_class": 2,
+      "gaps": 2,
+      "blocks": 2,
+      "successor_loss": 0,
+      "successor_draw": 2,
+      "successor_win": 0
+    },
+    {
+      "N": 11,
+      "margin_class": 3,
+      "gaps": 2,
+      "blocks": 2,
+      "successor_loss": 0,
+      "successor_draw": 2,
+      "successor_win": 0
+    },
+    {
+      "N": 12,
+      "margin_class": 1,
+      "gaps": 5,
+      "blocks": 5,
+      "successor_loss": 0,
+      "successor_draw": 5,
+      "successor_win": 0
+    },
+    {
+      "N": 12,
+      "margin_class": 2,
+      "gaps": 4,
+      "blocks": 4,
+      "successor_loss": 0,
+      "successor_draw": 4,
+      "successor_win": 0
+    },
+    {
+      "N": 12,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 13,
+      "margin_class": 1,
+      "gaps": 18,
+      "blocks": 19,
+      "successor_loss": 0,
+      "successor_draw": 13,
+      "successor_win": 5
+    },
+    {
+      "N": 13,
+      "margin_class": 2,
+      "gaps": 1,
+      "blocks": 1,
+      "successor_loss": 0,
+      "successor_draw": 1,
+      "successor_win": 0
+    },
+    {
+      "N": 13,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 14,
+      "margin_class": 1,
+      "gaps": 4,
+      "blocks": 4,
+      "successor_loss": 0,
+      "successor_draw": 4,
+      "successor_win": 0
+    },
+    {
+      "N": 14,
+      "margin_class": 2,
+      "gaps": 4,
+      "blocks": 4,
+      "successor_loss": 0,
+      "successor_draw": 2,
+      "successor_win": 2
+    },
+    {
+      "N": 14,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 15,
+      "margin_class": 1,
+      "gaps": 18,
+      "blocks": 18,
+      "successor_loss": 0,
+      "successor_draw": 14,
+      "successor_win": 4
+    },
+    {
+      "N": 15,
+      "margin_class": 2,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    },
+    {
+      "N": 15,
+      "margin_class": 3,
+      "gaps": 1,
+      "blocks": 1,
+      "successor_loss": 0,
+      "successor_draw": 1,
+      "successor_win": 0
+    },
+    {
+      "N": 16,
+      "margin_class": 1,
+      "gaps": 5,
+      "blocks": 6,
+      "successor_loss": 0,
+      "successor_draw": 4,
+      "successor_win": 1
+    },
+    {
+      "N": 16,
+      "margin_class": 2,
+      "gaps": 4,
+      "blocks": 4,
+      "successor_loss": 0,
+      "successor_draw": 2,
+      "successor_win": 2
+    },
+    {
+      "N": 16,
+      "margin_class": 3,
+      "gaps": 0,
+      "blocks": 0,
+      "successor_loss": 0,
+      "successor_draw": 0,
+      "successor_win": 0
+    }
+  ],
+  "N13_geometric_control": [
+    {
+      "block": [
+        5,
+        8
+      ],
+      "block_mask": 144,
+      "global_b": 9,
+      "contains_global_b": false,
+      "after_opening_at_10_value": 1,
+      "opening_10_outcome": -1,
+      "qualifies_full_strategic_premise": false
+    },
+    {
+      "block": [
+        4,
+        9
+      ],
+      "block_mask": 264,
+      "global_b": 9,
+      "contains_global_b": true,
+      "after_opening_at_10_value": 1,
+      "opening_10_outcome": -1,
+      "qualifies_full_strategic_premise": false
+    }
+  ],
+  "literal_representatives": [
+    {
+      "N": 5,
+      "h": 2,
+      "d": 5,
+      "t": 1,
+      "w": 4,
+      "b": 3,
+      "block": [
+        2,
+        3
+      ],
+      "remaining": [
+        2,
+        3,
+        4
+      ],
+      "parent_value": 0,
+      "after_opening_value": -1,
+      "successor_value": 0
+    },
+    {
+      "N": 6,
+      "h": 2,
+      "d": 6,
+      "t": 1,
+      "w": 5,
+      "b": 4,
+      "block": [
+        2,
+        4
+      ],
+      "remaining": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "parent_value": 0,
+      "after_opening_value": -1,
+      "successor_value": 0
+    },
+    {
+      "N": 11,
+      "h": 4,
+      "d": 11,
+      "t": 1,
+      "w": 10,
+      "b": 9,
+      "block": [
+        2,
+        9
+      ],
+      "remaining": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10
+      ],
+      "parent_value": 0,
+      "after_opening_value": -1,
+      "successor_value": 0
+    }
+  ],
+  "seconds": 0.0033502080000000004,
+  "max_rss_bytes": 14860288,
+  "literal_source_sha256": "c4cf3609ec579fcd95f6883a52bfe8ae60b7cbf8a829012cc34da75952e7a432"
+}
