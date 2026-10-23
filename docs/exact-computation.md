@@ -15,6 +15,8 @@ Equality ends the turn. Empty support draws only at deficit zero. If the remaini
 
 The existing correspondence theorems are in [Executable](../CatchUp/Executable.lean) and [Reference](../CatchUp/Reference.lean). [ReachableBounds](../CatchUp/ReachableBounds.lean) proves `R` stays inside the original interval and `d <= N`, giving `(N+1)*2^N` possible normalized labels before other restrictions.
 
+The [recovered packed solver](../computation/solvers/packed/) implements a separate bottom-up recurrence and scalar table verification. Its [bounded reproduction commands](../computation/experiments/) calibrate small cases against independent score-based and whole-turn evaluators. This is useful executable evidence; the C++ implementation and verifier do not inherit a Lean correctness theorem merely by using the same recurrence.
+
 ## Parity can save storage
 
 Let `T=N(N+1)/2` be the fixed original total and `s=sum(R)`. The [proved reachability invariant](../CatchUp/Earlier/Parity.lean) is:

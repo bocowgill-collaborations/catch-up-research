@@ -1,0 +1,189 @@
+{
+  "audit_date": "2026-10-23",
+  "assurance": "Experimental C++/Python implementations, not Lean-certified checkers or premises of the existing proofs.",
+  "sources": [
+    {
+      "path": "computation/experiments/seven_pairs/slots.hpp",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/slots.hpp",
+      "original_sha256": "0bf12ba8e6f9c4caf1e615e0a86fc990fceb7cd96229e582d07ca4a46a32e4ef",
+      "sha256": "0bf12ba8e6f9c4caf1e615e0a86fc990fceb7cd96229e582d07ca4a46a32e4ef",
+      "bytes": 1786,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/seven_pairs/probe.cpp",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/probe.cpp",
+      "original_sha256": "68c73435fe9aedcf3191b3299912f09dfda2aec60a24dd99bc1166abe8f86b2d",
+      "sha256": "68c73435fe9aedcf3191b3299912f09dfda2aec60a24dd99bc1166abe8f86b2d",
+      "bytes": 1515,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/seven_pairs/round.cpp",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/round.cpp",
+      "original_sha256": "fc8035b0c08cdf83788b2a190e08d2f992db0e6e32f66d9c8f7a4ebcff58746f",
+      "sha256": "fc8035b0c08cdf83788b2a190e08d2f992db0e6e32f66d9c8f7a4ebcff58746f",
+      "bytes": 2483,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/seven_pairs/candidates.py",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/candidates.py",
+      "original_sha256": "9ad7bc70b3bcbf1ab0746876cd4190ba7e2cc024ce796f741b34a489c593ee5d",
+      "sha256": "9ad7bc70b3bcbf1ab0746876cd4190ba7e2cc024ce796f741b34a489c593ee5d",
+      "bytes": 896,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/seven_pairs/diagnostic_inputs.txt",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/diagnostic_inputs.txt",
+      "original_sha256": "004c0196b7bc5b43e6b8c8c5a4baf11df83e3950ee3449b58718154401dcb1bf",
+      "sha256": "004c0196b7bc5b43e6b8c8c5a4baf11df83e3950ee3449b58718154401dcb1bf",
+      "bytes": 116,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/seven_pairs/root_inputs.txt",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/root_inputs.txt",
+      "original_sha256": "f2da4cd7959883f9516a73a3e4f2c184e4383dc93b853b0a0d6c020c384f2ccd",
+      "sha256": "f2da4cd7959883f9516a73a3e4f2c184e4383dc93b853b0a0d6c020c384f2ccd",
+      "bytes": 11940,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/seven_pairs/round_inputs.txt",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/seven_pairs/round_inputs.txt",
+      "original_sha256": "2337a2ae22ba420b72b82f2441f0aaa950aca6793da9a7bba5f6527f5cbadc9f",
+      "sha256": "2337a2ae22ba420b72b82f2441f0aaa950aca6793da9a7bba5f6527f5cbadc9f",
+      "bytes": 1561,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/four_orphan/inputs.py",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/four_orphan/inputs.py",
+      "original_sha256": "e867b7f1f9753b333451c3d10fff3c7703d8c9334a7ad28e4d673c48ee7c42b3",
+      "sha256": "e867b7f1f9753b333451c3d10fff3c7703d8c9334a7ad28e4d673c48ee7c42b3",
+      "bytes": 520,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/four_orphan/inputs.txt",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/four_orphan/inputs.txt",
+      "original_sha256": "2d86a88c903a5cb8c9742e2e8c4c43797a78e1e5c107a4760f06f31d63f56f4b",
+      "sha256": "2d86a88c903a5cb8c9742e2e8c4c43797a78e1e5c107a4760f06f31d63f56f4b",
+      "bytes": 7725,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/four_orphan/probe.cpp",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/four_orphan/probe.cpp",
+      "original_sha256": "e286bc6dc89901628853f22b5542a07315a629f9ddf614c8d3731187fb633086",
+      "sha256": "e286bc6dc89901628853f22b5542a07315a629f9ddf614c8d3731187fb633086",
+      "bytes": 2100,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/near_repair/probe.cpp",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/near_repair/probe.cpp",
+      "original_sha256": "36ce6bb1a6688fc757969b6841d4e5dfd60c24fa724f2096d878f9aa17cf1266",
+      "sha256": "36ce6bb1a6688fc757969b6841d4e5dfd60c24fa724f2096d878f9aa17cf1266",
+      "bytes": 1178,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/whole_turn/test.py",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/whole_turn/test.py",
+      "original_sha256": "a0afbb69614e1b2c1a955b01e727219c7e882787bb7cc8c51c0ba880902a125f",
+      "sha256": "a0afbb69614e1b2c1a955b01e727219c7e882787bb7cc8c51c0ba880902a125f",
+      "bytes": 6938,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/whole_turn/inputs.json",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/whole_turn/inputs.json",
+      "original_sha256": "b679b79676ae4bad7e594a61ae1ca46dc59988520a2e009721122961616e1355",
+      "sha256": "b679b79676ae4bad7e594a61ae1ca46dc59988520a2e009721122961616e1355",
+      "bytes": 7332,
+      "adaptations": "None; byte-for-byte copy."
+    },
+    {
+      "path": "computation/experiments/consecutive/probe.cpp",
+      "origin_repository": "local cryptids downstream research",
+      "origin_path": "research/catchup/campaign_2026_10_22/resume_01/actual-three-guard/consecutive/probe.cpp",
+      "original_sha256": "c63cec83783e9a801b39fd82a470100c52f06d7b34d62b2ecb35b82f08c17f86",
+      "sha256": "59d6553b19c253f754d68181c4fbd7dabc9e6795ed45c96386413898a55d2af5",
+      "bytes": 1161,
+      "adaptations": "Only the header include path was relocated; recurrence and driver logic unchanged."
+    },
+    {
+      "path": "computation/solvers/packed/catch_up_search.cpp",
+      "origin_repository": "local formal-conjectures checkout",
+      "origin_path": "scripts/catch_up_search/catch_up_search.cpp",
+      "checkout_HEAD": "7c41897a220e82838ff4ffd3906bc657696e0236",
+      "git_status": "untracked local research file; HEAD is context, not a source commit",
+      "original_sha256": "b3cf5acf0ec7164e4dcdc85d820443d11af80a735fa7aa377e2796af25c120d2",
+      "sha256": "b3cf5acf0ec7164e4dcdc85d820443d11af80a735fa7aa377e2796af25c120d2",
+      "bytes": 48845,
+      "adaptations": "None; byte-for-byte copy; Apache-2.0 copyright and license retained."
+    }
+  ],
+  "coverage": {
+    "included": [
+      "packed interval solver from the other local repository",
+      "shared explicit-slot solver and seven-pair root/recursive-round drivers with frozen inputs and seeded generator",
+      "four-orphan driver, inputs and seeded generator",
+      "near-repair completed-turn-set driver",
+      "seven/nine-pair whole-turn arithmetic test and frozen input shapes",
+      "actual consecutive-tail C++ evaluator"
+    ],
+    "not_yet_ported": [
+      "campaign_2026_10_22/search mutation/SMT/interval/shrinking drivers and replay dependency closures",
+      "remaining resume_01 mutation/SMT experiments and seeds",
+      "full near_repair forest extraction and independent forest validator",
+      "earlier large saved binary exact tables (not located in this audit)"
+    ],
+    "privacy_exclusions": [
+      "private correspondence and attachments",
+      "account and administrative files"
+    ]
+  },
+  "adapters": [
+    {
+      "path": "computation/experiments/run.py",
+      "sha256": "f06c8bca96ce56d7aabf01eadcafcfdff4a382af5a6e865507a2ae30c66ebd4f",
+      "bytes": 11694,
+      "purpose": "New portable entry point or small independent publication check; no formal proof claim."
+    },
+    {
+      "path": "computation/experiments/check.py",
+      "sha256": "9bb8edf22585f007952b88b889246a38cc46267d2760739e42f5a83624617248",
+      "bytes": 11783,
+      "purpose": "New portable entry point or small independent publication check; no formal proof claim."
+    },
+    {
+      "path": "computation/solvers/packed/check_small.cpp",
+      "sha256": "b61e4354ac6dd9bb39b8a52225a18c66763bd02f23d0d51e87a1f6d6533de357",
+      "bytes": 1777,
+      "purpose": "New portable entry point or small independent publication check; no formal proof claim."
+    },
+    {
+      "path": "scripts/check_solver_sources.py",
+      "sha256": "283d620d74bce00b28699c828ed4f06f228202a2f1a3cf305e06cc0410576fea",
+      "bytes": 3003,
+      "purpose": "New portable entry point or small independent publication check; no formal proof claim."
+    }
+  ]
+}

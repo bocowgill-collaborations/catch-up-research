@@ -115,6 +115,7 @@ def main():
     assert child.returncode==2 and incomplete['status']=='incomplete' and 'outcome' not in incomplete
     # Existing source fidelity, copied-file hashes, documentation links and hygiene checks.
     subprocess.run([sys.executable,'scripts/check_research_archive.py'],cwd=ROOT,check=True,timeout=60)
+    subprocess.run([sys.executable,'scripts/check_solver_sources.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/verify_export.py'],cwd=ROOT,check=True,timeout=60)
     print(f'Collection checks passed: {len(catalog)} indexed modules, {count} noninitial comparisons, {len(fixtures["initial_intervals"])} roots, every listed reply and limit/sign controls ({time.monotonic()-begin:.2f}s)')
 

@@ -6,6 +6,8 @@ For state bounds, parity-based storage and the scope of historical reproduction,
 
 [Retained observation files](observations/) preserve earlier bounded runs, including failed policies, unprocessed cases and all recorded alternatives. Read the [experimental findings](../results/experimental-findings.md) for their scope. These are not fresh numerical replays or Lean certificates.
 
+The [runnable experiment bundles](experiments/) now include the original shared C++ solver, pair/orphan drivers, seed generators and frozen inputs, plus the [packed exact interval solver](solvers/packed/) recovered from the other local repository. Start with `python3 computation/experiments/check.py` or `python3 computation/experiments/run.py consecutive`. These require a C++ compiler but no Lean installation. Defaults use small cases; larger historical batches are explicit options and are not run by CI. Provenance and the still-unported experiment closures are recorded separately.
+
 ## Explore a position without Lean
 
 ```sh

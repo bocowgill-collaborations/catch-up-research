@@ -2,7 +2,7 @@
 
 These are preserved outputs from earlier bounded exact-search and independent replay runs. **They are not Lean certificates and were not rerun for this publication.** Read the [notebook](../../archive/research-notes/README.md) for each hypothesis and its exact scope. A missing or unprocessed case has no mathematical outcome. Some files intentionally retain failed, skipped, null and unprocessed fields.
 
-There are 31 data files. Original and exported hashes, source paths and transformations are recorded in [the collection manifest](../../verification/research-collection.json). The records preserve all numerical fields and completeness flags; only machine-local path prefixes in text were normalized. Original solver drivers and all original seed lists are not bundled here. Use the [small explorer](../README.md) for manageable supplied states and the linked Lean theorems for formal claims.
+There are 31 data files. Original and exported hashes, source paths and transformations are recorded in [the collection manifest](../../verification/research-collection.json). The records preserve all numerical fields and completeness flags; only machine-local path prefixes in text were normalized. The [runnable experiment bundles](../experiments/) now recover selected original drivers and frozen input lists, including the six consecutive-tail roots in the first row below. Other mutation, SMT and shrinking replay closures remain unported; the [solver manifest](../../verification/solver-sources.json) lists the scope. Use the [small explorer](../README.md) for manageable supplied states and the linked Lean theorems for formal claims.
 
 | Observation file | Original mathematical context |
 | --- | --- |
