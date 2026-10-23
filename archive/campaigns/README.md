@@ -4,6 +4,8 @@ This archive preserves the August–September 2026 research that preceded the Oc
 
 The import covers 15 local refs (14 Catch-Up branches and the counterexample-search checkout), 55 relevant commits, 236 unique paths and 290 distinct path/blob pairs. It adds 183 previously absent historical source versions/records, three research handoffs and one detailed run record. Existing mathematical sources and large generated payloads are not duplicated.
 
+The [PR review](../../verification/pr1-review.md) checked all 43 summaries against those sources and made the essential bounds and perspectives explicit. The missing-artifact ledger now includes 25 references: the 23 final-report references plus the N23/N24 table files named in the August 7 run record. The archival records themselves remain unchanged.
+
 ## Evidence and use
 
 All content below is historical material outside the Lean build. Successful checks reported inside it refer to the original campaign. Old CHECK lines, commands and instructions are inert quotations of that context. A reviewer assessment is distinct from Lean verification. The current [verification guide](../../verification/README.md) defines what the collection builds.

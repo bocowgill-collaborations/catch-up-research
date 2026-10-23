@@ -115,6 +115,7 @@ def main():
     assert child.returncode==2 and incomplete['status']=='incomplete' and 'outcome' not in incomplete
     # Existing source fidelity, copied-file hashes, documentation links and hygiene checks.
     subprocess.run([sys.executable,'scripts/check_legacy_archive.py'],cwd=ROOT,check=True,timeout=60)
+    subprocess.run([sys.executable,'scripts/check_legacy_examples.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_research_archive.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_solver_sources.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_campaign_sources.py'],cwd=ROOT,check=True,timeout=60)

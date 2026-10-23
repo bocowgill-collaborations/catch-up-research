@@ -18,7 +18,7 @@ The [campaign index](../archive/campaigns/README.md) lists all source versions, 
 
 The audited game forces one opening pick, continues later turns only while behind, switches at equality, and awards the remainder when catching is impossible. The deficit evaluator agrees with the score-based reference.
 
-Evidence: current Lean library; historical semantic audit. Scope: all finite supports under the formal definitions.
+Evidence: current Lean library; historical semantic audit. Scope: finite natural-number supports; normalization assumes the mover is tied or behind (me≤opponent); intended interval play uses positive counters.
 
 The separately implemented C++ solver still needs its own checks; recurrence agreement does not certify arbitrary code.
 
@@ -66,7 +66,7 @@ Sources: [catchup_final_report_20260808_2206_et--7d784e0a.md](../archive/campaig
 
 ### CU-L006 — Independent N27/N28 audits
 
-The August report retains complete Bellman checks, scalar samples, strategy-field replay, negative controls and W/D/L counts for N27/N28. Table-label counts differ from initial-game counts.
+The August report describes complete Bellman checks, scalar samples, strategy-field replay, negative controls and W/D/L counts for N27/N28. Table-label counts differ from initial-game counts; not all supporting programs or tables are available.
 
 Evidence: historical exact computations; independent audit tools and binary tables partly unrecovered. Scope: fixed tables and certificates N=27,28.
 
@@ -86,7 +86,7 @@ Sources: [catchup_final_report_20260812_0122_et--b286d3c5.md](../archive/campaig
 
 ### CU-L008 — Four remaining August obligations
 
-The reported normal form closes if A(N,2) and B(N,3) are nonlosing, TA(N,b)=Icc 2 N\{b−1,b} is nonwinning for 3≤b≤N−2, and TB(N,x)=Icc 3 N\{x−1,x} is nonwinning for 4≤x≤N−2, for every admissible N≥31.
+The reported normal form closes if A(N,2) and B(N,3) are nonlosing, value(TA(N,b))≠win for TA(N,b)=Icc 2 N\{b−1,b}, 3≤b≤N−2, and value(TB(N,x))≠win for TB(N,x)=Icc 3 N\{x−1,x}, 4≤x≤N−2, for every N≥31 with even triangular total. Here value(TA) and value(TB) are tied initial-game values, not positive-deficit values.
 
 Evidence: conditional research interface from a report; parent scratch missing. Scope: admissible initial intervals via residual states.
 
@@ -116,17 +116,17 @@ Sources: [catchup_final_report_20260812_0122_et--b286d3c5.md](../archive/campaig
 
 ### CU-L011 — Tied maximum-companion claim
 
-The August scratch report claims a maximum vertex with an outgoing tied-root reply edge has another distinct outgoing edge; it reports a 94,957-root dense audit through N=23.
+The August scratch report claims a maximum vertex with an outgoing tied-root reply edge has another distinct outgoing edge; an edge a→b means distinct a,b∈S with (afterOpening S a).moveOutcome b=win. It reports a 94,957-root audit of eligible even interval-minus-at-most-five-hole supports through N=23.
 
 Evidence: report-only structural check and historical bounded observations; scratch missing. Scope: tied-root reply graph.
 
-Do not apply this to the shifted deficit-one graph: September supplies a counterexample to that migration. The tied-root scratch theorem itself has not been recovered.
+The report does not expose the scratch theorem's full quantified signature, so its exact additional hypotheses are unrecovered. Do not adopt an unrestricted theorem or apply it to the shifted deficit-one graph: September supplies a counterexample to that migration.
 
 Sources: [catchup_final_report_20260812_0122_et--b286d3c5.md](../archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md).
 
 ### CU-L012 — Lower-ray tied-residual observations
 
-For every tested admissible N≤28, R_N(b)=Icc 1 N\{1,b−1,b}, b≥3, drew except winning cases (4,3),(4,4),(7,4),(7,6),(8,3). No tested residual lost. An adjacent-response policy passed 974 local challenges at N=15,16,19,20.
+For every tested N≤28 with even triangular total and 3≤b≤N, the tied game on R_N(b)=Icc 1 N\{1,b−1,b} drew except winning cases (4,3),(4,4),(7,4),(7,6),(8,3). No tested residual lost. An adjacent-response policy passed 974 local challenges at N=15,16,19,20.
 
 Evidence: historical exact computation; standalone reproducer unrecovered. Scope: specified finite interval residuals.
 
@@ -146,7 +146,7 @@ Sources: [catchup_final_report_20260812_0122_et--b286d3c5.md](../archive/campaig
 
 ### CU-L014 — Seven-hole shifted-tail package
 
-Three shifted-tail predicates passed historical held-out tests at M=25..28 over 61,746,189 antecedent-satisfying roots. The package fails at smaller M=16..19, so size qualifications matter.
+The historical report records 61,746,189 antecedent-satisfying tests at M=25..28 for this package. Put h=|[m+1,M]\R|+max(m−1,0), with R⊆[m+1,M] and d+sum R even. Continuation nonloss assumes 1≤m≤M, h≤7 and 1≤d≤min(M−m,sum R). Catch nonwin assumes d≤m and either (1≤m≤M,h≤6) or (3≤m≤M,h≤7), with no catchability requirement. The package fails at smaller M=16..19.
 
 Evidence: historical exhaustive exact computation. Scope: shifted tails with the precise H7/q1, H6/q1, H7/q3 hypotheses.
 
@@ -156,9 +156,9 @@ Sources: [catchup_final_report_20260808_2206_et--7d784e0a.md](../archive/campaig
 
 ### CU-L015 — Sharp catch-rank reduction
 
-A reported symbolic seven-hole catch theorem retains an actual winning move and confines it to zero deficit, x≤16, a missing shifted predecessor, or an even tied residual with a unique larger winning opening.
+For natural M,m,d and nonempty catchable R⊆[m+1,M], assume |[m+1,M]\R|+max(m−1,0)≤7, d≤m, d+sum R even, and value(R,d)=win. The archived theorem gives d=0 or an actual winning move x∈R with x≤16, x−d∈[m+1,M]\R, or a tied winning residual R\{x,x−d} of even total with a unique winning opening y>x−d.
 
-Evidence: archived Lean source; historical check only in this import. Scope: catchable positive shifted upper-tail family with exact hole/parity hypotheses.
+Evidence: archived Lean source; historical check only in this import. Scope: conditional shifted upper-tail theorem; zero deficit is an explicit alternative; all values use the current mover's perspective.
 
 All exceptional branches remain obligations. The low-deficit child can still have linearly growing support; it is not a fixed finite leaf.
 
@@ -168,7 +168,7 @@ Sources: [catchup_final_report_20260808_2206_et--7d784e0a.md](../archive/campaig
 
 Adding {N+1,…,N+4} need not preserve a drawn state: the historical solver records N=11 state ({1,2,8},11) and N=12 state ({6,12},6) becoming wins after lifting.
 
-Evidence: historical exact computations; solver source available. Scope: arbitrary/reachable normalized states, not initial intervals.
+Evidence: historical exact computations; solver source available. Scope: specified normalized states, not initial interval roots; no new reachability assertion.
 
 These refute the unrestricted statewise lift only. A strategy-specific conditional transfer remains open.
 
@@ -246,7 +246,7 @@ Sources: [catchup_local_exchange_report_20260923_1820_et--3f5dc5a0.md](../archiv
 
 ### CU-L024 — Parametric terminal score-debt repair
 
-For k≥0, a=k+4,b=2k+5,c=2k+6: actual ({a,b,c},a+1,p2) has a causal maximum policy against every opponent move completing to protected margin 0 or 2. A chosen shadow ({a,c},a,p2) completes to 2; actual margin≥shadow margin−2.
+For natural k, a=k+4,b=2k+5,c=2k+6, protect fixed p1. Actual ({a,b,c},a+1,p2) has a policy taking a maximum on p1 turns against every p2 pick, completing to p1 margin 0 or 2. The chosen shadow trace [c,a] from ({a,c},a,p2) completes to p1 margin 2; actual margin≥shadow margin−2.
 
 Evidence: current Lean library for the repair; historical replay for 404 leaves. Scope: three-counter terminal gadget.
 
@@ -296,7 +296,7 @@ Sources: [catchup_first_pair_report_20260928_0918_et--56c38447.md](../archive/ca
 
 ### CU-L029 — Shifted-reply cycles and migration failure
 
-At S={3,4,9,16,17,18,26,28,31,37}, deficit one loses and the shifted reply graph has 3→4→3. Another support containing [3,6] has 3↔5 but cannot slide that cycle to 4. On Icc 3 7, vertex 7 has only reply edge to 3.
+At S={3,4,9,16,17,18,26,28,31,37}, deficit one loses and the shifted reply graph has 3→4→3. At S={3,4,5,6,9,19,24,26,29,38}, it has 3↔5 but the proposed slide through 4 fails: the 5→4 move draws and the 4→5 move loses. On Icc 3 7, vertex 7 has only reply edge to 3. Shifted edges are legal winning replies after a first pick from (S,1), not replies from a tied initial root.
 
 Evidence: archived Lean source; historical kernel checks. Scope: shifted graph on alternative first choices.
 
@@ -316,7 +316,7 @@ Sources: [catchup_shifted_cycle_report_20260928_1021_et--bb668e38.md](../archive
 
 ### CU-L031 — Prepaid reserve preservation and initialization barrier
 
-For reserve pair-gap total D, unpaired mass W and protected lead L, D+W≤L and L+D+W≤every paired counter support the stated mate-reply argument. Its weaker BudgetEnvelope after an opening a from (Icc 3 N,1), N≥7, holds iff N=7 and a=3.
+For distinct positive counters at an opponent-turn boundary, partition the remaining support into fixed disjoint unequal pairs P and an unpaired pool B. Let D be the sum of pair gaps, W=sum B and L≥0 the protected player's lead. Conditions D+W≤L and L+D+W≤x for every x∈P support the mate-reply argument. The weaker BudgetEnvelope on S=[3,N]\{a}, lead a−1, for N≥7 and 3≤a≤N holds iff N=7 and a=3; it asks for B⊆S and natural D with |S\B|≤2D and those two inequalities.
 
 Evidence: paper-level reviewed preservation; archived Lean initialization classification. Scope: specified reserve invariant and initial entries.
 
@@ -346,7 +346,7 @@ Sources: [catchup_upper_exchange_report_20260929_0034_et--2a2d854a.md](../archiv
 
 ### CU-L034 — Dominant adjacent pair changes terminal utility
 
-An unformalized candidate for a>M+d with min T≥2 replaces a dominant pair {a,a+1} by empty-small-support utility win/draw/loss at deficits 0/1/≥2. The proposed argument excludes premature use of the pair.
+An unformalized candidate for finite distinct natural counters T with every t∈T at least 2, M=sum T, natural deficit d, and a>M+d replaces {a,a+1} in T∪{a,a+1} by empty-small-support utility win/draw/loss at deficits 0/1/≥2. The modified recurrence uses ordinary small-pick maximization without pruning when T alone cannot catch. The proposed argument excludes premature use of the pair while T is nonempty.
 
 Evidence: informal candidate and one reported bounded diagnostic. Scope: dominant-pair family under precise separation.
 
@@ -396,11 +396,11 @@ Sources: [catchup_uniform_descent_report_20260929_0843_et--39544321.md](../archi
 
 ### CU-L039 — Complement packing and lower-intruder resource cost
 
-For q≥3, at most floor((q−1)/2) disjoint subsets of integers≥2 sum to q; singleton {q} plus complementary pairs attain the bound. A known lower-intruder repair consumes {2,4,5}, widens the gap, and exits the original family.
+For integer q≥3, at most floor((q−1)/2) pairwise disjoint subsets of integers≥2 each sum to q; singleton {q} plus complementary pairs attain the bound. For k≥2 and m≥2k+2, this excludes the consecutive-lower-maximum forcing scheme on F(m,k): it requires k disjoint complements of q=k+2 but only floor((k+1)/2)<k exist. A known lower-intruder repair consumes {2,4,5}, widens the gap, and exits the original family.
 
 Evidence: informal exact arithmetic argument retained in notebook. Scope: specified forcing normal form and positive distinct integers.
 
-The packing argument is not newly Lean-certified. A decreasing counter count alone supplies neither availability of future complements nor terminal closure.
+The packing argument is informal, not Lean-certified here. The forcing-scheme obstruction assumes no lower witness and no upper counter in an exact block, and must handle every structurally permitted witness. It does not rule out semantic branch exclusions or other proof languages. A decreasing counter count alone supplies neither future complements nor terminal closure.
 
 Sources: [catchup_uniform_descent_report_20260929_0843_et--39544321.md](../archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md), [INDEPENDENT_IDEA--4569e7ba.md](../archive/campaigns/notebooks/uniform-descent-20260929/INDEPENDENT_IDEA--4569e7ba.md).
 
@@ -412,7 +412,7 @@ Evidence: current Lean library; historical research context. Scope: exactly thre
 
 The number of pairs is fixed. Among the first-pair interval states this only covers the already-known P8; arbitrary odd-pair safety remains open under the relevant distinct hypotheses.
 
-Sources: [catchup_uniform_descent_report_20260929_0843_et--39544321.md](../archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md), [AdjacentPairGeometryRepair.lean](../CatchUp/AdjacentPairGeometryRepair.lean), [AdjacentPairGeometryRepair.lean](../CatchUp/AdjacentPairGeometryRepair.lean).
+Sources: [catchup_uniform_descent_report_20260929_0843_et--39544321.md](../archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md), [AdjacentPairGeometryRepair.lean](../CatchUp/AdjacentPairGeometryRepair.lean).
 
 ### CU-L041 — Historical independent exact runs through 32
 
@@ -442,7 +442,7 @@ Evidence: external personal communication as reported in a supplied handoff. Sco
 
 The repository publicly cites the 2019 institutional N≤34 report. The N≤38 report is private-communication evidence, not a public solver certificate. Do not attribute the work to Rao; the supplied correspondence explicitly disclaims his involvement.
 
-Sources: [catchup_final_report_20260808_2206_et--7d784e0a.md](../archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md).
+Sources: [catchup_final_report_20260808_2206_et--7d784e0a.md](../archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md), [handoff-2026-08-08.md](../archive/campaigns/handoffs/handoff-2026-08-08.md).
 
 ## Corrections preserved alongside the record
 

@@ -14892,6 +14892,7 @@
   ],
   "privacy": "Raw private correspondence and copyrighted PDFs are excluded. Original hashes identify local sources; exports remove private paths/account details and document edits.",
   "run_record": {
+    "id": "legacy-run-packed-20260807",
     "path": "archive/campaigns/packed-exact-run-2026-08-07.md",
     "sha256": "775d81f3d5dde5e85410f5acb0970aefb65196cf7765c342a3e9e3e43dbf53f5",
     "bytes": 9912,
@@ -14905,6 +14906,22 @@
     "evidence": "Historical recorded run; tables missing and not rerun."
   },
   "missing_artifacts": [
+    {
+      "name": "catchup-n23-v1.bin",
+      "reported_sha256": "9acf91922b27b8fbc2fd504779a67f7df80a84ba394ddca663611ef63459904e",
+      "source_id": "legacy-run-packed-20260807",
+      "availability": "not found at recorded location",
+      "reported_check": "Historical August 7 table serialization and scalar verification; no fresh result is inferred.",
+      "scope": "The recorded temporary location was checked during PR review. No global absence claim."
+    },
+    {
+      "name": "catchup-n24-v1.bin",
+      "reported_sha256": "a8d8580316777b372b0e585a182340653e19cb20d01211c8a19bacd455628443",
+      "source_id": "legacy-run-packed-20260807",
+      "availability": "not found at recorded location",
+      "reported_check": "Historical August 7 table serialization and scalar verification; no fresh result is inferred.",
+      "scope": "The recorded temporary location was checked during PR review. No global absence claim."
+    },
     {
       "name": "audit_n27.cpp",
       "reported_sha256": "c2957a08d8d183608057bfb8020965758a2159cad7ed18c39b10dde7ded54ca7",
@@ -16101,7 +16118,7 @@
     "handoffs": 3,
     "historical_run_records": 1,
     "notebook_entries": 263,
-    "missing_artifact_references": 23,
+    "missing_artifact_references": 25,
     "findings": 43
   }
 }
