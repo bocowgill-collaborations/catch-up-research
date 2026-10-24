@@ -1,0 +1,21 @@
+Reply-companion provenance passed: 2 retained artifacts, 3 source/check files; fingerprints, metadata, privacy and corruption controls
+Invalid-proof control rejected
+KERNEL_REPLAYED _private.catch_up.ReplyMaximumCompanion.0.CatchUp.Outcome.best_eq_win_iff
+KERNEL_REPLAYED CatchUp.commonMaximumPairPosition
+KERNEL_REPLAYED CatchUp.reply_edge_from_max_has_companion._proof_1_4
+KERNEL_REPLAYED CatchUp.reply_edge_from_max_has_companion._proof_1_1
+KERNEL_REPLAYED _private.catch_up.ReplyMaximumCompanion.0.CatchUp.Position.value_eq_win_of_winning_move
+KERNEL_REPLAYED CatchUp.CommonMaximumPairCatchable
+KERNEL_REPLAYED CatchUp.ReplyEdge.eq_1
+KERNEL_REPLAYED CatchUp.commonMaximumPairPosition.eq_1
+KERNEL_REPLAYED CatchUp.reply_edge_from_max_has_companion
+KERNEL_REPLAYED CatchUp.reply_edge_from_max_not_unique
+KERNEL_REPLAY_COMPLETE 10 declarations
+'CatchUp.reply_edge_from_max_has_companion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CatchUp.reply_edge_from_max_not_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+SOURCE_SIGNATURE_MATCH CatchUp.commonMaximumPairPosition
+SOURCE_SIGNATURE_MATCH CatchUp.CommonMaximumPairCatchable
+SOURCE_SIGNATURE_MATCH CatchUp.reply_edge_from_max_has_companion
+SOURCE_SIGNATURE_MATCH CatchUp.reply_edge_from_max_not_unique
+SOURCE_COMPARISON_COMPLETE 4 signatures and 2 definition bodies
+Recovered reply companion passed: original terms kernel-replayed; source signatures/definitions match; permitted transitive axioms only

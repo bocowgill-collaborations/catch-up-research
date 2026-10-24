@@ -2,6 +2,12 @@
 
 These are certified failures of proposed auxiliary statements. No entry below is a counterexample to the initial-interval draw conjecture. A failed candidate is useful when it rules out a precise shortcut and identifies the obligation a stronger idea must address.
 
+Do not drop hypotheses from positive results either: the recovered
+[maximum-companion theorem](reply-maximum-companion.md) requires every smaller
+pair-deletion position to be nonempty and catchable. It does not establish the
+unrestricted or shifted-graph claims mentioned in historical CU-L011. No new
+counterexample to those broader claims is asserted by this recovery.
+
 Earlier failures with different assurance levels are indexed in [CU-L016–CU-L020 and CU-L022–CU-L039](legacy-findings.md). They cover statewise four-counter lifts, adjacent-hole copying, debt policies, shifted cycles, prepaid reserves and upper-only exact-sum descent. Follow each entry's evidence label: some have current proofs, others only archived Lean sources or historical computations. In particular, the 921 failures of the tested six-old-counter cutoff do not exclude every larger fixed cutoff.
 
 | Proposed shortcut | Diagnostic / what survives | Checked source |

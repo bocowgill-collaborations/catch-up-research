@@ -49,6 +49,14 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The later [conditional maximum-companion recovery](reply-maximum-companion.md)
+adds one module and two public theorems, taking the current catalog to 99 modules.
+Its [manifest](reply-maximum-companion.json) pins two compiled/metadata artifacts
+and the new source/check files. `python3 scripts/check_recovered_reply.py --lean`
+rechecks all ten original cached declarations in the kernel and compares the
+four reconstructed public types and two definition bodies. It does not recover
+the original tactic source or verify stronger historical claims.
+
 The [fifth-endpoint port](fifth-endpoint.md) adds two further modules and six public
 theorems, taking the current catalog to 98 modules. Its [separate provenance manifest](fifth-endpoint-port.json)
 reconstructs the exact source adaptations, and its headline and four upper-opening

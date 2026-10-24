@@ -8,6 +8,12 @@ The [earlier campaign ledger](legacy-findings.md) also identifies concrete recov
 
 ## The central problem
 
+One recovery task has a scoped partial resolution: [CU-R001](reply-maximum-companion.md)
+rechecks a cached conditional maximum-companion implementation and reconstructs
+readable source. The exact differently named August scratch file, historical
+bounded audits and any stronger unrestricted/shifted-graph statement remain
+unrecovered. The historical missing-artifact ledger is not silently upgraded.
+
 **C:** for every N, even `N(N+1)/2` implies a draw on `{1,…,N}` under optimal play. This includes N=0. C remains open in the inspected [formal statement](https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
 
 An equal partition or a drawn play is insufficient. A proof must supply the needed adversarial guarantees for all eligible N. A counterexample needs an exact forced winner and a checked connection to these rules. One nonlosing strategy does not certify a draw.

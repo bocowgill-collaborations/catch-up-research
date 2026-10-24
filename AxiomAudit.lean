@@ -164,3 +164,6 @@ import CatchUp
 #print axioms CatchUpSearch.CertificateComplexity.initial_certificate_exponential_floor
 #print axioms CatchUpSearch.CertificateComplexity.minimumNodes_exponential
 #print axioms CatchUpSearch.CertificateComplexityCompression.compressed_certificate_sound
+
+#print axioms CatchUp.reply_edge_from_max_has_companion
+#print axioms CatchUp.reply_edge_from_max_not_unique

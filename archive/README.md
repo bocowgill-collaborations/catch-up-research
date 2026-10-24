@@ -1,5 +1,10 @@
 # Historical research sources
 
+The later [compiled-module recovery](recovered/reply-maximum-companion/) preserves
+two cache artifacts related to CU-L011. Its exact conditional theorem has a
+separately verified readable reconstruction; original tactic text and the
+differently named August scratch file remain unavailable.
+
 The [fifth-endpoint theorem](../results/fifth-endpoint.md) and its generic exact-sum
 interface now have separately verified source ports. The copies below remain
 historical artifacts; the other fourth-endpoint declarations have not thereby
