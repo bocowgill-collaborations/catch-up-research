@@ -177,9 +177,9 @@
     },
     {
       "path": "scripts/check_solver_sources.py",
-      "sha256": "ee378fd4ff37ae4fe1a6aa6ddc8a1372680d48e3a66c623a1cf342562c5384ce",
-      "bytes": 3201,
-      "purpose": "New portable entry point or small independent publication check; no formal proof claim."
+      "sha256": "0dc1e1a9e2e9e9eefced304121ef30411cf2832dd69fb8a8ce3ee203f48fabc4",
+      "bytes": 3528,
+      "purpose": "Portable collection check; additionally recognizes the separately reconstructed earlier two-buffer bundle. No formal proof claim."
     }
   ]
 }

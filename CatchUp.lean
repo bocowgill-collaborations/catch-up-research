@@ -45,6 +45,8 @@ import CatchUp.Increasing
 import CatchUp.IntervalReserveDepth
 import CatchUp.IntervalSuccessorReplyObstruction
 import CatchUp.LowerRayFifthEndpoint
+import CatchUp.LowerRayAntepenultimateDescent
+import CatchUp.LowerRayFourthEndpoint
 import CatchUp.NearDeficitGuardObstruction
 import CatchUp.NearMaximumDefense
 import CatchUp.NearRepair

@@ -14,6 +14,11 @@ readable source. The exact differently named August scratch file, historical
 bounded audits and any stronger unrestricted/shifted-graph statement remain
 unrecovered. The historical missing-artifact ledger is not silently upgraded.
 
+The [antepenultimate and fourth-endpoint ports](lower-ray-endpoints.md) and a
+[bounded two-buffer replay](../computation/experiments/earlier-campaign/two-buffer/)
+are also now available. These do not close the full lower ray, port the archived
+Lean controller, or solve its uniform adjacent-hole transfer obligation.
+
 **C:** for every N, even `N(N+1)/2` implies a draw on `{1,…,N}` under optimal play. This includes N=0. C remains open in the inspected [formal statement](https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
 
 An equal partition or a drawn play is insufficient. A proof must supply the needed adversarial guarantees for all eligible N. A counterexample needs an exact forced winner and a checked connection to these rules. One nonlosing strategy does not certify a draw.

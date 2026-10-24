@@ -61,6 +61,8 @@ The existing proofs, checked by the Lean proof assistant, establish:
   partially played positions. Other results rule out specific winning choices.
   The [fifth-from-top lower-ray theorem](results/fifth-endpoint.md) proves one
   such family for every N≥23, without a parity or smaller-instance assumption.
+  The [lower-ray endpoint guide](results/lower-ray-endpoints.md) collects this
+  with the antepenultimate transfer and fourth-from-top theorem.
 - **Failed strategy principles:** certified counterexamples refute several
   proposed general strategy rules on other counter sets. They do not refute
   the conjecture about `{1,…,N}`.

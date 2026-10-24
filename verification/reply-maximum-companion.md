@@ -75,9 +75,11 @@ of absence: its Git object database and private machine state are not vendored.
 
 The six source-level declarations are visible in the recovered `.ilean`; the
 `.olean` supplies their original proof/definition expressions plus four generated
-declarations. Cache metadata points to a now-absent untracked source in the
-`codex/catchup-ci-fix` checkout context. It is not a tracked source at that commit
-and does not establish historical authorship or creation date.
+declarations. Cache metadata points to a now-absent untracked source in a checkout
+directory whose basename matches `codex/catchup-ci-fix`. The manifest records that
+branch's observed tip, not a proven checkout association or compilation-time
+revision. It is not a tracked source at that commit and does not establish
+historical authorship or creation date.
 
 The original named August scratch source and its reported SHA-256 remain
 unrecovered. The other missing scratch proofs, audit scripts and large tables
@@ -114,3 +116,10 @@ with the new source compiled here, not clean from-source rebuilds of Mathlib or
 every unchanged module. Public build logs replace machine-specific repository
 and home paths with placeholders; original and public log fingerprints are both
 recorded. Earlier receipts and immutable artifact bytes are not edited.
+
+The [subsequent PR review](pr4-review.md) reconciles this contribution with the
+separately merged endpoint ports, bringing the combined catalog to 101 modules.
+The original check receipt remains a historical run: its shared-infrastructure
+fingerprints are not requirements that future aggregators and CI never change.
+The recovery manifest still pins all three Lean source/check files and both
+original artifacts; fresh replay and comparison remain mandatory.

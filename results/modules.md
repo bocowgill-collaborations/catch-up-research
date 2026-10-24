@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 99 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 101 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -21,6 +21,7 @@ All 99 mathematics modules are included in the default build. Start with the [re
 | [CatchUp.ReplyMaximumCompanion](../CatchUp/ReplyMaximumCompanion.lean) | A winning reply from a maximum has a distinct companion if every smaller pair-deletion position is nonempty and catchable. Both cross-picks win; see the [recovery guide](reply-maximum-companion.md). |
 | [CatchUp.DrawOpening](../CatchUp/DrawOpening.lean) | A nonempty root draws exactly when some opening leaves a drawn child; includes the two-opening exchange identity. |
 | [CatchUp.PairDeletion](../CatchUp/PairDeletion.lean) | A sufficient lower-pair-deletion safety family implies the interval draw claim. Establishing that family remains a separate obligation. |
+| [CatchUp.LowerRayAntepenultimateDescent](../CatchUp/LowerRayAntepenultimateDescent.lean) | For N≥7, a draw after opening one at N−4 prevents loss at Q_N(N−2). The specified opening hypothesis matters. |
 | [CatchUp.ExactSumResiduals](../CatchUp/ExactSumResiduals.lean) | An exact-deficit block proves nonloss after checking every potentially forced larger residual opening. |
 | [CatchUp.LowerRayFifthEndpoint](../CatchUp/LowerRayFifthEndpoint.lean) | For N≥23, deleting 1 and N−4 leaves a nonlosing position at deficit N−5; no parity or smaller-instance assumption. See the [proof guide](fifth-endpoint.md). |
 | [CatchUp.Increasing](../CatchUp/Increasing.lean) | Restricts the protected player to increasing safe picks while retaining every opponent choice; proves exact first-pair reductions and turn-length bounds. |
@@ -62,6 +63,7 @@ All 99 mathematics modules are included in the default build. Start with the [re
 | Module | What it establishes |
 | --- | --- |
 | [CatchUp.ExactSumLossObstruction](../CatchUp/ExactSumLossObstruction.lean) | An exact-deficit block in a hypothetical losing position forces a winning residual opening above the block maximum. |
+| [CatchUp.LowerRayFourthEndpoint](../CatchUp/LowerRayFourthEndpoint.lean) | Q_N(N−3) is nonlosing for every N≥15 and every even-triangular N≥11. Uses symbolic exact-sum branches and four small kernel checks. |
 | [CatchUp.IncompleteSubsumMass](../CatchUp/IncompleteSubsumMass.lean) | For r distinct positive counters with an unattainable target within their total, proves r(r+1)+2r <= 2*sum+2. Pure arithmetic, not a game-value theorem. |
 | [CatchUp.DenseBlockMass](../CatchUp/DenseBlockMass.lean) | Bounds exact-block size and the ambient interval when the residual is small; no strategic preservation is claimed. |
 | [CatchUp.DenseGapMass](../CatchUp/DenseGapMass.lean) | A uniform exact-block bound for the small residual configurations handled here. |

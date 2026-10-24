@@ -61,9 +61,15 @@ def check_static():
                 len(data) == row['public_output_bytes'], 'Recovery receipt log changed')
     require([row['label'] for row in receipt['checks'] if row['exit_code'] != 0] ==
             ['cryptid-build'], 'Unexpected verification failure')
+    # This receipt records the original recovery run, not a permanent freeze of
+    # shared aggregators, CI or this checker. The manifest still pins all three
+    # current Lean sources above. Cross-check their historical hashes as well.
+    lean_inputs = {row['path']: row['sha256'] for row in manifest['source_files']}
     for row in receipt['source_fingerprints']:
-        require(hashlib.sha256((ROOT / row['path']).read_bytes()).hexdigest() == row['sha256'],
-                'Recovery verification source changed: ' + row['path'])
+        require(re.fullmatch('[0-9a-f]{64}', row['sha256']), 'Invalid historical source hash')
+        if row['path'] in lean_inputs:
+            require(row['sha256'] == lean_inputs[row['path']],
+                    'Recovered Lean source differs from the original recovery run')
     print('Reply-companion provenance passed: 2 retained artifacts, 3 source/check files; '
           'fingerprints, metadata, privacy and corruption controls')
     return manifest

@@ -13,7 +13,7 @@
     "reported_source_path": "scripts/catch_up/ReplyMaximumCompanion.lean",
     "context_branch": "codex/catchup-ci-fix",
     "context_commit": "2c8c3839add9dbf4a7aff2587174a309cd34b243",
-    "qualification": "Context commit identifies the associated checkout, not a Git-tracked source for this untracked module. Cache filenames and metadata alone do not establish an August creation date or identity with the differently named missing scratch file."
+    "qualification": "The trace identifies a now-missing checkout directory whose basename matches the context branch. The recorded commit is that branch's observed tip; association with the checkout is inferred, not Git-proven source provenance or a compilation-time revision. Cache filenames and metadata alone do not establish an August creation date or identity with the differently named missing scratch file."
   },
   "artifacts": [
     {

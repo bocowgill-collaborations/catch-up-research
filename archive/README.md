@@ -7,8 +7,9 @@ differently named August scratch file remain unavailable.
 
 The [fifth-endpoint theorem](../results/fifth-endpoint.md) and its generic exact-sum
 interface now have separately verified source ports. The copies below remain
-historical artifacts; the other fourth-endpoint declarations have not thereby
-been built or audited.
+historical artifacts; the other fourth-endpoint declarations received assurance
+only through their [separate endpoint port](../results/lower-ray-endpoints.md),
+not through the fifth-endpoint port or their presence in this archive.
 
 The [August–September campaigns](campaigns/) retain missing reports, earlier file versions, reviews, probe sources and observations. Their [finding ledger](../results/legacy-findings.md) states each selected claim's evidence and scope. The campaign archive is separate from the 56 source snapshots described below.
 

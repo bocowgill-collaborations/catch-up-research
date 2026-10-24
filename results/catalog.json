@@ -1618,6 +1618,34 @@
         "upper_quadruple_last_opening_ne_loss",
         "pair_deletion_position_fifth_from_top_value_ne_loss"
       ]
+    },
+    {
+      "module": "CatchUp.LowerRayAntepenultimateDescent",
+      "path": "CatchUp/LowerRayAntepenultimateDescent.lean",
+      "group": "Opening structure and reductions",
+      "summary": "For N≥7, a drawn opening one at N−4 implies nonloss of Q_N(N−2); no parity premise.",
+      "evidence": "Source-preserving Lean port; pinned build and standard-only transitive axiom audit. See verification/endpoint-ports.md.",
+      "public_theorem_names": [
+        "pair_deletion_position_antepenultimate_value_ne_loss_of_opening_one_draw"
+      ]
+    },
+    {
+      "module": "CatchUp.LowerRayFourthEndpoint",
+      "path": "CatchUp/LowerRayFourthEndpoint.lean",
+      "group": "Subset sums and dense supports",
+      "summary": "Q_N(N−3) is nonlosing for all N≥15 and every even-triangular N≥11; includes the exact completed-turn repair and small kernel checks.",
+      "evidence": "Source-preserving Lean port; pinned build and standard-only transitive axiom audit. See verification/endpoint-ports.md.",
+      "public_theorem_names": [
+        "Position.value_ne_loss_of_exact_pair_residuals",
+        "upper_triple_five_counter_repair",
+        "upper_triple_middle_opening_ne_loss",
+        "upper_triple_last_opening_ne_loss",
+        "upper_triple_first_opening_ne_loss",
+        "upper_triple_small_first_opening_ne_loss",
+        "upper_triple_small_middle_opening_ne_loss",
+        "pair_deletion_position_fourth_from_top_value_ne_loss_of_fifteen_le",
+        "pair_deletion_position_fourth_from_top_value_ne_loss"
+      ]
     }
   ]
 }

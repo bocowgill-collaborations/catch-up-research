@@ -23,6 +23,11 @@ def main():
                       if p.is_file() and p.suffix != '.md' and '__pycache__' not in p.parts)
     expected = {r['path'] for r in rows+campaign['sources']+campaign['adapters']
                 if r['path'].startswith('computation/') and not r['path'].endswith('.md')}
+    # The earlier controller has its own exact-source reconstruction checker.
+    replay = json.loads((ROOT/'verification/two-buffer-replay.json').read_text())
+    bundle = 'computation/experiments/earlier-campaign/two-buffer/'
+    expected.update(bundle+name for name in replay['exports'])
+    expected.add(bundle+'check.py')
     assert actual == expected
     for r in rows:
         path = ROOT/r['path']
