@@ -56,6 +56,7 @@ import CatchUp.PairDeletion
 import CatchUp.PairEntranceShadow
 import CatchUp.ReachableBounds
 import CatchUp.Reference
+import CatchUp.ReplyMaximumCompanion
 import CatchUp.ReserveTriangle
 import CatchUp.RootUpperEightCriterion
 import CatchUp.RootUpperEightFrontier

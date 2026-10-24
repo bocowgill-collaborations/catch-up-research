@@ -1,0 +1,466 @@
+{
+  "date": "2026-10-23",
+  "status": "PASS_WITH_BASELINE_WARNING_EXCEPTION",
+  "base_commit": "bd43ba94d82fdb67892b347bc7bd91c0999b4a99",
+  "finding": "CU-R001",
+  "scope": "Two public companion theorems; one recovered conditional implementation. Original tactic source is not recovered. All required normal-build, axiom, recovery and reproduction checks passed.",
+  "baseline_warning_exception": "Additional cryptid lake --wfail build failed on five existing module-system import warnings in unchanged source. Normal cryptid build and all audits passed. This is not a warning-free cryptid claim.",
+  "build_scope": "Incremental pinned library builds using warm dependency/local caches; new readable source compiled. No from-source Mathlib rebuild or large computation.",
+  "log_editorial_changes": "Replace absolute repository prefix and machine-specific user-home prefixes with placeholders. Original/public log hashes and lengths retained; no mathematical output removed. Earlier failed proof iterations and the repaired self-matching privacy-regex check are development attempts, not successful checks in this receipt.",
+  "timing_scope": "Elapsed command times overlap and exclude earlier development; do not sum as total project time.",
+  "preservation": {
+    "base_commit": "bd43ba94d82fdb67892b347bc7bd91c0999b4a99",
+    "existing_math_modules_unchanged": 98,
+    "protected_files_byte_compared": 349,
+    "scope": "Every existing CatchUp/*.lean, all cryptid tracked files, mathematics toolchain/config/manifest and historical finding/source ledgers compared byte-for-byte with git show BASE:path; all match. All five private backup hashes also rechecked."
+  },
+  "mathematics_audit": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 164,
+        "all_public_catchup_theorems": 4367,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 98.512463334,
+        "audit_source_sha256": "7a5454693fdec008897626763d5bb6ab596086cb84016d446165586c5330c303",
+        "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+      }
+    ],
+    "seconds": 98.51296929099999,
+    "peak_child_rss_bytes": 5522554880,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "cryptid_audit": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 23,
+        "all_public_catchup_theorems": 500,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 37.260550542,
+        "audit_source_sha256": "747f45a51d41990e8b1ae02b7d82d3a19948eeb49500822a847332bd334fc0d3",
+        "full_audit_source_sha256": "c4fe35fcf3f1250743299601fd1726e092a16eb6967c081d871dd0e18da60894"
+      },
+      {
+        "entry": "ComponentAxiomAudit.lean",
+        "endpoints": 201,
+        "all_public_catchup_theorems": 2962,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "ComponentAxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "ComponentAuditAll.lean"
+          ]
+        ],
+        "seconds": 9.690575584000001,
+        "audit_source_sha256": "32fc2d510ab4049248447d0ef9b4c0ba4243bda1ec8aeace07d00186ddfd1e82",
+        "full_audit_source_sha256": "8712a1b506c7b56228a5fe1d903b29e93e06763853c5c323bb79b8ec1bc263be"
+      }
+    ],
+    "seconds": 46.951512042,
+    "peak_child_rss_bytes": 6270025728,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "source_fingerprints": [
+    {
+      "path": "CatchUp.lean",
+      "sha256": "0909d3bac43f3b411c097b3067a91916d0d2636a5751d51c3552670607b54291"
+    },
+    {
+      "path": "AxiomAudit.lean",
+      "sha256": "7a5454693fdec008897626763d5bb6ab596086cb84016d446165586c5330c303"
+    },
+    {
+      "path": "AuditAll.lean",
+      "sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+    },
+    {
+      "path": "CatchUp/ReplyMaximumCompanion.lean",
+      "sha256": "678927bed5b7d0d8858e989ed06ea5240d3ad2ff2543c1db335d02b20138d079"
+    },
+    {
+      "path": "scripts/check_recovered_reply.py",
+      "sha256": "5bb1befcce840ea615ce0685fb8849768e3ea8769638c4d731e33824e45dfe0c"
+    },
+    {
+      "path": "scripts/check_collection.py",
+      "sha256": "84ef22ee80601b14528b371cb3635cd6586a2068c24b0437ebb280817837ed16"
+    },
+    {
+      "path": "scripts/verify_export.py",
+      "sha256": "0aa0c5786b7630b0297b30e487705b70c930e9bb5fae5ca3da3bc3675964a88f"
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "sha256": "4e8349cb509751da2e5fcfd37e8c47ff67e4cd56035a727744b6884438094fdd"
+    },
+    {
+      "path": "verification/ReplayReplyMaximumCompanion.lean",
+      "sha256": "8bb3d45c4152197abf657ab3a5f78c5abbd754208b1898f530618254b8ecc900"
+    },
+    {
+      "path": "verification/CompareReplyMaximumCompanion.lean",
+      "sha256": "d9ebdb3a2b042d459c20ec8571418ac848a6338ef0ed8f35e7fc283d2689bbac"
+    },
+    {
+      "path": "verification/reply-maximum-companion.json",
+      "sha256": "54f0ac84c2e6da664aa0d454d9c26799a96ac98f14d29ed621d9bd231115e1c0"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "d55ca0039a5479db5b38919d005b2c427b89b3be4f0184a20f2f4eae931f5bdb"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "73d32ea6cc6a66e6c719298855c66e1c228d7137bf8af64c0c7310c24f2a5a4c"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "47e571699bf4f31bbc694475a5f40085273124ddfd22720b80e77f25dcb297ff"
+    },
+    {
+      "path": "cryptid/lean-toolchain",
+      "sha256": "8f89aa44fccdb1a0b6cc768c7c9f54b94cd40e47a08d582f82d1235f13075cf7"
+    },
+    {
+      "path": "cryptid/lakefile.toml",
+      "sha256": "04a6f558962d05e2900e6ccd742e24af79aedaf6dd055c0b606d51fa97da89fb"
+    },
+    {
+      "path": "cryptid/lake-manifest.json",
+      "sha256": "4eb68a49b6428f2b7e5c2e5c919cee668487ae86e4a2de6f840e5f962a1be147"
+    }
+  ],
+  "checks": [
+    {
+      "label": "mathematics-build",
+      "package": ".",
+      "command": [
+        "lake",
+        "--wfail",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 5.4004334169999995,
+      "log": "verification/receipts/reply-companion-mathematics-build.log",
+      "original_output_sha256": "0f35d121b5a05aca2b137f1ee09f2ada369d398a7e3e18cd6fff017897f3d2ae",
+      "original_output_bytes": 751,
+      "public_output_sha256": "0f35d121b5a05aca2b137f1ee09f2ada369d398a7e3e18cd6fff017897f3d2ae",
+      "public_output_bytes": 751,
+      "redacted": false
+    },
+    {
+      "label": "mathematics-axioms",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_axioms.py"
+      ],
+      "exit_code": 0,
+      "seconds": 98.57762575000001,
+      "log": "verification/receipts/reply-companion-mathematics-axioms-command.log",
+      "original_output_sha256": "2a908ff5ae22fcd10dc54337a893e7f97f4e5db0a6d0805d724f80ba9d2c06cd",
+      "original_output_bytes": 77,
+      "public_output_sha256": "2a908ff5ae22fcd10dc54337a893e7f97f4e5db0a6d0805d724f80ba9d2c06cd",
+      "public_output_bytes": 77,
+      "redacted": false
+    },
+    {
+      "label": "cryptid-build",
+      "package": "cryptid",
+      "command": [
+        "lake",
+        "--wfail",
+        "build"
+      ],
+      "exit_code": 1,
+      "seconds": 6.918170292,
+      "log": "verification/receipts/reply-companion-cryptid-build.log",
+      "original_output_sha256": "53985f684a7dc20c47268627c2f510e0876c137c3ba226e25043576d100b9224",
+      "original_output_bytes": 9241,
+      "public_output_sha256": "475fa1253d1a6b6beb3ce7eca8b0fe58a1562448ffbc8d582a3b4ce8853ba982",
+      "public_output_bytes": 7416,
+      "redacted": true
+    },
+    {
+      "label": "cryptid-build-ordinary",
+      "package": "cryptid",
+      "command": [
+        "lake",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 5.94290625,
+      "log": "verification/receipts/reply-companion-cryptid-build-ordinary.log",
+      "original_output_sha256": "4f2929be4117fb33c6eb2395ff1f1286effdfabf0df81668a2785e7258d6cd27",
+      "original_output_bytes": 1803,
+      "public_output_sha256": "4f2929be4117fb33c6eb2395ff1f1286effdfabf0df81668a2785e7258d6cd27",
+      "public_output_bytes": 1803,
+      "redacted": false
+    },
+    {
+      "label": "cryptid-axioms",
+      "package": "cryptid",
+      "command": [
+        "python3",
+        "../scripts/check_axioms.py"
+      ],
+      "exit_code": 0,
+      "seconds": 46.990939833000006,
+      "log": "verification/receipts/reply-companion-cryptid-axioms-command.log",
+      "original_output_sha256": "c4d3c510d2195e48cfd238e8c7f1f64aa293afbace6a26fe4424faf75ccc138b",
+      "original_output_bytes": 116,
+      "public_output_sha256": "c4d3c510d2195e48cfd238e8c7f1f64aa293afbace6a26fe4424faf75ccc138b",
+      "public_output_bytes": 116,
+      "redacted": false
+    },
+    {
+      "label": "recovered-reply",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_recovered_reply.py",
+        "--lean"
+      ],
+      "exit_code": 0,
+      "seconds": 9.411940667,
+      "log": "verification/receipts/reply-companion-recovered-reply.log",
+      "original_output_sha256": "f3f9d943bf76f0951994f3065c21cff2e686ce02e37348fd56db3d5d803e27c1",
+      "original_output_bytes": 1490,
+      "public_output_sha256": "f3f9d943bf76f0951994f3065c21cff2e686ce02e37348fd56db3d5d803e27c1",
+      "public_output_bytes": 1490,
+      "redacted": false
+    },
+    {
+      "label": "collection",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 8.337229791,
+      "log": "verification/receipts/reply-companion-collection.log",
+      "original_output_sha256": "a855ac8a7d1f79f8ada9b71d4cc6751c96262a454ec2392fd46ada64ae8d1c6a",
+      "original_output_bytes": 1327,
+      "public_output_sha256": "a855ac8a7d1f79f8ada9b71d4cc6751c96262a454ec2392fd46ada64ae8d1c6a",
+      "public_output_bytes": 1327,
+      "redacted": false
+    },
+    {
+      "label": "semantics",
+      "package": ".",
+      "command": [
+        "python3",
+        "computation/check_semantics.py"
+      ],
+      "exit_code": 0,
+      "seconds": 8.272198084000001,
+      "log": "verification/receipts/reply-companion-semantics.log",
+      "original_output_sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "original_output_bytes": 72,
+      "public_output_sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "public_output_bytes": 72,
+      "redacted": false
+    },
+    {
+      "label": "earlier-regressions",
+      "package": ".",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 8.288072041,
+      "log": "verification/receipts/reply-companion-earlier-regressions.log",
+      "original_output_sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "original_output_bytes": 122,
+      "public_output_sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "public_output_bytes": 122,
+      "redacted": false
+    },
+    {
+      "label": "solver-smoke",
+      "package": ".",
+      "command": [
+        "python3",
+        "computation/experiments/check.py"
+      ],
+      "exit_code": 0,
+      "seconds": 12.78011175,
+      "log": "verification/receipts/reply-companion-solver-smoke.log",
+      "original_output_sha256": "2d5a0d7d9c572fcac441dc3ebf8d3634255fa6fa2a77d2c0494c8e96997eb110",
+      "original_output_bytes": 221,
+      "public_output_sha256": "2d5a0d7d9c572fcac441dc3ebf8d3634255fa6fa2a77d2c0494c8e96997eb110",
+      "public_output_bytes": 221,
+      "redacted": false
+    },
+    {
+      "label": "campaign-smoke",
+      "package": ".",
+      "command": [
+        "python3",
+        "computation/experiments/check_campaign.py"
+      ],
+      "exit_code": 0,
+      "seconds": 9.229140249999999,
+      "log": "verification/receipts/reply-companion-campaign-smoke.log",
+      "original_output_sha256": "ee8aaae454457c272e3bdd1090d786c2d9b8e25411ea719b01f5ea5763f8dabd",
+      "original_output_bytes": 221,
+      "public_output_sha256": "ee8aaae454457c272e3bdd1090d786c2d9b8e25411ea719b01f5ea5763f8dabd",
+      "public_output_bytes": 221,
+      "redacted": false
+    },
+    {
+      "label": "collection-final",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 8.074494709,
+      "log": "verification/receipts/reply-companion-collection-final.log",
+      "original_output_sha256": "2579fb7a50679809795f93e628d0d29ff43da70802aa1e46f38f9e60701f253e",
+      "original_output_bytes": 1327,
+      "public_output_sha256": "2579fb7a50679809795f93e628d0d29ff43da70802aa1e46f38f9e60701f253e",
+      "public_output_bytes": 1327,
+      "redacted": false
+    },
+    {
+      "label": "recovered-reply-final",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_recovered_reply.py",
+        "--lean"
+      ],
+      "exit_code": 0,
+      "seconds": 8.502408500000001,
+      "log": "verification/receipts/reply-companion-recovered-reply-final.log",
+      "original_output_sha256": "f3f9d943bf76f0951994f3065c21cff2e686ce02e37348fd56db3d5d803e27c1",
+      "original_output_bytes": 1490,
+      "public_output_sha256": "f3f9d943bf76f0951994f3065c21cff2e686ce02e37348fd56db3d5d803e27c1",
+      "public_output_bytes": 1490,
+      "redacted": false
+    }
+  ],
+  "audit_logs": [
+    {
+      "package": ".",
+      "entry": "axioms",
+      "log": "verification/receipts/reply-companion-mathematics-axioms.log",
+      "original_output_sha256": "24d0d8f7994f0cc3f19d63dc7c497f852210692da3592e67229d5d3554fe1165",
+      "original_output_bytes": 17474,
+      "public_output_sha256": "24d0d8f7994f0cc3f19d63dc7c497f852210692da3592e67229d5d3554fe1165",
+      "public_output_bytes": 17474,
+      "redacted": false
+    },
+    {
+      "package": ".",
+      "entry": "all-theorems",
+      "log": "verification/receipts/reply-companion-mathematics-all-theorems.log",
+      "original_output_sha256": "439530bfa72a1dee87f863fa06196c9d4ffd5e72fd89ed66e0628026d984cbd0",
+      "original_output_bytes": 57,
+      "public_output_sha256": "439530bfa72a1dee87f863fa06196c9d4ffd5e72fd89ed66e0628026d984cbd0",
+      "public_output_bytes": 57,
+      "redacted": false
+    },
+    {
+      "package": "cryptid",
+      "entry": "axioms",
+      "log": "verification/receipts/reply-companion-cryptid-axioms.log",
+      "original_output_sha256": "e2aaddb1b00ba235ec4e2334d6bae26e9933fadc975a34b2b8e34dfcd769902d",
+      "original_output_bytes": 2380,
+      "public_output_sha256": "e2aaddb1b00ba235ec4e2334d6bae26e9933fadc975a34b2b8e34dfcd769902d",
+      "public_output_bytes": 2380,
+      "redacted": false
+    },
+    {
+      "package": "cryptid",
+      "entry": "all-theorems",
+      "log": "verification/receipts/reply-companion-cryptid-all-theorems.log",
+      "original_output_sha256": "e6fabdf7ede1f3c0c02060b70e7d8083b4408288fdd34298617888291bf922bb",
+      "original_output_bytes": 56,
+      "public_output_sha256": "e6fabdf7ede1f3c0c02060b70e7d8083b4408288fdd34298617888291bf922bb",
+      "public_output_bytes": 56,
+      "redacted": false
+    },
+    {
+      "package": "cryptid",
+      "entry": "components-axioms",
+      "log": "verification/receipts/reply-companion-cryptid-components-axioms.log",
+      "original_output_sha256": "24ac30ec540b2d9eeb4d2521d822a3bba50ad5146f7a4b8f568bddf2d44833a4",
+      "original_output_bytes": 21125,
+      "public_output_sha256": "24ac30ec540b2d9eeb4d2521d822a3bba50ad5146f7a4b8f568bddf2d44833a4",
+      "public_output_bytes": 21125,
+      "redacted": false
+    },
+    {
+      "package": "cryptid",
+      "entry": "components-all-theorems",
+      "log": "verification/receipts/reply-companion-cryptid-components-all-theorems.log",
+      "original_output_sha256": "6a7f1e8ea45917af407f4577425592bb91dc07e9d0a3836d795612276daf49fa",
+      "original_output_bytes": 57,
+      "public_output_sha256": "6a7f1e8ea45917af407f4577425592bb91dc07e9d0a3836d795612276daf49fa",
+      "public_output_bytes": 57,
+      "redacted": false
+    }
+  ]
+}

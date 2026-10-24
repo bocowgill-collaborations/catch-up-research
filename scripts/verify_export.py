@@ -24,7 +24,15 @@ def main():
         assert len(data)==expected['bytes'],rel
     files=[p for p in ROOT.rglob('*') if p.is_file() and not any(t in p.relative_to(ROOT).parts for t in ['.lake','.git','__pycache__','local'])]
     for p in files:
-        s=p.read_text()
+        if p.relative_to(ROOT).as_posix() == 'archive/recovered/reply-maximum-companion/ReplyMaximumCompanion.olean':
+            # The only archival binary: pin exact bytes, scan below, never import.
+            recovery=json.loads((ROOT/'verification/reply-maximum-companion.json').read_text())
+            row=next(r for r in recovery['artifacts'] if r['path']==p.relative_to(ROOT).as_posix())
+            data=p.read_bytes()
+            assert len(data)==row['bytes'] and hashlib.sha256(data).hexdigest()==row['sha256']
+            s=data.decode('utf-8',errors='replace')
+        else:
+            s=p.read_text()
         # Ordinary source references to account usage are not part of this public package.
         assert not re.search(r'[/]Users/|[/]private/var/|gh[opusr]_[A-Za-z0-9]{20,}|BEGIN (?:RSA |OPENSSH )?PRIVATE KEY',s),str(p)
         if p.suffix=='.lean':

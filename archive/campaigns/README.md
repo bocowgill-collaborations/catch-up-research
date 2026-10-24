@@ -8,6 +8,12 @@ The [PR review](../../verification/pr1-review.md) checked all 43 summaries again
 
 ## Evidence and use
 
+Later recovery note: [CU-R001](../../results/reply-maximum-companion.md) rechecks
+a surviving compiled maximum-companion implementation with explicit nonempty
+and catchability hypotheses. It does not identify the differently named missing
+August scratch source or promote other historical claims to verified results.
+The original 43-entry ledger and missing-reference inventory remain unchanged.
+
 All content below is historical material outside the Lean build. Successful checks reported inside it refer to the original campaign. Old CHECK lines, commands and instructions are inert quotations of that context. A reviewer assessment is distinct from Lean verification. The current [verification guide](../../verification/README.md) defines what the collection builds.
 
 Source variants, audit drivers and probe scripts are retained as `.txt` data when they are not currently supported programs. They may depend on the old project layout or omitted native certificate payloads. Consult their source IDs and hashes to reconstruct an original checkout; do not assume that renaming a file alone supplies its dependency closure. Current runnable small experiments remain in [computation/experiments](../../computation/experiments/).

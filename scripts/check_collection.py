@@ -116,6 +116,7 @@ def main():
     # Existing source fidelity, copied-file hashes, documentation links and hygiene checks.
     subprocess.run([sys.executable,'scripts/check_legacy_archive.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_fifth_endpoint_port.py'],cwd=ROOT,check=True,timeout=60)
+    subprocess.run([sys.executable,'scripts/check_recovered_reply.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_endpoint_ports.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_two_buffer_sources.py'],cwd=ROOT,check=True,timeout=30)
     subprocess.run([sys.executable,'computation/experiments/earlier-campaign/two-buffer/check.py'],

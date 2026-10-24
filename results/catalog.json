@@ -133,6 +133,17 @@
       ]
     },
     {
+      "module": "CatchUp.ReplyMaximumCompanion",
+      "path": "CatchUp/ReplyMaximumCompanion.lean",
+      "group": "Opening structure and reductions",
+      "summary": "If c bounds S and every smaller pair-deletion position is nonempty and catchable, each winning reply c→a has a distinct companion c→b, with both cross-picks winning. Does not assert unconditional outdegree exclusion.",
+      "evidence": "Reconstructed Lean source in the pinned build and transitive axiom audit; four public signatures and two definition bodies compared with retained compiled expressions; all ten original cached declarations separately kernel-replayed",
+      "public_theorem_names": [
+        "reply_edge_from_max_has_companion",
+        "reply_edge_from_max_not_unique"
+      ]
+    },
+    {
       "module": "CatchUp.DrawOpening",
       "path": "CatchUp/DrawOpening.lean",
       "group": "Opening structure and reductions",

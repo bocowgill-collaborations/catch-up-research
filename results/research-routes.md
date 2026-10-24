@@ -6,6 +6,13 @@ The earlier [August–September ledger](legacy-findings.md) preserves alternativ
 
 ## Pair deletion and complete defensive turns
 
+The [conditional maximum-reply companion](reply-maximum-companion.md), CU-R001,
+is now a checked building block related to CU-L011. Under the explicit nonempty
+and catchability hypotheses for every smaller pair-deletion position, a winning
+reply from a maximum forces a distinct companion reply and two winning
+cross-picks. Establish those hypotheses before using it; it is not an
+unconditional outdegree theorem or a shifted deficit-one result.
+
 The [opening guide](../docs/openings.md) connects drawn openings to two-pick continuations. The weaker [lower-ray criterion](../CatchUp/PairDeletion.lean) needs nonloss after deleting counters 1 and b, together with a drawn first-pair position. Increasing-turn normalization and small paired defenses provide proved ingredients, but do not establish those requirements for every eligible N.
 
 The proposed first-pair family is `([3,N],1)` for eligible N>=7, with separate small bases. At N=3 that position is winning, so a statement covering every eligible N without a small-case qualification is false even though the N=3 root draws.

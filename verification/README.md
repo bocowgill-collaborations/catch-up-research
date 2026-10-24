@@ -49,6 +49,14 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The later [conditional maximum-companion recovery](reply-maximum-companion.md)
+adds one module and two public theorems; with the endpoint ports below, the current catalog has 101 modules.
+Its [manifest](reply-maximum-companion.json) pins two compiled/metadata artifacts
+and the new source/check files. `python3 scripts/check_recovered_reply.py --lean`
+rechecks all ten original cached declarations in the kernel and compares the
+four reconstructed public types and two definition bodies. It does not recover
+the original tactic source or verify stronger historical claims.
+
 The [fifth-endpoint port](fifth-endpoint.md) adds two further modules and six public
 theorems, then taking the catalog to 98 modules. Its [separate provenance manifest](fifth-endpoint-port.json)
 reconstructs the exact source adaptations, and its headline and four upper-opening
@@ -60,7 +68,7 @@ The [collection audit](collection.json) records recovery of 26 earlier modules i
 The later [research-note manifest](research-collection.json) records 90 historical reports and 31 retained observation files, their original/exported hashes and the limited text adaptations. Its 94-path report inventory also identifies omitted superseded drafts and incomplete scratchwork. `check_research_archive.py`, also called by `check_collection.py`, checks coverage, hashes, parseability and a corruption control without executing a mathematical search. This validates the exported records; it does not prove their numerical outcomes. No Lean source or machine definition changed in this documentation/data expansion.
 
 The [additional endpoint ports](endpoint-ports.md) add the antepenultimate transfer
-and fourth-endpoint range, bringing the mathematics catalog to 100 modules.
+and fourth-endpoint range, then bringing the mathematics catalog to 100 modules.
 Their reconstruction and axiom audits are separate from the unchanged archive.
 The same contribution adds a [bounded two-buffer replay](../computation/experiments/earlier-campaign/two-buffer/),
 whose computational checks and source adaptations are recorded independently of

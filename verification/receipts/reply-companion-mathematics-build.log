@@ -1,0 +1,11 @@
+ℹ [7976/7985] Replayed CatchUp.Earlier.CertificateComplexityCompression
+info: CatchUp/Earlier/CertificateComplexityCompression.lean:56:0: Verified axioms for CatchUpSearch.CertificateComplexityCompression.maximum_deficit_target_sound: [propext,
+ Quot.sound,
+ Classical.choice]
+info: CatchUp/Earlier/CertificateComplexityCompression.lean:56:0: Verified axioms for CatchUpSearch.CertificateComplexityCompression.compressed_certificate_sound: [propext,
+ Quot.sound,
+ Classical.choice]
+ℹ [7977/7985] Replayed CatchUp.Earlier.CertificateComplexityFixtures
+info: CatchUp/Earlier/CertificateComplexityFixtures.lean:502:0: SMALL FULL AND COMPRESSED WITNESS AXIOM AUDIT PASSED
+✔ [7984/7985] Built CatchUp (3.3s)
+Build completed successfully (7985 jobs).

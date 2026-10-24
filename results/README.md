@@ -2,6 +2,11 @@
 
 The universal conjecture is **open**. These are results about its rules, intermediate positions, and proposed proof methods. Every formal statement is in the linked Lean file; its hypotheses matter.
 
+The later [maximum-reply companion recovery](reply-maximum-companion.md), CU-R001,
+adds two ordinary kernel-proved theorems. They require every smaller pair-deletion
+position below the maximum to be nonempty and catchable. Original compiled terms
+were separately rechecked; the August tactic-source file remains unrecovered.
+
 The [August–September finding ledger](legacy-findings.md) adds 43 historical entries with source pins, evidence levels, limitations and relationships to the current proofs. Its [campaign archive](../archive/campaigns/) includes earlier source versions and 263 notebook sections. Reported native-computation results and unrecovered scratch proofs retain their historical status.
 
 For the larger research record, see the [current routes](research-routes.md), [experimental findings](experimental-findings.md), and [historical notebook](../archive/research-notes/). They collect useful existing work beyond the short theorem index, while distinguishing proofs, observations and open obligations.

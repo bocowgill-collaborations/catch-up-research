@@ -1,0 +1,77 @@
+{
+  "id": "CU-R001",
+  "date": "2026-10-23",
+  "base_commit": "bd43ba94d82fdb67892b347bc7bd91c0999b4a99",
+  "historical_finding": "CU-L011",
+  "status": "Recovered compiled proof terms, freshly kernel-replayed; readable source reconstruction independently compiled and signature-compared. Original tactic source remains unavailable.",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "origin": {
+    "repository": "google-deepmind/formal-conjectures (local research checkout)",
+    "cached_module": "catch_up.ReplyMaximumCompanion",
+    "cache_path": ".lake/build/lib/lean/catch_up/ReplyMaximumCompanion.olean",
+    "reported_source_path": "scripts/catch_up/ReplyMaximumCompanion.lean",
+    "context_branch": "codex/catchup-ci-fix",
+    "context_commit": "2c8c3839add9dbf4a7aff2587174a309cd34b243",
+    "qualification": "The trace identifies a now-missing checkout directory whose basename matches the context branch. The recorded commit is that branch's observed tip; association with the checkout is inferred, not Git-proven source provenance or a compilation-time revision. Cache filenames and metadata alone do not establish an August creation date or identity with the differently named missing scratch file."
+  },
+  "artifacts": [
+    {
+      "path": "archive/recovered/reply-maximum-companion/ReplyMaximumCompanion.olean",
+      "bytes": 202696,
+      "sha256": "cd4da5a73694dfbe0e4cee59ef8d1bb97b73c43e9b9c0863f382daf2bacd9174",
+      "evidence": "Byte-for-byte preserved local compiled module; never imported as a trusted library dependency."
+    },
+    {
+      "path": "archive/recovered/reply-maximum-companion/ReplyMaximumCompanion.ilean",
+      "bytes": 13333,
+      "sha256": "f4f2dec3ccca580990ac5da0e177605210ed4a60c035dc8ded4584611d9c1f45",
+      "evidence": "Byte-for-byte source-location and declaration metadata; not source text or proof certification."
+    }
+  ],
+  "source_files": [
+    {"path": "CatchUp/ReplyMaximumCompanion.lean", "bytes": 4932, "sha256": "678927bed5b7d0d8858e989ed06ea5240d3ad2ff2543c1db335d02b20138d079"},
+    {"path": "verification/ReplayReplyMaximumCompanion.lean", "bytes": 2206, "sha256": "8bb3d45c4152197abf657ab3a5f78c5abbd754208b1898f530618254b8ecc900"},
+    {"path": "verification/CompareReplyMaximumCompanion.lean", "bytes": 1482, "sha256": "d9ebdb3a2b042d459c20ec8571418ac848a6338ef0ed8f35e7fc283d2689bbac"}
+  ],
+  "public_declarations": [
+    "CatchUp.commonMaximumPairPosition",
+    "CatchUp.CommonMaximumPairCatchable",
+    "CatchUp.reply_edge_from_max_has_companion",
+    "CatchUp.reply_edge_from_max_not_unique"
+  ],
+  "cached_declarations": [
+    "_private.catch_up.ReplyMaximumCompanion.0.CatchUp.Outcome.best_eq_win_iff",
+    "CatchUp.commonMaximumPairPosition",
+    "CatchUp.reply_edge_from_max_has_companion._proof_1_4",
+    "CatchUp.reply_edge_from_max_has_companion._proof_1_1",
+    "_private.catch_up.ReplyMaximumCompanion.0.CatchUp.Position.value_eq_win_of_winning_move",
+    "CatchUp.CommonMaximumPairCatchable",
+    "CatchUp.ReplyEdge.eq_1",
+    "CatchUp.commonMaximumPairPosition.eq_1",
+    "CatchUp.reply_edge_from_max_has_companion",
+    "CatchUp.reply_edge_from_max_not_unique"
+  ],
+  "private_only_backup_metadata": [
+    {"name": "ReplyMaximumCompanion.trace", "bytes": 2807, "sha256": "d66a28d4b642c527a3230fc9d79fa4c52103fcfdc6711c79d57dd78f60878321", "reason": "Raw trace contains machine-specific source paths."},
+    {"name": "ReplyMaximumCompanion.setup.json", "bytes": 4766117, "sha256": "359c83087303b0939c1b24cd2621ad1aa0d24b43f856291eec387b32fe1aa05a", "reason": "Raw setup contains extensive machine-specific dependency paths."},
+    {"name": "ReplyMaximumCompanion.c", "bytes": 2556, "sha256": "a2341cf0c22216c19c089b76b908196bd9f4b74c61c60e70ec045cc27b78234a", "reason": "Generated code is not needed for proof replay; retained privately, not executed."}
+  ],
+  "editorial_changes": [
+    "Reconstruct readable tactic proofs, not the lost tactic text. Preserve all four public types and both definition bodies up to definitional equality, checked against compiled expressions.",
+    "Use current verified imports, omit historical category/AMS indexing attributes, add scope docstrings and license header consistent with the research library.",
+    "Publish original olean and ilean bytes without edits after path/credential scan; omit raw trace/setup and replace their private path context with relative provenance.",
+    "Keep the historical CU-L011 ledger and earlier receipts unchanged; record the later, conditional recovery separately."
+  ],
+  "unrecovered_original": {
+    "name": "ReplyMaximumCompanion_reply_digraph_global_20260812.lean",
+    "reported_sha256": "35a43317ac22035a3f450ef7088b8ecdfd1a4d59ee4b8025f523563a00210011",
+    "status": "Not recovered. The differently named cached implementation is not established to be this exact scratch file."
+  },
+  "limitations": [
+    "Assumes c bounds all counters in S, a winning edge c→a, and nonempty catchable pair positions for every x∈S below c. No positivity, parity or interval premise is added.",
+    "Does not prove unconditional outdegree exclusion, a shifted deficit-one graph theorem, all-opening neutrality, or the interval conjecture.",
+    "Deserializing a compiled artifact alone supplies no proof assurance. Replay checks the original terms with addDeclCore doCheck=true and audits their transitive axioms; readable source builds without the archived binary.",
+    "Original source chronology and independent historical bounded observations are not recovered by this proof replay."
+  ]
+}

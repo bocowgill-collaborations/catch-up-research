@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 100 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 101 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -18,6 +18,7 @@ All 100 mathematics modules are included in the default build. Start with the [r
 | Module | What it establishes |
 | --- | --- |
 | [CatchUp.WinningOpening](../CatchUp/WinningOpening.lean) | At most one opening can force a win on any finite support. This mathematical fact was reported by von Stengel in 2019; this file supplies the formal proof. |
+| [CatchUp.ReplyMaximumCompanion](../CatchUp/ReplyMaximumCompanion.lean) | A winning reply from a maximum has a distinct companion if every smaller pair-deletion position is nonempty and catchable. Both cross-picks win; see the [recovery guide](reply-maximum-companion.md). |
 | [CatchUp.DrawOpening](../CatchUp/DrawOpening.lean) | A nonempty root draws exactly when some opening leaves a drawn child; includes the two-opening exchange identity. |
 | [CatchUp.PairDeletion](../CatchUp/PairDeletion.lean) | A sufficient lower-pair-deletion safety family implies the interval draw claim. Establishing that family remains a separate obligation. |
 | [CatchUp.LowerRayAntepenultimateDescent](../CatchUp/LowerRayAntepenultimateDescent.lean) | For N≥7, a draw after opening one at N−4 prevents loss at Q_N(N−2). The specified opening hypothesis matters. |
