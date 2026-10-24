@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-23",
+  "base_commit": "bd43ba94d82fdb67892b347bc7bd91c0999b4a99",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "scope": "Two source-preserving endpoint ports. Exact-sum interface is reused; historical source and existing library are unchanged.",
+  "sources": [
+    {
+      "kind": "antepenultimate",
+      "path": "CatchUp/LowerRayAntepenultimateDescent.lean",
+      "original_input": "archive/catch_up/LowerRayAntepenultimateDescent.lean.txt",
+      "original_path": "scripts/catch_up/LowerRayAntepenultimateDescent.lean",
+      "original_sha256": "bd14a01eac8c06631601f380c6bdcbabff2f3d5f6940b1331c0bb90a7d47b20a",
+      "git_blob": "89bfda3c58ca6a1690c0db2be6b69e28d7e2d958",
+      "source_id": "legacy-source-89bfda3c58ca-82afc8",
+      "source_commit": "bb10b8246c8f7b99de084865826150459e5627f1",
+      "source_branch": "codex/catchup-endpoint-20260923",
+      "sha256": "2d21632694b7b256055d201008409c382e194e4e5f9e157f6d59ac516033c519",
+      "bytes": 3605,
+      "transformations": [
+        "Adapt imports/module references and remove repository indexing attributes; preserve theorem statements and proof bodies."
+      ]
+    },
+    {
+      "kind": "fourth",
+      "path": "CatchUp/LowerRayFourthEndpoint.lean",
+      "original_input": "archive/catch_up/LowerRayFourthEndpoint.lean.txt",
+      "original_path": "scripts/catch_up/LowerRayFourthEndpoint.lean",
+      "original_sha256": "8c97e96b738f89369ca03c8ee107d4be267827a0607652afb51f19258d5eead9",
+      "git_blob": "ff8a6bd5960fd579086212db8cd0d25300991c27",
+      "source_id": "legacy-source-ff8a6bd5960f-692c2d",
+      "source_commit": "bb10b8246c8f7b99de084865826150459e5627f1",
+      "source_branch": "codex/catchup-upper-exchange-20260929",
+      "sha256": "1b8f85addebe987953a7596ede7e3591624869b902f32d7d32ea7c58c1dc1e35",
+      "bytes": 11911,
+      "transformations": [
+        "Adapt imports/module references and remove repository indexing attributes; preserve theorem statements and proof bodies.",
+        "Remove only the generic exact-sum lemma already exported unchanged by CatchUp.ExactSumResiduals."
+      ]
+    }
+  ],
+  "public_theorem_names": [
+    "pair_deletion_position_antepenultimate_value_ne_loss_of_opening_one_draw",
+    "Position.value_ne_loss_of_exact_pair_residuals",
+    "upper_triple_five_counter_repair",
+    "upper_triple_middle_opening_ne_loss",
+    "upper_triple_last_opening_ne_loss",
+    "upper_triple_first_opening_ne_loss",
+    "upper_triple_small_first_opening_ne_loss",
+    "upper_triple_small_middle_opening_ne_loss",
+    "pair_deletion_position_fourth_from_top_value_ne_loss_of_fifteen_le",
+    "pair_deletion_position_fourth_from_top_value_ne_loss"
+  ]
+}
