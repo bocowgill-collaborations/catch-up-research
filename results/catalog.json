@@ -1583,6 +1583,30 @@
         "StrategySimulation.can_avoid_loss",
         "GhostStrategySimulation.can_avoid_loss"
       ]
+    },
+    {
+      "module": "CatchUp.ExactSumResiduals",
+      "path": "CatchUp/ExactSumResiduals.lean",
+      "group": "Opening structure and reductions",
+      "summary": "A positive exact-deficit block proves nonloss if every residual opening above a chosen block member is nonlosing; preserves all forced-witness obligations.",
+      "evidence": "Ordinary Lean kernel proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "Position.value_ne_loss_of_exact_sum_residuals"
+      ]
+    },
+    {
+      "module": "CatchUp.LowerRayFifthEndpoint",
+      "path": "CatchUp/LowerRayFifthEndpoint.lean",
+      "group": "Opening structure and reductions",
+      "summary": "For every N≥23, the lower-ray position deleting 1 and N−4 is nonlosing, without parity or smaller-instance hypotheses. Proves all four upper-opening exclusions for m≥17.",
+      "evidence": "Ordinary Lean kernel proof source; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "upper_quadruple_first_opening_ne_loss",
+        "upper_quadruple_second_opening_ne_loss",
+        "upper_quadruple_third_opening_ne_loss",
+        "upper_quadruple_last_opening_ne_loss",
+        "pair_deletion_position_fifth_from_top_value_ne_loss"
+      ]
     }
   ]
 }

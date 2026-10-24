@@ -31,6 +31,7 @@ import CatchUp.DenseTwoResidual
 import CatchUp.DrawOpening
 import CatchUp.EqualityReserveObstruction
 import CatchUp.ExactSumLossObstruction
+import CatchUp.ExactSumResiduals
 import CatchUp.Executable
 import CatchUp.FivePair
 import CatchUp.FivePairLeaves
@@ -43,6 +44,7 @@ import CatchUp.IncompleteSubsumMass
 import CatchUp.Increasing
 import CatchUp.IntervalReserveDepth
 import CatchUp.IntervalSuccessorReplyObstruction
+import CatchUp.LowerRayFifthEndpoint
 import CatchUp.NearDeficitGuardObstruction
 import CatchUp.NearMaximumDefense
 import CatchUp.NearRepair

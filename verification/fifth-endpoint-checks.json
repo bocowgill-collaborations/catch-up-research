@@ -1,0 +1,397 @@
+{
+  "date": "2026-10-23",
+  "status": "PASS: local port build, transitive axiom and reproduction checks",
+  "base_commit": "3b371caba0cde664fabed68cc2c92e02adb4c6f7",
+  "subject": "N>=23 fifth-endpoint source port; 2 modules, 6 source-level public theorems",
+  "assurance": "Ordinary Lean kernel proofs; only Classical.choice, Quot.sound and propext allowed. No native evaluation or unfinished-conjecture dependency.",
+  "build_scope": "Fresh local library builds using pinned Mathlib dependency caches, not a full from-source build of Mathlib. All 96 pre-existing mathematics modules, game definitions, cryptid sources and toolchain pins unchanged.",
+  "timing_scope": "Successful command elapsed time; excludes dependency downloads and prior checkout/cache retries. Commands overlapped; do not sum as total wall time.",
+  "source_fingerprints": [
+    {
+      "path": "CatchUp.lean",
+      "sha256": "d9a9197dce346a9ea1734297961531a1c3198cfdc51a3baa9724ca189b15d283"
+    },
+    {
+      "path": "AxiomAudit.lean",
+      "sha256": "abc83c7932320253ac8a5a02da8c1c3a10a5fcb3f274d815229463f042eeb711"
+    },
+    {
+      "path": "AuditAll.lean",
+      "sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+    },
+    {
+      "path": "CatchUp/ExactSumResiduals.lean",
+      "sha256": "3f6be9611fe7aa2ee20fc322e404ad046ca247234b64617e25531144814ad6ea"
+    },
+    {
+      "path": "CatchUp/LowerRayFifthEndpoint.lean",
+      "sha256": "6b025f1307f6ef77a9e8e7ab57e802c1c028f36cada442a14ba6ef1b455bd858"
+    },
+    {
+      "path": "lean-toolchain",
+      "sha256": "d55ca0039a5479db5b38919d005b2c427b89b3be4f0184a20f2f4eae931f5bdb"
+    },
+    {
+      "path": "lakefile.toml",
+      "sha256": "73d32ea6cc6a66e6c719298855c66e1c228d7137bf8af64c0c7310c24f2a5a4c"
+    },
+    {
+      "path": "lake-manifest.json",
+      "sha256": "47e571699bf4f31bbc694475a5f40085273124ddfd22720b80e77f25dcb297ff"
+    },
+    {
+      "path": "cryptid/lean-toolchain",
+      "sha256": "8f89aa44fccdb1a0b6cc768c7c9f54b94cd40e47a08d582f82d1235f13075cf7"
+    },
+    {
+      "path": "cryptid/lakefile.toml",
+      "sha256": "04a6f558962d05e2900e6ccd742e24af79aedaf6dd055c0b606d51fa97da89fb"
+    },
+    {
+      "path": "cryptid/lake-manifest.json",
+      "sha256": "4eb68a49b6428f2b7e5c2e5c919cee668487ae86e4a2de6f840e5f962a1be147"
+    },
+    {
+      "path": "scripts/check_fifth_endpoint_port.py",
+      "sha256": "a238e888fb61b14d615272059e5df63b0c96d2b464819d0e28b9bbe9af262713"
+    },
+    {
+      "path": "scripts/check_collection.py",
+      "sha256": "5121bef39f97c216f3fd5902e798fae8ad1fc88940c7b16efd758e95fe57866e"
+    },
+    {
+      "path": "verification/fifth-endpoint-port.json",
+      "sha256": "ec0c8f3a7c511d6adc07a8a1e19f786e57ddc54e116b9c28d819fe53214a6a0e"
+    }
+  ],
+  "checks": [
+    {
+      "label": "campaign-smoke",
+      "package": ".",
+      "command": [
+        "python3",
+        "computation/experiments/check_campaign.py"
+      ],
+      "exit_code": 0,
+      "seconds": 8.542833958000001,
+      "output_sha256": "ee8aaae454457c272e3bdd1090d786c2d9b8e25411ea719b01f5ea5763f8dabd",
+      "output_bytes": 221,
+      "log": "verification/receipts/fifth-endpoint-campaign-smoke.log"
+    },
+    {
+      "label": "collection",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 10.875650375000001,
+      "output_sha256": "9b8dffba957213cbdb0b5affb0b32e8e40e1a2b9e7636ec5c2e702e8cd89c49b",
+      "output_bytes": 1193,
+      "log": "verification/receipts/fifth-endpoint-collection.log"
+    },
+    {
+      "label": "cryptid-axioms",
+      "package": "cryptid",
+      "command": [
+        "python3",
+        "../scripts/check_axioms.py"
+      ],
+      "exit_code": 0,
+      "seconds": 23.51679825,
+      "output_sha256": "c4d3c510d2195e48cfd238e8c7f1f64aa293afbace6a26fe4424faf75ccc138b",
+      "output_bytes": 116,
+      "log": "verification/receipts/fifth-endpoint-cryptid-axioms.log"
+    },
+    {
+      "label": "cryptid-build",
+      "package": "cryptid",
+      "command": [
+        "lake",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 318.75125166699996,
+      "output_sha256": "91de564f4121bcd7e4699c50422ab656f83e2aaf95e6205487871cf4bb919e80",
+      "output_bytes": 15642,
+      "log": "verification/receipts/fifth-endpoint-cryptid-build.log"
+    },
+    {
+      "label": "earlier-regressions",
+      "package": ".",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 8.404478583,
+      "output_sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "output_bytes": 122,
+      "log": "verification/receipts/fifth-endpoint-earlier-regressions.log"
+    },
+    {
+      "label": "mathematics-axioms",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_axioms.py"
+      ],
+      "exit_code": 0,
+      "seconds": 110.68963875,
+      "output_sha256": "7f28c08142ef9fcc0d752dc3a2e21570d3bbaae341bafe34aed4c94180af2a7a",
+      "output_bytes": 77,
+      "log": "verification/receipts/fifth-endpoint-mathematics-axioms.log"
+    },
+    {
+      "label": "mathematics-build",
+      "package": ".",
+      "command": [
+        "lake",
+        "--wfail",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 291.40904245800004,
+      "output_sha256": "dfef1388277e138dc790f4f87e4b19367f7f3e12210b1d869442bfc71ae82746",
+      "output_bytes": 6280,
+      "log": "verification/receipts/fifth-endpoint-mathematics-build.log"
+    },
+    {
+      "label": "semantics",
+      "package": ".",
+      "command": [
+        "python3",
+        "computation/check_semantics.py"
+      ],
+      "exit_code": 0,
+      "seconds": 8.44673475,
+      "output_sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "output_bytes": 72,
+      "log": "verification/receipts/fifth-endpoint-semantics.log"
+    },
+    {
+      "label": "solver-smoke",
+      "package": ".",
+      "command": [
+        "python3",
+        "computation/experiments/check.py"
+      ],
+      "exit_code": 0,
+      "seconds": 11.448743333,
+      "output_sha256": "2d5a0d7d9c572fcac441dc3ebf8d3634255fa6fa2a77d2c0494c8e96997eb110",
+      "output_bytes": 221,
+      "log": "verification/receipts/fifth-endpoint-solver-smoke.log"
+    },
+    {
+      "label": "source-history",
+      "package": ".",
+      "command": [
+        "python3",
+        "scripts/check_legacy_archive.py",
+        "--source-repository",
+        "PATH_TO_ORIGINAL_GIT_REPOSITORY"
+      ],
+      "exit_code": 0,
+      "seconds": 12.145642791,
+      "output_sha256": "22e52851e7cbbf7c44e3757bfd1a77d5a1cb971bfa72a65ed78246f59a4daef2",
+      "output_bytes": 328,
+      "editorial_change": "Only the original checkout absolute path in the command is replaced; output is unmodified.",
+      "log": "verification/receipts/fifth-endpoint-source-history.log"
+    }
+  ],
+  "axiom_audits": [
+    {
+      "status": "PASS",
+      "groups": [
+        {
+          "entry": "AxiomAudit.lean",
+          "endpoints": 162,
+          "all_public_catchup_theorems": 4364,
+          "commands": [
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AxiomAudit.lean"
+            ],
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AuditAll.lean"
+            ]
+          ],
+          "seconds": 110.632087875,
+          "audit_source_sha256": "abc83c7932320253ac8a5a02da8c1c3a10a5fcb3f274d815229463f042eeb711",
+          "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+        }
+      ],
+      "seconds": 110.632225042,
+      "peak_child_rss_bytes": 5523980288,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "negative_control": "rejected sorryAx",
+      "package": ".",
+      "logs": [
+        {
+          "path": "verification/receipts/fifth-endpoint-mathematics-named-axioms.log",
+          "sha256": "dbd09cf8c6071946349b2dc765107b5170b81d37ce1cb28ac18f14b9201e5344",
+          "bytes": 17271
+        },
+        {
+          "path": "verification/receipts/fifth-endpoint-mathematics-all-theorems.log",
+          "sha256": "4d2ff278fe7d9d3cd7d413ccd15836ced7d1e8f7a244aa21a39327ee6f421f8c",
+          "bytes": 57
+        }
+      ]
+    },
+    {
+      "status": "PASS",
+      "groups": [
+        {
+          "entry": "AxiomAudit.lean",
+          "endpoints": 23,
+          "all_public_catchup_theorems": 500,
+          "commands": [
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AxiomAudit.lean"
+            ],
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "AuditAll.lean"
+            ]
+          ],
+          "seconds": 12.708471542,
+          "audit_source_sha256": "747f45a51d41990e8b1ae02b7d82d3a19948eeb49500822a847332bd334fc0d3",
+          "full_audit_source_sha256": "c4fe35fcf3f1250743299601fd1726e092a16eb6967c081d871dd0e18da60894"
+        },
+        {
+          "entry": "ComponentAxiomAudit.lean",
+          "endpoints": 201,
+          "all_public_catchup_theorems": 2962,
+          "commands": [
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "ComponentAxiomAudit.lean"
+            ],
+            [
+              "lake",
+              "env",
+              "lean",
+              "-DwarningAsError=true",
+              "ComponentAuditAll.lean"
+            ]
+          ],
+          "seconds": 10.741193791999999,
+          "audit_source_sha256": "32fc2d510ab4049248447d0ef9b4c0ba4243bda1ec8aeace07d00186ddfd1e82",
+          "full_audit_source_sha256": "8712a1b506c7b56228a5fe1d903b29e93e06763853c5c323bb79b8ec1bc263be"
+        }
+      ],
+      "seconds": 23.450044625,
+      "peak_child_rss_bytes": 6269681664,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "allowed_axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "negative_control": "rejected sorryAx",
+      "package": "cryptid",
+      "logs": [
+        {
+          "path": "verification/receipts/fifth-endpoint-cryptid-named-axioms.log",
+          "sha256": "e2aaddb1b00ba235ec4e2334d6bae26e9933fadc975a34b2b8e34dfcd769902d",
+          "bytes": 2380
+        },
+        {
+          "path": "verification/receipts/fifth-endpoint-cryptid-all-theorems.log",
+          "sha256": "e6fabdf7ede1f3c0c02060b70e7d8083b4408288fdd34298617888291bf922bb",
+          "bytes": 56
+        },
+        {
+          "path": "verification/receipts/fifth-endpoint-cryptid-components-axioms.log",
+          "sha256": "24ac30ec540b2d9eeb4d2521d822a3bba50ad5146f7a4b8f568bddf2d44833a4",
+          "bytes": 21125
+        },
+        {
+          "path": "verification/receipts/fifth-endpoint-cryptid-components-all-theorems.log",
+          "sha256": "6a7f1e8ea45917af407f4577425592bb91dc07e9d0a3836d795612276daf49fa",
+          "bytes": 57
+        }
+      ]
+    }
+  ],
+  "new_theorem_axioms": [
+    {
+      "theorem": "CatchUp.Position.value_ne_loss_of_exact_sum_residuals",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "theorem": "CatchUp.upper_quadruple_first_opening_ne_loss",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "theorem": "CatchUp.upper_quadruple_second_opening_ne_loss",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "theorem": "CatchUp.upper_quadruple_third_opening_ne_loss",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "theorem": "CatchUp.upper_quadruple_last_opening_ne_loss",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "theorem": "CatchUp.pair_deletion_position_fifth_from_top_value_ne_loss",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ],
+  "warnings": "Unchanged cryptid sources emit five module-system import warnings under Lean 4.35.0-rc4. Cryptid uses lake build; mathematics uses lake --wfail build.",
+  "hosted_ci": "Independent commit-specific checks run after push; not certified by this local receipt.",
+  "limitations": "No full lower-ray theorem, interval draw theorem, new large computation, new forest-count theorem, or verification of the remaining archived fourth-endpoint declarations."
+}

@@ -1,6 +1,6 @@
 # August–September findings
 
-The conjecture remains open. This ledger connects the earlier campaigns to the current collection. Evidence labels describe the assurance now available here: a report of a historical successful check is not a fresh replay. All 43 entries preserve scope, dependencies, limitations and provenance in [the machine-readable ledger](legacy-findings.json).
+The conjecture remains open. This ledger connects the earlier campaigns to the current collection. Evidence labels record the archival integration's assurance: a report of a historical successful check is not a fresh replay. All 43 entries preserve scope, dependencies, limitations and provenance in [the machine-readable ledger](legacy-findings.json). A later [verified fifth-endpoint port](fifth-endpoint.md) separately updates the present status of CU-L037; it does not promote the rest of the archived module or campaign.
 
 The [campaign index](../archive/campaigns/README.md) lists all source versions, notebooks, reviews, retained observations and missing artifacts. See [current routes](research-routes.md) before treating a historical next step as current.
 

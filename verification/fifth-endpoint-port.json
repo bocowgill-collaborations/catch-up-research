@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-23",
+  "base_commit": "3b371caba0cde664fabed68cc2c92e02adb4c6f7",
+  "scope": "Source-preserving port of the symbolic N≥23 fifth lower-ray endpoint and its generic exact-sum interface. No fourth-endpoint range or native finite certificates imported.",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "sources": [
+    {
+      "path": "CatchUp/ExactSumResiduals.lean",
+      "kind": "exact-sum-residual-interface",
+      "original_input": "archive/catch_up/LowerRayFourthEndpoint.lean.txt",
+      "original_path": "scripts/catch_up/LowerRayFourthEndpoint.lean",
+      "source_branch": "codex/catchup-upper-exchange-20260929",
+      "original_sha256": "8c97e96b738f89369ca03c8ee107d4be267827a0607652afb51f19258d5eead9",
+      "source_id": "legacy-source-ff8a6bd5960f-692c2d",
+      "source_commit": "bb10b8246c8f7b99de084865826150459e5627f1",
+      "git_blob": "ff8a6bd5960fd579086212db8cd0d25300991c27",
+      "sha256": "3f6be9611fe7aa2ee20fc322e404ad046ca247234b64617e25531144814ad6ea",
+      "bytes": 1616,
+      "transformations": [
+        "Retain exact mathematical declarations and proof bodies; preserve source copyright.",
+        "Extract only the named generic residual-exclusion lemma from the fourth-endpoint module."
+      ]
+    },
+    {
+      "path": "CatchUp/LowerRayFifthEndpoint.lean",
+      "kind": "fifth-endpoint",
+      "original_input": "archive/catch_up/LowerRayFifthEndpoint.lean.txt",
+      "original_path": "scripts/catch_up/LowerRayFifthEndpoint.lean",
+      "source_branch": "codex/catchup-uniform-descent-20260929",
+      "original_sha256": "4eef133991799c4a08f7df865c5a2e4ef2a422fc50150c1f7b4be83e9f8ea93a",
+      "source_id": "legacy-source-21249313751d-34788e",
+      "source_commit": "bb10b8246c8f7b99de084865826150459e5627f1",
+      "git_blob": "21249313751df85a579f1b63b78e268b86ffe011",
+      "sha256": "6b025f1307f6ef77a9e8e7ab57e802c1c028f36cada442a14ba6ef1b455bd858",
+      "bytes": 22592,
+      "transformations": [
+        "Retain exact mathematical declarations and proof bodies; preserve source copyright.",
+        "Replace archived fourth-endpoint import by the generic interface and already verified lower-ray bound; remove category/AMS indexing attributes; adapt module prose and add residual-definition docstring."
+      ]
+    }
+  ],
+  "public_theorem_names": [
+    "Position.value_ne_loss_of_exact_sum_residuals",
+    "upper_quadruple_first_opening_ne_loss",
+    "upper_quadruple_second_opening_ne_loss",
+    "upper_quadruple_third_opening_ne_loss",
+    "upper_quadruple_last_opening_ne_loss",
+    "pair_deletion_position_fifth_from_top_value_ne_loss"
+  ],
+  "verification": "Source reconstruction is separate from Lean checking; see verification/fifth-endpoint.md for completed builds, transitive axiom audits and reproduction.",
+  "historical_finding": "CU-L037",
+  "limitations": [
+    "Does not prove the full lower ray or interval draw conjecture.",
+    "The m≥17 and N≥23 hypotheses are retained unchanged; no claim of a sharp game-value threshold.",
+    "The historical 35-node/14-leaf forest counts are not additional Lean declarations in this port."
+  ]
+}

@@ -29,6 +29,11 @@ A normalized position `Position ⟨R,d⟩` has remaining counters `R` and an act
 | Explicit certificate-size bound | Any valid full initial certificate for N≥16 has at least `2^floor((N-2)/12)` nodes, for this specified terminal-leaf language. Structural targets permit a different, compressed language. | [Proof-size guide](../docs/proof-size.md) |
 | Counterexample search | A specified search halts exactly when the universal conjecture is false. The binary machine implements this search. | [Search](../CatchUp/Search.lean), [cryptid](../cryptid/) |
 
+The [fifth-from-top lower-ray theorem](fifth-endpoint.md) gives another unbounded
+partial result: for every N≥23, counters `I_N \ {1,N−4}` at deficit N−5 are
+nonlosing, without a parity or smaller-instance assumption. Its source-preserving
+symbolic port and reusable exact-sum interface are in the verified library.
+
 ## Certified failures of proposed strategy rules
 
 These examples use **different remaining supports**, not the initial interval `{1,…,N}`. Each is kernel-checked; none disproves the Catch-Up conjecture.

@@ -49,6 +49,12 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The [fifth-endpoint port](fifth-endpoint.md) adds two further modules and six public
+theorems, taking the current catalog to 98 modules. Its [separate provenance manifest](fifth-endpoint-port.json)
+reconstructs the exact source adaptations, and its headline and four upper-opening
+lemmas are explicit endpoints of the named axiom audit. It does not change the
+earlier receipts or grant fresh assurance to the unported fourth-endpoint module.
+
 The [collection audit](collection.json) records recovery of 26 earlier modules into the mathematics build, bringing the catalog to 96 modules. The original 70 sources are unchanged. [earlier-sources.json](earlier-sources.json) and original input files document the mechanical port; `check_collection.py` reconstructs those transformations and checks the full module catalog. The [historical archive](../archive/) is explicitly outside the verified build. Its source-only entries and native/generated metadata are not being presented as kernel-certified results.
 
 The later [research-note manifest](research-collection.json) records 90 historical reports and 31 retained observation files, their original/exported hashes and the limited text adaptations. Its 94-path report inventory also identifies omitted superseded drafts and incomplete scratchwork. `check_research_archive.py`, also called by `check_collection.py`, checks coverage, hashes, parseability and a corruption control without executing a mathematical search. This validates the exported records; it does not prove their numerical outcomes. No Lean source or machine definition changed in this documentation/data expansion.

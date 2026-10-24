@@ -1,5 +1,10 @@
 # Historical research sources
 
+The [fifth-endpoint theorem](../results/fifth-endpoint.md) and its generic exact-sum
+interface now have separately verified source ports. The copies below remain
+historical artifacts; the other fourth-endpoint declarations have not thereby
+been built or audited.
+
 The [August–September campaigns](campaigns/) retain missing reports, earlier file versions, reviews, probe sources and observations. Their [finding ledger](../results/legacy-findings.md) states each selected claim's evidence and scope. The campaign archive is separate from the 56 source snapshots described below.
 
 For readable findings, failed strategies, experiments and machine-design history, start with the [research notebook](research-notes/). The source archive below has a separate verification status from those narrative reports and from the current Lean library.

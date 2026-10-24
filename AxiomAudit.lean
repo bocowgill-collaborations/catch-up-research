@@ -1,5 +1,12 @@
 import CatchUp
 
+#print axioms CatchUp.Position.value_ne_loss_of_exact_sum_residuals
+#print axioms CatchUp.upper_quadruple_first_opening_ne_loss
+#print axioms CatchUp.upper_quadruple_second_opening_ne_loss
+#print axioms CatchUp.upper_quadruple_third_opening_ne_loss
+#print axioms CatchUp.upper_quadruple_last_opening_ne_loss
+#print axioms CatchUp.pair_deletion_position_fifth_from_top_value_ne_loss
+
 #print axioms CatchUp.Position.value_eq_value_aux
 #print axioms CatchUp.can_avoid_loss_iff_value
 #print axioms CatchUpSearch.CanAvoidLossClassifier.check_eq_true_iff

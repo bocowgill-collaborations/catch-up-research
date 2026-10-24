@@ -59,6 +59,8 @@ The existing proofs, checked by the Lean proof assistant, establish:
   explicit full certificates, and examples of structural compression.
 - **Structural defenses:** a player can avoid losing in certain families of
   partially played positions. Other results rule out specific winning choices.
+  The [fifth-from-top lower-ray theorem](results/fifth-endpoint.md) proves one
+  such family for every N≥23, without a parity or smaller-instance assumption.
 - **Failed strategy principles:** certified counterexamples refute several
   proposed general strategy rules on other counter sets. They do not refute
   the conjecture about `{1,…,N}`.
