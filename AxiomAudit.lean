@@ -1,5 +1,16 @@
 import CatchUp
 
+#print axioms CatchUp.pair_deletion_position_antepenultimate_value_ne_loss_of_opening_one_draw
+#print axioms CatchUp.Position.value_ne_loss_of_exact_pair_residuals
+#print axioms CatchUp.upper_triple_five_counter_repair
+#print axioms CatchUp.upper_triple_middle_opening_ne_loss
+#print axioms CatchUp.upper_triple_last_opening_ne_loss
+#print axioms CatchUp.upper_triple_first_opening_ne_loss
+#print axioms CatchUp.upper_triple_small_first_opening_ne_loss
+#print axioms CatchUp.upper_triple_small_middle_opening_ne_loss
+#print axioms CatchUp.pair_deletion_position_fourth_from_top_value_ne_loss_of_fifteen_le
+#print axioms CatchUp.pair_deletion_position_fourth_from_top_value_ne_loss
+
 #print axioms CatchUp.Position.value_ne_loss_of_exact_sum_residuals
 #print axioms CatchUp.upper_quadruple_first_opening_ne_loss
 #print axioms CatchUp.upper_quadruple_second_opening_ne_loss

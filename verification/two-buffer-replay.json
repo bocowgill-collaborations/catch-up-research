@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-23",
+  "scope": "Bounded replay of the fixed 87-node mandatory policy; no synthesis or new unbounded theorem.",
+  "inputs": [
+    {
+      "role": "absolute",
+      "archive_path": "archive/campaigns/versions/adjacent_jump_probe--592063ec.py.txt",
+      "source_id": "legacy-source-592063ec52cf-ea0ce6",
+      "original_path": "scripts/catch_up/adjacent_jump_probe.py",
+      "original_sha256": "eb1516d0c04d4ce271a02c44601543f18090b4af5a1b4eae352ecf6c59ca8bcb",
+      "sha256": "eb1516d0c04d4ce271a02c44601543f18090b4af5a1b4eae352ecf6c59ca8bcb"
+    },
+    {
+      "role": "state",
+      "archive_path": "archive/campaigns/versions/score_debt_repair_probe--516aadb6.py.txt",
+      "source_id": "legacy-source-516aadb66e65-62414b",
+      "original_path": "scripts/catch_up/score_debt_repair_probe.py",
+      "original_sha256": "702affcb047497a9722d2af3e0e4fa3459da393c01f1153382abaa1587a20545",
+      "sha256": "702affcb047497a9722d2af3e0e4fa3459da393c01f1153382abaa1587a20545"
+    },
+    {
+      "role": "checker",
+      "archive_path": "archive/campaigns/versions/check_two_buffer_policy--a64edb59.py.txt",
+      "source_id": "legacy-source-a64edb5985bc-4891cf",
+      "original_path": "scripts/catch_up/check_two_buffer_policy.py",
+      "original_sha256": "7e9e30759c2faaa58617c3f9ca6aef6cfaca3c245fd9bda1791f2b49387bc05c",
+      "sha256": "7e9e30759c2faaa58617c3f9ca6aef6cfaca3c245fd9bda1791f2b49387bc05c"
+    },
+    {
+      "role": "policy",
+      "archive_path": "archive/campaigns/versions/two_buffer_policy_20260928--f1d4f917.json",
+      "source_id": "legacy-source-f1d4f917c484-0bfc8d",
+      "original_path": "scripts/catch_up/two_buffer_policy_20260928.json",
+      "original_sha256": "ed515bf883684d43b9e795e03ccfd098dbd0e19db30c44201a016f45edfffed5",
+      "sha256": "ed515bf883684d43b9e795e03ccfd098dbd0e19db30c44201a016f45edfffed5"
+    },
+    {
+      "role": "historical-replay",
+      "archive_path": "archive/campaigns/versions/two_buffer_replay_20260928--3a750022.json",
+      "source_id": "legacy-source-3a7500222796-dde2ef",
+      "original_path": "scripts/catch_up/two_buffer_replay_20260928.json",
+      "original_sha256": "2a8059583b45ed3225d086126bbdb5d8663ffe0441348b07c986f78dff828842",
+      "sha256": "2a8059583b45ed3225d086126bbdb5d8663ffe0441348b07c986f78dff828842"
+    }
+  ],
+  "exports": {
+    "reference.py": {
+      "sha256": "3e42251bf49100be7e995378f030de6ae057f38bc6bd75c2b1da75b8e5854989",
+      "bytes": 2252
+    },
+    "replay.py": {
+      "sha256": "9d6c778fdca01fbc78922e3ee508081cafc12080d700687444d4fa5675199788",
+      "bytes": 5446
+    },
+    "policy.json": {
+      "sha256": "ed515bf883684d43b9e795e03ccfd098dbd0e19db30c44201a016f45edfffed5",
+      "bytes": 69583
+    },
+    "historical-replay.json": {
+      "sha256": "2a8059583b45ed3225d086126bbdb5d8663ffe0441348b07c986f78dff828842",
+      "bytes": 46531
+    }
+  },
+  "limitations": [
+    "Historical Lean controller modules remain outside the current build.",
+    "The shadow strict-win filter is checked numerically by independent finite score recurrences.",
+    "No historical large table is replayed and no strategy is synthesized."
+  ]
+}

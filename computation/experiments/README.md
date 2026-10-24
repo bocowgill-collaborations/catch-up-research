@@ -1,5 +1,11 @@
 # Reproduce retained experiments
 
+The [earlier two-buffer bundle](earlier-campaign/two-buffer/) adds a Python-only
+replay of the complete fixed controller, including signed margins and all
+admissible opponent/strategy branches. Run
+`python3 computation/experiments/earlier-campaign/two-buffer/check.py` from the
+repository root. It needs no C++ compiler and is included in the collection check.
+
 These bundles recover the solver drivers, frozen input lists and seed generators behind several [research notes](../../archive/research-notes/). They use exact ternary outcomes, not score margins. **Their output is computational evidence, not a Lean certificate.** The corresponding formal results remain in the [Lean library](../../results/modules.md).
 
 Requirements: Python 3.9 or later, a C++ compiler with C++20 support, and Linux or macOS. No Lean installation, external Python packages or solver service is needed. Set `CXX=clang++` or `CXX=g++` if `c++` is not the desired compiler. Run these commands from the repository root:

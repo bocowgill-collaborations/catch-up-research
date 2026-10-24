@@ -2278,5 +2278,42 @@
     "origin": "Original source input for a mechanically adapted earlier proof; data only, not imported",
     "sha256": "3da1bda151339cd2478960d9f782ef28ba082a4bb9ddb6dd9b4460e949e7411f",
     "bytes": 9094
+  },
+  "CatchUp/LowerRayAntepenultimateDescent.lean": {
+    "origin": "Earlier endpoint source-preserving port, 23 October 2026",
+    "module": "CatchUp.LowerRayAntepenultimateDescent",
+    "sha256": "2d21632694b7b256055d201008409c382e194e4e5f9e157f6d59ac516033c519",
+    "bytes": 3605
+  },
+  "CatchUp/LowerRayFourthEndpoint.lean": {
+    "origin": "Earlier endpoint source-preserving port, 23 October 2026",
+    "module": "CatchUp.LowerRayFourthEndpoint",
+    "sha256": "1b8f85addebe987953a7596ede7e3591624869b902f32d7d32ea7c58c1dc1e35",
+    "bytes": 11911
+  },
+  "computation/experiments/earlier-campaign/two-buffer/reference.py": {
+    "origin": "Earlier two-buffer replay bundle; see verification/two-buffer-replay.json",
+    "sha256": "3e42251bf49100be7e995378f030de6ae057f38bc6bd75c2b1da75b8e5854989",
+    "bytes": 2252
+  },
+  "computation/experiments/earlier-campaign/two-buffer/replay.py": {
+    "origin": "Earlier two-buffer replay bundle; see verification/two-buffer-replay.json",
+    "sha256": "9d6c778fdca01fbc78922e3ee508081cafc12080d700687444d4fa5675199788",
+    "bytes": 5446
+  },
+  "computation/experiments/earlier-campaign/two-buffer/policy.json": {
+    "origin": "Earlier two-buffer replay bundle; see verification/two-buffer-replay.json",
+    "sha256": "ed515bf883684d43b9e795e03ccfd098dbd0e19db30c44201a016f45edfffed5",
+    "bytes": 69583
+  },
+  "computation/experiments/earlier-campaign/two-buffer/historical-replay.json": {
+    "origin": "Earlier two-buffer replay bundle; see verification/two-buffer-replay.json",
+    "sha256": "2a8059583b45ed3225d086126bbdb5d8663ffe0441348b07c986f78dff828842",
+    "bytes": 46531
+  },
+  "computation/experiments/earlier-campaign/two-buffer/check.py": {
+    "origin": "New bounded two-buffer replay and independent state checks, 23 October 2026",
+    "sha256": "bece39a5c5cd117d2d9ada0c485863509364c7ea8ac137b7e9f35ffb561021f2",
+    "bytes": 4221
   }
 }

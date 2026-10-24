@@ -4,6 +4,12 @@ The conjecture remains open. This ledger connects the earlier campaigns to the c
 
 The [campaign index](../archive/campaigns/README.md) lists all source versions, notebooks, reviews, retained observations and missing artifacts. See [current routes](research-routes.md) before treating a historical next step as current.
 
+The [endpoint ports](lower-ray-endpoints.md) separately update the current status
+of CU-L021 and CU-L032. The [finite-controller replay bundle](../computation/experiments/earlier-campaign/two-buffer/)
+rechecks the retained CU-L026 policy computationally. Its archived Lean protocol
+does not receive a fresh build claim from that replay; the original ledger's
+historical evidence remains intact.
+
 ## Reading the evidence
 
 - **Current Lean library:** the named source is already part of the pinned build and prior axiom audits; this import leaves it unchanged.

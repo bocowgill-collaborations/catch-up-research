@@ -34,6 +34,12 @@ partial result: for every N≥23, counters `I_N \ {1,N−4}` at deficit N−5 ar
 nonlosing, without a parity or smaller-instance assumption. Its source-preserving
 symbolic port and reusable exact-sum interface are in the verified library.
 
+The [endpoint guide](lower-ray-endpoints.md) also states the now-ported
+antepenultimate transfer and fourth-from-top theorem. The [strategy-transfer
+guide](strategy-transfers.md) connects the earlier simulation and score-debt
+methods with the [supported finite controller replay](../computation/experiments/earlier-campaign/two-buffer/).
+Those contributions leave the uniform lower-ray and first-pair obligations open.
+
 ## Certified failures of proposed strategy rules
 
 These examples use **different remaining supports**, not the initial interval `{1,…,N}`. Each is kernel-checked; none disproves the Catch-Up conjecture.
