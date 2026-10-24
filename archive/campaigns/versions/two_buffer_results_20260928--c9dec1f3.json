@@ -1,0 +1,60 @@
+[
+  {
+    "scalar_gate": {
+      "U": 0,
+      "V": 2,
+      "passes": true
+    },
+    "unpruned_regression_states": 4352
+  },
+  {
+    "controller_exists": true,
+    "policy_nodes": 251,
+    "refutation_nodes": 590,
+    "states_evaluated": 1061
+  },
+  {
+    "replay": {
+      "actual_second_picks": [
+        5,
+        6,
+        9,
+        10,
+        11
+      ],
+      "mutations_rejected": 4,
+      "policy_nodes": 87,
+      "terminal_histories": 17,
+      "terminal_pairs": [
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          10,
+          10
+        ]
+      ]
+    }
+  }
+]

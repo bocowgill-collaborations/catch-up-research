@@ -1,0 +1,92 @@
+{
+  "scope": "Targeted falsification; absence of a counterexample is not a theorem. Values -1,0,1 mean loss, draw, win relative to current mover.",
+  "additional_replay": {
+    "command": "python3 -B research/uniform-descent-20260929/aligned_pair_window_probe.py --nonwin",
+    "exit": 0,
+    "output": {
+      "refuted": false,
+      "tested": 3996,
+      "elapsed": 14.15633825
+    },
+    "scope": "No counterexample in this bounded family; no nonwinning theorem proved."
+  },
+  "commands": [
+    {
+      "script": "tree_replay.py",
+      "exit": 0,
+      "ms": 25,
+      "sha256": "b2eb573f4399a56708aa3461a4c8cd7086ee44a224d589c7b98c724ce54f9a81",
+      "output": "{\"symbolic_replay\": \"passed\", \"m_lower_bound\": 17, \"nodes\": 35, \"leaves\": 14, \"max_depth\": 5, \"largest_small_counter\": 11, \"lowest_pivot_offset\": -5}"
+    },
+    {
+      "script": "pair_probe.py",
+      "exit": 0,
+      "ms": 3640,
+      "sha256": "7912070e1385aca39188a40fcf0d817c6e8dd8b75f4ab4bcd42b7061a044ac7b",
+      "output": "{\"found\": false, \"tested\": 691, \"first_win\": null, \"elapsed_seconds\": 3.5397313340000003}"
+    },
+    {
+      "script": "pair_window_probe.py",
+      "exit": 0,
+      "ms": 29,
+      "sha256": "6eee881466eeec927496934d05b9b82bbc0e8938552c66b1359a7519479b1e08",
+      "output": "{\"refuted\": true, \"pair_starts\": [3, 5], \"predicted\": 1, \"state\": {\"remaining\": [3, 4, 5, 6], \"deficit\": 1, \"value\": -1, \"moves\": {\"3\": -1, \"4\": -1, \"5\": -1, \"6\": -1}}, \"tested\": 67, \"elapsed\": 0.0008452500000000005}"
+    },
+    {
+      "script": "orphan_probe.py",
+      "exit": 0,
+      "ms": 577,
+      "sha256": "ab9bcf0f1fa695ffa5e51c75d26ba5bc03e44eb0ad640f55bf4107e75be2f94a",
+      "output": "{\"refuted\": false, \"tested\": 1362, \"elapsed\": 0.549452625}"
+    },
+    {
+      "script": "pair_opening_probe.py",
+      "exit": 0,
+      "ms": 30,
+      "sha256": "72de9d648bc7a992d3a0feb42d076c45eb3351922fb8916db21b0f0299f0b95d",
+      "output": "{\"failures\": {\"largest_upper\": {\"pair_starts\": [2, 4, 6], \"proposed_picks\": [7], \"state\": {\"deficit\": 1, \"moves\": {\"2\": 0, \"3\": 0, \"4\": 0, \"5\": 0, \"6\": -1, \"7\": -1}, \"remaining\": [2, 3, 4, 5, 6, 7], \"value\": 0}}, \"median_upper\": {\"pair_starts\": [2, 6, 8], \"proposed_picks\": [7], \"state\": {\"deficit\": 1, \"moves\": {\"2\": 0, \"3\": 0, \"6\": -1, \"7\": -1, \"8\": -1, \"9\": -1}, \"remaining\": [2, 3, 6, 7, 8, 9], \"value\": 0}}, \"top_pair\": {\"pair_starts\": [2, 4, 6], \"proposed_picks\": [6, 7], \"state\": {\"deficit\": 1, \"moves\": {\"2\": 0, \"3\": 0, \"4\": 0, \"5\": 0, \"6\": -1, \"7\": -1}, \"remaining\": [2, 3, 4, 5, 6, 7], \"value\": 0}}}, \"tested\": 32}"
+    },
+    {
+      "script": "even_pair_nonwin_probe.py",
+      "exit": 0,
+      "ms": 556,
+      "sha256": "7fc89a12cf2035e8e47be31e3349eac2cb58fd7ff0a102cadd2cba64175946af",
+      "output": "{\"refuted\": false, \"tested\": 408}"
+    },
+    {
+      "script": "paired_parity_window_probe.py",
+      "exit": 0,
+      "ms": 28,
+      "sha256": "1d73b03c9800dadc1a2d4de79f8389ef4f9741d7b0199ea6b1b7c5e4d1629233",
+      "output": "{\"refuted\": true, \"pair_starts\": [5, 8], \"state\": {\"remaining\": [5, 6, 8, 9], \"deficit\": 2, \"value\": -1, \"moves\": {\"5\": -1, \"6\": -1, \"8\": -1, \"9\": -1}}, \"tested\": 63}"
+    },
+    {
+      "script": "paired_low_deficit_nonwin_probe.py",
+      "exit": 0,
+      "ms": 66,
+      "sha256": "65324be91c01e255759496abc3f8e4995e2146f151b2d68e278820ed8a748361",
+      "output": "{\"refuted\": true, \"pair_starts\": [4, 7, 14], \"state\": {\"remaining\": [4, 5, 7, 8, 14, 15], \"deficit\": 3, \"value\": 1, \"moves\": {\"4\": -1, \"5\": 0, \"7\": -1, \"8\": 0, \"14\": 1, \"15\": -1}}, \"tested\": 605, \"elapsed\": 0.0419905}"
+    },
+    {
+      "script": "paired_phase_lift_probe.py",
+      "exit": 0,
+      "ms": 127,
+      "sha256": "a9b0776d903742bd2ede797a8ed8c1070f9d7d614db839e19149fec632904711",
+      "output": "{\"refuted\": false, \"tested\": 43}"
+    },
+    {
+      "script": "aligned_pair_window_probe.py",
+      "exit": 0,
+      "ms": 30,
+      "sha256": "d41d0c29c5af1229d2144be0036b10c1e3a5abc830a8a325df676bdbfafce029",
+      "output": "{\"refuted\": true, \"nonwin_only\": false, \"pair_starts\": [6, 10], \"state\": {\"remaining\": [6, 7, 10, 11], \"deficit\": 2, \"value\": -1, \"moves\": {\"6\": -1, \"7\": -1, \"10\": -1, \"11\": -1}}, \"tested\": 32, \"elapsed\": 0.0008203749999999999}"
+    },
+    {
+      "script": "separated_orphan_probe.py",
+      "exit": 0,
+      "ms": 975,
+      "sha256": "e988c45cdcdc906da743fa3d33448258fa6fabfd4097876ae5654e703aff82dc",
+      "output": "{\"refuted\": false, \"tested\": 2160, \"elapsed\": 0.949289334}"
+    }
+  ]
+}

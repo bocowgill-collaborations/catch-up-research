@@ -1,0 +1,61 @@
+Command: lake --wfail build catch_up.ShiftedReplyCycleAudit
+CWD: HISTORICAL_TMP/catchup-score-debt-20260928
+Exit: 0
+Final replay, September 28, 2026.
+
+ℹ [8060/8060] Replayed catch_up.ShiftedReplyCycleAudit
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.edge_irrefl: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.adjacent_forward: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.adjacent_reverse: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.nonadjacent_reversal: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.obstruction_tail_losses: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.obstruction_structure: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.obstruction_two_cycle: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.obstruction_root_loss: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.no_local_span_two_cycle_exclusion: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.no_loss_conditioned_local_span_exclusion: [propext,
+ Quot.sound,
+ Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interior_structure: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interior_slide_failure: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.no_full_span_minimum_slide: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.sparse_three_cycle: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interval_seven_upward_edge: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interval_seven_max_edge: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interval_seven_no_max_companion: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.win_has_move: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.loss_forces_outgoing: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.finite_outgoing_closed_walk: [Classical.choice, propext, Quot.sound]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.loss_forces_closed_walk: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interval_loss_forces_closed_walk: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.critical_cross: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.critical_reply_inversion: [propext, Quot.sound, Classical.choice]
+info: scripts/catch_up/ShiftedReplyCycleAudit.lean:27:0: Verified axioms for CatchUp.ShiftedReplyCycle.interval_seven_critical_continuation: [propext,
+ Quot.sound,
+ Classical.choice]
+Build completed successfully (8060 jobs).
+
+Post-review recheck: module heading corrected, then the same scoped command rebuilt
+ShiftedReplyCycle (44s) and ShiftedReplyCycleAudit (3.9s), exit 0, no warnings.
+The same 25 public declarations passed the identical transitive axiom whitelist.
+
+Final source SHA-256:
+7b5306afe3b0c022b18407bfc2e2ce435d0cac0009d7f438c8b7feee426d2d81  scripts/catch_up/ShiftedReplyCycle.lean
+14cdfddc7742c3224e2289ee34e9f87640eed8a18c20d4a27d824b0fb7574fc1  scripts/catch_up/ShiftedReplyCycleAudit.lean
+3b8a9f3854e33cd130a4bd5b9e229a344749a9a4c003b11752b2a2c0cb99a6c3  research/shifted-cycles-20260928/cycle_probe.py
+4ce43f2043c473f55891b94cf59c82296c5f0cb57271985944dcadb1290e4150  research/shifted-cycles-20260928/results.json
+
+Command: python3 -B research/shifted-cycles-20260928/cycle_probe.py
+CWD: HISTORICAL_TMP/catchup-score-debt-20260928
+Shell: /bin/zsh
+Exit: 0
+Output:
+{"holdout_N19_edges": 0, "interior_cycle": [3, 5], "interval_edge_counts": {"7": 4, "8": 5, "11": 6, "12": 0, "15": 0, "16": 0}, "local_span_cycle": [3, 4], "maximum_companion_refuted_at_N": 7}
+SHIFTED CYCLE CHECKS PASS
+
+The --discover-adjacent replay also exited 0 and regenerated both saved discoveries
+(seed 928 trial 2197, seed 92835 trial 530). The independent reviewer separately
+matched all ten graph records and both discoveries against results.json.
+
+AUDIT COVERAGE PASS: all 25 public theorems covered exactly once; no placeholders or new axioms.
+Gate ledger lint: LINT OK (2 expected manual-gate warnings for mathematical review and preservation).

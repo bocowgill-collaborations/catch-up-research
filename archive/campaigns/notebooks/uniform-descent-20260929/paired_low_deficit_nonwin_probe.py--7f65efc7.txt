@@ -1,0 +1,37 @@
+"""Falsify paired low-deficit nonwinning with matching parity.
+
+Candidate: n actual adjacent pairs, all counters >=2, deficit d strictly
+below the minimum counter, and d congruent to n modulo two imply nonwin.
+Unlike the already refuted draw window, losses are allowed. A proof would
+give the nonwinning direction of the odd-pair target. Bounded checks do not.
+"""
+import itertools
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+started = time.monotonic()
+tested = 0
+for n in (1,2,3,4,5):
+    for starts in itertools.combinations(range(2,18),n):
+        if any(b<=a+1 for a,b in zip(starts,starts[1:])):
+            continue
+        mask = mask_of([x for a in starts for x in (a,a+1)])
+        for d in range(n%2,starts[0],2):
+            tested += 1
+            if value(mask,d)==1:
+                verify_independently(mask,d)
+                print(json.dumps({"refuted":True,"pair_starts":starts,
+                                  "state":state(mask,d),"tested":tested,
+                                  "elapsed":time.monotonic()-started}))
+                raise SystemExit(0)
+        value.cache_clear()
+        if time.monotonic()-started>60:
+            print(json.dumps({"refuted":False,"timed_out":True,"tested":tested}))
+            raise SystemExit(0)
+print(json.dumps({"refuted":False,"tested":tested,
+                  "elapsed":time.monotonic()-started}))

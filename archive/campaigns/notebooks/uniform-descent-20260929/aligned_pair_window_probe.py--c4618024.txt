@@ -1,0 +1,40 @@
+"""Falsify a window for adjacent pairs with all lower endpoints the same parity.
+
+Candidate: n disjoint aligned adjacent pairs, 0<=d<=n, d<n_min,
+d congruent to n modulo two, imply draw. This still contains P_N for N=0 mod4,
+unlike generic orphan/minimum enlargements. A survivor is only a conjecture.
+"""
+import itertools
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--nonwin", action="store_true",
+                    help="Test only nonwinning, allowing losses.")
+args = parser.parse_args()
+started = time.monotonic()
+tested = 0
+for n in (2,3,4,5):
+    for parity in (0,1):
+        for starts in itertools.combinations(range(2+parity,24,2),n):
+            mask = mask_of([x for a in starts for x in (a,a+1)])
+            for d in range(n%2,n+1,2):
+                if d>=starts[0]:
+                    continue
+                tested += 1
+                result = value(mask,d)
+                if result==1 or (not args.nonwin and result==-1):
+                    verify_independently(mask,d)
+                    print(json.dumps({"refuted":True,"nonwin_only":args.nonwin,"pair_starts":starts,
+                                      "state":state(mask,d),"tested":tested,
+                                      "elapsed":time.monotonic()-started}))
+                    raise SystemExit(0)
+            value.cache_clear()
+print(json.dumps({"refuted":False,"tested":tested,
+                  "elapsed":time.monotonic()-started}))

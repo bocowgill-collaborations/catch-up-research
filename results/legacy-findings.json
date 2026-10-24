@@ -1,0 +1,1163 @@
+{
+  "scope": "Claim-level guide to the August–September local research. Historical assurances do not promote archived sources into the current verified build.",
+  "findings": [
+    {
+      "id": "CU-L001",
+      "title": "Semantic audit and normalized recurrence",
+      "claim": "The audited game forces one opening pick, continues later turns only while behind, switches at equality, and awards the remainder when catching is impossible. The deficit evaluator agrees with the score-based reference.",
+      "evidence": "current Lean library; historical semantic audit",
+      "role": "structural-reduction",
+      "scope": "finite natural-number supports; normalization assumes the mover is tied or behind (me≤opponent); intended interval play uses positive counters",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md"
+      ],
+      "current_modules": [
+        "CatchUp/Reference.lean",
+        "CatchUp/Executable.lean"
+      ],
+      "declarations": [
+        "Position.value_eq_value_aux",
+        "Position.eval_eq_value"
+      ],
+      "relationship": "existing result with missing historical narrative",
+      "limitations": "The separately implemented C++ solver still needs its own checks; recurrence agreement does not certify arbitrary code.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L002",
+      "title": "Historical certification through 28",
+      "claim": "The August campaign reports value(Icc 1 N)=draw for every N≤28 with even triangular total.",
+      "evidence": "historical Lean native computation; source inventoried, large payloads not exported",
+      "role": "finite-case",
+      "scope": "initial intervals N≤28",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-5bd0a0ec8933-e90417"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/CatchUpCertifiedThrough28.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/CatchUpCertifiedThrough28.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [
+        "value_Icc_eq_draw_le_twenty_eight_of_even_triangular"
+      ],
+      "relationship": "missing historical narrative",
+      "limitations": "Concrete checks rely on Lean.ofReduceBool and Lean.trustCompiler. This is not a freshly replayed kernel-only range result in this collection.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L003",
+      "title": "Dense three-hole family through 25",
+      "claim": "The report certifies DenseThreeHoleNonloss N for 9≤N≤25: catchable support in Icc 1 N with at most three holes, deficit≤N and even effective total is nonlosing.",
+      "evidence": "historical Lean native computation",
+      "role": "positive-family",
+      "scope": "bounded ambient N, quantified irregular supports",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-adebc9425b98-feffe5"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/DenseThreeHoleCertifiedRange.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/DenseThreeHoleCertifiedRange.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "These are finite families. Their certificates do not establish an unbounded density invariant; large native payloads need a separate audit.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L004",
+      "title": "One drawn opening and two protected certificates",
+      "claim": "At N=27,28 the campaign uses opening one and separately certifies nonloss for each protected player at that same root. The draw-opening criterion then gives the initial draw.",
+      "evidence": "historical native certificates; current kernel proof of the draw-opening criterion",
+      "role": "certificate-infrastructure",
+      "scope": "initial intervals N=27,28",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-ab2c471b6328-565007"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/OpeningPackedIndexedCertificate.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/OpeningPackedIndexedCertificate.lean.txt"
+      ],
+      "current_modules": [
+        "CatchUp/DrawOpening.lean"
+      ],
+      "declarations": [
+        "value_eq_draw_iff_exists_draw_after_opening"
+      ],
+      "relationship": "missing historical narrative",
+      "limitations": "The historical certificates prove one drawn opening, not every opening drawing. The generic criterion and finite evaluations have different trust footprints.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L005",
+      "title": "Indexed and packed strategy certificates",
+      "claim": "The indexed checker verifies exact child states, owner choices, all opponent edges and coverage. The packed decoder checks tags, digits, lengths and trailing fields before those obligations.",
+      "evidence": "archived Lean sources; generic soundness reported historically",
+      "role": "certificate-infrastructure",
+      "scope": "specified finite certificate formats",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-2753eee881a6-13a5a0",
+        "legacy-source-7dfd11ef09b4-434582"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/LinearIndexedCertificate.lean",
+        "scripts/catch_up/PackedLinearIndexedCertificate.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/LinearIndexedCertificate.lean.txt",
+        "archive/catch_up/PackedLinearIndexedCertificate.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "These archived formats are not the C++ binary table format. No archived indexed checker was newly built in this import.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L006",
+      "title": "Independent N27/N28 audits",
+      "claim": "The August report describes complete Bellman checks, scalar samples, strategy-field replay, negative controls and W/D/L counts for N27/N28. Table-label counts differ from initial-game counts; not all supporting programs or tables are available.",
+      "evidence": "historical exact computations; independent audit tools and binary tables partly unrecovered",
+      "role": "algorithm",
+      "scope": "fixed tables and certificates N=27,28",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The audits were not rerun. Missing temporary programs, tables and receipts cannot be replaced by the narrative alone.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L007",
+      "title": "Counterexample lower bound and two-family normal form",
+      "claim": "Reported scratch result: a parity-admissible counterexample must have N≥31 and yield a loss in A(N,b)=((Icc 1 N)\\{1,b},b−1), 2≤b≤N−2, or B(N,x)=((Icc 3 N)\\{x},x−1), 3≤x≤N−2. Both retain the top two counters.",
+      "evidence": "report-only Lean check; proof artifact unrecovered",
+      "role": "structural-reduction",
+      "scope": "hypothetical admissible initial counterexamples",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The N≥31 clause inherits native finite certificates. The scratch proof was not integrated and is absent at its recorded location. Preserve the claim without current formal assurance.",
+      "next_step": "Recover or reconstruct the scratch proof and audit its exact statement before adding a verified endpoint.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L008",
+      "title": "Four remaining August obligations",
+      "claim": "The reported normal form closes if A(N,2) and B(N,3) are nonlosing, value(TA(N,b))≠win for TA(N,b)=Icc 2 N\\{b−1,b}, 3≤b≤N−2, and value(TB(N,x))≠win for TB(N,x)=Icc 3 N\\{x−1,x}, 4≤x≤N−2, for every N≥31 with even triangular total. Here value(TA) and value(TB) are tied initial-game values, not positive-deficit values.",
+      "evidence": "conditional research interface from a report; parent scratch missing",
+      "role": "open-question",
+      "scope": "admissible initial intervals via residual states",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "None of the four unbounded families was closed by that campaign. Deleted exact-deficit counters make b=2 and x=3 exceptional. Later local theorems do not silently close all four.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L009",
+      "title": "One common opening suffices for a four-lift",
+      "claim": "Reported scratch transfer: transferring both fixed-player nonloss guarantees at one common old opening that draws in the smaller game suffices for a root draw at N+4.",
+      "evidence": "report-only Lean check; three transfer artifacts unrecovered",
+      "role": "structural-reduction",
+      "scope": "conditional N→N+4 transfer",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The transfer hypotheses still need a uniform strategy. Neither every-opening transfer nor new-opening transfer is necessary for this sufficient interface.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L010",
+      "title": "Two nonlosing openings and its wording ambiguity",
+      "claim": "The August report states that two distinct legal openings with post-opening value ≠win force the root to draw; it attributes this to winning-opening uniqueness and the draw-opening criterion.",
+      "evidence": "informal consequence with reported scratch check; artifact unrecovered",
+      "role": "structural-reduction",
+      "scope": "arbitrary nonempty supports, conditional on two specified openings",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [
+        "CatchUp/WinningOpening.lean",
+        "CatchUp/DrawOpening.lean"
+      ],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The later sentence saying “the statement is false for arbitrary even-total sets” is ambiguous: it must refer to existence of such openings, not this conditional implication. No unqualified existence theorem is adopted.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L011",
+      "title": "Tied maximum-companion claim",
+      "claim": "The August scratch report claims a maximum vertex with an outgoing tied-root reply edge has another distinct outgoing edge; an edge a→b means distinct a,b∈S with (afterOpening S a).moveOutcome b=win. It reports a 94,957-root audit of eligible even interval-minus-at-most-five-hole supports through N=23.",
+      "evidence": "report-only structural check and historical bounded observations; scratch missing",
+      "role": "structural-reduction",
+      "scope": "tied-root reply graph",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The report does not expose the scratch theorem's full quantified signature, so its exact additional hypotheses are unrecovered. Do not adopt an unrestricted theorem or apply it to the shifted deficit-one graph: September supplies a counterexample to that migration.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L012",
+      "title": "Lower-ray tied-residual observations",
+      "claim": "For every tested N≤28 with even triangular total and 3≤b≤N, the tied game on R_N(b)=Icc 1 N\\{1,b−1,b} drew except winning cases (4,3),(4,4),(7,4),(7,6),(8,3). No tested residual lost. An adjacent-response policy passed 974 local challenges at N=15,16,19,20.",
+      "evidence": "historical exact computation; standalone reproducer unrecovered",
+      "role": "bounded-experiment",
+      "scope": "specified finite interval residuals",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Repeated policy closure fails as holes grow. These observations give neither a parametric theorem nor a complete adversarial policy.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L013",
+      "title": "Least-safe picks and increasing turns",
+      "claim": "Certificate mining reports 737,794 independently enumerated continuing least-safe decisions through N=15 with no violation of increasing order; the proposed mechanism is commutation of below-deficit picks and minimality.",
+      "evidence": "historical observation; a related increasing-turn result is now in the verified library",
+      "role": "structural-reduction",
+      "scope": "least-safe policy under the stated semantics",
+      "source_ids": [
+        "legacy-source-b286d3c59182-7a540c"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260812_0122_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260812_0122_et--b286d3c5.md"
+      ],
+      "current_modules": [
+        "CatchUp/Increasing.lean"
+      ],
+      "declarations": [],
+      "relationship": "historical precursor to current result",
+      "limitations": "The August proof was interrupted. Current Increasing.lean is the formal authority for its exact later statements and qualifications.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L014",
+      "title": "Seven-hole shifted-tail package",
+      "claim": "The historical report records 61,746,189 antecedent-satisfying tests at M=25..28 for this package. Put h=|[m+1,M]\\R|+max(m−1,0), with R⊆[m+1,M] and d+sum R even. Continuation nonloss assumes 1≤m≤M, h≤7 and 1≤d≤min(M−m,sum R). Catch nonwin assumes d≤m and either (1≤m≤M,h≤6) or (3≤m≤M,h≤7), with no catchability requirement. The package fails at smaller M=16..19.",
+      "evidence": "historical exhaustive exact computation",
+      "role": "bounded-experiment",
+      "scope": "shifted tails with the precise H7/q1, H6/q1, H7/q3 hypotheses",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-59302f588d93-975fea"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/SmallGapShiftedTailPackage.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/SmallGapShiftedTailPackage.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The clauses and hole-budget definitions are in the archived source; no all-M theorem follows. Independent audit programs are missing at their recorded locations.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L015",
+      "title": "Sharp catch-rank reduction",
+      "claim": "For natural M,m,d and nonempty catchable R⊆[m+1,M], assume |[m+1,M]\\R|+max(m−1,0)≤7, d≤m, d+sum R even, and value(R,d)=win. The archived theorem gives d=0 or an actual winning move x∈R with x≤16, x−d∈[m+1,M]\\R, or a tied winning residual R\\{x,x−d} of even total with a unique winning opening y>x−d.",
+      "evidence": "archived Lean source; historical check only in this import",
+      "role": "structural-reduction",
+      "scope": "conditional shifted upper-tail theorem; zero deficit is an explicit alternative; all values use the current mover's perspective",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-28f741e571ed-977f1e"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/ShiftedUpperTailCatchRankReduction.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/ShiftedUpperTailCatchRankReduction.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "All exceptional branches remain obligations. The low-deficit child can still have linearly growing support; it is not a fixed finite leaf.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L016",
+      "title": "Strong four-counter state lift fails",
+      "claim": "Adding {N+1,…,N+4} need not preserve a drawn state: the historical solver records N=11 state ({1,2,8},11) and N=12 state ({6,12},6) becoming wins after lifting.",
+      "evidence": "historical exact computations; solver source available",
+      "role": "failed-strategy",
+      "scope": "specified normalized states, not initial interval roots; no new reachability assertion",
+      "source_ids": [
+        "legacy-source-114137163fd8-5767cd",
+        "legacy-source-cb309c49f2c6-7dd9a1"
+      ],
+      "source_paths": [
+        "CATCHUP_PROGRESS.md",
+        "scripts/catch_up_compare.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_progress--11413716.md",
+        "archive/campaigns/versions/catch_up_compare--cb309c49.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "These refute the unrestricted statewise lift only. A strategy-specific conditional transfer remains open.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L017",
+      "title": "Cardinality cutoff fails at six through nine old counters",
+      "claim": "At 15→19, only 105,712 of 106,633 cached drawn states with at least six old counters remained draws: 921 failures were recorded, including states with six through nine old counters.",
+      "evidence": "historical exact enumeration",
+      "role": "failed-strategy",
+      "scope": "solver-reached cache for the stated size pair",
+      "source_ids": [
+        "legacy-source-114137163fd8-5767cd"
+      ],
+      "source_paths": [
+        "CATCHUP_PROGRESS.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_progress--11413716.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "This refutes the tested cutoff of six and smaller cutoffs. The historical claim that it rules out every fixed cardinality cutoff is stronger than these finite data justify.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L018",
+      "title": "Early simulation phases and ledger obligations",
+      "claim": "Old-matched/new-stuttering and persistent same-owner ledgers fail selected small lifts; wider local-debt product searches find successful roots. The width-three one-residual ledger supplies sound conditional simulations and exact edge checks.",
+      "evidence": "historical product-search evidence plus current generic simulation proof",
+      "role": "certificate-infrastructure",
+      "scope": "specified simulation relations",
+      "source_ids": [
+        "legacy-source-114137163fd8-5767cd",
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-55a894ae706f-196452"
+      ],
+      "source_paths": [
+        "CATCHUP_PROGRESS.md",
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/SimulationLedger.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_progress--11413716.md",
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/SimulationLedger.lean.txt"
+      ],
+      "current_modules": [
+        "CatchUp/Earlier/SimulationSoundness.lean"
+      ],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Successful searched product witnesses were not uniformly reflected into the required basin-membership theorem. Local phase counts and samples do not prove a bounded uniform controller.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L019",
+      "title": "Even totals and balanced allocations are insufficient",
+      "claim": "Historical exhaustive subsets of 1..12 with even total and twice the maximum≤total yielded 390 nondraws among 1,954 eligible sets; {3,4,5} is a winning support of total 12. Other reports use the winning block {4,5,6,7,8}.",
+      "evidence": "historical exact observations; five-counter trap source archived",
+      "role": "obstruction",
+      "scope": "irregular supports, not Icc 1 N",
+      "source_ids": [
+        "legacy-source-114137163fd8-5767cd",
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-8f88ad3cceb6-4091cb"
+      ],
+      "source_paths": [
+        "CATCHUP_PROGRESS.md",
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "scripts/catch_up/FiveConsecutiveTrap.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_progress--11413716.md",
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/catch_up/FiveConsecutiveTrap.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "An equal partition or one drawn play does not give two adversarial nonloss guarantees. The finite scan is not freshly replayed.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L020",
+      "title": "Exact sum, potential, and hole-count routes need closure",
+      "claim": "The reports retain counterexamples to fixed matching, static quota partitions, fixed low replies, and scalar outcome classifications. Continuing picks increase holes; true effective-total descent alone does not preserve the necessary support family.",
+      "evidence": "historical failures and archived structural sources",
+      "role": "failed-strategy",
+      "scope": "specified proof mechanisms",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "legacy-source-114137163fd8-5767cd",
+        "legacy-source-70e98e58e9d1-d2a177",
+        "legacy-source-6fa93cb6df4a-86f814"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "CATCHUP_PROGRESS.md",
+        "scripts/catch_up/EffectiveTotalDescent.lean",
+        "scripts/catch_up/MaximumCounterPotential.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/campaigns/reports/catchup_progress--11413716.md",
+        "archive/catch_up/EffectiveTotalDescent.lean.txt",
+        "archive/catch_up/MaximumCounterPotential.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Do not treat the broad historical list as a theorem excluding every refinement. Exact witnesses and scope are in the chronological notebook entries.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L021",
+      "title": "Antepenultimate endpoint transfer",
+      "claim": "For N≥7, a draw after opening one at size N−4 implies nonloss of Q_N(N−2), where Q_N(b)=(Icc 1 N\\{1,b},b−1).",
+      "evidence": "archived Lean source; historical standard-axiom scoped check",
+      "role": "positive-family",
+      "scope": "conditional symbolic endpoint",
+      "source_ids": [
+        "legacy-source-ef5aeca3c683-b9efd7",
+        "legacy-source-89bfda3c58ca-82afc8"
+      ],
+      "source_paths": [
+        "CATCHUP_ENDPOINT_REPORT_20260923_1727_ET.md",
+        "scripts/catch_up/LowerRayAntepenultimateDescent.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_endpoint_report_20260923_1727_et--ef5aeca3.md",
+        "archive/catch_up/LowerRayAntepenultimateDescent.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [
+        "pair_deletion_position_antepenultimate_value_ne_loss_of_opening_one_draw"
+      ],
+      "relationship": "missing historical narrative",
+      "limitations": "A draw at the smaller root alone does not identify opening one as drawn. This is one endpoint, with no parity hypothesis.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L022",
+      "title": "Adjacent-hole copying fails at the first move",
+      "claim": "At N=11,b=4,y=8, U=({2,5,6,9,10,11},1) draws and V=({2,5,6,7,10,11},1) wins. The map fixing common counters and sending 7→9 sends every nonlosing V move to a losing U move.",
+      "evidence": "archived Lean certificate source; historical kernel check",
+      "role": "obstruction",
+      "scope": "an admissible auxiliary pair, not a counterexample to no-jump",
+      "source_ids": [
+        "legacy-source-3f5dc5a0e83c-99bcd2",
+        "legacy-source-bccce0e77a42-46a620"
+      ],
+      "source_paths": [
+        "CATCHUP_LOCAL_EXCHANGE_REPORT_20260923_1820_ET.md",
+        "scripts/catch_up/AdjacentHoleExchangeObstruction.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_local_exchange_report_20260923_1820_et--3f5dc5a0.md",
+        "archive/catch_up/AdjacentHoleExchangeObstruction.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The only simultaneous first choices preserving U nonloss and V win are U2,V5, yielding unmatched sets {5,9} and {2,7}. This does not preclude every asynchronous/loss-conditioned repair.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L023",
+      "title": "Parity and adjacent-pair deletions do not forbid jumps",
+      "claim": "At deficit one {6,11,14,15,18,23} loses while {4,11,14,15,18,23} wins, despite alternating parity and representation by disjoint adjacent-pair erasures. A distant reply 11 draws after opening 5 in the parent.",
+      "evidence": "archived Lean certificate source; historical kernel check",
+      "role": "obstruction",
+      "scope": "sparse multiple-pair deletion family",
+      "source_ids": [
+        "legacy-source-3f5dc5a0e83c-99bcd2",
+        "legacy-source-bccce0e77a42-46a620"
+      ],
+      "source_paths": [
+        "CATCHUP_LOCAL_EXCHANGE_REPORT_20260923_1820_ET.md",
+        "scripts/catch_up/AdjacentHoleExchangeObstruction.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_local_exchange_report_20260923_1820_et--3f5dc5a0.md",
+        "archive/catch_up/AdjacentHoleExchangeObstruction.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "It refutes the arbitrary-pair extension and the converse neighbor implication, not the original exactly-one-pair no-jump target.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L024",
+      "title": "Parametric terminal score-debt repair",
+      "claim": "For natural k, a=k+4,b=2k+5,c=2k+6, protect fixed p1. Actual ({a,b,c},a+1,p2) has a policy taking a maximum on p1 turns against every p2 pick, completing to p1 margin 0 or 2. The chosen shadow trace [c,a] from ({a,c},a,p2) completes to p1 margin 2; actual margin≥shadow margin−2.",
+      "evidence": "current Lean library for the repair; historical replay for 404 leaves",
+      "role": "positive-family",
+      "scope": "three-counter terminal gadget",
+      "source_ids": [
+        "legacy-source-bff784af4875-4d6fe4",
+        "legacy-source-f2f662b06947-8b46d8"
+      ],
+      "source_paths": [
+        "CATCHUP_SCORE_DEBT_REPORT_20260928_0006_ET.md",
+        "scripts/catch_up/ScoreDebtTerminalRepair.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_score_debt_report_20260928_0006_et--bff784af.md",
+        "archive/ported-inputs/ScoreDebtTerminalRepair.lean.txt"
+      ],
+      "current_modules": [
+        "CatchUp/Earlier/CompletedMargin.lean",
+        "CatchUp/Earlier/ScoreDebtTerminalRepair.lean"
+      ],
+      "declarations": [
+        "repaired_margin_bound",
+        "actual_can_avoid_loss"
+      ],
+      "relationship": "existing proof with missing argument/replay narrative",
+      "limitations": "This covers the mandatory actual second-pick 5 branch, not all adjacent-hole roots. Intermediate ledger debt can exceed two.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L025",
+      "title": "Two stricter debt policies fail",
+      "claim": "Common copying at the repair entry can give completed margins actual=2, shadow=10. The root rule “take 2, then always maximum” has a legal terminal actual margin −2.",
+      "evidence": "archived Lean certificate source; historical kernel check",
+      "role": "failed-strategy",
+      "scope": "specified mandatory root policies",
+      "source_ids": [
+        "legacy-source-bff784af4875-4d6fe4",
+        "legacy-source-ef68174caa9a-99c48f"
+      ],
+      "source_paths": [
+        "CATCHUP_SCORE_DEBT_REPORT_20260928_0006_ET.md",
+        "scripts/catch_up/ScoreDebtRepairCertificates.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_score_debt_report_20260928_0006_et--bff784af.md",
+        "archive/catch_up/ScoreDebtRepairCertificates.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "A failed inequality for one policy does not rule out a richer two-buffer controller; the later finite controller succeeds.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L026",
+      "title": "Full mandatory causal two-buffer controller",
+      "claim": "For protected p1, U=({2,5,6,9,10,11},1,p1) and V=({2,5,6,7,10,11},1,p1), the saved 87-node policy covers every actual opponent move and every strict-win-preserving shadow protected reply, ending with actual margin≥shadow margin−2.",
+      "evidence": "archived Lean protocol/certificate and JSON policy; historical kernel check",
+      "role": "positive-family",
+      "scope": "one finite paired instance",
+      "source_ids": [
+        "legacy-source-c1fbe535f3b5-145ffb",
+        "legacy-source-84a91f606d8a-be1c5e",
+        "legacy-source-39b6740855a3-d7ff5a",
+        "legacy-source-f1d4f917c484-0bfc8d"
+      ],
+      "source_paths": [
+        "CATCHUP_TWO_BUFFER_REPORT_20260928_0834_ET.md",
+        "scripts/catch_up/TwoBufferProtocol.lean",
+        "scripts/catch_up/TwoBufferMandatory.lean",
+        "scripts/catch_up/two_buffer_policy_20260928.json"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_two_buffer_report_20260928_0834_et--c1fbe535.md",
+        "archive/catch_up/TwoBufferProtocol.lean.txt",
+        "archive/catch_up/TwoBufferMandatory.lean.txt",
+        "archive/campaigns/versions/two_buffer_policy_20260928--f1d4f917.json"
+      ],
+      "current_modules": [],
+      "declarations": [
+        "mandatory_protocol",
+        "mandatory_policy_checked"
+      ],
+      "relationship": "missing historical narrative",
+      "limitations": "Raw remaining-field differences are bounded by two after each pick. Eagerly erasing an early-terminal remainder changes the convention and invalidates this policy. Not a parametric translator.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L027",
+      "title": "Two-pick preparation and copied-pair repair",
+      "claim": "For k≥0 the actual ({k+3,k+4,2k+5,2k+6},2k+6,p1) can take k+3 then 2k+5, reaching ({k+4,2k+6},k+2,p2). The shadow bridge reaches the same pair at deficit k+4. Both opponent choices give a safe two-point terminal margin relation.",
+      "evidence": "archived symbolic Lean source; historical check",
+      "role": "positive-family",
+      "scope": "parametric local transition/trace family",
+      "source_ids": [
+        "legacy-source-c1fbe535f3b5-145ffb",
+        "legacy-source-6887e655a706-7299cb"
+      ],
+      "source_paths": [
+        "CATCHUP_TWO_BUFFER_REPORT_20260928_0834_ET.md",
+        "scripts/catch_up/TwoPickDebtRepair.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_two_buffer_report_20260928_0834_et--c1fbe535.md",
+        "archive/catch_up/TwoPickDebtRepair.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Conditional uniqueness of a strict winning shadow reply is not its existence. The transition family does not handle arbitrary initial entries or all branches.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L028",
+      "title": "Geometry-free first-pair strategy steal fails",
+      "claim": "S={3,7,9,14,17,20,29,34} loses at deficit 1 although S\\{3} wins at deficit 2, min S=3 and effective total=134. Every first-pick child wins under the actual loss.",
+      "evidence": "archived Lean obstruction; historical kernel check",
+      "role": "obstruction",
+      "scope": "sparse supports with three held in reserve",
+      "source_ids": [
+        "legacy-source-56c3844715a2-521e63",
+        "legacy-source-41c915beb313-24c266"
+      ],
+      "source_paths": [
+        "CATCHUP_FIRST_PAIR_REPORT_20260928_0918_ET.md",
+        "scripts/catch_up/FirstPairDescentObstruction.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_first_pair_report_20260928_0918_et--56c38447.md",
+        "archive/catch_up/FirstPairDescentObstruction.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Discarding interval geometry is invalid even with all winning-child obligations. Copying also fails on a size-eight legal prefix [5,7,8,4,6] at a tie, but that prefix is not claimed to follow a supplied winning shadow strategy from its root.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L029",
+      "title": "Shifted-reply cycles and migration failure",
+      "claim": "At S={3,4,9,16,17,18,26,28,31,37}, deficit one loses and the shifted reply graph has 3→4→3. At S={3,4,5,6,9,19,24,26,29,38}, it has 3↔5 but the proposed slide through 4 fails: the 5→4 move draws and the 4→5 move loses. On Icc 3 7, vertex 7 has only reply edge to 3. Shifted edges are legal winning replies after a first pick from (S,1), not replies from a tied initial root.",
+      "evidence": "archived Lean source; historical kernel checks",
+      "role": "obstruction",
+      "scope": "shifted graph on alternative first choices",
+      "source_ids": [
+        "legacy-source-bb668e38b2f7-142a1f",
+        "legacy-source-9b5f34fa7cc0-300ff3"
+      ],
+      "source_paths": [
+        "CATCHUP_SHIFTED_CYCLE_REPORT_20260928_1021_ET.md",
+        "scripts/catch_up/ShiftedReplyCycle.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_shifted_cycle_report_20260928_1021_et--bb668e38.md",
+        "archive/catch_up/ShiftedReplyCycle.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "These graph walks are not plays; actual picks always remove counters. Full-interval acyclicity under a hypothetical root loss remains open. Tied-root maximum-companion reasoning cannot migrate unchanged.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L030",
+      "title": "Loss forces a closed shifted-reply walk",
+      "claim": "A hypothetical loss at P_N=(Icc 3 N,1), N≥7, forces a legal winning reply at every first-choice vertex and hence a nonempty closed directed walk.",
+      "evidence": "archived Lean source; historical symbolic check",
+      "role": "structural-reduction",
+      "scope": "conditional full-interval first-pair graph",
+      "source_ids": [
+        "legacy-source-bb668e38b2f7-142a1f",
+        "legacy-source-9b5f34fa7cc0-300ff3"
+      ],
+      "source_paths": [
+        "CATCHUP_SHIFTED_CYCLE_REPORT_20260928_1021_ET.md",
+        "scripts/catch_up/ShiftedReplyCycle.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_shifted_cycle_report_20260928_1021_et--bb668e38.md",
+        "archive/catch_up/ShiftedReplyCycle.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [
+        "loss_forces_closed_walk",
+        "interval_loss_forces_closed_walk"
+      ],
+      "relationship": "missing historical narrative",
+      "limitations": "Closed walk existence is formalized; extracting a simple directed cycle is explained informally. It supplies no contradiction by itself.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L031",
+      "title": "Prepaid reserve preservation and initialization barrier",
+      "claim": "For distinct positive counters at an opponent-turn boundary, partition the remaining support into fixed disjoint unequal pairs P and an unpaired pool B. Let D be the sum of pair gaps, W=sum B and L≥0 the protected player's lead. Conditions D+W≤L and L+D+W≤x for every x∈P support the mate-reply argument. The weaker BudgetEnvelope on S=[3,N]\\{a}, lead a−1, for N≥7 and 3≤a≤N holds iff N=7 and a=3; it asks for B⊆S and natural D with |S\\B|≤2D and those two inequalities.",
+      "evidence": "paper-level reviewed preservation; archived Lean initialization classification",
+      "role": "obstruction",
+      "scope": "specified reserve invariant and initial entries",
+      "source_ids": [
+        "legacy-source-5e291d7e483d-2ab017",
+        "legacy-source-f4b9f23e0863-e28df0",
+        "legacy-source-987b8fa1c052-d7f688"
+      ],
+      "source_paths": [
+        "CATCHUP_TURN_INVARIANT_REPORT_20260928_1108_ET.md",
+        "research/turn-invariant-20260928/ARGUMENT.md",
+        "scripts/catch_up/TurnReserveInitialization.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_turn_invariant_report_20260928_1108_et--5e291d7e.md",
+        "archive/campaigns/notebooks/turn-invariant-20260928/ARGUMENT--f4b9f23e.md",
+        "archive/catch_up/TurnReserveInitialization.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [
+        "budget_envelope_initialization_iff"
+      ],
+      "relationship": "missing historical narrative",
+      "limitations": "Preservation is informal; only the initialization classification was formalized. It excludes immediate initialization of this envelope, not delayed entry or other invariants.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L032",
+      "title": "Fourth-from-top endpoint",
+      "claim": "Q_N(N−3) is nonlosing for every N≥15 without parity or smaller-instance assumptions; kernel checks at admissible N=11,12 extend the admissible endpoint statement to N≥11.",
+      "evidence": "archived Lean source; historical standard-axiom check",
+      "role": "positive-family",
+      "scope": "one unbounded lower-ray endpoint",
+      "source_ids": [
+        "legacy-source-2a2d854a0d9a-c7c237",
+        "legacy-source-ff8a6bd5960f-692c2d"
+      ],
+      "source_paths": [
+        "CATCHUP_UPPER_EXCHANGE_REPORT_20260929_0034_ET.md",
+        "scripts/catch_up/LowerRayFourthEndpoint.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_upper_exchange_report_20260929_0034_et--2a2d854a.md",
+        "archive/catch_up/LowerRayFourthEndpoint.lean.txt"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Finite exact-sum trees cover the three top witnesses. At m=10 one branch requires legal completed turn [2,6,15]; repeating counter 6 in a block would be invalid.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L033",
+      "title": "Common-support uniqueness shortcut has wrong deficit",
+      "claim": "Deleting two disjoint exact blocks of sum d can yield w as a winning catch on a common support at deficit d. It does not yield a winning opening at deficit zero. At ({6,7,8},3), all three catching moves win.",
+      "evidence": "reviewed paper-level diagnosis in historical report",
+      "role": "failed-strategy",
+      "scope": "positive-deficit common support",
+      "source_ids": [
+        "legacy-source-2a2d854a0d9a-c7c237"
+      ],
+      "source_paths": [
+        "CATCHUP_UPPER_EXCHANGE_REPORT_20260929_0034_ET.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_upper_exchange_report_20260929_0034_et--2a2d854a.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "Tied-root winning-opening uniqueness cannot compare these catches. The example does not carry the full dense ancestry and is not a counterexample to the original dense target.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "python3 scripts/check_legacy_examples.py replays the named literal positions and every first pick using two independent Python recurrences. This does not replay historical scans or compile archived Lean sources."
+    },
+    {
+      "id": "CU-L034",
+      "title": "Dominant adjacent pair changes terminal utility",
+      "claim": "An unformalized candidate for finite distinct natural counters T with every t∈T at least 2, M=sum T, natural deficit d, and a>M+d replaces {a,a+1} in T∪{a,a+1} by empty-small-support utility win/draw/loss at deficits 0/1/≥2. The modified recurrence uses ordinary small-pick maximization without pruning when T alone cannot catch. The proposed argument excludes premature use of the pair while T is nonempty.",
+      "evidence": "informal candidate and one reported bounded diagnostic",
+      "role": "informal-argument",
+      "scope": "dominant-pair family under precise separation",
+      "source_ids": [
+        "legacy-source-2a2d854a0d9a-c7c237",
+        "legacy-source-a1c48e7e99f3-9c599e"
+      ],
+      "source_paths": [
+        "CATCHUP_UPPER_EXCHANGE_REPORT_20260929_0034_ET.md",
+        "research/upper-exchange-20260929/SIDE_IDEA.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_upper_exchange_report_20260929_0034_et--2a2d854a.md",
+        "archive/campaigns/notebooks/upper-exchange-20260929/SIDE_IDEA--a1c48e7e.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "No formal equivalence or uniform odd-pair strategy was proved. The modified utility is not neutrality; original early-terminal pruning cannot be used on T alone.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L035",
+      "title": "Exponential explicit-certificate lower bound",
+      "claim": "For N≥16 and either protected player, every existing full atomic initial strategy DAG with terminal safe leaves has at least 2^floor((N−2)/12) listed nodes. Counting upper-half target deletions handles merger of different histories.",
+      "evidence": "current Lean library; historical proof/review and measurements newly archived",
+      "role": "certificate-infrastructure",
+      "scope": "specified full DAG language, conditional on certificate existence",
+      "source_ids": [
+        "legacy-source-d3ddad31997a-107296",
+        "legacy-source-cedd8bbc6c76-f69ecc"
+      ],
+      "source_paths": [
+        "CATCHUP_CERTIFICATE_COMPLEXITY_REPORT_20260929_0126_ET.md",
+        "research/certificate_complexity_20260929/HIGH_COUNTER_ARGUMENT.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_certificate_complexity_report_20260929_0126_et--d3ddad31.md",
+        "archive/campaigns/notebooks/certificate_complexity_20260929/HIGH_COUNTER_ARGUMENT--cedd8bbc.md"
+      ],
+      "current_modules": [
+        "CatchUp/Earlier/CertificateComplexityHighCounters.lean",
+        "CatchUp/Earlier/CertificateComplexityGame.lean"
+      ],
+      "declarations": [
+        "initial_certificate_exponential_floor"
+      ],
+      "relationship": "existing result with missing proof-development record",
+      "limitations": "Not a lower bound on arbitrary Lean proofs, symbolic strategies, or compressed certificates. The earlier sqrt(N) argument is retained as an earlier version of the mechanism.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L036",
+      "title": "Structural certificate compression and calibration",
+      "claim": "A sound maximum-equals-deficit target permits compressed leaves; fixtures at N=3,4,7 compare the languages. A paired toy game has exponentially many synchronization subsets yet a short mate-strategy induction.",
+      "evidence": "current Lean library; historical calibration argument",
+      "role": "certificate-infrastructure",
+      "scope": "specific target rule and distinct toy game",
+      "source_ids": [
+        "legacy-source-d3ddad31997a-107296",
+        "legacy-source-abc8fd9469ed-34af63"
+      ],
+      "source_paths": [
+        "CATCHUP_CERTIFICATE_COMPLEXITY_REPORT_20260929_0126_ET.md",
+        "research/certificate_complexity_20260929/ARGUMENT.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_certificate_complexity_report_20260929_0126_et--d3ddad31.md",
+        "archive/campaigns/notebooks/certificate_complexity_20260929/ARGUMENT--abc8fd94.md"
+      ],
+      "current_modules": [
+        "CatchUp/Earlier/CertificateComplexityCompression.lean",
+        "CatchUp/Earlier/CertificateComplexityFixtures.lean"
+      ],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The toy is not a pairing proof for Catch-Up. Modest fixture savings do not establish polynomial-size Catch-Up certificates.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L037",
+      "title": "Fifth endpoint and four-tail forcing forest",
+      "claim": "For N≥23, Q_N(N−4) is nonlosing without parity or smaller-instance hypotheses. Its four upper-opening exclusions for F(m,4)=[2,m]∪[m+3,m+6] hold for m≥17, using a 35-node exact-sum forest with 14 dominating leaves.",
+      "evidence": "archived Lean source; historical standard-axiom check",
+      "role": "positive-family",
+      "scope": "one endpoint; fixed tail length four with unbounded counter sizes",
+      "source_ids": [
+        "legacy-source-39544321807f-845494",
+        "legacy-source-21249313751d-34788e",
+        "legacy-source-aaa1c2157514-298177"
+      ],
+      "source_paths": [
+        "CATCHUP_UNIFORM_DESCENT_REPORT_20260929_0843_ET.md",
+        "scripts/catch_up/LowerRayFifthEndpoint.lean",
+        "research/uniform-descent-20260929/quad_trees.json"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md",
+        "archive/catch_up/LowerRayFifthEndpoint.lean.txt",
+        "archive/campaigns/notebooks/uniform-descent-20260929/quad_trees--aaa1c215.json"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "At m=16, small 11 collides with large m−5=11 in this certificate. The collision invalidates that certificate, not the game-value claim below its bound. No closure for arbitrary tail length was proved.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L038",
+      "title": "Uniform upper-only exact-sum descent fails",
+      "claim": "For m≥6,k≥2 on F(m,k)=[2,m]∪[m+3,m+k+2], an upper-only exact block after opening m+4 must be {m,4}. The structurally permitted next witness m+3 then needs a new complement of four, which is unavailable.",
+      "evidence": "current Lean obstruction; historical supporting argument",
+      "role": "obstruction",
+      "scope": "exact-sum certificate class with all structurally permitted witnesses",
+      "source_ids": [
+        "legacy-source-39544321807f-845494",
+        "legacy-source-4569e7ba14c7-29f7cd"
+      ],
+      "source_paths": [
+        "CATCHUP_UNIFORM_DESCENT_REPORT_20260929_0843_ET.md",
+        "research/uniform-descent-20260929/INDEPENDENT_IDEA.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md",
+        "archive/campaigns/notebooks/uniform-descent-20260929/INDEPENDENT_IDEA--4569e7ba.md"
+      ],
+      "current_modules": [
+        "CatchUp/Earlier/UniformExactSumDescentObstruction.lean"
+      ],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "This does not assert that m+3 actually loses. Excluding it by a new semantic lemma would add information outside the refuted certificate class.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L039",
+      "title": "Complement packing and lower-intruder resource cost",
+      "claim": "For integer q≥3, at most floor((q−1)/2) pairwise disjoint subsets of integers≥2 each sum to q; singleton {q} plus complementary pairs attain the bound. For k≥2 and m≥2k+2, this excludes the consecutive-lower-maximum forcing scheme on F(m,k): it requires k disjoint complements of q=k+2 but only floor((k+1)/2)<k exist. A known lower-intruder repair consumes {2,4,5}, widens the gap, and exits the original family.",
+      "evidence": "informal exact arithmetic argument retained in notebook",
+      "role": "obstruction",
+      "scope": "specified forcing normal form and positive distinct integers",
+      "source_ids": [
+        "legacy-source-39544321807f-845494",
+        "legacy-source-4569e7ba14c7-29f7cd"
+      ],
+      "source_paths": [
+        "CATCHUP_UNIFORM_DESCENT_REPORT_20260929_0843_ET.md",
+        "research/uniform-descent-20260929/INDEPENDENT_IDEA.md"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md",
+        "archive/campaigns/notebooks/uniform-descent-20260929/INDEPENDENT_IDEA--4569e7ba.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical narrative",
+      "limitations": "The packing argument is informal, not Lean-certified here. The forcing-scheme obstruction assumes no lower witness and no upper counter in an exact block, and must handle every structurally permitted witness. It does not rule out semantic branch exclusions or other proof languages. A decreasing counter count alone supplies neither future complements nor terminal closure.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L040",
+      "title": "Geometric three-pair repair",
+      "claim": "For a≥3,b≥a+2,c≥b+2,b≥2a−1, ({a,a+1,b,b+1,c,c+1},1) draws. Without the last separation condition the three-pair state is proved nonwinning. An orphan {a,b,b+1} at deficit a+1 draws for a≥2,b≥a+2.",
+      "evidence": "current Lean library; historical research context",
+      "role": "positive-family",
+      "scope": "exactly three pairs, unbounded sizes and gaps",
+      "source_ids": [
+        "legacy-source-39544321807f-845494",
+        "legacy-source-e48678fe6693-e2db0d"
+      ],
+      "source_paths": [
+        "CATCHUP_UNIFORM_DESCENT_REPORT_20260929_0843_ET.md",
+        "scripts/catch_up/AdjacentPairGeometryRepair.lean"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_uniform_descent_report_20260929_0843_et--39544321.md",
+        "CatchUp/AdjacentPairGeometryRepair.lean"
+      ],
+      "current_modules": [
+        "CatchUp/AdjacentPairGeometryRepair.lean"
+      ],
+      "declarations": [
+        "three_pairs_draw_of_separation",
+        "orphan_plus_draw"
+      ],
+      "relationship": "existing proof with newly archived development",
+      "limitations": "The number of pairs is fixed. Among the first-pair interval states this only covers the already-known P8; arbitrary odd-pair safety remains open under the relevant distinct hypotheses.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L041",
+      "title": "Historical independent exact runs through 32",
+      "claim": "The local packed solver report records exact root and all-opening draws for N=23,24,27,28,31,32, with independent scalar table verification. Its N32 run reports 141,733,920,768 labels and 72 GiB peak allocation.",
+      "evidence": "historical exact computation, source exported previously; large tables unrecovered",
+      "role": "algorithm",
+      "scope": "six initial intervals and their openings",
+      "source_ids": [
+        "legacy-run-packed-20260807"
+      ],
+      "source_paths": [
+        "scripts/catch_up_search/README.md (untracked; provenance in legacy-sources.json)"
+      ],
+      "records": [
+        "archive/campaigns/packed-exact-run-2026-08-07.md",
+        "computation/solvers/packed/README.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical run record",
+      "limitations": "Detailed run records are newly preserved separately from this source pointer. These reproduce earlier work reported by von Stengel and do not extend the known frontier.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L042",
+      "title": "Monte Carlo reconnaissance at 35 and 36",
+      "claim": "Three seeds at two million simulations each for N=35 and N=36 gave empirical means near zero and changing favored openings in the historical report.",
+      "evidence": "historical heuristic output",
+      "role": "heuristic",
+      "scope": "six bounded Monte Carlo runs",
+      "source_ids": [
+        "legacy-run-packed-20260807"
+      ],
+      "source_paths": [
+        "scripts/catch_up_search/README.md (untracked; provenance in legacy-sources.json)"
+      ],
+      "records": [
+        "archive/campaigns/packed-exact-run-2026-08-07.md",
+        "computation/solvers/packed/README.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "missing historical run record",
+      "limitations": "No exact game value, certificate, or stable counterexample signal follows. No rerun is made in this import.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    },
+    {
+      "id": "CU-L043",
+      "title": "External N≤38 evidence and attribution",
+      "claim": "A user-supplied August 8 handoff reports von Stengel computed through N=34 in 2019 and N=38 in May 2024. For the later reported sizes N≥21, draw-capable cases have every opening drawing, and odd-total cases have a unique winning opening among 1,2,3.",
+      "evidence": "external personal communication as reported in a supplied handoff",
+      "role": "provenance",
+      "scope": "historically reported finite cases",
+      "source_ids": [
+        "legacy-source-7d784e0accbc-1f82c9",
+        "handoff-2026-08-08"
+      ],
+      "source_paths": [
+        "CATCHUP_FINAL_REPORT_20260808_2206_ET.md",
+        "user-supplied handoff-2026-08-08 (hash pinned in legacy-sources.json)"
+      ],
+      "records": [
+        "archive/campaigns/reports/catchup_final_report_20260808_2206_et--7d784e0a.md",
+        "archive/campaigns/handoffs/handoff-2026-08-08.md"
+      ],
+      "current_modules": [],
+      "declarations": [],
+      "relationship": "attribution correction",
+      "limitations": "The repository publicly cites the 2019 institutional N≤34 report. The N≤38 report is private-communication evidence, not a public solver certificate. Do not attribute the work to Rao; the supplied correspondence explicitly disclaims his involvement.",
+      "next_step": "Use the linked current route guide; recheck the precise hypotheses before reusing this finding.",
+      "reproduction": "This import checks archived bytes, references and data parseability only. Historical commands are retained in the source records. Current compiled endpoints use the pinned library instructions in verification/README.md. No large historical computation was rerun."
+    }
+  ]
+}

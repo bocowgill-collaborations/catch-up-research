@@ -1,5 +1,7 @@
 # Packed exact interval solver
 
+The [August 7 historical run record](../../../archive/campaigns/packed-exact-run-2026-08-07.md) now preserves the original validation narrative, N=23–32 timings, memory measurements, table checksums and Monte Carlo observations at N=35,36. These are recorded runs, not new measurements. The obsolete frontier claim is corrected; the large table files were absent at their recorded locations.
+
 [catch_up_search.cpp](catch_up_search.cpp) is the existing self-contained C++20 implementation recovered from the other local FormalConjectures checkout. Its Apache-2.0 notice is retained. It contains absolute-score atomic and completed-turn reference solvers, packed bottom-up exact tables, a scalar table verifier, serialization, and a separate Monte Carlo reconnaissance mode. **None is a Lean-certified checker.** The formal normalization theorem does not automatically verify this different implementation.
 
 The file was untracked local research, so its checkout HEAD is context rather than a commit containing the solver. Its precise source is pinned by SHA-256 in [the provenance manifest](../../../verification/solver-sources.json). The old local report discussed computations through N=32; those large tables were not located or rerun in this audit. It is not a new frontier claim, and [earlier work](../../../docs/earlier-work.md) records the public 2019 report through N=34.

@@ -1,0 +1,44 @@
+"""Falsify the proposed smallest-orphan closure for pair peeling.
+
+T is an odd disjoint union of actual adjacent pairs, a is 2 or 3, and every
+pair starts above a+1. Candidate: Position(T union {a}, a-1) and the a+1
+version are nonwinning. A failure obstructs this proposed induction, not
+odd-pair nonloss. The unrestricted a>=2 version already fails for
+a=4, T={6,7}, d=3; restricting a retains the first-pair anchor a=3.
+"""
+import itertools
+import json
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+started = time.monotonic()
+tested = 0
+for n in (1, 3):
+    for starts in itertools.combinations(range(3, 20), n):
+        if any(b <= a + 1 for a, b in zip(starts, starts[1:])):
+            continue
+        paired = sorted(x for a in starts for x in (a, a + 1))
+        for a in (2, 3):
+            if a + 1 >= starts[0]:
+                continue
+            mask = mask_of([a, *paired])
+            for d in (a - 1, a + 1):
+                tested += 1
+                if value(mask, d) == 1:
+                    verify_independently(mask, d)
+                    print(json.dumps({"refuted": True, "a": a,
+                                      "pair_starts": starts,
+                                      "paired_value_at_one": value(mask_of(paired), 1),
+                                      "state": state(mask, d), "tested": tested,
+                                      "elapsed": time.monotonic() - started}))
+                    raise SystemExit(0)
+            value.cache_clear()
+        if time.monotonic() - started > 30:
+            print(json.dumps({"refuted": False, "timed_out": True, "tested": tested}))
+            raise SystemExit(0)
+print(json.dumps({"refuted": False, "tested": tested,
+                  "elapsed": time.monotonic() - started}))

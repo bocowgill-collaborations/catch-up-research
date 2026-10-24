@@ -1,10 +1,12 @@
 # Historical research sources
 
+The [August–September campaigns](campaigns/) retain missing reports, earlier file versions, reviews, probe sources and observations. Their [finding ledger](../results/legacy-findings.md) states each selected claim's evidence and scope. The campaign archive is separate from the 56 source snapshots described below.
+
 For readable findings, failed strategies, experiments and machine-design history, start with the [research notebook](research-notes/). The source archive below has a separate verification status from those narrative reports and from the current Lean library.
 
 This archive preserves earlier conditional reductions, simulation/transfer attempts and diagnostics that would otherwise be absent from the collection. **The `.lean.txt` files are not part of the verified build and have not been freshly replayed here.** Their declarations are historical source statements, not a blanket claim of completed proofs. Some dependencies may be available only as other historical artifacts.
 
-The [inventory](inventory.json) records the source commit, original path, SHA-256, declared theorem names and evidence status of each inspected historical module path. Original source headers are retained. The archive excludes generated payloads over 200 KB, direct native-only/unfinished certificate sources, most execution/audit drivers and files containing local execution paths. Their metadata remains in the inventory. Native-only range claims, including the old “through 28” collection, are not promoted into kernel-certified outcomes.
+The [inventory](inventory.json) records the source commit, original path, SHA-256, declared theorem names and evidence status of each inspected historical module path. Original source headers are retained. That earlier export excluded generated payloads over 200 KB, direct native-only/unfinished certificate sources, most execution/audit drivers and files containing local execution paths. Their metadata remains in the inventory. The later [campaign archive](campaigns/) now retains the small native-only sources and execution/audit drivers as inert text, with public path normalization and separate export hashes. Large generated payloads still require separate recovery and replay. Native-only range claims, including the old “through 28” collection, are not promoted into kernel-certified outcomes.
 
 Original inputs for the 26 verified ports are also retained separately in `ported-inputs/`; the collection checker reconstructs each import/attribute/name-only adaptation from those bytes.
 

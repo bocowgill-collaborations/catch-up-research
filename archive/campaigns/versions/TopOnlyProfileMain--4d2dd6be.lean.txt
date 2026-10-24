@@ -1,0 +1,66 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterEndgame
+
+/-!
+# Catch-Up top-only outcome profiles
+
+Print the complete current-mover outcome word for every subset of the four counters above `N` and
+every reachable-size deficit from zero through `N + 4`.
+-/
+
+namespace CatchUpSearch.TopOnlyProfile
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+
+def counters (N mask : ℕ) : List ℕ :=
+  (availableMoves 4 mask).map fun move => N + move.2
+
+def outcomeLetter : Outcome → String
+  | .win => "W"
+  | .loss => "L"
+  | .draw => "D"
+
+def outcomeWord (N mask : ℕ) : String :=
+  String.join <| (List.range (N + 5)).map fun deficit =>
+    outcomeLetter (referenceValue (counters N mask) deficit)
+
+def formatCounters (values : List ℕ) : String :=
+  "[" ++ String.intercalate "," (values.map toString) ++ "]"
+
+def runSize (N : ℕ) : IO Unit := do
+  IO.println s!"N={N}"
+  for mask in List.range 16 do
+    IO.println <| s!"  mask={mask}; counters={formatCounters (counters N mask)}; " ++
+      s!"d=0..{N + 4}: {outcomeWord N mask}"
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural number, got '{argument}'."
+
+def runArgs (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [4, 8, 11, 16] else args.mapM parseSize
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.TopOnlyProfile
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.TopOnlyProfile.runArgs args

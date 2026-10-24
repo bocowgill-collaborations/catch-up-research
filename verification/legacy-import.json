@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-23",
+  "status": "PASS: archival integration checks",
+  "base_commit": "3293185b6e1e83f5b213f0fec1a25c974fd6255b",
+  "counts": {
+    "refs": 15,
+    "commits": 55,
+    "unique_paths": 236,
+    "path_blob_pairs": 290,
+    "new_source_versions": 183,
+    "handoffs": 3,
+    "historical_run_records": 1,
+    "notebook_entries": 263,
+    "missing_artifact_references": 25,
+    "findings": 43
+  },
+  "source_manifest_sha256": "2e4ce25fb284e77780b6830e3bf4719e76484f07d6e1af3dd3ad1b2ea1871663",
+  "finding_ledger_sha256": "83ba009d6ed9613c7f3a1f283997d24743fb1b05529899619413e97fdea8d3c9",
+  "checks": [
+    {
+      "command": "python3 scripts/check_collection.py",
+      "exit_code": 0,
+      "scope": "96-module catalog, archived bytes, source fidelity, documentation links, 893 noninitial comparisons and 13 roots."
+    },
+    {
+      "command": "python3 scripts/check_legacy_archive.py --source-repository PATH_TO_ORIGINAL_GIT_REPOSITORY",
+      "exit_code": 0,
+      "scope": "All original Git blobs and complete path/blob coverage at all 55 inventoried commits."
+    },
+    {
+      "command": "python3 computation/experiments/check.py",
+      "exit_code": 0,
+      "scope": "Existing bounded C++/Python calibration, including packed solver, every tested first move and corruptions."
+    },
+    {
+      "command": "python3 computation/experiments/check_campaign.py",
+      "exit_code": 0,
+      "scope": "Existing small mutation, shrinking, SMT, golden-outcome and incomplete-result controls."
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0,
+      "scope": "Whitespace check on the staged import."
+    }
+  ],
+  "receipts": {
+    "legacy-import-collection.log": "f3c07f6c1c4b2a3f8db32e51aa1977e6dcec27be342b534f6a2f672e11b30ce7",
+    "legacy-import-source-history.log": "781ff34dda9fbfcc0edf96a289f98a943e82125ece2517955f29a1e3cf6e0542",
+    "legacy-import-solver-smoke.log": "2d5a0d7d9c572fcac441dc3ebf8d3634255fa6fa2a77d2c0494c8e96997eb110",
+    "legacy-import-campaign-smoke.log": "ee8aaae454457c272e3bdd1090d786c2d9b8e25411ea719b01f5ea5763f8dabd"
+  },
+  "proof_source_preservation": {
+    "status": "PASS",
+    "comparison_base": "3293185b6e1e83f5b213f0fec1a25c974fd6255b",
+    "paths": [
+      "CatchUp/",
+      "cryptid/",
+      "lean-toolchain",
+      "lakefile.toml",
+      "lake-manifest.json"
+    ],
+    "changed_paths": []
+  },
+  "lean_builds": "Not rerun: compiled Lean sources and pinned packages are unchanged. Existing proof assurance remains scoped to the prior verification receipts. New .lean.txt records are not compiled. Hosted CI runs independently.",
+  "review": "Manual source and scope review by the importing agent; no new independent mathematical referee.",
+  "deferred": [
+    "25 named temporary artifact references were absent at their recorded locations: 23 from final reports and two August 7 tables added during PR review; see the source manifest for names and reported hashes.",
+    "Large generated historical certificate payloads are still metadata-only; native-evaluation range claims were not replayed or promoted.",
+    "Archived Lean endpoints, protocols and old drivers retain historical status pending separate adaptation and verification.",
+    "Private correspondence, third-party PDFs and administrative assignment prompts are excluded."
+  ],
+  "discrepancies": [
+    "The old N31/N32 novelty claim is corrected. N≤38 is labeled as a personal-communication report rather than a public certified computation.",
+    "Observed failures of a six-counter lift cutoff do not exclude every larger fixed cutoff.",
+    "The two-opening conditional criterion differs from existence of qualifying openings on arbitrary even-total supports.",
+    "A positive-deficit catching parent cannot be treated as a tied root for winning-opening uniqueness."
+  ],
+  "initial_import_snapshot": {
+    "commit": "4a778f693ec4d3d95bc93b343234eebfb69e390d",
+    "source_manifest_sha256": "216278877b358cd6762fd50fde2bec0130bf729e9e9b525a8240c9f5f548229e",
+    "finding_ledger_sha256": "44c62450a5d6038266f8d6dd352e9830bb47a455a69788a3482073db10e0e6fe",
+    "missing_artifact_references": 23,
+    "note": "The original retained import logs describe this snapshot. PR-review changes and fresh checks are recorded separately in verification/pr1-review.md."
+  }
+}

@@ -1,0 +1,75 @@
+import catch_up.CertificateComplexityCompression
+import catch_up.CertificateComplexity
+import catch_up.PartialStrategyExtraction
+
+/-!
+Named small experiment: does the existing available-maximum rule compress the same
+full least-safe policy from the actual root? Only N=3,4,7. No minimization claims.
+Output contains both literal witnesses, byte counts, edge counts, and checker time.
+-/
+
+namespace CatchUpSearch.CertificateComplexityMeasurements
+
+open CatchUp CertificateChecker CertificateComplexityCompression Lean
+
+def playerNat : Player → Nat | .p1 => 1 | .p2 => 2
+
+def stateJson (s : State) : Json := toJson [s.remainingMask, s.deficit, playerNat s.toMove]
+
+def branchJson : StrategyBranch → Json
+  | .terminal => Json.mkObj [("kind", toJson "terminal")]
+  | .owner x => Json.mkObj [("kind", toJson "owner"), ("pick", toJson x)]
+  | .opponent xs => Json.mkObj [("kind", toJson "opponent"), ("picks", toJson xs)]
+
+def dagJson (dag : StrategyDAG) : Json := Json.mkObj [
+  ("N", toJson dag.gameSize), ("protected_player", toJson (playerNat dag.player)),
+  ("root", stateJson dag.root),
+  ("nodes", toJson (dag.nodes.map fun n => Json.mkObj [
+    ("state", stateJson n.state), ("branch", branchJson n.branch)]))]
+
+def edgeCount (dag : StrategyDAG) : Nat := (dag.nodes.map fun n => match n.branch with
+  | .terminal => 0 | .owner _ => 1 | .opponent xs => xs.length).sum
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok a => pure a
+  | .error e => throw (IO.userError e)
+
+def run (N : Nat) : IO Unit := do
+  let root : State := ⟨ExactSolver.fullMask N, 0, .p1⟩
+  let (_, cache) ← orThrow (ExactSolver.solveState N root)
+  let output : SolverOutput := ⟨N, [], ExactSolver.sortedNodes cache⟩
+  unless decide (toGamePosition N root = CertificateComplexity.initialPosition N) do
+    throw (IO.userError "root encoding mismatch")
+  for owner in [Player.p1, Player.p2] do
+    let full ← orThrow (StrategyExtraction.extract output owner root)
+    let target := maximumDeficitTarget N owner
+    let compressed ← orThrow (PartialStrategyExtraction.extractUntil target output owner root)
+    let startFull ← IO.monoNanosNow
+    unless checkCertificate full do throw (IO.userError "full checker rejected")
+    let endFull ← IO.monoNanosNow
+    let startCompressed ← IO.monoNanosNow
+    unless checkPartialCertificate target compressed do throw (IO.userError "partial checker rejected")
+    let endCompressed ← IO.monoNanosNow
+    let fullJson := dagJson full
+    let compressedJson := dagJson compressed
+    let macros := compressed.nodes.filter fun n =>
+      target n.state && !decide (IsTerminalState N n.state)
+    let row := Json.mkObj [
+      ("N", toJson N), ("protected_player", toJson (playerNat owner)),
+      ("classification", toJson "witness upper bounds; not minima"),
+      ("full_nodes", toJson full.nodes.length), ("full_edges", toJson (edgeCount full)),
+      ("full_json_bytes", toJson fullJson.compress.utf8ByteSize),
+      ("full_checker_ns", toJson (endFull - startFull)),
+      ("compressed_nodes", toJson compressed.nodes.length),
+      ("compressed_edges", toJson (edgeCount compressed)),
+      ("compressed_json_bytes", toJson compressedJson.compress.utf8ByteSize),
+      ("compressed_checker_ns", toJson (endCompressed - startCompressed)),
+      ("nonterminal_macro_leaves", toJson macros.length),
+      ("full", fullJson), ("compressed", compressedJson)]
+    IO.println row.compress
+
+end CatchUpSearch.CertificateComplexityMeasurements
+
+def main : IO Unit := do
+  for N in [3, 4, 7] do
+    CatchUpSearch.CertificateComplexityMeasurements.run N

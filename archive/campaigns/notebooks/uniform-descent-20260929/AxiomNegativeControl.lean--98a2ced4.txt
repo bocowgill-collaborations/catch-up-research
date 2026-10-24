@@ -1,0 +1,17 @@
+import catch_up.LowerRayFifthEndpointAudit
+
+/-!
+Intentional failing negative control, not a production module.
+Run with lake env lean; success is exit nonzero with the rejected sorryAx.
+No new axiom or sorry is declared here.
+-/
+
+open Lean Elab Command in
+run_cmd do
+  let declaration := ``CatchUp.value_of_even_mul_succ_self_div_two
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  let actual ← Lean.collectAxioms declaration
+  for axiomName in actual do
+    unless allowed.contains axiomName do
+      throwError "Negative control rejected axiom in {declaration}: {axiomName}"
+  logInfo "Negative control failed to detect the open conjecture dependency"

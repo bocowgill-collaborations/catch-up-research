@@ -1,0 +1,89 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.DenseThreeHoleCertificateChecker
+import catch_up.PartialCertificateTargets
+import catch_up.PartialStrategyExtraction
+
+/-!
+# Shared dense-three-hole certificate at eleven counters
+
+This module solves every bounded root occurring in `DenseThreeHoleNonloss 11` in one memo table,
+extracts a shared partial strategy DAG, and passes it through the independent local-obligation and
+root-coverage checker. The exact solver and extractor remain untrusted certificate generators.
+-/
+
+namespace CatchUpSearch.DenseThreeHoleN11Certificate
+
+open CatchUp
+open ExactSolver
+open CertificateChecker
+open PartialCertificateTargets
+open PartialStrategyExtraction
+
+/-- All encoded roots satisfying the decidable dense hypotheses at endpoint eleven. -/
+def roots : List State :=
+  (List.range (Nat.shiftLeft 1 11)).flatMap fun mask =>
+    (List.range 12).filterMap fun deficit =>
+      let counters := availableMoves 11 mask
+      let total := (counters.map fun move => move.2).sum
+      if 11 - counters.length ≤ 3 &&
+          decide (deficit ≤ total) && decide (Even (deficit + total)) then
+        some ⟨mask, deficit, .p1⟩
+      else
+        none
+
+/-- Solve every dense root while sharing one exact-solver transposition table. -/
+private def solveRoots : SolverM Unit := do
+  for state in roots do
+    let _ ← solveAux 11 12 state
+
+/-- The roots and complete solved graph consumed by the untrusted strategy extractor. -/
+def solved : List State × SolverOutput :=
+  match solveRoots.run {} with
+  | .error _ => ([], ⟨11, [], []⟩)
+  | .ok (_, cache) =>
+      (roots, ⟨11, roots.map fun state => (0, state), sortedNodes cache⟩)
+
+/-- The root and nodes of the extracted shared partial strategy DAG. -/
+def certificatePayload : State × List StrategyNode :=
+  match extractManyUntil (smallSafeTarget 6 11 .p1) solved.2 .p1 solved.1 with
+  | .error _ => (⟨0, 0, .p1⟩, [])
+  | .ok dag => (dag.root, dag.nodes)
+
+/-- The shared player-one strategy certificate. -/
+def certificate : StrategyDAG :=
+  ⟨11, .p1, certificatePayload.1, certificatePayload.2⟩
+
+/-- Small residual states are discharged by the proof-backed exact safety classifier. -/
+def target : TargetPredicate :=
+  smallSafeTarget 6 11 .p1
+
+/-- The independently checked certificate covers every dense-three-hole root at eleven. -/
+@[category test, AMS 91]
+theorem certificate_checks :
+    DenseThreeHoleCertificateChecker.checkCertificate 11 target certificate = true := by
+  native_decide
+
+/-- Every catchable even position with at most three holes in `Icc 1 11` is nonlosing. -/
+@[category test, AMS 91]
+theorem dense_three_hole_nonloss_eleven : DenseThreeHoleNonloss 11 := by
+  apply DenseThreeHoleCertificateChecker.dense_three_hole_nonloss_of_check_certificate
+    11 target certificate
+  · simpa [target] using small_safe_target_sound 6 certificate
+  · exact certificate_checks
+
+end CatchUpSearch.DenseThreeHoleN11Certificate

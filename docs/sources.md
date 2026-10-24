@@ -13,6 +13,8 @@ Checked 23 October 2026. This is a curated starting point, not a claim that ever
 
 This source predates the 2026 solver repositories below and reports a larger range. Their runs must not be described here as the first computations through N=28 or as extending the known range. The [Lean uniqueness theorem](../CatchUp/WinningOpening.lean) formalizes an already reported mathematical fact; the [opening guide](openings.md) explains the argument and its connection to existing pair-deletion results. A public solver/certificate archive for the LSE report has not been located in this audit. Source recovery, semantic auditing and small calibration cases should precede any proposed large replay; [exact-computation notes](exact-computation.md) explain that distinction.
 
+The newly archived [August 8 research handoff](../archive/campaigns/handoffs/handoff-2026-08-08.md) records a personal communication from von Stengel reporting computations through **N=38 in May 2024**. The [finding ledger, CU-L043](../results/legacy-findings.md) identifies that evidence separately from the public N≤34 report. Raw correspondence and privately supplied slides are not reproduced. Our historical N=31,32 runs are independent reproductions of earlier reported values, rather than frontier extensions.
+
 ## Public solver implementations
 
 | Project | What the source reports | Assurance in this collection |

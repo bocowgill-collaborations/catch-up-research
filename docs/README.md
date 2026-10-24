@@ -15,6 +15,7 @@ Catch-Up has simple rules and a difficult distinction: a draw can be possible wi
 | Understand exact computation and parity compression | [What exact computation can reuse](exact-computation.md) |
 | Understand certificate-size limits and compression | [Proof size](proof-size.md) |
 | Browse recovered local work and older attempts | [Earlier work](earlier-work.md) |
+| Follow the August–September proof attempts and failures | [Finding ledger](../results/legacy-findings.md), [campaign archive](../archive/campaigns/) and its chronological notebook index |
 | Find papers, earlier computations and code | [Reading and related work](sources.md) |
 | Pick a research problem | [Open questions](../results/open-questions.md) |
 | See why past approaches succeeded or failed | [Research notebook](../archive/research-notes/), [experimental findings](../results/experimental-findings.md) |

@@ -1,0 +1,52 @@
+"""Falsify the stated odd-union-of-adjacent-pairs lemma on small supports.
+
+Reuse the audited normalized recurrence. Stop at the first loss; validate that
+state and all first edges against fixed-player absolute-score play. This is not
+an interval outcome-table expansion. Absence of a loss proves nothing uniform.
+"""
+import itertools
+import argparse
+import json
+import random
+import sys
+import time
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently, absolute_value
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--max-cases", type=int, default=691)
+parser.add_argument("--seconds", type=float, default=60)
+args = parser.parse_args()
+started = time.monotonic()
+tested = 0
+found = False
+first_win = None
+rng = random.Random(20260929)
+families = itertools.chain(
+    itertools.combinations(range(2, 19), 3),
+    (sorted(rng.sample(range(2, 35), 5)) for _ in range(500)),
+    (sorted(rng.sample(range(2, 65), 7)) for _ in range(100)),
+)
+for starts in families:
+    if any(b <= a + 1 for a, b in zip(starts, starts[1:])):
+        continue
+    support = sorted(x for a in starts for x in (a, a + 1))
+    mask = mask_of(support)
+    tested += 1
+    result = value(mask, 1)
+    if result == 1 and first_win is None:
+        first_win = {"pair_starts": starts, "state": state(mask, 1)}
+    if result == -1:
+        verify_independently(mask, 1)
+        print(json.dumps({"counterexample": state(mask, 1), "pair_starts": starts,
+                          "tested": tested}), flush=True)
+        found = True
+        break
+    value.cache_clear()
+    if tested >= args.max_cases or time.monotonic() - started > args.seconds:
+        break
+print(json.dumps({"found": found, "tested": tested,
+                  "first_win": first_win,
+                  "elapsed_seconds": time.monotonic() - started}))

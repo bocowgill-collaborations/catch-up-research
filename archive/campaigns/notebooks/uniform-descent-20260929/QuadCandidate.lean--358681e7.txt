@@ -1,0 +1,564 @@
+/-!
+STALE EARLY DRAFT: retained as an experiment, not a build target or certificate.
+The accepted production proof is scripts/catch_up/LowerRayFifthEndpoint.lean.
+This draft predates its heartbeat limit, warning fixes, and public theorem names.
+-/
+import catch_up.LowerRayFourthEndpoint
+namespace CatchUp
+
+def upperQuadrupleResidual (m : ℕ) : Finset ℕ :=
+  Finset.Icc 2 m ∪ {m + 3, m + 4, m + 5, m + 6}
+
+/-- Exclusion of upper opening 3 in the four-counter tail. -/
+@[category API, AMS 91]
+theorem upper_quadruple_3_ne_loss (m : ℕ) (hm : 17 ≤ m) :
+    (afterOpening (upperQuadrupleResidual m) (m + 3)).value ≠ .loss := by
+  apply Position.value_ne_loss_of_exact_sum_residuals _ {3, m} _ m
+  · simp
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    omega
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    simp [upperQuadrupleResidual]
+    omega
+  · simp [show 3 ≠ m by omega]
+    omega
+  · intro w hw hgt
+    have hcases : w = (m + 4) ∨ w = (m + 5) ∨ w = (m + 6) := by
+      simp [upperQuadrupleResidual] at hw
+      omega
+    rcases hcases with rfl | rfl | rfl
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {5, (m - 1)} _ (m - 1)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 5 ≠ (m - 1) by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 5) ∨ w = (m + 6) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        rcases hcases with rfl | rfl
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {7, (m - 2)} _ (m - 2)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 7 ≠ (m - 2) by omega]
+            omega
+          · intro w hw hgt
+            have hcases : w = (m + 6) := by
+              simp [upperQuadrupleResidual] at hw
+              omega
+            subst w
+            apply Position.value_ne_loss_of_exact_sum_residuals _ {9, (m - 3)} _ (m - 3)
+            · simp
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              omega
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              simp [upperQuadrupleResidual]
+              omega
+            · simp [show 9 ≠ (m - 3) by omega]
+              omega
+            · intro w hw hgt
+              simp [upperQuadrupleResidual] at hw
+              omega
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {8, (m - 2)} _ (m - 2)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 8 ≠ (m - 2) by omega]
+            omega
+          · intro w hw hgt
+            have hcases : w = (m + 5) := by
+              simp [upperQuadrupleResidual] at hw
+              omega
+            subst w
+            apply Position.value_ne_loss_of_exact_sum_residuals _ {2, 6, (m - 3)} _ (m - 3)
+            · simp
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              omega
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              simp [upperQuadrupleResidual]
+              omega
+            · simp [show 2 ≠ 6 by omega, show 2 ≠ (m - 3) by omega, show 6 ≠ (m - 3) by omega]
+              omega
+            · intro w hw hgt
+              simp [upperQuadrupleResidual] at hw
+              omega
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {6, (m - 1)} _ (m - 1)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 6 ≠ (m - 1) by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 4) ∨ w = (m + 6) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        rcases hcases with rfl | rfl
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {2, 4, (m - 2)} _ (m - 2)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 2 ≠ 4 by omega, show 2 ≠ (m - 2) by omega, show 4 ≠ (m - 2) by omega]
+            omega
+          · intro w hw hgt
+            have hcases : w = (m + 6) := by
+              simp [upperQuadrupleResidual] at hw
+              omega
+            subst w
+            apply Position.value_ne_loss_of_exact_sum_residuals _ {9, (m - 3)} _ (m - 3)
+            · simp
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              omega
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              simp [upperQuadrupleResidual]
+              omega
+            · simp [show 9 ≠ (m - 3) by omega]
+              omega
+            · intro w hw hgt
+              simp [upperQuadrupleResidual] at hw
+              omega
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {2, (m + 4)} _ (m + 4)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 2 ≠ (m + 4) by omega]
+            omega
+          · intro w hw hgt
+            simp [upperQuadrupleResidual] at hw
+            omega
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {2, (m + 4)} _ (m + 4)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 2 ≠ (m + 4) by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 5) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        subst w
+        apply Position.value_ne_loss_of_exact_sum_residuals _ {6, (m - 1)} _ (m - 1)
+        · simp
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          omega
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          simp [upperQuadrupleResidual]
+          omega
+        · simp [show 6 ≠ (m - 1) by omega]
+          omega
+        · intro w hw hgt
+          simp [upperQuadrupleResidual] at hw
+          omega
+
+/-- Exclusion of upper opening 4 in the four-counter tail. -/
+@[category API, AMS 91]
+theorem upper_quadruple_4_ne_loss (m : ℕ) (hm : 17 ≤ m) :
+    (afterOpening (upperQuadrupleResidual m) (m + 4)).value ≠ .loss := by
+  apply Position.value_ne_loss_of_exact_sum_residuals _ {4, m} _ m
+  · simp
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    omega
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    simp [upperQuadrupleResidual]
+    omega
+  · simp [show 4 ≠ m by omega]
+    omega
+  · intro w hw hgt
+    have hcases : w = (m + 3) ∨ w = (m + 5) ∨ w = (m + 6) := by
+      simp [upperQuadrupleResidual] at hw
+      omega
+    rcases hcases with rfl | rfl | rfl
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {5, (m - 2)} _ (m - 2)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 5 ≠ (m - 2) by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m - 1) ∨ w = (m + 5) ∨ w = (m + 6) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        rcases hcases with rfl | rfl | rfl
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {2, (m - 3)} _ (m - 3)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 2 ≠ (m - 3) by omega]
+            omega
+          · intro w hw hgt
+            have hcases : w = (m + 5) ∨ w = (m + 6) := by
+              simp [upperQuadrupleResidual] at hw
+              omega
+            rcases hcases with rfl | rfl
+            · apply Position.value_ne_loss_of_exact_sum_residuals _ {9, (m - 4)} _ (m - 4)
+              · simp
+              · intro x hx
+                simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                omega
+              · intro x hx
+                simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                simp [upperQuadrupleResidual]
+                omega
+              · simp [show 9 ≠ (m - 4) by omega]
+                omega
+              · intro w hw hgt
+                have hcases : w = (m + 6) := by
+                  simp [upperQuadrupleResidual] at hw
+                  omega
+                subst w
+                apply Position.value_ne_loss_of_exact_sum_residuals _ {11, (m - 5)} _ (m - 5)
+                · simp
+                · intro x hx
+                  simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                  omega
+                · intro x hx
+                  simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                  simp [upperQuadrupleResidual]
+                  omega
+                · simp [show 11 ≠ (m - 5) by omega]
+                  omega
+                · intro w hw hgt
+                  simp [upperQuadrupleResidual] at hw
+                  omega
+            · apply Position.value_ne_loss_of_exact_sum_residuals _ {10, (m - 4)} _ (m - 4)
+              · simp
+              · intro x hx
+                simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                omega
+              · intro x hx
+                simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                simp [upperQuadrupleResidual]
+                omega
+              · simp [show 10 ≠ (m - 4) by omega]
+                omega
+              · intro w hw hgt
+                have hcases : w = (m + 5) := by
+                  simp [upperQuadrupleResidual] at hw
+                  omega
+                subst w
+                apply Position.value_ne_loss_of_exact_sum_residuals _ {3, 7, (m - 5)} _ (m - 5)
+                · simp
+                · intro x hx
+                  simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                  omega
+                · intro x hx
+                  simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+                  simp [upperQuadrupleResidual]
+                  omega
+                · simp [show 3 ≠ 7 by omega, show 3 ≠ (m - 5) by omega, show 7 ≠ (m - 5) by omega]
+                  omega
+                · intro w hw hgt
+                  simp [upperQuadrupleResidual] at hw
+                  omega
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {6, (m - 1)} _ (m - 1)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 6 ≠ (m - 1) by omega]
+            omega
+          · intro w hw hgt
+            have hcases : w = (m + 6) := by
+              simp [upperQuadrupleResidual] at hw
+              omega
+            subst w
+            apply Position.value_ne_loss_of_exact_sum_residuals _ {9, (m - 3)} _ (m - 3)
+            · simp
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              omega
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              simp [upperQuadrupleResidual]
+              omega
+            · simp [show 9 ≠ (m - 3) by omega]
+              omega
+            · intro w hw hgt
+              simp [upperQuadrupleResidual] at hw
+              omega
+        · apply Position.value_ne_loss_of_exact_sum_residuals _ {7, (m - 1)} _ (m - 1)
+          · simp
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            omega
+          · intro x hx
+            simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+            simp [upperQuadrupleResidual]
+            omega
+          · simp [show 7 ≠ (m - 1) by omega]
+            omega
+          · intro w hw hgt
+            have hcases : w = (m + 5) := by
+              simp [upperQuadrupleResidual] at hw
+              omega
+            subst w
+            apply Position.value_ne_loss_of_exact_sum_residuals _ {8, (m - 3)} _ (m - 3)
+            · simp
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              omega
+            · intro x hx
+              simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+              simp [upperQuadrupleResidual]
+              omega
+            · simp [show 8 ≠ (m - 3) by omega]
+              omega
+            · intro w hw hgt
+              simp [upperQuadrupleResidual] at hw
+              omega
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {2, (m + 3)} _ (m + 3)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 2 ≠ (m + 3) by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 6) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        subst w
+        apply Position.value_ne_loss_of_exact_sum_residuals _ {7, (m - 1)} _ (m - 1)
+        · simp
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          omega
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          simp [upperQuadrupleResidual]
+          omega
+        · simp [show 7 ≠ (m - 1) by omega]
+          omega
+        · intro w hw hgt
+          simp [upperQuadrupleResidual] at hw
+          omega
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {3, (m + 3)} _ (m + 3)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 3 ≠ (m + 3) by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 5) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        subst w
+        apply Position.value_ne_loss_of_exact_sum_residuals _ {6, (m - 1)} _ (m - 1)
+        · simp
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          omega
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          simp [upperQuadrupleResidual]
+          omega
+        · simp [show 6 ≠ (m - 1) by omega]
+          omega
+        · intro w hw hgt
+          simp [upperQuadrupleResidual] at hw
+          omega
+
+/-- Exclusion of upper opening 5 in the four-counter tail. -/
+@[category API, AMS 91]
+theorem upper_quadruple_5_ne_loss (m : ℕ) (hm : 17 ≤ m) :
+    (afterOpening (upperQuadrupleResidual m) (m + 5)).value ≠ .loss := by
+  apply Position.value_ne_loss_of_exact_sum_residuals _ {2, (m + 3)} _ (m + 3)
+  · simp
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    omega
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    simp [upperQuadrupleResidual]
+    omega
+  · simp [show 2 ≠ (m + 3) by omega]
+    omega
+  · intro w hw hgt
+    have hcases : w = (m + 4) ∨ w = (m + 6) := by
+      simp [upperQuadrupleResidual] at hw
+      omega
+    rcases hcases with rfl | rfl
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {4, m} _ m
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 4 ≠ m by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 6) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        subst w
+        apply Position.value_ne_loss_of_exact_sum_residuals _ {7, (m - 1)} _ (m - 1)
+        · simp
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          omega
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          simp [upperQuadrupleResidual]
+          omega
+        · simp [show 7 ≠ (m - 1) by omega]
+          omega
+        · intro w hw hgt
+          simp [upperQuadrupleResidual] at hw
+          omega
+    · apply Position.value_ne_loss_of_exact_sum_residuals _ {6, m} _ m
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 6 ≠ m by omega]
+        omega
+      · intro w hw hgt
+        have hcases : w = (m + 4) := by
+          simp [upperQuadrupleResidual] at hw
+          omega
+        subst w
+        apply Position.value_ne_loss_of_exact_sum_residuals _ {5, (m - 1)} _ (m - 1)
+        · simp
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          omega
+        · intro x hx
+          simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+          simp [upperQuadrupleResidual]
+          omega
+        · simp [show 5 ≠ (m - 1) by omega]
+          omega
+        · intro w hw hgt
+          simp [upperQuadrupleResidual] at hw
+          omega
+
+/-- Exclusion of upper opening 6 in the four-counter tail. -/
+@[category API, AMS 91]
+theorem upper_quadruple_6_ne_loss (m : ℕ) (hm : 17 ≤ m) :
+    (afterOpening (upperQuadrupleResidual m) (m + 6)).value ≠ .loss := by
+  apply Position.value_ne_loss_of_exact_sum_residuals _ {2, (m + 4)} _ (m + 4)
+  · simp
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    omega
+  · intro x hx
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+    simp [upperQuadrupleResidual]
+    omega
+  · simp [show 2 ≠ (m + 4) by omega]
+    omega
+  · intro w hw hgt
+    have hcases : w = (m + 5) := by
+      simp [upperQuadrupleResidual] at hw
+      omega
+    subst w
+    apply Position.value_ne_loss_of_exact_sum_residuals _ {5, m} _ m
+    · simp
+    · intro x hx
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+      omega
+    · intro x hx
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+      simp [upperQuadrupleResidual]
+      omega
+    · simp [show 5 ≠ m by omega]
+      omega
+    · intro w hw hgt
+      have hcases : w = (m + 3) := by
+        simp [upperQuadrupleResidual] at hw
+        omega
+      subst w
+      apply Position.value_ne_loss_of_exact_sum_residuals _ {4, (m - 1)} _ (m - 1)
+      · simp
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        omega
+      · intro x hx
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hx
+        simp [upperQuadrupleResidual]
+        omega
+      · simp [show 4 ≠ (m - 1) by omega]
+        omega
+      · intro w hw hgt
+        simp [upperQuadrupleResidual] at hw
+        omega
+
+end CatchUp

@@ -1,0 +1,150 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+
+/-!
+# Catch-Up all-reply opening-turn profiles
+
+For each protected player and every legal first opponent counter at one size, print a shortest
+basin-preserving sequence that completes the protected player's turn. Unlike the common-turn
+intersection tool, this profiles the newly available top counters independently at every size.
+
+This is bounded discovery instrumentation. It neither states nor proves a parametric policy.
+-/
+
+namespace CatchUpSearch.AllReplyTurn
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourCounterAttractor
+
+/-- Basin-preserving legal moves at one solved node. -/
+def goodMoves (cache : BasinCache) (node : SolvedNode) : List MoveEvaluation :=
+  node.moves.filter fun move => basinContains cache move.child
+
+/-- Enumerate basin-preserving sequences that end the owner's current turn. -/
+def successfulTurns (nodes : SolvedIndex) (cache : BasinCache) (owner : Player) :
+    ℕ → State → Except String (List (List ℕ))
+  | 0, state => throw s!"successful-turn enumeration exhausted fuel at {repr state}"
+  | fuel + 1, state => do
+      if state.toMove ≠ owner then
+        return [[]]
+      let node ← match nodes[state.cacheKey]? with
+        | none => throw s!"successful-turn enumeration is missing {repr state}"
+        | some node => pure node
+      let mut sequences := []
+      for move in goodMoves cache node do
+        if move.child.toMove ≠ owner then
+          sequences := [move.counter] :: sequences
+        else
+          for tail in ← successfulTurns nodes cache owner fuel move.child do
+            sequences := (move.counter :: tail) :: sequences
+      return sequences.reverse
+
+/-- States where the owner first replies after the fixed opening protocol. -/
+def firstOwnerStates (output : SolverOutput) (nodes : SolvedIndex) (owner : Player) :
+    Except String (List (ℕ × State)) := do
+  let root ← match output.openingRoots.find? fun pair => decide (pair.1 = 1) with
+    | none => throw "opening-1 root is missing"
+    | some pair => pure pair.2
+  let rootNode ← match nodes[root.cacheKey]? with
+    | none => throw "opening-1 solved node is missing"
+    | some node => pure node
+  match owner with
+  | .p1 => pure <| rootNode.moves.map fun move => (move.counter, move.child)
+  | .p2 => do
+      let rootChoice ← match rootNode.moves.find? fun move => decide (move.counter = 2) with
+        | none => throw "opening root has no counter 2"
+        | some move => pure move
+      let opponentNode ← match nodes[rootChoice.child.cacheKey]? with
+        | none => throw "opening-2 child is missing"
+        | some node => pure node
+      pure <| opponentNode.moves.map fun move => (move.counter, move.child)
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def formatSequence (sequence : List ℕ) : String :=
+  "[" ++ String.intercalate "," (sequence.map toString) ++ "]"
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural number, got '{argument}'."
+
+/-- Choose a first shortest sequence, retaining discovery order to break ties. -/
+def shortestSequence? : List (List ℕ) → Option (List ℕ)
+  | [] => none
+  | first :: rest =>
+      some <| rest.foldl (fun best candidate =>
+        if candidate.length < best.length then candidate else best) first
+
+/-- Follow a sequence already selected from the basin-preserving move tree. -/
+def followSequence (nodes : SolvedIndex) (cache : BasinCache) (owner : Player) :
+    State → List ℕ → Except String State
+  | state, [] => pure state
+  | state, counter :: counters => do
+      if state.toMove ≠ owner then
+        throw s!"sequence continues after the owner's turn at {repr state}"
+      let node ← match nodes[state.cacheKey]? with
+        | none => throw s!"sequence following is missing {repr state}"
+        | some node => pure node
+      let move ← match (goodMoves cache node).find? fun move => decide (move.counter = counter) with
+        | none => throw s!"counter {counter} is not basin-preserving at {repr state}"
+        | some move => pure move
+      followSequence nodes cache owner move.child counters
+
+def replyClass (N reply : ℕ) : String :=
+  if reply ≤ N then "old" else s!"top+{reply - N}"
+
+def profileOwner (N : ℕ) (output : SolverOutput) (nodes : SolvedIndex) (owner : Player) :
+    Except String (List String) := do
+  let cache ← computeBasin .explicitEndgame N owner output
+  let starts ← firstOwnerStates output nodes owner
+  starts.mapM fun (reply, state) => do
+    let sequences ← successfulTurns nodes cache owner (output.gameSize + 1) state
+    let sequence ← match shortestSequence? sequences with
+      | none => throw s!"no complete basin-preserving turn after reply {reply}"
+      | some sequence => pure sequence
+    let finalState ← followSequence nodes cache owner state sequence
+    pure (s!"{reply}({replyClass N reply}):{formatSequence sequence}" ++
+      s!"->d{finalState.deficit}/{playerName finalState.toMove}")
+
+def runSize (N : ℕ) : IO Unit := do
+  let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  let nodes := indexSolvedNodes output
+  IO.println s!"N={N}"
+  for owner in [.p1, .p2] do
+    let profiles ← orThrow (profileOwner N output nodes owner)
+    IO.println s!"  owner={playerName owner}: {String.intercalate "; " profiles}"
+
+def run (sizes : List ℕ) : IO Unit :=
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.AllReplyTurn
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [7, 8, 11, 12] else
+    args.mapM CatchUpSearch.AllReplyTurn.parseSize
+  CatchUpSearch.AllReplyTurn.run sizes

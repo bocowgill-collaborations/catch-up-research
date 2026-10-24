@@ -10,4 +10,6 @@ AI systems, including Codex and collaborating proof/search agents, assisted with
 
 Sources are distributed under the [Apache 2.0 license](LICENSE), retaining existing notices. Dependency licenses remain with their respective projects. No priority or exhaustive-coverage claim is made.
 
+The August–September archival import used Codex to compare local Git versions, prepare public copies, organize a finding ledger and check provenance. Historical reviewer comments remain historical assessments. This import adds no new proof verification or large computation; its [manifest](verification/legacy-sources.json) distinguishes original bytes, public adaptations and missing artifacts. Raw private correspondence and third-party PDFs are not included.
+
 Bernhard von Stengel's [2019 LSE abstract](https://www.lse.ac.uk/Mathematics/assets/documents/Events-Archive/CGO-PhD/PhD-Seminar-on-Combinatorics-2019-update.pdf#page=5) reports computations through N=34 and uniqueness of a winning opening. These predate the linked 2026 solver projects. The corresponding Lean uniqueness theorem is a formalization of an already reported fact, not a claim of discovering it here. See the [reading guide](docs/sources.md) for the distinction between historical reports, reproduced computations and kernel-checked claims.

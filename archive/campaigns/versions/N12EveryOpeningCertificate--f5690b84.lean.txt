@@ -1,0 +1,109 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.N12Certificate
+import catch_up.PartialStrategyExtraction
+import catch_up.ReplyDigraphReduction
+
+/-!
+# Generated all-opening player-one certificate at twelve counters
+
+This module keeps the deterministic extractor inside the definition, but the independent checker
+and its soundness theorem remain the trust boundary.
+-/
+
+namespace CatchUpSearch.N12EveryOpeningCertificate
+
+open CatchUp
+open CertificateChecker
+open PartialCertificateTargets
+open PartialStrategyExtraction
+
+def solvedOutput : SolverOutput :=
+  match ExactSolver.solveGame 12 with
+  | .ok output => output
+  | .error _ => ⟨12, [], []⟩
+
+def playerOneNodes : List StrategyNode :=
+  match extractAllOpeningsUntil (smallSafeTarget 6 12 .p1) solvedOutput .p1 with
+  | .ok dag => dag.nodes
+  | .error _ => []
+
+def playerOneDAG : StrategyDAG :=
+  ⟨12, .p1, N12Certificate.openingState 1, playerOneNodes⟩
+
+def playerOneTarget : TargetPredicate :=
+  smallSafeTarget 6 playerOneDAG.gameSize playerOneDAG.player
+
+@[category test, AMS 91]
+theorem player_one_certificate_checks :
+    checkPartialCertificate playerOneTarget playerOneDAG = true := by
+  native_decide
+
+def openingStates : List State :=
+  [N12Certificate.openingState 1, N12Certificate.openingState 2,
+    N12Certificate.openingState 3, N12Certificate.openingState 4,
+    N12Certificate.openingState 5, N12Certificate.openingState 6,
+    N12Certificate.openingState 7, N12Certificate.openingState 8,
+    N12Certificate.openingState 9, N12Certificate.openingState 10,
+    N12Certificate.openingState 11, N12Certificate.openingState 12]
+
+set_option maxHeartbeats 1000000 in
+@[category test, AMS 91]
+theorem player_one_contains_all_opening_states :
+    openingStates.all fun state => decide (ContainsState playerOneDAG state) := by
+  native_decide
+
+@[category test, AMS 91]
+theorem player_one_contains_opening_state (x : ℕ) (hx : x ∈ Finset.Icc 1 12) :
+    ContainsState playerOneDAG (N12Certificate.openingState x) := by
+  have hxLower : 1 ≤ x := (Finset.mem_Icc.mp hx).1
+  have hxUpper : x ≤ 12 := (Finset.mem_Icc.mp hx).2
+  have hmember : N12Certificate.openingState x ∈ openingStates := by
+    interval_cases x <;> simp [openingStates]
+  have hall := List.all_eq_true.mp player_one_contains_all_opening_states
+  exact of_decide_eq_true (hall _ hmember)
+
+@[category test, AMS 91]
+theorem player_one_can_avoid_loss (x : ℕ) (hx : x ∈ Finset.Icc 1 12) :
+    CanAvoidLoss .p1 (GamePosition.afterOpening (Finset.Icc 1 12) x) := by
+  have htarget : TargetSound playerOneTarget playerOneDAG := by
+    simpa only [playerOneTarget] using small_safe_target_sound 6 playerOneDAG
+  have hvalid : PartialDAGValid playerOneTarget playerOneDAG :=
+    of_decide_eq_true (by
+      simpa only [checkPartialCertificate] using player_one_certificate_checks)
+  have hsafe := can_avoid_loss_of_contains_state_partial playerOneTarget playerOneDAG htarget
+    hvalid (N12Certificate.openingState x) (player_one_contains_opening_state x hx)
+  change CanAvoidLoss .p1 (toGamePosition 12 (N12Certificate.openingState x)) at hsafe
+  rw [N12Certificate.to_game_position_opening_state x hx] at hsafe
+  exact hsafe
+
+@[category test, AMS 91]
+theorem every_opening_draw : EveryOpeningDraw (Finset.Icc 1 12) := by
+  intro x hx
+  have hp1 := player_one_can_avoid_loss x hx
+  have hp2 := N12Certificate.player_two_can_avoid_loss x hx
+  rw [can_avoid_loss_iff_value] at hp1 hp2
+  have hp1' : (afterOpening (Finset.Icc 1 12) x).value ≠ .win := by
+    simpa [GamePosition.afterOpening] using hp1
+  have hp2' : (afterOpening (Finset.Icc 1 12) x).value ≠ .loss := by
+    simpa [GamePosition.afterOpening] using hp2
+  rcases hvalue : (afterOpening (Finset.Icc 1 12) x).value with _ | _ | _
+  · exact (hp1' hvalue).elim
+  · exact (hp2' hvalue).elim
+  · rfl
+
+end CatchUpSearch.N12EveryOpeningCertificate

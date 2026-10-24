@@ -1,0 +1,249 @@
+#!/usr/bin/env python3
+"""Exact completed-margin minimax and causal atomic-two-buffer controller search.
+
+Protected player is 0. State ownership masks are permanent; bit x-1 is counter x.
+Each root starts with absolute scores (0,1). Controller actions commit to a side
+before an adversarial move is revealed. Shadow protected moves range over ALL
+strict-win-preserving moves, not merely margin-optimal ones.
+Buffers compare raw remaining sets; payoff completion does not erase counters.
+"""
+
+from dataclasses import dataclass
+from functools import cache
+import json
+import argparse
+
+
+def mask(xs):
+    return sum(1 << (x-1) for x in xs)
+
+
+@cache
+def counters(bits):
+    return tuple(i+1 for i in range(bits.bit_length()) if bits & (1 << i))
+
+
+@cache
+def total(bits):
+    return sum(counters(bits))
+
+
+@cache
+def margin(bits, deficit):
+    if not bits or total(bits) < deficit:
+        return total(bits)-deficit
+    return max(margin(bits ^ (1 << (x-1)), deficit-x) if x < deficit else
+               -margin(bits ^ (1 << (x-1)), x-deficit) for x in counters(bits))
+
+
+@cache
+def absolute_margin(xs, s0, s1, mover):
+    """Independent absolute-score recurrence WITHOUT the early-terminal cutoff.
+
+    When catching up is impossible the same player takes every remaining counter,
+    in any order, so this independently checks the notional completion convention.
+    """
+    scores = (s0,s1)
+    if not xs:
+        return s0-s1
+    results = []
+    for x in xs:
+        updated = list(scores)
+        updated[mover] += x
+        nxt = 1-mover if updated[mover] >= updated[1-mover] else mover
+        results.append(absolute_margin(tuple(z for z in xs if z != x), *updated, nxt))
+    return (max if mover == 0 else min)(results)
+
+
+@dataclass(frozen=True)
+class State:
+    remaining: int
+    p0: int = 0
+    p1: int = 0
+    mover: int = 0
+
+    def scores(self):
+        return total(self.p0), 1+total(self.p1)
+
+    def terminal(self):
+        s = self.scores()
+        return not self.remaining or s[self.mover]+total(self.remaining) < s[1-self.mover]
+
+    def pick(self, x):
+        bit = 1 << (x-1)
+        assert not self.terminal() and self.remaining & bit
+        assert not (self.p0 | self.p1) & bit
+        own0 = self.p0 | bit if self.mover == 0 else self.p0
+        own1 = self.p1 | bit if self.mover == 1 else self.p1
+        s = total(own0), 1+total(own1)
+        nxt = 1-self.mover if s[self.mover] >= s[1-self.mover] else self.mover
+        return State(self.remaining ^ bit, own0, own1, nxt)
+
+    def completed(self):
+        assert self.terminal()
+        s0,s1 = self.scores()
+        return s0-s1+(1 if self.mover == 0 else -1)*total(self.remaining)
+
+    def fixed_value(self):
+        s = self.scores()
+        assert s[self.mover] <= s[1-self.mover]
+        return (1 if self.mover == 0 else -1)*margin(
+            self.remaining,s[1-self.mover]-s[self.mover])
+
+    def encode(self):
+        return {'remaining':counters(self.remaining), 'scores':self.scores(),
+                'mover':self.mover, 'owned_p0':counters(self.p0), 'owned_p1':counters(self.p1)}
+
+
+U = State(mask((2,5,6,9,10,11)))
+V = State(mask((2,5,6,7,10,11)))
+
+
+def widths(u,v):
+    return (bin(u.remaining & ~v.remaining).count('1'),
+            bin(v.remaining & ~u.remaining).count('1'))
+
+
+def next_pair(u,v,side,x):
+    return (u.pick(x),v) if side == 'U' else (u,v.pick(x))
+
+
+def actions(u,v):
+    """An action is (side, existential pick or None, possible revealed picks)."""
+    for side,st in (('U',u),('V',v)):
+        if st.terminal():
+            continue
+        xs = counters(st.remaining)
+        if side == 'V' and st.mover == 0:
+            xs = tuple(x for x in xs if st.pick(x).fixed_value() > 0)
+            assert xs, 'A winning shadow protected node must have a winning reply.'
+        if (side == 'U' and st.mover == 0) or (side == 'V' and st.mover == 1):
+            for x in xs:
+                yield side,x,(x,)
+        else:
+            yield side,None,xs
+
+
+POLICY = {}
+REFUTATION = {}
+
+
+@cache
+def solve(u,v):
+    if max(widths(u,v)) > 2:
+        return False
+    assert v.fixed_value() > 0
+    if u.terminal() and v.terminal():
+        return u.completed() >= v.completed()-2
+    rejected = []
+    for side,pick,xs in actions(u,v):
+        bad = None
+        for x in xs:
+            pair = next_pair(u,v,side,x)
+            assert sum(len(counters(s.remaining)) for s in pair) < (
+                len(counters(u.remaining))+len(counters(v.remaining)))
+            if not solve(*pair):
+                bad = x
+                break
+        if bad is None:
+            POLICY[u,v] = side,pick,xs
+            return True
+        rejected.append((side,pick,bad))
+    REFUTATION[u,v] = rejected
+    return False
+
+
+def scalar_gate():
+    results = []
+    for st in (U,V):
+        value = margin(st.remaining,1)
+        independent = absolute_margin(counters(st.remaining),0,1,0)
+        assert value == independent
+        results.append(value)
+    return {'U':results[0], 'V':results[1], 'passes':results[0] >= results[1]-2}
+
+
+def regression():
+    checked = 0
+    for bits in range(1 << 7):
+        xs = counters(bits)
+        for deficit in range(total(bits)+3):
+            m = margin(bits,deficit)
+            assert m == absolute_margin(xs,0,deficit,0)
+            assert -m == absolute_margin(xs,deficit,0,1)
+            checked += 2
+    return checked
+
+
+def certificate():
+    """Export only the reachable winning policy, including every universal edge."""
+    assert solve(U,V)
+    ids = {}
+    nodes = []
+    def visit(u,v):
+        if (u,v) in ids:
+            return ids[u,v]
+        i = len(nodes)
+        ids[u,v] = i
+        us,vs = u.scores(),v.scores()
+        node = {'id':i, 'U':u.encode(), 'V':v.encode(), 'buffer':widths(u,v),
+                'ledger':us[0]-us[1]-vs[0]+vs[1]}
+        nodes.append(node)
+        if u.terminal() and v.terminal():
+            node['terminal_margins'] = u.completed(),v.completed()
+        else:
+            side,pick,xs = POLICY[u,v]
+            node['action'] = {'side':side, 'pick':pick}
+            node['edges'] = [{'pick':x, 'child':visit(*next_pair(u,v,side,x))} for x in xs]
+        return i
+    visit(U,V)
+    return {'format':'catchup-atomic-two-buffer-v1', 'protected_player':0,
+            'scalar_gate':scalar_gate(), 'root':0, 'nodes':nodes}
+
+
+def lean_entries(cert):
+    """Regenerate the checked Lean table; the independent Lean checker is authoritative."""
+    def position(st):
+        support = '{'+', '.join(str(x) for x in st['remaining'])+'}'
+        mover = st['mover']
+        deficit = st['scores'][1-mover]-st['scores'][mover]
+        assert deficit >= 0
+        return '⟨⟨'+support+', '+str(deficit)+'⟩, .p'+str(mover+1)+'⟩'
+    rows = []
+    for node in cert['nodes']:
+        if 'action' not in node:
+            continue
+        side,pick = node['action']['side'],node['action']['pick']
+        if pick is None:
+            action = '.actualOpponent' if side == 'U' else '.shadowStrategy'
+        else:
+            action = ('.actualPick ' if side == 'U' else '.shadowPick ')+str(pick)
+        rows.append('  (('+position(node['U'])+', '+position(node['V'])+'), '+action+')')
+    return ('def policyEntries : List ((GamePosition × GamePosition) × Action) := [\n'+
+            ',\n'.join(rows)+']')
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--certificate',action='store_true')
+    parser.add_argument('--lean-entries',action='store_true')
+    args = parser.parse_args()
+    if args.lean_entries:
+        print(lean_entries(certificate()))
+        return
+    if args.certificate:
+        print(json.dumps(certificate(),sort_keys=True,indent=2))
+        return
+    scalar = scalar_gate()
+    print(json.dumps({'scalar_gate':scalar,'unpruned_regression_states':regression()},
+                     sort_keys=True),flush=True)
+    if not scalar['passes']:
+        return
+    answer = solve(U,V)
+    print(json.dumps({'controller_exists':answer, 'states_evaluated':solve.cache_info().currsize,
+                      'policy_nodes':len(POLICY), 'refutation_nodes':len(REFUTATION)},
+                     sort_keys=True),flush=True)
+
+
+if __name__ == '__main__':
+    main()

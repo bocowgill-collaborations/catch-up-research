@@ -1,0 +1,414 @@
+/-
+Copyright 2025 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjecturesUtil
+
+/-!
+# The Catch-Up game and conjecture
+
+The game **Catch-Up** (Isaksen–Ismail–Brams–Nealen, 2015) is a two-player, perfect-information game
+played on a finite nonempty set `S` of positive integers. Each time a player removes a number from
+`S`, that number is added to the player’s score.
+
+**Rules.**
+* The scores start at `0`. Player `p1` starts by removing **exactly one** number from `S`.
+* After the first move, players alternate turns. On a turn, the current player removes **one or more**
+  numbers from `S`, one at a time, and must keep removing numbers until their score becomes
+  **at least** the opponent’s score; before the final pick they must remain **strictly behind**.
+* If the current player cannot catch up (in particular, even taking all remaining numbers would still
+  leave them behind), the game ends immediately: the current player receives all remaining numbers.
+
+When `S` is empty, the player with higher score wins; equal scores give a draw.
+
+In this file we define:
+* `Player` and `Outcome`,
+* the recursive evaluator `value` (optimal play),
+* `Position`, its transition `Position.afterPick`, move evaluation `Position.moveOutcome`,
+  score-deficit evaluator `Position.value`, and the lift `Position.addFourCounters`,
+* the conjecture `value_of_even_mul_succ_self_div_two`.
+
+## Example
+For `S = {1,2,3,4}` one play is: `p1` takes `2`, `p2` takes `1` then `4`, and `p1` takes `3`,
+ending with scores `(5,5)`.
+
+## References
+A. Isaksen, M. Ismail, S. J. Brams, A. Nealen,
+*Catch-Up: A Game in Which the Lead Alternates,* Game & Puzzle Design 1(2), 38–49 (2015).
+
+-/
+
+namespace CatchUp
+
+/--
+An arbitrary two elements type indexing the players in the Catch-Up game.
+-/
+inductive Player
+  | p1
+  | p2
+deriving DecidableEq, Repr
+
+/-- Returns the other player. -/
+def Player.other : Player → Player
+  | p1 => p2
+  | p2 => p1
+
+/-- The possible outcomes of a Catch-Up game. -/
+inductive Outcome
+  | win
+  | loss
+  | draw
+deriving DecidableEq, Repr
+
+/-- Negates an outcome, swapping win and loss. Used when switching player perspectives. -/
+def Outcome.neg : Outcome → Outcome
+  | win => loss
+  | loss => win
+  | draw => draw
+
+/--
+Computes the best outcome for the current player from a list of possible outcomes.
+Win > Draw > Loss.
+-/
+def Outcome.best (os : List Outcome) : Outcome :=
+  os.foldl (fun
+    | .win,  _     => .win
+    | _,     .win  => .win
+    | .draw, _     => .draw
+    | _,     .draw => .draw
+    | _,     _     => .loss) .loss
+
+
+/-
+Define the recursive game value functions.
+-/
+
+/--
+`value remaining s_me s_opp isFirstMove` evaluates the position where:
+
+* `remaining` is the set `S'` of numbers not yet taken.
+* `s_me` is the current score of the player who is about to act (the “current player”).
+* `s_opp` is the opponent’s current score.
+* `isFirstMove` indicates whether we are in the special very first move of the whole game,
+  where the rules force exactly one pick and then the turn passes.
+
+The result is the game-theoretic value from the current player’s point of view:
+`.win` / `.loss` / `.draw`, assuming optimal play from both sides.
+
+We model a single *turn* (which may consist of several picks `$x_1,...,x_k$`) by recursion:
+the current player chooses one number `x`; if they are still strictly behind after taking it, they must
+continue the same turn (so the recursive call keeps the same “current player”);
+once they catch up (score ≥ opponent), the turn ends and we swap players.
+-/
+noncomputable def valueAux (remaining : Finset ℕ) (s_me s_opp : ℕ) (isFirstMove : Bool) : Outcome :=
+  -- If no numbers remain, the game is over. Compare final scores.
+  if remaining = ∅ then
+    if s_me > s_opp then
+      -- Current player ends with strictly larger score.
+      .win
+    else if s_opp > s_me then
+      -- Opponent ends with strictly larger score.
+      .loss
+    else
+      -- Scores are equal.
+      .draw
+  else
+    -- Terminal rule / pruning:
+    -- If even taking *all* remaining numbers would still leave the current player behind,
+    -- then there is no legal catch-up sequence (in the TeX: no `$x_1,...,x_k$` with final sum ≥ gap).
+    -- By the rules, the current player takes everything and the game ends immediately,
+    -- but under this inequality they must still lose.
+    if s_me + remaining.sum (fun x => x) < s_opp then
+      .loss
+    else
+      -- Otherwise, the current player can pick some `$x \in$ remaining`.
+      -- We evaluate every possible next pick under optimal play, then take the best outcome.
+      let moves := remaining.attach.toList
+      let outcomes := moves.map (fun ⟨x, _⟩ =>
+        -- Take `x`: update current player's score and remove `x` from the set.
+        let s_me' := s_me + x
+        let remaining' := remaining.erase x
+
+        if isFirstMove then
+          -- First move rule (TeX item (1)):
+          -- On the first move, `p1` must take exactly one element and then the turn passes.
+          -- We therefore swap roles, evaluate from the opponent’s perspective, and negate
+          -- to convert back to the current player's perspective.
+          (valueAux remaining' s_opp s_me' false).neg
+        else
+          -- Subsequent move rule (TeX item (2)):
+          -- On a turn, the current player must keep taking numbers while strictly behind,
+          -- and stops as soon as they reach or exceed the opponent.
+          if s_me' ≥ s_opp then
+            -- We have caught up (or overtaken) on this pick: the turn ends and the opponent moves next.
+            -- Swap players and negate to return to the current player's perspective.
+            (valueAux remaining' s_opp s_me' false).neg
+          else
+            -- Still strictly behind after taking `x`: rules force us to continue the same turn,
+            -- so the same player remains “current” in the recursive call.
+            valueAux remaining' s_me' s_opp false
+      )
+      -- Optimal play: choose the best outcome among all legal next picks.
+      .best outcomes
+termination_by remaining.card
+decreasing_by
+  all_goals
+    simpa [remaining'] using Finset.card_erase_lt_of_mem ‹_›
+
+/--
+A Catch-Up position after the first move, viewed from the player who is currently picking.
+
+The current player is tied or behind, and `deficit` is the opponent's score minus the current
+player's score. Thus the absolute scores are not recorded.
+-/
+structure Position where
+  remaining : Finset ℕ
+  deficit : ℕ
+deriving DecidableEq
+
+/-- The normalized position after the current player picks `x`. -/
+def Position.afterPick (position : Position) (x : ℕ) : Position :=
+  ⟨position.remaining.erase x,
+    if x < position.deficit then position.deficit - x else x - position.deficit⟩
+
+/--
+The game-theoretic value of a post-opening Catch-Up position, from the current player's perspective.
+
+If the current deficit is $d$ and the player takes $x$, then:
+* if $x < d$, the player remains behind by $d-x$ and continues picking;
+* if $d \leq x$, the turn passes and the other player is behind by $x-d$.
+-/
+noncomputable def Position.value (position : Position) : Outcome :=
+  if position.remaining = ∅ then
+    if position.deficit = 0 then .draw else .loss
+  else if position.remaining.sum (fun x => x) < position.deficit then
+    .loss
+  else
+    let moves := position.remaining.attach.toList
+    let outcomes := moves.map fun ⟨x, _⟩ =>
+      let next := position.afterPick x
+      if x < position.deficit then
+        Position.value next
+      else
+        (Position.value next).neg
+    .best outcomes
+termination_by position.remaining.card
+decreasing_by
+  all_goals
+    simpa [Position.afterPick] using Finset.card_erase_lt_of_mem ‹_›
+
+/-- The normalized and score-based evaluators agree when the current player is not ahead. -/
+@[category API, AMS 91]
+theorem Position.value_eq_value_aux (remaining : Finset ℕ) (s_me s_opp : ℕ)
+    (hle : s_me ≤ s_opp) :
+    Position.value ⟨remaining, s_opp - s_me⟩ = valueAux remaining s_me s_opp false := by
+  induction remaining using Finset.strongInduction generalizing s_me s_opp with
+  | H remaining ih =>
+      rw [Position.value.eq_def, valueAux.eq_def]
+      by_cases hempty : remaining = ∅
+      · subst remaining
+        simp only [if_true]
+        rcases hle.eq_or_lt with rfl | hlt
+        · simp
+        · have hdeficit_ne : s_opp - s_me ≠ 0 := by omega
+          have hnot_ahead : ¬ s_opp < s_me := by omega
+          simp only [hdeficit_ne, hnot_ahead, hlt, if_false, if_true]
+      · have hprune :
+            (remaining.sum (fun x => x) < s_opp - s_me) ↔
+              (s_me + remaining.sum (fun x => x) < s_opp) := by
+          omega
+        simp only [hempty, if_false]
+        simp only [hprune]
+        by_cases hlose : s_me + remaining.sum (fun x => x) < s_opp
+        · simp only [hlose, if_true]
+        · simp only [hlose, if_false]
+          simp only [Bool.false_eq_true]
+          simp only [if_false]
+          congr 1
+          apply List.map_congr_left
+          rintro ⟨x, hx⟩ _
+          change (if x < s_opp - s_me then
+              (({ remaining := remaining, deficit := s_opp - s_me } : Position).afterPick x).value
+            else (({ remaining := remaining, deficit := s_opp - s_me } : Position).afterPick x).value.neg) =
+            if s_me + x ≥ s_opp then (valueAux (remaining.erase x) s_opp (s_me + x) false).neg
+            else valueAux (remaining.erase x) (s_me + x) s_opp false
+          by_cases hcontinue : x < s_opp - s_me
+          · have hstill : s_me + x < s_opp := by omega
+            simp only [hcontinue, if_true, not_le_of_gt hstill, if_false]
+            have hih := ih (remaining.erase x) (Finset.erase_ssubset hx)
+              (s_me + x) s_opp hstill.le
+            have hdeficit : (s_opp - s_me) - x = s_opp - (s_me + x) := by omega
+            simpa [Position.afterPick, hcontinue, hdeficit] using hih
+          · have hswitch : s_opp ≤ s_me + x := by omega
+            simp only [hcontinue, if_false, hswitch, if_true]
+            congr 1
+            have hih := ih (remaining.erase x) (Finset.erase_ssubset hx)
+              s_opp (s_me + x) hswitch
+            have hdeficit : x - (s_opp - s_me) = s_me + x - s_opp := by omega
+            simpa [Position.afterPick, hcontinue, hdeficit] using hih
+
+/-- The outcome obtained by choosing `x`, from the current player's perspective. -/
+noncomputable def Position.moveOutcome (position : Position) (x : ℕ) : Outcome :=
+  let next := position.afterPick x
+  if x < position.deficit then next.value else next.value.neg
+
+/-- A nonterminal position is valued by taking the best outcome among its available moves. -/
+@[category API, AMS 91]
+theorem Position.value_eq_best_move_outcome (position : Position)
+    (hremaining : position.remaining ≠ ∅)
+    (hcanCatch : ¬position.remaining.sum (fun x => x) < position.deficit) :
+    position.value =
+      .best (position.remaining.attach.toList.map fun ⟨x, _⟩ => position.moveOutcome x) := by
+  rw [Position.value.eq_def]
+  simp only [hremaining, hcanCatch, if_false]
+  simp only [Position.moveOutcome]
+
+/-- The normalized position after player 1 takes `x` as the opening move from `S`. -/
+def afterOpening (S : Finset ℕ) (x : ℕ) : Position :=
+  ⟨S.erase x, x⟩
+
+/-- Add the four counters immediately above `N` to a normalized Catch-Up position. -/
+def Position.addFourCounters (position : Position) (N : ℕ) : Position :=
+  ⟨position.remaining ∪ Finset.Icc (N + 1) (N + 4), position.deficit⟩
+
+/-- Adding four counters to a post-opening position gives the corresponding larger position. -/
+@[category API, AMS 91]
+theorem Position.add_four_counters_after_opening (N x : ℕ) (hx : x ∈ Finset.Icc 1 N) :
+    (afterOpening (Finset.Icc 1 N) x).addFourCounters N =
+      afterOpening (Finset.Icc 1 (N + 4)) x := by
+  simp only [Position.addFourCounters, afterOpening]
+  congr 1
+  ext y
+  simp only [Finset.mem_union, Finset.mem_erase, Finset.mem_Icc]
+  simp only [Finset.mem_Icc] at hx
+  omega
+
+/-- Adding four new counters does not change the availability of an old counter. -/
+@[category API, AMS 91]
+theorem Position.mem_add_four_counters_iff_of_le (position : Position) (N x : ℕ) (hx : x ≤ N) :
+    x ∈ (position.addFourCounters N).remaining ↔ x ∈ position.remaining := by
+  simp only [Position.addFourCounters, Finset.mem_union, Finset.mem_Icc]
+  have hx_top : ¬(N + 1 ≤ x ∧ x ≤ N + 4) := by omega
+  simp only [hx_top, or_false]
+
+/-- Taking an old counter commutes with adding the four new counters. -/
+@[category API, AMS 91]
+theorem Position.after_pick_add_four_counters (position : Position) (N x : ℕ) (hx : x ≤ N) :
+    (position.addFourCounters N).afterPick x = (position.afterPick x).addFourCounters N := by
+  simp only [Position.afterPick, Position.addFourCounters]
+  congr 1
+  have hx_top : x ∉ Finset.Icc (N + 1) (N + 4) := by
+    simp only [Finset.mem_Icc]
+    omega
+  rw [Finset.erase_union_distrib, Finset.erase_eq_of_notMem hx_top]
+
+/-- An old move's outcome is preserved when the corresponding child value is preserved. -/
+@[category API, AMS 91]
+theorem Position.move_outcome_add_four_counters_of_value_eq (position : Position) (N x : ℕ)
+    (hx : x ≤ N)
+    (hvalue : ((position.afterPick x).addFourCounters N).value = (position.afterPick x).value) :
+    (position.addFourCounters N).moveOutcome x = position.moveOutcome x := by
+  simp only [Position.moveOutcome]
+  rw [Position.after_pick_add_four_counters position N x hx]
+  change (if x < position.deficit then ((position.afterPick x).addFourCounters N).value
+    else ((position.afterPick x).addFourCounters N).value.neg) = _
+  rw [hvalue]
+
+/-- The normalized and score-based evaluators agree on a tied terminal position. -/
+@[category test, AMS 91]
+theorem position_value_empty_test :
+    (Position.value ⟨∅, 0⟩) = valueAux ∅ 4 4 false := by
+  rw [Position.value.eq_def, valueAux.eq_def]
+  simp
+
+/-- The normalized and score-based evaluators agree when catching up is impossible. -/
+@[category test, AMS 91]
+theorem position_value_cannot_catch_up_test :
+    (Position.value ⟨{1}, 2⟩) = valueAux {1} 4 6 false := by
+  rw [Position.value.eq_def, valueAux.eq_def]
+  simp
+
+/-- The normalized and score-based evaluators agree when a pick ends the turn. -/
+@[category test, AMS 91]
+theorem position_value_singleton_test :
+    (Position.value ⟨{3}, 2⟩) = valueAux {3} 0 2 false := by
+  rw [Position.value.eq_def, valueAux.eq_def]
+  simp [Outcome.best, Outcome.neg]
+  congr 1
+  congr 1
+  funext x
+  have hx : (x : ℕ) = 3 := Finset.mem_singleton.mp x.property
+  rw [hx]
+  simp
+  rw [Position.value.eq_def, valueAux.eq_def]
+  simp [Position.afterPick]
+
+/-- Public API: The game-theoretic value of Catch-Up on the set `S`, assuming optimal play.
+Returns `.win` if player 1 wins, `.loss` if player 2 wins, `.draw` if the game is tied. -/
+noncomputable def value (S : Finset ℕ) : Outcome :=
+  valueAux S 0 0 true
+
+/-- A nonempty Catch-Up game is valued by the best negated post-opening outcome. -/
+@[category API, AMS 91]
+theorem value_eq_best_after_opening (S : Finset ℕ) (hS : S.Nonempty) :
+    value S =
+      .best (S.attach.toList.map fun ⟨x, _⟩ => (afterOpening S x).value.neg) := by
+  rw [value, valueAux.eq_def]
+  have hne : S ≠ ∅ := Finset.nonempty_iff_ne_empty.mp hS
+  simp only [hne, Nat.zero_add, Nat.not_lt_zero, if_false, if_true]
+  congr 1
+  apply List.map_congr_left
+  rintro ⟨x, _⟩ _
+  change (valueAux (S.erase x) 0 x false).neg = (afterOpening S x).value.neg
+  congr 1
+  have hbridge := Position.value_eq_value_aux (S.erase x) 0 x (Nat.zero_le x)
+  simpa [afterOpening] using hbridge.symm
+
+/-- Catch-Up on `{1, ..., N}` is valued by its post-opening positions when `1 ≤ N`. -/
+@[category API, AMS 91]
+theorem value_Icc_eq_best_after_opening (N : ℕ) (hN : 1 ≤ N) :
+    value (Finset.Icc 1 N) =
+      .best ((Finset.Icc 1 N).attach.toList.map fun ⟨x, _⟩ =>
+        (afterOpening (Finset.Icc 1 N) x).value.neg) := by
+  exact value_eq_best_after_opening (Finset.Icc 1 N) (Finset.nonempty_Icc.mpr hN)
+
+/-- The interval post-opening decomposition applies at the smallest nonempty game. -/
+@[category test, AMS 91]
+theorem value_Icc_one_post_opening_test :
+    value (Finset.Icc 1 1) =
+      .best ((Finset.Icc 1 1).attach.toList.map fun ⟨x, _⟩ =>
+        (afterOpening (Finset.Icc 1 1) x).value.neg) := by
+  exact value_Icc_eq_best_after_opening 1 le_rfl
+
+/-- The interval post-opening decomposition specializes to the paper's four-counter example. -/
+@[category test, AMS 91]
+theorem value_Icc_four_post_opening_test :
+    value (Finset.Icc 1 4) =
+      .best ((Finset.Icc 1 4).attach.toList.map fun ⟨x, _⟩ =>
+        (afterOpening (Finset.Icc 1 4) x).value.neg) := by
+  exact value_Icc_eq_best_after_opening 4 (by omega)
+
+/--
+Let $T_N = \sum_{k=1}^{N} k = \frac{N(N+1)}{2}$.
+If $T_N$ is even (equivalently $N \equiv 0 \pmod 4$ or $N \equiv 3 \pmod 4$),
+then under optimal play the game `Catch-Up($\{1, \ldots, N\}$)` ends in a draw.
+-/
+@[category research open, AMS 11 91]
+theorem value_of_even_mul_succ_self_div_two
+    (N : ℕ) (h_even : Even (N * (N + 1) / 2)) :
+    value (.Icc 1 N) = .draw := by
+  sorry
+
+end CatchUp

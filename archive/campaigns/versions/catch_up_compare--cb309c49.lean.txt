@@ -1,0 +1,519 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjectures.Paper.CatchUpConjecture
+
+/-!
+# Catch-Up strategy comparison
+
+This research script computes exact minimax strategies for Catch-Up games of sizes `N` and `N + 4`.
+It retains every optimal move, compares openings and first replies, and tests a strong state-lifting
+hypothesis obtained by adding the four new counters while keeping the score deficit fixed.
+
+The memoized solver is checked against an independent list-based evaluator through `N = 8`. The
+comparisons are finite computational evidence, not proofs of a parametric reduction.
+
+The [original paper](https://www.nealen.net/papers/catch-up-a-game-in-which-the-lead-alternates-2015.pdf)'s
+Table 2 gives exact optimal-play values through `N = 20`. It reports only Monte Carlo evidence,
+rather than exact values, for `N = 23, 24, 27, 28`. Reproduce the complete exact table with the
+deliberately slow command:
+
+```bash
+lake env lean --run scripts/catch_up_compare.lean --published
+```
+
+Run the default comparisons `3 → 7`, `4 → 8`, `7 → 11`, and `8 → 12` with:
+
+```bash
+lake env lean --run scripts/catch_up_compare.lean
+```
+
+Pass explicit starting sizes to run other comparisons, for example:
+
+```bash
+lake env lean --run scripts/catch_up_compare.lean 11 12
+```
+-/
+
+namespace CatchUpCompare
+
+open CatchUp
+
+def outcomeRank : Outcome → ℕ
+  | .loss => 0
+  | .draw => 1
+  | .win => 2
+
+def outcomeName : Outcome → String
+  | .win => "win"
+  | .loss => "loss"
+  | .draw => "draw"
+
+/-- The value of a normalized state and every move attaining that value. -/
+structure NodeInfo where
+  outcome : Outcome
+  optimalMoves : List ℕ
+deriving DecidableEq, Repr
+
+abbrev Cache := Std.HashMap (ℕ × ℕ) NodeInfo
+
+/-- A bitmask whose lowest `N` bits are set. -/
+def fullMask (N : ℕ) : ℕ :=
+  (Nat.shiftLeft 1 N) - 1
+
+/-- The set bits of `mask`, paired with their corresponding counters. -/
+def availableMoves (N mask : ℕ) : List (ℕ × ℕ) :=
+  (List.range N).filterMap fun index =>
+    if mask.testBit index then some (index, index + 1) else none
+
+def remainingSum (N mask : ℕ) : ℕ :=
+  ((availableMoves N mask).map fun move => move.2).sum
+
+/-- Remove a counter whose bit is known to be set. -/
+def eraseMove (mask index : ℕ) : ℕ :=
+  mask - Nat.shiftLeft 1 index
+
+/-- Select every move with the best outcome, using `loss < draw < win`. -/
+def chooseBest (candidates : List (ℕ × Outcome)) : NodeInfo :=
+  let bestOutcome := candidates.foldl (fun best candidate =>
+    if outcomeRank best < outcomeRank candidate.2 then candidate.2 else best) .loss
+  let optimalMoves := candidates.filterMap fun candidate =>
+    if candidate.2 = bestOutcome then some candidate.1 else none
+  ⟨bestOutcome, optimalMoves⟩
+
+def terminalInfo (deficit : ℕ) : NodeInfo :=
+  if deficit = 0 then ⟨.draw, []⟩ else ⟨.loss, []⟩
+
+/--
+Memoized minimax evaluation. `fuel` is at least the number of remaining counters in every call made
+by `solveGameM`; it decreases once per removed counter.
+-/
+def solveAux (N : ℕ) : ℕ → ℕ → ℕ → StateM Cache NodeInfo
+  | 0, mask, deficit =>
+      pure <| if mask = 0 then terminalInfo deficit else ⟨.loss, []⟩
+  | fuel + 1, mask, deficit => do
+      let key := (mask, deficit)
+      if let some cached := (← get)[key]? then
+        return cached
+      let result ←
+        if mask = 0 then
+          pure (terminalInfo deficit)
+        else if remainingSum N mask < deficit then
+          pure ⟨.loss, []⟩
+        else do
+          let mut candidates := []
+          for (index, counter) in availableMoves N mask do
+            let nextMask := eraseMove mask index
+            let nextDeficit :=
+              if counter < deficit then deficit - counter else counter - deficit
+            let child ← solveAux N fuel nextMask nextDeficit
+            let outcome := if counter < deficit then child.outcome else child.outcome.neg
+            candidates := (counter, outcome) :: candidates
+          pure (chooseBest candidates.reverse)
+      modify fun cache => cache.insert key result
+      return result
+
+structure OpeningSummary where
+  opening : ℕ
+  outcome : Outcome
+  optimalReplies : List ℕ
+deriving DecidableEq, Repr
+
+structure GameSummary where
+  N : ℕ
+  outcome : Outcome
+  optimalOpenings : List ℕ
+  openings : List OpeningSummary
+deriving DecidableEq, Repr
+
+/-- Evaluate the special first move and all post-opening positions. -/
+def solveGameM (N : ℕ) : StateM Cache GameSummary := do
+  if N = 0 then
+    return ⟨N, .draw, [], []⟩
+  let mask := fullMask N
+  let mut candidates := []
+  let mut summaries := []
+  for (index, opening) in availableMoves N mask do
+    let child ← solveAux N N (eraseMove mask index) opening
+    let outcome := child.outcome.neg
+    candidates := (opening, outcome) :: candidates
+    summaries := ⟨opening, outcome, child.optimalMoves⟩ :: summaries
+  let best := chooseBest candidates.reverse
+  return ⟨N, best.outcome, best.optimalMoves, summaries.reverse⟩
+
+def solveGame (N : ℕ) : GameSummary × Cache :=
+  (solveGameM N).run {}
+
+/- ## Independent reference evaluator -/
+
+def referenceValue (remaining : List ℕ) (deficit : ℕ) : Outcome :=
+  if remaining = [] then
+    if deficit = 0 then .draw else .loss
+  else if remaining.sum < deficit then
+    .loss
+  else
+    let outcomes := remaining.attach.map fun ⟨counter, _⟩ =>
+      let remaining' := remaining.erase counter
+      if counter < deficit then
+        referenceValue remaining' (deficit - counter)
+      else
+        (referenceValue remaining' (counter - deficit)).neg
+    .best outcomes
+termination_by remaining.length
+decreasing_by
+  all_goals
+    have h := List.length_erase_add_one ‹_›
+    omega
+
+def referenceNode (remaining : List ℕ) (deficit : ℕ) : NodeInfo :=
+  if remaining = [] then
+    terminalInfo deficit
+  else if remaining.sum < deficit then
+    ⟨.loss, []⟩
+  else
+    chooseBest <| remaining.map fun counter =>
+      let remaining' := remaining.erase counter
+      let child :=
+        if counter < deficit then
+          referenceValue remaining' (deficit - counter)
+        else
+          (referenceValue remaining' (counter - deficit)).neg
+      (counter, child)
+
+def referenceGame (N : ℕ) : GameSummary :=
+  if N = 0 then
+    ⟨N, .draw, [], []⟩
+  else
+    let counters := (List.range N).map fun index => index + 1
+    let summaries := counters.map fun opening =>
+      let child := referenceNode (counters.erase opening) opening
+      ⟨opening, child.outcome.neg, child.optimalMoves⟩
+    let best := chooseBest (summaries.map fun summary => (summary.opening, summary.outcome))
+    ⟨N, best.outcome, best.optimalMoves, summaries⟩
+
+def referenceAgreesThrough (maxN : ℕ) : Bool :=
+  (List.range maxN).all fun offset =>
+    let N := offset + 1
+    decide ((solveGame N).1 = referenceGame N)
+
+/- ## Published exact outcomes -/
+
+/-- One exact optimal-play value reported in Table 2 of the original Catch-Up paper. -/
+structure PublishedResult where
+  gameSize : ℕ
+  expectedOutcome : Outcome
+deriving DecidableEq, Repr
+
+/-- The paper's exact optimal-play values, measured from player 1's perspective. -/
+def publishedResults : List PublishedResult :=
+  [⟨3, .draw⟩, ⟨4, .draw⟩, ⟨5, .win⟩, ⟨6, .win⟩, ⟨7, .draw⟩, ⟨8, .draw⟩,
+    ⟨9, .loss⟩, ⟨10, .loss⟩, ⟨11, .draw⟩, ⟨12, .draw⟩, ⟨13, .win⟩, ⟨14, .loss⟩,
+    ⟨15, .draw⟩, ⟨16, .draw⟩, ⟨17, .win⟩, ⟨18, .loss⟩, ⟨19, .draw⟩, ⟨20, .draw⟩]
+
+/- ## Pair and state-lift comparisons -/
+
+def GameSummary.findOpening? (summary : GameSummary) (opening : ℕ) : Option OpeningSummary :=
+  summary.openings.find? fun candidate => candidate.opening == opening
+
+def isSubset (small large : List ℕ) : Bool :=
+  small.all fun element => large.contains element
+
+structure ReplyComparison where
+  opening : ℕ
+  smallReplies : List ℕ
+  largeOldReplies : List ℕ
+  largeNewReplies : List ℕ
+deriving Repr
+
+structure PairComparison where
+  smallN : ℕ
+  smallOutcome : Outcome
+  largeOutcome : Outcome
+  smallOptimalOpenings : List ℕ
+  largeOptimalOpenings : List ℕ
+  preservesOptimalOpenings : Bool
+  preservesOptimalReplies : Bool
+  openingOutcomeAgreements : ℕ
+  replyComparisons : List ReplyComparison
+  smallStateCount : ℕ
+  largeStateCount : ℕ
+deriving Repr
+
+def compareOpeningsAndReplies (N : ℕ) (small large : GameSummary)
+    (smallStateCount largeStateCount : ℕ) : PairComparison :=
+  let commonOptimalOpenings :=
+    small.optimalOpenings.filter fun opening => large.optimalOpenings.contains opening
+  let preservesOptimalOpenings := isSubset small.optimalOpenings large.optimalOpenings
+  let oldOpenings := (List.range N).map fun index => index + 1
+  let openingOutcomeAgreements := (oldOpenings.filter fun opening =>
+    match small.findOpening? opening, large.findOpening? opening with
+    | some smallSummary, some largeSummary => smallSummary.outcome == largeSummary.outcome
+    | _, _ => false).length
+  let replyComparisons := commonOptimalOpenings.filterMap fun opening =>
+    match small.findOpening? opening, large.findOpening? opening with
+    | some smallSummary, some largeSummary =>
+        some ⟨opening, smallSummary.optimalReplies,
+          largeSummary.optimalReplies.filter (fun reply => reply ≤ N),
+          largeSummary.optimalReplies.filter (fun reply => N < reply)⟩
+    | _, _ => none
+  let preservesOptimalReplies := preservesOptimalOpenings && replyComparisons.all fun comparison =>
+    isSubset comparison.smallReplies comparison.largeOldReplies
+  ⟨N, small.outcome, large.outcome, small.optimalOpenings, large.optimalOpenings,
+    preservesOptimalOpenings, preservesOptimalReplies, openingOutcomeAgreements,
+    replyComparisons, smallStateCount, largeStateCount⟩
+
+structure LiftedStateComparison where
+  mask : ℕ
+  deficit : ℕ
+  smallInfo : NodeInfo
+  largeInfo : Option NodeInfo
+
+structure LiftFailure where
+  remaining : List ℕ
+  deficit : ℕ
+  smallInfo : NodeInfo
+  largeInfo : Option NodeInfo
+deriving Repr
+
+structure StateLiftStats where
+  smallN : ℕ
+  smallStates : ℕ
+  liftedStatesFound : ℕ
+  outcomeAgreements : ℕ
+  movePreservations : ℕ
+  strongAgreements : ℕ
+  smallDrawStates : ℕ
+  drawsRemainDraws : ℕ
+  drawMovePreservations : ℕ
+  drawStrongAgreements : ℕ
+  smallDrawStatesAtLeastFour : ℕ
+  drawsRemainDrawsAtLeastFour : ℕ
+  smallDrawStatesAtLeastSix : ℕ
+  drawsRemainDrawsAtLeastSix : ℕ
+  exampleDrawOutcomeFailures : List LiftFailure
+  drawOutcomeFailuresAtLeastFour : List LiftFailure
+  drawOutcomeFailuresAtLeastSix : List LiftFailure
+  exampleDrawFailures : List LiftFailure
+deriving Repr
+
+def compareStateLift (N : ℕ) (smallCache largeCache : Cache) : StateLiftStats :=
+  let topMask := fullMask (N + 4) - fullMask N
+  let comparisons : List LiftedStateComparison := smallCache.toList.map fun entry =>
+    let ((mask, deficit), smallInfo) := entry
+    { mask := mask
+      deficit := deficit
+      smallInfo := smallInfo
+      largeInfo := largeCache[(mask + topMask, deficit)]? }
+  let found := comparisons.filter fun comparison => comparison.largeInfo.isSome
+  let outcomeAgreements := found.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo => comparison.smallInfo.outcome == largeInfo.outcome
+    | none => false
+  let movePreservations := found.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo => isSubset comparison.smallInfo.optimalMoves largeInfo.optimalMoves
+    | none => false
+  let strongAgreements := found.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo =>
+        comparison.smallInfo.outcome == largeInfo.outcome &&
+          isSubset comparison.smallInfo.optimalMoves largeInfo.optimalMoves
+    | none => false
+  let smallDrawStates := comparisons.filter fun comparison => comparison.smallInfo.outcome == .draw
+  let drawsRemainDraws := smallDrawStates.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo => largeInfo.outcome == .draw
+    | none => false
+  let drawMovePreservations := smallDrawStates.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo => isSubset comparison.smallInfo.optimalMoves largeInfo.optimalMoves
+    | none => false
+  let drawStrongAgreements := smallDrawStates.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo =>
+        largeInfo.outcome == .draw &&
+          isSubset comparison.smallInfo.optimalMoves largeInfo.optimalMoves
+    | none => false
+  let smallDrawStatesAtLeastFour := smallDrawStates.filter fun comparison =>
+    4 ≤ (availableMoves N comparison.mask).length
+  let drawsRemainDrawsAtLeastFour := smallDrawStatesAtLeastFour.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo => largeInfo.outcome == .draw
+    | none => false
+  let smallDrawStatesAtLeastSix := smallDrawStates.filter fun comparison =>
+    6 ≤ (availableMoves N comparison.mask).length
+  let drawsRemainDrawsAtLeastSix := smallDrawStatesAtLeastSix.filter fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo => largeInfo.outcome == .draw
+    | none => false
+  let drawOutcomeFailures := (smallDrawStates.filterMap fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo =>
+        if largeInfo.outcome == .draw then
+          none
+        else
+          some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+            comparison.deficit, comparison.smallInfo, some largeInfo⟩
+    | none =>
+        some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+          comparison.deficit, comparison.smallInfo, none⟩).take 16
+  let drawOutcomeFailuresAtLeastFour := (smallDrawStatesAtLeastFour.filterMap fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo =>
+        if largeInfo.outcome == .draw then
+          none
+        else
+          some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+            comparison.deficit, comparison.smallInfo, some largeInfo⟩
+    | none =>
+        some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+          comparison.deficit, comparison.smallInfo, none⟩).take 32
+  let drawOutcomeFailuresAtLeastSix := (smallDrawStatesAtLeastSix.filterMap fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo =>
+        if largeInfo.outcome == .draw then
+          none
+        else
+          some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+            comparison.deficit, comparison.smallInfo, some largeInfo⟩
+    | none =>
+        some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+          comparison.deficit, comparison.smallInfo, none⟩).take 32
+  let drawFailures := (smallDrawStates.filterMap fun comparison =>
+    match comparison.largeInfo with
+    | some largeInfo =>
+        if largeInfo.outcome == .draw &&
+            isSubset comparison.smallInfo.optimalMoves largeInfo.optimalMoves then
+          none
+        else
+          some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+            comparison.deficit, comparison.smallInfo, some largeInfo⟩
+    | none =>
+        some ⟨(availableMoves N comparison.mask).map fun move => move.2,
+          comparison.deficit, comparison.smallInfo, none⟩).take 8
+  ⟨N, comparisons.length, found.length, outcomeAgreements.length,
+    movePreservations.length, strongAgreements.length, smallDrawStates.length,
+    drawsRemainDraws.length, drawMovePreservations.length, drawStrongAgreements.length,
+    smallDrawStatesAtLeastFour.length, drawsRemainDrawsAtLeastFour.length,
+    smallDrawStatesAtLeastSix.length, drawsRemainDrawsAtLeastSix.length,
+    drawOutcomeFailures, drawOutcomeFailuresAtLeastFour, drawOutcomeFailuresAtLeastSix,
+    drawFailures⟩
+
+structure ComparisonReport where
+  pair : PairComparison
+  lift : StateLiftStats
+
+def buildReport (N : ℕ) : ComparisonReport :=
+  let (small, smallCache) := solveGame N
+  let (large, largeCache) := solveGame (N + 4)
+  ⟨compareOpeningsAndReplies N small large smallCache.size largeCache.size,
+    compareStateLift N smallCache largeCache⟩
+
+/- ## Output -/
+
+def formatReplyComparison (comparison : ReplyComparison) : String :=
+  s!"  opening {comparison.opening}: small {reprStr comparison.smallReplies}; " ++
+    s!"large-old {reprStr comparison.largeOldReplies}; large-new {reprStr comparison.largeNewReplies}"
+
+def formatLiftFailure (failure : LiftFailure) : String :=
+  let largeDescription := match failure.largeInfo with
+    | some info => s!"{outcomeName info.outcome} moves={reprStr info.optimalMoves}"
+    | none => "missing"
+  s!"  remaining={reprStr failure.remaining}, deficit={failure.deficit}: " ++
+    s!"small {outcomeName failure.smallInfo.outcome} moves={reprStr failure.smallInfo.optimalMoves}; " ++
+    s!"large {largeDescription}"
+
+def formatReport (report : ComparisonReport) : String :=
+  let pair := report.pair
+  let lift := report.lift
+  let replies := String.intercalate "\n" <| pair.replyComparisons.map formatReplyComparison
+  let failures := if lift.exampleDrawFailures.isEmpty then
+      "  none"
+    else
+      String.intercalate "\n" <| lift.exampleDrawFailures.map formatLiftFailure
+  let outcomeFailures := if lift.exampleDrawOutcomeFailures.isEmpty then
+      "  none"
+    else
+      String.intercalate "\n" <| lift.exampleDrawOutcomeFailures.map formatLiftFailure
+  let outcomeFailuresAtLeastFour := if lift.drawOutcomeFailuresAtLeastFour.isEmpty then
+      "  none"
+    else
+      String.intercalate "\n" <| lift.drawOutcomeFailuresAtLeastFour.map formatLiftFailure
+  let outcomeFailuresAtLeastSix := if lift.drawOutcomeFailuresAtLeastSix.isEmpty then
+      "  none"
+    else
+      String.intercalate "\n" <| lift.drawOutcomeFailuresAtLeastSix.map formatLiftFailure
+  s!"N={pair.smallN} → {pair.smallN + 4}: " ++
+    s!"{outcomeName pair.smallOutcome} → {outcomeName pair.largeOutcome}\n" ++
+    s!"states: {pair.smallStateCount} → {pair.largeStateCount}\n" ++
+    s!"optimal openings: {reprStr pair.smallOptimalOpenings} → " ++
+    s!"{reprStr pair.largeOptimalOpenings}\n" ++
+    s!"preserves optimal openings: {pair.preservesOptimalOpenings}; " ++
+    s!"preserves their old replies: {pair.preservesOptimalReplies}\n" ++
+    s!"old opening outcomes unchanged: {pair.openingOutcomeAgreements}/{pair.smallN}\n" ++
+    s!"first-reply comparisons:\n{replies}\n" ++
+    s!"lifted cached states found: {lift.liftedStatesFound}/{lift.smallStates}\n" ++
+    s!"all-state strong lift: {lift.strongAgreements}/{lift.smallStates}\n" ++
+    s!"draws remaining draws: {lift.drawsRemainDraws}/{lift.smallDrawStates}\n" ++
+    s!"draws with at least four old counters remaining draws: " ++
+    s!"{lift.drawsRemainDrawsAtLeastFour}/{lift.smallDrawStatesAtLeastFour}\n" ++
+    s!"draws with at least six old counters remaining draws: " ++
+    s!"{lift.drawsRemainDrawsAtLeastSix}/{lift.smallDrawStatesAtLeastSix}\n" ++
+    s!"draw-state strong lift: {lift.drawStrongAgreements}/{lift.smallDrawStates}\n" ++
+    s!"outcome-changing draw lifts (up to 16):\n{outcomeFailures}\n" ++
+    s!"outcome-changing draw lifts with at least four old counters:\n" ++
+    s!"{outcomeFailuresAtLeastFour}\n" ++
+    s!"outcome-changing draw lifts with at least six old counters:\n" ++
+    s!"{outcomeFailuresAtLeastSix}\n" ++
+    s!"exceptional draw lifts (up to 8):\n{failures}"
+
+/-- Recompute and check every exact optimal-play value reported in the original paper. -/
+def reproducePublishedResults : IO Unit := do
+  if !referenceAgreesThrough 8 then
+    throw <| IO.userError "The memoized solver disagrees with the independent reference solver."
+  IO.println "Memoized solver agrees with the independent reference solver through N=8."
+  for expected in publishedResults do
+    let (summary, cache) := solveGame expected.gameSize
+    if summary.outcome == expected.expectedOutcome then
+      IO.println s!"N={expected.gameSize}: {outcomeName summary.outcome}; states={cache.size}"
+    else
+      throw <| IO.userError <| s!"Published result mismatch at N={expected.gameSize}: expected " ++
+        s!"{outcomeName expected.expectedOutcome}, computed {outcomeName summary.outcome}."
+  IO.println "Reproduced every exact optimal-play value published through N=20."
+
+def parseStartingSizes (args : List String) : IO (List ℕ) :=
+  if args.isEmpty then
+    pure [3, 4, 7, 8]
+  else
+    args.mapM fun arg =>
+      match arg.toNat? with
+      | some N => pure N
+      | none => throw <| IO.userError s!"Expected a natural number, got '{arg}'."
+
+def run (args : List String) : IO Unit := do
+  let startingSizes ← parseStartingSizes args
+  if !referenceAgreesThrough 8 then
+    throw <| IO.userError "The memoized solver disagrees with the reference solver."
+  IO.println "Memoized solver agrees with the independent reference solver through N=8."
+  for N in startingSizes do
+    IO.println s!"\n{formatReport (buildReport N)}"
+
+end CatchUpCompare
+
+def main (args : List String) : IO Unit :=
+  match args with
+  | ["--published"] => CatchUpCompare.reproducePublishedResults
+  | _ => CatchUpCompare.run args

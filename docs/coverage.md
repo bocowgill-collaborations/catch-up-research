@@ -2,6 +2,8 @@
 
 Audit date: 23 October 2026. This page records what was inspected; it does not assert that all research on Catch-Up has been found.
 
+The [August–September expansion](../archive/campaigns/) compares 290 path/blob versions across 55 relevant commits and 15 local refs, including the original game file before its move from GameTheory to Paper. It adds 183 historical records/source versions, three supplied research handoffs and one detailed packed-solver run record. A [43-entry finding ledger](../results/legacy-findings.md) and 263 notebook locators expose the claims, failures and gaps. Twenty-five temporary artifact references were absent at their recorded locations: 23 from the final reports and the N23/N24 tables from the August 7 run record; reported hashes are retained where available. No Lean source, toolchain, or large numerical result was changed or newly verified by this expansion. The [PR review](../verification/pr1-review.md) records hypothesis clarifications, source reconstruction and bounded witness replays.
+
 | Area | Coverage in this collection | Remaining gap |
 | --- | --- | --- |
 | Local mathematics | The original 70 modules are preserved, and 26 earlier modules are recovered into the pinned build. All 96 have topic summaries in the [module guide](../results/modules.md). Fourteen historical branches were inventoried, covering 144 module paths. | The [archive](../archive/) retains 56 more small source files outside the verified build. Generated/native-only historical range claims require a separate trust audit. |

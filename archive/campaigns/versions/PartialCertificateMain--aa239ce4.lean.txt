@@ -1,0 +1,128 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.PartialCertificateTargets
+import catch_up.PartialStrategyExtraction
+
+/-!
+# Catch-Up partial-certificate experiment
+
+Solve one interval game, extract a player-1 strategy for opening `1` and a shared player-2 strategy
+covering every opening, and validate both with the independent partial-certificate checker.
+
+Run the default `N=11`, six-counter-target experiment with:
+
+```bash
+lake env lean --run scripts/catch_up/PartialCertificateMain.lean
+```
+
+Explicit game size and target limit may be supplied as two arguments.
+-/
+
+namespace CatchUpSearch.PartialCertificateExperiment
+
+open CatchUp
+open CertificateChecker
+open PartialCertificateTargets
+open PartialStrategyExtraction
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def parseNat (name argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some value => pure value
+  | none => throw <| IO.userError s!"Expected a natural-number {name}, got '{argument}'."
+
+def findOpeningRoot (output : SolverOutput) (opening : ℕ) : Except String State :=
+  match output.openingRoots.find? fun root => decide (root.1 = opening) with
+  | some root => .ok root.2
+  | none => .error s!"opening {opening} is absent from the solved output"
+
+def formatPlayer : Player → String
+  | .p1 => ".p1"
+  | .p2 => ".p2"
+
+def formatState (state : State) : String :=
+  s!"⟨{state.remainingMask}, {state.deficit}, {formatPlayer state.toMove}⟩"
+
+def formatBranch : StrategyBranch → String
+  | .terminal => ".terminal"
+  | .owner counter => s!".owner {counter}"
+  | .opponent counters => s!".opponent {reprStr counters}"
+
+def formatNode (node : StrategyNode) : String :=
+  s!"⟨{formatState node.state}, {formatBranch node.branch}⟩"
+
+def formatDAG (name : String) (dag : StrategyDAG) : String :=
+  let nodes := String.intercalate ",\n      " (dag.nodes.map formatNode)
+  s!"def {name} : StrategyDAG :=\n" ++
+    s!"  ⟨{dag.gameSize}, {formatPlayer dag.player}, {formatState dag.root},\n" ++
+    s!"    [{nodes}]⟩"
+
+def run (gameSize targetLimit : ℕ) (emit : Bool := false) : IO Unit := do
+  let referenceBound := min gameSize 8
+  if !ExactSolver.referenceAgreesThrough referenceBound then
+    throw <| IO.userError
+      s!"the exact solver disagrees with the reference recurrence by N={referenceBound}"
+  IO.eprintln s!"solving N={gameSize} complete graph..."
+  let output ← orThrow (ExactSolver.solveGame gameSize)
+  IO.eprintln
+    s!"solved {output.nodes.length} states; reference regression passed through N={referenceBound}"
+
+  let playerOneRoot ← orThrow (findOpeningRoot output 1)
+  let playerOneTarget := smallSafeTarget targetLimit gameSize .p1
+  let playerOneDAG ← orThrow (extractUntil playerOneTarget output .p1 playerOneRoot)
+  if !checkPartialCertificate playerOneTarget playerOneDAG then
+    throw <| IO.userError "the independent checker rejected the player-1 partial certificate"
+
+  let playerTwoTarget := smallSafeTarget targetLimit gameSize .p2
+  let playerTwoDAG ← orThrow (extractAllOpeningsUntil playerTwoTarget output .p2)
+  if !checkPartialCertificate playerTwoTarget playerTwoDAG then
+    throw <| IO.userError "the independent checker rejected the player-2 partial certificate"
+  if !output.openingRoots.all fun root => decide (ContainsState playerTwoDAG root.2) then
+    throw <| IO.userError "the shared player-2 certificate omits an opening root"
+
+  IO.println s!"N={gameSize}, target limit={targetLimit}: partial certificates accepted"
+  IO.println s!"  player 1 opening-1 nodes: {playerOneDAG.nodes.length}"
+  IO.println s!"  player 2 all-opening nodes: {playerTwoDAG.nodes.length}"
+  IO.println s!"  covered player-2 opening roots: {output.openingRoots.length}"
+  if emit then
+    IO.println "\n-- BEGIN GENERATED CERTIFICATES"
+    IO.println (formatDAG "playerOneDAG" playerOneDAG)
+    IO.println ""
+    IO.println (formatDAG "playerTwoDAG" playerTwoDAG)
+    IO.println "-- END GENERATED CERTIFICATES"
+
+def runArgs (args : List String) : IO Unit := do
+  match args with
+  | [] => run 11 6
+  | [gameSizeArgument, targetLimitArgument] => do
+      let gameSize ← parseNat "game size" gameSizeArgument
+      let targetLimit ← parseNat "target limit" targetLimitArgument
+      run gameSize targetLimit
+  | [gameSizeArgument, targetLimitArgument, "--emit"] => do
+      let gameSize ← parseNat "game size" gameSizeArgument
+      let targetLimit ← parseNat "target limit" targetLimitArgument
+      run gameSize targetLimit true
+  | _ => throw <| IO.userError "Usage: PartialCertificateMain.lean [gameSize targetLimit [--emit]]"
+
+end CatchUpSearch.PartialCertificateExperiment
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.PartialCertificateExperiment.runArgs args

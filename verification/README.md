@@ -1,5 +1,11 @@
 # Verification and provenance
 
+The [August–September source manifest](legacy-sources.json) and [finding ledger](../results/legacy-findings.md) describe an additional historical import outside both Lean builds. Run `python3 scripts/check_legacy_archive.py` to check hashes, coverage, finding references and guide consistency, notebook locators, data parseability and corruption/privacy controls. This check is included in `check_collection.py`. With the original local Git database available, `python3 scripts/check_legacy_archive.py --source-repository PATH` additionally reconstructs the relevant commit set from pinned branch tips, checks every original blob and exact branch/commit attribution, and reconstructs all 183 Git-backed exports using [the disclosed text transformations](../scripts/legacy_archive_format.py). It executes no historical probe or CHECK instruction. This cannot prove mathematical equivalence or audit omitted private text on its own; handoffs and the editorially corrected untracked run record have separate original/exported fingerprints, not Git reconstruction.
+
+`python3 scripts/check_legacy_examples.py`, also included in the collection check, replays 21 literal small witness positions and every first pick using the normalized explorer and independent absolute-score recurrence. It does not replay the historical enumeration counts, large tables or archived Lean sources. The [PR review](pr1-review.md) gives the exact assurance and remaining gaps.
+
+The [import receipt](legacy-import.json) records the checks actually run, log fingerprints, unchanged proof-source scope, editorial discrepancies and deferred artifacts. Its source manifest and finding-ledger hashes are checked along with the retained logs.
+
 There are two independent, pinned Lake packages. Their `CatchUp` namespaces intentionally contain the same game interface compiled with different Lean versions; build them separately. The cryptid package also has separate audit entry points for the baseline and the candidate components: those developments reused some declaration names and must not be imported into a single Lean environment.
 
 | Package | Lean | Mathlib commit |

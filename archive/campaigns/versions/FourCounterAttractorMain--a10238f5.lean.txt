@@ -1,0 +1,85 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+
+/-!
+# Catch-Up four-counter forcing-basin executable
+
+Analyze the default discovery pairs with:
+
+```bash
+lake env lean --run scripts/catch_up/FourCounterAttractorMain.lean
+```
+
+Pass small game sizes to select other `N → N + 4` pairs.
+-/
+
+namespace CatchUpSearch.FourCounterAttractor
+
+open CatchUp
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def targetName : TargetKind → String
+  | .tiedTopFour => "tied-top-four"
+  | .safeTopOnly => "safe-top-only"
+  | .safeAtMostOld maximum => s!"safe-at-most-{maximum}-old"
+
+def formatHistogram (histogram : List (ℕ × ℕ)) : String :=
+  String.intercalate ", " <| histogram.map fun entry => s!"{entry.1}:{entry.2}"
+
+def BasinSummary.format (summary : BasinSummary) : String :=
+  s!"N={summary.smallN} → {summary.smallN + 4}; " ++
+    s!"target={targetName summary.targetKind}; owner={playerName summary.owner}; " ++
+    s!"graph={summary.graphNodes}; target={summary.targetNodes}; " ++
+    s!"terminal-target={summary.terminalTargetNodes}; basin={summary.basinNodes}; " ++
+    s!"non-target={summary.nonTargetBasinNodes}; with-old={summary.basinWithOldCounters}; " ++
+    s!"max-old={summary.maxOldCounters}; root-safe={summary.rootSafeForOwner}; " ++
+    s!"root={summary.rootInBasin}\n" ++
+    s!"  old-count histogram: {formatHistogram summary.histogram}"
+
+def orThrow {α : Type} (result : Except String α) : IO α :=
+  match result with
+  | .error message => throw <| IO.userError message
+  | .ok value => pure value
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural-number game size, got '{argument}'."
+
+def runSize (N : ℕ) : IO Unit := do
+  IO.eprintln s!"solving N={N} → {N + 4} opening-1 graph..."
+  let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.eprintln s!"solved N={N} → {N + 4}: {output.nodes.length} graph nodes"
+  for target in ([.tiedTopFour, .safeTopOnly] : List TargetKind) do
+    for owner in [.p1, .p2] do
+      IO.eprintln s!"analyzing target={targetName target}; owner={playerName owner}..."
+      IO.println (← orThrow (analyzeOutput target N owner output)).format
+
+def runArgs (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [3, 4, 7, 8] else args.mapM parseSize
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.FourCounterAttractor
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.FourCounterAttractor.runArgs args

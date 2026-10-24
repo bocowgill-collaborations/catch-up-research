@@ -1,0 +1,26 @@
+"""Test whether adding one adjacent pair propagates the d=3 winning obstruction.
+
+Fixed seed T={4,5,7,8,14,15}, d=3 wins. Falsify the even-pair d=2
+nonwinning lemma on T union {p,p+1}, without varying any other support.
+"""
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, verify_independently
+
+seed = {4,5,7,8,14,15}
+tested = 0
+for p in range(3,55):
+    if seed & {p,p+1}:
+        continue
+    mask = mask_of(sorted(seed | {p,p+1}))
+    tested += 1
+    if value(mask,2)==1:
+        verify_independently(mask,2)
+        print(json.dumps({"refuted":True,"added_pair":[p,p+1],
+                          "state":state(mask,2),"tested":tested}))
+        raise SystemExit(0)
+    value.cache_clear()
+print(json.dumps({"refuted":False,"tested":tested}))

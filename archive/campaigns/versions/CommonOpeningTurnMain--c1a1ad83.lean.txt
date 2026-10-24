@@ -1,0 +1,165 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+
+/-!
+# Common Catch-Up opening-turn policies
+
+Enumerate all basin-preserving sequences that complete the protected player's first turn in a
+discovery game, then retain only the exact same sequences that work in every validation game.
+
+This is bounded discovery instrumentation. It neither states nor proves a parametric policy.
+-/
+
+namespace CatchUpSearch.CommonOpeningTurn
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourCounterAttractor
+
+/-- Basin-preserving legal moves at one solved node. -/
+def goodMoves (cache : BasinCache) (node : SolvedNode) : List MoveEvaluation :=
+  node.moves.filter fun move => basinContains cache move.child
+
+/-- Candidate complete turns associated with one opponent counter. -/
+structure TurnCandidates where
+  opponentCounter : ℕ
+  sequences : List (List ℕ)
+deriving Repr
+
+/-- Enumerate basin-preserving sequences that end the owner's current turn. -/
+def successfulTurns (output : SolverOutput) (cache : BasinCache) (owner : Player) :
+    ℕ → State → Except String (List (List ℕ))
+  | 0, state => throw s!"successful-turn enumeration exhausted fuel at {repr state}"
+  | fuel + 1, state => do
+      if state.toMove ≠ owner then
+        return [[]]
+      let node ← match findNode? output state with
+        | none => throw s!"successful-turn enumeration is missing {repr state}"
+        | some node => pure node
+      let mut sequences := []
+      for move in goodMoves cache node do
+        if move.child.toMove ≠ owner then
+          sequences := [move.counter] :: sequences
+        else
+          for tail in ← successfulTurns output cache owner fuel move.child do
+            sequences := (move.counter :: tail) :: sequences
+      return sequences.reverse
+
+/-- States where the owner first replies after the fixed opening protocol. -/
+def firstOwnerStates (output : SolverOutput) (owner : Player) : Except String (List (ℕ × State)) := do
+  let root ← match output.openingRoots.find? fun pair => decide (pair.1 = 1) with
+    | none => throw "opening-1 root is missing"
+    | some pair => pure pair.2
+  let rootNode ← match findNode? output root with
+    | none => throw "opening-1 solved node is missing"
+    | some node => pure node
+  match owner with
+  | .p1 => pure <| rootNode.moves.map fun move => (move.counter, move.child)
+  | .p2 => do
+      let rootChoice ← match rootNode.moves.find? fun move => decide (move.counter = 2) with
+        | none => throw "opening root has no counter 2"
+        | some move => pure move
+      let opponentNode ← match findNode? output rootChoice.child with
+        | none => throw "opening-2 child is missing"
+        | some node => pure node
+      pure <| opponentNode.moves.map fun move => (move.counter, move.child)
+
+/-- Check that a prescribed sequence is basin-preserving and ends exactly when the turn ends. -/
+def sequenceWorks (output : SolverOutput) (cache : BasinCache) (owner : Player) :
+    State → List ℕ → Except String Bool
+  | state, [] => pure (state.toMove ≠ owner)
+  | state, counter :: counters => do
+      if state.toMove ≠ owner then
+        return false
+      let node ← match findNode? output state with
+        | none => throw s!"sequence check is missing {repr state}"
+        | some node => pure node
+      let move ← match (goodMoves cache node).find? fun move => decide (move.counter = counter) with
+        | none => return false
+        | some move => pure move
+      sequenceWorks output cache owner move.child counters
+
+/-- Enumerate discovery candidates for opponent counters at most `maximumCounter`. -/
+def initialCandidates (maximumCounter : ℕ) (output : SolverOutput) (cache : BasinCache)
+    (owner : Player) : Except String (List TurnCandidates) := do
+  let starts ← firstOwnerStates output owner
+  let mut candidates := []
+  for (opponentCounter, state) in starts do
+    if opponentCounter ≤ maximumCounter then
+      let sequences ← successfulTurns output cache owner (output.gameSize + 1) state
+      candidates := ⟨opponentCounter, sequences⟩ :: candidates
+  return candidates.reverse
+
+/-- Retain only sequences that work in one additional solved game. -/
+def filterCandidates (output : SolverOutput) (cache : BasinCache) (owner : Player)
+    (candidates : List TurnCandidates) : Except String (List TurnCandidates) := do
+  let starts ← firstOwnerStates output owner
+  candidates.mapM fun candidate => do
+    let state ← match starts.find? fun pair => decide (pair.1 = candidate.opponentCounter) with
+      | none => throw s!"counter {candidate.opponentCounter} has no validation state"
+      | some pair => pure pair.2
+    let mut retained := []
+    for sequence in candidate.sequences do
+      if ← sequenceWorks output cache owner state sequence then
+        retained := sequence :: retained
+    pure { candidate with sequences := retained.reverse }
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def formatSequence (sequence : List ℕ) : String :=
+  "[" ++ String.intercalate "," (sequence.map toString) ++ "]"
+
+def formatCandidate (candidate : TurnCandidates) : String :=
+  s!"{candidate.opponentCounter}:" ++
+    "[" ++ String.intercalate "," (candidate.sequences.map formatSequence) ++ "]"
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def run : IO Unit := do
+  let sizes := [7, 8, 11, 12]
+  let discoveryN := 7
+  let maximumCounter := discoveryN + 4
+  let discoveryOutput ← orThrow (PairedTrace.solveOpeningGraph (discoveryN + 4) 1)
+  let mut allCandidates := []
+  for owner in [.p1, .p2] do
+    let cache ← orThrow (computeBasin .explicitEndgame discoveryN owner discoveryOutput)
+    let candidates ← orThrow (initialCandidates maximumCounter discoveryOutput cache owner)
+    allCandidates := (owner, candidates) :: allCandidates
+  allCandidates := allCandidates.reverse
+  for N in sizes.drop 1 do
+    IO.eprintln s!"filtering common turns through N={N}..."
+    let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+    let mut filtered := []
+    for (owner, candidates) in allCandidates do
+      let cache ← orThrow (computeBasin .explicitEndgame N owner output)
+      filtered := (owner, ← orThrow (filterCandidates output cache owner candidates)) :: filtered
+    allCandidates := filtered.reverse
+  IO.println s!"Common complete first-owner turns for N={sizes}:"
+  for (owner, candidates) in allCandidates do
+    IO.println s!"  owner={playerName owner}"
+    for candidate in candidates do
+      IO.println s!"    {formatCandidate candidate}"
+
+end CatchUpSearch.CommonOpeningTurn
+
+def main : IO Unit :=
+  CatchUpSearch.CommonOpeningTurn.run

@@ -1,0 +1,199 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+
+/-!
+# Catch-Up forcing-strategy profiles
+
+Extract the deterministic strategy obtained by choosing the least basin-preserving move at owner
+nodes and following every legal move at opponent nodes. Traversal stops on the proof-backed
+top-only or one-old-pair target family.
+
+This executable is discovery instrumentation. Its output is not a parametric theorem or a proof
+certificate.
+-/
+
+namespace CatchUpSearch.ForcingStrategy
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourCounterAttractor
+
+/-- One owner decision in the extracted strategy. -/
+structure OwnerDecision where
+  state : State
+  counter : ℕ
+  depth : ℕ
+deriving Repr
+
+/-- Data accumulated while traversing one forcing strategy. -/
+structure TraceState where
+  visited : Std.HashMap CacheKey Unit
+  ownerDecisions : Array OwnerDecision
+  targets : Array State
+  ownerNodes : ℕ
+  opponentNodes : ℕ
+  maxDepth : ℕ
+
+def emptyTraceState : TraceState :=
+  { visited := {}
+    ownerDecisions := #[]
+    targets := #[]
+    ownerNodes := 0
+    opponentNodes := 0
+    maxDepth := 0 }
+
+abbrev TraceM := StateT TraceState (Except String)
+
+/-- Basin-preserving legal moves at one solved node. -/
+def goodMoves (cache : BasinCache) (node : SolvedNode) : List MoveEvaluation :=
+  node.moves.filter fun move => basinContains cache move.child
+
+/-- Traverse one deterministic owner policy against every opponent move. -/
+def traceAux (target : TargetKind) (N : ℕ) (owner : Player) (nodes : SolvedIndex)
+    (basin : BasinCache) : ℕ → ℕ → State → TraceM Unit
+  | 0, _, state => throw s!"forcing-strategy fuel exhausted at {repr state}"
+  | fuel + 1, depth, state => do
+      if (← get).visited[state.cacheKey]?.isSome then
+        return
+      modify fun trace =>
+        { trace with
+          visited := trace.visited.insert state.cacheKey ()
+          maxDepth := max trace.maxDepth depth }
+      let node ← match nodes[state.cacheKey]? with
+        | none => throw s!"forcing strategy is missing state {repr state}"
+        | some node => pure node
+      if isTarget target N owner node then
+        modify fun trace => { trace with targets := trace.targets.push state }
+      else if node.moves.isEmpty then
+        throw s!"forcing strategy reached a non-target terminal state {repr state}"
+      else if state.toMove = owner then
+        let move ← match (goodMoves basin node).head? with
+          | none => throw s!"owner has no basin-preserving move at {repr state}"
+          | some move => pure move
+        modify fun trace =>
+          { trace with
+            ownerNodes := trace.ownerNodes + 1
+            ownerDecisions := trace.ownerDecisions.push ⟨state, move.counter, depth⟩ }
+        traceAux target N owner nodes basin fuel (depth + 1) move.child
+      else
+        modify fun trace => { trace with opponentNodes := trace.opponentNodes + 1 }
+        for move in node.moves do
+          if !basinContains basin move.child then
+            throw s!"opponent can leave the basin at {repr state} via {move.counter}"
+          traceAux target N owner nodes basin fuel (depth + 1) move.child
+
+/-- Extract the least-move forcing policy below the opening-`1` root. -/
+def traceOpening (target : TargetKind) (N : ℕ) (owner : Player) (output : SolverOutput) :
+    Except String TraceState := do
+  let basin ← computeBasin target N owner output
+  if !basinValid target N owner output basin then
+    throw "invalid forcing basin"
+  let root ← match output.openingRoots.find? fun pair => decide (pair.1 = 1) with
+    | none => throw "opening-1 root is missing"
+    | some pair => pure pair.2
+  if !basinContains basin root then
+    throw "opening-1 root is outside the forcing basin"
+  let nodes := indexSolvedNodes output
+  match (traceAux target N owner nodes basin (output.gameSize + 1) 0 root).run emptyTraceState with
+  | .error message => .error message
+  | .ok (_, trace) => .ok trace
+
+def playerName : Player → String
+  | .p1 => "p1"
+  | .p2 => "p2"
+
+def comparisonName (counter deficit : ℕ) : String :=
+  if counter < deficit then "below"
+  else if counter = deficit then "equal"
+  else "above"
+
+def oldRank? (N counter : ℕ) (state : State) : Option (ℕ × ℕ) :=
+  let old := (availableMoves N (PairedTrace.oldMask N state)).map fun move => move.2
+  old.idxOf? counter |>.map fun rank => (rank + 1, old.length)
+
+/-- A coarse, size-independent description of one selected owner move. -/
+def decisionClass (N : ℕ) (decision : OwnerDecision) : String :=
+  let location :=
+    if N < decision.counter then
+      s!"top+{decision.counter - N}"
+    else
+      match oldRank? N decision.counter decision.state with
+      | none => "old-missing"
+      | some (rank, count) => s!"old-rank-{rank}-of-{count}"
+  s!"topmask={PairedTrace.topMask N decision.state};{location};" ++
+    comparisonName decision.counter decision.state.deficit
+
+def increment (counts : Std.HashMap String ℕ) (key : String) : Std.HashMap String ℕ :=
+  counts.insert key (counts[key]?.getD 0 + 1)
+
+def classHistogram (N : ℕ) (decisions : Array OwnerDecision) : Std.HashMap String ℕ :=
+  decisions.foldl (fun counts decision => increment counts (decisionClass N decision)) {}
+
+def sortedHistogram (histogram : Std.HashMap String ℕ) : List (String × ℕ) :=
+  histogram.toList.mergeSort fun left right => left.1 ≤ right.1
+
+def formatHistogram (histogram : List (String × ℕ)) : String :=
+  String.intercalate "\n      " <| histogram.map fun entry => s!"{entry.1}: {entry.2}"
+
+def targetCounts (N : ℕ) (owner : Player) (output : SolverOutput) (targets : Array State) :
+    ℕ × ℕ :=
+  let nodes := indexSolvedNodes output
+  targets.foldl (init := (0, 0)) fun counts state =>
+    match nodes[state.cacheKey]? with
+    | none => counts
+    | some _ =>
+        if isExplicitSafeTopOnly N owner state then (counts.1 + 1, counts.2)
+        else if isExplicitOneOldPair N owner state then (counts.1, counts.2 + 1)
+        else counts
+
+def analyzeOwner (N : ℕ) (owner : Player) (output : SolverOutput) : Except String String := do
+  let trace ← traceOpening .explicitEndgame N owner output
+  let targetKinds := targetCounts N owner output trace.targets
+  let histogram := sortedHistogram (classHistogram N trace.ownerDecisions)
+  return s!"owner={playerName owner}; nodes={trace.visited.size}; " ++
+    s!"owner-nodes={trace.ownerNodes}; opponent-nodes={trace.opponentNodes}; " ++
+    s!"targets={trace.targets.size} (top-only={targetKinds.1}, one-old-pair={targetKinds.2}, " ++
+    s!"four-counter-entry={trace.targets.size - targetKinds.1 - targetKinds.2}); " ++
+    s!"max-depth={trace.maxDepth}; decision-classes={histogram.length}\n" ++
+    s!"      {formatHistogram histogram}"
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural number, got '{argument}'."
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def runSize (N : ℕ) : IO Unit := do
+  let output ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println s!"N={N}"
+  for owner in [.p1, .p2] do
+    IO.println s!"  {← orThrow (analyzeOwner N owner output)}"
+
+def runArgs (args : List String) : IO Unit := do
+  let sizes ← if args.isEmpty then pure [3, 4, 7, 8, 11] else args.mapM parseSize
+  for N in sizes do
+    runSize N
+
+end CatchUpSearch.ForcingStrategy
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit :=
+  CatchUpSearch.ForcingStrategy.runArgs args

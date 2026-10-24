@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""Replay the fixed max-pick repayment controller, without choosing by minimax.
+
+States retain both absolute scores and player identities. Early completion awards
+the entire remainder to the trailing player, permanently recording ownership.
+The normalized evaluator is used only as an independent check of the mandatory
+input's supplied move profiles, never to choose controller moves.
+"""
+
+import json
+from dataclasses import dataclass
+from itertools import combinations
+from adjacent_jump_probe import mask_of, state, verify_independently
+
+
+@dataclass(frozen=True)
+class State:
+    remaining: tuple
+    scores: tuple
+    mover: int
+    owners: tuple = ()
+
+    def terminal(self):
+        return (not self.remaining or
+                self.scores[self.mover] + sum(self.remaining) < self.scores[1-self.mover])
+
+    def pick(self, x):
+        assert not self.terminal() and x in self.remaining
+        scores = list(self.scores)
+        scores[self.mover] += x
+        mover = 1-self.mover if scores[self.mover] >= scores[1-self.mover] else self.mover
+        return State(tuple(y for y in self.remaining if y != x), tuple(scores), mover,
+                     self.owners + ((x, self.mover, 'pick'),))
+
+    def complete(self):
+        assert self.terminal()
+        scores = list(self.scores)
+        scores[self.mover] += sum(self.remaining)
+        owners = self.owners + tuple((x, self.mover, 'completion') for x in self.remaining)
+        assert len({x for x, _, _ in owners}) == len(owners)
+        return scores[0]-scores[1], owners
+
+
+def play(st, picks):
+    for x in picks:
+        st = st.pick(x)
+    return st
+
+
+def max_policy_leaves(st, path=()):
+    """All adversary branches; protected player zero always takes the maximum."""
+    if st.terminal():
+        yield path, st.complete()
+    else:
+        choices = (max(st.remaining),) if st.mover == 0 else st.remaining
+        for x in choices:
+            yield from max_policy_leaves(st.pick(x), path+(x,))
+
+
+def paired_schedule(u, v, actual_path, shadow_path):
+    """Observe one actual pick, complete shadow, then resume the actual policy.
+
+    This schedule never depends on a future actual choice. Both counter buffers
+    are checked after each atomic pick. Ledger signs are fixed at pick time.
+    """
+    assert u.mover == 1 and actual_path
+    ledger = (u.scores[0]-u.scores[1])-(v.scores[0]-v.scores[1])
+    events = [('U', actual_path[0])]
+    events += [('V', x) for x in shadow_path]
+    events += [('U', x) for x in actual_path[1:]]
+    recorded = []
+    for side, x in events:
+        before = u if side == 'U' else v
+        delta = (1 if before.mover == 0 else -1)*x
+        ledger += delta if side == 'U' else -delta
+        if side == 'U':
+            u = u.pick(x)
+        else:
+            v = v.pick(x)
+        widths = (len(set(u.remaining)-set(v.remaining)),
+                  len(set(v.remaining)-set(u.remaining)))
+        assert max(widths) <= 2
+        assert ledger == (u.scores[0]-u.scores[1])-(v.scores[0]-v.scores[1])
+        recorded.append({'side':side, 'pick':x, 'owner':before.mover,
+                         'ledger':ledger, 'buffer_widths':widths})
+    um, uo = u.complete()
+    vm, vo = v.complete()
+    ledger += (1 if u.mover == 0 else -1)*sum(u.remaining)
+    ledger -= (1 if v.mover == 0 else -1)*sum(v.remaining)
+    assert ledger == um-vm and ledger >= -2
+    return {'events':recorded, 'completed_delta':ledger,
+            'U_completed_ownership':uo, 'V_completed_ownership':vo}
+
+
+def repair(k):
+    a, b, c = k+4, 2*k+5, 2*k+6
+    u = State((a,b,c), (a+1,0), 1)
+    v = State((a,c), (a,0), 1)
+    vm, vo = play(v, (c,a)).complete()
+    assert vm == 2
+    leaves = []
+    for path, (um, uo) in max_policy_leaves(u):
+        assert um in (0,2) and um >= vm-2
+        leaves.append({'U_picks': path, 'U_margin': um, 'U_ownership': uo,
+                       'schedule':paired_schedule(u,v,path,(c,a))})
+    assert len(leaves) == 4
+    return {'k': k, 'a_b_c': [a,b,c], 'shadow_picks': [c,a],
+            'shadow_margin': vm, 'shadow_ownership': vo, 'actual_leaves': leaves}
+
+
+def mandatory():
+    u = State((2,5,6,9,10,11), (0,1), 0)
+    v = State((2,5,6,7,10,11), (0,1), 0)
+    for s in (u,v):
+        verify_independently(mask_of(s.remaining), 1)
+    up, vp = play(u,(2,)), play(v,(5,))
+    assert set(up.remaining)-set(vp.remaining) == {5,9}
+    assert set(vp.remaining)-set(up.remaining) == {2,7}
+    # This is one observed adversary branch, not a forced general transition.
+    ur, vr = play(up,(5,11)), play(vp,(2,7,11))
+    assert ur.remaining == (6,9,10) and ur.scores[0]-ur.scores[1] == 7
+    assert vr.remaining == (6,10) and vr.scores[0]-vr.scores[1] == 6
+    assert ur.mover == vr.mover == 1
+    # Resuming common-counter copying violates the proposed margin certificate.
+    bad_u = play(ur,(6,9,10)).complete()
+    bad_v = play(vr,(6,10)).complete()
+    assert bad_u[0] == 2 and bad_v[0] == 10 and bad_u[0] < bad_v[0]-2
+    # Observe the next actual pick, then use shadow 10,6 before resuming U.
+    good_v = play(vr,(10,6)).complete()
+    good_u = list(max_policy_leaves(ur))
+    assert good_v[0] == 2 and all(result[0] >= good_v[0]-2 for _,result in good_u)
+    # The local max policy does not extend back to every original-root branch.
+    overextension = play(u, (2,11,10,5,9,6)).complete()
+    assert overextension[0] == -2
+    assert any(path == (11,10,5,9,6) and result[0] == -2
+               for path,result in max_policy_leaves(up))
+    return {'U_profile': state(mask_of(u.remaining),1),
+            'V_profile': state(mask_of(v.remaining),1),
+            'bad_copy': {'U_path':[2,5,11,6,9,10], 'V_path':[5,2,7,11,6,10],
+                         'U_margin':bad_u[0], 'V_margin':bad_v[0],
+                         'U_owners':bad_u[1], 'V_owners':bad_v[1]},
+            'repair': repair(2),
+            'max_policy_overextension': {'U_path':[2,11,10,5,9,6],
+                                         'U_margin':overextension[0],
+                                         'U_owners':overextension[1]},
+            'full_history_schedules': [paired_schedule(ur,vr,path,(10,6))
+                                      for path,_ in good_u],
+            'scope':'Repair covers the displayed prefix branch, not every original-root play.'}
+
+
+def completion_regression():
+    """Exhaust terminal supports in 1..6, both identities, and deficits through sum+3."""
+    checked = 0
+    for size in range(7):
+        for remaining in combinations(range(1,7),size):
+            for deficit in range(sum(remaining)+4):
+                for mover in (0,1):
+                    scores = (0,deficit) if mover == 0 else (deficit,0)
+                    st = State(remaining,scores,mover)
+                    if not st.terminal():
+                        continue
+                    margin,_ = st.complete()
+                    original = scores[0]-scores[1]
+                    assert (margin > 0)-(margin < 0) == (original > 0)-(original < 0)
+                    assert margin % 2 == (deficit+sum(remaining)) % 2
+                    if margin > 0 and (deficit+sum(remaining)) % 2 == 0:
+                        assert margin >= 2
+                    checked += 1
+    return checked
+
+
+def main():
+    print(json.dumps({'mandatory': mandatory()}, sort_keys=True))
+    for k in range(101):
+        repair(k)
+    print(json.dumps({'parametric_policy_regression': 'k=0..100',
+                      'actual_terminal_leaves': 404, 'result':'passed'}, sort_keys=True))
+    print(json.dumps({'completion_regression': completion_regression(),
+                      'result':'passed'},sort_keys=True))
+
+
+if __name__ == '__main__':
+    main()

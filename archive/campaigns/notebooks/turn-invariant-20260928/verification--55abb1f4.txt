@@ -1,0 +1,45 @@
+Workdir: HISTORICAL_TMP/catchup-score-debt-20260928
+Base: fb94555a
+Branch: codex/catchup-turn-invariant-20260928
+
+Final command:
+lake --wfail build catch_up.TurnReserveInitializationAudit
+Exit: 0
+Output:
+Built catch_up.TurnReserveInitialization (3.4s)
+Built catch_up.TurnReserveInitializationAudit (3.2s)
+Verified axioms for CatchUp.TurnReserve.budget_envelope_initialization_iff:
+  [propext, Quot.sound, Classical.choice]
+Build completed successfully (8052 jobs).
+Only the two new modules rebuilt; other jobs are cached dependencies of this scope.
+
+LSP: complete diagnostics, success=true, no errors or warnings before final build.
+LeanProbe: incremental proof checks succeeded without sorry; final strict build is authoritative.
+Public theorem inventory: exactly budget_envelope_initialization_iff, audited once.
+Private theorem inventory: nonempty_reserve_rigidity, opening_mass,
+  budget_envelope_initialization_rigidity; all used transitively by the public theorem.
+Source scan: no sorry, axiom declaration, unsafe declaration, or native_decide.
+Source import: FormalConjecturesUtil only.
+
+SHA-256:
+0fd4cbf6985c4554144186ade6812be6ec106f10974984213d78e488a5b7e483  scripts/catch_up/TurnReserveInitialization.lean
+42521aff0fe6827244b994eec88953289a69392a5863e639236f361395672987  scripts/catch_up/TurnReserveInitializationAudit.lean
+6bdea8b11372d0a5d9a43aa37c5466f4923893fc14dbd3fd6a3b5cbc1aaa86b9  research/turn-invariant-20260928/ARGUMENT.md
+
+Independent review: PASS on complete paper argument; PASS on final Lean statement fidelity.
+Computation: no new outcome evaluations, game tables, finite controllers, or counterexample searches.
+Seven-point kernel reduction checks only the explicit numerical envelope witness, not game outcomes.
+
+Process accounting: both build handles completed with exit 0; reviewer completed.
+Sandbox disallowed ps; no OS-wide process-cleanliness claim is made.
+
+A final whitespace-only audit-file cleanup removed an extra blank line at EOF.
+The same scoped warning-strict build was rerun successfully afterward; the audit
+hash above is the final version. No proof or theorem statement changed.
+
+Primary local commit: 9cd11299, at 11:36 EDT.
+Post-commit git status: clean.
+git diff --name-status fb94555a HEAD: exactly eight added files.
+git diff --exit-code --diff-filter=CDMRTUXB fb94555a HEAD --: exit 0, empty output.
+git diff --cached --check before primary commit: exit 0, empty output.
+No push or merge was performed. This documentation-only follow-up records the checks.

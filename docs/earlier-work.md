@@ -1,5 +1,7 @@
 # Recovered earlier work
 
+The [August–September campaign archive](../archive/campaigns/) now supplies the previously missing reports, supporting reviews, probes, observations and earlier source versions. The [finding ledger](../results/legacy-findings.md) records exact claims and their present assurance. This archival expansion is separate from the 26 compiled ports described below.
+
 The initial public package contained the current 70-module mathematics snapshot. A further branch audit found 144 historical Catch-Up module paths in the earlier local research repository. The collection now recovers **26 additional modules** into the default Lean build and preserves **56 other small source files** in a clearly separate [historical archive](../archive/).
 
 The recovered files are under [CatchUp/Earlier](../CatchUp/Earlier/). They use the same pinned Lean 4.27.0 and Mathlib revision as the main mathematics library. The port changes module references, removes repository-specific indexing attributes, and renames one duplicated pair theorem; mathematical statements and proof bodies are retained. The original source inputs are also retained as data and the collection checker reconstructs each mechanical adaptation. Original hashes, paths, the source commit and transformations are recorded in [earlier-sources.json](../verification/earlier-sources.json). The original 70 proof files are unchanged.

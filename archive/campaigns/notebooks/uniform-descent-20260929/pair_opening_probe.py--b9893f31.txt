@@ -1,0 +1,35 @@
+"""Falsify specific endpoint/median opening rules, not the odd-pair theorem.
+
+Three disjoint actual adjacent pairs, deficit one. Test: the largest upper
+counter, median upper counter, or at least one of the two largest counters
+is nonlosing. Stop each rule at its first counterexample; validate those
+states and their edges independently using fixed-player scores.
+"""
+import itertools
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts/catch_up"))
+from adjacent_jump_probe import mask_of, state, value, move_value, verify_independently
+
+failures = {}
+tested = 0
+for starts in itertools.combinations(range(2, 22), 3):
+    if any(b <= a + 1 for a, b in zip(starts, starts[1:])):
+        continue
+    support = [x for a in starts for x in (a, a+1)]
+    mask = mask_of(support)
+    tested += 1
+    rules = {"largest_upper": [starts[-1]+1],
+             "median_upper": [starts[1]+1],
+             "top_pair": [starts[-1], starts[-1]+1]}
+    for name, picks in rules.items():
+        if name not in failures and all(move_value(mask, 1, x) == -1 for x in picks):
+            verify_independently(mask, 1)
+            failures[name] = {"pair_starts": starts, "proposed_picks": picks,
+                              "state": state(mask, 1)}
+    if len(failures) == len(rules):
+        break
+    value.cache_clear()
+print(json.dumps({"tested": tested, "failures": failures}, sort_keys=True))

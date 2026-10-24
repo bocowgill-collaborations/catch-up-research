@@ -1,0 +1,57 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.LowerRayFifthEndpoint
+
+/-!
+# Fifth-from-top endpoint statement and transitive axiom audit
+
+The set-difference statement below checks the endpoint's deficit and support.
+Only standard logical axioms are admitted transitively.
+-/
+
+namespace CatchUp.FifthEndpointAudit
+
+/-- The exact set-difference form of the fifth-from-top endpoint. -/
+@[category API, AMS 91]
+theorem set_difference_form (N : ℕ) (hN : 23 ≤ N) :
+    Position.value ⟨Finset.Icc 1 N \ {1, N - 4}, N - 5⟩ ≠ .loss := by
+  have hremaining : Finset.Icc 1 N \ {1, N - 4} =
+      ((Finset.Icc 1 N).erase 1).erase (N - 4) := by
+    ext x
+    simp only [Finset.mem_sdiff, Finset.mem_insert, Finset.mem_singleton, Finset.mem_erase]
+    tauto
+  simpa only [hremaining, pairDeletionPosition, Nat.sub_sub] using
+    pair_deletion_position_fifth_from_top_value_ne_loss N hN
+
+open Lean Elab Command in
+run_cmd do
+  let declarations := #[
+    ``upper_quadruple_first_opening_ne_loss,
+    ``upper_quadruple_second_opening_ne_loss,
+    ``upper_quadruple_third_opening_ne_loss,
+    ``upper_quadruple_last_opening_ne_loss,
+    ``pair_deletion_position_fifth_from_top_value_ne_loss,
+    ``set_difference_form]
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for declaration in declarations do
+    let actual ← Lean.collectAxioms declaration
+    for axiomName in actual do
+      unless allowed.contains axiomName do
+        throwError "Unexpected axiom in {declaration}: {axiomName}"
+    logInfo m!"Verified axioms for {declaration}: {actual}"
+
+end CatchUp.FifthEndpointAudit

@@ -1,0 +1,52 @@
+import catch_up.AdjacentPairGeometryRepair
+
+/-!
+# Proof-strength accounting for the unproved multiple-pair extension
+
+This is not a new proof of a target outcome. It shows that simultaneous
+nonwinning orphan extensions already entail a draw of the underlying support.
+-/
+
+namespace CatchUp.AdjacentPairGapAccounting
+
+private theorem move_nonwin_of_nonwin (S : Finset ℕ) (d x : ℕ)
+    (hx : x ∈ S) (hc : ¬ S.sum id < d)
+    (hnw : Position.value ⟨S,d⟩ ≠ .win) :
+    (⟨S,d⟩ : Position).moveOutcome x ≠ .win := by
+  rw [Position.value_eq_best_move_outcome _
+    (Finset.nonempty_iff_ne_empty.mp ⟨x,hx⟩) hc] at hnw
+  apply (Outcome.best_ne_win_iff _).mp hnw
+  exact List.mem_map.mpr ⟨⟨x,hx⟩,by simp,rfl⟩
+
+/-- Both orphan nonwins already force the underlying deficit-one draw. -/
+theorem orphan_nonwins_force_draw (T : Finset ℕ) (a : ℕ) (ha : 2 ≤ a)
+    (hnot : a ∉ T) (hpositive : 1 ≤ T.sum id)
+    (hminus : Position.value ⟨insert a T,a-1⟩ ≠ .win)
+    (hplus : Position.value ⟨insert a T,a+1⟩ ≠ .win) :
+    Position.value ⟨T,1⟩ = .draw := by
+  have hsum : (insert a T).sum id = a + T.sum id := by simp [hnot]
+  have hm := move_nonwin_of_nonwin (insert a T) (a-1) a (by simp)
+    (by omega) hminus
+  have hp := move_nonwin_of_nonwin (insert a T) (a+1) a (by simp)
+    (by omega) hplus
+  have herase : (insert a T).erase a = T := by simp [hnot]
+  have hnonloss : Position.value ⟨T,1⟩ ≠ .loss := by
+    simpa only [Position.moveOutcome, Position.afterPick,
+      show ¬a<a-1 by omega, if_false, herase, show a-(a-1)=1 by omega,
+      Outcome.neg_ne_win_iff] using hm
+  have hnonwin : Position.value ⟨T,1⟩ ≠ .win := by
+    simpa only [Position.moveOutcome, Position.afterPick,
+      show a<a+1 by omega, if_true, herase, show a+1-a=1 by omega] using hp
+  exact (Outcome.eq_draw_iff _).mpr ⟨hnonloss,hnonwin⟩
+
+open Lean Elab Command in
+run_cmd do
+  let declaration := ``orphan_nonwins_force_draw
+  let allowed := #[``propext,``Classical.choice,``Quot.sound]
+  let actual ← Lean.collectAxioms declaration
+  for axiomName in actual do
+    unless allowed.contains axiomName do
+      throwError "Unexpected axiom in {declaration}: {axiomName}"
+  logInfo m!"Verified axioms for {declaration}: {actual}"
+
+end CatchUp.AdjacentPairGapAccounting

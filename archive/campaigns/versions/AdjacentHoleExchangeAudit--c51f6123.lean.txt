@@ -1,0 +1,51 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.AdjacentHoleExchangeObstruction
+import catch_up.DeficitWinningBound
+
+/-!
+# Axiom audit for the adjacent-hole exchange obstructions
+
+Reject every axiom outside the standard three. The imported opening-polarity API
+is audited alongside every public theorem added in the obstruction module.
+-/
+
+namespace CatchUp.AdjacentHoleExchange
+
+open Lean Elab Command in
+run_cmd do
+  let declarations := #[
+    ``left_value, ``right_value,
+    ``left_move_profile, ``right_move_profile,
+    ``safe_right_move_copies_to_loss,
+    ``left_eq_requested, ``right_eq_requested,
+    ``witness_admissible, ``right_to_left_counter_legal,
+    ``forced_first_repair, ``forced_first_repair_endpoints,
+    ``alternating_parity_jump, ``alternating_witness_structure,
+    ``parity_root_opening_five_draw, ``parity_root_pair_erasure,
+    ``omitted_pairs_geometry, ``parity_root_neighbor_states,
+    ``parity_root_reply_eleven_draw,
+    ``CatchUp.after_opening_loss_forces_neighbor_value_jump]
+  let allowed := #[``propext, ``Classical.choice, ``Quot.sound]
+  for declaration in declarations do
+    let actual ← Lean.collectAxioms declaration
+    for axiomName in actual do
+      unless allowed.contains axiomName do
+        throwError "Unexpected axiom in {declaration}: {axiomName}"
+    logInfo m!"Verified axioms for {declaration}: {actual}"
+
+end CatchUp.AdjacentHoleExchange

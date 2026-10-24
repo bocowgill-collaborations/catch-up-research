@@ -1,0 +1,2894 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterAttractor
+import catch_up.FourLiftCertificateChecker
+import catch_up.NewOpeningEntry
+
+/-!
+# Catch-Up old-matched/new-stuttering simulation search
+
+Search a product of a safe small-game state and a large-game state. An old large-game move advances
+both games by the same counter, while a new-counter move leaves the small game fixed. The protected
+player chooses at its large-game nodes and must cover every large-game opponent move.
+
+Large solver outcomes are never accepted as leaves. The search stops only at the proof-backed
+explicit endgame target or at a terminal state checked directly from the formal game semantics.
+Small solver annotations are used only as discovery evidence that a matched small child remains
+safe. This executable is therefore phase-discovery tooling, not a proof of strategy transfer.
+-/
+
+namespace CatchUpSearch.SimulationBasin
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+open CatchUpSearch.FourLiftCertificateChecker
+open CatchUpSearch.FourCounterAttractor
+
+abbrev PairKey := PairedTrace.PairKey
+abbrev PairCache := Std.HashMap PairKey Bool
+abbrev PairM := StateT PairCache (Except String)
+
+def pairKey (small large : State) : PairKey :=
+  ⟨small.cacheKey, large.cacheKey⟩
+
+def stateOfKey (key : CacheKey) : State :=
+  ⟨key.remainingMask, key.deficit, key.toMove⟩
+
+/-- Whether the exact small graph reports one state safe for the protected player. -/
+def smallSafe (owner : Player) (node : SolvedNode) : Bool :=
+  StrategyExtraction.outcomeSafeFor owner node.state node.outcome
+
+/-- Match an old large move in the small graph, or stutter on a new move. -/
+def smallAfterLargeMove? (N : ℕ) (smallNodes : SolvedIndex) (small : State)
+    (largeMove : MoveEvaluation) : Option State :=
+  if largeMove.counter ≤ N then
+    smallNodes[small.cacheKey]?.bind fun smallNode =>
+      (smallNode.moves.find? fun move => decide (move.counter = largeMove.counter)).map
+        MoveEvaluation.child
+  else
+    some small
+
+/-- Directly check that an encoded large terminal state is safe for the owner. -/
+def terminalSafe (gameSize : ℕ) (owner : Player) (state : State) : Bool :=
+  decide (CertificateChecker.IsTerminalState gameSize state) &&
+    decide (CertificateChecker.TerminalSafeFor gameSize owner state)
+
+/-- Product-game forcing recurrence, decreasing once for every large-game counter removed. -/
+def forceAux (N : ℕ) (owner : Player) (smallNodes largeNodes : SolvedIndex) :
+    ℕ → State → State → PairM Bool
+  | 0, small, large => do
+      if let some cached := (← get)[pairKey small large]? then
+        return cached
+      throw s!"simulation fuel exhausted at small={repr small}, large={repr large}"
+  | fuel + 1, small, large => do
+      let key := pairKey small large
+      if let some cached := (← get)[key]? then
+        return cached
+      let result ← if small.remainingMask ≠ PairedTrace.oldMask N large then
+          pure false
+        else
+          let largeNode ← match largeNodes[large.cacheKey]? with
+            | none => throw s!"large graph is missing {repr large}"
+            | some node => pure node
+          if isTarget .explicitEndgame N owner largeNode then
+            pure true
+          else if largeNode.moves.isEmpty then
+            pure (terminalSafe (N + 4) owner large)
+          else
+            let smallNode ← match smallNodes[small.cacheKey]? with
+              | none => throw s!"small graph is missing {repr small}"
+              | some node => pure node
+            if !smallSafe owner smallNode then
+              pure false
+            else if large.toMove = owner then
+              let mut found := false
+              for largeMove in largeNode.moves do
+                if let some smallAfter := smallAfterLargeMove? N smallNodes small largeMove then
+                  if ← forceAux N owner smallNodes largeNodes fuel smallAfter largeMove.child then
+                    found := true
+              pure found
+            else
+              let mut covered := true
+              for largeMove in largeNode.moves do
+                match smallAfterLargeMove? N smallNodes small largeMove with
+                | none => covered := false
+                | some smallAfter =>
+                    if !(← forceAux N owner smallNodes largeNodes fuel smallAfter largeMove.child) then
+                      covered := false
+              pure covered
+      modify fun cache => cache.insert key result
+      return result
+
+/-- Number of old counters present in exactly one member of a product pair. -/
+def oldDiscrepancy (N : ℕ) (small large : State) : ℕ :=
+  let largeOld := PairedTrace.oldMask N large
+  (List.range N).filter (fun index =>
+    small.remainingMask.testBit index != largeOld.testBit index) |>.length
+
+def pendingCounter? (N : ℕ) (small large : State) : Option ℕ :=
+  let largeOld := PairedTrace.oldMask N large
+  (List.range N).find? (fun index =>
+    small.remainingMask.testBit index != largeOld.testBit index) |>.map fun index => index + 1
+
+def pendingCounters (N : ℕ) (small large : State) : List ℕ :=
+  let largeOld := PairedTrace.oldMask N large
+  (List.range N).filterMap fun index =>
+    if small.remainingMask.testBit index != largeOld.testBit index then
+      some (index + 1)
+    else
+      none
+
+/-- An existing pending old counter may persist or resolve, but may not be replaced in one step. -/
+def pendingCompatible (N : ℕ) (small large smallAfter largeAfter : State) : Bool :=
+  match pendingCounter? N small large, pendingCounter? N smallAfter largeAfter with
+  | some before, some after => decide (before = after)
+  | _, _ => true
+
+/-- Stutter, or advance by any small move whose child remains safe for the owner. -/
+def safeSmallOptions (owner : Player) (smallNodes : SolvedIndex) (smallNode : SolvedNode) :
+    List State :=
+  smallNode.state :: smallNode.moves.filterMap fun move =>
+    match smallNodes[move.child.cacheKey]? with
+    | some childNode => if smallSafe owner childNode then some move.child else none
+    | none => none
+
+/-- Advance the small game only when the same actual player moves in both games. -/
+def alignedSmallOptions (owner : Player) (smallNodes : SolvedIndex) (smallNode : SolvedNode)
+    (large : State) : List State :=
+  if smallNode.state.toMove = large.toMove then
+    safeSmallOptions owner smallNodes smallNode
+  else
+    [smallNode.state]
+
+def signedSums : List ℤ → List ℤ
+  | [] => [0]
+  | value :: values =>
+      (signedSums values).flatMap fun sum => [sum + value, sum - value]
+
+def consumedTopValues (N : ℕ) (large : State) : List ℤ :=
+  ([1, 2, 3, 4].filter fun offset =>
+    !large.remainingMask.testBit (N + offset - 1)).map fun offset => (N + offset : ℕ)
+
+def orientedBalance (state : State) : ℤ :=
+  match state.toMove with
+  | .p1 => -(state.deficit : ℤ)
+  | .p2 => state.deficit
+
+/-- Whether signed consumed-top and pending-counter contributions explain the score gap. -/
+def scoreDebtExplained (N : ℕ) (small large : State) : Bool :=
+  let gap := orientedBalance large - orientedBalance small
+  let topSums := signedSums (consumedTopValues N large)
+  let pendingSums := signedSums ((pendingCounters N small large).map fun counter => (counter : ℤ))
+  topSums.any fun topSum => pendingSums.any fun pendingSum =>
+    decide (gap = topSum + pendingSum)
+
+/-- Asynchronous product forcing with a fixed bound on unmatched old counters. -/
+def asyncForceAux (N discrepancyLimit : ℕ) (allowSwap requireDebt : Bool) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) : ℕ → State → State → PairM Bool
+  | 0, small, large => do
+      if let some cached := (← get)[pairKey small large]? then
+        return cached
+      throw s!"asynchronous simulation fuel exhausted at small={repr small}, large={repr large}"
+  | fuel + 1, small, large => do
+      let key := pairKey small large
+      if let some cached := (← get)[key]? then
+        return cached
+      let result ← if discrepancyLimit < oldDiscrepancy N small large ||
+          (requireDebt && !scoreDebtExplained N small large) then
+          pure false
+        else
+          let largeNode ← match largeNodes[large.cacheKey]? with
+            | none => throw s!"large asynchronous graph is missing {repr large}"
+            | some node => pure node
+          if isTarget .explicitEndgame N owner largeNode then
+            pure true
+          else if largeNode.moves.isEmpty then
+            pure (terminalSafe (N + 4) owner large)
+          else
+            let smallNode ← match smallNodes[small.cacheKey]? with
+              | none => throw s!"small asynchronous graph is missing {repr small}"
+              | some node => pure node
+            if !smallSafe owner smallNode then
+              pure false
+            else
+              let options := alignedSmallOptions owner smallNodes smallNode large
+              if large.toMove = owner then
+                let mut found := false
+                for largeMove in largeNode.moves do
+                  if !found then
+                    for smallAfter in options do
+                      if !found then
+                        if (allowSwap ||
+                            pendingCompatible N small large smallAfter largeMove.child) &&
+                            (← asyncForceAux N discrepancyLimit allowSwap requireDebt owner
+                              smallNodes largeNodes fuel
+                              smallAfter largeMove.child) then
+                          found := true
+                pure found
+              else
+                let mut covered := true
+                for largeMove in largeNode.moves do
+                  if covered then
+                    let mut matched := false
+                    for smallAfter in options do
+                      if !matched then
+                        if (allowSwap ||
+                            pendingCompatible N small large smallAfter largeMove.child) &&
+                            (← asyncForceAux N discrepancyLimit allowSwap requireDebt owner
+                              smallNodes largeNodes fuel
+                              smallAfter largeMove.child) then
+                          matched := true
+                    if !matched then
+                      covered := false
+                pure covered
+      modify fun cache => cache.insert key result
+      return result
+
+inductive PendingSide
+  | none
+  | smallOnly
+  | largeOnly
+deriving DecidableEq, Repr
+
+/-- Which state contains the unique unmatched old counter, when discrepancy is at most one. -/
+def pendingSide (N : ℕ) (small large : State) : PendingSide :=
+  let largeOld := PairedTrace.oldMask N large
+  if small.remainingMask = largeOld then
+    .none
+  else if (List.range N).any fun index =>
+      small.remainingMask.testBit index && !largeOld.testBit index then
+    .smallOnly
+  else
+    .largeOnly
+
+structure AsyncPhase where
+  topMask : ℕ
+  smallToMove : Player
+  largeToMove : Player
+  deficitOffset : ℤ
+  pending : PendingSide
+deriving DecidableEq, BEq, Repr
+
+protected def AsyncPhase.hash (phase : AsyncPhase) : UInt64 :=
+  let smallPlayerHash := match phase.smallToMove with
+    | .p1 => 0
+    | .p2 => 1
+  let largePlayerHash := match phase.largeToMove with
+    | .p1 => 0
+    | .p2 => 1
+  let pendingHash := match phase.pending with
+    | .none => 0
+    | .smallOnly => 1
+    | .largeOnly => 2
+  mixHash (hash phase.topMask) <| mixHash smallPlayerHash <|
+    mixHash largePlayerHash <| mixHash (hash phase.deficitOffset) pendingHash
+
+instance : Hashable AsyncPhase := ⟨AsyncPhase.hash⟩
+
+def asyncPhase (N : ℕ) (small large : State) : AsyncPhase :=
+  ⟨PairedTrace.topMask N large, small.toMove, large.toMove,
+    PairedTrace.deficitOffset small large, pendingSide N small large⟩
+
+def asyncPhaseCount (N : ℕ) (keys : List PairKey) : ℕ :=
+  let phases := keys.foldl (fun phases key =>
+    let small := stateOfKey key.small
+    let large := stateOfKey key.large
+    phases.insert (asyncPhase N small large) ()) ({} : Std.HashMap AsyncPhase Unit)
+  phases.size
+
+/-- Player-one score lead represented by an absolute normalized state. -/
+def scoreBalance (state : State) : ℤ :=
+  match state.toMove with
+  | .p1 => -(state.deficit : ℤ)
+  | .p2 => state.deficit
+
+def scoreGap (small large : State) : ℤ :=
+  scoreBalance large - scoreBalance small
+
+structure TopContribution where
+  coefficient : ℤ
+  constant : ℤ
+deriving DecidableEq, Repr
+
+/-- Every signed ownership contribution of the consumed counters `N + offset`. -/
+def topContributions : List ℕ → List TopContribution
+  | [] => [⟨0, 0⟩]
+  | offset :: offsets =>
+      (topContributions offsets).flatMap fun contribution =>
+        [⟨contribution.coefficient + 1, contribution.constant + offset⟩,
+          ⟨contribution.coefficient - 1, contribution.constant - offset⟩]
+
+def consumedTopOffsets (N : ℕ) (large : State) : List ℕ :=
+  [1, 2, 3, 4].filter fun offset =>
+    !large.remainingMask.testBit (N + offset - 1)
+
+structure DebtPhase where
+  topMask : ℕ
+  smallToMove : Player
+  largeToMove : Player
+  topCoefficient : ℤ
+  topConstant : ℤ
+  pendingCode : ℕ
+deriving DecidableEq, BEq, Repr
+
+protected def DebtPhase.hash (phase : DebtPhase) : UInt64 :=
+  let smallPlayerHash := match phase.smallToMove with
+    | .p1 => 0
+    | .p2 => 1
+  let largePlayerHash := match phase.largeToMove with
+    | .p1 => 0
+    | .p2 => 1
+  mixHash (hash phase.topMask) <| mixHash smallPlayerHash <|
+    mixHash largePlayerHash <| mixHash (hash phase.topCoefficient) <|
+    mixHash (hash phase.topConstant) (hash phase.pendingCode)
+
+instance : Hashable DebtPhase := ⟨DebtPhase.hash⟩
+
+structure PendingContribution where
+  value : ℤ
+  code : ℕ
+deriving Repr
+
+def pendingSideForCounter (N : ℕ) (small large : State) (counter : ℕ) : PendingSide :=
+  let index := counter - 1
+  let largeOld := PairedTrace.oldMask N large
+  if small.remainingMask.testBit index && !largeOld.testBit index then
+    .smallOnly
+  else
+    .largeOnly
+
+def pendingContributions (N : ℕ) (small large : State) : List PendingContribution :=
+  (pendingCounters N small large).foldl (fun contributions counter =>
+    let side := pendingSideForCounter N small large counter
+    let positiveToken := match side with
+      | .smallOnly => 1
+      | .largeOnly => 3
+      | .none => 0
+    let negativeToken := match side with
+      | .smallOnly => 2
+      | .largeOnly => 4
+      | .none => 0
+    contributions.flatMap fun contribution =>
+      [⟨contribution.value + counter, contribution.code * 5 + positiveToken⟩,
+        ⟨contribution.value - counter, contribution.code * 5 + negativeToken⟩])
+    [⟨0, 0⟩]
+
+/-- Choose one signed decomposition of the score gap for compact phase reporting. -/
+def debtPhase? (N : ℕ) (small large : State) : Option DebtPhase :=
+  let candidates := (topContributions (consumedTopOffsets N large)).flatMap fun top =>
+    (pendingContributions N small large).map fun pending => (top, pending)
+  match candidates.find? fun candidate => decide (
+      candidate.1.coefficient * (N : ℤ) + candidate.1.constant +
+        candidate.2.value = scoreGap small large) with
+  | none => none
+  | some (top, pending) =>
+      some ⟨PairedTrace.topMask N large, small.toMove, large.toMove,
+        top.coefficient, top.constant, pending.code⟩
+
+def debtPhaseStats (N : ℕ) (keys : List PairKey) : ℕ × ℕ :=
+  let result := keys.foldl (fun result key =>
+    let small := stateOfKey key.small
+    let large := stateOfKey key.large
+    match debtPhase? N small large with
+    | none => result
+    | some phase => (result.1 + 1, result.2.insert phase ()))
+    (0, ({} : Std.HashMap DebtPhase Unit))
+  (result.1, result.2.size)
+
+/-- Number of signed decompositions accepted by the local score-debt equation. -/
+def debtExplanationCount (N : ℕ) (small large : State) : ℕ :=
+  let gap := scoreGap small large
+  let topSums := signedSums (consumedTopValues N large)
+  let pendingSums := signedSums ((pendingCounters N small large).map fun counter => (counter : ℤ))
+  (topSums.flatMap fun topSum => pendingSums.map fun pendingSum => topSum + pendingSum)
+    |>.filter (fun sum => decide (sum = gap)) |>.length
+
+def ambiguityBucket (count : ℕ) : String :=
+  if count = 0 then "0"
+  else if count = 1 then "1"
+  else if count = 2 then "2"
+  else if count ≤ 4 then "3-4"
+  else "5+"
+
+def ambiguityReport (N : ℕ) (keys : List PairKey) : String :=
+  let counts := keys.foldl (fun counts key =>
+    let small := stateOfKey key.small
+    let large := stateOfKey key.large
+    let bucket := ambiguityBucket (debtExplanationCount N small large)
+    counts.insert bucket (counts[bucket]?.getD 0 + 1))
+    ({} : Std.HashMap String ℕ)
+  let ordered := ["0", "1", "2", "3-4", "5+"]
+  String.intercalate "," <| ordered.map fun bucket =>
+    s!"{bucket}:{counts[bucket]?.getD 0}"
+
+def removedSmallCounter? (N : ℕ) (small smallAfter : State) : Option ℕ :=
+  (List.range N).find? (fun index =>
+    small.remainingMask.testBit index && !smallAfter.remainingMask.testBit index)
+    |>.map fun index => index + 1
+
+def pendingChangeName (N : ℕ) (small large smallAfter largeAfter : State) : String :=
+  let before := pendingCounters N small large
+  let after := pendingCounters N smallAfter largeAfter
+  if before = after then "unchanged"
+  else if before.all fun counter => counter ∈ after then "added"
+  else if after.all fun counter => counter ∈ before then "removed"
+  else if before.length = after.length then "replaced"
+  else "reconfigured"
+
+def ownerFlag (owner player : Player) : Nat :=
+  if player = owner then 1 else 0
+
+/-- A parameter-free description of one selected asynchronous transition. -/
+def edgeTemplate (N : ℕ) (owner : Player) (small large smallAfter : State)
+    (largeMove : MoveEvaluation) : String :=
+  let largeAfter := largeMove.child
+  let largeAction := if largeMove.counter ≤ N then "old" else s!"top+{largeMove.counter - N}"
+  let smallAction := if smallAfter = small then "stutter" else
+    match removedSmallCounter? N small smallAfter with
+    | some counter => if counter = largeMove.counter then "same" else "different"
+    | none => "unknown"
+  s!"top={PairedTrace.topMask N large}->{PairedTrace.topMask N largeAfter};" ++
+    s!"movers={ownerFlag owner small.toMove}/{ownerFlag owner large.toMove}->" ++
+    s!"{ownerFlag owner smallAfter.toMove}/{ownerFlag owner largeAfter.toMove};" ++
+    s!"large={largeAction};small={smallAction};" ++
+    s!"pending={oldDiscrepancy N small large}->{oldDiscrepancy N smallAfter largeAfter}/" ++
+    pendingChangeName N small large smallAfter largeAfter ++ ";" ++
+    s!"ambiguity={ambiguityBucket (debtExplanationCount N small large)}->" ++
+    ambiguityBucket (debtExplanationCount N smallAfter largeAfter)
+
+/-- Persistent signs for consumed top counters and currently pending old counters. -/
+structure Ledger where
+  topPositiveMask : ℕ
+  pendingPositiveMask : ℕ
+deriving DecidableEq, BEq, Repr
+
+protected def Ledger.hash (ledger : Ledger) : UInt64 :=
+  mixHash (hash ledger.topPositiveMask) (hash ledger.pendingPositiveMask)
+
+instance : Hashable Ledger := ⟨Ledger.hash⟩
+
+structure LedgerPairKey where
+  pair : PairKey
+  ledger : Ledger
+deriving BEq
+
+protected def LedgerPairKey.hash (key : LedgerPairKey) : UInt64 :=
+  mixHash key.pair.hash key.ledger.hash
+
+instance : Hashable LedgerPairKey := ⟨LedgerPairKey.hash⟩
+
+def playerCoefficient : Player → ℤ
+  | .p1 => 1
+  | .p2 => -1
+
+def signedCounter (positive : Bool) (counter : ℕ) : ℤ :=
+  if positive then (counter : ℤ) else -(counter : ℤ)
+
+def ledgerValue (N : ℕ) (small large : State) (ledger : Ledger) : ℤ :=
+  let topValue := [1, 2, 3, 4].foldl (fun value offset =>
+    if large.remainingMask.testBit (N + offset - 1) then value
+    else value + signedCounter (ledger.topPositiveMask.testBit (offset - 1)) (N + offset)) 0
+  let pendingValue := (List.range N).foldl (fun value index =>
+    if small.remainingMask.testBit index != (PairedTrace.oldMask N large).testBit index then
+      value + signedCounter (ledger.pendingPositiveMask.testBit index) (index + 1)
+    else value) 0
+  topValue + pendingValue
+
+/-- The ledger has no positive-sign bits outside its currently visible support. -/
+def ledgerSupportValid (N : ℕ) (small large : State) (ledger : Ledger) : Bool :=
+  ledger.topPositiveMask < Nat.shiftLeft 1 4 &&
+    ledger.pendingPositiveMask < Nat.shiftLeft 1 N &&
+    ([1, 2, 3, 4].all fun offset =>
+      large.remainingMask.testBit (N + offset - 1) →
+        !ledger.topPositiveMask.testBit (offset - 1)) &&
+    ((List.range N).all fun index =>
+      small.remainingMask.testBit index = (PairedTrace.oldMask N large).testBit index →
+        !ledger.pendingPositiveMask.testBit index)
+
+/-- The ledger has exactly the currently visible support and reproduces the score gap. -/
+def ledgerValid (N : ℕ) (small large : State) (ledger : Ledger) : Bool :=
+  ledgerSupportValid N small large ledger &&
+    decide (ledgerValue N small large ledger = scoreGap small large)
+
+def oldPendingAt (N : ℕ) (small large : State) (index : ℕ) : Bool :=
+  small.remainingMask.testBit index != (PairedTrace.oldMask N large).testBit index
+
+def updatePendingLedgerAux (N : ℕ) (small large smallAfter largeAfter : State)
+    (largeCounter : ℕ) (smallCounter : Option ℕ) (ledger : Ledger) :
+    List ℕ → ℕ → Option ℕ
+  | [], positiveMask => some positiveMask
+  | index :: indices, positiveMask =>
+      let counter := index + 1
+      let beforeCoefficient : ℤ := if oldPendingAt N small large index then
+          if ledger.pendingPositiveMask.testBit index then 1 else -1
+        else 0
+      let largeDelta := if largeCounter = counter then playerCoefficient large.toMove else 0
+      let smallDelta := if smallCounter = some counter then -playerCoefficient small.toMove else 0
+      let afterCoefficient := beforeCoefficient + largeDelta + smallDelta
+      if oldPendingAt N smallAfter largeAfter index then
+        if afterCoefficient = 1 then
+          updatePendingLedgerAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+            indices (positiveMask + Nat.shiftLeft 1 index)
+        else if afterCoefficient = -1 then
+          updatePendingLedgerAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+            indices positiveMask
+        else
+          none
+      else if afterCoefficient = 0 then
+        updatePendingLedgerAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+          indices positiveMask
+      else
+        none
+
+/-- Deterministically update a conserved ledger across one paired transition. -/
+def updateLedger? (N : ℕ) (small large smallAfter : State) (largeMove : MoveEvaluation)
+    (ledger : Ledger) : Option Ledger := do
+  let largeAfter := largeMove.child
+  let smallCounter := removedSmallCounter? N small smallAfter
+  let topPositiveMask := if N < largeMove.counter && large.toMove = .p1 then
+      ledger.topPositiveMask + Nat.shiftLeft 1 (largeMove.counter - N - 1)
+    else
+      ledger.topPositiveMask
+  let pendingPositiveMask ← updatePendingLedgerAux N small large smallAfter largeAfter
+    largeMove.counter smallCounter ledger (List.range N) 0
+  let updated := Ledger.mk topPositiveMask pendingPositiveMask
+  if ledgerValid N smallAfter largeAfter updated then some updated else none
+
+/-- A persistent visible ledger plus at most one resolved counter with coefficient `±2`. -/
+structure ResidualLedger where
+  visible : Ledger
+  residualCounter : ℕ
+  residualPositive : Bool
+deriving DecidableEq, BEq, Repr
+
+protected def ResidualLedger.hash (ledger : ResidualLedger) : UInt64 :=
+  mixHash ledger.visible.hash <| mixHash (hash ledger.residualCounter) (hash ledger.residualPositive)
+
+instance : Hashable ResidualLedger := ⟨ResidualLedger.hash⟩
+
+def residualValue (ledger : ResidualLedger) : ℤ :=
+  if ledger.residualCounter = 0 then 0
+  else 2 * signedCounter ledger.residualPositive ledger.residualCounter
+
+def residualLedgerValid (N : ℕ) (small large : State) (ledger : ResidualLedger) : Bool :=
+  let residualSupport := if ledger.residualCounter = 0 then !ledger.residualPositive else
+    ledger.residualCounter ≤ N &&
+      !small.remainingMask.testBit (ledger.residualCounter - 1) &&
+      !(PairedTrace.oldMask N large).testBit (ledger.residualCounter - 1)
+  ledgerSupportValid N small large ledger.visible && residualSupport &&
+    decide (ledgerValue N small large ledger.visible + residualValue ledger = scoreGap small large)
+
+structure ResidualPendingUpdate where
+  pendingPositiveMask : ℕ
+  residualCounter : ℕ
+  residualPositive : Bool
+
+def updateResidualPendingAux (N : ℕ) (small large smallAfter largeAfter : State)
+    (largeCounter : ℕ) (smallCounter : Option ℕ) (ledger : ResidualLedger) :
+    List ℕ → ResidualPendingUpdate → Option ResidualPendingUpdate
+  | [], update => some update
+  | index :: indices, update =>
+      let counter := index + 1
+      let beforeCoefficient : ℤ := if oldPendingAt N small large index then
+          if ledger.visible.pendingPositiveMask.testBit index then 1 else -1
+        else 0
+      let largeDelta := if largeCounter = counter then playerCoefficient large.toMove else 0
+      let smallDelta := if smallCounter = some counter then -playerCoefficient small.toMove else 0
+      let afterCoefficient := beforeCoefficient + largeDelta + smallDelta
+      if oldPendingAt N smallAfter largeAfter index then
+        if afterCoefficient = 1 then
+          updateResidualPendingAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+            indices { update with pendingPositiveMask :=
+              update.pendingPositiveMask + Nat.shiftLeft 1 index }
+        else if afterCoefficient = -1 then
+          updateResidualPendingAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+            indices update
+        else
+          none
+      else if afterCoefficient = 0 then
+        updateResidualPendingAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+          indices update
+      else if update.residualCounter = 0 &&
+          (afterCoefficient = 2 || afterCoefficient = -2) then
+        let withCounter := { update with residualCounter := counter }
+        let withSign := { withCounter with residualPositive := decide (afterCoefficient = 2) }
+        updateResidualPendingAux N small large smallAfter largeAfter largeCounter smallCounter ledger
+          indices withSign
+      else
+        none
+
+def updateResidualLedger? (N : ℕ) (small large smallAfter : State)
+    (largeMove : MoveEvaluation) (ledger : ResidualLedger) : Option ResidualLedger := do
+  let largeAfter := largeMove.child
+  let smallCounter := removedSmallCounter? N small smallAfter
+  let topPositiveMask := if N < largeMove.counter && large.toMove = .p1 then
+      ledger.visible.topPositiveMask + Nat.shiftLeft 1 (largeMove.counter - N - 1)
+    else
+      ledger.visible.topPositiveMask
+  let pendingUpdate ← updateResidualPendingAux N small large smallAfter largeAfter
+    largeMove.counter smallCounter ledger (List.range N)
+      ⟨0, ledger.residualCounter, ledger.residualPositive⟩
+  let updated : ResidualLedger :=
+    ⟨⟨topPositiveMask, pendingUpdate.pendingPositiveMask⟩,
+      pendingUpdate.residualCounter, pendingUpdate.residualPositive⟩
+  if residualLedgerValid N smallAfter largeAfter updated then some updated else none
+
+abbrev LedgerCache := Std.HashMap LedgerPairKey Bool
+abbrev LedgerM := StateT LedgerCache (Except String)
+
+def ledgerPairKey (small large : State) (ledger : Ledger) : LedgerPairKey :=
+  ⟨pairKey small large, ledger⟩
+
+/-- Product forcing in which the signed score ledger persists through every selected edge. -/
+def ledgerForceAux (N discrepancyLimit : ℕ) (owner : Player) (smallNodes largeNodes : SolvedIndex)
+    (localCache : PairCache) : ℕ → State → State → Ledger → LedgerM Bool
+  | 0, small, large, ledger => do
+      if let some cached := (← get)[ledgerPairKey small large ledger]? then
+        return cached
+      throw s!"persistent-ledger simulation fuel exhausted at small={repr small}, large={repr large}"
+  | fuel + 1, small, large, ledger => do
+      let key := ledgerPairKey small large ledger
+      if let some cached := (← get)[key]? then
+        return cached
+      let result ← if !(localCache[pairKey small large]?.getD false) ||
+          discrepancyLimit < oldDiscrepancy N small large || !ledgerValid N small large ledger then
+          pure false
+        else
+          let largeNode ← match largeNodes[large.cacheKey]? with
+            | none => throw s!"large persistent-ledger graph is missing {repr large}"
+            | some node => pure node
+          if isTarget .explicitEndgame N owner largeNode then
+            pure true
+          else if largeNode.moves.isEmpty then
+            pure (terminalSafe (N + 4) owner large)
+          else
+            let smallNode ← match smallNodes[small.cacheKey]? with
+              | none => throw s!"small persistent-ledger graph is missing {repr small}"
+              | some node => pure node
+            if !smallSafe owner smallNode then
+              pure false
+            else
+              let options := alignedSmallOptions owner smallNodes smallNode large
+              if large.toMove = owner then
+                let mut found := false
+                for largeMove in largeNode.moves do
+                  if !found then
+                    for smallAfter in options do
+                      if !found then
+                        if let some ledgerAfter := updateLedger? N small large smallAfter largeMove ledger then
+                          if ← ledgerForceAux N discrepancyLimit owner smallNodes largeNodes localCache fuel
+                              smallAfter largeMove.child ledgerAfter then
+                            found := true
+                pure found
+              else
+                let mut covered := true
+                for largeMove in largeNode.moves do
+                  if covered then
+                    let mut matched := false
+                    for smallAfter in options do
+                      if !matched then
+                        if let some ledgerAfter := updateLedger? N small large smallAfter largeMove ledger then
+                          if ← ledgerForceAux N discrepancyLimit owner smallNodes largeNodes localCache fuel
+                              smallAfter largeMove.child ledgerAfter then
+                            matched := true
+                    if !matched then
+                      covered := false
+                pure covered
+      modify fun cache => cache.insert key result
+      return result
+
+structure ResidualPairKey where
+  pair : PairKey
+  ledger : ResidualLedger
+deriving BEq
+
+protected def ResidualPairKey.hash (key : ResidualPairKey) : UInt64 :=
+  mixHash key.pair.hash key.ledger.hash
+
+instance : Hashable ResidualPairKey := ⟨ResidualPairKey.hash⟩
+
+abbrev ResidualCache := Std.HashMap ResidualPairKey Bool
+abbrev ResidualM := StateT ResidualCache (Except String)
+
+def residualPairKey (small large : State) (ledger : ResidualLedger) : ResidualPairKey :=
+  ⟨pairKey small large, ledger⟩
+
+/-- Product forcing with a persistent ledger and at most one resolved-old residual token. -/
+def residualForceAux (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) :
+    ℕ → State → State → ResidualLedger → ResidualM Bool
+  | 0, small, large, ledger => do
+      if let some cached := (← get)[residualPairKey small large ledger]? then
+        return cached
+      throw s!"one-residual simulation fuel exhausted at small={repr small}, large={repr large}"
+  | fuel + 1, small, large, ledger => do
+      let key := residualPairKey small large ledger
+      if let some cached := (← get)[key]? then
+        return cached
+      let result ← if discrepancyLimit < oldDiscrepancy N small large ||
+          !residualLedgerValid N small large ledger then
+          pure false
+        else
+          let largeNode ← match largeNodes[large.cacheKey]? with
+            | none => throw s!"large one-residual graph is missing {repr large}"
+            | some node => pure node
+          if isTarget .explicitEndgame N owner largeNode then
+            pure true
+          else if largeNode.moves.isEmpty then
+            pure (terminalSafe (N + 4) owner large)
+          else
+            let smallNode ← match smallNodes[small.cacheKey]? with
+              | none => throw s!"small one-residual graph is missing {repr small}"
+              | some node => pure node
+            if !smallSafe owner smallNode then
+              pure false
+            else
+              let options := alignedSmallOptions owner smallNodes smallNode large
+              if large.toMove = owner then
+                let mut found := false
+                for largeMove in largeNode.moves do
+                  if !found then
+                    for smallAfter in options do
+                      if !found then
+                        if let some ledgerAfter :=
+                            updateResidualLedger? N small large smallAfter largeMove ledger then
+                          if ← residualForceAux N discrepancyLimit owner smallNodes largeNodes fuel
+                              smallAfter largeMove.child ledgerAfter then
+                            found := true
+                pure found
+              else
+                let mut covered := true
+                for largeMove in largeNode.moves do
+                  if covered then
+                    let mut matched := false
+                    for smallAfter in options do
+                      if !matched then
+                        if let some ledgerAfter :=
+                            updateResidualLedger? N small large smallAfter largeMove ledger then
+                          if ← residualForceAux N discrepancyLimit owner smallNodes largeNodes fuel
+                              smallAfter largeMove.child ledgerAfter then
+                            matched := true
+                    if !matched then
+                      covered := false
+                pure covered
+      modify fun cache => cache.insert key result
+      return result
+
+def residualCachedWinning (cache : ResidualCache) (small large : State)
+    (ledger : ResidualLedger) : Bool :=
+  cache[residualPairKey small large ledger]?.getD false
+
+def residualFailureSummary (N : ℕ) (small large : State) (ledger : ResidualLedger) : String :=
+  let pending := pendingCounters N small large
+  let pendingPositive := pending.filter fun counter =>
+    ledger.visible.pendingPositiveMask.testBit (counter - 1)
+  s!"small={repr small};large={repr large};topPositive={ledger.visible.topPositiveMask};" ++
+    s!"pending={pending};pendingPositive={pendingPositive};" ++
+    s!"residual={ledger.residualCounter}/{ledger.residualPositive};" ++
+    s!"gap={scoreGap small large};" ++
+    s!"ledgerValue={ledgerValue N small large ledger.visible + residualValue ledger}"
+
+/-- Follow one cached obstruction below a required root outside the one-residual basin. -/
+def residualFailureTrace (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (cache : ResidualCache) :
+    ℕ → State → State → ResidualLedger → Except String (List String)
+  | 0, small, large, ledger =>
+      pure [s!"residual failure-trace fuel exhausted; {residualFailureSummary N small large ledger}"]
+  | fuel + 1, small, large, ledger => do
+      let summary := residualFailureSummary N small large ledger
+      if discrepancyLimit < oldDiscrepancy N small large then
+        return [s!"old discrepancy exceeded {discrepancyLimit}; {summary}"]
+      if !residualLedgerValid N small large ledger then
+        return [s!"residual ledger invariant failed; {summary}"]
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | none => throw s!"large residual failure trace is missing {repr large}"
+        | some node => pure node
+      if isTarget .explicitEndgame N owner largeNode then
+        return [s!"unexpected safe target outside residual basin; {summary}"]
+      if largeNode.moves.isEmpty then
+        return [s!"unsafe terminal outside residual basin; {summary}"]
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | none => throw s!"small residual failure trace is missing {repr small}"
+        | some node => pure node
+      if !smallSafe owner smallNode then
+        return [s!"small state is not owner-safe; {summary}"]
+      let options := alignedSmallOptions owner smallNodes smallNode large
+      if large.toMove = owner then
+        let mut candidate : Option (MoveEvaluation × State × ResidualLedger) := none
+        for largeMove in largeNode.moves do
+          if candidate.isNone then
+            for smallAfter in options do
+              if candidate.isNone then
+                if let some ledgerAfter :=
+                    updateResidualLedger? N small large smallAfter largeMove ledger then
+                  if !residualCachedWinning cache smallAfter largeMove.child ledgerAfter then
+                    candidate := some (largeMove, smallAfter, ledgerAfter)
+        match candidate with
+        | none => return [s!"owner has no coherent cached-false candidate; {summary}"]
+        | some (largeMove, smallAfter, ledgerAfter) =>
+            let tail ← residualFailureTrace N discrepancyLimit owner smallNodes largeNodes cache
+              fuel smallAfter largeMove.child ledgerAfter
+            return (s!"owner candidate large={largeMove.counter},small=" ++
+              s!"{removedSmallCounter? N small smallAfter} fails; {summary}") :: tail
+      else
+        let mut obstruction : Option (MoveEvaluation × Option (State × ResidualLedger)) := none
+        for largeMove in largeNode.moves do
+          if obstruction.isNone then
+            let mut matched := false
+            let mut candidate : Option (State × ResidualLedger) := none
+            for smallAfter in options do
+              if !matched then
+                if let some ledgerAfter :=
+                    updateResidualLedger? N small large smallAfter largeMove ledger then
+                  if residualCachedWinning cache smallAfter largeMove.child ledgerAfter then
+                    matched := true
+                  else if candidate.isNone then
+                    candidate := some (smallAfter, ledgerAfter)
+            if !matched then
+              obstruction := some (largeMove, candidate)
+        match obstruction with
+        | none => return [s!"opponent failure trace found no escaping move; {summary}"]
+        | some (largeMove, none) =>
+            return [s!"opponent move {largeMove.counter} has no coherent response; {summary}"]
+        | some (largeMove, some (smallAfter, ledgerAfter)) =>
+            let tail ← residualFailureTrace N discrepancyLimit owner smallNodes largeNodes cache
+              fuel smallAfter largeMove.child ledgerAfter
+            return (s!"opponent move large={largeMove.counter},small=" ++
+              s!"{removedSmallCounter? N small smallAfter} escapes; {summary}") :: tail
+
+def relativePlayerName (owner player : Player) : String :=
+  if player = owner then "O" else "A"
+
+def relativeSignName (owner : Player) (positive : Bool) : String :=
+  relativePlayerName owner (if positive then .p1 else .p2)
+
+def counterComparisonName (counter deficit : ℕ) : String :=
+  if counter < deficit then "<" else if counter = deficit then "=" else ">"
+
+def counterSlotAux (target : ℕ) : List ℕ → ℕ → Option ℕ
+  | [], _ => none
+  | counter :: counters, index =>
+      if counter = target then some index else counterSlotAux target counters (index + 1)
+
+def pendingSlot? (N : ℕ) (small large : State) (counter : ℕ) : Option ℕ :=
+  counterSlotAux counter (pendingCounters N small large) 0
+
+def normalizedTopShape (N : ℕ) (owner : Player) (large : State)
+    (ledger : ResidualLedger) : String :=
+  String.intercalate "," <| [1, 2, 3, 4].map fun offset =>
+    if large.remainingMask.testBit (N + offset - 1) then
+      s!"{offset}R"
+    else
+      s!"{offset}{relativeSignName owner
+        (ledger.visible.topPositiveMask.testBit (offset - 1))}"
+
+def normalizedPendingShape (N : ℕ) (owner : Player) (small large : State)
+    (ledger : ResidualLedger) : String :=
+  let pending := pendingCounters N small large
+  if pending.isEmpty then "-" else
+    String.intercalate "," <| pending.map fun counter =>
+      let index := (pendingSlot? N small large counter).getD 99
+      let side := if small.remainingMask.testBit (counter - 1) then "S" else "L"
+      let sign := relativeSignName owner
+        (ledger.visible.pendingPositiveMask.testBit (counter - 1))
+      s!"{side}{index}{sign}"
+
+def normalizedResidualShape (owner : Player) (ledger : ResidualLedger) : String :=
+  if ledger.residualCounter = 0 then "-" else
+    relativeSignName owner ledger.residualPositive
+
+def residualPhaseString (N : ℕ) (owner : Player) (small large : State)
+    (ledger : ResidualLedger) (smallNode : SolvedNode) : String :=
+  s!"rho={N % 4};movers={relativePlayerName owner small.toMove}/" ++
+    s!"{relativePlayerName owner large.toMove};" ++
+    s!"top={normalizedTopShape N owner large ledger};" ++
+    s!"pending={normalizedPendingShape N owner small large ledger};" ++
+    s!"res={normalizedResidualShape owner ledger};smallT={smallNode.moves.isEmpty}"
+
+def residualLargeActionName (N : ℕ) (owner : Player) (small large : State)
+    (ledger : ResidualLedger) (counter : ℕ) : Except String String := do
+  if N < counter then
+    if counter ≤ N + 4 then
+      return s!"T{counter - N}"
+    throw s!"large witness move {counter} lies above N+4"
+  match pendingSlot? N small large counter with
+  | none => return "M"
+  | some slot =>
+      let index := counter - 1
+      let smallHas := small.remainingMask.testBit index
+      let largeHas := (PairedTrace.oldMask N large).testBit index
+      if largeHas && !smallHas then
+        return s!"LP{slot}{relativeSignName owner
+          (ledger.visible.pendingPositiveMask.testBit index)}"
+      throw s!"large witness move {counter} is not a large-only pending counter"
+
+def residualSmallActionName (N : ℕ) (owner : Player) (small large smallAfter : State)
+    (ledger : ResidualLedger) (largeCounter : ℕ) : Except String String := do
+  if smallAfter = small then
+    return "Z"
+  let smallCounter ← match removedSmallCounter? N small smallAfter with
+    | some counter => pure counter
+    | none => throw "changed small state has no unique removed counter"
+  if smallCounter = largeCounter then
+    if (pendingSlot? N small large smallCounter).isSome then
+      throw s!"same-counter ghost move {smallCounter} was pending"
+    return "SAME"
+  match pendingSlot? N small large smallCounter with
+  | none => return "DIFF"
+  | some slot =>
+      let index := smallCounter - 1
+      let smallHas := small.remainingMask.testBit index
+      let largeHas := (PairedTrace.oldMask N large).testBit index
+      if smallHas && !largeHas then
+        return s!"SP{slot}{relativeSignName owner
+          (ledger.visible.pendingPositiveMask.testBit index)}"
+      throw s!"ghost move {smallCounter} is not a small-only pending counter"
+
+def residualTransitionName (owner : Player) (before after : ResidualLedger) : Except String String :=
+  if before.residualCounter = 0 then
+    if after.residualCounter = 0 then
+      pure "none"
+    else
+      pure s!"create{relativeSignName owner after.residualPositive}"
+  else if after.residualCounter = before.residualCounter &&
+      after.residualPositive = before.residualPositive then
+    pure "keep"
+  else
+    throw s!"residual token changed from {repr before} to {repr after}"
+
+def residualEdgeKind (N : ℕ) (owner : Player) (small large smallAfter : State)
+    (largeMove : MoveEvaluation) (ledger ledgerAfter : ResidualLedger) : Except String String := do
+  let largeAction ← residualLargeActionName N owner small large ledger largeMove.counter
+  let smallAction ← residualSmallActionName N owner small large smallAfter ledger largeMove.counter
+  let residualChange ← residualTransitionName owner ledger ledgerAfter
+  let smallComparison := match removedSmallCounter? N small smallAfter with
+    | none => "-"
+    | some counter => counterComparisonName counter small.deficit
+  pure <| s!"L={largeAction}{counterComparisonName largeMove.counter large.deficit};" ++
+    s!"S={smallAction}{smallComparison};" ++
+    s!"P={pendingChangeName N small large smallAfter largeMove.child};R={residualChange}"
+
+def residualCoarseLargeActionName (N : ℕ) (small large : State) (counter : ℕ) : String :=
+  if N < counter then "T" else if (pendingSlot? N small large counter).isSome then "LP" else "M"
+
+def residualCoarseSmallActionName (N : ℕ) (small large smallAfter : State)
+    (largeCounter : ℕ) : Except String String := do
+  if smallAfter = small then
+    return "Z"
+  match removedSmallCounter? N small smallAfter with
+  | none => throw "changed small state has no removed counter in coarse report"
+  | some counter =>
+      if counter = largeCounter then pure "SAME"
+      else if (pendingSlot? N small large counter).isSome then pure "SP" else pure "DIFF"
+
+def residualCoarseKinds (N : ℕ) (owner : Player) (small large smallAfter : State)
+    (largeMove : MoveEvaluation) (ledger ledgerAfter : ResidualLedger) :
+    Except String (String × String) := do
+  let largeAction := residualCoarseLargeActionName N small large largeMove.counter
+  let smallAction ← residualCoarseSmallActionName N small large smallAfter largeMove.counter
+  let residualChange ← residualTransitionName owner ledger ledgerAfter
+  let actions := s!"L={largeAction};S={smallAction}"
+  pure (actions,
+    actions ++ s!";P={pendingChangeName N small large smallAfter largeMove.child};" ++
+      s!"R={residualChange}")
+
+structure ResidualWitnessStats where
+  visited : Std.HashMap ResidualPairKey Unit
+  phases : Std.HashMap String Unit
+  edgeKinds : Std.HashMap String ℕ
+  coarseKinds : Std.HashMap String ℕ
+  actionKinds : Std.HashMap String ℕ
+  phaseActions : Std.HashMap String ℕ
+  transitions : Std.HashMap String ℕ
+  edgeExamples : Std.HashMap String String
+  selectedEdges : ℕ
+  ownerNodes : ℕ
+  opponentNodes : ℕ
+  opponentObligations : ℕ
+  targetLeaves : ℕ
+  terminalLeaves : ℕ
+
+def emptyResidualWitnessStats : ResidualWitnessStats :=
+  ⟨{}, {}, {}, {}, {}, {}, {}, {}, 0, 0, 0, 0, 0, 0⟩
+
+abbrev ResidualWitnessM := StateT ResidualWitnessStats (Except String)
+
+def incrementStringCount (counts : Std.HashMap String ℕ) (key : String) :
+    Std.HashMap String ℕ :=
+  counts.insert key (counts[key]?.getD 0 + 1)
+
+def recordResidualWitnessEdge (N : ℕ) (owner : Player) (smallNodes : SolvedIndex)
+    (small large smallAfter : State) (largeMove : MoveEvaluation)
+    (ledger ledgerAfter : ResidualLedger) : ResidualWitnessM Unit := do
+  let smallNode ← match smallNodes[small.cacheKey]? with
+    | some node => pure node
+    | none => throw s!"residual witness source small graph is missing {repr small}"
+  let smallAfterNode ← match smallNodes[smallAfter.cacheKey]? with
+    | some node => pure node
+    | none => throw s!"residual witness child small graph is missing {repr smallAfter}"
+  let source := residualPhaseString N owner small large ledger smallNode
+  let target := residualPhaseString N owner smallAfter largeMove.child ledgerAfter smallAfterNode
+  let kind ← residualEdgeKind N owner small large smallAfter largeMove ledger ledgerAfter
+  let coarseKinds ← residualCoarseKinds N owner small large smallAfter largeMove ledger ledgerAfter
+  let rawExample := s!"dS={small.deficit};dL={large.deficit};" ++
+    s!"pending={pendingCounters N small large};" ++
+    s!"res={ledger.residualCounter}/{ledger.residualPositive};" ++
+    s!"x={largeMove.counter};y={removedSmallCounter? N small smallAfter}"
+  modify fun stats =>
+    let examples := if stats.edgeExamples[kind]?.isSome then stats.edgeExamples
+      else stats.edgeExamples.insert kind rawExample
+    { stats with
+      edgeKinds := incrementStringCount stats.edgeKinds kind
+      coarseKinds := incrementStringCount stats.coarseKinds coarseKinds.2
+      actionKinds := incrementStringCount stats.actionKinds coarseKinds.1
+      phaseActions := incrementStringCount stats.phaseActions (source ++ " | " ++ kind)
+      transitions := incrementStringCount stats.transitions
+        (source ++ " | " ++ kind ++ " -> " ++ target)
+      edgeExamples := examples
+      selectedEdges := stats.selectedEdges + 1 }
+
+/-- Replay one cache-selected residual witness and classify its structural transitions. -/
+def residualWitnessAux (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (cache : ResidualCache) :
+    ℕ → State → State → ResidualLedger → ResidualWitnessM Unit
+  | 0, small, large, ledger => do
+      if (← get).visited[residualPairKey small large ledger]?.isSome then
+        return
+      throw s!"residual witness exhausted fuel at small={repr small}, large={repr large}"
+  | fuel + 1, small, large, ledger => do
+      let key := residualPairKey small large ledger
+      if (← get).visited[key]?.isSome then
+        return
+      if !cache[key]?.getD false then
+        throw s!"residual witness reached a nonwinning cache label at large={repr large}"
+      if discrepancyLimit < oldDiscrepancy N small large then
+        throw s!"residual witness exceeded discrepancy bound at large={repr large}"
+      if !residualLedgerValid N small large ledger then
+        throw s!"residual witness reached an invalid ledger at large={repr large}"
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | some node => pure node
+        | none => throw s!"residual witness small graph is missing {repr small}"
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | some node => pure node
+        | none => throw s!"residual witness large graph is missing {repr large}"
+      let phase := residualPhaseString N owner small large ledger smallNode
+      modify fun stats => { stats with
+        visited := stats.visited.insert key ()
+        phases := stats.phases.insert phase () }
+      if isTarget .explicitEndgame N owner largeNode then
+        modify fun stats => { stats with targetLeaves := stats.targetLeaves + 1 }
+        return
+      if largeNode.moves.isEmpty then
+        if !terminalSafe (N + 4) owner large then
+          throw s!"residual witness reached an unsafe terminal at {repr large}"
+        modify fun stats => { stats with terminalLeaves := stats.terminalLeaves + 1 }
+        return
+      if !smallSafe owner smallNode then
+        throw s!"residual witness reached an unsafe small state at {repr small}"
+      let options := alignedSmallOptions owner smallNodes smallNode large
+      if large.toMove = owner then
+        modify fun stats => { stats with ownerNodes := stats.ownerNodes + 1 }
+        let mut selected : Option (State × MoveEvaluation × ResidualLedger) := none
+        for largeMove in largeNode.moves do
+          if selected.isNone then
+            for smallAfter in options do
+              if selected.isNone then
+                if let some ledgerAfter :=
+                    updateResidualLedger? N small large smallAfter largeMove ledger then
+                  if cache[residualPairKey smallAfter largeMove.child ledgerAfter]?.getD false then
+                    selected := some (smallAfter, largeMove, ledgerAfter)
+        match selected with
+        | none => throw s!"winning residual owner label has no cached winning child at {repr large}"
+        | some (smallAfter, largeMove, ledgerAfter) =>
+            recordResidualWitnessEdge N owner smallNodes small large smallAfter largeMove
+              ledger ledgerAfter
+            residualWitnessAux N discrepancyLimit owner smallNodes largeNodes cache fuel
+              smallAfter largeMove.child ledgerAfter
+      else
+        modify fun stats => { stats with opponentNodes := stats.opponentNodes + 1 }
+        for largeMove in largeNode.moves do
+          modify fun stats =>
+            { stats with opponentObligations := stats.opponentObligations + 1 }
+          let mut selected : Option (State × ResidualLedger) := none
+          for smallAfter in options do
+            if selected.isNone then
+              if let some ledgerAfter :=
+                  updateResidualLedger? N small large smallAfter largeMove ledger then
+                if cache[residualPairKey smallAfter largeMove.child ledgerAfter]?.getD false then
+                  selected := some (smallAfter, ledgerAfter)
+          match selected with
+          | none =>
+              throw s!"winning residual opponent label cannot cover {largeMove.counter}"
+          | some (smallAfter, ledgerAfter) =>
+              recordResidualWitnessEdge N owner smallNodes small large smallAfter largeMove
+                ledger ledgerAfter
+              residualWitnessAux N discrepancyLimit owner smallNodes largeNodes cache fuel
+                smallAfter largeMove.child ledgerAfter
+
+/-- Convert the set bits of a small mask into their counter values. -/
+def positiveCounterSupport (first count mask : ℕ) : Finset ℕ :=
+  ((List.range count).filterMap fun index =>
+    if mask.testBit index then some (first + index) else none).toFinset
+
+/-- Decode the executable residual ledger into the semantic ledger checked by Lean. -/
+def residualLedgerToSemantic (N : ℕ) (ledger : ResidualLedger) : FourLiftLedger :=
+  { topPositive := positiveCounterSupport (N + 1) 4 ledger.visible.topPositiveMask
+    pendingPositive := positiveCounterSupport 1 N ledger.visible.pendingPositiveMask
+    residual := if ledger.residualCounter = 0 then none
+      else some ⟨ledger.residualCounter, ledger.residualPositive⟩ }
+
+/-- Convert one executable product label into the independent certificate key. -/
+def residualProductKey (N : ℕ) (small large : State)
+    (ledger : ResidualLedger) : FourLiftProductKey :=
+  ⟨small, large, residualLedgerToSemantic N ledger⟩
+
+/-- Mutable state used only by the untrusted product-certificate extractor. -/
+structure ProductExtractionState where
+  visited : Std.HashMap ResidualPairKey Unit
+  nodes : List FourLiftProductNode
+
+/-- The initially empty state of the untrusted product-certificate extractor. -/
+def emptyProductExtractionState : ProductExtractionState :=
+  ⟨{}, []⟩
+
+abbrev ProductExtractionM := StateT ProductExtractionState (Except String)
+
+/-- Record one completed product node in the extracted literal-style DAG. -/
+def recordProductNode (node : FourLiftProductNode) : ProductExtractionM Unit :=
+  modify fun extraction => { extraction with nodes := node :: extraction.nodes }
+
+/--
+Replay the solver-selected residual witness while retaining every proof-relevant product edge.
+
+This extractor is deliberately untrusted. The independent product checker recomputes every state,
+move, transition, target, terminal condition, and adversarial branch after extraction.
+-/
+def extractProductCertificateAux (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (cache : ResidualCache) :
+    ℕ → State → State → ResidualLedger → ProductExtractionM Unit
+  | 0, small, large, ledger => do
+      if (← get).visited[residualPairKey small large ledger]?.isSome then
+        return
+      throw s!"product-certificate extraction exhausted fuel at small={repr small}, large={repr large}"
+  | fuel + 1, small, large, ledger => do
+      let residualKey := residualPairKey small large ledger
+      if (← get).visited[residualKey]?.isSome then
+        return
+      if !cache[residualKey]?.getD false then
+        throw s!"product-certificate extraction reached a nonwinning residual label"
+      if discrepancyLimit < oldDiscrepancy N small large ||
+          !residualLedgerValid N small large ledger then
+        throw s!"product-certificate extraction reached an invalid residual label"
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | some node => pure node
+        | none => throw s!"product-certificate small graph is missing {repr small}"
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | some node => pure node
+        | none => throw s!"product-certificate large graph is missing {repr large}"
+      modify fun extraction =>
+        { extraction with visited := extraction.visited.insert residualKey () }
+      let key := residualProductKey N small large ledger
+      if isTarget .explicitEndgame N owner largeNode then
+        recordProductNode ⟨key, .leaf⟩
+        return
+      if largeNode.moves.isEmpty then
+        if !terminalSafe (N + 4) owner large then
+          throw s!"product-certificate extraction reached an unsafe terminal"
+        recordProductNode ⟨key, .leaf⟩
+        return
+      if !smallSafe owner smallNode then
+        throw s!"product-certificate extraction reached an unsafe small state"
+      let options := alignedSmallOptions owner smallNodes smallNode large
+      if large.toMove = owner then
+        let mut selected : Option (State × MoveEvaluation × ResidualLedger) := none
+        for largeMove in largeNode.moves do
+          if selected.isNone then
+            for smallAfter in options do
+              if selected.isNone then
+                if let some ledgerAfter :=
+                    updateResidualLedger? N small large smallAfter largeMove ledger then
+                  if cache[residualPairKey smallAfter largeMove.child ledgerAfter]?.getD false then
+                    selected := some (smallAfter, largeMove, ledgerAfter)
+        match selected with
+        | none => throw s!"winning product owner label has no cached winning child"
+        | some (smallAfter, largeMove, ledgerAfter) =>
+            let child := residualProductKey N smallAfter largeMove.child ledgerAfter
+            let edge : FourLiftProductEdge :=
+              ⟨largeMove.counter, removedSmallCounter? N small smallAfter, child⟩
+            extractProductCertificateAux N discrepancyLimit owner smallNodes largeNodes cache fuel
+              smallAfter largeMove.child ledgerAfter
+            recordProductNode ⟨key, .owner edge⟩
+      else
+        let mut reversedEdges : List FourLiftProductEdge := []
+        for largeMove in largeNode.moves do
+          let mut selected : Option (State × ResidualLedger) := none
+          for smallAfter in options do
+            if selected.isNone then
+              if let some ledgerAfter :=
+                  updateResidualLedger? N small large smallAfter largeMove ledger then
+                if cache[residualPairKey smallAfter largeMove.child ledgerAfter]?.getD false then
+                  selected := some (smallAfter, ledgerAfter)
+          match selected with
+          | none =>
+              throw s!"winning product opponent label cannot cover {largeMove.counter}"
+          | some (smallAfter, ledgerAfter) =>
+              let child := residualProductKey N smallAfter largeMove.child ledgerAfter
+              reversedEdges :=
+                ⟨largeMove.counter, removedSmallCounter? N small smallAfter, child⟩ ::
+                  reversedEdges
+              extractProductCertificateAux N discrepancyLimit owner smallNodes largeNodes cache fuel
+                smallAfter largeMove.child ledgerAfter
+        recordProductNode ⟨key, .opponent reversedEdges.reverse⟩
+
+/-- Extract one independently checkable product DAG from a winning residual cache label. -/
+def extractProductCertificate (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (cache : ResidualCache)
+    (small large : State) (ledger : ResidualLedger) : Except String FourLiftProductDAG := do
+  let (_, extraction) ←
+    (extractProductCertificateAux N discrepancyLimit owner smallNodes largeNodes cache (N + 5)
+      small large ledger).run emptyProductExtractionState
+  if extraction.visited.size != extraction.nodes.length then
+    throw "product-certificate extraction produced an incomplete node partition"
+  pure ⟨N, owner, residualProductKey N small large ledger, extraction.nodes⟩
+
+/-- Independently encode an interval position immediately after one legal opening. -/
+def encodedOpeningState (gameSize opening : ℕ) : State :=
+  ⟨(Nat.shiftLeft 1 gameSize - 1) - Nat.shiftLeft 1 (opening - 1), opening, .p2⟩
+
+/-- Render a player as Lean source for a generated product certificate. -/
+def formatProductPlayer : Player → String
+  | .p1 => ".p1"
+  | .p2 => ".p2"
+
+/-- Render an encoded state as Lean source. -/
+def formatProductState (state : State) : String :=
+  s!"⟨{state.remainingMask}, {state.deficit}, {formatProductPlayer state.toMove}⟩"
+
+/-- Render a bounded finite counter support as Lean source. -/
+def formatProductSupport (maximum : ℕ) (support : Finset ℕ) : String :=
+  let counters := (List.range (maximum + 1)).filter fun counter => decide (counter ∈ support)
+  s!"({reprStr counters}).toFinset"
+
+/-- Render a semantic four-lift ledger as Lean source. -/
+def formatProductLedger (N : ℕ) (ledger : FourLiftLedger) : String :=
+  let residual := match ledger.residual with
+    | none => "none"
+    | some value => s!"some ⟨{value.counter}, {value.positive}⟩"
+  s!"⟨{formatProductSupport (N + 4) ledger.topPositive}, " ++
+    s!"{formatProductSupport (N + 4) ledger.pendingPositive}, {residual}⟩"
+
+/-- Render a product key as Lean source. -/
+def formatProductKey (N : ℕ) (key : FourLiftProductKey) : String :=
+  s!"⟨{formatProductState key.small}, {formatProductState key.large}, " ++
+    s!"{formatProductLedger N key.ledger}⟩"
+
+/-- Render one product edge as Lean source. -/
+def formatProductEdge (N : ℕ) (edge : FourLiftProductEdge) : String :=
+  let smallCounter := match edge.smallCounter with
+    | none => "none"
+    | some counter => s!"some {counter}"
+  s!"⟨{edge.largeCounter}, {smallCounter}, {formatProductKey N edge.child}⟩"
+
+/-- Render one product branch as Lean source. -/
+def formatProductBranch (N : ℕ) : FourLiftProductBranch → String
+  | .leaf => ".leaf"
+  | .owner edge => s!".owner {formatProductEdge N edge}"
+  | .opponent edges =>
+      s!".opponent [{String.intercalate ", " (edges.map (formatProductEdge N))}]"
+
+/-- Render one product node as Lean source. -/
+def formatProductNode (N : ℕ) (node : FourLiftProductNode) : String :=
+  s!"⟨{formatProductKey N node.key}, {formatProductBranch N node.branch}⟩"
+
+/-- Render a complete product DAG definition as Lean source. -/
+def formatProductDAG (name : String) (dag : FourLiftProductDAG) : String :=
+  let nodes := String.intercalate ",\n      " (dag.nodes.map (formatProductNode dag.smallSize))
+  s!"def {name} : FourLiftProductDAG :=\n" ++
+    s!"  ⟨{dag.smallSize}, {formatProductPlayer dag.player}, " ++
+    s!"{formatProductKey dag.smallSize dag.root},\n" ++
+    s!"    [{nodes}]⟩"
+
+/-- Render one complete importable old-opening product-certificate module. -/
+def formatOldProductCertificateModule (N opening : ℕ) (owner : Player)
+    (dag : FourLiftProductDAG) : String :=
+  let ownerName := match owner with | .p1 => "P1" | .p2 => "P2"
+  let namespaceName := s!"CatchUpSearch.FourLiftN{N}{ownerName}Old{opening}Certificate"
+  "/-\nCopyright 2026 The Formal Conjectures Authors.\n\n" ++
+    "Licensed under the Apache License, Version 2.0 (the \"License\");\n" ++
+    "you may not use this file except in compliance with the License.\n" ++
+    "You may obtain a copy of the License at\n\n" ++
+    "    https://www.apache.org/licenses/LICENSE-2.0\n\n" ++
+    "Unless required by applicable law or agreed to in writing, software\n" ++
+    "distributed under the License is distributed on an \"AS IS\" BASIS,\n" ++
+    "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" ++
+    "See the License for the specific language governing permissions and\n" ++
+    "limitations under the License.\n-/\n\n" ++
+    "import catch_up.FourLiftCertificateChecker\n\n" ++
+    s!"/-!\n# A checked Catch-Up four-lift basin certificate for N = {N}\n\n" ++
+    s!"This generated module certifies the unchanged opening `{opening}` root for protected " ++
+    s!"player {PairedTrace.playerName owner} in the `{N}` to `{N + 4}` comparison.\n-/\n\n" ++
+    s!"namespace {namespaceName}\n\n" ++
+    "open CatchUp\nopen FourLiftCertificateChecker\n\n" ++
+    formatProductDAG "certificateDAG" dag ++ "\n\n" ++
+    "theorem certificate_checks :\n" ++
+    "    checkProductRootCertificate certificateDAG = true := by\n" ++
+    "  native_decide\n\n" ++
+    "theorem root_ghost_eq :\n" ++
+    s!"    certificateDAG.root.toGhost {N} =\n" ++
+    s!"      ⟨GamePosition.afterOpening (Finset.Icc 1 {N}) {opening}, " ++
+    "FourLiftLedger.empty⟩ := by\n" ++
+    "  unfold certificateDAG FourLiftProductKey.toGhost\n" ++
+    "  congr\n\n" ++
+    "theorem root_large_eq :\n" ++
+    s!"    certificateDAG.root.toLarge {N} =\n" ++
+    s!"      GamePosition.afterOpening (Finset.Icc 1 {N + 4}) {opening} := by\n" ++
+    "  native_decide\n\n" ++
+    "theorem old_opening_basin :\n" ++
+    s!"    ExplicitFourLiftOldOpeningBasin {N} {formatProductPlayer owner} {opening} := by\n" ++
+    "  unfold ExplicitFourLiftOldOpeningBasin\n" ++
+    "  rw [← root_ghost_eq, ← root_large_eq]\n" ++
+    "  exact check_product_root_certificate_sound certificateDAG certificate_checks\n\n" ++
+    s!"end {namespaceName}\n"
+
+def sortedStringCounts (counts : Std.HashMap String ℕ) : List (String × ℕ) :=
+  counts.toList.mergeSort fun left right => decide (right.2 ≤ left.2)
+
+def formatWitnessCounts (label : String) (limit : ℕ) (counts : Std.HashMap String ℕ) : String :=
+  let entries := sortedStringCounts counts
+  let displayed := entries.take limit
+  let lines := displayed.map fun entry => s!"    {entry.2} × {entry.1}"
+  let omitted := if displayed.length < entries.length then
+      s!"\n    ... {entries.length - displayed.length} additional {label}"
+    else ""
+  s!"{label}={entries.length}\n" ++ String.intercalate "\n" lines ++ omitted
+
+def formatResidualWitnessStats (stats : ResidualWitnessStats) : String :=
+  let edges := sortedStringCounts stats.edgeKinds
+  let edgeLines := edges.map fun entry =>
+    s!"    {entry.2} × {entry.1}; example={stats.edgeExamples[entry.1]?.getD "-"}"
+  formatWitnessCounts "actionKinds" 80 stats.actionKinds ++ "\n" ++
+    formatWitnessCounts "coarseKinds" 80 stats.coarseKinds ++ "\n" ++
+    s!"edgeKinds={edges.length}\n" ++ String.intercalate "\n" edgeLines ++ "\n" ++
+    formatWitnessCounts "phaseActions" 80 stats.phaseActions ++ "\n" ++
+    formatWitnessCounts "transitions" 80 stats.transitions
+
+structure KnownObligation where
+  group : String
+  actions : List String
+  ledgerKinds : List String
+  raw : String
+
+structure ResidualAlternativeScan where
+  cache : ResidualCache
+  obligations : List KnownObligation
+  coherentCandidates : ℕ
+  encounterMissing : ℕ
+  encounterMissingWinning : ℕ
+  encounterMissingLosing : ℕ
+
+abbrev ResidualAlternativeM := StateT ResidualAlternativeScan (Except String)
+
+def insertUniqueString (value : String) (values : List String) : List String :=
+  if value ∈ values then values else value :: values
+
+def classifyResidualAlternative (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (small large : State) (ledger : ResidualLedger) :
+    ResidualAlternativeM Bool := do
+  let scan ← get
+  let key := residualPairKey small large ledger
+  let missing := scan.cache[key]?.isNone
+  let (winning, cacheAfter) ←
+    (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+      small large ledger).run scan.cache
+  modify fun current =>
+    { current with
+      cache := cacheAfter
+      coherentCandidates := current.coherentCandidates + 1
+      encounterMissing := current.encounterMissing + if missing then 1 else 0
+      encounterMissingWinning :=
+        current.encounterMissingWinning + if missing && winning then 1 else 0
+      encounterMissingLosing :=
+        current.encounterMissingLosing + if missing && !winning then 1 else 0 }
+  return winning
+
+def addKnownObligation (group : String) (actions ledgerKinds : List String) (raw : String) :
+    ResidualAlternativeM Unit := do
+  if actions.isEmpty || ledgerKinds.isEmpty then
+    throw s!"alternative obligation has no winning candidate at {raw}"
+  modify fun scan => { scan with
+    obligations := ⟨group, actions, ledgerKinds, raw⟩ :: scan.obligations }
+
+def scanResidualAlternativeKey (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (key : ResidualPairKey) : ResidualAlternativeM Unit := do
+  let small := stateOfKey key.pair.small
+  let large := stateOfKey key.pair.large
+  let ledger := key.ledger
+  if !(← get).cache[key]?.getD false then
+    throw s!"selected alternative parent is not cache-winning at {repr large}"
+  let smallNode ← match smallNodes[small.cacheKey]? with
+    | some node => pure node
+    | none => throw s!"alternative scan small graph is missing {repr small}"
+  let largeNode ← match largeNodes[large.cacheKey]? with
+    | some node => pure node
+    | none => throw s!"alternative scan large graph is missing {repr large}"
+  if isTarget .explicitEndgame N owner largeNode || largeNode.moves.isEmpty then
+    return
+  if !smallSafe owner smallNode then
+    throw s!"alternative scan reached an unsafe small parent at {repr small}"
+  let phase := residualPhaseString N owner small large ledger smallNode
+  let controlPhase := phase ++ s!";offset={PairedTrace.deficitOffset small large}"
+  let options := alignedSmallOptions owner smallNodes smallNode large
+  let mut safeOptionKinds : List String := []
+  for smallAfter in options do
+    let optionKind ← if smallAfter = small then pure "Z" else
+      match removedSmallCounter? N small smallAfter with
+      | none => throw "safe option changed state without removing one old counter"
+      | some counter =>
+          let source := if (pendingSlot? N small large counter).isSome then "P" else "M"
+          pure <| source ++ counterComparisonName counter small.deficit
+    safeOptionKinds := insertUniqueString optionKind safeOptionKinds
+  let sortedSafeOptionKinds := safeOptionKinds.mergeSort fun left right => decide (left ≤ right)
+  let controllerPhase := controlPhase ++
+    s!";safe={String.intercalate "," sortedSafeOptionKinds}"
+  if large.toMove = owner then
+    let mut actions : List String := []
+    let mut ledgerKinds : List String := []
+    for largeMove in largeNode.moves do
+      for smallAfter in options do
+        if let some ledgerAfter :=
+            updateResidualLedger? N small large smallAfter largeMove ledger then
+          if ← classifyResidualAlternative N discrepancyLimit owner smallNodes largeNodes
+              smallAfter largeMove.child ledgerAfter then
+            let kinds ← residualCoarseKinds N owner small large smallAfter largeMove ledger ledgerAfter
+            actions := insertUniqueString kinds.1 actions
+            ledgerKinds := insertUniqueString kinds.2 ledgerKinds
+    addKnownObligation ("role=owner;" ++ controllerPhase) actions ledgerKinds
+      s!"owner small={repr small};large={repr large};ledger={repr ledger}"
+  else
+    for largeMove in largeNode.moves do
+      let mut actions : List String := []
+      let mut ledgerKinds : List String := []
+      for smallAfter in options do
+        if let some ledgerAfter :=
+            updateResidualLedger? N small large smallAfter largeMove ledger then
+          if ← classifyResidualAlternative N discrepancyLimit owner smallNodes largeNodes
+              smallAfter largeMove.child ledgerAfter then
+            let smallAction ←
+              residualCoarseSmallActionName N small large smallAfter largeMove.counter
+            let residualChange ← residualTransitionName owner ledger ledgerAfter
+            actions := insertUniqueString s!"S={smallAction}" actions
+            ledgerKinds := insertUniqueString
+              (s!"S={smallAction};P=" ++
+                s!"{pendingChangeName N small large smallAfter largeMove.child};" ++
+                s!"R={residualChange}") ledgerKinds
+      let challenge ← residualLargeActionName N owner small large ledger largeMove.counter
+      let group := "role=opponent;" ++ controllerPhase ++
+        s!";challenge={challenge}{counterComparisonName largeMove.counter large.deficit};" ++
+        s!"ghostChallenge={counterComparisonName largeMove.counter small.deficit}"
+      addKnownObligation group actions ledgerKinds
+        (s!"opponent small={repr small};large={repr large};" ++
+          s!"x={largeMove.counter};ledger={repr ledger}")
+
+def scanSelectedResidualAlternatives (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (keys : List ResidualPairKey)
+    (cache : ResidualCache) : Except String ResidualAlternativeScan := do
+  let action : ResidualAlternativeM Unit := do
+    for key in keys do
+      scanResidualAlternativeKey N discrepancyLimit owner smallNodes largeNodes key
+  let (_, scan) ← action.run ⟨cache, [], 0, 0, 0, 0⟩
+  pure scan
+
+def intersectStringLists : List (List String) → List String
+  | [] => []
+  | values :: remaining =>
+      remaining.foldl (fun common next => common.filter fun value => value ∈ next) values
+
+def groupKnownObligations (obligations : List KnownObligation) :
+    Std.HashMap String (List KnownObligation) :=
+  obligations.foldl (fun groups obligation =>
+    groups.insert obligation.group (obligation :: groups[obligation.group]?.getD [])) {}
+
+def formatAlternativeCoverage (scan : ResidualAlternativeScan) : String :=
+  let groups := groupKnownObligations scan.obligations
+  let entries := groups.toList
+  let singletonEntries := entries.filter fun entry => entry.2.length = 1
+  let repeatedEntries := entries.filter fun entry => 1 < entry.2.length
+  let actionCommon := entries.filter fun entry =>
+    !(intersectStringLists (entry.2.map KnownObligation.actions)).isEmpty
+  let ledgerCommon := entries.filter fun entry =>
+    !(intersectStringLists (entry.2.map KnownObligation.ledgerKinds)).isEmpty
+  let repeatedActionCommon := repeatedEntries.filter fun entry =>
+    !(intersectStringLists (entry.2.map KnownObligation.actions)).isEmpty
+  let repeatedLedgerCommon := repeatedEntries.filter fun entry =>
+    !(intersectStringLists (entry.2.map KnownObligation.ledgerKinds)).isEmpty
+  let conflicts := entries.filter fun entry =>
+    (intersectStringLists (entry.2.map KnownObligation.actions)).isEmpty ||
+      (intersectStringLists (entry.2.map KnownObligation.ledgerKinds)).isEmpty
+  let maxActionCandidates := scan.obligations.foldl
+    (fun maximum obligation => max maximum obligation.actions.length) 0
+  let maxLedgerCandidates := scan.obligations.foldl
+    (fun maximum obligation => max maximum obligation.ledgerKinds.length) 0
+  let conflictLines := conflicts.take 20 |>.map fun entry =>
+    let first := entry.2.head?
+    let second := entry.2.drop 1 |>.head?
+    let showCandidate := fun candidate : Option KnownObligation => match candidate with
+      | none => "-"
+      | some obligation =>
+          s!"A={obligation.actions};L={obligation.ledgerKinds};raw={obligation.raw}"
+    s!"    group={entry.1}\n      first={showCandidate first}\n" ++
+      s!"      second={showCandidate second}"
+  let omitted := if conflictLines.length < conflicts.length then
+      s!"\n    ... {conflicts.length - conflictLines.length} additional conflicting groups"
+    else ""
+  let expandedWinning := (scan.cache.toList.filter fun entry => entry.2).length
+  s!"alternativeObligations={scan.obligations.length};groups={groups.size};" ++
+    s!"singletonGroups={singletonEntries.length};repeatedGroups={repeatedEntries.length};" ++
+    s!"actionCommonGroups={actionCommon.length};ledgerCommonGroups={ledgerCommon.length};" ++
+    s!"repeatedActionCommonGroups={repeatedActionCommon.length};" ++
+    s!"repeatedLedgerCommonGroups={repeatedLedgerCommon.length};" ++
+    s!"conflictingGroups={conflicts.length};maxActionCandidates={maxActionCandidates};" ++
+    s!"maxLedgerCandidates={maxLedgerCandidates};coherentCandidates={scan.coherentCandidates};" ++
+    s!"encounterMissing={scan.encounterMissing};" ++
+    s!"encounterMissingWinning={scan.encounterMissingWinning};" ++
+    s!"encounterMissingLosing={scan.encounterMissingLosing};" ++
+    s!"expandedSearched={scan.cache.size};expandedWinning={expandedWinning}\n" ++
+      String.intercalate "\n" conflictLines ++ omitted
+
+def ledgerWinning (cache : LedgerCache) (small large : State) (ledger : Ledger) : Bool :=
+  cache[ledgerPairKey small large ledger]?.getD false
+
+def ledgerSummary (N : ℕ) (small large : State) (ledger : Ledger) : String :=
+  let pending := pendingCounters N small large
+  let positive := pending.filter fun counter => ledger.pendingPositiveMask.testBit (counter - 1)
+  s!"topPositive={ledger.topPositiveMask};pending={pending};pendingPositive={positive};" ++
+    s!"gap={scoreGap small large};ledgerValue={ledgerValue N small large ledger}"
+
+def oldLedgerTransitionIssues (N : ℕ) (small large smallAfter : State)
+    (largeMove : MoveEvaluation) (ledger : Ledger) : List String :=
+  let largeAfter := largeMove.child
+  let smallCounter := removedSmallCounter? N small smallAfter
+  (List.range N).filterMap fun index =>
+    let counter := index + 1
+    let beforeCoefficient : ℤ := if oldPendingAt N small large index then
+        if ledger.pendingPositiveMask.testBit index then 1 else -1
+      else 0
+    let largeDelta := if largeMove.counter = counter then playerCoefficient large.toMove else 0
+    let smallDelta := if smallCounter = some counter then -playerCoefficient small.toMove else 0
+    let afterCoefficient := beforeCoefficient + largeDelta + smallDelta
+    let afterPending := oldPendingAt N smallAfter largeAfter index
+    if (afterPending && (afterCoefficient = 1 || afterCoefficient = -1)) ||
+        (!afterPending && afterCoefficient = 0) then
+      none
+    else
+      some s!"counter={counter},coefficient={afterCoefficient},afterPending={afterPending}"
+
+def ledgerOptionReport (N : ℕ) (small large : State) (options : List State)
+    (largeMove : MoveEvaluation) (ledger : Ledger) (localCache : PairCache)
+    (cache : LedgerCache) : String :=
+  let reports := options.take 8 |>.map fun smallAfter =>
+    let smallCounter := removedSmallCounter? N small smallAfter
+    let issues := oldLedgerTransitionIssues N small large smallAfter largeMove ledger
+    s!"small={smallCounter}:" ++ match updateLedger? N small large smallAfter largeMove ledger with
+      | some ledgerAfter =>
+          s!"coherent,local={localCache[pairKey smallAfter largeMove.child]?.getD false}," ++
+            s!"ledger={ledgerWinning cache smallAfter largeMove.child ledgerAfter}"
+      | none => if issues.isEmpty then "incoherent" else String.intercalate ";" issues
+  String.intercalate " | " reports
+
+/-- Follow one failed branch of the persistent-ledger forcing recurrence. -/
+def ledgerFailureTrace (N discrepancyLimit : ℕ) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (localCache : PairCache) (cache : LedgerCache) :
+    ℕ → State → State → Ledger → Except String (List String)
+  | 0, small, large, ledger =>
+      pure [s!"failure-trace fuel exhausted; {ledgerSummary N small large ledger}"]
+  | fuel + 1, small, large, ledger => do
+      let summary := ledgerSummary N small large ledger
+      if !(localCache[pairKey small large]?.getD false) then
+        return [s!"pair left the local basin; {summary}"]
+      if discrepancyLimit < oldDiscrepancy N small large then
+        return [s!"old discrepancy exceeded {discrepancyLimit}; {summary}"]
+      if !ledgerValid N small large ledger then
+        return [s!"ledger invariant failed; {summary}"]
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | none => throw s!"large persistent-ledger failure trace is missing {repr large}"
+        | some node => pure node
+      if isTarget .explicitEndgame N owner largeNode then
+        return [s!"unexpected safe target outside ledger basin; {summary}"]
+      if largeNode.moves.isEmpty then
+        return [s!"unsafe terminal outside ledger basin; {summary}"]
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | none => throw s!"small persistent-ledger failure trace is missing {repr small}"
+        | some node => pure node
+      if !smallSafe owner smallNode then
+        return [s!"small state is not owner-safe; {summary}"]
+      let options := alignedSmallOptions owner smallNodes smallNode large
+      if large.toMove = owner then
+        let mut candidate : Option (MoveEvaluation × State × Ledger) := none
+        for largeMove in largeNode.moves do
+          if candidate.isNone then
+            for smallAfter in options do
+              if candidate.isNone then
+                if let some ledgerAfter := updateLedger? N small large smallAfter largeMove ledger then
+                  if localCache[pairKey smallAfter largeMove.child]?.getD false &&
+                      !ledgerWinning cache smallAfter largeMove.child ledgerAfter then
+                    candidate := some (largeMove, smallAfter, ledgerAfter)
+        match candidate with
+        | none =>
+            let reports := largeNode.moves.take 4 |>.map fun largeMove =>
+              s!"large={largeMove.counter}: " ++
+                ledgerOptionReport N small large options largeMove ledger localCache cache
+            return (s!"owner has no coherent candidate; {summary}") :: reports
+        | some (largeMove, smallAfter, ledgerAfter) =>
+            let tail ← ledgerFailureTrace N discrepancyLimit owner smallNodes largeNodes localCache
+              cache fuel smallAfter largeMove.child ledgerAfter
+            return (s!"owner candidate large={largeMove.counter},small=" ++
+              s!"{removedSmallCounter? N small smallAfter} fails; {summary}") :: tail
+      else
+        let mut obstruction : Option (MoveEvaluation × Option (State × Ledger)) := none
+        for largeMove in largeNode.moves do
+          if obstruction.isNone then
+            let mut matched := false
+            let mut candidate : Option (State × Ledger) := none
+            for smallAfter in options do
+              if !matched then
+                if let some ledgerAfter := updateLedger? N small large smallAfter largeMove ledger then
+                  if ledgerWinning cache smallAfter largeMove.child ledgerAfter then
+                    matched := true
+                  else if candidate.isNone &&
+                      localCache[pairKey smallAfter largeMove.child]?.getD false then
+                    candidate := some (smallAfter, ledgerAfter)
+            if !matched then
+              obstruction := some (largeMove, candidate)
+        match obstruction with
+        | none => return [s!"opponent failure trace found no escaping move; {summary}"]
+        | some (largeMove, none) =>
+            return [s!"opponent move {largeMove.counter} has no coherent response; {summary}",
+              ledgerOptionReport N small large options largeMove ledger localCache cache]
+        | some (largeMove, some (smallAfter, ledgerAfter)) =>
+            let tail ← ledgerFailureTrace N discrepancyLimit owner smallNodes largeNodes localCache
+              cache fuel smallAfter largeMove.child ledgerAfter
+            return (s!"opponent move large={largeMove.counter},small=" ++
+              s!"{removedSmallCounter? N small smallAfter} escapes; {summary}") :: tail
+
+abbrev AsyncVisited := Std.HashMap PairKey Unit
+abbrev AsyncTraceM := StateT AsyncVisited (Except String)
+
+def cachedPairWinning (cache : PairCache) (small large : State) : Bool :=
+  cache[pairKey small large]?.getD false
+
+/-- Extract one deterministic asynchronous winning strategy, preferring small stutters. -/
+def asyncTraceAux (N discrepancyLimit : ℕ) (allowSwap : Bool) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (cache : PairCache) :
+    ℕ → State → State → AsyncTraceM Unit
+  | 0, small, large => do
+      if (← get)[pairKey small large]?.isSome then
+        return
+      throw s!"asynchronous trace fuel exhausted at small={repr small}, large={repr large}"
+  | fuel + 1, small, large => do
+      let key := pairKey small large
+      if (← get)[key]?.isSome then
+        return
+      modify fun visited => visited.insert key ()
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | none => throw s!"large asynchronous trace is missing {repr large}"
+        | some node => pure node
+      if isTarget .explicitEndgame N owner largeNode || largeNode.moves.isEmpty then
+        return
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | none => throw s!"small asynchronous trace is missing {repr small}"
+        | some node => pure node
+      let options := alignedSmallOptions owner smallNodes smallNode large
+      if large.toMove = owner then
+        let mut selected : Option (State × State) := none
+        for largeMove in largeNode.moves do
+          if selected.isNone then
+            for smallAfter in options do
+              if selected.isNone &&
+                  (allowSwap || pendingCompatible N small large smallAfter largeMove.child) &&
+                  cachedPairWinning cache smallAfter largeMove.child then
+                selected := some (smallAfter, largeMove.child)
+        match selected with
+        | none => throw s!"winning asynchronous owner pair has no selected child at {repr large}"
+        | some (smallAfter, largeAfter) =>
+            asyncTraceAux N discrepancyLimit allowSwap owner smallNodes largeNodes cache fuel
+              smallAfter largeAfter
+      else
+        for largeMove in largeNode.moves do
+          let mut selected : Option State := none
+          for smallAfter in options do
+            if selected.isNone &&
+                (allowSwap || pendingCompatible N small large smallAfter largeMove.child) &&
+                cachedPairWinning cache smallAfter largeMove.child then
+              selected := some smallAfter
+          match selected with
+          | none =>
+              throw s!"winning asynchronous opponent pair cannot cover {largeMove.counter}"
+          | some smallAfter =>
+              asyncTraceAux N discrepancyLimit allowSwap owner smallNodes largeNodes cache fuel
+                smallAfter largeMove.child
+
+structure EdgeStatsState where
+  visited : Std.HashMap PairKey Unit
+  templates : Std.HashMap String ℕ
+
+abbrev EdgeStatsM := StateT EdgeStatsState (Except String)
+
+def recordEdge (N : ℕ) (owner : Player) (small large smallAfter : State)
+    (largeMove : MoveEvaluation) : EdgeStatsM Unit := do
+  let template := edgeTemplate N owner small large smallAfter largeMove
+  modify fun stats =>
+    let count := stats.templates[template]?.getD 0 + 1
+    { stats with templates := stats.templates.insert template count }
+
+/-- Replay the selected witness and retain its parameter-free edge templates. -/
+def asyncEdgeStatsAux (N : ℕ) (allowSwap : Bool) (owner : Player)
+    (smallNodes largeNodes : SolvedIndex) (cache : PairCache) :
+    ℕ → State → State → EdgeStatsM Unit
+  | 0, small, large => do
+      if (← get).visited[pairKey small large]?.isSome then
+        return
+      throw s!"asynchronous edge report exhausted fuel at small={repr small}, large={repr large}"
+  | fuel + 1, small, large => do
+      let key := pairKey small large
+      if (← get).visited[key]?.isSome then
+        return
+      modify fun stats => { stats with visited := stats.visited.insert key () }
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | none => throw s!"large asynchronous edge report is missing {repr large}"
+        | some node => pure node
+      if isTarget .explicitEndgame N owner largeNode || largeNode.moves.isEmpty then
+        return
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | none => throw s!"small asynchronous edge report is missing {repr small}"
+        | some node => pure node
+      let options := alignedSmallOptions owner smallNodes smallNode large
+      if large.toMove = owner then
+        let mut selected : Option (State × MoveEvaluation) := none
+        for largeMove in largeNode.moves do
+          if selected.isNone then
+            for smallAfter in options do
+              if selected.isNone &&
+                  (allowSwap || pendingCompatible N small large smallAfter largeMove.child) &&
+                  cachedPairWinning cache smallAfter largeMove.child then
+                selected := some (smallAfter, largeMove)
+        match selected with
+        | none => throw s!"winning asynchronous owner pair has no edge to report at {repr large}"
+        | some (smallAfter, largeMove) =>
+            recordEdge N owner small large smallAfter largeMove
+            asyncEdgeStatsAux N allowSwap owner smallNodes largeNodes cache fuel
+              smallAfter largeMove.child
+      else
+        for largeMove in largeNode.moves do
+          let mut selected : Option State := none
+          for smallAfter in options do
+            if selected.isNone &&
+                (allowSwap || pendingCompatible N small large smallAfter largeMove.child) &&
+                cachedPairWinning cache smallAfter largeMove.child then
+              selected := some smallAfter
+          match selected with
+          | none => throw s!"winning asynchronous opponent edge cannot cover {largeMove.counter}"
+          | some smallAfter =>
+              recordEdge N owner small large smallAfter largeMove
+              asyncEdgeStatsAux N allowSwap owner smallNodes largeNodes cache fuel
+                smallAfter largeMove.child
+
+def formatEdgeStats (stats : EdgeStatsState) : String :=
+  let templates := stats.templates.toList.mergeSort fun left right =>
+    decide (right.2 ≤ left.2)
+  let displayed := templates.take 20
+  let lines := displayed.map fun entry => s!"    {entry.2} × {entry.1}"
+  let omitted := if displayed.length < templates.length then
+      s!"\n    ... {templates.length - displayed.length} additional edge templates"
+    else ""
+  s!"edgeTemplates={templates.length}\n" ++ String.intercalate "\n" lines ++ omitted
+
+def rootStateFor (output : SolverOutput) (opening : ℕ) : Except String State :=
+  match output.openingRoots.find? fun root => decide (root.1 = opening) with
+  | none => throw s!"opening-{opening} root is missing"
+  | some root => pure root.2
+
+def rootState (output : SolverOutput) : Except String State :=
+  rootStateFor output 1
+
+def phaseOfKey (N : ℕ) (key : PairKey) : PairedTrace.PhaseSignature :=
+  let small := stateOfKey key.small
+  let large := stateOfKey key.large
+  ⟨PairedTrace.topMask N large, small.toMove, large.toMove,
+    PairedTrace.deficitOffset small large⟩
+
+def phaseCounts (N : ℕ) (keys : List PairKey) : List PairedTrace.PhaseCount :=
+  let counts := keys.foldl (fun counts key =>
+    let phase := phaseOfKey N key
+    counts.insert phase (counts[phase]?.getD 0 + 1))
+    ({} : Std.HashMap PairedTrace.PhaseSignature ℕ)
+  (counts.toList.map fun entry => PairedTrace.PhaseCount.mk entry.1 entry.2).mergeSort fun left right =>
+    PairedTrace.phaseLE left.signature right.signature
+
+abbrev Visited := Std.HashMap PairKey Unit
+abbrev TraceM := StateT Visited (Except String)
+
+/-- Whether one already-computed product pair belongs to the product forcing basin. -/
+def pairWinning (cache : PairCache) (small large : State) : Bool :=
+  cache[pairKey small large]?.getD false
+
+/-- Extract one deterministic winning product strategy from a completed product cache. -/
+def traceAux (N : ℕ) (owner : Player) (smallNodes largeNodes : SolvedIndex)
+    (cache : PairCache) : ℕ → State → State → TraceM Unit
+  | 0, small, large => do
+      if (← get)[pairKey small large]?.isSome then
+        return
+      throw s!"simulation trace fuel exhausted at small={repr small}, large={repr large}"
+  | fuel + 1, small, large => do
+      let key := pairKey small large
+      if (← get)[key]?.isSome then
+        return
+      modify fun visited => visited.insert key ()
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | none => throw s!"large trace graph is missing {repr large}"
+        | some node => pure node
+      if isTarget .explicitEndgame N owner largeNode || largeNode.moves.isEmpty then
+        return
+      if large.toMove = owner then
+        let mut selected : Option (State × State) := none
+        for largeMove in largeNode.moves do
+          if selected.isNone then
+            if let some smallAfter := smallAfterLargeMove? N smallNodes small largeMove then
+              if pairWinning cache smallAfter largeMove.child then
+                selected := some (smallAfter, largeMove.child)
+        match selected with
+        | none => throw s!"winning owner pair has no winning child at {repr large}"
+        | some (smallAfter, largeAfter) =>
+            traceAux N owner smallNodes largeNodes cache fuel smallAfter largeAfter
+      else
+        for largeMove in largeNode.moves do
+          let smallAfter ← match smallAfterLargeMove? N smallNodes small largeMove with
+            | none => throw s!"winning opponent pair cannot match {largeMove.counter}"
+            | some state => pure state
+          if !pairWinning cache smallAfter largeMove.child then
+            throw s!"winning opponent pair has a losing child after {largeMove.counter}"
+          traceAux N owner smallNodes largeNodes cache fuel smallAfter largeMove.child
+
+def formatPairPhase (N : ℕ) (small large : State) : String :=
+  let signature := phaseOfKey N (pairKey small large)
+  s!"top={signature.topMask}; movers={PairedTrace.playerName signature.smallToMove}/" ++
+    s!"{PairedTrace.playerName signature.largeToMove}; offset={signature.deficitOffset}"
+
+/-- Follow one locally first obstruction from a pair outside the product forcing basin. -/
+def failureTrace (N : ℕ) (owner : Player) (smallNodes largeNodes : SolvedIndex)
+    (cache : PairCache) : ℕ → State → State → Except String (List String)
+  | 0, small, large =>
+      pure [s!"fuel exhausted; {formatPairPhase N small large}"]
+  | fuel + 1, small, large => do
+      let phase := formatPairPhase N small large
+      if small.remainingMask ≠ PairedTrace.oldMask N large then
+        return [s!"old masks differ; {phase}"]
+      let largeNode ← match largeNodes[large.cacheKey]? with
+        | none => throw s!"large failure trace is missing {repr large}"
+        | some node => pure node
+      if isTarget .explicitEndgame N owner largeNode then
+        return [s!"unexpected target outside basin; {phase}"]
+      if largeNode.moves.isEmpty then
+        return [s!"unsafe large terminal; {phase}"]
+      let smallNode ← match smallNodes[small.cacheKey]? with
+        | none => throw s!"small failure trace is missing {repr small}"
+        | some node => pure node
+      if !smallSafe owner smallNode then
+        return [s!"matched small state is not safe; {phase}"]
+      if large.toMove = owner then
+        let mut obstruction : Option (MoveEvaluation × State) := none
+        for largeMove in largeNode.moves do
+          if obstruction.isNone then
+            if let some smallAfter := smallAfterLargeMove? N smallNodes small largeMove then
+              if !pairWinning cache smallAfter largeMove.child then
+                obstruction := some (largeMove, smallAfter)
+        match obstruction with
+        | none => return [s!"owner has no matched candidate; {phase}"]
+        | some (largeMove, smallAfter) =>
+            let tail ← failureTrace N owner smallNodes largeNodes cache fuel
+              smallAfter largeMove.child
+            return (s!"owner candidate {largeMove.counter} fails; {phase}") :: tail
+      else
+        let mut missing : Option ℕ := none
+        let mut obstruction : Option (MoveEvaluation × State) := none
+        for largeMove in largeNode.moves do
+          if missing.isNone && obstruction.isNone then
+            match smallAfterLargeMove? N smallNodes small largeMove with
+            | none => missing := some largeMove.counter
+            | some smallAfter =>
+                if !pairWinning cache smallAfter largeMove.child then
+                  obstruction := some (largeMove, smallAfter)
+        match missing, obstruction with
+        | some counter, _ =>
+            return [s!"opponent old move {counter} has no small match; {phase}"]
+        | none, some (largeMove, smallAfter) =>
+            let tail ← failureTrace N owner smallNodes largeNodes cache fuel
+              smallAfter largeMove.child
+            return (s!"opponent move {largeMove.counter} escapes; {phase}") :: tail
+        | none, none =>
+            return [s!"opponent pair has no recorded obstruction; {phase}"]
+
+def runOwner (N : ℕ) (owner : Player) (smallOutput largeOutput : SolverOutput) :
+    Except String String := do
+  let small ← rootState smallOutput
+  let large ← rootState largeOutput
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let (rootWinning, cache) ←
+    (forceAux N owner smallNodes largeNodes (N + 5) small large).run {}
+  let winningPairs := (cache.toList.filter fun entry => entry.2).length
+  let visited ← if rootWinning then
+      match (traceAux N owner smallNodes largeNodes cache (N + 5) small large).run {} with
+      | .error message => throw message
+      | .ok (_, visited) => pure visited
+    else
+      pure {}
+  let phases := phaseCounts N (visited.toList.map Prod.fst)
+  let shapes := (phases.map fun phase =>
+    let signature := phase.signature
+    PairedTrace.PhaseShape.mk signature.topMask signature.smallToMove signature.largeToMove)
+      |>.eraseDups.length
+  let displayed := phases.take 20
+  let phaseLines := displayed.map fun phase => "    " ++ phase.format
+  let omitted := if displayed.length < phases.length then
+      s!"\n    ... {phases.length - displayed.length} additional selected signatures"
+    else ""
+  let failureLines ← if rootWinning then pure [] else
+    failureTrace N owner smallNodes largeNodes cache (N + 5) small large
+  let failureReport := if failureLines.isEmpty then "" else
+    "\n  obstruction:\n    " ++ String.intercalate "\n    " failureLines
+  pure <| s!"owner={PairedTrace.playerName owner}; root={rootWinning}; " ++
+    s!"searched={cache.size}; winning={winningPairs}; selected={visited.size}; " ++
+    s!"shapes={shapes}; phases={phases.length}\n" ++
+    String.intercalate "\n" phaseLines ++ omitted ++ failureReport
+
+def parseSize (argument : String) : IO ℕ :=
+  match argument.toNat? with
+  | some N => pure N
+  | none => throw <| IO.userError s!"Expected a natural number, got '{argument}'."
+
+def orThrow {α : Type} : Except String α → IO α
+  | .ok value => pure value
+  | .error message => throw <| IO.userError message
+
+def runSize (N : ℕ) : IO Unit := do
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println s!"N={N} → {N + 4}"
+  for owner in [.p2, .p1] do
+    IO.println (← orThrow (runOwner N owner smallOutput largeOutput))
+
+def runAsyncOwner (N discrepancyLimit : ℕ) (allowSwap requireDebt : Bool) (owner : Player)
+    (smallOutput largeOutput : SolverOutput) : Except String String := do
+  let small ← rootState smallOutput
+  let large ← rootState largeOutput
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let (rootWinning, cache) ←
+    (asyncForceAux N discrepancyLimit allowSwap requireDebt owner smallNodes largeNodes (N + 5)
+      small large).run {}
+  let winningPairs := (cache.toList.filter fun entry => entry.2).length
+  let edgeStats ← if rootWinning then
+      match (asyncEdgeStatsAux N allowSwap owner smallNodes largeNodes cache (N + 5)
+          small large).run ⟨{}, {}⟩ with
+      | .error message => throw message
+      | .ok (_, stats) => pure stats
+    else
+      pure ⟨{}, {}⟩
+  let visited := edgeStats.visited
+  let selectedKeys := visited.toList.map Prod.fst
+  let phases := asyncPhaseCount N selectedKeys
+  let debtStats := debtPhaseStats N selectedKeys
+  pure <| s!"owner={PairedTrace.playerName owner}; root={rootWinning}; " ++
+    s!"searched={cache.size}; winning={winningPairs}; selected={visited.size}; phases={phases}; " ++
+    s!"decomposed={debtStats.1}/{visited.size}; debtPhases={debtStats.2}; " ++
+    s!"ambiguity={ambiguityReport N selectedKeys};\n  {formatEdgeStats edgeStats}"
+
+def ledgerMultiplicityStats (cache : LedgerCache) : ℕ × ℕ × ℕ :=
+  let counts := cache.toList.foldl (fun counts entry =>
+    let key := entry.1.pair
+    counts.insert key (counts[key]?.getD 0 + 1)) ({} : Std.HashMap PairKey ℕ)
+  let repeated := (counts.toList.filter fun entry => 1 < entry.2).length
+  let maximum := counts.toList.foldl (fun maximum entry => max maximum entry.2) 0
+  (counts.size, repeated, maximum)
+
+def residualMultiplicityStats (cache : ResidualCache) : ℕ × ℕ × ℕ :=
+  let counts := cache.toList.foldl (fun counts entry =>
+    let key := entry.1.pair
+    counts.insert key (counts[key]?.getD 0 + 1)) ({} : Std.HashMap PairKey ℕ)
+  let repeated := (counts.toList.filter fun entry => 1 < entry.2).length
+  let maximum := counts.toList.foldl (fun maximum entry => max maximum entry.2) 0
+  (counts.size, repeated, maximum)
+
+def runLedgerOwner (N discrepancyLimit : ℕ) (owner : Player)
+    (smallOutput largeOutput : SolverOutput) : Except String String := do
+  let small ← rootState smallOutput
+  let large ← rootState largeOutput
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let (localRoot, localCache) ←
+    (asyncForceAux N discrepancyLimit true true owner smallNodes largeNodes (N + 5)
+      small large).run {}
+  if !localRoot then
+    return s!"owner={PairedTrace.playerName owner}; localRoot=false; ledgerRoot=false"
+  let initialLedger := Ledger.mk 0 0
+  let (rootWinning, cache) ←
+    (ledgerForceAux N discrepancyLimit owner smallNodes largeNodes localCache (N + 5)
+      small large initialLedger).run {}
+  let winning := (cache.toList.filter fun entry => entry.2).length
+  let multiplicity := ledgerMultiplicityStats cache
+  let failureReport ← if rootWinning then pure "" else
+    let lines ← ledgerFailureTrace N discrepancyLimit owner smallNodes largeNodes localCache cache
+      (N + 5) small large initialLedger
+    pure <| "\n  obstruction:\n    " ++ String.intercalate "\n    " lines
+  pure <| s!"owner={PairedTrace.playerName owner}; localRoot=true; ledgerRoot={rootWinning}; " ++
+    s!"ledgerStates={cache.size}; winning={winning}; pairs={multiplicity.1}; " ++
+    s!"repeatedPairs={multiplicity.2.1}; maxLabels={multiplicity.2.2}" ++ failureReport
+
+def runResidualOwner (N discrepancyLimit : ℕ) (owner : Player)
+    (smallOutput largeOutput : SolverOutput) : Except String String := do
+  let small ← rootState smallOutput
+  let large ← rootState largeOutput
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let initialLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  let (rootWinning, cache) ←
+    (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+      small large initialLedger).run {}
+  let entries := cache.toList
+  let winning := (entries.filter fun entry => entry.2).length
+  let residualEntries := entries.filter fun entry => decide (entry.1.ledger.residualCounter ≠ 0)
+  let residualWinning := (residualEntries.filter fun entry => entry.2).length
+  let multiplicity := residualMultiplicityStats cache
+  pure <| s!"owner={PairedTrace.playerName owner}; residualRoot={rootWinning}; " ++
+    s!"states={cache.size}; winning={winning}; residualStates={residualEntries.length}; " ++
+    s!"residualWinning={residualWinning}; pairs={multiplicity.1}; " ++
+    s!"repeatedPairs={multiplicity.2.1}; maxLabels={multiplicity.2.2}"
+
+def runResidualOpeningOwner (N discrepancyLimit : ℕ) (kind : String)
+    (owner : Player) (smallOpening largeOpening : ℕ) (initialLedger : ResidualLedger)
+    (smallOutput largeOutput : SolverOutput) : Except String String := do
+  let small ← rootStateFor smallOutput smallOpening
+  let large ← rootStateFor largeOutput largeOpening
+  if !residualLedgerValid N small large initialLedger then
+    throw s!"invalid initial residual ledger for {kind} root {smallOpening}↔{largeOpening}"
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let smallNode ← match smallNodes[small.cacheKey]? with
+    | some node => pure node
+    | none => throw s!"small graph is missing its opening-{smallOpening} root"
+  let smallRootSafe := smallSafe owner smallNode
+  let (rootWinning, cache) ←
+    (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+      small large initialLedger).run {}
+  let winning := (cache.toList.filter fun entry => entry.2).length
+  let failureReport ← if !rootWinning && smallRootSafe then
+      let lines ← residualFailureTrace N discrepancyLimit owner smallNodes largeNodes cache
+        (N + 5) small large initialLedger
+      pure <| "\n  obstruction:\n    " ++ String.intercalate "\n    " lines
+    else
+      pure ""
+  pure <| s!"kind={kind};owner={PairedTrace.playerName owner};" ++
+    s!"opening={smallOpening}↔{largeOpening};smallSafe={smallRootSafe};" ++
+    s!"required={smallRootSafe};root={rootWinning};" ++
+    s!"states={cache.size};winning={winning};ledgerValid=true" ++ failureReport
+
+/-- Search, extract, independently bind, and check one selected product certificate. -/
+def buildCheckedProductOpeningOwner (N discrepancyLimit : ℕ) (kind : String)
+    (owner : Player) (smallOpening largeOpening : ℕ) (initialLedger : ResidualLedger)
+    (smallOutput largeOutput : SolverOutput) : Except String (ℕ × FourLiftProductDAG) := do
+  let small ← rootStateFor smallOutput smallOpening
+  let large ← rootStateFor largeOutput largeOpening
+  if !residualLedgerValid N small large initialLedger then
+    throw s!"invalid initial product ledger for {kind} root {smallOpening}↔{largeOpening}"
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let smallNode ← match smallNodes[small.cacheKey]? with
+    | some node => pure node
+    | none => throw s!"small graph is missing its opening-{smallOpening} root"
+  if !smallSafe owner smallNode then
+    throw s!"product root has an unsafe small premise for owner={PairedTrace.playerName owner}"
+  let (rootWinning, cache) ←
+    (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+      small large initialLedger).run {}
+  if !rootWinning then
+    throw s!"product root is outside the executable residual basin"
+  let dag ← extractProductCertificate N discrepancyLimit owner smallNodes largeNodes cache
+    small large initialLedger
+  let expectedRoot : FourLiftProductKey :=
+    ⟨encodedOpeningState N smallOpening, encodedOpeningState (N + 4) largeOpening,
+      residualLedgerToSemantic N initialLedger⟩
+  if dag.root ≠ expectedRoot then
+    throw "extracted product root does not equal the independently encoded opening root"
+  let combinedChecks := checkProductRootCertificate dag
+  if !combinedChecks then
+    throw "independent product root-certificate check returned false"
+  pure (cache.size, dag)
+
+/-- Search, extract, and independently check one selected product certificate in memory. -/
+def runCheckedProductOpeningOwner (N discrepancyLimit : ℕ) (kind : String)
+    (owner : Player) (smallOpening largeOpening : ℕ) (initialLedger : ResidualLedger)
+    (smallOutput largeOutput : SolverOutput) : Except String String := do
+  let (searched, dag) ← buildCheckedProductOpeningOwner N discrepancyLimit kind owner
+    smallOpening largeOpening initialLedger smallOutput largeOutput
+  pure <| s!"kind={kind};owner={PairedTrace.playerName owner};" ++
+    s!"opening={smallOpening}↔{largeOpening};root=true;" ++
+    s!"searched={searched};certificateNodes={dag.nodes.length};" ++
+    "combinedCheck=true;rootMatches=true"
+
+def runResidualWitnessOwner (N discrepancyLimit : ℕ) (owner : Player)
+    (smallOutput largeOutput : SolverOutput) : Except String String := do
+  let small ← rootState smallOutput
+  let large ← rootState largeOutput
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let initialLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  let (rootWinning, cache) ←
+    (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+      small large initialLedger).run {}
+  if !rootWinning then
+    throw s!"owner={PairedTrace.playerName owner}: residual root is false"
+  let (_, stats) ←
+    (residualWitnessAux N discrepancyLimit owner smallNodes largeNodes cache (N + 5)
+      small large initialLedger).run emptyResidualWitnessStats
+  if stats.selectedEdges != stats.ownerNodes + stats.opponentObligations then
+    throw s!"residual witness edge audit failed for owner={PairedTrace.playerName owner}"
+  let partition := stats.ownerNodes + stats.opponentNodes +
+    stats.targetLeaves + stats.terminalLeaves
+  if stats.visited.size != partition then
+    throw s!"residual witness node partition failed for owner={PairedTrace.playerName owner}"
+  let selectedKeys := stats.visited.toList.map Prod.fst
+  let alternativeScan ← scanSelectedResidualAlternatives N discrepancyLimit owner
+    smallNodes largeNodes selectedKeys cache
+  let winning := (cache.toList.filter fun entry => entry.2).length
+  pure <| s!"owner={PairedTrace.playerName owner}; root=true; selection=solver-order; " ++
+    s!"alternatives=selected-parent-local; witnessSearched={cache.size}; " ++
+    s!"witnessWinning={winning}; selected={stats.visited.size}; " ++
+    s!"phases={stats.phases.size}; edges={stats.selectedEdges}; ownerNodes={stats.ownerNodes}; " ++
+    s!"opponentNodes={stats.opponentNodes}; obligations={stats.opponentObligations}; " ++
+    s!"targets={stats.targetLeaves}; terminals={stats.terminalLeaves}; audit=ok\n  " ++
+    formatResidualWitnessStats stats ++ "\n  " ++ formatAlternativeCoverage alternativeScan
+
+/-- Visited small states and every safe endpoint of player two's first post-opening turn. -/
+structure SafeTurnEndpointStats where
+  visited : Std.HashMap CacheKey Unit
+  endpoints : Std.HashMap CacheKey State
+
+def emptySafeTurnEndpointStats : SafeTurnEndpointStats :=
+  ⟨{}, {}⟩
+
+abbrev SafeTurnEndpointM := StateT SafeTurnEndpointStats (Except String)
+
+/-- Traverse every safe player-two continuation until the turn first passes to player one. -/
+def collectSafePlayerTwoTurnEndpointsAux (smallNodes : SolvedIndex) :
+    ℕ → State → SafeTurnEndpointM Unit
+  | 0, state => do
+      if (← get).visited.contains state.cacheKey then
+        return
+      throw s!"safe-turn endpoint traversal exhausted fuel at {repr state}"
+  | fuel + 1, state => do
+      if (← get).visited.contains state.cacheKey then
+        return
+      modify fun stats =>
+        { stats with visited := stats.visited.insert state.cacheKey () }
+      if state.toMove = .p1 then
+        modify fun stats =>
+          { stats with endpoints := stats.endpoints.insert state.cacheKey state }
+        return
+      let node ← match smallNodes[state.cacheKey]? with
+        | none => throw s!"small graph is missing safe-turn state {repr state}"
+        | some node => pure node
+      if !smallSafe .p2 node then
+        throw s!"safe-turn traversal reached a player-two-unsafe state {repr state}"
+      for move in node.moves do
+        let child ← match smallNodes[move.child.cacheKey]? with
+          | none => throw s!"small graph is missing safe-turn child {repr move.child}"
+          | some child => pure child
+        if smallSafe .p2 child then
+          collectSafePlayerTwoTurnEndpointsAux smallNodes fuel move.child
+
+/-- Bitmask for the three counters added to one new-opening endpoint. -/
+def threePacketMask (N k j : ℕ) : ℕ :=
+  let counters := k :: ([1, 2, 3, 4].filter (fun offset => offset != k && offset != j)).map
+    fun offset => N + offset
+  counters.foldl (fun mask counter => Nat.xor mask (Nat.shiftLeft 1 (counter - 1))) 0
+
+/-- Construct the large three-packet state associated with one small endpoint and reply offset. -/
+def threePacketState (N k j : ℕ) (small : State) : State :=
+  ⟨Nat.xor small.remainingMask (threePacketMask N k j), small.deficit + j, .p1⟩
+
+/-- Exact endpoint-safety report for all safe continuations of one small player-two opening turn. -/
+def runThreePacketEndpoints (N k j : ℕ) (smallOutput largeOutput : SolverOutput) :
+    Except String String := do
+  let smallRoot ← match smallOutput.openingRoots.find? fun root => decide (root.1 = k) with
+    | none => throw s!"small graph is missing its opening-{k} root"
+    | some root => pure root.2
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let smallRootNode ← match smallNodes[smallRoot.cacheKey]? with
+    | none => throw s!"small graph is missing its opening-{k} node"
+    | some node => pure node
+  if !smallSafe .p2 smallRootNode then
+    throw s!"opening-{k} small root is unsafe for player two"
+  let (_, stats) ←
+    (collectSafePlayerTwoTurnEndpointsAux smallNodes (N + 1) smallRoot).run
+      emptySafeTurnEndpointStats
+  let endpoints := (stats.endpoints.toList.map Prod.snd).mergeSort ExactSolver.stateLE
+  let mut safe := 0
+  let mut unsafeCount := 0
+  let mut missing := 0
+  let mut firstFailure : Option String := none
+  for small in endpoints do
+    let large := threePacketState N k j small
+    match largeNodes[large.cacheKey]? with
+    | none =>
+        missing := missing + 1
+        if firstFailure.isNone then
+          firstFailure := some s!"missing:small={repr small};large={repr large}"
+    | some largeNode =>
+        if smallSafe .p2 largeNode then
+          safe := safe + 1
+        else
+          unsafeCount := unsafeCount + 1
+          if firstFailure.isNone then
+            firstFailure := some <|
+              s!"unsafe:small={repr small};large={repr large};outcome={repr largeNode.outcome}"
+  let mut immediateSafeMoves : List ℕ := []
+  for move in smallRootNode.moves do
+    if move.child.toMove = .p1 then
+      match smallNodes[move.child.cacheKey]?, largeNodes[(threePacketState N k j move.child).cacheKey]?
+      with
+      | some smallChild, some largeChild =>
+          if smallSafe .p2 smallChild && smallSafe .p2 largeChild then
+            immediateSafeMoves := move.counter :: immediateSafeMoves
+      | _, _ => pure ()
+  immediateSafeMoves := immediateSafeMoves.reverse
+  pure <| s!"k={k};j={j};scope=all-safe-small-first-turn-endpoints;" ++
+    s!"visited={stats.visited.size};endpoints={endpoints.length};" ++
+    s!"safe={safe};unsafe={unsafeCount};missing={missing};" ++
+    s!"immediateSafeMoves={repr immediateSafeMoves};" ++
+    s!"allSafe={decide (unsafeCount = 0 && missing = 0)};" ++
+    s!"firstFailure={firstFailure.getD "none"}"
+
+/-- Test canonical three-packet endpoint safety for every valid new-opening offset. -/
+def runThreePacketEndpointSize (N : ℕ) : IO Unit := do
+  IO.println <| s!"N={N} → {N + 4}; relation=canonical-three-packet;" ++
+    "scope=all-safe-small-first-turn-endpoints"
+  for index in List.range 4 do
+    let k := index + 1
+    if k ≤ N then
+      let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N k)
+      let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) (N + k))
+      for replyIndex in List.range 4 do
+        let j := replyIndex + 1
+        if j != k then
+          IO.println (← orThrow (runThreePacketEndpoints N k j smallOutput largeOutput))
+
+def runAsyncSize (N discrepancyLimit : ℕ) (allowSwap requireDebt : Bool) : IO Unit := do
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println (s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; swaps={allowSwap}; " ++
+    s!"debt={requireDebt}")
+  for owner in [.p1, .p2] do
+    IO.println (← orThrow
+      (runAsyncOwner N discrepancyLimit allowSwap requireDebt owner smallOutput largeOutput))
+
+def runLedgerSize (N discrepancyLimit : ℕ) : IO Unit := do
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; persistentLedger=true"
+  for owner in [.p1, .p2] do
+    IO.println (← orThrow (runLedgerOwner N discrepancyLimit owner smallOutput largeOutput))
+
+def runResidualSize (N discrepancyLimit : ℕ) : IO Unit := do
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; oneResidual=true"
+  for owner in [.p2, .p1] do
+    IO.println (← orThrow (runResidualOwner N discrepancyLimit owner smallOutput largeOutput))
+
+def runResidualOpeningMatrix (N discrepancyLimit : ℕ) : IO Unit := do
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    "oneResidual=true; roots=all-theorem-obligations"
+  for index in List.range N do
+    let opening := index + 1
+    let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N opening)
+    let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) opening)
+    let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+    for owner in [.p2, .p1] do
+      IO.println (← orThrow (runResidualOpeningOwner N discrepancyLimit "old" owner
+        opening opening emptyLedger smallOutput largeOutput))
+  for index in List.range 4 do
+    let k := index + 1
+    if k ≤ N then
+      let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N k)
+      let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) (N + k))
+      let newLedger : ResidualLedger :=
+        ⟨⟨Nat.shiftLeft 1 (k - 1), 0⟩, 0, false⟩
+      IO.println (← orThrow (runResidualOpeningOwner N discrepancyLimit "new" .p2
+        k (N + k) newLedger smallOutput largeOutput))
+
+def runResidualNewOpeningRoot (N discrepancyLimit k : ℕ) : IO Unit := do
+  if !(decide (1 ≤ k ∧ k ≤ 4 ∧ k ≤ N)) then
+    throw <| IO.userError "new-opening root requires 1 ≤ K ≤ 4 and K ≤ N"
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N k)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) (N + k))
+  let newLedger : ResidualLedger :=
+    ⟨⟨Nat.shiftLeft 1 (k - 1), 0⟩, 0, false⟩
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"oneResidual=true; root=new-{k}↔{N + k}"
+  IO.println (← orThrow (runResidualOpeningOwner N discrepancyLimit "new" .p2
+    k (N + k) newLedger smallOutput largeOutput))
+
+/-- Check one unchanged old-opening root pair for protected player two. -/
+def runResidualOldOpeningRoot (N discrepancyLimit opening : ℕ) : IO Unit := do
+  if !(decide (1 ≤ opening ∧ opening ≤ N)) then
+    throw <| IO.userError "old-opening root requires 1 ≤ OPENING ≤ N"
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N opening)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) opening)
+  let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"oneResidual=true; root=old-{opening}"
+  IO.println (← orThrow (runResidualOpeningOwner N discrepancyLimit "old" .p2
+    opening opening emptyLedger smallOutput largeOutput))
+
+/-- The canonical tail state reached by the lower pair-deletion first-turn policy. -/
+def lowerRayTailState (gameSize k b : ℕ) : State :=
+  { remainingMask :=
+      (ExactSolver.fullMask gameSize - ExactSolver.fullMask k) - Nat.shiftLeft 1 (b - 1)
+    deficit := k * (k + 1) / 2 - b
+    toMove := .p2 }
+
+/-- The pair-deletion state after opening one and the reply two. -/
+def lowerRayPairTwoState (gameSize : ℕ) : State :=
+  { remainingMask := ExactSolver.fullMask gameSize - ExactSolver.fullMask 2
+    deficit := 1
+    toMove := .p1 }
+
+/-- The constant-deficit state whose remaining interval has two consecutive holes. -/
+def consecutiveHoleTwoState (gameSize b : ℕ) : State :=
+  { remainingMask :=
+      ((ExactSolver.fullMask gameSize - ExactSolver.fullMask 1) -
+        Nat.shiftLeft 1 (b - 1)) - Nat.shiftLeft 1 b
+    deficit := 2
+    toMove := .p2 }
+
+/-- Test one unchanged consecutive-hole state against the state with four new top counters. -/
+def runResidualConsecutiveHoleTwo (N discrepancyLimit b : ℕ) : IO Unit := do
+  if !(decide (3 ≤ N ∧ 2 ≤ b ∧ b < N)) then
+    throw <| IO.userError
+      "consecutive-hole transfer requires 3 ≤ N and 2 ≤ B < N"
+  let small := consecutiveHoleTwoState N b
+  let large := consecutiveHoleTwoState (N + 4) b
+  let smallOutput ← match ExactSolver.solveState N small with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N, [], ExactSolver.sortedNodes cache⟩
+  let largeOutput ← match ExactSolver.solveState (N + 4) large with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N + 4, [], ExactSolver.sortedNodes cache⟩
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  if !residualLedgerValid N small large emptyLedger then
+    throw <| IO.userError "empty ledger is invalid at the consecutive-hole roots"
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"root=consecutive-hole-two;b={b}"
+  for owner in [.p2, .p1] do
+    let smallNode ← match smallNodes[small.cacheKey]? with
+      | some node => pure node
+      | none => throw <| IO.userError "small consecutive-hole root is missing"
+    let smallRootSafe := smallSafe owner smallNode
+    let (rootWinning, cache) ← orThrow <|
+      (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+        small large emptyLedger).run {}
+    if smallRootSafe && !rootWinning then
+      throw <| IO.userError <| s!"required consecutive-hole transfer failed for owner=" ++
+        PairedTrace.playerName owner ++ s!";b={b}"
+    let winning := (cache.toList.filter fun entry => entry.2).length
+    IO.println <| s!"owner={PairedTrace.playerName owner};smallSafe={smallRootSafe};" ++
+      s!"required={smallRootSafe};root={rootWinning};states={cache.size};winning={winning};" ++
+      "ledgerValid=true"
+
+/-- Test every unchanged consecutive-hole state for one `N → N + 4` step. -/
+def runResidualConsecutiveHoleTwoMatrix (N discrepancyLimit : ℕ) : IO Unit := do
+  if N < 3 then
+    throw <| IO.userError "consecutive-hole matrix requires N ≥ 3"
+  for index in List.range (N - 2) do
+    runResidualConsecutiveHoleTwo N discrepancyLimit (index + 2)
+
+/-- Test one new consecutive-hole root against the root whose holes are shifted down by four. -/
+def runResidualConsecutiveHoleTwoBoundary
+    (N discrepancyLimit offset : ℕ) : IO Unit := do
+  if !(decide (6 ≤ N ∧ offset < 4)) then
+    throw <| IO.userError
+      "consecutive-hole boundary transfer requires N ≥ 6 and OFFSET < 4"
+  let smallB := N + offset - 4
+  let largeB := N + offset
+  let small := consecutiveHoleTwoState N smallB
+  let large := consecutiveHoleTwoState (N + 4) largeB
+  let smallOutput ← match ExactSolver.solveState N small with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N, [], ExactSolver.sortedNodes cache⟩
+  let largeOutput ← match ExactSolver.solveState (N + 4) large with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N + 4, [], ExactSolver.sortedNodes cache⟩
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let initialLedger : ResidualLedger :=
+    ⟨⟨Nat.shiftLeft 1 offset, Nat.shiftLeft 1 (smallB - 1)⟩, 0, false⟩
+  if !residualLedgerValid N small large initialLedger then
+    throw <| IO.userError "canonical boundary ledger is invalid at the consecutive-hole roots"
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"root=consecutive-hole-two-boundary;offset={offset};" ++
+    s!"smallB={smallB};largeB={largeB}"
+  for owner in [.p2, .p1] do
+    let smallNode ← match smallNodes[small.cacheKey]? with
+      | some node => pure node
+      | none => throw <| IO.userError "small consecutive-hole boundary root is missing"
+    let smallRootSafe := smallSafe owner smallNode
+    let (rootWinning, cache) ← orThrow <|
+      (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+        small large initialLedger).run {}
+    if smallRootSafe && !rootWinning then
+      throw <| IO.userError <|
+        s!"required consecutive-hole boundary transfer failed for owner=" ++
+          PairedTrace.playerName owner ++ s!";offset={offset}"
+    let winning := (cache.toList.filter fun entry => entry.2).length
+    IO.println <| s!"owner={PairedTrace.playerName owner};smallSafe={smallRootSafe};" ++
+      s!"required={smallRootSafe};root={rootWinning};states={cache.size};winning={winning};" ++
+      s!"topPositiveMask={Nat.shiftLeft 1 offset};" ++
+      s!"pendingPositiveMask={Nat.shiftLeft 1 (smallB - 1)};ledgerValid=true"
+
+/-- Test all four new consecutive-hole roots for one `N → N + 4` step. -/
+def runResidualConsecutiveHoleTwoBoundaryMatrix
+    (N discrepancyLimit : ℕ) : IO Unit := do
+  for offset in List.range 4 do
+    runResidualConsecutiveHoleTwoBoundary N discrepancyLimit offset
+
+/-- Test a new consecutive-hole root against the penultimate old root.  This alternative
+boundary pairing keeps only one or two visible old discrepancies at the initial state. -/
+def runResidualConsecutiveHoleTwoPenultimateBoundary
+    (N discrepancyLimit offset : ℕ) : IO Unit := do
+  if !(decide (6 ≤ N ∧ offset < 4)) then
+    throw <| IO.userError
+      "penultimate consecutive-hole boundary transfer requires N ≥ 6 and OFFSET < 4"
+  let smallB := N - 1
+  let largeB := N + offset
+  let small := consecutiveHoleTwoState N smallB
+  let large := consecutiveHoleTwoState (N + 4) largeB
+  let smallOutput ← match ExactSolver.solveState N small with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N, [], ExactSolver.sortedNodes cache⟩
+  let largeOutput ← match ExactSolver.solveState (N + 4) large with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N + 4, [], ExactSolver.sortedNodes cache⟩
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let initialLedger : ResidualLedger := if offset = 0 then
+      ⟨⟨1, Nat.shiftLeft 1 (N - 2)⟩, N, false⟩
+    else
+      ⟨⟨Nat.shiftLeft 1 (offset + 1), Nat.shiftLeft 1 (N - 2)⟩, 0, false⟩
+  if !residualLedgerValid N small large initialLedger then
+    throw <| IO.userError
+      "penultimate boundary ledger is invalid at the consecutive-hole roots"
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"root=consecutive-hole-two-penultimate-boundary;offset={offset};" ++
+    s!"smallB={smallB};largeB={largeB}"
+  for owner in [.p2, .p1] do
+    let smallNode ← match smallNodes[small.cacheKey]? with
+      | some node => pure node
+      | none => throw <| IO.userError "small penultimate boundary root is missing"
+    let smallRootSafe := smallSafe owner smallNode
+    let (rootWinning, cache) ← orThrow <|
+      (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+        small large initialLedger).run {}
+    if smallRootSafe && !rootWinning then
+      throw <| IO.userError <|
+        s!"required penultimate boundary transfer failed for owner=" ++
+          PairedTrace.playerName owner ++ s!";offset={offset}"
+    let winning := (cache.toList.filter fun entry => entry.2).length
+    IO.println <| s!"owner={PairedTrace.playerName owner};smallSafe={smallRootSafe};" ++
+      s!"required={smallRootSafe};root={rootWinning};states={cache.size};winning={winning};" ++
+      s!"ledgerValid=true"
+
+/-- Test the separate `b = 2` drawing-tail transfer by solving only its paired subgraphs. -/
+def runResidualLowerRayPairTwo (N discrepancyLimit : ℕ) : IO Unit := do
+  if N < 3 then
+    throw <| IO.userError "lower-ray pair-two transfer requires N ≥ 3"
+  let small := lowerRayPairTwoState N
+  let large := lowerRayPairTwoState (N + 4)
+  let smallOutput ← match ExactSolver.solveState N small with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N, [], ExactSolver.sortedNodes cache⟩
+  let largeOutput ← match ExactSolver.solveState (N + 4) large with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N + 4, [], ExactSolver.sortedNodes cache⟩
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  if !residualLedgerValid N small large emptyLedger then
+    throw <| IO.userError "empty ledger is invalid at the lower-ray pair-two roots"
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    "root=lower-ray-pair-two"
+  for owner in [.p2, .p1] do
+    let smallNode ← match smallNodes[small.cacheKey]? with
+      | some node => pure node
+      | none => throw <| IO.userError "small pair-two root is missing"
+    let smallRootSafe := smallSafe owner smallNode
+    let (rootWinning, cache) ← orThrow <|
+      (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+        small large emptyLedger).run {}
+    if smallRootSafe && !rootWinning then
+      throw <| IO.userError <| s!"required lower-ray pair-two transfer failed for owner=" ++
+        PairedTrace.playerName owner
+    let winning := (cache.toList.filter fun entry => entry.2).length
+    IO.println <| s!"owner={PairedTrace.playerName owner};smallSafe={smallRootSafe};" ++
+      s!"required={smallRootSafe};root={rootWinning};states={cache.size};winning={winning};" ++
+      "ledgerValid=true"
+
+/-- Test one canonical tail pair using already-solved opening-one graphs. -/
+def runResidualLowerRayTailWithOutputs (N discrepancyLimit k b : ℕ)
+    (smallOutput largeOutput : SolverOutput) : IO Unit := do
+  if !(decide (2 ≤ k ∧ k < b ∧ b ≤ N ∧ k * (k - 1) / 2 < b ∧
+      b ≤ k * (k + 1) / 2)) then
+    throw <| IO.userError
+      "lower-ray tail requires 2 ≤ K < B ≤ N and T_(K-1) < B ≤ T_K"
+  let small := lowerRayTailState N k b
+  let large := lowerRayTailState (N + 4) k b
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  if smallNodes[small.cacheKey]?.isNone then
+    throw <| IO.userError s!"small opening-one graph is missing tail state {repr small}"
+  if largeNodes[large.cacheKey]?.isNone then
+    throw <| IO.userError s!"large opening-one graph is missing tail state {repr large}"
+  let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  if !residualLedgerValid N small large emptyLedger then
+    throw <| IO.userError "empty ledger is invalid at the lower-ray tail pair"
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"oneResidual=true; root=lower-ray-tail;k={k};b={b}"
+  for owner in [.p1, .p2] do
+    let smallNode ← match smallNodes[small.cacheKey]? with
+      | some node => pure node
+      | none => throw <| IO.userError "small tail state disappeared from its solved index"
+    let smallRootSafe := smallSafe owner smallNode
+    let (rootWinning, cache) ← orThrow <|
+      (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+        small large emptyLedger).run {}
+    if smallRootSafe && !rootWinning then
+      throw <| IO.userError <| s!"required lower-ray tail transfer failed for owner=" ++
+        PairedTrace.playerName owner ++ s!";k={k};b={b}"
+    let winning := (cache.toList.filter fun entry => entry.2).length
+    IO.println <| s!"owner={PairedTrace.playerName owner};smallSafe={smallRootSafe};" ++
+      s!"required={smallRootSafe};root={rootWinning};states={cache.size};winning={winning};" ++
+      "ledgerValid=true"
+
+/-- Test one canonical lower-ray tail against the same tail with four new top counters. -/
+def runResidualLowerRayTail (N discrepancyLimit k b : ℕ) : IO Unit := do
+  let small := lowerRayTailState N k b
+  let large := lowerRayTailState (N + 4) k b
+  let smallOutput ← match ExactSolver.solveState N small with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N, [], ExactSolver.sortedNodes cache⟩
+  let largeOutput ← match ExactSolver.solveState (N + 4) large with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N + 4, [], ExactSolver.sortedNodes cache⟩
+  runResidualLowerRayTailWithOutputs N discrepancyLimit k b smallOutput largeOutput
+
+/-- Test every canonical old tail for one `N → N + 4` step, sharing the solved graphs. -/
+def runResidualLowerRayTailMatrix (N discrepancyLimit : ℕ) : IO Unit := do
+  if N < 3 then
+    throw <| IO.userError "lower-ray tail matrix requires N ≥ 3"
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  for index in List.range (N - 2) do
+    let b := index + 3
+    let k? := (List.range (N + 1)).find? fun k =>
+      decide (2 ≤ k ∧ k < b ∧ k * (k - 1) / 2 < b ∧ b ≤ k * (k + 1) / 2)
+    match k? with
+    | none => throw <| IO.userError s!"failed to find the triangular ceiling for b={b}"
+    | some k =>
+        runResidualLowerRayTailWithOutputs N discrepancyLimit k b smallOutput largeOutput
+
+/-- Find the unique triangular ceiling used by the canonical lower-ray first turn. -/
+def lowerRayTriangularCeiling? (bound b : ℕ) : Option ℕ :=
+  (List.range (bound + 1)).find? fun k =>
+    decide (2 ≤ k ∧ k < b ∧ k * (k - 1) / 2 < b ∧ b ≤ k * (k + 1) / 2)
+
+/-- Test one of the four new lower-ray holes against its hole shifted down by four. -/
+def runResidualLowerRayBoundaryWithOutputs (N discrepancyLimit offset : ℕ)
+    (smallOutput largeOutput : SolverOutput) : IO Unit := do
+  if !(decide (8 ≤ N ∧ 1 ≤ offset ∧ offset ≤ 4)) then
+    throw <| IO.userError "lower-ray boundary transfer requires N ≥ 8 and 1 ≤ OFFSET ≤ 4"
+  let smallB := N + offset - 4
+  let largeB := N + offset
+  let smallK ← match lowerRayTriangularCeiling? N smallB with
+    | some k => pure k
+    | none => throw <| IO.userError s!"no small triangular ceiling for b={smallB}"
+  let largeK ← match lowerRayTriangularCeiling? (N + 4) largeB with
+    | some k => pure k
+    | none => throw <| IO.userError s!"no large triangular ceiling for b={largeB}"
+  let small := lowerRayTailState N smallK smallB
+  let large := lowerRayTailState (N + 4) largeK largeB
+  let smallNodes := indexSolvedNodes smallOutput
+  let largeNodes := indexSolvedNodes largeOutput
+  if smallNodes[small.cacheKey]?.isNone then
+    throw <| IO.userError s!"small graph is missing boundary source {repr small}"
+  if largeNodes[large.cacheKey]?.isNone then
+    throw <| IO.userError s!"large graph is missing boundary target {repr large}"
+  let pendingPositiveMask :=
+    Nat.xor (PairedTrace.oldMask N small) (PairedTrace.oldMask N large)
+  let initialLedger : ResidualLedger :=
+    ⟨⟨0, pendingPositiveMask⟩, 0, false⟩
+  if !residualLedgerValid N small large initialLedger then
+    throw <| IO.userError "canonical-history ledger is invalid at the lower-ray boundary pair"
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"root=lower-ray-boundary;offset={offset};" ++
+    s!"small=(k={smallK},b={smallB});large=(k={largeK},b={largeB})"
+  for owner in [.p2, .p1] do
+    let smallNode ← match smallNodes[small.cacheKey]? with
+      | some node => pure node
+      | none => throw <| IO.userError "small boundary state disappeared from its solved index"
+    let smallRootSafe := smallSafe owner smallNode
+    let (rootWinning, cache) ← orThrow <|
+      (residualForceAux N discrepancyLimit owner smallNodes largeNodes (N + 5)
+        small large initialLedger).run {}
+    if smallRootSafe && !rootWinning then
+      throw <| IO.userError <| s!"required lower-ray boundary transfer failed for owner=" ++
+        PairedTrace.playerName owner ++ s!";offset={offset}"
+    let winning := (cache.toList.filter fun entry => entry.2).length
+    IO.println <| s!"owner={PairedTrace.playerName owner};smallSafe={smallRootSafe};" ++
+      s!"required={smallRootSafe};root={rootWinning};states={cache.size};winning={winning};" ++
+      s!"pendingPositiveMask={pendingPositiveMask};ledgerValid=true"
+
+/-- Test all four new lower-ray holes, sharing the solved opening-one graphs. -/
+def runResidualLowerRayBoundaryMatrix (N discrepancyLimit : ℕ) : IO Unit := do
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  for index in List.range 4 do
+    runResidualLowerRayBoundaryWithOutputs N discrepancyLimit (index + 1)
+      smallOutput largeOutput
+
+/-- Test one new lower-ray hole by solving only the two paired tail subgraphs. -/
+def runResidualLowerRayBoundary (N discrepancyLimit offset : ℕ) : IO Unit := do
+  if !(decide (8 ≤ N ∧ 1 ≤ offset ∧ offset ≤ 4)) then
+    throw <| IO.userError "lower-ray boundary transfer requires N ≥ 8 and 1 ≤ OFFSET ≤ 4"
+  let smallB := N + offset - 4
+  let largeB := N + offset
+  let smallK ← match lowerRayTriangularCeiling? N smallB with
+    | some k => pure k
+    | none => throw <| IO.userError s!"no small triangular ceiling for b={smallB}"
+  let largeK ← match lowerRayTriangularCeiling? (N + 4) largeB with
+    | some k => pure k
+    | none => throw <| IO.userError s!"no large triangular ceiling for b={largeB}"
+  let small := lowerRayTailState N smallK smallB
+  let large := lowerRayTailState (N + 4) largeK largeB
+  let smallOutput ← match ExactSolver.solveState N small with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N, [], ExactSolver.sortedNodes cache⟩
+  let largeOutput ← match ExactSolver.solveState (N + 4) large with
+    | .error message => throw <| IO.userError message
+    | .ok (_, cache) => pure ⟨N + 4, [], ExactSolver.sortedNodes cache⟩
+  runResidualLowerRayBoundaryWithOutputs N discrepancyLimit offset smallOutput largeOutput
+
+/-- Extract and independently check one unchanged old-opening product certificate. -/
+def runCheckedProductOldOpeningRoot (N discrepancyLimit opening : ℕ)
+    (owner : Player) : IO Unit := do
+  if !(decide (1 ≤ opening ∧ opening ≤ N)) then
+    throw <| IO.userError "checked old root requires 1 ≤ OPENING ≤ N"
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N opening)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) opening)
+  let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    s!"productCertificate=true; root=old-{opening}; owner={PairedTrace.playerName owner}"
+  IO.println (← orThrow (runCheckedProductOpeningOwner N discrepancyLimit "old" owner
+    opening opening emptyLedger smallOutput largeOutput))
+
+/-- Emit one newly checked old-opening product certificate as a complete Lean module. -/
+def emitCheckedProductOldOpeningRoot (N discrepancyLimit opening : ℕ)
+    (owner : Player) (outputPath : System.FilePath) : IO Unit := do
+  if ← outputPath.pathExists then
+    throw <| IO.userError s!"refusing to overwrite existing generated artifact {outputPath}"
+  if !(decide (1 ≤ opening ∧ opening ≤ N)) then
+    throw <| IO.userError "emitted old root requires 1 ≤ OPENING ≤ N"
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N opening)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) opening)
+  let emptyLedger : ResidualLedger := ⟨⟨0, 0⟩, 0, false⟩
+  let (_, dag) ← orThrow (buildCheckedProductOpeningOwner N discrepancyLimit "old" owner
+    opening opening emptyLedger smallOutput largeOutput)
+  let source := formatOldProductCertificateModule N opening owner dag
+  IO.FS.writeFile outputPath source
+  IO.println <| s!"emitted checked product certificate: path={outputPath};" ++
+    s!"nodes={dag.nodes.length};bytes={source.length}"
+
+/-- Check all four new-opening root pairs for both protected players. -/
+def runResidualNewOpeningRootsAllOwners (N discrepancyLimit : ℕ) : IO Unit := do
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    "oneResidual=true; roots=all-new-openings; owners=both"
+  for index in List.range 4 do
+    let k := index + 1
+    if k ≤ N then
+      let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N k)
+      let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) (N + k))
+      let newLedger : ResidualLedger :=
+        ⟨⟨Nat.shiftLeft 1 (k - 1), 0⟩, 0, false⟩
+      for owner in [.p2, .p1] do
+        IO.println (← orThrow (runResidualOpeningOwner N discrepancyLimit "new" owner
+          k (N + k) newLedger smallOutput largeOutput))
+
+def runResidualWitnessSize (N discrepancyLimit : ℕ) : IO Unit := do
+  let smallOutput ← orThrow (PairedTrace.solveOpeningGraph N 1)
+  let largeOutput ← orThrow (PairedTrace.solveOpeningGraph (N + 4) 1)
+  IO.println <| s!"N={N} → {N + 4}; discrepancy≤{discrepancyLimit}; " ++
+    "oneResidual=true; selection=solver-order"
+  for owner in [.p2, .p1] do
+    IO.println (← orThrow
+      (runResidualWitnessOwner N discrepancyLimit owner smallOutput largeOutput))
+
+end CatchUpSearch.SimulationBasin
+
+set_option linter.style.namespace false in
+def main (args : List String) : IO Unit := do
+  match args with
+  | "--three-packet-endpoints" :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError
+          "Usage: SimulationBasinMain.lean --three-packet-endpoints N [N ...]"
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runThreePacketEndpointSize N
+  | "--async" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError "Usage: SimulationBasinMain.lean --async LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runAsyncSize N discrepancyLimit true false
+  | "--async-noswap" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError "Usage: SimulationBasinMain.lean --async-noswap LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runAsyncSize N discrepancyLimit false false
+  | "--async-debt" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError "Usage: SimulationBasinMain.lean --async-debt LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runAsyncSize N discrepancyLimit true true
+  | "--async-ledger" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError "Usage: SimulationBasinMain.lean --async-ledger LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runLedgerSize N discrepancyLimit
+  | "--async-residual-witness" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError
+          "Usage: SimulationBasinMain.lean --async-residual-witness LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runResidualWitnessSize N discrepancyLimit
+  | "--async-residual-roots" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError
+          "Usage: SimulationBasinMain.lean --async-residual-roots LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runResidualOpeningMatrix N discrepancyLimit
+  | ["--async-residual-new-root", limitArgument, sizeArgument, offsetArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let k ← CatchUpSearch.SimulationBasin.parseSize offsetArgument
+      CatchUpSearch.SimulationBasin.runResidualNewOpeningRoot N discrepancyLimit k
+  | ["--async-residual-old-root", limitArgument, sizeArgument, openingArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let opening ← CatchUpSearch.SimulationBasin.parseSize openingArgument
+      CatchUpSearch.SimulationBasin.runResidualOldOpeningRoot N discrepancyLimit opening
+  | ["--async-residual-lower-ray-tail", limitArgument, sizeArgument, kArgument, bArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let k ← CatchUpSearch.SimulationBasin.parseSize kArgument
+      let b ← CatchUpSearch.SimulationBasin.parseSize bArgument
+      CatchUpSearch.SimulationBasin.runResidualLowerRayTail N discrepancyLimit k b
+  | ["--async-residual-lower-ray-pair-two", limitArgument, sizeArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      CatchUpSearch.SimulationBasin.runResidualLowerRayPairTwo N discrepancyLimit
+  | ["--async-residual-consecutive-hole-two", limitArgument, sizeArgument, bArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let b ← CatchUpSearch.SimulationBasin.parseSize bArgument
+      CatchUpSearch.SimulationBasin.runResidualConsecutiveHoleTwo N discrepancyLimit b
+  | ["--async-residual-consecutive-hole-two-matrix", limitArgument, sizeArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      CatchUpSearch.SimulationBasin.runResidualConsecutiveHoleTwoMatrix N discrepancyLimit
+  | ["--async-residual-consecutive-hole-two-boundary", limitArgument, sizeArgument,
+      offsetArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let offset ← CatchUpSearch.SimulationBasin.parseSize offsetArgument
+      CatchUpSearch.SimulationBasin.runResidualConsecutiveHoleTwoBoundary
+        N discrepancyLimit offset
+  | ["--async-residual-consecutive-hole-two-boundary-matrix", limitArgument, sizeArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      CatchUpSearch.SimulationBasin.runResidualConsecutiveHoleTwoBoundaryMatrix
+        N discrepancyLimit
+  | ["--async-residual-consecutive-hole-two-penultimate-boundary", limitArgument,
+      sizeArgument, offsetArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let offset ← CatchUpSearch.SimulationBasin.parseSize offsetArgument
+      CatchUpSearch.SimulationBasin.runResidualConsecutiveHoleTwoPenultimateBoundary
+        N discrepancyLimit offset
+  | ["--async-residual-lower-ray-tail-matrix", limitArgument, sizeArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      CatchUpSearch.SimulationBasin.runResidualLowerRayTailMatrix N discrepancyLimit
+  | ["--async-residual-lower-ray-boundary-matrix", limitArgument, sizeArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      CatchUpSearch.SimulationBasin.runResidualLowerRayBoundaryMatrix N discrepancyLimit
+  | ["--async-residual-lower-ray-boundary", limitArgument, sizeArgument, offsetArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let offset ← CatchUpSearch.SimulationBasin.parseSize offsetArgument
+      CatchUpSearch.SimulationBasin.runResidualLowerRayBoundary N discrepancyLimit offset
+  | ["--check-four-lift-old-root", limitArgument, sizeArgument, openingArgument,
+      ownerArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let opening ← CatchUpSearch.SimulationBasin.parseSize openingArgument
+      let owner ← match ownerArgument with
+        | "p1" => pure CatchUp.Player.p1
+        | "p2" => pure CatchUp.Player.p2
+        | _ => throw <| IO.userError "checked product owner must be p1 or p2"
+      CatchUpSearch.SimulationBasin.runCheckedProductOldOpeningRoot
+        N discrepancyLimit opening owner
+  | ["--emit-four-lift-old-root", limitArgument, sizeArgument, openingArgument,
+      ownerArgument, outputPath] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      let opening ← CatchUpSearch.SimulationBasin.parseSize openingArgument
+      let owner ← match ownerArgument with
+        | "p1" => pure CatchUp.Player.p1
+        | "p2" => pure CatchUp.Player.p2
+        | _ => throw <| IO.userError "emitted product owner must be p1 or p2"
+      CatchUpSearch.SimulationBasin.emitCheckedProductOldOpeningRoot
+        N discrepancyLimit opening owner (System.FilePath.mk outputPath)
+  | ["--async-residual-new-roots-all-owners", limitArgument, sizeArgument] =>
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let N ← CatchUpSearch.SimulationBasin.parseSize sizeArgument
+      CatchUpSearch.SimulationBasin.runResidualNewOpeningRootsAllOwners N discrepancyLimit
+  | "--async-residual" :: limitArgument :: sizeArguments =>
+      if sizeArguments.isEmpty then
+        throw <| IO.userError "Usage: SimulationBasinMain.lean --async-residual LIMIT N [N ...]"
+      let discrepancyLimit ← CatchUpSearch.SimulationBasin.parseSize limitArgument
+      let sizes ← sizeArguments.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runResidualSize N discrepancyLimit
+  | _ =>
+      let sizes ← if args.isEmpty then pure [7, 8] else
+        args.mapM CatchUpSearch.SimulationBasin.parseSize
+      for N in sizes do
+        CatchUpSearch.SimulationBasin.runSize N

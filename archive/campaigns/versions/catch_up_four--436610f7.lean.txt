@@ -1,0 +1,155 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import FormalConjectures.Paper.CatchUpConjecture
+
+/-!
+# Catch-Up four-counter classifier
+
+This research script computes the optimal value of a Catch-Up position whose remaining counters are
+`[N + 1, N + 2, N + 3, N + 4]`. It groups consecutive score deficits with the same outcome and checks
+a candidate symbolic classification for `4 ≤ N ≤ 200`.
+
+The finite check is evidence for the candidate formula, not a proof for arbitrary `N`.
+
+Run with:
+
+```bash
+lake env lean --run scripts/catch_up_four.lean
+```
+-/
+
+namespace CatchUpFour
+
+open CatchUp
+
+/--
+Executable minimax evaluation of a post-opening Catch-Up position represented by a list of counters.
+-/
+def listValue (remaining : List ℕ) (deficit : ℕ) : Outcome :=
+  if remaining = [] then
+    if deficit = 0 then .draw else .loss
+  else if remaining.sum < deficit then
+    .loss
+  else
+    let outcomes := remaining.attach.map fun ⟨x, _⟩ =>
+      let remaining' := remaining.erase x
+      if x < deficit then
+        listValue remaining' (deficit - x)
+      else
+        (listValue remaining' (x - deficit)).neg
+    .best outcomes
+termination_by remaining.length
+decreasing_by
+  all_goals
+    have h := List.length_erase_add_one ‹_›
+    omega
+
+/-- An inclusive interval of deficits with the same optimal outcome. -/
+structure OutcomeRange where
+  first : ℕ
+  last : ℕ
+  outcome : Outcome
+deriving Repr
+
+/-- Extend the current outcome range while consecutive deficits have the same value. -/
+def compressAux (first last : ℕ) (outcome : Outcome) :
+    List (ℕ × Outcome) → List OutcomeRange
+  | [] => [⟨first, last, outcome⟩]
+  | (deficit, nextOutcome) :: rest =>
+      if nextOutcome = outcome ∧ deficit = last + 1 then
+        compressAux first deficit outcome rest
+      else
+        ⟨first, last, outcome⟩ :: compressAux deficit deficit nextOutcome rest
+
+/-- Group consecutive deficits that have the same optimal outcome. -/
+def compress : List (ℕ × Outcome) → List OutcomeRange
+  | [] => []
+  | (deficit, outcome) :: rest => compressAux deficit deficit outcome rest
+
+/-- The four counters added when passing from a game of size `N` to one of size `N + 4`. -/
+def fourBlock (N : ℕ) : List ℕ :=
+  [N + 1, N + 2, N + 3, N + 4]
+
+/-- Exhaustively classify all relevant deficits for the four-counter endgame. -/
+def classifyFourBlock (N : ℕ) : List OutcomeRange :=
+  let counters := fourBlock N
+  compress <| (List.range (counters.sum + 2)).map fun deficit =>
+    (deficit, listValue counters deficit)
+
+/--
+Candidate symbolic classification suggested by exhaustive search. This is expected to agree with
+`listValue (fourBlock N)` when `4 ≤ N`.
+-/
+def symbolicFourBlockValue (N deficit : ℕ) : Outcome :=
+  if deficit = 0 then .draw
+  else if deficit = 1 then .loss
+  else if deficit = 2 then .draw
+  else if deficit ≤ N + 1 then .loss
+  else if deficit ≤ 2 * N + 7 then .win
+  else if deficit = 2 * N + 8 then .draw
+  else if deficit ≤ 3 * N + 6 then .loss
+  else if deficit ≤ 4 * N + 9 then .win
+  else if deficit = 4 * N + 10 then .draw
+  else .loss
+
+/-- Check the candidate symbolic classification at one value of `N`. -/
+def validatesAt (N : ℕ) : Bool :=
+  let counters := fourBlock N
+  (List.range (counters.sum + 2)).all fun deficit =>
+    decide (listValue counters deficit = symbolicFourBlockValue N deficit)
+
+/-- Check the candidate at `count` consecutive values starting at `first`. -/
+def validatesFrom (first count : ℕ) : Bool :=
+  (List.range count).all fun offset => validatesAt (first + offset)
+
+/-- Small executable checks covering the evaluator's terminal and transition branches. -/
+def sanityChecks : Bool :=
+  decide (listValue [] 0 = .draw) &&
+  decide (listValue [1] 2 = .loss) &&
+  decide (listValue [3] 2 = .win) &&
+  decide (listValue [1, 3] 2 = .win)
+
+def outcomeName : Outcome → String
+  | .win => "win"
+  | .loss => "loss"
+  | .draw => "draw"
+
+def OutcomeRange.format (range : OutcomeRange) : String :=
+  s!"[{range.first}, {range.last}]: {outcomeName range.outcome}"
+
+def formatClassification (N : ℕ) : String :=
+  String.intercalate "\n" <| (classifyFourBlock N).map OutcomeRange.format
+
+def run : IO Unit := do
+  if !sanityChecks then
+    throw <| IO.userError "A basic evaluator sanity check failed."
+  IO.println "Candidate classification for N ≥ 4:"
+  IO.println "0: draw; 1: loss; 2: draw"
+  IO.println "3..N+1: loss; N+2..2N+7: win; 2N+8: draw"
+  IO.println "2N+9..3N+6: loss; 3N+7..4N+9: win; 4N+10: draw; larger: loss"
+  for N in [4, 10] do
+    IO.println s!"\nExact exhaustive ranges for N={N}:"
+    IO.println (formatClassification N)
+  if validatesFrom 4 197 then
+    IO.println "\nValidated exhaustively for every N from 4 through 200."
+  else
+    throw <| IO.userError "The symbolic classifier disagrees with exhaustive search."
+
+end CatchUpFour
+
+def main : IO Unit :=
+  CatchUpFour.run

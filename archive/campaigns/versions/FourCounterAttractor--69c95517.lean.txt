@@ -1,0 +1,262 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.FourCounterEndgame
+import catch_up.PairedTrace
+
+/-!
+# Catch-Up four-counter forcing basins
+
+This research module computes backward forcing basins for selected four-counter target sets inside
+the complete graph reachable after opening `1` at size `N + 4`.
+
+For a fixed owner, a target state is accepted immediately. At an owner node, some child must be in
+the basin; at an opponent node, every child must be in the basin. A terminal non-target state is
+outside. The computed memo table is checked against this equation at every exported solved node.
+-/
+
+namespace CatchUpSearch.FourCounterAttractor
+
+open CatchUp
+open CatchUpSearch.ExactSolver
+
+/-- Complete solved nodes indexed by normalized state. -/
+abbrev SolvedIndex := Std.HashMap CacheKey SolvedNode
+
+/-- Membership in one computed backward forcing basin. -/
+abbrev BasinCache := Std.HashMap CacheKey Bool
+
+/-- Backward forcing combines basin memoization with explicit failure. -/
+abbrev BasinM := StateT BasinCache (Except String)
+
+/-- Target sets compared by the four-counter forcing-basin experiment. -/
+inductive TargetKind
+  /-- Tied states with exactly the four new counters remaining. -/
+  | tiedTopFour
+  /-- Every state with no old counters in which the owner can avoid losing. -/
+  | safeTopOnly
+  /-- Every owner-safe state with at most the specified number of old counters. -/
+  | safeAtMostOld (maximum : ℕ)
+deriving DecidableEq, Repr
+
+/-- Index every node of a complete solved graph. -/
+def indexSolvedNodes (output : SolverOutput) : SolvedIndex :=
+  output.nodes.foldl (fun nodes node => nodes.insert node.state.cacheKey node) {}
+
+/-- Whether a large-game state is tied with exactly the four counters above `N` remaining. -/
+def isTiedTopFour (N : ℕ) (state : State) : Bool :=
+  decide (state.remainingMask = Nat.shiftLeft 15 N ∧ state.deficit = 0)
+
+/-- Whether none of the original `N` counters remain. -/
+def isTopOnly (N : ℕ) (state : State) : Bool :=
+  decide (PairedTrace.oldMask N state = 0)
+
+/-- Whether a solved node belongs to the selected target set for this owner. -/
+def isTarget (target : TargetKind) (N : ℕ) (owner : Player) (node : SolvedNode) : Bool :=
+  match target with
+  | .tiedTopFour => isTiedTopFour N node.state
+  | .safeTopOnly =>
+      isTopOnly N node.state &&
+        StrategyExtraction.outcomeSafeFor owner node.state node.outcome
+  | .safeAtMostOld maximum =>
+      decide ((availableMoves N (PairedTrace.oldMask N node.state)).length ≤ maximum) &&
+        StrategyExtraction.outcomeSafeFor owner node.state node.outcome
+
+/-- Read a previously computed basin value, treating a missing state as outside. -/
+def basinContains (cache : BasinCache) (state : State) : Bool :=
+  cache[state.cacheKey]?.getD false
+
+/-- Memoized backward forcing recurrence on an acyclic complete solved graph. -/
+def forceAux (target : TargetKind) (N : ℕ) (owner : Player) (nodes : SolvedIndex) :
+    ℕ → State → BasinM Bool
+  | 0, state => do
+      if let some cached := (← get)[state.cacheKey]? then
+        return cached
+      let node ← match nodes[state.cacheKey]? with
+        | none => throw s!"forcing basin is missing state {repr state}"
+        | some node => pure node
+      if isTarget target N owner node then
+        modify fun cache => cache.insert state.cacheKey true
+        return true
+      if node.moves.isEmpty then
+        modify fun cache => cache.insert state.cacheKey false
+        return false
+      throw s!"forcing-basin fuel exhausted at {repr state}"
+  | fuel + 1, state => do
+      if let some cached := (← get)[state.cacheKey]? then
+        return cached
+      let node ← match nodes[state.cacheKey]? with
+        | none => throw s!"forcing basin is missing state {repr state}"
+        | some node => pure node
+      if isTarget target N owner node then
+        modify fun cache => cache.insert state.cacheKey true
+        return true
+      let result ←
+        if node.moves.isEmpty then
+          pure false
+        else if state.toMove = owner then
+          let mut found := false
+          for move in node.moves do
+            if ← forceAux target N owner nodes fuel move.child then
+              found := true
+          pure found
+        else
+          let mut covered := true
+          for move in node.moves do
+            if !(← forceAux target N owner nodes fuel move.child) then
+              covered := false
+          pure covered
+      modify fun cache => cache.insert state.cacheKey result
+      return result
+
+/-- Compute basin membership for every node in one complete solved graph. -/
+def computeBasin (target : TargetKind) (N : ℕ) (owner : Player) (output : SolverOutput) :
+    Except String BasinCache :=
+  let nodes := indexSolvedNodes output
+  let computation : BasinM Unit := do
+    for node in output.nodes do
+      let _ ← forceAux target N owner nodes (output.gameSize + 1) node.state
+  match computation.run {} with
+  | .error message => .error message
+  | .ok (_, cache) => .ok cache
+
+/-- Recompute one node's forcing equation from an already completed basin table. -/
+def expectedBasinValue (target : TargetKind) (N : ℕ) (owner : Player) (cache : BasinCache)
+    (node : SolvedNode) : Bool :=
+  if isTarget target N owner node then
+    true
+  else if node.moves.isEmpty then
+    false
+  else if node.state.toMove = owner then
+    node.moves.any fun move => basinContains cache move.child
+  else
+    node.moves.all fun move => basinContains cache move.child
+
+/-- Check completeness and the forcing equation at every solved node. -/
+def basinValid (target : TargetKind) (N : ℕ) (owner : Player) (output : SolverOutput)
+    (cache : BasinCache) : Bool :=
+  output.nodes.all fun node =>
+    match cache[node.state.cacheKey]? with
+    | none => false
+    | some actual => decide (actual = expectedBasinValue target N owner cache node)
+
+/-- Extract one strategy certificate using an indexed solved graph. -/
+def extractIndexedAux (gameSize : ℕ) (owner : Player) (nodes : SolvedIndex) :
+    ℕ → State → StrategyExtraction.ExtractionM Unit
+  | 0, state => do
+      if (← get)[state.cacheKey]?.isSome then
+        return
+      throw s!"indexed strategy extraction fuel exhausted at {repr state}"
+  | fuel + 1, state => do
+      if (← get)[state.cacheKey]?.isSome then
+        return
+      let solvedNode ← match nodes[state.cacheKey]? with
+        | none => throw s!"indexed strategy extraction is missing state {repr state}"
+        | some node => pure node
+      let (branch, followedMoves) ← StrategyExtraction.selectBranch gameSize owner solvedNode
+      modify fun cache => cache.insert state.cacheKey ⟨state, branch⟩
+      for move in followedMoves do
+        extractIndexedAux gameSize owner nodes fuel move.child
+
+/-- Extract one deterministic strategy DAG with constant-time solved-node lookup. -/
+def extractIndexed (output : SolverOutput) (owner : Player) (nodes : SolvedIndex)
+    (root : State) : Except String StrategyDAG :=
+  match (extractIndexedAux output.gameSize owner nodes (output.gameSize + 1) root).run {} with
+  | .error message => .error message
+  | .ok (_, cache) =>
+      .ok ⟨output.gameSize, owner, root, StrategyExtraction.sortedStrategyNodes cache⟩
+
+/-- Extract and independently check a non-loss certificate for every selected target node. -/
+def checkTargetCertificates (target : TargetKind) (N : ℕ) (owner : Player)
+    (output : SolverOutput) : Except String Unit := do
+  let nodes := indexSolvedNodes output
+  for node in output.nodes do
+    if isTarget target N owner node then
+      let dag ← extractIndexed output owner nodes node.state
+      if !CertificateChecker.checkCertificate dag then
+        throw s!"target certificate failed independent checking at {repr node.state}"
+
+/-- Count the old counters still remaining in one large-game state. -/
+def oldCounterCount (N : ℕ) (state : State) : ℕ :=
+  (availableMoves N (PairedTrace.oldMask N state)).length
+
+/-- Nonzero basin counts grouped by the number of remaining old counters. -/
+def oldCountHistogram (N : ℕ) (states : List State) : List (ℕ × ℕ) :=
+  (List.range (N + 1)).filterMap fun oldCount =>
+    let count := (states.filter fun state => decide (oldCounterCount N state = oldCount)).length
+    if count = 0 then none else some (oldCount, count)
+
+/-- Aggregate evidence about one owner's forcing basin. -/
+structure BasinSummary where
+  smallN : ℕ
+  targetKind : TargetKind
+  owner : Player
+  graphNodes : ℕ
+  targetNodes : ℕ
+  terminalTargetNodes : ℕ
+  basinNodes : ℕ
+  nonTargetBasinNodes : ℕ
+  basinWithOldCounters : ℕ
+  maxOldCounters : ℕ
+  rootSafeForOwner : Bool
+  rootInBasin : Bool
+  histogram : List (ℕ × ℕ)
+deriving Repr
+
+/-- Compute and validate one target and owner's summary from a precomputed opening-`1` graph. -/
+def analyzeOutput (target : TargetKind) (N : ℕ) (owner : Player) (output : SolverOutput) :
+    Except String BasinSummary := do
+  checkTargetCertificates target N owner output
+  let cache ← computeBasin target N owner output
+  if !basinValid target N owner output cache then
+    throw s!"forcing-basin validation failed at N={N} for {repr owner}"
+  let basinNodes := output.nodes.filter fun node => basinContains cache node.state
+  let basinStates := basinNodes.map SolvedNode.state
+  let targetNodes := (basinNodes.filter (isTarget target N owner)).length
+  let terminalTargetNodes :=
+    (basinNodes.filter fun node => isTarget target N owner node && node.moves.isEmpty).length
+  let withOld := basinStates.filter fun state => decide (0 < oldCounterCount N state)
+  let maxOld := withOld.foldl (fun maximum state => max maximum (oldCounterCount N state)) 0
+  let root? := output.openingRoots.find? fun root => decide (root.1 = 1)
+  let rootSafeForOwner :=
+    match root? with
+    | none => false
+    | some root =>
+        match ExactSolver.findNode? output root.2 with
+        | none => false
+        | some node => StrategyExtraction.outcomeSafeFor owner node.state node.outcome
+  let rootInBasin := root?.any fun root => basinContains cache root.2
+  pure
+    { smallN := N
+      targetKind := target
+      owner
+      graphNodes := output.nodes.length
+      targetNodes
+      terminalTargetNodes
+      basinNodes := basinStates.length
+      nonTargetBasinNodes := basinStates.length - targetNodes
+      basinWithOldCounters := withOld.length
+      maxOldCounters := maxOld
+      rootSafeForOwner
+      rootInBasin
+      histogram := oldCountHistogram N basinStates }
+
+/-- Solve an opening-`1` graph and compute one target and owner's forcing-basin summary. -/
+def analyze (target : TargetKind) (N : ℕ) (owner : Player) : Except String BasinSummary := do
+  let output ← PairedTrace.solveOpeningGraph (N + 4) 1
+  analyzeOutput target N owner output
+
+end CatchUpSearch.FourCounterAttractor

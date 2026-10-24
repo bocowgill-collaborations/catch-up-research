@@ -1,0 +1,2 @@
+Original Git source audit passed: all inspected trees and original hashes
+Legacy archive passed: 15 refs, 55 commits, 236 unique_paths, 290 path_blob_pairs, 183 new_source_versions, 3 handoffs, 1 historical_run_records, 263 notebook_entries, 23 missing_artifact_references, 43 findings

@@ -1,0 +1,427 @@
+[
+  {
+    "k": 4,
+    "opening_offset": 3,
+    "depth_bound": 5,
+    "radius": 6,
+    "visited": 12,
+    "tree": {
+      "deficit_offset": 3,
+      "pivot_offset": 0,
+      "small_block": [
+        3
+      ],
+      "children": [
+        [
+          4,
+          {
+            "deficit_offset": 4,
+            "pivot_offset": -1,
+            "small_block": [
+              5
+            ],
+            "children": [
+              [
+                5,
+                {
+                  "deficit_offset": 5,
+                  "pivot_offset": -2,
+                  "small_block": [
+                    7
+                  ],
+                  "children": [
+                    [
+                      6,
+                      {
+                        "deficit_offset": 6,
+                        "pivot_offset": -3,
+                        "small_block": [
+                          9
+                        ],
+                        "children": []
+                      }
+                    ]
+                  ]
+                }
+              ],
+              [
+                6,
+                {
+                  "deficit_offset": 6,
+                  "pivot_offset": -2,
+                  "small_block": [
+                    8
+                  ],
+                  "children": [
+                    [
+                      5,
+                      {
+                        "deficit_offset": 5,
+                        "pivot_offset": -3,
+                        "small_block": [
+                          2,
+                          6
+                        ],
+                        "children": []
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          5,
+          {
+            "deficit_offset": 5,
+            "pivot_offset": -1,
+            "small_block": [
+              6
+            ],
+            "children": [
+              [
+                4,
+                {
+                  "deficit_offset": 4,
+                  "pivot_offset": -2,
+                  "small_block": [
+                    2,
+                    4
+                  ],
+                  "children": [
+                    [
+                      6,
+                      {
+                        "deficit_offset": 6,
+                        "pivot_offset": -3,
+                        "small_block": [
+                          9
+                        ],
+                        "children": []
+                      }
+                    ]
+                  ]
+                }
+              ],
+              [
+                6,
+                {
+                  "deficit_offset": 6,
+                  "pivot_offset": 4,
+                  "small_block": [
+                    2
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          6,
+          {
+            "deficit_offset": 6,
+            "pivot_offset": 4,
+            "small_block": [
+              2
+            ],
+            "children": [
+              [
+                5,
+                {
+                  "deficit_offset": 5,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    6
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "k": 4,
+    "opening_offset": 4,
+    "depth_bound": 5,
+    "radius": 6,
+    "visited": 15,
+    "tree": {
+      "deficit_offset": 4,
+      "pivot_offset": 0,
+      "small_block": [
+        4
+      ],
+      "children": [
+        [
+          3,
+          {
+            "deficit_offset": 3,
+            "pivot_offset": -2,
+            "small_block": [
+              5
+            ],
+            "children": [
+              [
+                -1,
+                {
+                  "deficit_offset": -1,
+                  "pivot_offset": -3,
+                  "small_block": [
+                    2
+                  ],
+                  "children": [
+                    [
+                      5,
+                      {
+                        "deficit_offset": 5,
+                        "pivot_offset": -4,
+                        "small_block": [
+                          9
+                        ],
+                        "children": [
+                          [
+                            6,
+                            {
+                              "deficit_offset": 6,
+                              "pivot_offset": -5,
+                              "small_block": [
+                                11
+                              ],
+                              "children": []
+                            }
+                          ]
+                        ]
+                      }
+                    ],
+                    [
+                      6,
+                      {
+                        "deficit_offset": 6,
+                        "pivot_offset": -4,
+                        "small_block": [
+                          10
+                        ],
+                        "children": [
+                          [
+                            5,
+                            {
+                              "deficit_offset": 5,
+                              "pivot_offset": -5,
+                              "small_block": [
+                                3,
+                                7
+                              ],
+                              "children": []
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  ]
+                }
+              ],
+              [
+                5,
+                {
+                  "deficit_offset": 5,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    6
+                  ],
+                  "children": [
+                    [
+                      6,
+                      {
+                        "deficit_offset": 6,
+                        "pivot_offset": -3,
+                        "small_block": [
+                          9
+                        ],
+                        "children": []
+                      }
+                    ]
+                  ]
+                }
+              ],
+              [
+                6,
+                {
+                  "deficit_offset": 6,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    7
+                  ],
+                  "children": [
+                    [
+                      5,
+                      {
+                        "deficit_offset": 5,
+                        "pivot_offset": -3,
+                        "small_block": [
+                          8
+                        ],
+                        "children": []
+                      }
+                    ]
+                  ]
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          5,
+          {
+            "deficit_offset": 5,
+            "pivot_offset": 3,
+            "small_block": [
+              2
+            ],
+            "children": [
+              [
+                6,
+                {
+                  "deficit_offset": 6,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    7
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          6,
+          {
+            "deficit_offset": 6,
+            "pivot_offset": 3,
+            "small_block": [
+              3
+            ],
+            "children": [
+              [
+                5,
+                {
+                  "deficit_offset": 5,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    6
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "k": 4,
+    "opening_offset": 5,
+    "depth_bound": 5,
+    "radius": 6,
+    "visited": 5,
+    "tree": {
+      "deficit_offset": 5,
+      "pivot_offset": 3,
+      "small_block": [
+        2
+      ],
+      "children": [
+        [
+          4,
+          {
+            "deficit_offset": 4,
+            "pivot_offset": 0,
+            "small_block": [
+              4
+            ],
+            "children": [
+              [
+                6,
+                {
+                  "deficit_offset": 6,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    7
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ],
+        [
+          6,
+          {
+            "deficit_offset": 6,
+            "pivot_offset": 0,
+            "small_block": [
+              6
+            ],
+            "children": [
+              [
+                4,
+                {
+                  "deficit_offset": 4,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    5
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "k": 4,
+    "opening_offset": 6,
+    "depth_bound": 5,
+    "radius": 6,
+    "visited": 3,
+    "tree": {
+      "deficit_offset": 6,
+      "pivot_offset": 4,
+      "small_block": [
+        2
+      ],
+      "children": [
+        [
+          5,
+          {
+            "deficit_offset": 5,
+            "pivot_offset": 0,
+            "small_block": [
+              5
+            ],
+            "children": [
+              [
+                3,
+                {
+                  "deficit_offset": 3,
+                  "pivot_offset": -1,
+                  "small_block": [
+                    4
+                  ],
+                  "children": []
+                }
+              ]
+            ]
+          }
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,123 @@
+/-
+Copyright 2026 The Formal Conjectures Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-/
+
+import catch_up.CanAvoidLossClassifier
+import catch_up.DenseHoleReduction
+
+/-!
+# Checked small Catch-Up draw bases
+
+This module closes the five interval bases below nine whose triangular total is even. The positive
+bases use the executable one-sided-safety classifier only through its proved equivalence with
+`CanAvoidLoss`; exploratory exact-solver outcomes are not trusted. The empty base reduces in the
+kernel directly from the game definition.
+
+The final theorem packages the exact finite reduction needed once a dense-three-hole certificate
+range through twenty-four is available.
+-/
+
+namespace CatchUpSearch.CatchUpSmallBaseDraws
+
+open CatchUp
+
+private theorem value_Icc_eq_draw_of_classifier_checks
+    (N opening : ℕ) (hN : 1 ≤ N) (hopening : opening ∈ Finset.Icc 1 N)
+    (hplayerOne :
+      CanAvoidLossClassifier.check .p1
+        (GamePosition.afterOpening (Finset.Icc 1 N) opening) = true)
+    (hplayerTwo : ∀ x ∈ Finset.Icc 1 N,
+      CanAvoidLossClassifier.check .p2
+        (GamePosition.afterOpening (Finset.Icc 1 N) x) = true) :
+    value (Finset.Icc 1 N) = .draw := by
+  apply (value_eq_draw_iff_can_avoid_loss_after_opening (Finset.Icc 1 N)
+    (Finset.nonempty_Icc.mpr hN)).2
+  constructor
+  · refine ⟨opening, hopening, ?_⟩
+    exact (CanAvoidLossClassifier.check_eq_true_iff .p1 _).1 hplayerOne
+  · intro x hx
+    exact (CanAvoidLossClassifier.check_eq_true_iff .p2 _).1 (hplayerTwo x hx)
+
+/-- Optimal play on the empty interval is a draw. -/
+@[category test, AMS 91]
+theorem value_Icc_zero_eq_draw : value (Finset.Icc 1 0) = .draw := by
+  rw [value, valueAux.eq_def]
+  simp
+
+/-- Optimal play in Catch-Up on `{1, ..., 3}` results in a draw. -/
+@[category test, AMS 91]
+theorem value_Icc_three_eq_draw : value (Finset.Icc 1 3) = .draw := by
+  apply value_Icc_eq_draw_of_classifier_checks 3 1 (by norm_num) (by norm_num)
+  · native_decide
+  · intro x hx
+    have hxLower := (Finset.mem_Icc.mp hx).1
+    have hxUpper := (Finset.mem_Icc.mp hx).2
+    interval_cases x
+    all_goals native_decide
+
+/-- Optimal play in Catch-Up on `{1, ..., 4}` results in a draw. -/
+@[category test, AMS 91]
+theorem value_Icc_four_eq_draw : value (Finset.Icc 1 4) = .draw := by
+  apply value_Icc_eq_draw_of_classifier_checks 4 1 (by norm_num) (by norm_num)
+  · native_decide
+  · intro x hx
+    have hxLower := (Finset.mem_Icc.mp hx).1
+    have hxUpper := (Finset.mem_Icc.mp hx).2
+    interval_cases x
+    all_goals native_decide
+
+/-- Optimal play in Catch-Up on `{1, ..., 7}` results in a draw. -/
+@[category test, AMS 91]
+theorem value_Icc_seven_eq_draw : value (Finset.Icc 1 7) = .draw := by
+  apply value_Icc_eq_draw_of_classifier_checks 7 1 (by norm_num) (by norm_num)
+  · native_decide
+  · intro x hx
+    have hxLower := (Finset.mem_Icc.mp hx).1
+    have hxUpper := (Finset.mem_Icc.mp hx).2
+    interval_cases x
+    all_goals native_decide
+
+/-- Optimal play in Catch-Up on `{1, ..., 8}` results in a draw. -/
+@[category test, AMS 91]
+theorem value_Icc_eight_eq_draw : value (Finset.Icc 1 8) = .draw := by
+  apply value_Icc_eq_draw_of_classifier_checks 8 1 (by norm_num) (by norm_num)
+  · native_decide
+  · intro x hx
+    have hxLower := (Finset.mem_Icc.mp hx).1
+    have hxUpper := (Finset.mem_Icc.mp hx).2
+    interval_cases x
+    all_goals native_decide
+
+/-- A certified dense-three-hole range from nine through twenty-four, together with the five small
+bases above, proves every even-triangular Catch-Up instance through twenty-four. -/
+@[category test, AMS 91]
+theorem value_Icc_eq_draw_le_twenty_four_of_even_triangular_of_dense_range
+    (hdense : ∀ M : ℕ, 9 ≤ M → M ≤ 24 → DenseThreeHoleNonloss M)
+    (N : ℕ) (hN : N ≤ 24) (heven : Even (N * (N + 1) / 2)) :
+    value (Finset.Icc 1 N) = .draw := by
+  by_cases hlarge : 9 ≤ N
+  · exact value_Icc_eq_draw_of_dense_three_hole_nonloss_of_even_triangular N (by omega)
+      heven (hdense N hlarge hN)
+  · have hsmall : N ≤ 8 := by omega
+    interval_cases N
+    all_goals norm_num [Even] at heven
+    all_goals first
+      | exact value_Icc_zero_eq_draw
+      | exact value_Icc_three_eq_draw
+      | exact value_Icc_four_eq_draw
+      | exact value_Icc_seven_eq_draw
+      | exact value_Icc_eight_eq_draw
+
+end CatchUpSearch.CatchUpSmallBaseDraws
