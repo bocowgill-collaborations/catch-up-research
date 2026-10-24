@@ -12,4 +12,9 @@ Sources are distributed under the [Apache 2.0 license](LICENSE), retaining exist
 
 The August–September archival import used Codex to compare local Git versions, prepare public copies, organize a finding ledger and check provenance. Historical reviewer comments remain historical assessments. This import adds no new proof verification or large computation; its [manifest](verification/legacy-sources.json) distinguishes original bytes, public adaptations and missing artifacts. Raw private correspondence and third-party PDFs are not included.
 
+The later [fifth-endpoint port](verification/fifth-endpoint.md) uses Codex to adapt
+the archived symbolic proof and extract its reusable exact-sum interface. It is
+a source-preserving verification contribution, not a claim of discovering the
+endpoint anew. Only the named port receives its fresh build and axiom assurance.
+
 Bernhard von Stengel's [2019 LSE abstract](https://www.lse.ac.uk/Mathematics/assets/documents/Events-Archive/CGO-PhD/PhD-Seminar-on-Combinatorics-2019-update.pdf#page=5) reports computations through N=34 and uniqueness of a winning opening. These predate the linked 2026 solver projects. The corresponding Lean uniqueness theorem is a formalization of an already reported fact, not a claim of discovering it here. See the [reading guide](docs/sources.md) for the distinction between historical reports, reproduced computations and kernel-checked claims.

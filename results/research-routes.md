@@ -2,7 +2,7 @@
 
 The conjecture remains open. This is a map of what the collected work makes possible, what it rules out, and the exact obligations still missing. Detailed arguments and earlier experiments are in the optional [research notebook](../archive/research-notes/README.md); its historical “next steps” are superseded by this page where they conflict.
 
-The earlier [August–September ledger](legacy-findings.md) preserves alternative lower-ray, shifted-tail and simulation routes. The August four-obligation normal form (CU-L007–CU-L008) is a reported scratch result whose proof file is unrecovered. The September endpoint proofs (CU-L021, CU-L032, CU-L037) are archived sources with historical checks. Neither is silently promoted to a current verified closure here. The finite two-buffer controller (CU-L026) is a useful causal test instance, while its uniform adjacent-hole translator remains open.
+The earlier [August–September ledger](legacy-findings.md) preserves alternative lower-ray, shifted-tail and simulation routes. The August four-obligation normal form (CU-L007–CU-L008) is a reported scratch result whose proof file is unrecovered. The antepenultimate and fourth-endpoint proofs (CU-L021, CU-L032) remain archived sources with historical checks. The [fifth endpoint](fifth-endpoint.md), CU-L037, now has a separately checked symbolic port for every N≥23, with no parity or smaller-instance premise. It closes only that endpoint, not the entire lower ray. The finite two-buffer controller (CU-L026) remains a causal test instance, while its uniform adjacent-hole translator is open.
 
 ## Pair deletion and complete defensive turns
 
