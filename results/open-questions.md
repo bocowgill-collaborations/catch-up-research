@@ -5,8 +5,8 @@ This page separates the central conjecture, wider questions about the game, and 
 The [current route guide](research-routes.md) gives concrete proof obligations; [experimental findings](experimental-findings.md) explain what the existing tests support and which tests were vacuous. Detailed earlier arguments are retained in the [research notebook](../archive/research-notes/).
 
 The [research handoff](../docs/research-handoff.md) gives the current backlog.
-Selected September endpoints and the [first-pair atlas](first-pair-atlas.md) are
-now maintained ports; the archived Lean causal controller is still unported.
+Selected September endpoints, the [first-pair atlas](first-pair-atlas.md), and the
+[finite Lean causal controller](two-buffer-controller.md) are now maintained ports.
 The [earlier campaign ledger](legacy-findings.md) retains historical recovery
 tasks, including missing August scratch proofs, audit programs and native
 certificates requiring a chosen trust policy. The
@@ -24,8 +24,9 @@ unrecovered. The historical missing-artifact ledger is not silently upgraded.
 
 The [antepenultimate and fourth-endpoint ports](lower-ray-endpoints.md) and a
 [bounded two-buffer replay](../computation/experiments/earlier-campaign/two-buffer/)
-are also now available. These do not close the full lower ray, port the archived
-Lean controller, or solve its uniform adjacent-hole transfer obligation.
+are also now available. The controller's Lean protocol and mandatory-instance
+proof are now ported as well. These do not close the full lower ray or solve
+the uniform adjacent-hole transfer obligation.
 
 **C:** for every N, even `N(N+1)/2` implies a draw on `{1,…,N}` under optimal play. This includes N=0. C remains open in the inspected [formal statement](https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
 

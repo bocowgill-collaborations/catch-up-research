@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "261fcc3e2d8d47daa8918e895600d71792a02a2d",
+  "scope": "Five affected source-preserving ports, import-root integration, full mathematics transitive axiom audit, Lean/Python policy correspondence, bounded semantics and collection regressions. No cryptid rebuild, new strategy synthesis or expanded outcome tables.",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp.ScoreDebtRepairCertificates",
+        "CatchUp.TwoBufferProtocol",
+        "CatchUp.TwoBufferMandatory",
+        "CatchUp.TwoPickDebtRepair",
+        "CatchUp.CompletedMarginBounds"
+      ],
+      "exit_code": 0,
+      "seconds": 2.362,
+      "receipt": "verification/receipts/controller-ports-build.log",
+      "sha256": "3284608a72ea66155236b3091eebd79ac13636a0f29262a2f575a24cc0f0a09e",
+      "bytes": 42
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp"
+      ],
+      "exit_code": 0,
+      "seconds": 5.222,
+      "receipt": "verification/receipts/controller-import-build.log",
+      "sha256": "a04bbefcd3491dfeeec240cf55bbe5d59d465dd6df167c23f157050917212b3c",
+      "bytes": 751
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_controller_ports.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.038,
+      "receipt": "verification/receipts/controller-source-fidelity.log",
+      "sha256": "a46a017592cf572ff986b0cc661acfb54b915641fa6c970bdddf3ec1e4e7acf3",
+      "bytes": 129
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_controller_policy.py",
+        "--lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.014,
+      "receipt": "verification/receipts/controller-policy-bridge.log",
+      "sha256": "255398bba42759eae4dd552a94e5d987dc19f9875c48ace6e10672d932c7bf98",
+      "bytes": 169
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 4.291,
+      "receipt": "verification/receipts/controller-collection.log",
+      "sha256": "04f06c5227b94019bf52a5694dc97a062fd533dc89e1705aea6665dcebfb952e",
+      "bytes": 2118
+    },
+    {
+      "command": [
+        "python3",
+        "computation/check_semantics.py"
+      ],
+      "exit_code": 0,
+      "seconds": 7.152,
+      "receipt": "verification/receipts/controller-semantics.log",
+      "sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "bytes": 72
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.716,
+      "receipt": "verification/receipts/controller-earlier-regressions.log",
+      "sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "bytes": 122
+    }
+  ],
+  "axiom_audit": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 275,
+        "all_public_catchup_theorems": 4830,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 107.108334375,
+        "audit_source_sha256": "7ee82df51b25e7747df734c0817d0acb634c4e726500ff0e44e5264f38743c7f",
+        "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+      }
+    ],
+    "seconds": 107.108515958,
+    "peak_child_rss_bytes": 5530828800,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "axiom_receipts": [
+    {
+      "receipt": "verification/receipts/controller-axioms.log",
+      "sha256": "6a9013d9c41ddad700e82e23a53a5ac195785037f7da118134a0376ff6e611e9",
+      "bytes": 29489
+    },
+    {
+      "receipt": "verification/receipts/controller-all-theorems.log",
+      "sha256": "42073d968944fd3df479c343aab92610733563df6155ddcb8b52b9b71d4c091e",
+      "bytes": 57
+    }
+  ],
+  "source_sha256": {
+    ".github/workflows/verify.yml": "75827f99ebb1889f790d46c34006aedc4f322f809215b819629e61ccc3901435",
+    "CatchUp.lean": "18d402084382f76d72037192b9cb958c862410d618cd642525135cdaecd84392",
+    "AxiomAudit.lean": "7ee82df51b25e7747df734c0817d0acb634c4e726500ff0e44e5264f38743c7f",
+    "AuditAll.lean": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581",
+    "scripts/check_controller_ports.py": "1fb67a8b2a986b45054f8e477243784acf89b9b9091d2382ad1a296992f0d933",
+    "scripts/check_controller_policy.py": "509b9abfcb3f9d4d302e029cb217ead0ad53fb8bf525978e995d820cfa14c850",
+    "scripts/check_collection.py": "1c729748b0db48782c64c5140b8f9410dd3bfc79d81cbc23d71ba24ed65efc00",
+    "computation/CheckTwoBuffer.lean": "d42c14527604d687bad4fcbcdcce9ab5afd8ede79f4754fcd5f8f914f252b38b",
+    "verification/controller-ports.json": "4941e63cc0c8370770197e4687bf5287111dce93ad5fe4433bc4ebbe88da6142",
+    "verification/controller-ports.md": "9b87e2eb2283b5fcd046fadc62a3c7a543e363bb48fb0a92e44d9138ed629c3f",
+    "results/catalog.json": "fe4196950b74c2f114f28f0e0e31d5895478a81e3c92b11b517d69352b51cd7f",
+    "results/two-buffer-controller.md": "8877be1cf645a4fa9a982cf3a06db73447fc92105c98231204b9e5157d9da404",
+    "docs/research-handoff.md": "52f542509a72938193281ba2863a00227d135f336275c43183aed18ee8964601",
+    "CatchUp/ScoreDebtRepairCertificates.lean": "e651a2d90867a3dec85723caa41c8ce6985ab0f7d1055130bbf96fa3cb6b9430",
+    "CatchUp/TwoBufferProtocol.lean": "7a0c71acd025f6e2e75598908090e704e5ed3022bb773b1e92ae876c93d7345c",
+    "CatchUp/TwoBufferMandatory.lean": "3caef67cecc5fabaa1534d32da4cef086aa3694a4c3cb58c31a04fc39101d3b9",
+    "CatchUp/TwoPickDebtRepair.lean": "599cdc2a0c2cb8e03852ea3db22d82f90c32616d7267c6a4bf87e3ca608dd21d",
+    "CatchUp/CompletedMarginBounds.lean": "1fc2b2952acad914b0c109b2a6f8b21b177bd5d59555e71cda706d0146eac86d"
+  },
+  "policy_correspondence": {
+    "replay_nodes": 87,
+    "lean_table_rows": 76,
+    "distinct_nonterminal_keys": 74,
+    "terminal_histories": 17,
+    "source_theorems": 34,
+    "policy_mutations_rejected": 6
+  },
+  "preservation": {
+    "status": "PASS",
+    "base": "261fcc3e2d8d47daa8918e895600d71792a02a2d",
+    "checked_preexisting_paths": 812,
+    "scope": "All base archive/upstream/cryptid files and receipts; all pre-existing CatchUp Lean modules; pins, source manifests, and supported controller code/certificates."
+  }
+}

@@ -249,3 +249,42 @@ import CatchUp
 #print axioms CatchUp.ShiftedReplyCycle.interval_seven_critical_continuation
 
 #print axioms CatchUp.TurnReserve.budget_envelope_initialization_iff
+
+#print axioms CatchUp.punctured_neighbor_pair_even
+#print axioms CatchUp.adjacent_hole_effective_totals_even
+#print axioms CatchUp.ScoreDebtRepair.mandatory_actual_prefix
+#print axioms CatchUp.ScoreDebtRepair.mandatory_shadow_prefix
+#print axioms CatchUp.ScoreDebtRepair.shadow_bridge_forced
+#print axioms CatchUp.ScoreDebtRepair.copied_suffix_margin_obstruction
+#print axioms CatchUp.ScoreDebtRepair.global_max_policy_obstruction
+
+#print axioms CatchUp.TwoBuffer.shadow_good_iff
+#print axioms CatchUp.TwoBuffer.run_check_sound
+
+#print axioms CatchUp.TwoBuffer.mandatory_policy_checked
+#print axioms CatchUp.TwoBuffer.mandatory_protocol
+
+#print axioms CatchUp.TwoBuffer.singleton_tie_safe
+#print axioms CatchUp.TwoBuffer.pair_draw_reply
+#print axioms CatchUp.TwoBuffer.bridge_forced_parametric
+#print axioms CatchUp.TwoBuffer.two_pick_trace
+#print axioms CatchUp.TwoBuffer.copied_pair_repair
+#print axioms CatchUp.TwoBuffer.pair_reply_forced
+#print axioms CatchUp.TwoBuffer.preparation_first
+#print axioms CatchUp.TwoBuffer.preparation_second
+#print axioms CatchUp.TwoBuffer.preparation_turn
+#print axioms CatchUp.TwoBuffer.repaired_pair_all_choices
+#print axioms CatchUp.TwoBuffer.mandatory_eleven_preparation
+#print axioms CatchUp.TwoBuffer.shadow_preparation_first
+#print axioms CatchUp.TwoBuffer.shadow_preparation_second
+#print axioms CatchUp.TwoBuffer.mandatory_shadow_preparation
+#print axioms CatchUp.TwoBuffer.shadow_preparation_trace
+
+#print axioms CatchUp.TwoBuffer.ensures_terminal
+#print axioms CatchUp.TwoBuffer.ensures_choice
+#print axioms CatchUp.TwoBuffer.ensures_all
+#print axioms CatchUp.TwoBuffer.completed_margin_neg
+#print axioms CatchUp.TwoBuffer.positive_bound_not_avoid
+#print axioms CatchUp.TwoBuffer.protocol_necessary_bound
+#print axioms CatchUp.TwoBuffer.force_check_sound
+#print axioms CatchUp.TwoBuffer.mandatory_scalar_bounds

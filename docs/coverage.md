@@ -1,13 +1,15 @@
 # Collection coverage and remaining gaps
 
-Audit date: 23 October 2026; updated 27 October for the atlas ports. This page
+Audit date: 23 October 2026; updated 27 October for the atlas and controller ports. This page
 records what was inspected, not that all Catch-Up research has been found.
 
 The [first-pair atlas](../results/first-pair-atlas.md) now ports four archived
 modules with 67 public theorem declarations. Its
 [verification record](../verification/atlas-ports.md) preserves the original
 archives and distinguishes proof checking from historical evidence. There are
-now 105 maintained mathematics modules. The [research handoff](research-handoff.md)
+now 110 maintained mathematics modules, including the five
+[formal controller and repair ports](../results/two-buffer-controller.md) with
+34 public theorem declarations. The [research handoff](research-handoff.md)
 records current proof gaps and the next dependency-ordered verification batches.
 
 A later local-cache search recovered one conditional maximum-companion
@@ -24,7 +26,7 @@ The [August–September expansion](../archive/campaigns/) compares 290 path/blob
 
 | Area | Coverage in this collection | Remaining gap |
 | --- | --- | --- |
-| Local mathematics | The original 70 modules, 26 earlier recovered modules, four endpoint/interface modules, CU-R001 and four atlas modules give 105 in the [module guide](../results/modules.md). Fourteen historical branches were inventoried, covering 144 module paths. | All 56 original [archive](../archive/) snapshots remain outside the build, including inputs of seven same-named maintained ports. Generated/native-only range claims and other unported declarations need separate audits. |
+| Local mathematics | The original 70 modules, 26 earlier recovered modules, four endpoint/interface modules, CU-R001, four atlas modules and five controller/repair modules give 110 in the [module guide](../results/modules.md). Fourteen historical branches were inventoried, covering 144 module paths. | All 56 original [archive](../archive/) snapshots remain outside the build, including inputs of twelve same-named maintained ports. Generated/native-only range claims and other unported declarations need separate audits. |
 | Rules and examples | [Worked introduction](game.md), [glossary](glossary.md), [arithmetic explanations](mathematics.md), reference correspondence and small independent checks. | Informal arithmetic explanations on the new guide page are not additional Lean declarations. |
 | Structural and arithmetic results | Opening uniqueness, draw-opening and pair-deletion reductions, pair/orphan defenses, dense-loss/subset-sum results, boundary exclusions and depth barriers are indexed. | The uniform strategic closure needed for C remains open. |
 | Failed approaches and experiments | Expanded [failure guide](../results/failed-ideas.md), [experimental findings](../results/experimental-findings.md), 90 indexed [historical research notes](../archive/research-notes/), 31 retained [observation files](../computation/observations/) and checked obstruction modules. | Historical numerical outputs are not newly replayed or proof certificates. Old next steps, novelty phrases and checking paths are not adopted as current claims. |

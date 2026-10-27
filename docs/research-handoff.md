@@ -9,7 +9,7 @@ the counts and bounded preservation checks cited below; it is not a proof audit.
 
 ## Current frontier and evidence
 
-The library has 105 cataloged mathematics modules. The
+The library has 110 cataloged mathematics modules. The
 [first-pair atlas](../results/first-pair-atlas.md) adds four source-preserving
 ports and 67 public theorem declarations, with separate
 [provenance and checks](../verification/atlas-ports.md).
@@ -20,8 +20,12 @@ completed-turn semantics, and sound certificate checking. The
 [maximum-companion recovery](../results/reply-maximum-companion.md) requires its
 explicit smaller-residual nonempty/catchable hypotheses. It is not an
 unconditional shifted-graph theorem. The
-[finite two-buffer controller](../computation/experiments/earlier-campaign/two-buffer/)
-has a supported Python replay; its archived Lean proof remains unported.
+[finite two-buffer controller](../results/two-buffer-controller.md) now has a
+maintained Lean protocol and mandatory-instance proof, accompanied by margin
+bounds, legal-prefix checks and a parametric two-pick repair. These five ports
+add 34 public theorem declarations; the actual Lean table matches the supported
+Python replay. This closes the recommended formal-controller import batch, not
+the uniform translator or a general strategy-extraction bridge.
 
 Maintained Lean proofs, supported computational replays, archived source,
 informal arguments, and historical reported computations have different assurance
@@ -66,25 +70,18 @@ for witnesses, exact scopes, and what stronger arguments would still need.
 
 These are recommendations, not additional completed imports.
 
-1. **Formal controller closure:** `ScoreDebtRepairCertificates` →
-   `TwoBufferProtocol` → `TwoBufferMandatory`; optionally `TwoPickDebtRepair`
-   and `CompletedMarginBounds`, which both depend on the protocol. Foundations
-   include current `Earlier.CompletedMargin`, `Earlier.ScoreDebtTerminalRepair`,
-   and the now-ported adjacent-hole module. Match every adversarial branch against
-   the supported Python replay. This is one finite-instance milestone, not a
-   parametric adjacent-hole translator. Do not resynthesize the controller first.
-2. **Compact structural API:** `EffectiveTotalDescent`, `DenseLossInjection`,
+1. **Compact structural API:** `EffectiveTotalDescent`, `DenseLossInjection`,
    `PrefixBlockedDenseEndpoints` (after injection), and `LowerRayInteriorReduction`.
    Preserve all closure hypotheses. `LowerRayEndpoints` is an optional small
    endpoint-catalog addition. Expand the larger dense-hole/add-top/small-gap family
    only for a concrete proof use case.
-3. **Clean informal lemma:** formalize CU-L039's sharp complement-packing bound:
+2. **Clean informal lemma:** formalize CU-L039's sharp complement-packing bound:
    for q≥3, at most `floor((q−1)/2)` disjoint subsets of distinct integers at least
    2 can each sum to q, and the bound is attained. This limits a specified forcing
    grammar, not all proofs. CU-L038's
    [upper-only obstruction](../CatchUp/Earlier/UniformExactSumDescentObstruction.lean)
    is already maintained; do not import it again.
-4. **Optional atlas extensions:** `AdjacentPairGeometryObstruction` and
+3. **Optional atlas extensions:** `AdjacentPairGeometryObstruction` and
    `FiveConsecutiveTrap`. The latter's reachable trap is not forced entry against
    optimal play.
 
@@ -99,7 +96,7 @@ Already retained: 90 research reports, 263 campaign notebook entries, and the
 prior inventory. This was not a full-machine or chat-export search.
 
 All 56 archived source snapshots remain intact, including original inputs of
-seven same-named maintained ports. The others are not necessarily independent
+twelve same-named maintained ports. The others are not necessarily independent
 missing theorems; API fragments may exist elsewhere.
 
 The 16 metadata-only generated certificate sources remain available as original
@@ -141,6 +138,8 @@ lake --wfail build CatchUp.AdjacentHoleExchangeObstruction CatchUp.FirstPairDesc
 lake --wfail build CatchUp
 python3 scripts/check_axioms.py
 python3 scripts/check_atlas_ports.py
+python3 scripts/check_controller_ports.py
+python3 scripts/check_controller_policy.py --lean
 python3 scripts/check_collection.py
 ```
 

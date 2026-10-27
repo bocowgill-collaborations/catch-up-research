@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 105 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 110 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -146,3 +146,13 @@ All 105 mathematics modules are included in the default build. Start with the [r
 | [CatchUp.Earlier.ScoreDebtTerminalRepair](../CatchUp/Earlier/ScoreDebtTerminalRepair.lean) | A causal terminal repayment gadget for an unbounded three-counter family; explicit hypotheses retain actual versus shadow roles. |
 | [CatchUp.Earlier.CompletedMargin](../CatchUp/Earlier/CompletedMargin.lean) | Tracks signed completed margins and effective parity along legal traces, preserving the winner when the terminal trailing player receives leftovers. |
 | [CatchUp.Earlier.SimulationSoundness](../CatchUp/Earlier/SimulationSoundness.lean) | Solver-independent transfer theorems for exact and ghost strategy simulations. A relation must satisfy the stated adversarial simulation obligations. |
+
+## Finite causal protocols and repair certificates
+
+| Module | What it establishes |
+| --- | --- |
+| [CatchUp.ScoreDebtRepairCertificates](../CatchUp/ScoreDebtRepairCertificates.lean) | Even effective totals, legal mandatory prefixes, a forced shadow bridge and certified failures of copying and globally greedy policies. |
+| [CatchUp.TwoBufferProtocol](../CatchUp/TwoBufferProtocol.lean) | Inductive finite causal protocol and sound bounded checker with universal actual-opponent and strict-winning shadow-strategy branches; atomic two-buffer and terminal margin constraints. |
+| [CatchUp.TwoBufferMandatory](../CatchUp/TwoBufferMandatory.lean) | Kernel-checked policy and full causal protocol for the mandatory adjacent-hole instance only; no parametric translator or general Catch-Up solution. |
+| [CatchUp.TwoPickDebtRepair](../CatchUp/TwoPickDebtRepair.lean) | Parametric legal two-pick preparation and copied-pair margin repair, with explicit arithmetic hypotheses and mandatory-instance state identities. |
+| [CatchUp.CompletedMarginBounds](../CatchUp/CompletedMarginBounds.lean) | Forceable terminal-margin bounds, a necessary scalar bound for any protocol and exact mandatory-instance margins U=0 and V=2. |

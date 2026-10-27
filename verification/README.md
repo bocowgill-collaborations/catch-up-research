@@ -49,8 +49,17 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The [formal controller ports](controller-ports.md) add five modules and 34 public
+theorem declarations, bringing the current catalog to 110 modules. Exact
+reconstruction preserves statements and proofs; a cross-language check matches
+the actual Lean policy with every reachable state of the supported replay.
+Margin bounds and the local parametric repair accompany the finite-instance
+protocol. The [new receipt](controller-checks.json) is separate from earlier
+receipts. Run `python3 scripts/check_controller_ports.py` and, after building,
+`python3 scripts/check_controller_policy.py --lean`.
+
 The [first-pair atlas ports](atlas-ports.md) add four modules and 67 public theorem
-declarations, bringing the current mathematics catalog to 105 modules. Original
+declarations, then bringing the mathematics catalog to 105 modules. Original
 statements, proof bodies, reports and certificates are preserved. The
 [port manifest](atlas-ports.json) and reconstruction checker record exact
 adaptations; all new theorems are named transitive-axiom endpoints. The
@@ -80,4 +89,4 @@ and fourth-endpoint range, then bringing the mathematics catalog to 100 modules.
 Their reconstruction and axiom audits are separate from the unchanged archive.
 The same contribution adds a [bounded two-buffer replay](../computation/experiments/earlier-campaign/two-buffer/),
 whose computational checks and source adaptations are recorded independently of
-the archived Lean controller. All are included in the collection checks.
+the later formal controller port above. All are included in the collection checks.

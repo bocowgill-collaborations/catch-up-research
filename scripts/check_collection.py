@@ -119,6 +119,8 @@ def main():
     subprocess.run([sys.executable,'scripts/check_recovered_reply.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_endpoint_ports.py'],cwd=ROOT,check=True,timeout=60)
     subprocess.run([sys.executable,'scripts/check_atlas_ports.py'],cwd=ROOT,check=True,timeout=60)
+    subprocess.run([sys.executable,'scripts/check_controller_ports.py'],cwd=ROOT,check=True,timeout=60)
+    subprocess.run([sys.executable,'scripts/check_controller_policy.py'],cwd=ROOT,check=True,timeout=30)
     subprocess.run([sys.executable,'scripts/check_two_buffer_sources.py'],cwd=ROOT,check=True,timeout=30)
     subprocess.run([sys.executable,'computation/experiments/earlier-campaign/two-buffer/check.py'],
                    cwd=ROOT,check=True,timeout=30)

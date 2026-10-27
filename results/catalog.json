@@ -1749,6 +1749,85 @@
       "public_theorem_names": [
         "budget_envelope_initialization_iff"
       ]
+    },
+    {
+      "module": "CatchUp.ScoreDebtRepairCertificates",
+      "path": "CatchUp/ScoreDebtRepairCertificates.lean",
+      "group": "Finite causal protocols and repair certificates",
+      "summary": "Even effective totals, legal mandatory prefixes, a forced shadow bridge and certified failures of copying and globally greedy policies.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "punctured_neighbor_pair_even",
+        "adjacent_hole_effective_totals_even",
+        "mandatory_actual_prefix",
+        "mandatory_shadow_prefix",
+        "shadow_bridge_forced",
+        "copied_suffix_margin_obstruction",
+        "global_max_policy_obstruction"
+      ]
+    },
+    {
+      "module": "CatchUp.TwoBufferProtocol",
+      "path": "CatchUp/TwoBufferProtocol.lean",
+      "group": "Finite causal protocols and repair certificates",
+      "summary": "Inductive finite causal protocol and sound bounded checker with universal actual-opponent and strict-winning shadow-strategy branches; atomic two-buffer and terminal margin constraints.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "shadow_good_iff",
+        "run_check_sound"
+      ]
+    },
+    {
+      "module": "CatchUp.TwoBufferMandatory",
+      "path": "CatchUp/TwoBufferMandatory.lean",
+      "group": "Finite causal protocols and repair certificates",
+      "summary": "Kernel-checked policy and full causal protocol for the mandatory adjacent-hole instance only; no parametric translator or general Catch-Up solution.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "mandatory_policy_checked",
+        "mandatory_protocol"
+      ]
+    },
+    {
+      "module": "CatchUp.TwoPickDebtRepair",
+      "path": "CatchUp/TwoPickDebtRepair.lean",
+      "group": "Finite causal protocols and repair certificates",
+      "summary": "Parametric legal two-pick preparation and copied-pair margin repair, with explicit arithmetic hypotheses and mandatory-instance state identities.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "singleton_tie_safe",
+        "pair_draw_reply",
+        "bridge_forced_parametric",
+        "two_pick_trace",
+        "copied_pair_repair",
+        "pair_reply_forced",
+        "preparation_first",
+        "preparation_second",
+        "preparation_turn",
+        "repaired_pair_all_choices",
+        "mandatory_eleven_preparation",
+        "shadow_preparation_first",
+        "shadow_preparation_second",
+        "mandatory_shadow_preparation",
+        "shadow_preparation_trace"
+      ]
+    },
+    {
+      "module": "CatchUp.CompletedMarginBounds",
+      "path": "CatchUp/CompletedMarginBounds.lean",
+      "group": "Finite causal protocols and repair certificates",
+      "summary": "Forceable terminal-margin bounds, a necessary scalar bound for any protocol and exact mandatory-instance margins U=0 and V=2.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "ensures_terminal",
+        "ensures_choice",
+        "ensures_all",
+        "completed_margin_neg",
+        "positive_bound_not_avoid",
+        "protocol_necessary_bound",
+        "force_check_sound",
+        "mandatory_scalar_bounds"
+      ]
     }
   ]
 }

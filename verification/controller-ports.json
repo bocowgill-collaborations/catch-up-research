@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "261fcc3e2d8d47daa8918e895600d71792a02a2d",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "scope": "Five source-preserving finite-controller and repair ports. Only import lines and category/AMS indexing attributes are adapted. Original mathematical statements, proof bodies, docstrings, archives, reports and certificates are preserved.",
+  "sources": [
+    {
+      "module": "ScoreDebtRepairCertificates",
+      "path": "CatchUp/ScoreDebtRepairCertificates.lean",
+      "original_input": "archive/catch_up/ScoreDebtRepairCertificates.lean.txt",
+      "original_path": "scripts/catch_up/ScoreDebtRepairCertificates.lean",
+      "original_sha256": "b56a6ec35f4ef668bfdbc848f15db01b934872ed13310af1bd7191e8082315df",
+      "git_blob": "ef68174caa9a35bd5755e57d57a1ba2c5244ec8f",
+      "source_id": "legacy-source-ef68174caa9a-99c48f",
+      "source_commit": "c81982ef681b36dd08bc8ea7429c853935308d69",
+      "sha256": "e651a2d90867a3dec85723caa41c8ce6985ab0f7d1055130bbf96fa3cb6b9430",
+      "bytes": 7285,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "punctured_neighbor_pair_even",
+        "adjacent_hole_effective_totals_even",
+        "mandatory_actual_prefix",
+        "mandatory_shadow_prefix",
+        "shadow_bridge_forced",
+        "copied_suffix_margin_obstruction",
+        "global_max_policy_obstruction"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.punctured_neighbor_pair_even",
+        "CatchUp.adjacent_hole_effective_totals_even",
+        "CatchUp.ScoreDebtRepair.mandatory_actual_prefix",
+        "CatchUp.ScoreDebtRepair.mandatory_shadow_prefix",
+        "CatchUp.ScoreDebtRepair.shadow_bridge_forced",
+        "CatchUp.ScoreDebtRepair.copied_suffix_margin_obstruction",
+        "CatchUp.ScoreDebtRepair.global_max_policy_obstruction"
+      ]
+    },
+    {
+      "module": "TwoBufferProtocol",
+      "path": "CatchUp/TwoBufferProtocol.lean",
+      "original_input": "archive/catch_up/TwoBufferProtocol.lean.txt",
+      "original_path": "scripts/catch_up/TwoBufferProtocol.lean",
+      "original_sha256": "5e1ea04574490ace07e923d8a185c1e54fcb2cd88b9fca5108637d8405cb95c3",
+      "git_blob": "84a91f606d8a52b05f953e5315cba217bd623799",
+      "source_id": "legacy-source-84a91f606d8a-be1c5e",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "sha256": "7a0c71acd025f6e2e75598908090e704e5ed3022bb773b1e92ae876c93d7345c",
+      "bytes": 5840,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "shadow_good_iff",
+        "run_check_sound"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.TwoBuffer.shadow_good_iff",
+        "CatchUp.TwoBuffer.run_check_sound"
+      ]
+    },
+    {
+      "module": "TwoBufferMandatory",
+      "path": "CatchUp/TwoBufferMandatory.lean",
+      "original_input": "archive/catch_up/TwoBufferMandatory.lean.txt",
+      "original_path": "scripts/catch_up/TwoBufferMandatory.lean",
+      "original_sha256": "62d227545b4d71491f91c1e7f224c3d6e073a3f9931a272c6f5f60dd2a920c38",
+      "git_blob": "39b6740855a3725ec15b28bc56e5fcdd62643a11",
+      "source_id": "legacy-source-39b6740855a3-d7ff5a",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "sha256": "3caef67cecc5fabaa1534d32da4cef086aa3694a4c3cb58c31a04fc39101d3b9",
+      "bytes": 8163,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "mandatory_policy_checked",
+        "mandatory_protocol"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.TwoBuffer.mandatory_policy_checked",
+        "CatchUp.TwoBuffer.mandatory_protocol"
+      ]
+    },
+    {
+      "module": "TwoPickDebtRepair",
+      "path": "CatchUp/TwoPickDebtRepair.lean",
+      "original_input": "archive/catch_up/TwoPickDebtRepair.lean.txt",
+      "original_path": "scripts/catch_up/TwoPickDebtRepair.lean",
+      "original_sha256": "bdeacb9d53d0f65bded7f07fb90700864de9bd9340adb0c0bc2d22ecef75398b",
+      "git_blob": "6887e655a7069b506c5d3bbc09c102b39c4242e0",
+      "source_id": "legacy-source-6887e655a706-7299cb",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "sha256": "599cdc2a0c2cb8e03852ea3db22d82f90c32616d7267c6a4bf87e3ca608dd21d",
+      "bytes": 10667,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "singleton_tie_safe",
+        "pair_draw_reply",
+        "bridge_forced_parametric",
+        "two_pick_trace",
+        "copied_pair_repair",
+        "pair_reply_forced",
+        "preparation_first",
+        "preparation_second",
+        "preparation_turn",
+        "repaired_pair_all_choices",
+        "mandatory_eleven_preparation",
+        "shadow_preparation_first",
+        "shadow_preparation_second",
+        "mandatory_shadow_preparation",
+        "shadow_preparation_trace"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.TwoBuffer.singleton_tie_safe",
+        "CatchUp.TwoBuffer.pair_draw_reply",
+        "CatchUp.TwoBuffer.bridge_forced_parametric",
+        "CatchUp.TwoBuffer.two_pick_trace",
+        "CatchUp.TwoBuffer.copied_pair_repair",
+        "CatchUp.TwoBuffer.pair_reply_forced",
+        "CatchUp.TwoBuffer.preparation_first",
+        "CatchUp.TwoBuffer.preparation_second",
+        "CatchUp.TwoBuffer.preparation_turn",
+        "CatchUp.TwoBuffer.repaired_pair_all_choices",
+        "CatchUp.TwoBuffer.mandatory_eleven_preparation",
+        "CatchUp.TwoBuffer.shadow_preparation_first",
+        "CatchUp.TwoBuffer.shadow_preparation_second",
+        "CatchUp.TwoBuffer.mandatory_shadow_preparation",
+        "CatchUp.TwoBuffer.shadow_preparation_trace"
+      ]
+    },
+    {
+      "module": "CompletedMarginBounds",
+      "path": "CatchUp/CompletedMarginBounds.lean",
+      "original_input": "archive/catch_up/CompletedMarginBounds.lean.txt",
+      "original_path": "scripts/catch_up/CompletedMarginBounds.lean",
+      "original_sha256": "2b8b2aebcae78e37ab0bc8011df63d026fb9f6e301317318f2ba86b259fe1ddb",
+      "git_blob": "3caa2fe3ed6e1e09128be8f909c074d1458f58cb",
+      "source_id": "legacy-source-3caa2fe3ed6e-498041",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "sha256": "1fc2b2952acad914b0c109b2a6f8b21b177bd5d59555e71cda706d0146eac86d",
+      "bytes": 7838,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "ensures_terminal",
+        "ensures_choice",
+        "ensures_all",
+        "completed_margin_neg",
+        "positive_bound_not_avoid",
+        "protocol_necessary_bound",
+        "force_check_sound",
+        "mandatory_scalar_bounds"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.TwoBuffer.ensures_terminal",
+        "CatchUp.TwoBuffer.ensures_choice",
+        "CatchUp.TwoBuffer.ensures_all",
+        "CatchUp.TwoBuffer.completed_margin_neg",
+        "CatchUp.TwoBuffer.positive_bound_not_avoid",
+        "CatchUp.TwoBuffer.protocol_necessary_bound",
+        "CatchUp.TwoBuffer.force_check_sound",
+        "CatchUp.TwoBuffer.mandatory_scalar_bounds"
+      ]
+    }
+  ]
+}

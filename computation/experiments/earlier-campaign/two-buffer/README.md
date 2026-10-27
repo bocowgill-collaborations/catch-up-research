@@ -51,11 +51,19 @@ favorable choice of that strategy's replies.
 
 ## Evidence and scope
 
-This is a fresh computational replay of a fixed finite artifact. The historical
-Lean protocol proof remains in the archive; it has not been added to the current
-Lean library by this bundle. No unbounded adjacent-hole translator or interval
-draw theorem follows. Shadow outcome queries validate the allowed supplied-
+This is a computational replay of a fixed finite artifact. A later
+[formal-controller port](../../../../results/two-buffer-controller.md) adds the
+archived Lean protocol and mandatory-instance proof to the maintained library,
+without changing these replay sources or certificate bytes. No unbounded
+adjacent-hole translator or interval draw theorem follows. Shadow outcome
+queries validate the allowed supplied-
 strategy filter; they are not a structural repayment invariant.
+
+After building `CatchUp.TwoBufferMandatory`, run
+`python3 scripts/check_controller_policy.py --lean` from the repository root to
+match the actual Lean table to all reachable replay states. The table has 76
+rows and 74 distinct normalized keys; the two repeated keys have identical
+actions. The JSON additionally retains the full ownership histories.
 
 `reference.py` extracts only the old fixed-player score recurrence and ownership
 state. `replay.py` retains the old checker and mutation controls, changing imports,
