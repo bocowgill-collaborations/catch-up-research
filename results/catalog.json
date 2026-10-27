@@ -1646,6 +1646,28 @@
         "pair_deletion_position_fourth_from_top_value_ne_loss_of_fifteen_le",
         "pair_deletion_position_fourth_from_top_value_ne_loss"
       ]
+    },
+    {
+      "module": "CatchUp.TwoBufferProtocol",
+      "path": "CatchUp/TwoBufferProtocol.lean",
+      "group": "Causal protocols and finite controllers",
+      "summary": "Finite causal two-buffer protocol, exact strict-win reply filter and kernel-proved checker soundness. Side selection precedes universal replies; buffers use raw remaining counters, terminal margins allow two points.",
+      "evidence": "Ordinary Lean kernel proof; included in the pinned build and transitive axiom audit; exact source/table reconstruction in verification/two-buffer-port.json",
+      "public_theorem_names": [
+        "shadow_good_iff",
+        "run_check_sound"
+      ]
+    },
+    {
+      "module": "CatchUp.TwoBufferMandatory",
+      "path": "CatchUp/TwoBufferMandatory.lean",
+      "group": "Causal protocols and finite controllers",
+      "summary": "Kernel-checked finite controller at U=({2,5,6,9,10,11},1,p1), V=({2,5,6,7,10,11},1,p1), budget twelve. Covers every actual opponent pick and strict-win-preserving shadow reply; not a uniform adjacent-hole translator.",
+      "evidence": "Ordinary Lean kernel proof; included in the pinned build and transitive axiom audit; exact source/table reconstruction in verification/two-buffer-port.json",
+      "public_theorem_names": [
+        "mandatory_policy_checked",
+        "mandatory_protocol"
+      ]
     }
   ]
 }

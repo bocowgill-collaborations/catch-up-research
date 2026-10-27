@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 101 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 103 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -111,6 +111,13 @@ All 101 mathematics modules are included in the default build. Start with the [r
 | [CatchUp.SevenPairTest](../CatchUp/SevenPairTest.lean) | Adding two pairs breaks a previously successful recursive defense; includes exact counterplay and a symbolic bad-mate family. |
 | [CatchUp.TwoAnchorDoubleLossObstruction](../CatchUp/TwoAnchorDoubleLossObstruction.lean) | Sparse supports can lose at both small deficits despite two anchors. The required losing high-shadow hypothesis is absent in this example. |
 | [CatchUp.UnitGuardObstruction](../CatchUp/UnitGuardObstruction.lean) | A twelve-counter support of minimum two loses at deficit one; all twelve first picks are covered. |
+
+## Causal protocols and finite controllers
+
+| Module | What it establishes |
+| --- | --- |
+| [CatchUp.TwoBufferProtocol](../CatchUp/TwoBufferProtocol.lean) | Finite causal protocol, exact strict-win filter and checker soundness, with raw two-per-side buffers and a terminal two-point comparison. |
+| [CatchUp.TwoBufferMandatory](../CatchUp/TwoBufferMandatory.lean) | Kernel-checked controller for the fixed N=11,b=4,y=8 roots. Covers all permitted universal replies; see [CU-L026](two-buffer-protocol.md). |
 
 ## Recovered earlier certificates and structural results
 

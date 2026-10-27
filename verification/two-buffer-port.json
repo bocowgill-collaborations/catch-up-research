@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "fa984bdc3433232480c415604255df36563e9190",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "finding": "CU-L026",
+  "scope": "Source-preserving finite protocol/checker and full fixed-instance controller; not a parametric adjacent-hole translator. Ordinary kernel validation is separate from source reconstruction.",
+  "inputs": [
+    {
+      "role": "protocol",
+      "path": "archive/catch_up/TwoBufferProtocol.lean.txt",
+      "source_id": "legacy-source-84a91f606d8a-be1c5e",
+      "sha256": "5e1ea04574490ace07e923d8a185c1e54fcb2cd88b9fca5108637d8405cb95c3",
+      "git_blob": "84a91f606d8a52b05f953e5315cba217bd623799",
+      "original_path": "scripts/catch_up/TwoBufferProtocol.lean",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "source_branch": "codex/catchup-two-buffer-20260928",
+      "selected_scope": "complete file except disclosed adaptations"
+    },
+    {
+      "role": "mandatory",
+      "path": "archive/catch_up/TwoBufferMandatory.lean.txt",
+      "source_id": "legacy-source-39b6740855a3-d7ff5a",
+      "sha256": "62d227545b4d71491f91c1e7f224c3d6e073a3f9931a272c6f5f60dd2a920c38",
+      "git_blob": "39b6740855a3725ec15b28bc56e5fcdd62643a11",
+      "original_path": "scripts/catch_up/TwoBufferMandatory.lean",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "source_branch": "codex/catchup-two-buffer-20260928",
+      "selected_scope": "complete file except disclosed adaptations"
+    },
+    {
+      "role": "roots",
+      "path": "archive/catch_up/AdjacentHoleExchangeObstruction.lean.txt",
+      "source_id": "legacy-source-bccce0e77a42-46a620",
+      "sha256": "4e90825687621dba1fec97201ac364857c15a310c43ff6bfb1ebf7a04e92dd02",
+      "git_blob": "bccce0e77a424e5322fb8457967e271aa71d0a01",
+      "original_path": "scripts/catch_up/AdjacentHoleExchangeObstruction.lean",
+      "source_commit": "fbce0be86588dd31d7423ae1b026b2b618714e3a",
+      "source_branch": "codex/catchup-two-buffer-20260928",
+      "selected_scope": "exchangeLeft and exchangeRight only"
+    }
+  ],
+  "exports": {
+    "protocol": {
+      "path": "CatchUp/TwoBufferProtocol.lean",
+      "sha256": "a03598cb88e8ddd6f74e3dabeac68711d0254384021877459a4c3e6ab323d2ab",
+      "bytes": 5870
+    },
+    "mandatory": {
+      "path": "CatchUp/TwoBufferMandatory.lean",
+      "sha256": "80dd0ec14cd0af19d759dca2d79b34a616fb90c566000539f93c7446c912d456",
+      "bytes": 8491
+    }
+  },
+  "public_theorem_names": [
+    "shadow_good_iff",
+    "run_check_sound",
+    "mandatory_policy_checked",
+    "mandatory_protocol"
+  ],
+  "policy_path": "computation/experiments/earlier-campaign/two-buffer/policy.json",
+  "policy_sha256": "ed515bf883684d43b9e795e03ccfd098dbd0e19db30c44201a016f45edfffed5",
+  "transformations": [
+    "Protocol: replace the broad archived ScoreDebtRepairCertificates import with the already verified ScoreDebtTerminalRepair (TwoBuffer and completed margins) and Classifier modules.",
+    "Mandatory: adapt its protocol import; extract only the original exchangeLeft and exchangeRight definitions into their original namespace from AdjacentHoleExchangeObstruction. No other theorem in that archive is promoted.",
+    "Remove only Formal Conjectures category/AMS indexing attributes. Preserve all protocol constructors, theorem statements, proof bodies, policy entries and defaults.",
+    "Narrow the lookup docstring: default zero is invalid on reached nonterminal actual supports of the fixed positive-counter instance, not all arbitrary natural-counter states. Definitions and proofs are unchanged."
+  ],
+  "deferred": [
+    "CompletedMarginBounds scalar strategy API and necessary-bound theorem",
+    "TwoPickDebtRepair parametric repair family",
+    "Uniform adjacent-hole strategy translator and interval conjecture",
+    "A separate theorem extracting standalone executable strategies from Protocol"
+  ]
+}

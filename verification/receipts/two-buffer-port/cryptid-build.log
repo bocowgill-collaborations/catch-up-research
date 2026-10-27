@@ -1,0 +1,16 @@
+ℹ [9085/9249] Replayed Cryptids.Chess.Compilation.SourceCertificate
+info: Cryptids/Chess/Compilation/SourceCertificate.lean:226:0: Source certificate: 7076 checked lemmas, 7037 cache hits
+info: Cryptids/Chess/Compilation/SourceCertificate.lean:230:0: Literal row certificate: 5952 checked rows in 186 chunks
+ℹ [9093/9249] Replayed Cryptids.Chess.Compilation.Input
+info: Cryptids/Chess/Compilation/Input.lean:128:0: Checked 186 literal row chunks: 141042 stack symbols
+⚠ [9105/9249] Replayed CatchUp.Machine.Separate.Stacks
+warning: CatchUp/Machine/Separate/Stacks.lean: imports `Mathlib.Tactic` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9167/9249] Replayed CatchUp.Machine.Tail.Source
+warning: CatchUp/Machine/Tail/Source.lean: imports `Mathlib.Computability.TuringMachine.Config` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9181/9249] Replayed CatchUp.Machine.Cases.Source
+warning: CatchUp/Machine/Cases/Source.lean: imports `Mathlib.Computability.TuringMachine.Config` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9188/9249] Replayed CatchUp.Reference
+warning: CatchUp/Reference.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [9192/9249] Replayed CatchUp.Machine.Program
+warning: CatchUp/Machine/Program.lean: imports `Mathlib.Computability.TuringMachine.Config` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+Build completed successfully (9249 jobs).

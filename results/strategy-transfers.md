@@ -55,8 +55,9 @@ CU-L026 records a completed finite controller in that exact language. The
 [supported replay bundle](../computation/experiments/earlier-campaign/two-buffer/)
 checks its 87 nodes and 17 terminal histories against the retained full record.
 It covers all five actual second picks and both branches after `[2,11]`. The
-archived Lean protocol proof remains separate from this computational replay;
-an unbounded translator is still open.
+[Lean protocol and controller](two-buffer-protocol.md) are now separately ported
+and kernel-checked, with the original finite scope and buffer convention. The
+computational replay remains separate evidence; an unbounded translator is still open.
 
 ## Failures that constrain a new transfer
 

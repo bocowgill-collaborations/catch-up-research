@@ -42,7 +42,8 @@ symbolic port and reusable exact-sum interface are in the verified library.
 The [endpoint guide](lower-ray-endpoints.md) also states the now-ported
 antepenultimate transfer and fourth-from-top theorem. The [strategy-transfer
 guide](strategy-transfers.md) connects the earlier simulation and score-debt
-methods with the [supported finite controller replay](../computation/experiments/earlier-campaign/two-buffer/).
+methods with the [kernel-ported finite controller](two-buffer-protocol.md) and
+its [supported computational replay](../computation/experiments/earlier-campaign/two-buffer/).
 Those contributions leave the uniform lower-ray and first-pair obligations open.
 
 ## Certified failures of proposed strategy rules

@@ -68,6 +68,8 @@ import CatchUp.ThreePairClose
 import CatchUp.TiedFour
 import CatchUp.TurnDepth
 import CatchUp.TwoAnchorDoubleLossObstruction
+import CatchUp.TwoBufferProtocol
+import CatchUp.TwoBufferMandatory
 import CatchUp.TwoHoleTopBoundary
 import CatchUp.UnitGuardObstruction
 import CatchUp.WholeTurn
