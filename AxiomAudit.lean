@@ -310,3 +310,18 @@ import CatchUp
 #print axioms CatchUp.lower_ray_exact_deficit_residual_boundary_candidates
 #print axioms CatchUp.lower_ray_exact_deficit_residual_value_ne_win_of_interior_and_boundary
 #print axioms CatchUp.value_Icc_eq_draw_of_lower_ray_interior_and_boundary
+
+#print axioms CatchUp.Position.value_ne_loss_of_exact_pair_dominates
+#print axioms CatchUp.interval_tail_value_ne_loss_of_deficit_eq_top_add_three
+#print axioms CatchUp.pair_deletion_position_penultimate_value_ne_loss
+
+#print axioms CatchUp.AdjacentPairGeometry.orphan_pair_wins
+#print axioms CatchUp.AdjacentPairGeometry.skipped_quadruple_loses
+#print axioms CatchUp.AdjacentPairGeometry.smallest_upper_pick_loses
+#print axioms CatchUp.AdjacentPairGeometry.smallest_upper_pick_legal
+
+#print axioms CatchUp.value_five_consecutive_eq_win
+#print axioms CatchUp.Position.value_five_consecutive_deficit_band
+#print axioms CatchUp.reachable_tied_top_five
+#print axioms CatchUp.tied_top_five_value_eq_win
+#print axioms CatchUp.reachable_winning_tied_top_five

@@ -49,8 +49,14 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The [endpoint/trap atlas ports](endpoint-atlas-ports.md) add three modules and
+12 public theorem declarations, bringing the current catalog to 117 modules.
+Their [new receipt](endpoint-atlas-checks.json) records strict builds, full axiom
+checks, regressions and preservation. Run `python3 scripts/check_endpoint_atlas_ports.py`.
+All statements and proofs are source-preserving; reachable traps are not forced entry.
+
 The [structural ports](structural-ports.md) add four modules and 18 public
-theorem declarations, bringing the current catalog to 114 modules. Exact
+theorem declarations, then bringing the catalog to 114 modules. Exact
 reconstruction preserves all hypotheses, proof bodies and docstrings. The
 [new receipt](structural-checks.json) records changed-scope strict builds,
 full mathematics axiom checks and bounded regressions. Run

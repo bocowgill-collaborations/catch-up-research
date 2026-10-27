@@ -101,3 +101,7 @@ import CatchUp.EffectiveTotalDescent
 import CatchUp.DenseLossInjection
 import CatchUp.PrefixBlockedDenseEndpoints
 import CatchUp.LowerRayInteriorReduction
+
+import CatchUp.LowerRayEndpoints
+import CatchUp.AdjacentPairGeometryObstruction
+import CatchUp.FiveConsecutiveTrap

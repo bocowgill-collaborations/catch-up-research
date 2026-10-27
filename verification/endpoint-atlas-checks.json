@@ -1,0 +1,184 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "aa0a582866f8578456d00d8ca477a2f7b4918315",
+  "status": "PASS",
+  "scope": "Three source-preserving endpoint/trap ports, strict affected/default-root builds, full mathematics axiom audit and bounded existing certificate/controller/semantics regressions. No cryptid rebuild or large search.",
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp.LowerRayEndpoints",
+        "CatchUp.AdjacentPairGeometryObstruction",
+        "CatchUp.FiveConsecutiveTrap",
+        "CatchUp"
+      ],
+      "exit_code": 0,
+      "seconds": 2.634,
+      "receipt": "verification/receipts/endpoint-atlas-build.log",
+      "sha256": "bda71891f72d5a3159304c7720043c13e8b1132ce10b26910ab3488f2670f558",
+      "bytes": 714
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_endpoint_atlas_ports.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.033,
+      "receipt": "verification/receipts/endpoint-atlas-source-fidelity.log",
+      "sha256": "85bf7ed1f1dff157a95b10464123196dcb204eff8b1291cedfb1bf234265a3ed",
+      "bytes": 118
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 4.226,
+      "receipt": "verification/receipts/endpoint-atlas-collection.log",
+      "sha256": "ea0d94794737624d4d497a1ea71be2dff47affd158f2773a0b786aef993e14c3",
+      "bytes": 2362
+    },
+    {
+      "command": [
+        "python3",
+        "computation/check_semantics.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.655,
+      "receipt": "verification/receipts/endpoint-atlas-semantics.log",
+      "sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "bytes": 72
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_controller_policy.py",
+        "--lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.129,
+      "receipt": "verification/receipts/endpoint-atlas-controller.log",
+      "sha256": "255398bba42759eae4dd552a94e5d987dc19f9875c48ace6e10672d932c7bf98",
+      "bytes": 169
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.622,
+      "receipt": "verification/receipts/endpoint-atlas-earlier-certificates.log",
+      "sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "bytes": 122
+    }
+  ],
+  "axiom_audit": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 305,
+        "all_public_catchup_theorems": 5072,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 123.389257958,
+        "audit_source_sha256": "341b561fd861580e3c76e599978b3475359088d17a55eb163627de69eeb03c5b",
+        "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+      }
+    ],
+    "seconds": 123.390035125,
+    "peak_child_rss_bytes": 5538316288,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "axiom_receipts": [
+    {
+      "receipt": "verification/receipts/endpoint-atlas-axioms.log",
+      "sha256": "3b0b5eb7b9a672e47069b0963d2f6176c447845935275dae9661603c54b7a0ee",
+      "bytes": 32969
+    },
+    {
+      "receipt": "verification/receipts/endpoint-atlas-all-theorems.log",
+      "sha256": "b376c82639e12c583066acb4aa2ace0c01300994b1bb6d28c1f007a2a22e8d38",
+      "bytes": 57
+    }
+  ],
+  "preservation": {
+    "status": "PASS",
+    "base": "aa0a582866f8578456d00d8ca477a2f7b4918315",
+    "checked_preexisting_paths": 1133,
+    "intentional_changes_to_existing_paths": [
+      "AxiomAudit.lean",
+      "CatchUp.lean",
+      "CatchUp/README.md",
+      "docs/coverage.md",
+      "docs/research-handoff.md",
+      "results/README.md",
+      "results/catalog.json",
+      "results/failed-ideas.md",
+      "results/lower-ray-endpoints.md",
+      "results/modules.md",
+      "results/open-questions.md",
+      "results/research-routes.md",
+      "scripts/check_collection.py",
+      "verification/README.md"
+    ],
+    "scope": "Every pre-existing tracked file except the explicitly listed entrypoint/catalog/guide/CI-integration changes; all prior proof modules, reports, archives, certificates, receipts, pins, workflow and replay bundles are byte-identical."
+  },
+  "default_import_reachability": {
+    "status": "PASS",
+    "catalog_modules": 117
+  },
+  "source_sha256": {
+    "AuditAll.lean": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581",
+    "AxiomAudit.lean": "341b561fd861580e3c76e599978b3475359088d17a55eb163627de69eeb03c5b",
+    "CatchUp.lean": "80aa043daa33f7e939906b974589930f8c4e9974bd1b5814f4d8f396b3d9c63f",
+    "CatchUp/AdjacentPairGeometryObstruction.lean": "a4cac49d018745edb4d0a931fe272340b3bad8628cf4226e2e6eb132f2d9693a",
+    "CatchUp/FiveConsecutiveTrap.lean": "4f69591def8f6ccf113a1bb6fa3663b2ce41ff5510046c599fe04718be26442f",
+    "CatchUp/LowerRayEndpoints.lean": "a487e455ead6d74cc9d55bcf7715b4162c83138954b5fb8f0302e13941998e4e",
+    "CatchUp/README.md": "75f90269fd413935dfaf24a10dedf51a26ffdda6dc5ad77b1ec95daca6f933e6",
+    "docs/coverage.md": "663e3d3452d75b5e0211ccb7a2c25de0b2b31ab953e58cebef69ef5e772a9d1e",
+    "docs/research-handoff.md": "bb98b2a8a462dcaca35ae87ba5288f436a2c01dd2dd18a28fc7786ed6222069d",
+    "results/README.md": "b1bc502e4628530005a2ba825a996f0389a2fc3b5c76af71ad0749bd4d38b850",
+    "results/catalog.json": "453038416a9f2ff14c4aecd791c58ac4b00a121e061aafc2e944d9e7ab360fb6",
+    "results/endpoint-trap-atlas.md": "b2a45bd692b4dc0a77363a3e36139f1f6c0027c08a5a9af8edca005913c27315",
+    "results/failed-ideas.md": "f520bb1a35dcf61e3899aa1799da4902131eadec21f1f025e9d39b5e5d9bc6a7",
+    "results/lower-ray-endpoints.md": "04e9db962356a28cf034131bc9c8b553c209385ba334e437b35eda729932cbbf",
+    "results/modules.md": "775f4f7ae4bdd9ebd3ab17338df8f60e5c2a170df2879829a9f5a8d985af18d6",
+    "results/open-questions.md": "4b43334d52cfe99099ea4137a1e067fd86eb170ea5ae36bebbb6f1e58d73ada8",
+    "results/research-routes.md": "11441f66d733135fd3a6e06d2d4fe279cb27a2dad75ab53c208e80601993bd0c",
+    "scripts/check_collection.py": "621f44661be1ea095b4ec7bf18d73ccf4e549e388004af030d740000fe38c9f8",
+    "scripts/check_endpoint_atlas_ports.py": "d2c37e3a4c5c1393cf61830bf775da8af04b05dac84a5f83f53e3e72c815410d",
+    "verification/README.md": "5cf063f2ad9639e9bd7c008f2add0f4e8a538fcb736395043c24c33d458c7b94",
+    "verification/endpoint-atlas-ports.json": "512583c7fa113436c16bcafa696bc816f739dde456fd5aa312d36cf69785c408",
+    "verification/endpoint-atlas-ports.md": "7f2cd2d570b3d1d443ae135aea8fa83f0a08af944b3ecd59536946b0757ff6be"
+  }
+}

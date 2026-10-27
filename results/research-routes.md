@@ -6,6 +6,11 @@ The earlier [August–September ledger](legacy-findings.md) preserves alternativ
 
 ## Pair deletion and complete defensive turns
 
+The [endpoint/trap atlas](endpoint-trap-atlas.md) adds the penultimate endpoint
+and parametric failures of orphan-reserve and smallest-upper-pick shortcuts.
+Its legal paths to tied winning top-five states are not adversarial strategies
+forcing entry. The whole lower ray and first-pair draw remain open.
+
 The [structural descent guide](structural-descent.md) now gives maintained Lean
 interfaces for exact effective-total descent, three-hole loss alternatives,
 prefix endpoint shapes and interior/boundary closure. Strict rank decrease

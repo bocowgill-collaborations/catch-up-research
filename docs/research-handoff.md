@@ -9,7 +9,7 @@ the counts and bounded preservation checks cited below; it is not a proof audit.
 
 ## Current frontier and evidence
 
-The library has 114 cataloged mathematics modules. The
+The library has 117 cataloged mathematics modules. The
 [first-pair atlas](../results/first-pair-atlas.md) adds four source-preserving
 ports and 67 public theorem declarations, with separate
 [provenance and checks](../verification/atlas-ports.md).
@@ -32,6 +32,12 @@ The [structural descent batch](../results/structural-descent.md) now ports
 and `LowerRayInteriorReduction`, adding 18 public theorem declarations.
 It exposes exact descent and conditional closure, not a proof of their
 remaining geometric/nonloss obligations.
+
+The [endpoint/trap atlas](../results/endpoint-trap-atlas.md) adds three maintained
+modules and 12 public theorem declarations: `LowerRayEndpoints`,
+`AdjacentPairGeometryObstruction`, and `FiveConsecutiveTrap`. It completes the
+small symbolic import batch, not the main conjecture. A legal path to a winning
+trap is not a strategy forcing that path.
 
 Maintained Lean proofs, supported computational replays, archived source,
 informal arguments, and historical reported computations have different assurance
@@ -76,19 +82,19 @@ for witnesses, exact scopes, and what stronger arguments would still need.
 
 These are recommendations, not additional completed imports.
 
-1. **Further structural verification:** `LowerRayEndpoints` is an optional small
-   endpoint-catalog addition; the four-module compact structural batch is now
-   maintained. Preserve all closure hypotheses. Expand the larger
-   dense-hole/add-top/small-gap family only for a concrete proof use case.
-2. **Clean informal lemma:** formalize CU-L039's sharp complement-packing bound:
+1. **Clean informal lemma:** formalize CU-L039's sharp complement-packing bound:
    for q≥3, at most `floor((q−1)/2)` disjoint subsets of distinct integers at least
    2 can each sum to q, and the bound is attained. This limits a specified forcing
-   grammar, not all proofs. CU-L038's
-   [upper-only obstruction](../CatchUp/Earlier/UniformExactSumDescentObstruction.lean)
+   grammar, not all proofs. It is not part of the endpoint/trap port batch.
+2. **Proof-driven imports only:** expand the larger dense-hole/add-top/small-gap
+   and simulation families for a concrete proof use case, preserving all closure
+   hypotheses. CU-L038's [upper-only obstruction](../CatchUp/Earlier/UniformExactSumDescentObstruction.lean)
    is already maintained; do not import it again.
-3. **Optional atlas extensions:** `AdjacentPairGeometryObstruction` and
-   `FiveConsecutiveTrap`. The latter's reachable trap is not forced entry against
-   optimal play.
+
+The previously recommended compact structural, controller and small atlas batches
+are maintained. Archiving the research chat need not wait for all remaining
+formalization. Before deleting or pruning the old backing repository, independently
+back up and checksum the large certificate objects described below.
 
 Unported sources are retained as `.lean.txt` in [archive/catch_up](../archive/catch_up/).
 Their imports need adaptation and historical status implies no fresh verification.
@@ -101,7 +107,7 @@ Already retained: 90 research reports, 263 campaign notebook entries, and the
 prior inventory. This was not a full-machine or chat-export search.
 
 All 56 archived source snapshots remain intact, including original inputs of
-sixteen same-named maintained ports. The others are not necessarily independent
+nineteen same-named maintained ports. The others are not necessarily independent
 missing theorems; API fragments may exist elsewhere.
 
 The 16 metadata-only generated certificate sources remain available as original
@@ -145,6 +151,7 @@ python3 scripts/check_axioms.py
 python3 scripts/check_atlas_ports.py
 python3 scripts/check_controller_ports.py
 python3 scripts/check_structural_ports.py
+python3 scripts/check_endpoint_atlas_ports.py
 python3 scripts/check_controller_policy.py --lean
 python3 scripts/check_collection.py
 ```

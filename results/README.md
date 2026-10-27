@@ -58,6 +58,11 @@ prefix endpoints, and a conditional interior/boundary interval-draw theorem.
 The rank does not preserve the hole budget automatically; the first-pair draw,
 interior nonloss and boundary checks remain separate proof obligations.
 
+The [endpoint/trap atlas](endpoint-trap-atlas.md) adds three archived modules
+and 12 public theorem declarations: penultimate lower-ray nonloss, parametric
+adjacent-pair diagnostics, and legal reachability of tied winning top-five states.
+A losing proposed pick is not a losing parent, and reachability is not forced entry.
+
 ## Certified failures of proposed strategy rules
 
 The [first-pair and failed-strategy atlas](first-pair-atlas.md) now brings four
