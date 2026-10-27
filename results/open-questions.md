@@ -10,6 +10,9 @@ Selected September endpoints, the [first-pair atlas](first-pair-atlas.md), and t
 The four [structural descent ports](structural-descent.md) also expose the exact
 rank, three-hole endpoint classification and conditional interior/boundary
 closure. Their hypotheses are not new proofs of the missing uniform obligations.
+The [endpoint/trap atlas](endpoint-trap-atlas.md) now maintains penultimate-ray
+nonloss, adjacent-pair diagnostics and reachable top-five wins. These do not
+settle the remaining uniform strategy or first-pair draw.
 The [earlier campaign ledger](legacy-findings.md) retains historical recovery
 tasks, including missing August scratch proofs, audit programs and native
 certificates requiring a chosen trust policy. The

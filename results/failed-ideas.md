@@ -16,6 +16,8 @@ Earlier failures with different assurance levels are indexed in [CU-L016–CU-L0
 
 | Proposed shortcut | Diagnostic / what survives | Checked source |
 | --- | --- | --- |
+| A smallest orphan supplies a nonwinning adjacent-pair reserve | For every a≥4, `{a,a+2,a+3}` wins at deficit a−1. | [AdjacentPairGeometryObstruction](../CatchUp/AdjacentPairGeometryObstruction.lean) |
+| Pick the smallest upper counter from three consecutive pairs | For a≥6, picking a+1 from `([a,a+5],1)` loses to reply a+5. This does not determine the parent value. | [AdjacentPairGeometryObstruction](../CatchUp/AdjacentPairGeometryObstruction.lean) |
 | Copy common counters in the adjacent-hole exchange | U draws and V wins, but every nonlosing V move copies to a losing U move. First repair requires U:2 and V:5. This is not a counterexample to V-win implying U-nonloss. | [AdjacentHoleExchangeObstruction](../CatchUp/AdjacentHoleExchangeObstruction.lean) |
 | Use only minimum three and parity in a first-pair three-reserve transfer | A sparse deficit-one loss has a winning deficit-two shadow. The separate legal-prefix copy witness starts with a drawing shadow root. | [FirstPairDescentObstruction](../CatchUp/FirstPairDescentObstruction.lean) |
 | Exclude shifted cycles using their intact span or maximum companions | Legal two-cycles exist, slides can fail, and intact `{3,…,7}` has no second reply at its maximum. This does not refute the conditional tied-position companion. | [ShiftedReplyCycle](../CatchUp/ShiftedReplyCycle.lean) |
@@ -33,6 +35,11 @@ Earlier failures with different assurance levels are indexed in [CU-L016–CU-L0
 | Always answer with the next available integer at the actual interval endpoint | A drawn endpoint reached at N=15 has a losing immediate-successor reply. Other replies are retained and certified. | [IntervalSuccessorReplyObstruction](../CatchUp/IntervalSuccessorReplyObstruction.lean) |
 | Two anchors cannot lose at both deficits one and three | With tail `{18,33,35,36,52,56,62,74,100}`, adding anchors `{4,7}` loses at both deficits. Its high shadow wins, so this does not refute the conditional route retaining high-shadow loss. | [TwoAnchorDoubleLossObstruction](../CatchUp/TwoAnchorDoubleLossObstruction.lean) |
 | Alternating odd/even tail ranks and a balanced allocation guarantee nonloss | `{4,7,19,36,37,50,57,60,99}` loses at deficit 1 despite those properties; every first pick is covered. | [AlternatingTailObstruction](../CatchUp/AlternatingTailObstruction.lean) |
+
+The [five-counter trap](endpoint-trap-atlas.md) is a different kind of diagnostic:
+for every k≥2, opening 3 in I_(4k) admits a legal history reaching a tied top-five
+win for player one. This proves neither forced entry nor failure of every
+block-clearing defense.
 
 The [module guide](modules.md) includes additional diagnosed exceptions and the successful adaptive repairs. “Repair” refers to a game strategy unless the text explicitly discusses a machine routine.
 

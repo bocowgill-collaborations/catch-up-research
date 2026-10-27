@@ -10,6 +10,8 @@ The following symbolic ports settle particular upper endpoints:
 
 | Endpoint | Exact hypotheses and conclusion | Maintained source |
 | --- | --- | --- |
+| Top, b=N | N≥3 gives `value(Q_N(N))≠loss`, without parity. Already maintained before this batch. | [DeficitWinningBound](../CatchUp/Earlier/DeficitWinningBound.lean) |
+| Penultimate, b=N−1 | N≥7 gives `value(Q_N(N−1))≠loss`, without parity or a smaller-instance hypothesis. | [LowerRayEndpoints](../CatchUp/LowerRayEndpoints.lean), [endpoint/trap guide](endpoint-trap-atlas.md) |
 | Antepenultimate, b=N−2 | N≥7 and `value(afterOpening(I_(N−4),1))=draw` imply `value(Q_N(N−2))≠loss`. No parity premise. | [LowerRayAntepenultimateDescent](../CatchUp/LowerRayAntepenultimateDescent.lean) |
 | Fourth from top, b=N−3 | Every N≥15 gives `value(Q_N(N−3))≠loss`, without parity or a smaller-instance hypothesis. Also holds for every even-triangular N≥11. | [LowerRayFourthEndpoint](../CatchUp/LowerRayFourthEndpoint.lean) |
 | Fifth from top, b=N−4 | Every N≥23 gives `value(Q_N(N−4))≠loss`, without parity or a smaller-instance hypothesis. | [LowerRayFifthEndpoint](../CatchUp/LowerRayFifthEndpoint.lean), [proof guide](fifth-endpoint.md) |
@@ -59,7 +61,9 @@ kernel evaluations, not native compilation or a large outcome-table replay.
 
 ## Provenance and remaining obligations
 
-These are ports of earlier research, not new discoveries. The
+These are ports of earlier research, not new discoveries. The penultimate
+endpoint has its own [source manifest and checks](../verification/endpoint-atlas-ports.md).
+The antepenultimate and fourth-endpoint
 [source manifest](../verification/endpoint-ports.json) records the unchanged
 theorem statements and proof bodies, adapted imports/module references and removed
 repository indexing attributes. The fourth-endpoint port reuses the generic

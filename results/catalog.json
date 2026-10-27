@@ -1882,6 +1882,45 @@
         "lower_ray_exact_deficit_residual_value_ne_win_of_interior_and_boundary",
         "value_Icc_eq_draw_of_lower_ray_interior_and_boundary"
       ]
+    },
+    {
+      "module": "CatchUp.LowerRayEndpoints",
+      "path": "CatchUp/LowerRayEndpoints.lean",
+      "group": "Lower-ray endpoints and reachable traps",
+      "summary": "Exact-pair dominating defense, consecutive-tail nonloss and penultimate lower-ray nonloss for N>=7, without parity or smaller-instance hypotheses.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "Position.value_ne_loss_of_exact_pair_dominates",
+        "interval_tail_value_ne_loss_of_deficit_eq_top_add_three",
+        "pair_deletion_position_penultimate_value_ne_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.AdjacentPairGeometryObstruction",
+      "path": "CatchUp/AdjacentPairGeometryObstruction.lean",
+      "group": "Lower-ray endpoints and reachable traps",
+      "summary": "Parametric orphan-reserve wins and losing smallest-upper picks on three consecutive pairs; does not assert that the whole paired position loses.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "orphan_pair_wins",
+        "skipped_quadruple_loses",
+        "smallest_upper_pick_loses",
+        "smallest_upper_pick_legal"
+      ]
+    },
+    {
+      "module": "CatchUp.FiveConsecutiveTrap",
+      "path": "CatchUp/FiveConsecutiveTrap.lean",
+      "group": "Lower-ray endpoints and reachable traps",
+      "summary": "Symbolic five-counter winning bands and legal histories to tied top-five wins after opening three; reachability is not forced entry under optimal play.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "value_five_consecutive_eq_win",
+        "Position.value_five_consecutive_deficit_band",
+        "reachable_tied_top_five",
+        "tied_top_five_value_eq_win",
+        "reachable_winning_tied_top_five"
+      ]
     }
   ]
 }

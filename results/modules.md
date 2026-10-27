@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 114 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 117 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -165,3 +165,11 @@ All 114 mathematics modules are included in the default build. Start with the [r
 | [CatchUp.DenseLossInjection](../CatchUp/DenseLossInjection.lean) | Three-hole complement alternatives force an upper exact-sum residual winner or explicit small-deficit prefix-blocked losses, under the stated density and deficit bounds. |
 | [CatchUp.PrefixBlockedDenseEndpoints](../CatchUp/PrefixBlockedDenseEndpoints.lean) | Exact prefix-endpoint shapes and parity restrictions; even ambient and parent effective totals leave an upper witness or two odd-parameter deficit-one loss families. |
 | [CatchUp.LowerRayInteriorReduction](../CatchUp/LowerRayInteriorReduction.lean) | Four boundary candidates and a conditional interval-draw criterion requiring first-pair draw, all interior nonloss obligations and every available boundary-opening check. |
+
+## Lower-ray endpoints and reachable traps
+
+| Module | What it establishes |
+| --- | --- |
+| [CatchUp.LowerRayEndpoints](../CatchUp/LowerRayEndpoints.lean) | Exact-pair dominating defense, consecutive-tail nonloss and penultimate lower-ray nonloss for N>=7, without parity or smaller-instance hypotheses. |
+| [CatchUp.AdjacentPairGeometryObstruction](../CatchUp/AdjacentPairGeometryObstruction.lean) | Parametric orphan-reserve wins and losing smallest-upper picks on three consecutive pairs; does not assert that the whole paired position loses. |
+| [CatchUp.FiveConsecutiveTrap](../CatchUp/FiveConsecutiveTrap.lean) | Symbolic five-counter winning bands and legal histories to tied top-five wins after opening three; reachability is not forced entry under optimal play. |
