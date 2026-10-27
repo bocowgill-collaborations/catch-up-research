@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "166cb5f453f074fa87789756d5244a2dfbf22929",
+  "lean": "4.27.0",
+  "mathlib": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "scope": "Four source-preserving structural descent and conditional-closure ports. Only import lines and category/AMS indexing attributes are adapted. All mathematical statements, hypotheses, proof bodies and docstrings are unchanged; original reports, archives and certificates are preserved.",
+  "sources": [
+    {
+      "module": "EffectiveTotalDescent",
+      "path": "CatchUp/EffectiveTotalDescent.lean",
+      "original_input": "archive/catch_up/EffectiveTotalDescent.lean.txt",
+      "original_path": "scripts/catch_up/EffectiveTotalDescent.lean",
+      "original_sha256": "f6a27227999487cd332a6e3d3060be2482f550f29657766571e52621896870ea",
+      "git_blob": "70e98e58e9d192e4e34f1c49fa587970035f0df0",
+      "source_id": "legacy-source-70e98e58e9d1-d2a177",
+      "source_commit": "daf23f13d9d2e5befc688b0c4ce8b42ed8ff3b7b",
+      "sha256": "bece9f74f532dc76efa1c9ab2b4469c6e1e7d1f017d4cbcba485d19da93de46f",
+      "bytes": 4323,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "effective_total_add_twice_deficit_after_exact_block_opening",
+        "effective_total_after_exact_block_opening",
+        "effective_total_strictly_decreases_after_exact_block_opening",
+        "exact_block_opening_child_catchable_iff",
+        "four_deficit_add_two_le_effective_total_of_strict_catchable_child"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.effective_total_add_twice_deficit_after_exact_block_opening",
+        "CatchUp.effective_total_after_exact_block_opening",
+        "CatchUp.effective_total_strictly_decreases_after_exact_block_opening",
+        "CatchUp.exact_block_opening_child_catchable_iff",
+        "CatchUp.four_deficit_add_two_le_effective_total_of_strict_catchable_child"
+      ]
+    },
+    {
+      "module": "DenseLossInjection",
+      "path": "CatchUp/DenseLossInjection.lean",
+      "original_input": "archive/catch_up/DenseLossInjection.lean.txt",
+      "original_path": "scripts/catch_up/DenseLossInjection.lean",
+      "original_sha256": "90dfec1600d31837159f53666e72042f6fc9aefca34bd9b0422ef7425d9a5b10",
+      "git_blob": "70014f169c6ad79e7d805182a4b4470e7851ca22",
+      "source_id": "legacy-source-70014f169c6a-b721c0",
+      "source_commit": "daf23f13d9d2e5befc688b0c4ce8b42ed8ff3b7b",
+      "sha256": "896d689d421e4b4cbcd6c576ccef4b0c186303282445bca40b82161fa3aeacf0",
+      "bytes": 19251,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "dense_three_hole_exact_complement_priority",
+        "dense_three_hole_exact_complement_alternative",
+        "dense_loss_forces_near_or_upper_exact_residual_winner",
+        "dense_loss_forces_upper_residual_or_small_prefix_blocked_loss"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.dense_three_hole_exact_complement_priority",
+        "CatchUp.dense_three_hole_exact_complement_alternative",
+        "CatchUp.dense_loss_forces_near_or_upper_exact_residual_winner",
+        "CatchUp.dense_loss_forces_upper_residual_or_small_prefix_blocked_loss"
+      ]
+    },
+    {
+      "module": "PrefixBlockedDenseEndpoints",
+      "path": "CatchUp/PrefixBlockedDenseEndpoints.lean",
+      "original_input": "archive/catch_up/PrefixBlockedDenseEndpoints.lean.txt",
+      "original_path": "scripts/catch_up/PrefixBlockedDenseEndpoints.lean",
+      "original_sha256": "b49183ecbff0002af6ebe30961bc89658c54591103c84d53a62259643dc48d4a",
+      "git_blob": "923212a480a4b50028dd814f5377a1af75af9678",
+      "source_id": "legacy-source-923212a480a4-322ff0",
+      "source_commit": "daf23f13d9d2e5befc688b0c4ce8b42ed8ff3b7b",
+      "sha256": "d48ace133f66f85f01c66078c5af657b9910283082ad2fa3c3310edd69451b37",
+      "bytes": 14319,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "second_prefix_blocked_child_shape",
+        "second_prefix_blocked_effective_total_not_even",
+        "first_prefix_blocked_exists_odd_hole_and_child_shape",
+        "third_prefix_blocked_child_shape",
+        "third_prefix_blocked_deficit_odd",
+        "even_dense_loss_forces_upper_or_odd_prefix_endpoint"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.second_prefix_blocked_child_shape",
+        "CatchUp.second_prefix_blocked_effective_total_not_even",
+        "CatchUp.first_prefix_blocked_exists_odd_hole_and_child_shape",
+        "CatchUp.third_prefix_blocked_child_shape",
+        "CatchUp.third_prefix_blocked_deficit_odd",
+        "CatchUp.even_dense_loss_forces_upper_or_odd_prefix_endpoint"
+      ]
+    },
+    {
+      "module": "LowerRayInteriorReduction",
+      "path": "CatchUp/LowerRayInteriorReduction.lean",
+      "original_input": "archive/catch_up/LowerRayInteriorReduction.lean.txt",
+      "original_path": "scripts/catch_up/LowerRayInteriorReduction.lean",
+      "original_sha256": "43cac04e3d249fd405dc265ab4ac95fb6348943f1dd5973fcd7593512ef968e1",
+      "git_blob": "2afedf12bcb23ca68c7ad85b00fdc5c6243ff98d",
+      "source_id": "legacy-source-2afedf12bcb2-1a2b38",
+      "source_commit": "daf23f13d9d2e5befc688b0c4ce8b42ed8ff3b7b",
+      "sha256": "d3bea2e074378c958d0e7dae9a70e4f54bfe0c59bee47f53ceb4ac458d5c493f",
+      "bytes": 4665,
+      "transformations": [
+        "Adapt import lines; remove category/AMS indexing attributes only."
+      ],
+      "public_theorem_names": [
+        "lower_ray_exact_deficit_residual_boundary_candidates",
+        "lower_ray_exact_deficit_residual_value_ne_win_of_interior_and_boundary",
+        "value_Icc_eq_draw_of_lower_ray_interior_and_boundary"
+      ],
+      "qualified_theorem_names": [
+        "CatchUp.lower_ray_exact_deficit_residual_boundary_candidates",
+        "CatchUp.lower_ray_exact_deficit_residual_value_ne_win_of_interior_and_boundary",
+        "CatchUp.value_Icc_eq_draw_of_lower_ray_interior_and_boundary"
+      ]
+    }
+  ]
+}

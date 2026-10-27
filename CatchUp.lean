@@ -96,3 +96,8 @@ import CatchUp.TwoBufferProtocol
 import CatchUp.TwoBufferMandatory
 import CatchUp.TwoPickDebtRepair
 import CatchUp.CompletedMarginBounds
+
+import CatchUp.EffectiveTotalDescent
+import CatchUp.DenseLossInjection
+import CatchUp.PrefixBlockedDenseEndpoints
+import CatchUp.LowerRayInteriorReduction

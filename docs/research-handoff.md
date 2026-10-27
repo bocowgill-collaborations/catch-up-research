@@ -9,7 +9,7 @@ the counts and bounded preservation checks cited below; it is not a proof audit.
 
 ## Current frontier and evidence
 
-The library has 110 cataloged mathematics modules. The
+The library has 114 cataloged mathematics modules. The
 [first-pair atlas](../results/first-pair-atlas.md) adds four source-preserving
 ports and 67 public theorem declarations, with separate
 [provenance and checks](../verification/atlas-ports.md).
@@ -26,6 +26,12 @@ bounds, legal-prefix checks and a parametric two-pick repair. These five ports
 add 34 public theorem declarations; the actual Lean table matches the supported
 Python replay. This closes the recommended formal-controller import batch, not
 the uniform translator or a general strategy-extraction bridge.
+
+The [structural descent batch](../results/structural-descent.md) now ports
+`EffectiveTotalDescent`, `DenseLossInjection`, `PrefixBlockedDenseEndpoints`
+and `LowerRayInteriorReduction`, adding 18 public theorem declarations.
+It exposes exact descent and conditional closure, not a proof of their
+remaining geometric/nonloss obligations.
 
 Maintained Lean proofs, supported computational replays, archived source,
 informal arguments, and historical reported computations have different assurance
@@ -70,11 +76,10 @@ for witnesses, exact scopes, and what stronger arguments would still need.
 
 These are recommendations, not additional completed imports.
 
-1. **Compact structural API:** `EffectiveTotalDescent`, `DenseLossInjection`,
-   `PrefixBlockedDenseEndpoints` (after injection), and `LowerRayInteriorReduction`.
-   Preserve all closure hypotheses. `LowerRayEndpoints` is an optional small
-   endpoint-catalog addition. Expand the larger dense-hole/add-top/small-gap family
-   only for a concrete proof use case.
+1. **Further structural verification:** `LowerRayEndpoints` is an optional small
+   endpoint-catalog addition; the four-module compact structural batch is now
+   maintained. Preserve all closure hypotheses. Expand the larger
+   dense-hole/add-top/small-gap family only for a concrete proof use case.
 2. **Clean informal lemma:** formalize CU-L039's sharp complement-packing bound:
    for q≥3, at most `floor((q−1)/2)` disjoint subsets of distinct integers at least
    2 can each sum to q, and the bound is attained. This limits a specified forcing
@@ -96,7 +101,7 @@ Already retained: 90 research reports, 263 campaign notebook entries, and the
 prior inventory. This was not a full-machine or chat-export search.
 
 All 56 archived source snapshots remain intact, including original inputs of
-twelve same-named maintained ports. The others are not necessarily independent
+sixteen same-named maintained ports. The others are not necessarily independent
 missing theorems; API fragments may exist elsewhere.
 
 The 16 metadata-only generated certificate sources remain available as original
@@ -139,6 +144,7 @@ lake --wfail build CatchUp
 python3 scripts/check_axioms.py
 python3 scripts/check_atlas_ports.py
 python3 scripts/check_controller_ports.py
+python3 scripts/check_structural_ports.py
 python3 scripts/check_controller_policy.py --lean
 python3 scripts/check_collection.py
 ```

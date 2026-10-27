@@ -1828,6 +1828,60 @@
         "force_check_sound",
         "mandatory_scalar_bounds"
       ]
+    },
+    {
+      "module": "CatchUp.EffectiveTotalDescent",
+      "path": "CatchUp/EffectiveTotalDescent.lean",
+      "group": "Structural descent and conditional closure",
+      "summary": "Exact effective-total identities, positive-deficit strict descent and a catchability budget; no preservation of outcome or bounded-hole geometry is asserted.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "effective_total_add_twice_deficit_after_exact_block_opening",
+        "effective_total_after_exact_block_opening",
+        "effective_total_strictly_decreases_after_exact_block_opening",
+        "exact_block_opening_child_catchable_iff",
+        "four_deficit_add_two_le_effective_total_of_strict_catchable_child"
+      ]
+    },
+    {
+      "module": "CatchUp.DenseLossInjection",
+      "path": "CatchUp/DenseLossInjection.lean",
+      "group": "Structural descent and conditional closure",
+      "summary": "Three-hole complement alternatives force an upper exact-sum residual winner or explicit small-deficit prefix-blocked losses, under the stated density and deficit bounds.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "dense_three_hole_exact_complement_priority",
+        "dense_three_hole_exact_complement_alternative",
+        "dense_loss_forces_near_or_upper_exact_residual_winner",
+        "dense_loss_forces_upper_residual_or_small_prefix_blocked_loss"
+      ]
+    },
+    {
+      "module": "CatchUp.PrefixBlockedDenseEndpoints",
+      "path": "CatchUp/PrefixBlockedDenseEndpoints.lean",
+      "group": "Structural descent and conditional closure",
+      "summary": "Exact prefix-endpoint shapes and parity restrictions; even ambient and parent effective totals leave an upper witness or two odd-parameter deficit-one loss families.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "second_prefix_blocked_child_shape",
+        "second_prefix_blocked_effective_total_not_even",
+        "first_prefix_blocked_exists_odd_hole_and_child_shape",
+        "third_prefix_blocked_child_shape",
+        "third_prefix_blocked_deficit_odd",
+        "even_dense_loss_forces_upper_or_odd_prefix_endpoint"
+      ]
+    },
+    {
+      "module": "CatchUp.LowerRayInteriorReduction",
+      "path": "CatchUp/LowerRayInteriorReduction.lean",
+      "group": "Structural descent and conditional closure",
+      "summary": "Four boundary candidates and a conditional interval-draw criterion requiring first-pair draw, all interior nonloss obligations and every available boundary-opening check.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "lower_ray_exact_deficit_residual_boundary_candidates",
+        "lower_ray_exact_deficit_residual_value_ne_win_of_interior_and_boundary",
+        "value_Icc_eq_draw_of_lower_ray_interior_and_boundary"
+      ]
     }
   ]
 }

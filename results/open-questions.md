@@ -7,6 +7,9 @@ The [current route guide](research-routes.md) gives concrete proof obligations; 
 The [research handoff](../docs/research-handoff.md) gives the current backlog.
 Selected September endpoints, the [first-pair atlas](first-pair-atlas.md), and the
 [finite Lean causal controller](two-buffer-controller.md) are now maintained ports.
+The four [structural descent ports](structural-descent.md) also expose the exact
+rank, three-hole endpoint classification and conditional interior/boundary
+closure. Their hypotheses are not new proofs of the missing uniform obligations.
 The [earlier campaign ledger](legacy-findings.md) retains historical recovery
 tasks, including missing August scratch proofs, audit programs and native
 certificates requiring a chosen trust policy. The
