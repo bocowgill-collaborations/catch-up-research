@@ -6,6 +6,14 @@ The earlier [August–September ledger](legacy-findings.md) preserves alternativ
 
 ## Pair deletion and complete defensive turns
 
+The [structural descent guide](structural-descent.md) now gives maintained Lean
+interfaces for exact effective-total descent, three-hole loss alternatives,
+prefix endpoint shapes and interior/boundary closure. Strict rank decrease
+does not preserve a bounded-hole family automatically. In particular, the
+interior predicate concerns five-hole supports, not the three-hole parents of
+the injection theorem. First-pair draw and all required nonloss hypotheses
+remain to be established.
+
 The [conditional maximum-reply companion](reply-maximum-companion.md), CU-R001,
 is now a checked building block related to CU-L011. Under the explicit nonempty
 and catchability hypotheses for every smaller pair-deletion position, a winning

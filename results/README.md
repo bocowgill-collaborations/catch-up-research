@@ -51,6 +51,13 @@ checker, the full mandatory-instance proof, margin bounds, legal prefixes and a
 parametric two-pick repair. Its Lean policy matches the preserved replay.
 This is finite-instance verification, not the uniform adjacent-hole theorem.
 
+The [structural descent batch](structural-descent.md) ports four more archived
+modules and 18 public theorem declarations. It supplies an exact effective-total
+rank, the three-hole forced-loss alternatives, canonical parity-constrained
+prefix endpoints, and a conditional interior/boundary interval-draw theorem.
+The rank does not preserve the hole budget automatically; the first-pair draw,
+interior nonloss and boundary checks remain separate proof obligations.
+
 ## Certified failures of proposed strategy rules
 
 The [first-pair and failed-strategy atlas](first-pair-atlas.md) now brings four

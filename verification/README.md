@@ -49,8 +49,16 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The [structural ports](structural-ports.md) add four modules and 18 public
+theorem declarations, bringing the current catalog to 114 modules. Exact
+reconstruction preserves all hypotheses, proof bodies and docstrings. The
+[new receipt](structural-checks.json) records changed-scope strict builds,
+full mathematics axiom checks and bounded regressions. Run
+`python3 scripts/check_structural_ports.py`; all new public theorems are named
+axiom endpoints. The documented closure remains conditional.
+
 The [formal controller ports](controller-ports.md) add five modules and 34 public
-theorem declarations, bringing the current catalog to 110 modules. Exact
+theorem declarations, then bringing the catalog to 110 modules. Exact
 reconstruction preserves statements and proofs; a cross-language check matches
 the actual Lean policy with every reachable state of the supported replay.
 Margin bounds and the local parametric repair accompany the finite-instance

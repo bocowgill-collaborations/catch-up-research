@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 110 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 114 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -156,3 +156,12 @@ All 110 mathematics modules are included in the default build. Start with the [r
 | [CatchUp.TwoBufferMandatory](../CatchUp/TwoBufferMandatory.lean) | Kernel-checked policy and full causal protocol for the mandatory adjacent-hole instance only; no parametric translator or general Catch-Up solution. |
 | [CatchUp.TwoPickDebtRepair](../CatchUp/TwoPickDebtRepair.lean) | Parametric legal two-pick preparation and copied-pair margin repair, with explicit arithmetic hypotheses and mandatory-instance state identities. |
 | [CatchUp.CompletedMarginBounds](../CatchUp/CompletedMarginBounds.lean) | Forceable terminal-margin bounds, a necessary scalar bound for any protocol and exact mandatory-instance margins U=0 and V=2. |
+
+## Structural descent and conditional closure
+
+| Module | What it establishes |
+| --- | --- |
+| [CatchUp.EffectiveTotalDescent](../CatchUp/EffectiveTotalDescent.lean) | Exact effective-total identities, positive-deficit strict descent and a catchability budget; no preservation of outcome or bounded-hole geometry is asserted. |
+| [CatchUp.DenseLossInjection](../CatchUp/DenseLossInjection.lean) | Three-hole complement alternatives force an upper exact-sum residual winner or explicit small-deficit prefix-blocked losses, under the stated density and deficit bounds. |
+| [CatchUp.PrefixBlockedDenseEndpoints](../CatchUp/PrefixBlockedDenseEndpoints.lean) | Exact prefix-endpoint shapes and parity restrictions; even ambient and parent effective totals leave an upper witness or two odd-parameter deficit-one loss families. |
+| [CatchUp.LowerRayInteriorReduction](../CatchUp/LowerRayInteriorReduction.lean) | Four boundary candidates and a conditional interval-draw criterion requiring first-pair draw, all interior nonloss obligations and every available boundary-opening check. |

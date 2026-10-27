@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "166cb5f453f074fa87789756d5244a2dfbf22929",
+  "status": "PASS",
+  "scope": "Four source-preserving structural ports, strict changed-scope and import-root builds, full mathematics transitive axiom audit, collection and bounded semantics/certificate/controller regressions. No expanded outcome tables, new mathematical search or cryptid rebuild.",
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp.EffectiveTotalDescent",
+        "CatchUp.DenseLossInjection",
+        "CatchUp.PrefixBlockedDenseEndpoints",
+        "CatchUp.LowerRayInteriorReduction"
+      ],
+      "exit_code": 0,
+      "seconds": 2.659,
+      "receipt": "verification/receipts/structural-ports-build.log",
+      "sha256": "0f6b2b13446361e4e9da123581e3a1ef87aa0f7dd85c54c9c05b748e7e895216",
+      "bytes": 42
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp"
+      ],
+      "exit_code": 0,
+      "seconds": 2.349,
+      "receipt": "verification/receipts/structural-import-build.log",
+      "sha256": "6e2bade05308efc73d301bb6eb33015e5afdae709cec48177ee77706ffe6a471",
+      "bytes": 714
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_structural_ports.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.037,
+      "receipt": "verification/receipts/structural-source-fidelity.log",
+      "sha256": "ddd0ba82a11ea7cca263a806abdb7b058fa80611dfacdec22a73bfefb90c47da",
+      "bytes": 126
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 4.258,
+      "receipt": "verification/receipts/structural-collection.log",
+      "sha256": "ecf27b53a41a12570528b2021bcd2869aa8090c148f4bb2372176e7d2d5cc696",
+      "bytes": 2244
+    },
+    {
+      "command": [
+        "python3",
+        "computation/check_semantics.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.823,
+      "receipt": "verification/receipts/structural-semantics.log",
+      "sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "bytes": 72
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_controller_policy.py",
+        "--lean"
+      ],
+      "exit_code": 0,
+      "seconds": 4.166,
+      "receipt": "verification/receipts/structural-controller-regression.log",
+      "sha256": "255398bba42759eae4dd552a94e5d987dc19f9875c48ace6e10672d932c7bf98",
+      "bytes": 169
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.664,
+      "receipt": "verification/receipts/structural-earlier-regressions.log",
+      "sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "bytes": 122
+    }
+  ],
+  "axiom_audit": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 293,
+        "all_public_catchup_theorems": 4965,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 114.764496208,
+        "audit_source_sha256": "f40ca156d08cfde54a069b4fa7c7046dc0785689666feaf49297e200886f981a",
+        "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+      }
+    ],
+    "seconds": 114.764983125,
+    "peak_child_rss_bytes": 5533761536,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "axiom_receipts": [
+    {
+      "receipt": "verification/receipts/structural-axioms.log",
+      "sha256": "b3a771d15adb58ce5607893f5014cc19bd3c152664b0766f72a67e3857a639aa",
+      "bytes": 31652
+    },
+    {
+      "receipt": "verification/receipts/structural-all-theorems.log",
+      "sha256": "c4e37e8e9b9055b1ec1a3e843db20d180ea651ae34ebe2c82d128a08e8b47500",
+      "bytes": 57
+    }
+  ],
+  "source_sha256": {
+    "CatchUp.lean": "8a4f65c960c224fe1e496adba6e162981cd1ea831440e5168c16c9e0cfb5b067",
+    "AxiomAudit.lean": "f40ca156d08cfde54a069b4fa7c7046dc0785689666feaf49297e200886f981a",
+    "AuditAll.lean": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581",
+    "scripts/check_structural_ports.py": "8293ed611961b6eec4d89cf942cafe6d7bdc5b4b3c28ee59eccaf0cd2368a46d",
+    "scripts/check_collection.py": "fab13e3d11617ebae6904c99dd60b1a5da299f6b7238645b93b68cabdf6b2723",
+    "verification/structural-ports.json": "7f24bc5611f970ed31773671ef276f7fe80b67c1aa4fef73729cc4789dfffe13",
+    "verification/structural-ports.md": "0c4cae4e30eba46d354fc9e0b673aac9493b5c39719d824c791ebc5d607abe11",
+    "results/catalog.json": "1a36ef1827941c088386d9a4c2764d3ae70b8ddb1832cf56e2147b8115ad82a6",
+    "results/structural-descent.md": "cca2dbcc3e29f43689b5e508a5062c120230d3752c8aafd8108b631d67d19913",
+    "results/modules.md": "24a38386c8ba17be019c9d175d46fe2939294a07ae9a2898a0cd1da89497badf",
+    "results/README.md": "c3b00b063fa91cebe565bdf62e86d84d7c9573b4431e8f5cfcaf43d3167b21fc",
+    "results/open-questions.md": "3527e6122d795e84e9afd55afdb12997f63786ccd9465f8e53a2f39d99d3e15f",
+    "results/research-routes.md": "77e3c5799cc59b74aaed9dc058f40bafddbdb9aada9037f3d3020e372a789b39",
+    "docs/research-handoff.md": "962b1834a32d95ced8a4adb918c09eb49b71d542915c1a777da2e5fb5f2e0c8b",
+    "docs/coverage.md": "a7e502c66a3c67d7e6ebfbf4bec5780e963e80358b5f9046f136fb16bf701f6b",
+    "verification/README.md": "1722e06d61da0e05e80ec0bc85f4a55b94ec849d7047b7a5407d36447f2dea1e",
+    "CatchUp/README.md": "f0f7e47ac980d7afed89929f9b3a90f90c4c1fd4fe98cd074acf9db3bec0adfd",
+    "CatchUp/EffectiveTotalDescent.lean": "bece9f74f532dc76efa1c9ab2b4469c6e1e7d1f017d4cbcba485d19da93de46f",
+    "CatchUp/DenseLossInjection.lean": "896d689d421e4b4cbcd6c576ccef4b0c186303282445bca40b82161fa3aeacf0",
+    "CatchUp/PrefixBlockedDenseEndpoints.lean": "d48ace133f66f85f01c66078c5af657b9910283082ad2fa3c3310edd69451b37",
+    "CatchUp/LowerRayInteriorReduction.lean": "d3bea2e074378c958d0e7dae9a70e4f54bfe0c59bee47f53ceb4ac458d5c493f"
+  },
+  "preservation": {
+    "status": "PASS",
+    "base": "166cb5f453f074fa87789756d5244a2dfbf22929",
+    "checked_preexisting_paths": 862,
+    "scope": "All base archive/upstream/cryptid files; all prior verification files except the current index; all existing CatchUp Lean modules; pins, workflow and complete controller replay bundle."
+  }
+}
