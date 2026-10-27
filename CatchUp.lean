@@ -86,3 +86,7 @@ import CatchUp.Earlier.AdditiveTripleReduction
 import CatchUp.Earlier.ScoreDebtTerminalRepair
 
 
+import CatchUp.AdjacentHoleExchangeObstruction
+import CatchUp.FirstPairDescentObstruction
+import CatchUp.ShiftedReplyCycle
+import CatchUp.TurnReserveInitialization

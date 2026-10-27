@@ -4,7 +4,15 @@ This page separates the central conjecture, wider questions about the game, and 
 
 The [current route guide](research-routes.md) gives concrete proof obligations; [experimental findings](experimental-findings.md) explain what the existing tests support and which tests were vacuous. Detailed earlier arguments are retained in the [research notebook](../archive/research-notes/).
 
-The [earlier campaign ledger](legacy-findings.md) also identifies concrete recovery tasks: locate the missing August scratch proofs and audit programs, replay historical native certificates under an explicitly chosen trust policy, and port the archived September endpoints and causal controller if useful to a new proof route. The [missing-artifact list](../archive/campaigns/README.md#missing-artifacts-and-deferred-verification) distinguishes absent files from unresolved mathematics. The 263 historical notebook entries record the research process; they do not add proved claims.
+The [research handoff](../docs/research-handoff.md) gives the current backlog.
+Selected September endpoints and the [first-pair atlas](first-pair-atlas.md) are
+now maintained ports; the archived Lean causal controller is still unported.
+The [earlier campaign ledger](legacy-findings.md) retains historical recovery
+tasks, including missing August scratch proofs, audit programs and native
+certificates requiring a chosen trust policy. The
+[missing-artifact list](../archive/campaigns/README.md#missing-artifacts-and-deferred-verification)
+distinguishes absent files from unresolved mathematics. The 263 historical
+notebook entries record research, not additional proved claims.
 
 ## The central problem
 

@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "fa984bdc3433232480c415604255df36563e9190",
+  "scope": "Public manifest counts and a bounded known-original-root/Git-object preservation check. Not fresh proof verification, a full-machine search, or a chat-export inventory.",
+  "public_inventory": {
+    "maintained_modules": 105,
+    "archived_source_snapshots": 56,
+    "research_reports": 90,
+    "campaign_notebook_entries": 263,
+    "finding_entries": 43,
+    "missing_artifact_references": 25
+  },
+  "bounded_known_root_delta": {
+    "comparison": "Known research-root Lean/Markdown content against the 23 October inventory",
+    "scanned_files": 460,
+    "new_files": 0,
+    "changed_files": 0,
+    "absent_frozen_paths": 0,
+    "excluded_publication_administration_notes": 2
+  },
+  "large_certificate_objects": [
+    {
+      "source_id": "legacy-source-7d52e302b24f-8810d0",
+      "original_path": "scripts/catch_up/CatchUpN27PackedRootDraw.lean",
+      "git_blob": "7d52e302b24fbbc33e85f6b41e05cb392ddf08fb",
+      "original_sha256": "091d5cc3f3fea0774be3b3049640a623ba0e1d6a482129a66d8056e257aaca39",
+      "bytes": 31294992,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-c712d63e0a54-a6b823",
+      "original_path": "scripts/catch_up/CatchUpN28PackedRootDraw.lean",
+      "git_blob": "c712d63e0a545b6774c0f827565415beacd87c62",
+      "original_sha256": "410cd96932843f001b6d77d042e7fa38881b57114bdea09e00a1a1a420cb21dd",
+      "bytes": 48729491,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-c1853bbb020d-370f70",
+      "original_path": "scripts/catch_up/DenseThreeHoleN13PackedCertificate.lean",
+      "git_blob": "c1853bbb020dbfaebd3d0c778c25f0a1d8e0ebaf",
+      "original_sha256": "cd645d1abae14cfde1d3b8f786e97b0e175bf6e5bb3c06f6aa6ff96beff998b8",
+      "bytes": 342922,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-673c63320a24-fdecfe",
+      "original_path": "scripts/catch_up/DenseThreeHoleN14PackedCertificate.lean",
+      "git_blob": "673c63320a24edd235de55b669e6188fb671888e",
+      "original_sha256": "da40ed8631a091eba994c5a7bc63d05fd3d9c22e9d3a39ccaf37d0f1a021a42c",
+      "bytes": 580097,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-b45c173a8e66-f60cba",
+      "original_path": "scripts/catch_up/DenseThreeHoleN15PackedCertificate.lean",
+      "git_blob": "b45c173a8e66ae6da8268ad8f4b4ae4d20d6abb4",
+      "original_sha256": "36180a471d5ed5d0695f23c607469773d3e63a9b87ec3ed3550b8fe3c820752b",
+      "bytes": 947837,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-5340fbb66f90-236534",
+      "original_path": "scripts/catch_up/DenseThreeHoleN16PackedCertificate.lean",
+      "git_blob": "5340fbb66f9052bc39276d1fb4567729f8ea6de5",
+      "original_sha256": "3cd6423c1f3ef0bb17653588a2f6ea5e43828870f6e964a4f8775470f239fa8d",
+      "bytes": 1507853,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-fcbd840b04aa-0892db",
+      "original_path": "scripts/catch_up/DenseThreeHoleN17PackedCertificate.lean",
+      "git_blob": "fcbd840b04aa43a8b958fbe49f91d14e8b34619c",
+      "original_sha256": "323404ef22de146625b509b97f529df60c85a49c6b93699b6f1e21216624af4e",
+      "bytes": 2402935,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-d4dd5b9f6504-cecb30",
+      "original_path": "scripts/catch_up/DenseThreeHoleN18PackedCertificate.lean",
+      "git_blob": "d4dd5b9f650411e4a6458cb299813d28375fa874",
+      "original_sha256": "ec70f80224229046dcacf84126de43cddd2c239e1404848f97d047e803a3d381",
+      "bytes": 3791882,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-7f79a55d14ad-7848cc",
+      "original_path": "scripts/catch_up/DenseThreeHoleN19PackedCertificate.lean",
+      "git_blob": "7f79a55d14adf0749d40021f31769309f6331fb2",
+      "original_sha256": "5355071ddc44407f5e28ae24b50f24b963e37fcb55cf657678fe56ff447a4889",
+      "bytes": 5975884,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-c75ff3c471fc-f30eac",
+      "original_path": "scripts/catch_up/DenseThreeHoleN20PackedCertificate.lean",
+      "git_blob": "c75ff3c471fc8979d67312241af64806c9d060ff",
+      "original_sha256": "2dfdb27309c67465b929fc45115a975c0c7df9e6766cda10bc7292387e5bbb25",
+      "bytes": 9174612,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-15fd5fd161f4-432834",
+      "original_path": "scripts/catch_up/DenseThreeHoleN21PackedCertificate.lean",
+      "git_blob": "15fd5fd161f49b4bfc98f742a004764e64b0a28e",
+      "original_sha256": "91c1929970f718c91143ecbb6c5308afd2cdd5cef7089bd6490a2b8689114b32",
+      "bytes": 14216409,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-d2611ac8328b-47481c",
+      "original_path": "scripts/catch_up/DenseThreeHoleN22PackedCertificate.lean",
+      "git_blob": "d2611ac8328bba9fb18a3f1f58307ebb80d004e2",
+      "original_sha256": "c69a20ad8a67c4e93dbf6fe138ebccd7c10dbdff3c96fc2526b909874baacc1f",
+      "bytes": 21511982,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-1a53286bcd9b-19c42e",
+      "original_path": "scripts/catch_up/DenseThreeHoleN23PackedCertificate.lean",
+      "git_blob": "1a53286bcd9b10841510c2af69044a0b2d83e15d",
+      "original_sha256": "db3c295779b0a166c6594868b2b58e1dc4f87d521f627f705df85aeec64ba6c3",
+      "bytes": 32517679,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-8594ef32c93e-646a25",
+      "original_path": "scripts/catch_up/DenseThreeHoleN24PackedCertificate.lean",
+      "git_blob": "8594ef32c93e5f35933515e8f57ad1837e684d62",
+      "original_sha256": "b762ccfb87800cd999cbfd6d5f732cabf895911dbf31cac1c9fe97b21a1c9da7",
+      "bytes": 49914523,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-ab1b2736f164-af2431",
+      "original_path": "scripts/catch_up/DenseThreeHoleN25PackedCertificate.lean",
+      "git_blob": "ab1b2736f164ee82fe9f4c6b6cce1f4c2fc330fb",
+      "original_sha256": "b28ac63e59a42d2dd2ffdcdb8e6affa1de21fb39074f03ef7b9cc84b4f790cb4",
+      "bytes": 76046743,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    },
+    {
+      "source_id": "legacy-source-43ba7e2222c2-5f2a25",
+      "original_path": "scripts/catch_up/FourLiftN8P2Old1Certificate_20260809.lean",
+      "git_blob": "43ba7e2222c2ed1c5a750e188d8aa5c56e54761b",
+      "original_sha256": "5f97dee3ea08fb9debd01d3e7c119205eeeb28d2b274d042d3ba2bad3c4884cf",
+      "bytes": 317936,
+      "availability": "Original Git object present at expected size in bounded local check; bytes not freshly rehashed or proof-replayed"
+    }
+  ],
+  "large_certificate_bytes": 299273777
+}

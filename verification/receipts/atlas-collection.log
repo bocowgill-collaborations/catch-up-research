@@ -1,0 +1,14 @@
+Legacy archive passed: 15 refs, 55 commits, 236 unique_paths, 290 path_blob_pairs, 183 new_source_versions, 3 handoffs, 1 historical_run_records, 263 notebook_entries, 25 missing_artifact_references, 43 findings
+Fifth-endpoint source port passed: 2 modules, 6 public theorems; original hashes, exact transformations and source-mutation rejection
+Reply-companion provenance passed: 2 retained artifacts, 3 source/check files; fingerprints, metadata, privacy and corruption controls
+Endpoint ports passed: 2 modules, 10 public theorems; exact source reconstruction and mutation rejection
+Atlas ports passed: 4 modules, 67 public theorems; exact reconstruction and contract/proof mutation rejection
+Two-buffer source reconstruction passed: four exports, exact archive hashes, equality and buffer mutation controls
+Two-buffer replay passed: 87 nodes, 17 terminal histories, 174 state comparisons, every legal reply, nine policy mutations and optimization bypass rejected
+Legacy example checks passed: 21 literal positions, every first pick, two independent recurrences; no historical scan or Lean proof replay
+Research archive passed: 90 notes, 31 observations; hashes, coverage and corruption control
+Solver source checks passed: 15 preserved inputs/sources, 4 adapters; 594 seven-pair, 142 residual, 626 orphan supports; hashes and include closure
+Campaign source checks passed: 143 preserved sources/data, 4 adapters, 16 query recipes; dependencies, frozen prefixes, content controls and hashes
+SOURCES_PASS: exact reference declarations, pinned blobs, mutation control, clean target
+Export verified: 367 preserved sources/data; documentation links and reference fidelity passed
+Collection checks passed: 105 indexed modules, 893 noninitial comparisons, 13 roots, every listed reply and limit/sign controls (3.90s)

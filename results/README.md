@@ -47,6 +47,13 @@ Those contributions leave the uniform lower-ray and first-pair obligations open.
 
 ## Certified failures of proposed strategy rules
 
+The [first-pair and failed-strategy atlas](first-pair-atlas.md) now brings four
+archived modules into the maintained build: adjacent-hole copying, first-pair
+descent obstructions, shifted reply cycles, and reserve initialization. It
+explains exact witnesses and why they refute particular shortcuts, not Catch-Up.
+The [research handoff](../docs/research-handoff.md) gives the next verification
+batches and remaining uniform proof obligations.
+
 These examples use **different remaining supports**, not the initial interval `{1,…,N}`. Each is kernel-checked; none disproves the Catch-Up conjecture.
 
 - **Odd consecutive pairs do not guarantee a nonwinning root.** On `{3,4,57,58,65,66,77,78,81,82,97,98}`, the first player wins by opening with 4, despite even total 766. Every opposing reply is covered. [Proof](../CatchUp/OddPairRootObstruction.lean).

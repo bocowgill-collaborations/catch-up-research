@@ -1,6 +1,6 @@
 # Lean module guide
 
-All 101 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
+All 105 mathematics modules are included in the default build. Start with the [results overview](README.md); this guide covers the library by topic. A file can contain both a positive theorem and a certified failed generalization. Full hypotheses and theorem names are in [catalog.json](catalog.json) and the linked source. The [earlier-work guide](../docs/earlier-work.md) explains recovered certificate, parity and proof-size results.
 
 ## Rules, evaluation and search
 
@@ -98,6 +98,10 @@ All 101 mathematics modules are included in the default build. Start with the [r
 
 | Module | What it establishes |
 | --- | --- |
+| [CatchUp.AdjacentHoleExchangeObstruction](../CatchUp/AdjacentHoleExchangeObstruction.lean) | Adjacent-hole copying failure and forced different first picks; sparse parity extensions do not preserve the desired implication. |
+| [CatchUp.FirstPairDescentObstruction](../CatchUp/FirstPairDescentObstruction.lean) | First-pair identities, bases at seven/eight, and exact sparse/copying obstructions; no uniform interval draw. |
+| [CatchUp.ShiftedReplyCycle](../CatchUp/ShiftedReplyCycle.lean) | Legal shifted cycle/slide obstructions and a hypothetical-loss reduction to a closed directed walk, not an acyclicity proof. |
+| [CatchUp.TurnReserveInitialization](../CatchUp/TurnReserveInitialization.lean) | The specified initialization envelope is feasible only at N=7, opening three; not a game-value classification. |
 | [CatchUp.AdviceFeatureCollision](../CatchUp/AdviceFeatureCollision.lean) | Same pair count, total, extrema, deficit, parity and selector interval can conceal opposite outcomes. Static arithmetic summaries do not determine value. |
 | [CatchUp.AlternatingTailObstruction](../CatchUp/AlternatingTailObstruction.lean) | A certified sparse obstruction to a proposed alternating-tail principle; not an initial-interval counterexample. |
 | [CatchUp.DenseBlockEntryObstruction](../CatchUp/DenseBlockEntryObstruction.lean) | A dense drawn continuing state has no safe first pick inside its maximal exact block; its unique safe pick lies elsewhere. |

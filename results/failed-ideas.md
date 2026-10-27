@@ -2,6 +2,10 @@
 
 These are certified failures of proposed auxiliary statements. No entry below is a counterexample to the initial-interval draw conjecture. A failed candidate is useful when it rules out a precise shortcut and identifies the obligation a stronger idea must address.
 
+The [first-pair atlas](first-pair-atlas.md) now provides maintained Lean ports for
+four previously archived groups. Their [verification record](../verification/atlas-ports.md)
+does not upgrade other historical claims.
+
 Do not drop hypotheses from positive results either: the recovered
 [maximum-companion theorem](reply-maximum-companion.md) requires every smaller
 pair-deletion position to be nonempty and catchable. It does not establish the
@@ -12,6 +16,10 @@ Earlier failures with different assurance levels are indexed in [CU-L016–CU-L0
 
 | Proposed shortcut | Diagnostic / what survives | Checked source |
 | --- | --- | --- |
+| Copy common counters in the adjacent-hole exchange | U draws and V wins, but every nonlosing V move copies to a losing U move. First repair requires U:2 and V:5. This is not a counterexample to V-win implying U-nonloss. | [AdjacentHoleExchangeObstruction](../CatchUp/AdjacentHoleExchangeObstruction.lean) |
+| Use only minimum three and parity in a first-pair three-reserve transfer | A sparse deficit-one loss has a winning deficit-two shadow. The separate legal-prefix copy witness starts with a drawing shadow root. | [FirstPairDescentObstruction](../CatchUp/FirstPairDescentObstruction.lean) |
+| Exclude shifted cycles using their intact span or maximum companions | Legal two-cycles exist, slides can fail, and intact `{3,…,7}` has no second reply at its maximum. This does not refute the conditional tied-position companion. | [ShiftedReplyCycle](../CatchUp/ShiftedReplyCycle.lean) |
+| Initialize the specified prepaid reserve envelope after any first-pair pick | For N≥7 the envelope holds exactly at N=7, opening 3. Other invariants and eventual entry are not excluded. | [TurnReserveInitialization](../CatchUp/TurnReserveInitialization.lean) |
 | Pair count, total, extrema, deficit, parity and selector sums determine value | At deficit 4, adjacent pairs starting at `{6,10,20,40}` win; starts `{6,12,18,40}` lose. Both have eight counters, total 156, minimum 6 and maximum 41, with the same selector interval. | [AdviceFeatureCollision](../CatchUp/AdviceFeatureCollision.lean) |
 | Extend a successful small paired defense by adding two pairs | The lifted defense fails against a retained opponent reply. This rejects that lift, not every possible strategy on larger supports. | [SevenPairTest](../CatchUp/SevenPairTest.lean) |
 | An immediate balanced turn supplies a universal interval defense | For every N>=7 and every opening, P2 cannot take its entire draw quota in its first turn. A successful defense must carry the task across turns. | [WholeTurn](../CatchUp/WholeTurn.lean) |

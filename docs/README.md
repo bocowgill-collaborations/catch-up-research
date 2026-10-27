@@ -20,6 +20,8 @@ Catch-Up has simple rules and a difficult distinction: a draw can be possible wi
 | Pick a research problem | [Open questions](../results/open-questions.md) |
 | See why past approaches succeeded or failed | [Research notebook](../archive/research-notes/), [experimental findings](../results/experimental-findings.md) |
 | Find a precise remaining proof obligation | [Current research routes](../results/research-routes.md) |
+| Resume the project or choose the next verification batch | [Research handoff and backlog](research-handoff.md) |
+| Understand the first-pair and failed-strategy results | [Verified first-pair atlas](../results/first-pair-atlas.md) |
 | Verify the formal work | [Verification instructions](../verification/) |
 
 The conjecture is open. The collection contains both general theorems and certified counterexamples to *auxiliary strategy rules*. Those counterexamples use other supports or positions and do not refute the conjecture about initial intervals.
