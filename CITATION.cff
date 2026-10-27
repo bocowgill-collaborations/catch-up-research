@@ -1,5 +1,11 @@
 cff-version: 1.2.0
-message: "If this repository helps your research, please cite it using the metadata below."
+message: >-
+  Please contribute your findings about the Catch-Up conjecture to this repository.
+  Proofs, partial results, computations, failed approaches, and research notes are
+  all welcome—you do not need to solve the conjecture to make a useful contribution.
+  When submitting a contribution, please also add your name to the repository’s
+  citation in the README and to this CITATION.cff file, so you can be credited.
+  This is a shared research effort, and the author list should grow with the project.
 title: "Catch-Up Research Repository"
 authors:
   - family-names: "Cowgill"

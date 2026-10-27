@@ -118,9 +118,15 @@ Catch-Up was introduced by **Isaksen, Ismail, Brams, and Nealen (2015)**. See th
 [reference Lean formalization](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/Paper/CatchUpConjecture.lean).
 See [credits and AI assistance](CREDITS.md) and [verification instructions](verification/).
 
-## Citing this repository
+## Add Your Name to the Citation
 
-If this repository helps your research, please cite it:
+Please contribute your findings about the Catch-Up conjecture to this repository.
+Proofs, partial results, computations, failed approaches, and research notes are all
+welcome—you do not need to solve the conjecture to make a useful contribution.
+
+When submitting a contribution, please also add your name to the repository’s
+citation below and to [CITATION.cff](CITATION.cff), so you can be credited. This is a
+shared research effort, and the author list should grow with the project.
 
 ```bibtex
 @misc{cowgill2026catchup,
@@ -134,8 +140,3 @@ If this repository helps your research, please cite it:
 
 For reproducibility, identify the release or commit used. Please also cite the
 original papers and upstream projects relevant to the results you use.
-
-**Contributor credit:** As others contribute research, proofs, code, computations,
-failed examples or documentation, we will update this citation to include them as
-co-authors, with their agreement. Individual contributions and their sources will
-also be credited throughout the repository.
