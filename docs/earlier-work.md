@@ -25,4 +25,9 @@ The [archive inventory](../archive/inventory.json) records all 144 inspected mod
 
 Older sources with names suggesting certification through N=28 include `native_decide`-based finite checks. Those are not accepted here as kernel-replayed finite outcomes. The large generated payloads are not silently imported into the proof library; they need a separate replay/trust audit. Small transparent full and compressed certificates in the recovered fixtures are checked in the kernel.
 
-Four-counter transfer ledgers, new-opening repair phases, shifted-reply cycles and dense-hole reductions remain useful historical ideas to inspect in the archive. An abstract simulation theorem only transfers safety after its relation and every adversarial step obligation have been supplied. No such historical file is being presented as a solution to C.
+The [first-pair atlas](../results/first-pair-atlas.md) separately ports four more
+archived modules, including shifted-reply cycles and initialization obstructions.
+Four-counter transfer ledgers, new-opening repair phases and dense-hole reductions
+remain useful historical ideas. An abstract simulation theorem transfers safety
+only after its relation and every adversarial step obligation are supplied.
+None of these ports or historical files is presented as a solution to C.

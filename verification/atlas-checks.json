@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "fa984bdc3433232480c415604255df36563e9190",
+  "scope": "Affected atlas mathematics, import-root integration, full mathematics axiom audit and bounded collection/regression checks. No cryptid rebuild or large outcome computation.",
+  "commands": [
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp.AdjacentHoleExchangeObstruction",
+        "CatchUp.FirstPairDescentObstruction",
+        "CatchUp.ShiftedReplyCycle",
+        "CatchUp.TurnReserveInitialization"
+      ],
+      "exit_code": 0,
+      "seconds": 2.49,
+      "receipt": "verification/receipts/atlas-ports-build.log",
+      "sha256": "e076dceeb6ba8f45f37d2f9f2037ef4eaf7b45f614b516765f0a529c765d1458",
+      "bytes": 42
+    },
+    {
+      "command": [
+        "lake",
+        "--wfail",
+        "build",
+        "CatchUp"
+      ],
+      "exit_code": 0,
+      "seconds": 2.05,
+      "receipt": "verification/receipts/atlas-import-build.log",
+      "sha256": "8f051fecf8f794fa0cfe93c20b3388c61dbcab9ced18f734a81b81462bbf6b40",
+      "bytes": 714
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_axioms.py"
+      ],
+      "exit_code": 0,
+      "seconds": 101.277,
+      "receipt": "verification/receipts/atlas-axioms-command.log",
+      "sha256": "ab47f6fceabcf4b482ed6fa952817cac3cf999b70e262197925b4cab35226117",
+      "bytes": 77
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_collection.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.932,
+      "receipt": "verification/receipts/atlas-collection.log",
+      "sha256": "651db176ee6b255c31e521df3bf6fb20f66f0b65b39c9dd0ff61adee26d2cf80",
+      "bytes": 1814
+    },
+    {
+      "command": [
+        "python3",
+        "computation/check_semantics.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.34,
+      "receipt": "verification/receipts/atlas-semantics.log",
+      "sha256": "3f72609a87fb6e17a2b6b7bfce3a156bdd7457ef275652f586b830402817c837",
+      "bytes": 72
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-DwarningAsError=true",
+        "--run",
+        "computation/CheckEarlier.lean"
+      ],
+      "exit_code": 0,
+      "seconds": 6.291,
+      "receipt": "verification/receipts/atlas-earlier-regressions.log",
+      "sha256": "a16126c497b035895bda9fd9960434953f9e4b75be126dcbbd7ad78e298e42cc",
+      "bytes": 122
+    }
+  ],
+  "axiom_audit": {
+    "status": "PASS",
+    "groups": [
+      {
+        "entry": "AxiomAudit.lean",
+        "endpoints": 241,
+        "all_public_catchup_theorems": 4672,
+        "commands": [
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AxiomAudit.lean"
+          ],
+          [
+            "lake",
+            "env",
+            "lean",
+            "-DwarningAsError=true",
+            "AuditAll.lean"
+          ]
+        ],
+        "seconds": 101.23861841700001,
+        "audit_source_sha256": "a4a52da4c6e9ba3c89e9646d727e5a6f85e6d2c54718a25eb15e1ec5ae0a0531",
+        "full_audit_source_sha256": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581"
+      }
+    ],
+    "seconds": 101.238723666,
+    "peak_child_rss_bytes": 5528535040,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "allowed_axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "negative_control": "rejected sorryAx"
+  },
+  "source_sha256": {
+    "CatchUp.lean": "70a3b664568e2092319dad39fff1d2d9ff4a5968249a75e5157293f2d49561f6",
+    "AxiomAudit.lean": "a4a52da4c6e9ba3c89e9646d727e5a6f85e6d2c54718a25eb15e1ec5ae0a0531",
+    "AuditAll.lean": "1afa922eb846cf7fe92629bb7c9f04cbde3c0f2a9fc83bee2c3fb338eb6d9581",
+    "scripts/check_atlas_ports.py": "cb10ad94f80d73596360a1c37542aa289d8272f8f05aeb1f7541f65dd6fb156b",
+    "scripts/check_collection.py": "8e68a98c6d6cb6089d0cca4cb451fb0a54ebcd938103c7dab0dcc272d7e538b3",
+    "verification/atlas-ports.json": "ffeed35e00501e8fd23a8abbc350955e4befb5ee392b9d39a6dcdc859c8bc093",
+    "results/catalog.json": "af2024f0e15d9b01c9fac6b48355f3603392970fc17997f7bd28deecdbc55a91",
+    "results/first-pair-atlas.md": "202ec5bc7591db4e2b75d233dff05fdfcd457e97affbf27175c75b4cdc305e1f",
+    "docs/research-handoff.md": "31778db2e25340c795914cbbdb44e672734e9e05bb5206c9083dc09fdd12bcb5",
+    "CatchUp/AdjacentHoleExchangeObstruction.lean": "4d7ae96c6a873ebd515a4177b4c09d6b24b90ff63f6d24f3413ec86fe8df0b64",
+    "CatchUp/FirstPairDescentObstruction.lean": "8f14d6366a64b549d161f67f9b607cec1e622fbde6750f5dfeeb9d64e0de3efb",
+    "CatchUp/ShiftedReplyCycle.lean": "e74d9e4d18fc0f802e34e349a56674bd212fea8b7d55a61f3e100a3c49548a8d",
+    "CatchUp/TurnReserveInitialization.lean": "1374e6a31bd64fbb2b994abf8d4552c8af6678e7292e66852ddfe1008bdbf4a4"
+  },
+  "status": "PASS"
+}

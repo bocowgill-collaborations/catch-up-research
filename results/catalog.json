@@ -1646,6 +1646,109 @@
         "pair_deletion_position_fourth_from_top_value_ne_loss_of_fifteen_le",
         "pair_deletion_position_fourth_from_top_value_ne_loss"
       ]
+    },
+    {
+      "module": "CatchUp.AdjacentHoleExchangeObstruction",
+      "path": "CatchUp/AdjacentHoleExchangeObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "Kernel-checked adjacent-hole copying failure, forced different first moves, and sparse parity-extension obstructions; not a counterexample to the interval implication.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "left_value",
+        "right_value",
+        "left_move_profile",
+        "right_move_profile",
+        "safe_right_move_copies_to_loss",
+        "left_eq_requested",
+        "right_eq_requested",
+        "witness_admissible",
+        "right_to_left_counter_legal",
+        "forced_first_repair",
+        "forced_first_repair_endpoints",
+        "alternating_parity_jump",
+        "alternating_witness_structure",
+        "parity_root_opening_five_draw",
+        "parity_root_pair_erasure",
+        "omitted_pairs_geometry",
+        "parity_root_neighbor_states",
+        "parity_root_reply_eleven_draw"
+      ]
+    },
+    {
+      "module": "CatchUp.FirstPairDescentObstruction",
+      "path": "CatchUp/FirstPairDescentObstruction.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "First-pair identities and polarity, bases at seven/eight, and certified limits of geometry-free three-reserve transfer and common-counter copying.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "root_eq_pair",
+        "first_pick",
+        "deficit_one_loss_child_win",
+        "loss_forces_all_first_children_win",
+        "base_seven",
+        "base_eight",
+        "sparse_loss",
+        "sparse_shadow_win",
+        "sparse_structure",
+        "no_geometry_free_three_reserve_transfer",
+        "raw_two_pick_exchange",
+        "bridge_values",
+        "bridge_shadow_win_forces_eight",
+        "bridge_copy_eight_loses",
+        "bridge_actual_six_wins",
+        "bridge_legal_prefixes",
+        "bridge_copied_endpoints",
+        "sparse_has_no_nonloss_strategy",
+        "sparse_all_first_children_win",
+        "shadow_after_three",
+        "bridge_shadow_root_draw",
+        "bridge_owner_conflict",
+        "bridge_completed_copy_obstruction"
+      ]
+    },
+    {
+      "module": "CatchUp.ShiftedReplyCycle",
+      "path": "CatchUp/ShiftedReplyCycle.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "Legal shifted-reply cycle/slide obstructions and a hypothetical-loss reduction to a closed directed walk; no full-interval acyclicity theorem.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "edge_irrefl",
+        "adjacent_forward",
+        "adjacent_reverse",
+        "nonadjacent_reversal",
+        "obstruction_tail_losses",
+        "obstruction_structure",
+        "obstruction_two_cycle",
+        "obstruction_root_loss",
+        "no_local_span_two_cycle_exclusion",
+        "no_loss_conditioned_local_span_exclusion",
+        "interior_structure",
+        "interior_slide_failure",
+        "no_full_span_minimum_slide",
+        "sparse_three_cycle",
+        "interval_seven_upward_edge",
+        "interval_seven_max_edge",
+        "interval_seven_no_max_companion",
+        "win_has_move",
+        "loss_forces_outgoing",
+        "finite_outgoing_closed_walk",
+        "loss_forces_closed_walk",
+        "interval_loss_forces_closed_walk",
+        "critical_cross",
+        "critical_reply_inversion",
+        "interval_seven_critical_continuation"
+      ]
+    },
+    {
+      "module": "CatchUp.TurnReserveInitialization",
+      "path": "CatchUp/TurnReserveInitialization.lean",
+      "group": "Certified obstructions to proposed generalizations",
+      "summary": "For N at least seven, the specified prepaid pairing-reserve initialization envelope holds exactly at N=7, opening three; not an outcome characterization.",
+      "evidence": "Source-preserving Lean port; included in the pinned build and transitive axiom audit",
+      "public_theorem_names": [
+        "budget_envelope_initialization_iff"
+      ]
     }
   ]
 }

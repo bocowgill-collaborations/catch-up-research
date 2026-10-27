@@ -49,8 +49,16 @@ An initial public release omits private campaign logs, account usage information
 
 ## Collection expansion
 
+The [first-pair atlas ports](atlas-ports.md) add four modules and 67 public theorem
+declarations, bringing the current mathematics catalog to 105 modules. Original
+statements, proof bodies, reports and certificates are preserved. The
+[port manifest](atlas-ports.json) and reconstruction checker record exact
+adaptations; all new theorems are named transitive-axiom endpoints. The
+[research handoff](../docs/research-handoff.md) distinguishes completed ports from
+future verification and recovery work.
+
 The later [conditional maximum-companion recovery](reply-maximum-companion.md)
-adds one module and two public theorems; with the endpoint ports below, the current catalog has 101 modules.
+added one module and two public theorems; with the endpoint ports below, it then brought the catalog to 101 modules.
 Its [manifest](reply-maximum-companion.json) pins two compiled/metadata artifacts
 and the new source/check files. `python3 scripts/check_recovered_reply.py --lean`
 rechecks all ten original cached declarations in the kernel and compares the

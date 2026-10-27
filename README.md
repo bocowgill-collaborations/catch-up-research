@@ -48,6 +48,7 @@ The statement also includes the trivial empty game, `N = 0`.
 | [computation/](computation/) | Solvers, finite results, and reproduction instructions. |
 | [cryptid/](cryptid/) | The machine, its equivalence proof, and documentation. |
 | [Open questions](results/open-questions.md) | Research goals and ways to contribute. |
+| [Research handoff](docs/research-handoff.md) | Current frontier, failed-route lessons, verification backlog, and recovery priorities. |
 | [Research notebook](archive/research-notes/) | Existing findings, failed ideas, bounded experiments and how the approaches developed. |
 
 ## Proofs and intermediate results
