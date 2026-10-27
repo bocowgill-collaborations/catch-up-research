@@ -1,5 +1,10 @@
 import CatchUp
 
+#print axioms CatchUp.TwoBuffer.shadow_good_iff
+#print axioms CatchUp.TwoBuffer.run_check_sound
+#print axioms CatchUp.TwoBuffer.mandatory_policy_checked
+#print axioms CatchUp.TwoBuffer.mandatory_protocol
+
 #print axioms CatchUp.pair_deletion_position_antepenultimate_value_ne_loss_of_opening_one_draw
 #print axioms CatchUp.Position.value_ne_loss_of_exact_pair_residuals
 #print axioms CatchUp.upper_triple_five_counter_repair

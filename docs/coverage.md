@@ -6,7 +6,10 @@ A later local-cache search recovered one conditional maximum-companion
 implementation, [CU-R001](../results/reply-maximum-companion.md), related to
 CU-L011. All ten original compiled declarations were freshly kernel-replayed;
 readable source with two public theorems was reconstructed and signature-compared.
-Together with the separately ported endpoints, the catalog now has 101 modules.
+Together with the separately ported endpoints and the [finite two-buffer
+protocol/controller](../results/two-buffer-protocol.md), the catalog now has 103
+modules. The latter port adds four public theorems with ordinary kernel proofs
+and separate source/table provenance; its uniform transfer remains open.
 The differently named August scratch
 source, other missing proof/audit artifacts and large tables remain unrecovered.
 See the [recovery record](../verification/reply-maximum-companion.md) for search
@@ -16,7 +19,7 @@ The [August–September expansion](../archive/campaigns/) compares 290 path/blob
 
 | Area | Coverage in this collection | Remaining gap |
 | --- | --- | --- |
-| Local mathematics | The original 70 modules and 26 recovered modules are preserved. The [fifth-endpoint port](../results/fifth-endpoint.md) and [earlier endpoint ports](../results/lower-ray-endpoints.md) add two modules each; [CU-R001](../results/reply-maximum-companion.md) adds one, for 101 in the [module guide](../results/modules.md). Fourteen historical branches were inventoried, covering 144 module paths. | The [archive](../archive/) retains 56 source snapshots outside the build, including original inputs of later ports. Generated/native-only range claims and unported declarations require separate audits. |
+| Local mathematics | The original 70 modules and 26 recovered modules are preserved. The [fifth-endpoint port](../results/fifth-endpoint.md) and [earlier endpoint ports](../results/lower-ray-endpoints.md) add two modules each; [CU-R001](../results/reply-maximum-companion.md) adds one, and the [two-buffer protocol/controller](../results/two-buffer-protocol.md) adds two, for 103 in the [module guide](../results/modules.md). Fourteen historical branches were inventoried, covering 144 module paths. | The [archive](../archive/) retains 56 source snapshots outside the build, including original inputs of later ports. Generated/native-only range claims and unported declarations require separate audits. |
 | Rules and examples | [Worked introduction](game.md), [glossary](glossary.md), [arithmetic explanations](mathematics.md), reference correspondence and small independent checks. | Informal arithmetic explanations on the new guide page are not additional Lean declarations. |
 | Structural and arithmetic results | Opening uniqueness, draw-opening and pair-deletion reductions, pair/orphan defenses, dense-loss/subset-sum results, boundary exclusions and depth barriers are indexed. | The uniform strategic closure needed for C remains open. |
 | Failed approaches and experiments | Expanded [failure guide](../results/failed-ideas.md), [experimental findings](../results/experimental-findings.md), 90 indexed [historical research notes](../archive/research-notes/), 31 retained [observation files](../computation/observations/) and checked obstruction modules. | Historical numerical outputs are not newly replayed or proof certificates. Old next steps, novelty phrases and checking paths are not adopted as current claims. |

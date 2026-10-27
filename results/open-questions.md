@@ -4,7 +4,7 @@ This page separates the central conjecture, wider questions about the game, and 
 
 The [current route guide](research-routes.md) gives concrete proof obligations; [experimental findings](experimental-findings.md) explain what the existing tests support and which tests were vacuous. Detailed earlier arguments are retained in the [research notebook](../archive/research-notes/).
 
-The [earlier campaign ledger](legacy-findings.md) also identifies concrete recovery tasks: locate the missing August scratch proofs and audit programs, replay historical native certificates under an explicitly chosen trust policy, and port the archived September endpoints and causal controller if useful to a new proof route. The [missing-artifact list](../archive/campaigns/README.md#missing-artifacts-and-deferred-verification) distinguishes absent files from unresolved mathematics. The 263 historical notebook entries record the research process; they do not add proved claims.
+The [earlier campaign ledger](legacy-findings.md) also identifies concrete recovery tasks: locate the missing August scratch proofs and audit programs, replay historical native certificates under an explicitly chosen trust policy, and port remaining archived proof families if useful to a new proof route. The [missing-artifact list](../archive/campaigns/README.md#missing-artifacts-and-deferred-verification) distinguishes absent files from unresolved mathematics. The 263 historical notebook entries record the research process; they do not add proved claims.
 
 ## The central problem
 
@@ -16,8 +16,10 @@ unrecovered. The historical missing-artifact ledger is not silently upgraded.
 
 The [antepenultimate and fourth-endpoint ports](lower-ray-endpoints.md) and a
 [bounded two-buffer replay](../computation/experiments/earlier-campaign/two-buffer/)
-are also now available. These do not close the full lower ray, port the archived
-Lean controller, or solve its uniform adjacent-hole transfer obligation.
+are also now available. The [Lean finite controller/protocol](two-buffer-protocol.md)
+is now separately kernel-ported. These do not close the full lower ray or solve
+the uniform adjacent-hole transfer obligation; scalar-bound and parametric
+two-pick repair modules remain archived.
 
 **C:** for every N, even `N(N+1)/2` implies a draw on `{1,…,N}` under optimal play. This includes N=0. C remains open in the inspected [formal statement](https://github.com/google-deepmind/formal-conjectures/blob/6fbb54f24ccc2e64dcfaffc28c58950e377110d2/FormalConjectures/Paper/CatchUpConjecture.lean#L182).
 

@@ -52,8 +52,9 @@ favorable choice of that strategy's replies.
 ## Evidence and scope
 
 This is a fresh computational replay of a fixed finite artifact. The historical
-Lean protocol proof remains in the archive; it has not been added to the current
-Lean library by this bundle. No unbounded adjacent-hole translator or interval
+Lean protocol proof remains in the archive; a later [source-preserving Lean
+port](../../../../results/two-buffer-protocol.md) now separately kernel-checks the
+protocol and controller. This Python bundle is computational evidence only. No unbounded adjacent-hole translator or interval
 draw theorem follows. Shadow outcome queries validate the allowed supplied-
 strategy filter; they are not a structural repayment invariant.
 

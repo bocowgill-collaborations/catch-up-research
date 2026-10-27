@@ -50,7 +50,8 @@ An initial public release omits private campaign logs, account usage information
 ## Collection expansion
 
 The later [conditional maximum-companion recovery](reply-maximum-companion.md)
-adds one module and two public theorems; with the endpoint ports below, the current catalog has 101 modules.
+adds one module and two public theorems. With the endpoint ports, that recovery
+brought the catalog to 101 modules; the two-buffer port below brings it to 103.
 Its [manifest](reply-maximum-companion.json) pins two compiled/metadata artifacts
 and the new source/check files. `python3 scripts/check_recovered_reply.py --lean`
 rechecks all ten original cached declarations in the kernel and compares the
@@ -73,3 +74,11 @@ Their reconstruction and axiom audits are separate from the unchanged archive.
 The same contribution adds a [bounded two-buffer replay](../computation/experiments/earlier-campaign/two-buffer/),
 whose computational checks and source adaptations are recorded independently of
 the archived Lean controller. All are included in the collection checks.
+
+The later [finite two-buffer protocol/controller port](two-buffer-port.md) adds
+two modules and four public theorems, bringing the catalog to 103 modules. Its
+[manifest](two-buffer-port.json) and `check_two_buffer_port.py` reconstruct the
+exact source adaptations and compare the 76 Lean action rows with the retained
+JSON policy. Ordinary kernel validation and transitive axiom audits are separate
+from the Python replay; the uniform translator and other archived modules are
+not upgraded.

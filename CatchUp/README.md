@@ -13,6 +13,6 @@ python3 scripts/check_collection.py
 lake env lean --run computation/CheckEarlier.lean
 ```
 
-The default build imports all 101 mathematics modules. The binary machine lives in a [separate package](../cryptid/) with its original Lean version; do not combine the two packages' import paths or compiled files.
+The default build imports all 103 mathematics modules. The binary machine lives in a [separate package](../cryptid/) with its original Lean version; do not combine the two packages' import paths or compiled files.
 
 `Reference.lean` retains the reference game definitions and adds the strategy/reduction API from the existing research. The upstream unfinished conjecture is omitted. See [provenance and fidelity checks](../verification/).

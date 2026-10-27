@@ -7,8 +7,9 @@ The [campaign index](../archive/campaigns/README.md) lists all source versions, 
 The [endpoint ports](lower-ray-endpoints.md) separately update the current status
 of CU-L021 and CU-L032. The [finite-controller replay bundle](../computation/experiments/earlier-campaign/two-buffer/)
 rechecks the retained CU-L026 policy computationally. Its archived Lean protocol
-does not receive a fresh build claim from that replay; the original ledger's
-historical evidence remains intact.
+does not receive a fresh build claim from that replay. A later [source-preserving
+Lean port](two-buffer-protocol.md) separately kernel-checks its protocol and fixed
+controller; the original ledger's historical evidence remains intact.
 
 ## Reading the evidence
 
@@ -279,6 +280,10 @@ Evidence: archived Lean protocol/certificate and JSON policy; historical kernel 
 Raw remaining-field differences are bounded by two after each pick. Eagerly erasing an early-terminal remainder changes the convention and invalidates this policy. Not a parametric translator.
 
 Sources: [catchup_two_buffer_report_20260928_0834_et--c1fbe535.md](../archive/campaigns/reports/catchup_two_buffer_report_20260928_0834_et--c1fbe535.md), [TwoBufferProtocol.lean.txt](../archive/catch_up/TwoBufferProtocol.lean.txt), [TwoBufferMandatory.lean.txt](../archive/catch_up/TwoBufferMandatory.lean.txt), [two_buffer_policy_20260928--f1d4f917.json](../archive/campaigns/versions/two_buffer_policy_20260928--f1d4f917.json).
+
+Current assurance update: the [verified finite-controller port](two-buffer-protocol.md)
+adds ordinary kernel builds and transitive axiom audits for the protocol/checker
+and mandatory controller only. The historical evidence label above is preserved.
 
 ### CU-L027 — Two-pick preparation and copied-pair repair
 
