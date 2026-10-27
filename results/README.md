@@ -45,6 +45,12 @@ guide](strategy-transfers.md) connects the earlier simulation and score-debt
 methods with the [supported finite controller replay](../computation/experiments/earlier-campaign/two-buffer/).
 Those contributions leave the uniform lower-ray and first-pair obligations open.
 
+The [formal two-buffer batch](two-buffer-controller.md) ports five archived
+modules and 34 public theorem declarations: the causal protocol and its sound
+checker, the full mandatory-instance proof, margin bounds, legal prefixes and a
+parametric two-pick repair. Its Lean policy matches the preserved replay.
+This is finite-instance verification, not the uniform adjacent-hole theorem.
+
 ## Certified failures of proposed strategy rules
 
 The [first-pair and failed-strategy atlas](first-pair-atlas.md) now brings four
